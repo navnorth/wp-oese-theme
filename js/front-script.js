@@ -20,7 +20,7 @@ jQuery( document ).ready(function() {
 	var a_margin = parseInt(heght) - parseInt(a_hght);
 	a_margin = a_margin/2;
 	jQuery(".link_dwnlds").children("div").children("a").css("margin-top", a_margin+"px");
-<<<<<<< HEAD
+	<<<<<<< HEAD
 	
 	/** Keyboard Navigation using Keydown event **/
 	jQuery('.menu-item > a').on('keydown',function(e){
