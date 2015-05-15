@@ -66,17 +66,17 @@ function theme_front_enqueue_script()
 }
 add_action( 'wp_enqueue_scripts', 'theme_front_enqueue_script' );
 
-function oer_dynamic_sidebar($index, $page_id)
+function theme_dynamic_sidebar($index, $page_id)
 {
 	global $wp_registered_sidebars, $wp_registered_widgets;
 	if(isset($page_id) && !empty($page_id))
 	{
-		$oer_assign_widget = unserialize( get_post_meta($page_id,"_oer_assign_widget",true) );
+		$theme_assign_widget = unserialize( get_post_meta($page_id,"_theme_assign_widget",true) );
 
 		if (!empty($index))
 		{
 			$sidebar = $wp_registered_sidebars[$index];
-			foreach ( (array) $oer_assign_widget as $id )
+			foreach ( (array) $theme_assign_widget as $id )
 			{
 				if ( !isset($wp_registered_widgets[$id]) ) continue;
 

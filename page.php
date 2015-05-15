@@ -12,26 +12,26 @@
  * @since Twenty Twelve 1.0
  */
 
-get_header(); 
+get_header();
 global $post;
 ?>
 
 	<div id="content" class="row site-content">
-    	
+
         <div class="col-md-9 c ol-sm-12 col-xs-12 padding_left pblctn_lft_sid_img_cntnr">
         	<h2 class="pblctn_hed"><?php echo $post->post_title;?></h2>
 			<?php while ( have_posts() ) : the_post(); ?>
 				<?php get_template_part( 'content', 'page' ); ?>
 			<?php endwhile; ?>
-         </div>   
-       
+         </div>
+
         <div class="col-md-3 col-sm-12 col-xs-12 pblctn_right_sid_mtr">
-            <?php 
+            <?php
 				$page_id = get_the_ID();
-				echo oer_dynamic_sidebar('default-template', $page_id);
+				echo theme_dynamic_sidebar('default-template', $page_id);
 			?>
         </div>
-	
+
     </div>
 
 <?php get_footer(); ?>

@@ -25,16 +25,16 @@ function theme_options_settings()
 				if(isset($_POST["widget_id"]))
 				{
 					$data = serialize($_POST["widget_id"]);
-					update_post_meta($page_id, "_oer_assign_widget", $data);
+					update_post_meta($page_id, "_theme_assign_widget", $data);
 				}
 				else
 				{
-					update_post_meta($page_id, "_oer_assign_widget");
+					update_post_meta($page_id, "_theme_assign_widget");
 				}
 			}
 
 			$temlpate = get_post_meta($page_id,"_wp_page_template",true);
-			$oer_assign_widget = unserialize(get_post_meta($page_id,"_oer_assign_widget",true));
+			$theme_assign_widget = unserialize(get_post_meta($page_id,"_theme_assign_widget",true));
 
 
 
@@ -69,7 +69,7 @@ function theme_options_settings()
 				foreach( $widget_ids as $id )
 				{
 					$chekd = '';
-					if($oer_assign_widget && !empty($oer_assign_widget) && in_array($id,$oer_assign_widget))
+					if($_theme_assign_widget && !empty($_theme_assign_widget) && in_array($id,$_theme_assign_widget))
 					{
 						$chekd = 'checked="checked"';
 					}

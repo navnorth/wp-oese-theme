@@ -3,7 +3,7 @@
  * Template Name: Toolkit Template
  */
 ?>
-<?php 
+<?php
 	get_header();
 	$page_id = get_the_ID();
 ?>
@@ -15,10 +15,10 @@
 			endwhile;
 		?>
 	</div>
-    
+
     <div class="col-md-3 col-sm-12 col-xs-12 pblctn_right_sid_mtr">
-    	<?php echo oer_dynamic_sidebar('toolkit-subpage-template', $page_id);?>
+    	<?php echo theme_dynamic_sidebar('toolkit-subpage-template', $page_id);?>
     </div>
-    
+
 </div>
 <?php get_footer();?>
