@@ -14,7 +14,7 @@
 .widefat th.custm{
     padding: 10px;
 }
-.oer_widget_wrapper {
+.theme_widget_wrapper {
     background-color: #fff;
     float: left;
     width: 100%;
@@ -46,32 +46,32 @@
 	float: left;
 	margin: 10px 0;
 }
-.oer_sclmda_wrpr {
+.sclmda_wrpr {
     float: left;
     margin: 10px 0;
     width: 100%;
 }
-.oer_sclmda_sub_wrapper {
+.sclmda_sub_wrapper {
     float: left;
     margin: 10px 0;
     width: 100%;
 }
-.oer_sclmda_txt {
+.sclmda_txt {
     float: left;
     padding: 8px 0 0 25px;
     width: 10%;
 }
-.oer_sclmda_fld {
+.sclmda_fld {
     float: left;
     width: 70%;
 }
-.oer_sclmda_fld > input[type="text"] {
+.sclmda_fld > input[type="text"] {
     float: left;
     padding: 5px 10px;
     width: 50%;
 }
 
-.oer_sclmda_fld input[type="submit"] {
+.sclmda_fld input[type="submit"] {
     background: none repeat scroll 0 0 #580085;
     border: 2px solid #fff;
     color: #fff;

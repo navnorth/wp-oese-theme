@@ -58,7 +58,7 @@ function theme_options_settings()
 			$return .= '<form method="post">
 
 				  <input type="submit" name="save_widget" value="Save Setting" id="cstm_wdgt_btn" />
-				  <div class="oer_widget_wrapper">
+				  <div class="theme_widget_wrapper">
 				  <div class="sub_wrapper">
 						<div class="sub_wrapper_fld"><input type="checkbox" name="widget_id[]" value="" /></div>
 						<div class="sub_wrapper_txt"><strong>Widget Title</strong></div>

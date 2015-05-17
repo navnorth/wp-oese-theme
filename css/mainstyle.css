@@ -188,7 +188,7 @@ iframe { border: 0;}
 .pblctn_scl_icns .fa-envelope, .pblctn_scl_icns .fa-youtube-play, .pblctn_scl_icns .fa-google-plus { font-size: 25px !important}
 .pblctn_scl_icns .fa-google-plus { font-weight: bold}
 .blog_mtr { color: #00529f; font-family: "Raleway-Regular"; font-style: italic; font-size: 20px; line-height: 30px; margin: 0 0 15px;}
-blockquote { border-left: none !important; font-size: auto !important; padding: 0 !important;}
+blockquote { border-left: none !important; font-size: auto !important;}
 .blog_date { margin: 0 0 30px; font-size: 16px }
 .blog_athr { font-size: 16px; margin:0; font-family: 'CharisSILB' }
 .blog_date, .panel-default>.panel-heading+.panel-collapse>.panel-body {  }
