@@ -14,7 +14,7 @@ aside.widget {
 .widget h3 {
     border-bottom: 1px solid #ccc;
     font-family: "Raleway-Light";
-    font-size: 15px;
+    font-size: 18px;
     font-weight: bold;
     letter-spacing: 0.5px;
     padding: 0 0 10px;
@@ -66,14 +66,12 @@ aside.widget {
 }
 
 
-
-
 .alignleft { float: left; margin-right: 20px; margin-bottom: 20px}
 .alignright{ float: right; margin-left: 20px; margin-bottom: 20px}
 hr { width: 100%}
 
-.wp-caption.alignnone, .wp-caption.alignright, .wp-caption.alignleft { background: #f2f2f2; border: 1px solid #ccc;}
-.wp-caption.alignnone p, .wp-caption.alignright p, .wp-caption.alignleft p { margin: 10px}
+.wp-caption, .wp-caption.alignnone, .wp-caption.alignright, .wp-caption.alignleft { background: #f2f2f2; border: 1px solid #ccc;}
+.wp-caption p, .wp-caption.alignnone p, .wp-caption.alignright p, .wp-caption.alignleft p { margin: 10px}
 
 /* Skip Content Style */
 #skipcontent a {
@@ -109,4 +107,20 @@ hr { width: 100%}
     width: 15px;
     height: 15px;
     background: url("../images/external_link.png") no-repeat top right;
+}
+
+/* recent posts widget */
+.widget_recent_entries li {
+    margin-bottom:8px;
+}
+.widget_recent_entries a {
+    color: #00529f;
+    font-family:'Raleway-SemiBold';
+}
+.widget_recent_entries .post-date::before {content: "   – ";}
+.widget_recent_entries .post-date {
+    clear:both;
+    display: block;
+    margin-left:10px;
+    margin-top:-2px;
 }

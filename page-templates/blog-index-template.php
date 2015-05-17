@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Blog Index
+ * Template Name: News Index
  */
 ?>
 <?php
