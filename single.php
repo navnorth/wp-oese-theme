@@ -10,6 +10,7 @@
 get_header(); ?>
 
 	<div id="content" class="row site-content">
+		<div class="col-md-9 c ol-sm-12 col-xs-12 padding_left pblctn_lft_sid_img_cntnr">
 			<?php while ( have_posts() ) : the_post(); ?>
 
 				<?php get_template_part( 'content', get_post_format() ); ?>
@@ -23,8 +24,10 @@ get_header(); ?>
 				<?php comments_template( '', true ); ?>
 
 			<?php endwhile; // end of the loop. ?>
-
+		</div>
+        <div class="col-md-3 col-sm-12 col-xs-12 pblctn_right_sid_mtr">
+            <?php get_sidebar(); ?>
+        </div>
 	</div><!-- #row -->
 
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>
