@@ -146,3 +146,13 @@ function federated_analytics_tracking_code(){
     echo '<script language="javascript" id="_fed_an_ua_tag" src="http://www2.ed.gov/style/Universal-Federated-Analytics.1.0.js?ver=true&agency=ED"></script>';
 }
 add_action('wp_head', 'federated_analytics_tracking_code');
+
+/**
+ * Related Posts Widget.
+ */
+require_once( get_stylesheet_directory() . '/widgets/related_posts_widget.php' );
+add_action( 'widgets_init' , 'register_oii_widget' );
+
+function register_oii_widget(){
+    register_widget( 'Related_Posts_Widget' );
+}
