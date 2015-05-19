@@ -100,14 +100,21 @@ hr { width: 100%}
 }
 
 /* external links */
-#content .external_link::after,
-#home_content .external_link::after {
+#content p .external_link::after,
+#home_content p .external_link::after {
     content: "";
     display: inline-block;
     margin-left:3px;
     width: 15px;
     height: 15px;
     background: url("../images/external_link.png") no-repeat top right;
+}
+/* external links */
+#content .external_link:after img,
+#home_content .external_link::after img {
+    background: none;
+    width: 0px;
+    height: 0px;
 }
 
 /* recent posts widget */
@@ -125,3 +132,10 @@ hr { width: 100%}
     margin-left:10px;
     margin-top:-2px;
 }
+
+.post_bottom_hr {
+    align:center;
+    width:85%;
+}
+
+.comments-link a { display:none; }

@@ -6,7 +6,7 @@ function twentytwelve_child_theme_menu()
 add_action('admin_menu', 'twentytwelve_child_theme_menu');
 function theme_options_settings()
 {
-	$temlate_sidebar = array(
+	$template_sidebar = array(
 						"publication-template" 	=> "page-templates/publication-template.php",
 						"toolkit-template" 		=> "page-templates/toolkit-template.php",
 						"default-template" 		=> "default",
@@ -38,7 +38,7 @@ function theme_options_settings()
 
 
 
-			foreach($temlate_sidebar as $key => $value)
+			foreach($template_sidebar as $key => $value)
 			{
 				if($value == $temlpate)
 				{
