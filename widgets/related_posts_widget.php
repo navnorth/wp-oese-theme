@@ -24,21 +24,50 @@ class Related_Posts_Widget extends WP_Widget {
         $posts_count  = $instance['posts_count'];
  
         echo $before_widget;
- 
-        // Display the widget title 
-        if ( $title )
-            echo $before_title . $title . $after_title;
- 
+        $post_categories = get_the_category($post->ID);
+        
+        $cat_ids = array();
+        foreach($post_categories as $cat){
+            $cat_ids[] = $cat->cat_ID;
+        }
+        $cat_ids = implode( ',' , $cat_ids );
+        
         // Get Posts by Category
-        //Code Goes here
- 
-        //Display the Date
-        if ( $show_date )
-            printf( $show_date );
-            
-        //Display the Thumbnail
-        if ( $show_thumbnail )
-            printf( $show_thumbnail );
+        $rPosts = new WP_Query( apply_filters( 'widget_posts_args', array(
+                'posts_per_page'      => $posts_count,
+                'no_found_rows'       => true,
+                'post_status'         => 'publish',
+                'ignore_sticky_posts' => true,
+                'cat' => $cat_ids
+        ) ) );
+        
+	if ($rPosts->have_posts()) :
+        
+?>
+		<?php if ( $title ) {
+			echo $args['before_title'] . $title . $args['after_title'];
+		} ?>
+		<ul>
+		<?php while ( $rPosts->have_posts() ) : $rPosts->the_post(); ?>
+			<li>
+                        <?php if ( $show_thumbnail ) : ?>
+                            <?php if ( has_post_thumbnail() ) ?>
+				<a href="<?php the_permalink(); ?>"><?php get_the_post_thumbnail() ? the_post_thumbnail() : '' ?></a>
+			<?php endif; ?>
+				<a href="<?php the_permalink(); ?>"><?php get_the_title() ? the_title() : the_ID(); ?></a>
+			<?php if ( $show_date ) : ?>
+				<span class="post-date"><?php echo get_the_date(); ?></span>
+			<?php endif; ?>
+			</li>
+		<?php endwhile; ?>
+		</ul>
+		<?php echo $args['after_widget']; ?>
+<?php
+    
+		// Reset the global $the_post as this query will have stomped on it
+	    wp_reset_postdata();
+
+	    endif;
          
         echo $after_widget;
     }
