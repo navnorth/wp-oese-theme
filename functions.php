@@ -156,3 +156,8 @@ add_action( 'widgets_init' , 'register_oii_widget' );
 function register_oii_widget(){
     register_widget( 'Related_Posts_Widget' );
 }
+
+add_filter( 'the_content_more_link', 'modify_read_more_link' );
+function modify_read_more_link() {
+	return '<a class="more-link btn_readmore" href="' . get_permalink() . '">Read More <span class="meta-nav">&rarr;</span></a>';
+}
