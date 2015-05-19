@@ -7,11 +7,9 @@ add_action('admin_menu', 'twentytwelve_child_theme_menu');
 function theme_options_settings()
 {
 	$template_sidebar = array(
-						"publication-template" 	=> "page-templates/publication-template.php",
-						"toolkit-template" 		=> "page-templates/toolkit-template.php",
 						"default-template" 		=> "default",
 						"blog-index-template"	=> "page-templates/blog-index-template.php",
-						"toolkit-subpage-template" => "page-templates/toolkit-subpage-template.php");
+						"program-template" 		=> "page-templates/program-template.php");
 
 	if(isset($_REQUEST) && !empty($_REQUEST))
 	{
