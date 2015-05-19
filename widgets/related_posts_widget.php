@@ -24,7 +24,7 @@ class Related_Posts_Widget extends WP_Widget {
         $posts_count  = $instance['posts_count'];
 
         echo $before_widget;
-<<<<<<< HEAD
+
         $post_categories = get_the_category($post->ID);
         
         $cat_ids = array();
@@ -70,24 +70,6 @@ class Related_Posts_Widget extends WP_Widget {
 
 	    endif;
          
-=======
-
-        // Display the widget title
-        if ( $title )
-            echo $before_title . $title . $after_title;
-
-        // Get Posts by Category
-        //Code Goes here
-
-        //Display the Date
-        if ( $show_date )
-            printf( $show_date );
-
-        //Display the Thumbnail
-        if ( $show_thumbnail )
-            printf( $show_thumbnail );
-
->>>>>>> 777b17753eb3f0a13a4d515c5f847c413bc58b26
         echo $after_widget;
     }
 
