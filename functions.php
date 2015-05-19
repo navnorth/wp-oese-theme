@@ -135,7 +135,7 @@ add_filter('the_generator', 'my_remove_version_info');
 // remove wp version param from any enqueued scripts
 function vc_remove_wp_ver_css_js( $src ) {
     if ( strpos( $src, 'ver=' ) )
-        $src = esc_url( remove_query_arg( 'ver', $src ) );
+	$src = esc_url( remove_query_arg( 'ver', $src ) );
     return $src;
 }
 add_filter( 'style_loader_src', 'vc_remove_wp_ver_css_js', 9999 );
@@ -161,3 +161,51 @@ add_filter( 'the_content_more_link', 'modify_read_more_link' );
 function modify_read_more_link() {
 	return '<a class="more-link btn_readmore" href="' . get_permalink() . '">Read More <span class="meta-nav">&rarr;</span></a>';
 }
+
+/**
+ * Initialize Categories and Tags for Pages 
+ **/
+add_action( 'init', 'taxonomies_for_pages' );
+if ( ! is_admin() ) {
+add_action( 'pre_get_posts',  'category_archives' );
+add_action( 'pre_get_posts', 'tags_archives' );
+} //
+
+/**
+* Registers the taxonomy terms for the post type
+*
+*/
+function taxonomies_for_pages() {
+    register_taxonomy_for_object_type( 'post_tag', 'page' );
+    register_taxonomy_for_object_type( 'category', 'page' );
+} // taxonomies_for_pages
+
+/**
+  * Includes the tags in archive pages
+  *
+  * Modifies the query object to include pages
+  * as well as posts in the items to be returned
+  * on archive pages
+  *
+  */
+ function tags_archives( $wp_query ) {
+
+   if ( $wp_query->get( 'tag' ) )
+     $wp_query->set( 'post_type', 'any' );
+
+ } // tags_archives
+
+ /**
+  * Includes the categories in archive pages
+  *
+  * Modifies the query object to include pages
+  * as well as posts in the items to be returned
+  * on archive pages
+  *
+  */
+ function category_archives( $wp_query ) {
+
+   if ( $wp_query->get( 'category_name' ) || $wp_query->get( 'cat' ) )
+     $wp_query->set( 'post_type', 'any' );
+
+ } // category_archives
