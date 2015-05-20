@@ -452,7 +452,17 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
     height:500px !important;
 }
 .slideshow_container .slideshow_content .slideshow_view {
-    /*height:380px !important;*/
+    background: rgba(219,219,219,1);
+    background: -moz-linear-gradient(top, rgba(219,219,219,1) 0%, rgba(254,254,254,1) 0%, rgba(209,209,209,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(219,219,219,1)), color-stop(0%, rgba(254,254,254,1)), color-stop(100%, rgba(209,209,209,1)));
+    background: -webkit-linear-gradient(top, rgba(219,219,219,1) 0%, rgba(254,254,254,1) 0%, rgba(209,209,209,1) 100%);
+    background: -o-linear-gradient(top, rgba(219,219,219,1) 0%, rgba(254,254,254,1) 0%, rgba(209,209,209,1) 100%);
+    background: -ms-linear-gradient(top, rgba(219,219,219,1) 0%, rgba(254,254,254,1) 0%, rgba(209,209,209,1) 100%);
+    background: linear-gradient(to bottom, rgba(219,219,219,1) 0%, rgba(254,254,254,1) 0%, rgba(209,209,209,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dbdbdb', endColorstr='#d1d1d1', GradientType=0 );
+}
+.slideshow_container .slideshow_content .slideshow_view .slideshow_slide_video > iframe {
+    height:380px !important;
 }
 .slideshow_container_style-light .slideshow_description_box div.slideshow_description {
     margin:0;
@@ -466,6 +476,9 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
     background: -ms-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(209,209,209,1) 0%, rgba(254,254,254,1) 100%);
     background: linear-gradient(to bottom, rgba(226,226,226,1) 0%, rgba(209,209,209,1) 0%, rgba(254,254,254,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=0 );
+}
+.slideshow_container_style-light .slideshow_pagination {
+    bottom:35px !important;
 }
 
 /* -------- end FRONT PAGE --------- */
