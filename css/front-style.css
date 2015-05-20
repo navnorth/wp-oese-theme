@@ -102,13 +102,20 @@ hr { width: 100%}
 /* external links */
 #content p .external_link::after,
 #home_content p .external_link::after {
-    content: "";
-    display: inline-block;
-    margin-left:3px;
-    width: 15px;
-    height: 15px;
-    background: url("../images/external_link.png") no-repeat top right;
+	content: "";
+	display: inline-block;
+	margin-left:3px;
+	width: 13px;
+	height: 13px;
+	background: url("../images/external_link.png") no-repeat top right;
+	opacity:0.8;
 }
+
+#content p .external_link:hover::after,
+#home_content p .external_link:hover::after {
+	opacity:1;
+}
+
 /* external links */
 #content .external_link:after img,
 #home_content .external_link::after img {
