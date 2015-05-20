@@ -56,7 +56,7 @@ jQuery( document ).ready(function() {
 
     // set external links to open in new window and have distinct style
     jQuery('a').each(function() {
-        var a = new RegExp('/' + window.location.host + '|mailto/i');
+	var a = new RegExp('' + window.location.host + '|mailto' , 'i');
         if(!a.test(this.href)) {
             jQuery(this).attr( 'target','_blank' );
             jQuery(this).addClass( 'external_link' );
