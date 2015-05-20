@@ -440,7 +440,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 .slideshow_container { height:500px !important }
 .slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box .slideshow_title {
   margin-top: -45px;
-  background: rgba(100,100,100,0.5);
+  background: rgba(50,50,50,0.8);
 }
 .slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box .slideshow_title a {
     font-size:24px !important;
