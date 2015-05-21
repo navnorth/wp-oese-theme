@@ -30,9 +30,7 @@ get_header();
          </div>
 
         <div class="col-md-3 col-sm-12 col-xs-12 pblctn_right_sid_mtr">
-            <?php
-                echo theme_dynamic_sidebar('program-template', get_the_ID());
-            ?>
+            <?php dynamic_sidebar( 'program-template' ); ?>
         </div>
 
     </div>

@@ -13,11 +13,6 @@
 require_once( get_stylesheet_directory() . '/theme-functions/widget-areas.php' );
 
 /**
- * Theme Settings.
- */
-require_once( get_stylesheet_directory() . '/theme-functions/theme-options.php' );
-
-/**
  * Theme Social Media Settings.
  */
 require_once( get_stylesheet_directory() . '/theme-functions/theme-social.php' );
@@ -32,12 +27,6 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
  * Theme Widget
  */
  require_once(get_stylesheet_directory() . '/theme-functions/custom_widget.php');
-
-/**
- *
- * Theme Metabox
- */
- require_once(get_stylesheet_directory() . '/theme-functions/custom_metabox.php');
 
 /**
  * Shortcode Button.
@@ -66,6 +55,7 @@ function theme_front_enqueue_script()
 }
 add_action( 'wp_enqueue_scripts', 'theme_front_enqueue_script' );
 
+/*
 function theme_dynamic_sidebar($index, $page_id)
 {
 	global $wp_registered_sidebars, $wp_registered_widgets;
@@ -112,6 +102,7 @@ function theme_dynamic_sidebar($index, $page_id)
 		}//index found
 	}//pagid found
 }
+*/
 
 function the_content_filter($content) {
 
@@ -163,7 +154,7 @@ function modify_read_more_link() {
 }
 
 /**
- * Initialize Categories and Tags for Pages 
+ * Initialize Categories and Tags for Pages
  **/
 add_action( 'init', 'taxonomies_for_pages' );
 if ( ! is_admin() ) {

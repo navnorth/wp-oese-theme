@@ -26,10 +26,7 @@ global $post;
          </div>
 
         <div class="col-md-3 col-sm-12 col-xs-12 pblctn_right_sid_mtr">
-            <?php
-				$page_id = get_the_ID();
-				echo theme_dynamic_sidebar('default-template', $page_id);
-			?>
+            <?php get_sidebar(); ?>
         </div>
 
     </div>
