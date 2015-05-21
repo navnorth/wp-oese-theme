@@ -23,7 +23,7 @@ get_header();
                 }
             ?>
 
-            <h2 class="pblctn_hed"><?php echo $post->post_title;?></h2>
+            <h1 class="program_header"><?php echo $post->post_title;?></h2>
             <?php while ( have_posts() ) : the_post(); ?>
                 <?php get_template_part( 'content', 'page' ); ?>
             <?php endwhile; ?>

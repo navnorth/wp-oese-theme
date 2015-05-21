@@ -60,7 +60,7 @@ color palette:
 		url(../fonts/CharisSILB.svg#glyphicons_halflingsregular) format('svg')}
 
 
-body { padding-top: 15px; color: #4b4e53 !important; font-family: 'CharisSILR' !important;}
+body { padding-top: 15px; font-family: 'CharisSILR' !important;}
 .soclize .socl_icns, .rght_sid_socl_icn .socl_icns, .pblctn_box .socl_icns { border-radius: 30px; }
 .pblctn_box .socl_icns { background: #00529f; font-size: 18px; padding: 7px 0; width: 50px; height: 50px; color: #fff; border: 5px solid #fff; text-align: center}
 .pblctn_box { width: 50px; margin: -40px auto 0}
@@ -169,18 +169,19 @@ iframe { border: 0;}
 .pblctn_lft_sid_img_cntnr .col-md-3{ text-align: center}
 .pblctn_lft_sid_img_cntnr .rght_sid_mtr { padding-left: 0 !important}
 /* pumpkin e57200 to violet 2d8700 */
-.btn_readmore, .btn_dwnld {width: 129px; padding: 10px 10px; margin: 15px 10px; text-align: center; background: #2d8700; border: none; color: #fff; border-radius: 3px; cursor: pointer; float: left; font-family: 'Raleway-Regular';}
-.btn_readmore:hover, .btn_readmore:focus, .btn_dwnld:hover, .btn_dwnld:focus { opacity: .9; color:#fff;}
+.btn_dwnld {width: 129px; padding: 10px 10px; margin: 15px 10px; text-align: center; background: #2d8700; border: none; color: #fff; border-radius: 3px; cursor: pointer; float: left; font-family: 'Raleway-Regular';}
+.btn_dwnld:hover, .btn_dwnld:focus { opacity: .9; color:#fff;}
 .link_dwnlds a, .link_dwnlds a:hover { color: #fff; text-decoration: none}
 .pblctn_scl_icns { height: 50px	}
 .story_scl_icns { margin-bottom: 18px; }
 
 /* news category listing page */
-h1.entry-title { font-size:24px;}
-.btn_readmore { clear:both; display:block; padding: 5px 8px; margin: 15px 8px; background: #1f5c99; }
-#content .btn_readmore {clear:both;float:right; margin-top:10px;}
+.entry-header h1.entry-title { font-size:24px;}
+/* .btn_readmore { clear:both; display:block; padding: 5px 8px; margin: 15px 8px; background: #1f5c99; }
+#content .btn_readmore {clear:both;float:right; margin-top:10px;} */
 .entry-meta { clear:both; text-align: right; padding-top:10px;}
 article .by-author { display: none; }
+article { padding-bottom:20px; }
 
 .panel-group { float: left; margin: 30px 0 20px; width: 100%}
 .panel-default>.panel-heading { background: none !important;}

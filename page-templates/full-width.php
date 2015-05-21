@@ -19,14 +19,14 @@ global $post;
 ?>
 
 	<div id="content" class="row site-content">
-		
+
         	<div class="col-md-12 c ol-sm-12 col-xs-12 padding_left padding_right">
-            	<h2 class="pblctn_hed"><?php echo $post->post_title;?></h2>
-            	
+            	<h1 class="page_header"><?php echo $post->post_title;?></h2>
+
 				<?php while ( have_posts() ) : the_post(); ?>
-				
+
                 	<?php get_template_part( 'content', 'page' ); ?>
-                
+
 				<?php endwhile;?>
 
             </div>

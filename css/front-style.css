@@ -100,6 +100,7 @@ hr { width: 100%}
 }
 
 /* external links */
+/*
 #content p .external_link::after,
 #home_content p .external_link::after {
 	content: "";
@@ -116,13 +117,14 @@ hr { width: 100%}
 	opacity:1;
 }
 
-/* external links */
 #content .external_link:after img,
 #home_content .external_link::after img {
     background: none;
     width: 0px;
     height: 0px;
 }
+*/
+
 
 /* recent & related posts widgets */
 .widget_recent_entries li, .related-posts li {
@@ -134,7 +136,7 @@ hr { width: 100%}
 }
 .widget_recent_entries .post-date::before,
 .related-posts .post-date::before
-    {content: "   – ";}
+    {content: "   ";}
 .widget_recent_entries .post-date,
 .related-posts  .post-date {
     clear:both;

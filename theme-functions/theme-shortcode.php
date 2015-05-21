@@ -302,15 +302,15 @@ function oet_featured_area_descrptn($attr, $content = null)
 }
 
 /**
- * Share Icon
- * Shortcode Example : [share_the_toolkit]
+ * Share Icons
+ * Shortcode Example : [share_this]
  */
-add_shortcode("share_the_toolkit","share_the_toolkit_func");
-function share_the_toolkit_func($atts, $content = null)
+add_shortcode("share_this","share_this_func");
+function share_this_func($atts, $content = null)
 {
 	$return = '';
 	$return .= '<div class="pblctn_right_sid_mtr">';
-	$return .= '<p class="pblctn_scl_icn_hedng"> Share the Toolkit </p>';
+	$return .= '<p class="pblctn_scl_icn_hedng"> Share this </p>';
         $return .= '<p class="pblctn_scl_icns">';
             $return .= '<a href="'. facebook_url.'"><span class="socl_icns fa-stack"><i class="fa fa-facebook fa-stack-2x"></i></span></a>';
             $return .= '<a href="'. google_url.'"><span class="socl_icns fa-stack"><i class="fa fa-google-plus fa-stack-2x"></i></span></a>';
