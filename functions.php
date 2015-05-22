@@ -148,18 +148,18 @@ function register_oii_widget(){
     register_widget( 'Related_Posts_Widget' );
 }
 
-add_filter( 'the_content_more_link', 'modify_read_more_link' );
+/*add_filter( 'the_content_more_link', 'modify_read_more_link' );
 function modify_read_more_link() {
 	return '<a class="more-link btn_readmore" href="' . get_permalink() . '">Read More <span class="meta-nav">&rarr;</span></a>';
 }
-
+*/
 /**
  * Initialize Categories and Tags for Pages
  **/
 add_action( 'init', 'taxonomies_for_pages' );
 if ( ! is_admin() ) {
-add_action( 'pre_get_posts',  'category_archives' );
-add_action( 'pre_get_posts', 'tags_archives' );
+    add_action( 'pre_get_posts',  'category_archives' );
+    add_action( 'pre_get_posts', 'tags_archives' );
 } //
 
 /**
@@ -180,9 +180,8 @@ function taxonomies_for_pages() {
   *
   */
  function tags_archives( $wp_query ) {
-
-   if ( $wp_query->get( 'tag' ) )
-     $wp_query->set( 'post_type', 'any' );
+    if ( $wp_query->get( 'tag' ) )
+        $wp_query->set( 'post_type', 'any' );
 
  } // tags_archives
 
@@ -195,8 +194,7 @@ function taxonomies_for_pages() {
   *
   */
  function category_archives( $wp_query ) {
-
-   if ( $wp_query->get( 'category_name' ) || $wp_query->get( 'cat' ) )
-     $wp_query->set( 'post_type', 'any' );
+    if ( $wp_query->get( 'category_name' ) || $wp_query->get( 'cat' ) )
+        $wp_query->set( 'post_type', 'any' );
 
  } // category_archives

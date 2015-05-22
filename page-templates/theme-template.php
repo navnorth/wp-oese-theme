@@ -1,6 +1,10 @@
 <?php
 /**
- * Template Name: Program Template
+ * Template Name: Thematic Template
+ *
+ * Description: Main program "thematic" pages for OII - Innovation, Arts, Charters, etc.
+ * Mainly making a separate template because Theme pages may have images while Programs may not
+ *
  */
 
 global $post;
@@ -14,16 +18,16 @@ get_header();
 
     <div id="content" class="row site-content">
 
-        <div class="col-md-9 c ol-sm-12 col-xs-12 padding_left program_lft_sid_img_cntnr">
+        <div class="col-md-9 c ol-sm-12 col-xs-12 padding_left thematic_lft_sid_img_cntnr">
 
             <?php
                 if(isset($img_url) && !empty($img_url))
                 {
-                    echo '<div class="program_header_image"><img src="'. $img_url .'" alt="'.$img_alt. '" /></div>';
+                    echo '<div class="thematic_header_image"><img src="'. $img_url .'" alt="'.$img_alt. '" /></div>';
                 }
             ?>
 
-            <h1 class="program_header"><?php echo $post->post_title;?></h1>
+            <h1 class="thematic_header"><?php echo $post->post_title;?></h1>
             <div class="share_links_header"><?php echo do_shortcode("[ssba]"); ?></div>
 
             <?php while ( have_posts() ) : the_post(); ?>
@@ -31,8 +35,8 @@ get_header();
             <?php endwhile; ?>
          </div>
 
-        <div class="col-md-3 col-sm-12 col-xs-12 program_right_sid_mtr">
-            <?php dynamic_sidebar( 'program-template' ); ?>
+        <div class="col-md-3 col-sm-12 col-xs-12 thematic_right_sid_mtr">
+            <?php dynamic_sidebar( 'thematic-template' ); ?>
         </div>
 
     </div>

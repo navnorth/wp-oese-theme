@@ -21,7 +21,7 @@ global $post;
 	<div id="content" class="row site-content">
 
         	<div class="col-md-12 c ol-sm-12 col-xs-12 padding_left padding_right">
-            	<h1 class="page_header"><?php echo $post->post_title;?></h2>
+            	<h1 class="page_header"><?php echo $post->post_title;?></h1>
 
 				<?php while ( have_posts() ) : the_post(); ?>
 

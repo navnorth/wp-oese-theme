@@ -19,7 +19,9 @@ global $post;
 	<div id="content" class="row site-content">
 
         <div class="col-md-9 c ol-sm-12 col-xs-12 padding_left pblctn_lft_sid_img_cntnr">
-        	<h1 class="page_header"><?php echo $post->post_title;?></h2>
+        	<h1 class="page_header"><?php echo $post->post_title;?></h1>
+            <div class="share_links_header">[ssba]</div>
+
 			<?php while ( have_posts() ) : the_post(); ?>
 				<?php get_template_part( 'content', 'page' ); ?>
 			<?php endwhile; ?>
