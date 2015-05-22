@@ -95,8 +95,8 @@ body { padding-top: 15px; font-family: 'CharisSILR' !important;}
 .form-control-feedback:hover { opacity: .6}
 .form-control { background: #f2f2f2 !important; height: 40px !important; box-shadow: none !important}
 .border_blue { border: 1px solid #9fbedb; margin-top: 12px; border-radius: 3px; margin-bottom: 20px}
-.border_blue h1 { font-family: 'Raleway-SemiBold'; color: #00529f; font-size: 40px !important; letter-spacing: 1.5px}
-.pblctn_hed { font-family: 'Raleway-SemiBold'; color: #00529f; margin-bottom: 20px;}
+.border_blue h1 { font-family: 'Raleway-SemiBold'; color: #2d8700; font-size: 40px !important; letter-spacing: 1.5px}
+.pblctn_hed { font-family: 'Raleway-SemiBold'; color: #2d8700; margin-bottom: 20px;}
 .bnr_img img { width: 100.2%}
 .bnr_img { padding-right: 0 !important }
 .border_blue p { margin-left: 20px; font-size: 16px; line-height: 35px; margin-top: 20px; font-family: 'Raleway-Bold'; letter-spacing: .5px }
@@ -335,7 +335,7 @@ blockquote { border-left: none !important; font-size: auto !important;}
 /*---------------- Default Page -----------------*/
 
 h1,h2,h3 { font-family: 'Raleway-Semibold' !important }
-h1,h2,h3 { color: #00529f !important }
+h1,h2,h3 { color: #2d8700 !important }
 h4 { font-family: 'Raleway-Light' !important}
 
 @import url("css/responsivegridsystem.css");
@@ -388,6 +388,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
   /*line-height: 1.0909090909;*/
 }
 
+#home_content h1 { font-size: 30px; }
 
 #front_feature_container a { text-decoration: none }
 #front_feature_container h2 {
