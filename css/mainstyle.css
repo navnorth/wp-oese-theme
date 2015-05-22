@@ -106,8 +106,8 @@ body { padding-top: 15px; font-family: 'CharisSILR' !important;}
 .hdng_mtr a:hover { cursor: pointer; color: #6ec940}
 /*.rght_sid_mtr>.hdng_mtr, .hdng_mtr a { font-size: 13px; margin-bottom: 0; margin-top: 40px}*/
 .rght_sid_mtr>.hdng_mtr, .hdng_mtr a { margin-bottom: 0; }
-.pblctn_right_sid_mtr .hdng_mtr { font-size: 13px; margin-bottom: 0; border-top: 1px solid #ccc; padding-top: 10px; width: 100%; margin-top: 5px}
-.pblctn_right_sid_mtr .hdng_mtr:first-child { border-top: none; margin-top: 0}
+.right_sid_mtr .hdng_mtr { font-size: 13px; margin-bottom: 0; border-top: 1px solid #ccc; padding-top: 10px; width: 100%; margin-top: 5px}
+.right_sid_mtr .hdng_mtr:first-child { border-top: none; margin-top: 0}
 /*.rght_mtr { font-size: 12px}*/
 .rght_mtr a, .rght_mtr a:hover { color: #4b4e53 }
 
@@ -161,17 +161,17 @@ iframe { border: 0;}
 .dbl_coad_sign { font-size: 25px; color: #2d8700}
 
 .pblctn_box_icns { background: #444}
-.pblctn_right_sid_mtr { padding: 0 !important;}
-.pblctn_right_sid_mtr img, .pblctn_right_sid_mtr iframe { width: 100%; margin: 7px 0}
-.pblctn_right_sid_mtr span img  { width: auto; margin-right: 4px}
-.pblctn_right_sid_mtr .col-md-12 { margin-top: 35px; border: 1px solid #9fbedb; padding: 20px;}
-.pblctn_right_sid_mtr p { float: left; width: 100%}
+.right_sid_mtr { padding: 0 !important;}
+.right_sid_mtr img, .right_sid_mtr iframe { width: 100%; margin: 7px 0}
+.right_sid_mtr span img  { width: auto; margin-right: 4px}
+.right_sid_mtr .col-md-12 { margin-top: 35px; border: 1px solid #9fbedb; padding: 20px;}
+.right_sid_mtr p { float: left; width: 100%}
 .padding_left { padding-left: 0 !important}
 .padding_right { padding-right: 0 !important}
 .col-md-9 .col-md-3 img { width: 100%}
 
-.pblctn_lft_sid_img_cntnr .col-md-3{ text-align: center}
-.pblctn_lft_sid_img_cntnr .rght_sid_mtr { padding-left: 0 !important}
+.lft_sid_cntnr .col-md-3{ text-align: center}
+.lft_sid_cntnr .rght_sid_mtr { padding-left: 0 !important}
 /* pumpkin e57200 to violet 2d8700 */
 .btn_dwnld {width: 129px; padding: 10px 10px; margin: 15px 10px; text-align: center; background: #2d8700; border: none; color: #fff; border-radius: 3px; cursor: pointer; float: left; font-family: 'Raleway-Regular';}
 .btn_dwnld:hover, .btn_dwnld:focus { opacity: .9; color:#fff;}
@@ -207,7 +207,7 @@ blockquote { border-left: none !important; font-size: auto !important;}
 .pblctn_paramtr { letter-spacing: .5px; line-height: 25px;}
 .pblctn_paramtr ul { margin-bottom: 25px}
 .rght_sid_wdgt_hedng { font-family: 'Raleway-Bold' !important; font-size: 17px !important}
-.pblctn_right_sid_mtr p{ margin: 0 0 10px}
+.right_sid_mtr p{ margin: 0 0 10px}
 .meta_date { font-family: 'Raleway-Bold'; margin: -19px 0 10px; float: left; text-align: center; width: 100%; }
 .brdr_mrgn_none { border-top: none !important; margin: 0 !important}
 
@@ -229,7 +229,7 @@ blockquote { border-left: none !important; font-size: auto !important;}
 /* old hover orangish F58516 to tassel green 6ec940 */
 .btm_lnk_blustrp a:hover, .btm_lnk_blustrp a:focus { color: #6ec940}
 .btm_lnk_blustrp { text-align: center; font-family: 'CharisSILB'; font-size: 18px; margin: 20px 0 70px}
-.story_right_sid_mtr>.pblctn_scl_icn_hedng, .pblctn_right_sid_mtr>.story_scl_icn_hedng { font-family: 'Raleway-Light'; margin-top: 25px}
+.story_right_sid_mtr>.pblctn_scl_icn_hedng, .right_sid_mtr>.story_scl_icn_hedng { font-family: 'Raleway-Light'; margin-top: 25px}
 
 .bg_img_of_icns h3 { color: #fff !important}
 .bg_img_of_icns .btn_dwnld, .btn_readmore, .bg_img_of_icns .link_dwnlds { margin-top: 0; margin-bottom: 0}
@@ -237,8 +237,8 @@ blockquote { border-left: none !important; font-size: auto !important;}
 .bg_img_of_icns a {font-family: 'Raleway-Light'; font-style: normal }
 
 
-.pblctn_right_sid_mtr ul { float: left; padding-left: 0; list-style: none; }
-/*.pblctn_right_sid_mtr li a { color: #4b4e53;}*/
+.right_sid_mtr ul { float: left; padding-left: 0; list-style: none; }
+/*.right_sid_mtr li a { color: #4b4e53;}*/
 
 .acrdn_pnl_cntnr { padding-left: 0 !important}
 
@@ -291,6 +291,7 @@ blockquote { border-left: none !important; font-size: auto !important;}
 
 .overflow { overflow: hidden}
 .ssba img:hover { opacity: .8; transition: opacity .3s; -webkit-transition: opacity .3s; -moz-transition: opacity .3s}
+.share_links_header { float:right; margin: -45px 0 0px 10px; padding: 0px; }
 
 /*---------------- Slider -----------------*/
 .slideshow_slide.slideshow_slide_image img { float: right !important; width: 48% !important;}
@@ -423,7 +424,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 }
 
 #home_content .wp-caption { width:840px !important; }
-#home_content .wp-caption img, #content .program_header_image img { width:838px; }
+#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:838px; }
 
 /* Slide Styles */
 .slideshow_view > .slideshow_slide_image > a {
@@ -499,11 +500,11 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 	.hdr .col-xs-offset-2 { margin-left: 15px !important }
 	.tlkt_rght_sid h3 { width: 72%; }
 	#home_content .wp-caption { width:712px !important; }
-	#home_content .wp-caption img, #content .program_header_image img { width:710px !important; }
+	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:710px !important; }
 }
 @media (max-width: 990px){
-	.pblctn_right_sid_mtr { text-align: center}
-	.pblctn_right_sid_mtr ul { width: 100%}
+	.right_sid_mtr { text-align: center}
+	.right_sid_mtr ul { width: 100%}
 	.tlkt_stp_vdo_cntnr .pblctn_vdo_bg {width: 32.7222% !important;}
 	.pblctn_scl_icns a:first-child { margin-left: 0}
 	.hdr .col-md-7 img { width: 100%}
@@ -513,23 +514,23 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 	.vdo_bg { margin-left: 0}
 	.navi_bg li a { padding: 8px 15px;}
 	.pblctn_vdo_bg { margin-top: 30px}
-	.lft_sid_mtr, .pblctn_lft_sid_img_cntnr, acrdn_pnl_cntnr { padding-right: 0 !important}
+	.lft_sid_mtr, .lft_sid_cntnr, acrdn_pnl_cntnr { padding-right: 0 !important}
 	.vdo_bg, .pblctn_vdo_bg  { width: 100% !important}
 
-	.pblctn_right_sid_mtr .col-sm-6 {  width: 46.5%; margin-left: 5%}
-	.pblctn_right_sid_mtr .col-sm-6:first-child { margin-left: 0}
+	.right_sid_mtr .col-sm-6 {  width: 46.5%; margin-left: 5%}
+	.right_sid_mtr .col-sm-6:first-child { margin-left: 0}
 	body { padding-top: 25px;}
 	.lft_sid_mtr { margin-bottom: 15px;}
 	.hdr .col-xs-offset-2 { margin-left: 0px !important; }
 	.panel-group { width: 100%}
 
-	.pblctn_right_sid_mtr .pblctn_scl_icns { height: 110px; width: 275px !important; margin: 0 auto; float: none !important;}
+	.right_sid_mtr .pblctn_scl_icns { height: 110px; width: 275px !important; margin: 0 auto; float: none !important;}
 
-	.pblctn_lft_sid_img_cntnr .rght_sid_mtr { padding-right: 15px !important}
-	.page-template-page-templatestoolkit-template-php .pblctn_right_sid_mtr .col-sm-6 {margin: 35px 1.7% 0}
+	.lft_sid_cntnr .rght_sid_mtr { padding-right: 15px !important}
+	.page-template-page-templatestoolkit-template-php .right_sid_mtr .col-sm-6 {margin: 35px 1.7% 0}
 	aside { float: left; width: 100%}
 	#home_content .wp-caption { width:750px !important; }
-	#home_content .wp-caption img, #content .program_header_image img { width:748px !important; }
+	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:748px !important; }
 }
 
 @media (max-width: 768px){
@@ -555,13 +556,13 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 	.tlkt_stp_cntnr_lft_sid { padding-right: 0 !important}
 
 	#home_content .wp-caption { width:735px !important; }
-	#home_content .wp-caption img, #content .program_header_image img { width:733px !important; }
+	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:733px !important; }
 }
 @media (max-width: 750px){
 	.hdr .col-xs-offset-2  {margin-left: 16.66666667% !important;}
 	.tlkt_rght_sid h3 { width: 70%}
 	#home_content .wp-caption { width:701px !important; }
-	#home_content .wp-caption img, #content .program_header_image img { width:699px !important; }
+	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:699px !important; }
 }
 @media (max-width: 715px){
 	.stp_cntnr { text-align: center}
@@ -576,7 +577,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 	.tlkt_rght_sid .btn_dwnld { margin: 0px 0 5px}
 
 	#home_content .wp-caption { width:571px !important; }
-	#home_content .wp-caption img, #content .program_header_image img { width:569px !important; }
+	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:569px !important; }
 }
 
 @media (max-width: 600px){
@@ -587,17 +588,17 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 	.btn_dwnld, .btn_readmore { margin: 5px 0 0}
 
 	.hdr .col-xs-5 {width: 100%}
-	.pblctn_lft_sid_img_cntnr .col-xs-4 img { width: auto}
-	.pblctn_lft_sid_img_cntnr, .pblctn_lft_sid_img_cntnr .col-xs-12 { padding-right: 0 !important; padding-left: 0}
-	.pblctn_lft_sid_img_cntnr .col-xs-4 { text-align: center}
-	.pblctn_lft_sid_img_cntnr .col-xs-4, .pblctn_lft_sid_img_cntnr .col-xs-8 { width: 100%; padding-right: 0 !important}
+	.lft_sid_cntnr .col-xs-4 img { width: auto}
+	.lft_sid_cntnr, .lft_sid_cntnr .col-xs-12 { padding-right: 0 !important; padding-left: 0}
+	.lft_sid_cntnr .col-xs-4 { text-align: center}
+	.lft_sid_cntnr .col-xs-4, .lft_sid_cntnr .col-xs-8 { width: 100%; padding-right: 0 !important}
 	.page-template-page-templatespublication-template-php .pblctn_hed { text-align: center}
 	.pblctn_scl_icns a { margin: 0 20px 0}
 
 	.hdr .col-md-12, .hdr .col-md-3, .hdr .col-md-11 { text-align: center}
 	.soclize .socl_icns, .rght_sid_socl_icn .socl_icns, .pblctn_box .socl_icns, .soclize a:first-child { float: none}
 	.hdr .col-xs-offset-2 { margin-left: 0 !important }
-	.pblctn_lft_sid_img_cntnr .col-xs-11 { width: 90% !important }
+	.lft_sid_cntnr .col-xs-11 { width: 90% !important }
 
 	.navi_bg li a { font-size: 15px}
 	.sub-menu li a { font-size: 13px;}
@@ -611,14 +612,16 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 	.slideshow_container_style-light .slideshow_description_box div.slideshow_description,
 	.slideshow_container_style-light .slideshow_description_box div.slideshow_description a { line-height: 25px; margin-top: 0 }
 
+	.share_links_header { clear:both !important; margin: 5px 5px; }
+
 	#home_content .wp-caption { width:551px !important; }
-	#home_content .wp-caption img, #content .program_header_image img { width:549px !important; }
+	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:549px !important; }
 }
 @media (max-width: 500px){
 	.tlkt_stp_vdo_cntnr .pblctn_vdo_bg, .tlkt_stp_vdo_cntnr .pblctn_vdo_bg:first-child {width: 100% !important;}
-	.pblctn_right_sid_mtr .col-xs-6 { width: 100% !important	}
-	.pblctn_right_sid_mtr img, .pblctn_right_sid_mtr iframe { width: auto}
-	.pblctn_right_sid_mtr .col-sm-6 { margin-left: 0}
+	.right_sid_mtr .col-xs-6 { width: 100% !important	}
+	.right_sid_mtr img, .right_sid_mtr iframe { width: auto}
+	.right_sid_mtr .col-sm-6 { margin-left: 0}
 
 	.ftr .col-xs-10, .ftr .col-xs-2 { width: 100%; text-align: center}
 	.ftr_lnks li { width: 100%; text-align: center; padding: 10px 0; border-bottom: 1px solid #eee}
@@ -626,7 +629,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 	.ftr_logo { margin: 10px 0}
 
 	#home_content .wp-caption { width:451px !important; }
-	#home_content .wp-caption img, #content .program_header_image img { width:449px !important; }
+	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:449px !important; }
 }
 @media (max-width: 400px){
 
@@ -635,7 +638,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 	.rght_sid_mtr .rght_sid_mtr .btn_dwnld { margin: 0 2% 5px 0}
 	.slideshow_container { display: none !important}
 	#home_content .wp-caption { width:291px !important; }
-	#home_content .wp-caption img, #content .program_header_image img { width:289px !important; }
+	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:289px !important; }
 }
 @media (max-width: 300px){
 

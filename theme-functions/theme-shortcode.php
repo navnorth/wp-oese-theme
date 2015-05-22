@@ -309,7 +309,7 @@ add_shortcode("share_this","share_this_func");
 function share_this_func($atts, $content = null)
 {
 	$return = '';
-	$return .= '<div class="pblctn_right_sid_mtr">';
+	$return .= '<div class="right_sid_mtr">';
 	$return .= '<p class="pblctn_scl_icn_hedng"> Share this </p>';
         $return .= '<p class="pblctn_scl_icns">';
             $return .= '<a href="'. facebook_url.'"><span class="socl_icns fa-stack"><i class="fa fa-facebook fa-stack-2x"></i></span></a>';
@@ -485,7 +485,7 @@ function recommended_resources_func($attr, $content = null)
  {
 	 extract($attr);
 	 $return = '';
-		$return .= '<div class="pblctn_right_sid_mtr">';
+		$return .= '<div class="right_sid_mtr">';
 		$return .= '<div class="col-md-12 col-sm-6 col-xs-6">';
         $return .= '<div class="pblctn_box">';
 

@@ -14,11 +14,12 @@
 get_header(); ?>
 
 	<div id="content" class="row site-content">
-		<div class="col-md-9 c ol-sm-12 col-xs-12 padding_left pblctn_lft_sid_img_cntnr">
+		<div class="col-md-9 c ol-sm-12 col-xs-12 padding_left lft_sid_cntnr">
 
 			<?php if ( have_posts() ) : ?>
 				<header class="archive-header">
 					<h1 class="archive-title"><?php printf( __( 'News Posts: %s', 'twentytwelve' ), '<span>' . single_cat_title( '', false ) . '</span>' ); ?></h1>
+		            <div class="share_links_header"><?php echo do_shortcode("[ssba]"); ?></div>
 
 				<?php if ( category_description() ) : // Show an optional category description ?>
 					<div class="archive-meta"><?php echo category_description(); ?></div>
@@ -40,7 +41,7 @@ get_header(); ?>
 			<?php endif; ?>
 
 		</div>
-        <div class="col-md-3 col-sm-12 col-xs-12 pblctn_right_sid_mtr">
+        <div class="col-md-3 col-sm-12 col-xs-12 right_sid_mtr">
             <?php get_sidebar(); ?>
         </div>
 	</div><!-- #row -->

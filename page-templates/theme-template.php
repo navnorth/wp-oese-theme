@@ -18,7 +18,7 @@ get_header();
 
     <div id="content" class="row site-content">
 
-        <div class="col-md-9 c ol-sm-12 col-xs-12 padding_left thematic_lft_sid_img_cntnr">
+        <div class="col-md-9 c ol-sm-12 col-xs-12 padding_left lft_sid_cntnr">
 
             <?php
                 if(isset($img_url) && !empty($img_url))
@@ -35,7 +35,7 @@ get_header();
             <?php endwhile; ?>
          </div>
 
-        <div class="col-md-3 col-sm-12 col-xs-12 thematic_right_sid_mtr">
+        <div class="col-md-3 col-sm-12 col-xs-12 right_sid_mtr">
             <?php dynamic_sidebar( 'thematic-template' ); ?>
         </div>
 
