@@ -10,9 +10,12 @@ aside.widget {
 aside.widget {
     float: left;
     width: 100%;
+    border-bottom:1px solid #717070;
+}
+.widget-area aside.widget:last-child{
+	border-bottom:none;
 }
 .widget h3 {
-    border-bottom: 1px solid #ccc;
     font-family: "Raleway-Light";
     font-size: 18px;
     font-weight: bold;
