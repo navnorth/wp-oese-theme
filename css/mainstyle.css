@@ -142,7 +142,7 @@ iframe { border: 0;}
 .vdo_bg p { margin: 20px; }
 .pblctn_vdo_bg p { margin: 14px; }
 
-.ftr_strp { background: url(../images/top_strap_img.png) 0 0 no-repeat; height: 25px; margin-top: 30px}
+.ftr_strp { /*background: url(../images/top_strap_img.png) 0 0 no-repeat;*/ background: #00529f; height: 39px; margin-top: 30px}
 .ftr { border-bottom: 1px solid #ccc; margin-bottom: 10px;}
 .ftr_logo { padding-right: 0 !important}
 .fa-envelope, .fa-youtube-play, .fa-google-plus { font-size: 20px !important}
