@@ -459,14 +459,16 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
     height:500px !important;
 }
 .slideshow_container .slideshow_content .slideshow_view {
-    background: rgba(219,219,219,1);
+    /*background: rgba(219,219,219,1);
     background: -moz-linear-gradient(top, rgba(219,219,219,1) 0%, rgba(254,254,254,1) 0%, rgba(209,209,209,1) 100%);
     background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(219,219,219,1)), color-stop(0%, rgba(254,254,254,1)), color-stop(100%, rgba(209,209,209,1)));
     background: -webkit-linear-gradient(top, rgba(219,219,219,1) 0%, rgba(254,254,254,1) 0%, rgba(209,209,209,1) 100%);
     background: -o-linear-gradient(top, rgba(219,219,219,1) 0%, rgba(254,254,254,1) 0%, rgba(209,209,209,1) 100%);
     background: -ms-linear-gradient(top, rgba(219,219,219,1) 0%, rgba(254,254,254,1) 0%, rgba(209,209,209,1) 100%);
     background: linear-gradient(to bottom, rgba(219,219,219,1) 0%, rgba(254,254,254,1) 0%, rgba(209,209,209,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dbdbdb', endColorstr='#d1d1d1', GradientType=0 );
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dbdbdb', endColorstr='#d1d1d1', GradientType=0 );*/
+    background: #f2f2f2;
+    border: 1px solid #ccc;
 }
 .slideshow_container .slideshow_content .slideshow_view .slideshow_slide_video > iframe {
     height:380px !important;
@@ -488,6 +490,11 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
     bottom:35px !important;
 }
 
+/* Slideshow Dark Version */
+.slideshow_container_style-dark .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box .slideshow_title { margin-top:0; }
+.slideshow_container_style-dark .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box .slideshow_title a { text-align:left; }
+.slideshow_container_style-dark .slideshow_description_box div.slideshow_description a { text-align:left; padding-left:10px !important; font-size:18px; }
+.slideshow_container_style-dark .slideshow_content .slideshow_view { background: #5F5F5F; }
 /* -------- end FRONT PAGE --------- */
 
 @media (min-width: 1200px){
@@ -545,11 +552,31 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 	.navi_bg li a {padding: 10px 40px;}
 	.navi_icn { display: block !important}
 
-	.slideshow_container, .slideshow_container .slideshow_content { height: 320px !important}
+	.slideshow_container, .slideshow_container .slideshow_content { height: 380px !important}
 	.slideshow_container_style-light .slideshow_description_box div.slideshow_description { height: 150px; overflow: hidden; line-height: 30px; margin-top: 10px;}
 	.slideshow_container_style-light .slideshow_description_box div.slideshow_title { font-size: 30px !important; line-height: 35px;}
 
 	.slideshow_container, .slideshow_container, .slideshow_container .slideshow_content { width: 100% !important}
+        .slideshow_container .slideshow_view .slideshow_slide { height:380px !important }
+        .slideshow_view > .slideshow_slide_image > a > img { height:320px !important; }
+        .slideshow_container .slideshow_description_box div.slideshow_description { margin-top: 0; line-height: 1.25em; padding-left: 10px; }
+        .slideshow_container .slideshow_description_box div.slideshow_description a { line-height:1.5em; }
+        .slideshow_container .slideshow_pagination { width:100% !important; }
+        
+        /* Slideshow Dark Version */
+        .slideshow_container_style-dark .slideshow_view > .slideshow_slide_image > a > img { height:320px !important; }
+        .slideshow_container_style-dark .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box .slideshow_title { margin-top:0; }
+        .slideshow_container_style-dark .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box .slideshow_title a { text-align:left; font-size:24px !important; }
+        .slideshow_container_style-dark .slideshow_description_box div.slideshow_description a { text-align:left; padding-left:10px !important; }
+        .slideshow_container_style-dark .slideshow_content .slideshow_view,
+        .slideshow_container_style-dark .slideshow_view .slideshow_slide{ background: #5F5F5F; }
+        .slideshow_container_style-dark .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box { }
+        .slideshow_container_style-dark .slideshow_view .slideshow_slide { height:435px !important; }
+        .slideshow_container_style-dark, .slideshow_container_style-dark .slideshow_content { height:435px !important }
+        .slideshow_container_style-dark .slideshow_description_box div.slideshow_description { background: rgba(0,0,0,0.9); padding-left:0; }
+        .slideshow_container_style-dark .slideshow_pagination .slideshow_pagination_center { float:none; }
+        /* End of Slideshow Dark Version */
+        
 	.container { width: 100% !important}
 	.soclize .socl_icns {margin: 0;}
 
@@ -607,13 +634,29 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 
 	.slideshow_container_style-light .slideshow_pagination,
 	.slideshow_slide.slideshow_slide_image img { width: 100% !important}
-	.slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box { width: auto !important; top: 15px; left: 15px; bottom: 15px !important; right: 15px; background: rgba(255, 255, 255, 0.7) !important; padding: 16px; }
+	.slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box { width: auto !important; top: 0; left: 0; bottom: 0 !important; right: 0; background: rgba(255, 255, 255, 0.7) !important; padding: 0; }
 	.slideshow_container_style-light .slideshow_description_box div.slideshow_title,
 	.slideshow_container_style-light .slideshow_description_box div.slideshow_title a { font-size: 30px !important; line-height: 40px;}
 	.slideshow_container_style-light .slideshow_description_box div.slideshow_description,
 	.slideshow_container_style-light .slideshow_description_box div.slideshow_description a { line-height: 25px; margin-top: 0 }
-        .slideshow_container_style-light .slideshow_view > .slideshow_slide_image > a > img { height:auto !important; }
+        .slideshow_container_style-light .slideshow_view > .slideshow_slide_image > a > img { height:250px !important; }
+        .slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box .slideshow_title a { font-size:16px !important; line-height:1.75em;  }
+        .slideshow_container_style-light .slideshow_description_box div.slideshow_description { padding-left:10px;  }
 
+         /* Slideshow Dark Version */
+        .slideshow_container_style-dark .slideshow_view > .slideshow_slide_image > a > img { height:235px !important; }
+        .slideshow_container_style-dark .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box .slideshow_title { margin-top:0; background: rgba(0,0,0,0.8) !important; }
+        .slideshow_container_style-dark .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box .slideshow_title a { text-align:left; font-size:16px !important; }
+        .slideshow_container_style-dark .slideshow_description_box div.slideshow_description a { text-align:left; padding-left:10px !important; }
+        .slideshow_container_style-dark .slideshow_content .slideshow_view,
+        .slideshow_container_style-dark .slideshow_view .slideshow_slide{ background: #5F5F5F; }
+        .slideshow_container_style-dark .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box { }
+        .slideshow_container_style-dark .slideshow_view .slideshow_slide { height:330px !important; }
+        .slideshow_container_style-dark, .slideshow_container_style-dark .slideshow_content { height:330px !important }
+        .slideshow_container_style-dark .slideshow_description_box div.slideshow_description { background: rgba(0,0,0,0.9); padding-left:0; }
+        .slideshow_container_style-dark .slideshow_pagination .slideshow_pagination_center { float:none; }
+        /* End of Slideshow Dark Version */
+        
 	.share_links_header { clear:both !important; margin: 5px 5px; }
 
 	#home_content .wp-caption { width:551px !important; }
@@ -641,14 +684,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 	/*.slideshow_container { display: none !important}*/
         .slideshow_container_style-light .slideshow_view > .slideshow_slide_image > a > img { height:175px !important; }
         .slideshow_container_style-light .slideshow_description_box div.slideshow_description,
-        .slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box{
-            width: auto !important;
-            top: 0;
-            left: 0;
-            bottom: 0 !important;
-            right: 0;
-            background: rgba(255, 255, 255, 0.7) !important;
-            padding: 0;
+        .slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box{ width: auto !important; top: 0; left: 0; bottom: 0 !important; right: 0; background: rgba(255, 255, 255, 0.7) !important; padding: 0;
         }
         .slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box .slideshow_title a {
             font-size: 16px !important;
@@ -661,6 +697,21 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
         .slideshow_container .slideshow_view .slideshow_slide {
             background:#ffffff;
         }
+        .slideshow_container .slideshow_pagination .slideshow_pagination_center {
+            float:none;
+        }
+        /* Slideshow Dark Version */
+        .slideshow_container_style-dark .slideshow_view > .slideshow_slide_image > a > img { height:175px !important; }
+        .slideshow_container_style-dark .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box .slideshow_title { margin-top:0; background: rgba(0,0,0,0.8) !important; }
+        .slideshow_container_style-dark .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box .slideshow_title a { text-align:left; font-size:16px !important; }
+        .slideshow_container_style-dark .slideshow_description_box div.slideshow_description a { text-align:left; padding-left:10px !important; }
+        .slideshow_container_style-dark .slideshow_content .slideshow_view,
+        .slideshow_container_style-dark .slideshow_view .slideshow_slide{ background: #5F5F5F; }
+        .slideshow_container_style-dark .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box { }
+        .slideshow_container_style-dark .slideshow_view .slideshow_slide { height:330px !important; }
+        .slideshow_container_style-dark, .slideshow_container_style-dark .slideshow_content { height:330px !important }
+        .slideshow_container_style-dark .slideshow_description_box div.slideshow_description { background: rgba(0,0,0,0.9); padding-left:0; }
+        /* End of Slideshow Dark Version */
 	#home_content .wp-caption { width:291px !important; }
 	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:289px !important; }
 }
