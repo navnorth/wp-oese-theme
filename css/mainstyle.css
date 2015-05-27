@@ -612,6 +612,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 	.slideshow_container_style-light .slideshow_description_box div.slideshow_title a { font-size: 30px !important; line-height: 40px;}
 	.slideshow_container_style-light .slideshow_description_box div.slideshow_description,
 	.slideshow_container_style-light .slideshow_description_box div.slideshow_description a { line-height: 25px; margin-top: 0 }
+        .slideshow_container_style-light .slideshow_view > .slideshow_slide_image > a > img { height:auto !important; }
 
 	.share_links_header { clear:both !important; margin: 5px 5px; }
 
@@ -637,7 +638,29 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 	.lft_sid_mtr img, .rght_sid_mtr img { float: none}
 	.rght_sid_mtr>.hdng_mtr, .hdng_mtr a { margin-top: 0;  }
 	.rght_sid_mtr .rght_sid_mtr .btn_dwnld { margin: 0 2% 5px 0}
-	.slideshow_container { display: none !important}
+	/*.slideshow_container { display: none !important}*/
+        .slideshow_container_style-light .slideshow_view > .slideshow_slide_image > a > img { height:175px !important; }
+        .slideshow_container_style-light .slideshow_description_box div.slideshow_description,
+        .slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box{
+            width: auto !important;
+            top: 0;
+            left: 0;
+            bottom: 0 !important;
+            right: 0;
+            background: rgba(255, 255, 255, 0.7) !important;
+            padding: 0;
+        }
+        .slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box .slideshow_title a {
+            font-size: 16px !important;
+            line-height: 1.5em;
+        }
+        .slideshow_container_style-light .slideshow_description_box div.slideshow_description, .slideshow_container_style-light .slideshow_description_box div.slideshow_description a {
+            font-size:14px;
+            padding:1% !important;
+        }
+        .slideshow_container .slideshow_view .slideshow_slide {
+            background:#ffffff;
+        }
 	#home_content .wp-caption { width:291px !important; }
 	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:289px !important; }
 }
