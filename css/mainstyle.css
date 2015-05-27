@@ -547,11 +547,16 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 	.navi_bg li a {padding: 10px 40px;}
 	.navi_icn { display: block !important}
 
-	.slideshow_container, .slideshow_container .slideshow_content { height: 320px !important}
+	.slideshow_container, .slideshow_container .slideshow_content { height: 380px !important}
 	.slideshow_container_style-light .slideshow_description_box div.slideshow_description { height: 150px; overflow: hidden; line-height: 30px; margin-top: 10px;}
 	.slideshow_container_style-light .slideshow_description_box div.slideshow_title { font-size: 30px !important; line-height: 35px;}
 
 	.slideshow_container, .slideshow_container, .slideshow_container .slideshow_content { width: 100% !important}
+        .slideshow_container .slideshow_view .slideshow_slide { height:380px !important }
+        .slideshow_view > .slideshow_slide_image > a > img { height:320px !important; }
+        .slideshow_container .slideshow_description_box div.slideshow_description { margin-top: 0; line-height: 1.25em; padding-left: 10px; }
+        .slideshow_container .slideshow_description_box div.slideshow_description a { line-height:1.5em; }
+        .slideshow_container .slideshow_pagination { width:100% !important; }
 	.container { width: 100% !important}
 	.soclize .socl_icns {margin: 0;}
 
