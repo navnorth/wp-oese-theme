@@ -19,7 +19,7 @@ class Related_Posts_Widget extends WP_Widget {
         extract( $args );
 
         $title = apply_filters('widget_title', $instance['title'] );
-        $show_date = isset( $instance['show_date'] ) ? $instance['show_date'] : true;
+        $show_date = isset( $instance['show_date'] ) ? $instance['show_date'] : false;
         $show_thumbnail = isset( $instance['show_thumbnail'] ) ? $instance['show_thumbnail'] : false;
         $posts_count  = $instance['posts_count'];
 
