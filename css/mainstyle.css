@@ -136,7 +136,7 @@ iframe { border: 0;}
 .tlkt_stp_vdo_cntnr { margin-top: 10px}
 .tlkt_stp_vdo_cntnr .pblctn_vdo_bg { margin-left: 5px; width: 32.9222% !important}
 .tlkt_stp_vdo_cntnr .pblctn_vdo_bg a { float: left; height: 160px; overflow: hidden; margin-bottom: 20px;}
-.tlkt_stp_vdo_cntnr .pblctn_vdo_bg:first-child { margin-left: 0}
+.tlkt_stp_vdo_cntnr .pblctn_vdo_bg:first-child { margin-left: 0;}
 
 .vdo_bg p, .pblctn_vdo_bg p { font-size: 15px;}
 .vdo_bg p { margin: 20px; }
@@ -216,6 +216,19 @@ blockquote { border-left: none !important; font-size: auto !important;}
 .stp_cntnr a:hover { color: #bbb; text-decoration: none}
 .stp_cntnr h1, .stp_cntnr h3 {font-family: 'Raleway-Bold'; font-style: italic}
 .tlkt_lft_sid h1, .tlkt_lft_sid h3 { float: left;}
+
+ul .tour_dates { list-style: none; }
+
+  ul.tour_dates li {
+    list-style-type: none;
+    text-align:center;
+    color: #ff6600;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    font-family: 'Raleway-Light';
+    font-size: 18px;
+  }
 
 /* pumpkin e57200 to violet 2d8700 */
 .tlkt_lft_sid h1 { color: #2d8700 !important; font-size: 60px; margin: 0 0 5px }
@@ -335,7 +348,7 @@ blockquote { border-left: none !important; font-size: auto !important;}
 /*---------------- Default Page -----------------*/
 
 h1,h2,h3 { font-family: 'Raleway-Semibold' !important }
-h1,h2,h3 { color: #2d8700 !important }
+h1,h2,h3, .site-content h3 a { color: #2d8700 !important }
 h4 { font-family: 'Raleway-Light' !important}
 
 @import url("css/responsivegridsystem.css");
@@ -562,7 +575,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
         .slideshow_container .slideshow_description_box div.slideshow_description { margin-top: 0; line-height: 1.25em; padding-left: 10px; }
         .slideshow_container .slideshow_description_box div.slideshow_description a { line-height:1.5em; }
         .slideshow_container .slideshow_pagination { width:100% !important; }
-        
+
         /* Slideshow Dark Version */
         .slideshow_container_style-dark .slideshow_view > .slideshow_slide_image > a > img { height:320px !important; }
         .slideshow_container_style-dark .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box .slideshow_title { margin-top:0; }
@@ -576,7 +589,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
         .slideshow_container_style-dark .slideshow_description_box div.slideshow_description { background: rgba(0,0,0,0.9); padding-left:0; }
         .slideshow_container_style-dark .slideshow_pagination .slideshow_pagination_center { float:none; }
         /* End of Slideshow Dark Version */
-        
+
 	.container { width: 100% !important}
 	.soclize .socl_icns {margin: 0;}
 
@@ -656,7 +669,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
         .slideshow_container_style-dark .slideshow_description_box div.slideshow_description { background: rgba(0,0,0,0.9); padding-left:0; }
         .slideshow_container_style-dark .slideshow_pagination .slideshow_pagination_center { float:none; }
         /* End of Slideshow Dark Version */
-        
+
 	.share_links_header { clear:both !important; margin: 5px 5px; }
 
 	#home_content .wp-caption { width:551px !important; }
