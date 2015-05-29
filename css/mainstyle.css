@@ -507,6 +507,8 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 .slideshow_container_style-light .slideshow_pagination {
     bottom:75px !important;
 }
+.slideshow_container .slideshow_pagination .slideshow_transparent:hover,
+.slideshow_container .slideshow_pagination .slideshow_transparent:focus { filter: alpha(opacity = 50) !important; opacity: 0.5 !important; }
 
 /* Slideshow Dark Version */
 .slideshow_container_style-dark .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box .slideshow_title { margin-top:0; }
