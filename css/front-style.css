@@ -11,6 +11,7 @@ aside.widget {
     float: left;
     width: 100%;
     border-bottom:1px solid #ccc;
+    margin-bottom:6px;
 }
 .widget-area aside.widget:last-child{
 	border-bottom:none;
@@ -23,7 +24,7 @@ aside.widget {
     padding: 0 0 3px;
     margin-top:8px;
 }
-.site-content .widget h3 { margin-top:0 !important; }
+
 .pblctn_scl_icns .ssba > div
 {
 	text-align:center !important;
