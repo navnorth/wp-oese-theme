@@ -449,7 +449,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 .slideshow_view > .slideshow_slide_image > a > img {
     width:100% !important;
     float:none !important;
-    height:380px !important;
+    height:340px !important;
 }
 .slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box {
 	position:relative !important;
@@ -457,7 +457,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
         top:0;
         left:0;
 }
-.slideshow_container { height:500px !important }
+.slideshow_container { height:460px !important }
 .slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box .slideshow_title {
   margin-top: -45px;
   background: rgba(50,50,50,0.8);
@@ -469,7 +469,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 }
 .slideshow_container .slideshow_pagination .slideshow_pagination_center { float:right; }
 .slideshow_container .slideshow_content {
-    height:500px !important;
+    height:460px !important;
 }
 .slideshow_container .slideshow_content .slideshow_view {
     /*background: rgba(219,219,219,1);
@@ -500,7 +500,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=0 );
 }
 .slideshow_container_style-light .slideshow_pagination {
-    bottom:35px !important;
+    bottom:75px !important;
 }
 
 /* Slideshow Dark Version */
