@@ -158,3 +158,9 @@ hr { width: 100%}
 }
 
 .comments-link a { display:none; }
+
+.more-link:after {
+    content: url(../images/more-arrow.png);
+    margin-left: 7px;
+    margin-top: 4px;
+}
