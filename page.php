@@ -18,6 +18,8 @@ global $post;
 
 	<div id="content" class="row site-content">
 
+	<?php if ( function_exists('yoast_breadcrumb') ) { yoast_breadcrumb('<p id="breadcrumbs">','</p>'); }  ?>
+	
         <div class="col-md-9 c ol-sm-12 col-xs-12 padding_left lft_sid_cntnr">
         	<h1 class="page_header"><?php echo $post->post_title;?></h1>
             <div class="share_links_header"><?php echo do_shortcode("[ssba]"); ?></div>
