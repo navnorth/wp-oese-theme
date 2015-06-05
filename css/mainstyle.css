@@ -258,7 +258,8 @@ ul .tour_dates { list-style: none; }
 .main-menu {  background: #00529f; width: 100%; float: left }
 .main-menu li { position: relative}
 .sub-menu { background: #00529f; float: left; left: 0; width: 250px; position: absolute; z-index: 999; display: none; top: 39px; border-top: 1px solid #fff }
-.sub-menu li { display: block; width: 100%; padding-left: 20px}
+.sub-menu li { display: block; width: 100%; padding-left: 20px; border-top: 1px solid #ccc;}
+.sub-menu li:first-child { border-top:none;}
 .sub-menu li a { font-size: 14px; padding: 8px 0 !important; width: 100%}
 .main-menu li:hover .sub-menu { display: block}
 .main-menu ul { margin-left: 15px; line-height: 23px}
@@ -274,7 +275,7 @@ ul .tour_dates { list-style: none; }
 
 .main-menu .sub-menu li, .responsiv-menu .sub-menu li { position: relative !important}
 .main-menu .sub-menu li:first-child { margin-top: 5px}
-.main-menu .sub-menu .sub-menu { posi tion: absolute !important; left: 235px; top: -6px; display: none !important; border-left: 1px solid #fff}
+.main-menu .sub-menu .sub-menu { left: 235px; top: -6px; display: none !important; border-left: 1px solid #fff}
 .main-menu .sub-menu li:hover .sub-menu { display: block !important; transition:opacity 1s linear; }
 
 /* Accordion Menu */
@@ -283,9 +284,11 @@ ul .tour_dates { list-style: none; }
 	position:relative;
 	left:0;
 	margin-left:-20px;
+	border: none;
 }
 .nav-menu li .sub-menu .sub-menu li {
 	background:#0C6FCC;
+	padding-left:40px;
 }
 
 .navi_icn { color: #fff; width: 100%; padding: 20px 0; display: none !important; background: #00529f; cursor: pointer }
@@ -691,7 +694,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
         .slideshow_container, .slideshow_container .slideshow_content { height:360px !important; }
         .slideshow_container .slideshow_pagination { bottom:57px !important; }
 	.share_links_header { clear:both !important; margin: 5px 5px; }
-    
+
 	#home_content .wp-caption { width:551px !important; }
 	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:549px !important; }
 }
