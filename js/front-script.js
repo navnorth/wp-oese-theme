@@ -62,4 +62,12 @@ jQuery( document ).ready(function() {
             jQuery(this).addClass( 'external_link' );
         }
     });
+    
+    // Accordion Menu
+    jQuery('.nav-menu li .sub-menu li a').hover(function(){
+	if(!jQuery(this).next().is(":visible"))
+	{
+		jQuery(this).next().slideDown("slow");
+	}
+    });
 });
