@@ -263,7 +263,7 @@ ul .tour_dates { list-style: none; }
 .sub-menu li a { font-size: 14px; padding: 8px 0 !important; width: 100%}
 .main-menu li:hover .sub-menu { display: block}
 .main-menu ul { margin-left: 15px; line-height: 23px}
-.main-menu li.menu-item-has-children > a:after { width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #ffffff; content: ""; position: absolute; top: 25px; right: 10px; }
+.main-menu li.menu-item-has-children > a:after { width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #ffffff; content: ""; position: absolute; top: 16px; right: 3px; }
 
 .responsiv-menu { display: none; background: #00529f; float: left; border-top: 1px solid #00407C}
 .responsiv-menu li, .responsiv-menu li a { width: 100% }
