@@ -50,7 +50,7 @@ function theme_front_enqueue_script()
 	wp_enqueue_style( 'theme-font-style',get_stylesheet_directory_uri() . '/css/font-awesome.min.css' );
 
 	wp_enqueue_script('jquery');
-    wp_enqueue_script('theme-front-script', get_stylesheet_directory_uri() . '/js/front-script.js' );
+	wp_enqueue_script('theme-front-script', get_stylesheet_directory_uri() . '/js/front-script.js' );
 	wp_enqueue_script('bootstrap-script', get_stylesheet_directory_uri() . '/js/bootstrap.js' );
 }
 add_action( 'wp_enqueue_scripts', 'theme_front_enqueue_script' );
@@ -200,3 +200,8 @@ function taxonomies_for_pages() {
         $wp_query->set( 'post_type', 'any' );
 
  } // category_archives
+
+ add_action( 'wp_footer' , 'add_footer_script' );
+ function add_footer_script(){
+    wp_enqueue_script('theme-bottom-script', get_stylesheet_directory_uri() . '/js/bottom-script.js' );
+ }

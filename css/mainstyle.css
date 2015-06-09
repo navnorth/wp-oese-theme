@@ -332,7 +332,8 @@ ul .tour_dates { list-style: none; }
 .slideshow_container_style-light .slideshow_transparent:hover, .slideshow_container_style-light .slideshow_transparent { opacity: 1 !important}
 .slideshow_container_style-light .slideshow_description_box { background: none !important}
 .slideshow_container_style-light .slideshow_description_box div.slideshow_description,
-.slideshow_container_style-light .slideshow_description_box div.slideshow_description a { margin-left: 20px; text-align: left; font-size: 16px; line-height: 1.5em; margin-top: 20px; font-family: 'Raleway-Bold'; letter-spacing: .5px; color: #4b4e53}
+.slideshow_container_style-light .slideshow_description_box div.slideshow_description a,
+.slideshow_container_style-light .slideshow_description_box div.slideshow_description{ margin-left: 20px; text-align: left; font-size: 16px; line-height: 1.5em; margin-top: 20px; font-family: 'Raleway-Bold'; letter-spacing: .5px; color: #4b4e53}
 
 .slideshow_container_style-light .slideshow_description_box div.slideshow_description a:hover,
 .slideshow_container_style-light .slideshow_description_box div.slideshow_description a:focus,
@@ -467,7 +468,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 .slideshow_view > .slideshow_slide_image > img{
     width:100% !important;
     float:none !important;
-    height:340px !important;
+    height:auto !important;
 }
 .slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box {
 	position:relative !important;
@@ -477,7 +478,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 }
 .slideshow_container { height:400px !important }
 .slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box .slideshow_title {
-  margin-top: -45px;
+  margin-top: -40px;
   background: rgba(32,91,153,0.8);
   line-height:40px;
 }
@@ -524,7 +525,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=0 );
 }
 .slideshow_container_style-light .slideshow_pagination {
-    bottom:75px !important;
+    bottom:70px !important;
 }
 .slideshow_container .slideshow_pagination .slideshow_transparent:hover,
 .slideshow_container .slideshow_pagination .slideshow_transparent:focus { filter: alpha(opacity = 50) !important; opacity: 0.5 !important; }
