@@ -200,7 +200,7 @@ article { padding-bottom:20px; }
 .pblctn_scl_icns .fa-envelope, .pblctn_scl_icns .fa-youtube-play, .pblctn_scl_icns .fa-google-plus { font-size: 25px !important}
 .pblctn_scl_icns .fa-google-plus { font-weight: bold}
 .blog_mtr { color: #00529f; font-family: "Raleway-Regular"; font-style: italic; font-size: 20px; line-height: 30px; margin: 0 0 15px;}
-blockquote { border-left: none !important; font-size: auto !important;}
+blockquote { border-left: none !important; font-family: "Raleway-Light-Italic"; font-size: auto !important;}
 .blog_date { margin: 0 0 30px; font-size: 16px }
 .blog_athr { font-size: 16px; margin:0; font-family: 'CharisSILB' }
 .blog_date, .panel-default>.panel-heading+.panel-collapse>.panel-body {  }
@@ -366,11 +366,12 @@ ul .tour_dates { list-style: none; }
 
 /*---------------- Default Page -----------------*/
 
-h1,h2,h3 { font-family: 'Raleway-Semibold' !important }
-h1,h2,h3, .site-content h3 a { color: #2d8700 !important }
-h4 { font-family: 'Raleway-Light' !important}
-
-@import url("css/responsivegridsystem.css");
+h1 { font-family: 'Raleway-Semibold' !important }
+h2 { font-family: 'Raleway-Semibold' !important; font-size: 24px !important; }
+h3 { font-family: 'Raleway-Light' !important; font-size: 19px !important; }
+h4 { font-family: 'Raleway-Bold' !important; font-size: 15px !important; }
+h5 { font-family: 'Raleway-Semibold' !important; }
+h1,h2,h3 { color: #2d8700 !important }
 
 /* -------- begin CALLOUT BOX ---------
 http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
