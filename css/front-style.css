@@ -17,9 +17,9 @@ aside.widget {
 	border-bottom:none;
 }
 .widget h3 {
-    font-family: "Raleway-Light";
+    font-family: "Raleway-SemiBold" !important;
     font-size: 18px;
-    font-weight: bold;
+    color: #2d8700 !important;
     letter-spacing: 0.5px;
     padding: 0 0 3px;
     margin-top:8px;

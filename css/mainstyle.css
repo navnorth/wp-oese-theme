@@ -368,10 +368,10 @@ ul .tour_dates { list-style: none; }
 
 h1 { font-family: 'Raleway-Semibold' !important }
 h2 { font-family: 'Raleway-Semibold' !important; font-size: 24px !important; }
-h3 { font-family: 'Raleway-Light' !important; font-size: 19px !important; }
+h3 { font-family: 'Raleway-Light' !important; font-size: 19px !important; color: #4b4e53 !important; }
 h4 { font-family: 'Raleway-Bold' !important; font-size: 15px !important; }
 h5 { font-family: 'Raleway-Semibold' !important; }
-h1,h2,h3 { color: #2d8700 !important }
+h1,h2,h4 { color: #2d8700 !important }
 
 /* -------- begin CALLOUT BOX ---------
 http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
