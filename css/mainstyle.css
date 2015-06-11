@@ -539,6 +539,16 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 .slideshow_container_style-dark .slideshow_content .slideshow_view { background: #5F5F5F; }
 /* -------- end FRONT PAGE --------- */
 
+/* -------- Table Styles ----------*/
+tr:nth-child(even) {background: #ddd}
+tr:nth-child(odd) {background: #fff}
+tr:first-child { background: #00529f; }
+tr:first-child th { color:#fff; }
+tr:first-child th[scope=col] { font-weight:bold; vertical-align:bottom; }
+tr td,tr th { padding:5px }
+tr td[scope=row], tr th[scope=row] { font-weight:bold; }
+/* -------- End of Table Styles ----------*/
+
 @media (min-width: 1200px){
 	.container { width: 1140px !important;}
 }
