@@ -64,10 +64,10 @@ jQuery( document ).ready(function() {
     });
     
     // Accordion Menu
-    jQuery('.nav-menu li .sub-menu li a').hover(function(){
+    /*jQuery('.nav-menu li .sub-menu li a').hover(function(){
 	if(!jQuery(this).next().is(":visible"))
 	{
 		jQuery(this).next().slideDown("slow");
 	}
-    });
+    });*/
 });
