@@ -315,11 +315,12 @@ ul .tour_dates { list-style: none; }
             column-count: 1;
             display: block !important;
 }
-.main-menu .sub-menu li a { margin-left:0; padding-left:20px; font-size:16px; float:left;text-decoration:underline; }
+.main-menu .sub-menu li a { margin-left:0; padding-left:20px; font-size:16px; float:left; text-decoration:underline; }
 .nav-menu li .sub-menu .sub-menu li { padding-left:20px; background:#00529F; }
 .main-menu .sub-menu li a:after { content:'';border:none !important; }
 .main-menu .sub-menu li { width:540px !important; display:inline-block !important; border-right: 1px solid #fff; border-top:none !important; }
-.main-menu .sub-menu .sub-menu li a { border-bottom:none !important; text-decoration:none !important; }
+.main-menu .sub-menu .menu-item-has-children li:first-child a { margin-top:-15px; }
+.main-menu .sub-menu .sub-menu li a { border-bottom:none !important; text-decoration:none !important; margin: -3px 0 -10px 0; }
 .main-menu .sub-menu li .sub-menu li a { font-size:13px !important; }
 /* End of Mega Menu */
 
