@@ -577,6 +577,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 #content tr:first-child th[scope=col] { font-weight:800; vertical-align:bottom; }
 #content tr td, #content tr th { padding:5px }
 #content tr td[scope=row], #content tr th[scope=row] { font-weight:bold; }
+#content .table-responsive { display:flex; } /* for mirrored content styles, to keep Resources box from pushing down */
 /* -------- End of Table Styles ----------*/
 
 #breadcrumbs { margin:0 0 10px; line-height:1em; }
