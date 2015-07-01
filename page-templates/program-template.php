@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Program Template
+ * Template Name: Program Main Template
  */
 
 global $post;
