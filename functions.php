@@ -205,3 +205,7 @@ function taxonomies_for_pages() {
  function add_footer_script(){
     wp_enqueue_script('theme-bottom-script', get_stylesheet_directory_uri() . '/js/bottom-script.js' );
  }
+ 
+function related_posts_where( $where ) {
+    return $where." AND post_type='post'";
+}

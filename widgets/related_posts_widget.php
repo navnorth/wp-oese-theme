@@ -16,6 +16,7 @@ class Related_Posts_Widget extends WP_Widget {
     //Display Widget Function
     function widget( $args, $instance ) {
         global $post;
+
         extract( $args );
 
         $title = apply_filters('widget_title', $instance['title'] );
@@ -34,12 +35,15 @@ class Related_Posts_Widget extends WP_Widget {
         }
         $cat_ids = implode( ',' , $cat_ids );
 
+        add_filter( 'posts_where' , 'related_posts_where' );
+        
         // Get Posts by Category
         $rPosts = new WP_Query( apply_filters( 'widget_posts_args', array(
-                'post_type'             => 'post',
+                'post_type'             => array('post'),
+                'is_single'             => true,
                 'posts_per_page'        => $posts_count,
                 'no_found_rows'         => true,
-                'post_status'           => 'publish',
+                'post_status'           => array('publish'),
                 'ignore_sticky_posts'   => true,
                 'cat'                   => $cat_ids
         ) ) );
@@ -52,7 +56,7 @@ class Related_Posts_Widget extends WP_Widget {
 		} ?>
 		<ul>
 		<?php while ( $rPosts->have_posts() ) : $rPosts->the_post(); ?>
-                    <?php if ($pID!==get_the_ID()) : ?>
+                    <?php //if ($pID!==get_the_ID()) : ?>
 			<li>
                         <?php if ( $show_thumbnail ) : ?>
                             <?php if ( has_post_thumbnail() ) ?>
@@ -63,7 +67,7 @@ class Related_Posts_Widget extends WP_Widget {
 				<span class="post-date"><?php echo get_the_date(); ?></span>
 			<?php endif; ?>
 			</li>
-                    <?php endif; ?>
+                    <?php //endif; ?>
 		<?php endwhile; ?>
 		</ul>
 		<?php echo $args['after_widget']; ?>
