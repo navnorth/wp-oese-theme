@@ -10,7 +10,7 @@
 get_header(); ?>
 
 	<div id="content" class="row site-content">
-
+		<div class="col-md-9 c ol-sm-12 col-xs-12 padding_left lft_sid_cntnr">
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
@@ -70,8 +70,10 @@ get_header(); ?>
 			</article><!-- #post-0 -->
 
 		<?php endif; ?>
-
+		</div>
+		<div class="col-md-3 col-sm-12 col-xs-12 right_sid_mtr">
+		   <?php get_sidebar(); ?>
+	       </div>
 	</div><!-- .row -->
-
-<?php get_sidebar(); ?>
+	
 <?php get_footer(); ?>
