@@ -70,6 +70,19 @@ get_header(); ?>
 			</article><!-- #post-0 -->
 
 		<?php endif; ?>
+			<?php
+			//Pagination Links
+			global $wp_query;
+
+			$big = 999999999; // need an unlikely integer
+			
+			echo paginate_links( array(
+				'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+				'format' => '?paged=%#%',
+				'current' => max( 1, get_query_var('paged') ),
+				'total' => $wp_query->max_num_pages
+			) );
+			?>
 		</div>
 		<div class="col-md-3 col-sm-12 col-xs-12 right_sid_mtr">
 		   <?php get_sidebar(); ?>
