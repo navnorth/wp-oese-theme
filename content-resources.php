@@ -44,4 +44,5 @@ $subpages = get_pages( array( 'child_of' => $post->ID, 'sort_column' => 'post_da
 			<p>
 		</div>
 	</div>
+	<?php get_template_part( 'content', 'contact' ); ?>
 </div>

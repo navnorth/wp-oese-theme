@@ -55,7 +55,7 @@ class Contact_Metabox {
         $page_template = get_post_meta($post->ID, "_wp_page_template", TRUE);
         
         if(in_array($page_template, self::$template) == FALSE)
-            add_filter("postbox_classes_page_" . $this->id, array($this, "hidden"));
+            add_filter($this->id, array($this, "hidden"));
         /**
          * Show or Hide Metabox
          * @code end
@@ -80,6 +80,10 @@ class Contact_Metabox {
      */
     public function display($post)
     {
+        // Register and Enqueue Script
+        wp_register_script("contact-metabox-script", get_stylesheet_directory_uri() . "/js/contact-metabox.js", array("jquery"));
+        wp_enqueue_script("contact-metabox-script");
+        
         include_once(get_stylesheet_directory() . "/page-templates/contact-metabox.php");
     }
     /**
@@ -93,7 +97,15 @@ class Contact_Metabox {
     {
         if("page" == $post->post_type)
         {
-            
+             wp_nonce_field( 'oii_contact_box', 'oii_contact_nonce' );
+
+            if (!isset($_POST['oii_contact_nonce']) || !wp_verify_nonce($_POST['oii_contact_nonce'],'oii_contact_box')){
+                print 'Sorry, unable to verify nonce!';
+                exit;
+            } else {
+              $contact_box_content = (isset($_POST['_contact_box'])?$_POST['_contact_box']:"");
+              update_post_meta($post_id, self::$meta_key, $contact_box_content);
+            }
         }
     }
 }
