@@ -180,11 +180,11 @@ hr { width: 100%}
     font-weight: 800;
     font-size: 17px;
 }
-ul.program_toc {
+ul.program_toc, .cntnbx_cntnr ul {
     padding-left: 15px;
     margin: 10px 0px 5px 0px;
 }
-.program_toc li {
+.program_toc li, .cntnbx_cntnr li  {
    font-weight: 800 !important;
    font-size: 15px;
    list-style-type: none;
