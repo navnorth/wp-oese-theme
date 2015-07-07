@@ -1,6 +1,7 @@
 <?php
 global $post;
 $contact_content = get_post_meta($post->ID,'_contact_box',true);
+$contact_heading = get_post_meta($post->ID,'_contact_box_heading',true);
 if (strlen($contact_content)>0){
 ?>
 <div class="right_sid_mtr program_toc_box" id="contact">
@@ -9,7 +10,7 @@ if (strlen($contact_content)>0){
 			<span class="socl_icns fa-stack"><i class="fa fa-phone"></i></span>
 		</div>
 		<div class="cntnbx_cntnr">
-			<p><span class="program_toc_header">Contact</span></p>
+			<p><span class="program_toc_header"><?php echo $contact_heading; ?></span></p>
 			<?php echo $contact_content; ?>
 		</div>
 	</div>

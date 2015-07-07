@@ -3,6 +3,7 @@ class Contact_Metabox {
     public static $template = array("page-templates/program-template.php");
     
     public static $meta_key = "_contact_box";
+    public static $meta_header = "_contact_box_heading";
     
     public $id = "contact-metabox";
     /**
@@ -104,7 +105,9 @@ class Contact_Metabox {
                 exit;
             } else {
               $contact_box_content = (isset($_POST['_contact_box'])?$_POST['_contact_box']:"");
+              $contact_box_header = (isset($_POST['contact_box_header'])?$_POST['contact_box_header']:"");
               update_post_meta($post_id, self::$meta_key, $contact_box_content);
+              update_post_meta($post_id, self::$meta_header, $contact_box_header);
             }
         }
     }
