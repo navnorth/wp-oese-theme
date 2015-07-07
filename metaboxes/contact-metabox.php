@@ -99,19 +99,12 @@ class Contact_Metabox {
     {
         if("page" == $post->post_type)
         {
-             wp_nonce_field( 'oii_contact_box', 'oii_contact_nonce' );
-
-            if (!isset($_POST['oii_contact_nonce']) || !wp_verify_nonce($_POST['oii_contact_nonce'],'oii_contact_box')){
-                print 'Sorry, unable to verify nonce!';
-                exit;
-            } else {
-              $contact_box_content = (isset($_POST['_contact_box'])?$_POST['_contact_box']:"");
-              $contact_box_header = (isset($_POST['contact_box_header'])?$_POST['contact_box_header']:"");
-              $contact_box_icon = (isset($_POST['contact_box_icon'])?$_POST['contact_box_icon']:"");
-              update_post_meta($post_id, self::$meta_key, $contact_box_content);
-              update_post_meta($post_id, self::$meta_header, $contact_box_header);
-              update_post_meta($post_id, self::$meta_icon, $contact_box_icon);
-            }
+            $contact_box_content = (isset($_POST['_contact_box'])?$_POST['_contact_box']:"");
+            $contact_box_header = (isset($_POST['contact_box_header'])?$_POST['contact_box_header']:"");
+            $contact_box_icon = (isset($_POST['contact_box_icon'])?$_POST['contact_box_icon']:"");
+            update_post_meta($post_id, self::$meta_key, $contact_box_content);
+            update_post_meta($post_id, self::$meta_header, $contact_box_header);
+            update_post_meta($post_id, self::$meta_icon, $contact_box_icon);
         }
     }
 }

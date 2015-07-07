@@ -24,8 +24,6 @@
         </div>
     <div class="group">
     <?php
-        wp_nonce_field( 'oii_contact_box', 'oii_contact_nonce' );
-
         $field_value = get_post_meta( $post->ID, '_contact_box', false );
         wp_editor( $field_value[0], '_contact_box' );
     ?>
