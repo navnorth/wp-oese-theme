@@ -32,6 +32,11 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
  * Shortcode Button.
  */
  require_once( get_stylesheet_directory() . '/tinymce_button/shortcode_button.php' );
+ 
+ /**
+  * Contact Metabox
+  **/
+ require_once( get_stylesheet_directory() . '/metaboxes/contact-metabox.php' );
 
 function theme_back_enqueue_script()
 {
@@ -208,4 +213,8 @@ function taxonomies_for_pages() {
  
 function related_posts_where( $where ) {
     return $where." AND post_type='post'";
+}
+
+if (is_admin()) {
+    $contact_metabox = new Contact_Metabox();
 }
