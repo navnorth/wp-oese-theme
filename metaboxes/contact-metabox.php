@@ -1,6 +1,6 @@
 <?php
 class Contact_Metabox {
-    public static $template = array("page-templates/program-template.php");
+    public static $template = array("page-templates/program-template.php", "page-templates/theme-template.php");
     
     public static $meta_key = "_contact_box";
     public static $meta_header = "_contact_box_heading";

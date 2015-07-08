@@ -8,10 +8,10 @@ jQuery(document).ready(function() {
         var template = jQuery('#oii-template').attr('data-template').split('|');
         
         if (template.indexOf(page_template) == -1) {
-            jQuery('#contact-metabox').addClass('hidden')
+            jQuery('#contact-metabox').addClass('hidden').hide();
         
         } else {
-            jQuery('#contact-metabox').removeClass('hidden')
+            jQuery('#contact-metabox').removeClass('hidden').show();
         }
     })
 })

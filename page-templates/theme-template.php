@@ -33,7 +33,10 @@ get_header();
             <div class="share_links_header"><?php echo do_shortcode("[ssba]"); ?></div>
 
             <?php while ( have_posts() ) : the_post(); ?>
-                <?php get_template_part( 'content', 'page' ); ?>
+                <?php
+                    get_template_part( 'content', 'contact' );
+                    get_template_part( 'content', 'page' );
+                ?>
             <?php endwhile; ?>
          </div>
 
