@@ -22,7 +22,7 @@ jQuery( document ).ready(function() {
 	jQuery(".link_dwnlds").children("div").children("a").css("margin-top", a_margin+"px");
 
 	/** Keyboard Navigation using Keydown event **/
-	jQuery('.menu-item > a').on('keydown',function(e){
+	jQuery('.nav-menu > .menu-item > a').on('keydown',function(e){
 	    if (e.which==40) { /* Down Arrow Key */
 		/* Check if current menu item has a child menu */
 		if (jQuery(this).parent().has('.sub-menu').length > 0) {
@@ -43,14 +43,16 @@ jQuery( document ).ready(function() {
 		return false;
 	    }
 	});
-	jQuery('.menu-item > a').on('mouseenter' , function(){
+	jQuery('.nav-menu > .menu-item > a').on('mouseenter' , function(){
 	     if (jQuery(this).parent().has('.sub-menu')) {
 		jQuery('.sub-menu').removeAttr('style');
 	     }
 	});
-	jQuery('.menu-item > a').on('focus' , function(){
-	     if (jQuery(this).parent().has('.sub-menu').length>0) {
-		jQuery('.sub-menu').removeAttr('style');
+	jQuery('.nav-menu > .menu-item > a').on('focus' , function(){
+	     if (jQuery(this).parent().has('.sub-menu').length==0) {
+		jQuery('.sub-menu').hide();
+	     } else {
+		jQuery(this).parent().find('.sub-menu').show();
 	     }
 	});
 

@@ -322,6 +322,7 @@ ul .tour_dates { list-style: none; }
 .main-menu .sub-menu .menu-item-has-children li:first-child a { margin-top:-15px; }
 .main-menu .sub-menu .sub-menu li a { border-bottom:none !important; text-decoration:none !important; margin: -3px 0 -10px 0; }
 .main-menu .sub-menu li .sub-menu li a { font-size:13px !important; }
+.main-menu .sub-menu li a:hover, .main-menu .sub-menu li a:focus { color:#bcbcbc; }
 /* End of Mega Menu */
 
 .navi_icn { color: #fff; width: 100%; padding: 20px 0; display: none !important; background: #00529f; cursor: pointer }
