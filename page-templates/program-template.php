@@ -12,7 +12,7 @@ $img_alt = get_post_meta(get_post_thumbnail_id($post->ID), '_wp_attachment_image
 get_header();
 ?>
 
-    <div id="content" class="row site-content">
+    <div id="content" class="row site-content" tabindex="-1">
 
         <div class="col-md-9 c ol-sm-12 col-xs-12 padding_left lft_sid_cntnr">
 

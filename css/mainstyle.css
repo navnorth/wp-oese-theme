@@ -595,6 +595,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 	.tlkt_rght_sid h3 { width: 72%; }
 	#home_content .wp-caption { width:712px !important; }
 	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:710px !important; }
+        .slideshow_container_style-light .slideshow_pagination { bottom:120px !important; }
 }
 @media (max-width: 990px){
 	.right_sid_mtr { text-align: center}
@@ -625,6 +626,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 	aside { float: left; width: 100%}
 	#home_content .wp-caption { width:750px !important; }
 	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:748px !important; }
+        .slideshow_container_style-light .slideshow_pagination { bottom:70px !important; }
 }
 
 @media (max-width: 768px){
@@ -671,12 +673,14 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 
 	#home_content .wp-caption { width:735px !important; }
 	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:733px !important; }
+        .slideshow_container_style-light .slideshow_pagination { bottom:110px !important; }
 }
 @media (max-width: 750px){
 	.hdr .col-xs-offset-2  {margin-left: 16.66666667% !important;}
 	.tlkt_rght_sid h3 { width: 70%}
 	#home_content .wp-caption { width:701px !important; }
 	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:699px !important; }
+         .slideshow_container_style-light .slideshow_pagination { bottom:130px !important; }
 }
 @media (max-width: 715px){
 	.stp_cntnr { text-align: center}
@@ -692,6 +696,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 
 	#home_content .wp-caption { width:571px !important; }
 	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:569px !important; }
+        .slideshow_container_style-light .slideshow_pagination { bottom:145px !important; }
 }
 
 @media (max-width: 600px){
