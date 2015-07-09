@@ -626,7 +626,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 	aside { float: left; width: 100%}
 	#home_content .wp-caption { width:750px !important; }
 	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:748px !important; }
-        .slideshow_container_style-light .slideshow_pagination { bottom:70px !important; }
+        .slideshow_container_style-light .slideshow_pagination { bottom:110px !important; }
 }
 
 @media (max-width: 768px){
@@ -680,7 +680,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 	.tlkt_rght_sid h3 { width: 70%}
 	#home_content .wp-caption { width:701px !important; }
 	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:699px !important; }
-         .slideshow_container_style-light .slideshow_pagination { bottom:130px !important; }
+         .slideshow_container_style-light .slideshow_pagination { bottom:125px !important; }
 }
 @media (max-width: 715px){
 	.stp_cntnr { text-align: center}
@@ -731,9 +731,11 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 	.slideshow_container_style-light .slideshow_description_box div.slideshow_description,
 	.slideshow_container_style-light .slideshow_description_box div.slideshow_description a { line-height: 25px; margin-top: 0 }
         .slideshow_container_style-light .slideshow_view > .slideshow_slide_image > a > img { height:325px !important; }
-        .slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box .slideshow_title a { font-size:15px !important; line-height:1.75em;  }
+        .slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box .slideshow_title a,
+        .slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box .slideshow_title { font-size:15px !important; line-height:1.75em;  }
         .slideshow_container_style-light .slideshow_description_box div.slideshow_description { padding-left:5px;  }
-        .slideshow_container .slideshow_description_box div.slideshow_description a { font-size:13px; line-height:1.5em; }
+        .slideshow_container .slideshow_description_box div.slideshow_description a,
+        .slideshow_container .slideshow_description_box div.slideshow_description { font-size:13px; line-height:1.5em; }
          /* Slideshow Dark Version */
         .slideshow_container_style-dark .slideshow_view > .slideshow_slide_image > a > img { height:235px !important; }
         .slideshow_container_style-dark .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box .slideshow_title { margin-top:0; background: rgba(0,0,0,0.8) !important; }
