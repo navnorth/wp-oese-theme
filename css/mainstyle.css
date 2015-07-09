@@ -582,6 +582,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 /* -------- End of Table Styles ----------*/
 
 #breadcrumbs { margin:0 0 10px; line-height:1em; }
+.caption-image { max-width:65%; }
 
 @media (min-width: 1200px){
 	.container { width: 1140px !important;}
@@ -674,6 +675,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 	#home_content .wp-caption { width:735px !important; }
 	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:733px !important; }
         .slideshow_container_style-light .slideshow_pagination { bottom:110px !important; }
+        .caption-image { max-width:60%; }
 }
 @media (max-width: 750px){
 	.hdr .col-xs-offset-2  {margin-left: 16.66666667% !important;}
@@ -697,6 +699,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 	#home_content .wp-caption { width:571px !important; }
 	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:569px !important; }
         .slideshow_container_style-light .slideshow_pagination { bottom:145px !important; }
+        .caption-image { max-width:57%; }
 }
 
 @media (max-width: 600px){
@@ -756,6 +759,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 
 	#home_content .wp-caption { width:551px !important; }
 	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:549px !important; }
+        .caption-image { max-width:55%; }
 }
 @media (max-width: 500px){
 	.tlkt_stp_vdo_cntnr .pblctn_vdo_bg, .tlkt_stp_vdo_cntnr .pblctn_vdo_bg:first-child {width: 100% !important;}
@@ -770,6 +774,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 
 	#home_content .wp-caption { width:451px !important; }
 	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:449px !important; }
+        .caption-image { max-width:50%; }
 }
 @media (max-width: 400px){
 
