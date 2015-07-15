@@ -574,7 +574,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 #content tr:nth-child(even) {background: #ddd}
 #content tr:nth-child(odd) {background: #fff}
 #content tr:first-child { background: #00529f; }
-#content tr:first-child th, #content tr:first-child td { color:#fff; }
+#content tr:first-child th, #content tr:first-child td, #content tr:first-child td a { color:#fff; }
 #content tr:first-child th[scope=col] { font-weight:800; vertical-align:bottom; }
 #content tr td, #content tr th { padding:5px }
 #content tr td[scope=row], #content tr th[scope=row] { font-weight:bold; }
