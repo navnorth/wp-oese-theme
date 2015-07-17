@@ -22,5 +22,8 @@
     </div> 
 </div>
 <?php wp_footer(); ?>
+<!--[if lt IE 10]>
+<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/ie-menu.js" type="text/javascript"></script>
+<![endif]-->
 </body>
 </html>

@@ -21,7 +21,6 @@
 <script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
 <![endif]-->
 <?php wp_head(); ?>
-
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -31,9 +30,11 @@
   ga('create', 'UA-64242956-1', 'auto');
   ga('send', 'pageview');
 </script>
-
+<!--[if lt IE 10]>
+<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/ie-multiple-columns.js" type="text/javascript"></script>
+<link rel='stylesheet' id='multicolumn-style-css'  href='<?php echo get_stylesheet_directory_uri(); ?>/css/multicolumn.css' type='text/css' media='all' />
+<![endif]-->
 </head>
-
 
 <!--[if IE 7]>
 <body <?php body_class("ie ie7"); ?>>
@@ -44,7 +45,6 @@
 <!--[if !(IE 7) & !(IE 8)]><!-->
 <body <?php body_class(); ?>>
 <!--<![endif]-->
-
 <!-- Skip Content Navigation -->
 <div id="skipcontent"><a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to Content', 'wp-oet-theme' ); ?>"><?php _e( 'Skip to Content', 'wp-oet-theme' ); ?></a></div>
 
@@ -55,7 +55,7 @@
         <div class="row hdr">
         	<div class="col-md-7 col-sm-8 col-xs-12">
             	<a href="<?php echo site_url();?>" Title="Home">
-                	<img src="<?php echo get_stylesheet_directory_uri();?>/images/logo.png" alt="Office of Innovation & Improvement" />
+                	<img src="<?php echo get_stylesheet_directory_uri();?>/images/logo.png" alt="Office of Educational Technology Logo"/>
                 </a>
             </div>
 
