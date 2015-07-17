@@ -29,8 +29,7 @@ get_header(); ?>
 				<?php
 				/* Start the Loop */
 				while ( have_posts() ) : the_post();
-					if (get_post_type( get_the_ID() ) != 'page')
-						get_template_part( 'content', get_post_format() );
+					get_template_part( 'content', get_post_format() );
 
 				endwhile;
 
