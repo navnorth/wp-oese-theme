@@ -32,7 +32,7 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
  * Shortcode Button.
  */
  require_once( get_stylesheet_directory() . '/tinymce_button/shortcode_button.php' );
- 
+
  /**
   * Contact Metabox
   **/
@@ -143,7 +143,7 @@ function federated_analytics_tracking_code(){
 }
 add_action('wp_head', 'federated_analytics_tracking_code');
 
-/** 
+/**
  * Title tag filter - to include parent titles
  */
 function oii_title_filter( $title, $sep, $seplocation ) {
@@ -154,25 +154,25 @@ function oii_title_filter( $title, $sep, $seplocation ) {
     elseif( is_author() ) $type . 'Author';
     elseif( is_date() || is_archive() ) $type = 'Archives';
     else $type = false;
- 
+
     // get the page number
-    if( get_query_var( 'paged' ) ) 
+    if( get_query_var( 'paged' ) )
         $page_num = 'Page '.get_query_var( 'paged' ); // on index
-    elseif( get_query_var( 'page' ) ) 
+    elseif( get_query_var( 'page' ) )
         $page_num = get_query_var( 'page' ); // on single
     else $page_num = false;
- 
+
     // strip title separator
     $title = trim( str_replace( $sep, '', $title ) );
-    
+
     if(intval($post->post_parent)>0)
     	$title = get_the_title($post->post_parent) . ' '.$sep.' '. $title;
- 
+
     // determine order based on seplocation
     $parts = array( get_bloginfo( 'name' ), $type, $title, $page_num );
-    if( $seplocation == 'left' ) 
+    if( $seplocation == 'left' )
         $parts = array_reverse( $parts );
-     
+
     // strip blanks, implode, and return title tag
     $parts = array_filter( $parts );
     return implode( ' ' . $sep . ' ', $parts );
@@ -189,29 +189,29 @@ function oii_turnoff_twentytwelve_title() {
 function google_analytics_with_pagetitle(){
     $ga_id = 'UA-64242956-1';
 	$sep = '|';
-	
+
     $pagetitle = trim( str_replace( get_bloginfo('name'), '', wp_title('|', false) ), $sep.' ');
-    
+
 	// is the current page a tag archive page?
 	if ( is_home() || is_front_page() ) {
 		$pagetitle = 'Home';
-		
-	} elseif (function_exists('is_tag') && is_tag()) { 
-		$pagetitle = 'Tag Archive - '.$tag; 
+
+	} elseif (function_exists('is_tag') && is_tag()) {
+		$pagetitle = 'Tag Archive - '.$tag;
 
 	// or, is the page a search page?
-	} elseif (is_search()) { 
-		$pagetitle = 'Search for &quot;'.get_search_query().'&quot;'; 
+	} elseif (is_search()) {
+		$pagetitle = 'Search for &quot;'.get_search_query().'&quot;';
 
 	// or, is the page an error page?
 	} elseif (is_404()) {
-		$pagetitle = '404 Error - Page Not Found'; 
+		$pagetitle = '404 Error - Page Not Found';
 	}
-    
+
     echo "<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga'); ";
     echo "ga('create', '" . $ga_id . "', 'auto'); ";
 	echo "ga('send', 'pageview', {'title': '". $pagetitle ."' }); </script>";
-	
+
 }
 add_action('wp_head', 'google_analytics_with_pagetitle');
 
@@ -226,12 +226,12 @@ function register_oii_widget(){
     register_widget( 'Related_Posts_Widget' );
 }
 
-/* minor style changes to News "Continue Reading" links
+/* minor style changes to News "Continue Reading" links */
 add_filter( 'the_content_more_link', 'modify_read_more_link' );
 function modify_read_more_link() {
-	return '<a class="more-link" href="' . get_permalink() . '">Read More <span class="meta-nav">&rarr;</span></a>';
+	return ' <a class="more-link" href="' . get_permalink() . '">Read More</a>';
 }
-*/
+
 
 /**
  * Initialize Categories and Tags for Pages
@@ -283,7 +283,7 @@ function taxonomies_for_pages() {
  function add_footer_script(){
     wp_enqueue_script('theme-bottom-script', get_stylesheet_directory_uri() . '/js/bottom-script.js' );
  }
- 
+
 function related_posts_where( $where ) {
     return $where." AND post_type='post'";
 }
