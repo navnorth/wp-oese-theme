@@ -31,8 +31,8 @@ jQuery( document ).ready(function() {
                     if ($this.parents().length==10) {
                         $this.addClass("menu-right").attr("style","position:absolute !important;top:" + new_top + "px;");
                     }
+                    r++;
                 }
-                r++;
             }
         } else {
             $this.addClass("menu-left");
