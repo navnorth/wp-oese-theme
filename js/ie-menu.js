@@ -8,7 +8,9 @@ jQuery( document ).ready(function() {
     var add_menuclass = false;
     itemmenu.find("li").each(function(index){
         var $this = jQuery(this);
+        var $siblings;
         if ($this.hasClass("menu-item-has-children")) {
+            $siblings = $this.siblings()
             if (index <(total_submenus/2))
                 add_menuclass = true;
             else
@@ -20,12 +22,16 @@ jQuery( document ).ready(function() {
                 $this.addClass("menu-left");
                 add_menuclass=false;
             } else {
-                new_top = r*menu_height;
                 if ($this.hasClass("menu-item-has-children")){
+                    new_top = r*menu_height - 10;
                     $this.addClass("menu-right").attr("style","position:absolute !important;top:" + new_top + "px");
                     r++;
                 } else {
-                    $this.addClass("menu-right").attr("style","position:absolute !important;top:" + new_top + "px;");
+                    new_top = r*menu_height;
+                    if ($this.parents().length==10) {
+                        $this.addClass("menu-right").attr("style","position:absolute !important;top:" + new_top + "px;");
+                    }
+                    r++;
                 }
             }
         } else {
