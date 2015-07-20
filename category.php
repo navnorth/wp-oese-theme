@@ -27,13 +27,24 @@ get_header(); ?>
 				</header><!-- .archive-header -->
 
 				<?php
+				/* Alter Query to display only posts */
+				global $wp_query;
+				
+				add_filter( 'posts_where' , 'related_posts_where' );
+				
+				$args = array_merge( $wp_query->query_vars, array('post_type' => 'page') );
+				query_posts($args);
+		
 				/* Start the Loop */
 				while ( have_posts() ) : the_post();
 					get_template_part( 'content', get_post_format() );
 
 				endwhile;
-
+				
 				twentytwelve_content_nav( 'nav-below' );
+				
+				// Reset Query
+				wp_reset_query();
 				?>
 
 			<?php else : ?>
