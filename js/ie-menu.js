@@ -30,6 +30,9 @@ jQuery( document ).ready(function() {
                     new_top = r*menu_height;
                     if ($this.parents().length==10) {
                         $this.addClass("menu-right").attr("style","position:absolute !important;top:" + new_top + "px;");
+                    } else {
+                        $this.attr("style","width:461px !important;float:none !important; border-right:none; display:block !important;");
+                        $this.find("a").attr("style","margin-top:-5px;");
                     }
                     r++;
                 }
