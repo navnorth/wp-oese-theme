@@ -338,16 +338,19 @@ function wp_list_categories_for_posts( $args = '' ) {
        add_filter( 'posts_where' , 'related_posts_where' );
 	$rPosts = new WP_Query(array(
 		'post_type'             => array('post'),
+		'posts_per_page'	=> -1,
 		'is_single'             => true,
 		'no_found_rows'         => true,
 		'post_status'           => array('publish'),
 		'ignore_sticky_posts'   => true,
 		'cat'                   => $category->cat_ID
 	));
-    
+	
 	// If no posts found, ...
 	if ($rPosts->post_count==0) {
 	    unset($categories[$key]);
+	} else {
+	    $categories[$key]->count = $rPosts->post_count;    
 	}
     }
 
