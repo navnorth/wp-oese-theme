@@ -23,7 +23,6 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-social.php' )
 require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php' );
 
 /**
- *
  * Theme Widget
  */
  require_once(get_stylesheet_directory() . '/theme-functions/custom_widget.php');
@@ -60,57 +59,7 @@ function theme_front_enqueue_script()
 }
 add_action( 'wp_enqueue_scripts', 'theme_front_enqueue_script' );
 
-/*
-function theme_dynamic_sidebar($index, $page_id)
-{
-	global $wp_registered_sidebars, $wp_registered_widgets;
-	if(isset($page_id) && !empty($page_id))
-	{
-		$theme_assign_widget = unserialize( get_post_meta($page_id,"_theme_assign_widget",true) );
-
-		if (!empty($index))
-		{
-			$sidebar = $wp_registered_sidebars[$index];
-			foreach ( (array) $theme_assign_widget as $id )
-			{
-				if ( !isset($wp_registered_widgets[$id]) ) continue;
-
-				$params = array_merge(
-					array( array_merge( $sidebar, array('widget_id' => $id, 'widget_name' => $wp_registered_widgets[$id]['name']) ) ),
-					(array) $wp_registered_widgets[$id]['params']);
-
-				// Substitute HTML id and class attributes into before_widget
-				$classname_ = '';
-				foreach ( (array) $wp_registered_widgets[$id]['classname'] as $cn )
-				{
-					if ( is_string($cn) )
-						$classname_ .= '_' . $cn;
-					elseif ( is_object($cn) )
-						$classname_ .= '_' . get_class($cn);
-				}
-
-				$classname_ = ltrim($classname_, '_');
-				$params[0]['before_widget'] = sprintf($params[0]['before_widget'], $id, $classname_);
-
-				$params = apply_filters( 'dynamic_sidebar_params', $params );
-
-				$callback = $wp_registered_widgets[$id]['callback'];
-
-				do_action( 'dynamic_sidebar', $wp_registered_widgets[ $id ] );
-
-				if ( is_callable($callback) )
-				{
-					call_user_func_array($callback, $params);
-					$did_one = true;
-				}
-			}
-		}//index found
-	}//pagid found
-}
-*/
-
 function the_content_filter($content) {
-
     $block = join("|",array("home_left_column", "home_right_column"));
     $rep = preg_replace("/(<p>)?\[($block)(\s[^\]]+)?\](<\/p>|<br \/>)?/","[$2$3]",$content);
     $rep = preg_replace("/(<p>)?\[\/($block)](<\/p>|<br \/>)?/","[/$2]",$rep);
@@ -345,12 +294,12 @@ function wp_list_categories_for_posts( $args = '' ) {
 		'ignore_sticky_posts'   => true,
 		'cat'                   => $category->cat_ID
 	));
-	
+
 	// If no posts found, ...
 	if ($rPosts->post_count==0) {
 	    unset($categories[$key]);
 	} else {
-	    $categories[$key]->count = $rPosts->post_count;    
+	    $categories[$key]->count = $rPosts->post_count;
 	}
     }
 
@@ -415,3 +364,8 @@ function wp_list_categories_for_posts( $args = '' ) {
 if (is_admin()) {
     $contact_metabox = new Contact_Metabox();
 }
+
+ /**
+ * Register the footer Menu - removed in base twentytwelve theme
+ */
+ register_nav_menu( 'Footer Menu', __( 'Footer Menu', 'twentytwelve' ) );

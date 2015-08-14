@@ -72,7 +72,6 @@ aside.widget {
     margin: 10px 0;
 }
 
-
 .alignleft { float: left; margin-right: 20px; margin-bottom: 20px}
 .alignright{ float: right; margin-left: 20px; margin-bottom: 20px}
 hr { width: 100%}
@@ -105,6 +104,7 @@ hr { width: 100%}
     -webkit-transition: top .1s ease-in, background .5s linear;
         transition: top .1s ease-in, background .5s linear;
 }
+#content div, #home_content div { outline: 0; }
 
 /* external links */
 /*
