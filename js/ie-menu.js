@@ -24,12 +24,12 @@ jQuery( document ).ready(function() {
             } else {
                 if ($this.hasClass("menu-item-has-children")){
                     new_top = r*menu_height - 10;
-                    $this.addClass("menu-right").attr("style","position:absolute !important;top:" + new_top + "px");
+                    $this.addClass("menu-right").attr("style","position:absolute !important;border-right:none;top:" + new_top + "px");
                     r++;
                 } else {
                     new_top = r*menu_height;
                     if ($this.parents().length==10) {
-                        $this.addClass("menu-right").attr("style","position:absolute !important;top:" + new_top + "px;");
+                        $this.addClass("menu-right").attr("style","position:absolute !important;border-right:none;top:" + new_top + "px;");
                     } else {
                         $this.attr("style","width:461px !important;float:none !important; border-right:none; display:block !important;");
                         $this.find("a").attr("style","margin-top:-5px;");
