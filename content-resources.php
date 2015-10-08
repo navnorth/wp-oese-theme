@@ -17,7 +17,7 @@ else {
 			<span class="socl_icns fa-stack"><i class="fa fa-link"></i></span>
 		</div>
 		<div class="cntnbx_cntnr">
-			<span class="program_toc_header">Resources</span>
+			<span class="program_toc_header">Additional Info</span>
 			<ul class="program_toc">
 				<?php
 					if ($subpages) {
@@ -27,7 +27,7 @@ else {
 						foreach($subpages as $spage) {
 							?>
 							<li><a href="<?php echo get_page_link($spage->ID); ?>"><?php echo $spage->post_title; ?></a></li>
-							<?php 
+							<?php
 						}
 					} else {
 						//Get Parent of Page
@@ -35,10 +35,10 @@ else {
 						if ($parent_id>0) {
 							$parent_page = get_page($parent_id);
 							echo "<li><a href='".get_page_link($parent_id)."'>Main</a></li>";
-							
+
 							//Display Sub page links
 							$subpages = get_pages( array( 'child_of' => $parent_id, 'sort_column' => 'post_date', 'sort_order' => 'asc', 'parent' => $parent_id ) );
-							
+
 							foreach($subpages as $spage) {
 								if ($post->ID==$spage->ID){
 									echo "<li>" . $spage->post_title . "</li>";
