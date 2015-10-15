@@ -1,7 +1,7 @@
 <?php
 //Initial Checking for showing the resources box
 $withChild = false;
-$subpages = get_pages( array( 'child_of' => $post->ID, 'sort_column' => 'post_date', 'sort_order' => 'asc' ) );
+$subpages = get_pages( array( 'child_of' => $post->ID, 'sort_column' => 'menu_order', 'sort_order' => 'asc' ) );
 if ($subpages)
 	$withChild = true;
 else {
@@ -37,7 +37,7 @@ else {
 							echo "<li><a href='".get_page_link($parent_id)."'>Main</a></li>";
 
 							//Display Sub page links
-							$subpages = get_pages( array( 'child_of' => $parent_id, 'sort_column' => 'post_date', 'sort_order' => 'asc', 'parent' => $parent_id ) );
+							$subpages = get_pages( array( 'child_of' => $parent_id, 'sort_column' => 'menu_order', 'sort_order' => 'asc', 'parent' => $parent_id ) );
 
 							foreach($subpages as $spage) {
 								if ($post->ID==$spage->ID){
