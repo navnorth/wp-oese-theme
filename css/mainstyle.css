@@ -375,9 +375,9 @@ ul .tour_dates { list-style: none; }
 
 .slideshow_container_style-light .slideshow_description_box div { text-align: left !important}
 .slideshow_container .slideshow_pagination { width: 100% !important}
-.slideshow_container_style-light .slideshow_pagination ul li { background: url(../images/pager_img.png) 0 0 no-repeat !important; width: 19px !important; height: 19px !important}
-.slideshow_container_style-light .slideshow_pagination .slideshow_currentView { opacity: .5 !important}
-.slideshow_container_style-light .slideshow_pagination { bottom: 50px !important; }
+.slideshow_container_style-light .slideshow_pagination ul li { border-radius:50%; width: 19px !important; height: 19px !important; background:#0995E3 !important; }
+.slideshow_container_style-light .slideshow_pagination .slideshow_currentView { /*opacity: .5 !important*/ background:#0050a1 !important; }
+.slideshow_container_style-light .slideshow_pagination { bottom: 10px !important; }
 
 .hdr .col-md-11 { text-align: right}
 
