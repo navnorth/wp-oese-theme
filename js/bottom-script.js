@@ -7,6 +7,10 @@ jQuery( document ).ready(function() {
 	if (sHeight>340) {
 	    oTop = 340-sHeight+oTop;
 	}
-	jQuery(this).find('.slideshow_description_box .slideshow_title').css({ 'margin-top': oTop + 'px' });
+	if (jQuery(this).find('.slideshow_description_box .slideshow_title').length>0) {
+	    jQuery(this).find('.slideshow_description_box .slideshow_title').css({ 'margin-top': oTop + 'px' });
+	} else {
+	    jQuery(this).height(sHeight);
+	}
     });
 });
