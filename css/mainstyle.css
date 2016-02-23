@@ -824,7 +824,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
         /* End of Slideshow Dark Version */
 	#home_content .wp-caption { width:291px !important; }
 	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:289px !important; }
-	.slideshow_view > .slideshow_slide_image > a > img, .slideshow_view > .slideshow_slide_image > img { heigth:100% !important; }
+	.slideshow_view > .slideshow_slide_image > a > img, .slideshow_view > .slideshow_slide_image > img { height:100% !important; }
 }
 @media (max-width: 300px){
 
