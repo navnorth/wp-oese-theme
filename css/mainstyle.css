@@ -684,7 +684,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 	.tlkt_rght_sid h3 { width: 70%}
 	#home_content .wp-caption { width:701px !important; }
 	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:699px !important; }
-         .slideshow_container_style-light .slideshow_pagination { bottom:125px !important; }
+         .slideshow_container_style-light .slideshow_pagination { bottom:10px !important; }
 }
 @media (max-width: 715px){
 	.stp_cntnr { text-align: center}
@@ -700,7 +700,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 
 	#home_content .wp-caption { width:571px !important; }
 	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:569px !important; }
-        .slideshow_container_style-light .slideshow_pagination { bottom:145px !important; }
+        .slideshow_container_style-light .slideshow_pagination { bottom:10px !important; }
         .caption-image { max-width:57%; }
 }
 
@@ -756,7 +756,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
         /* End of Slideshow Dark Version */
         .slideshow_container .slideshow_pagination .slideshow_pagination_center { bottom:0; }
         .slideshow_container, .slideshow_container .slideshow_content { height:360px !important; }
-        .slideshow_container .slideshow_pagination { bottom:57px !important; }
+        .slideshow_container .slideshow_pagination { bottom:10px !important; }
 	.share_links_header { clear:both !important; margin: 5px 5px; }
 
 	#home_content .wp-caption { width:551px !important; }
