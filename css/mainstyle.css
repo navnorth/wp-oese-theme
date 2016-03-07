@@ -771,7 +771,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 
 	.ftr .col-xs-10, .ftr .col-xs-2 { width: 100%; text-align: center}
 	.ftr_lnks li { width: 100%; text-align: center; padding: 10px 0; border-bottom: 1px solid #eee}
-	.hdr { margin-bottom: 5px}
+	.hdr { margin-bottom: 5px; }
 	.ftr_logo { margin: 10px 0}
 
 	#home_content .wp-caption { width:451px !important; }
@@ -825,10 +825,20 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 	#home_content .wp-caption { width:291px !important; }
 	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:289px !important; }
 	.slideshow_view > .slideshow_slide_image > a > img, .slideshow_view > .slideshow_slide_image > img { height:100% !important; }
-	.navi_icn { width:20%; float:right }
+	.navi_icn { width:16%; float:right;margin-top:-35px; }
 	.navi_bg:hover { background:none; }
-	.navi_bg { border-top:none; }
-	.soclize { width:40% !important; float:left !important; }
+	.navi_bg { border-top:none;margin-top: -10px; margin-right: -10px; }
+	.soclize { width:35% !important; position:absolute; }
+	.hdr { position:relative;}
+	.form-group.gray_bg {
+	  width: 45%;
+	  position: absolute;
+	  left: 35%;
+	}
+	.fa-bars {
+	  font-size:1.5em !important;
+	  top:10px !important;
+	}
 }
 @media (max-width: 300px){
 
