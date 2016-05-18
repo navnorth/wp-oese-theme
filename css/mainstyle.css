@@ -126,7 +126,7 @@ body { padding-top: 15px; font-family: 'CharisSILR' !important;}
 .pblctn_vdo_bg { background: #f2f2f2; border: 1px solid #ccc; padding: 0 !important; border-radius: 5px}
 .vdo_bg img, .vdo_bg iframe { margin: 0; width: 100%;	}
 .pblctn_vdo_bg img, .pblctn_vdo_bg iframe { width: 100%}
-iframe { border: 0;}
+iframe { border: 0; max-width:100%;}
 .pblctn_vdo_bg_fr_two { background: #f2f2f2; border: 1px solid #ccc; padding: 0 !important; border-radius: 5px; width: 49% !important; margin-left: 2%;}
 .pblctn_vdo_bg_fr_two img, .pblctn_vdo_bg_fr_two iframe { width: 100%}
 .pblctn_vdo_bg_fr_two:first-child { margin-left: 0}
@@ -584,6 +584,29 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 
 #breadcrumbs { margin:0 0 10px; line-height:1em; }
 .caption-image { max-width:65%; }
+
+/* ------------- Image and Video Styles -------------- */
+.wp-caption.alignnone, .wp-caption.aligncenter, .aligncenter, .alignnone {max-width:100% !important;}
+img.aligncenter, img.alignnone {max-height: 100% !important; width:auto; height:auto; }
+.alignleft { float: left; margin-right: 20px; margin-bottom: 20px; max-width:100%; }
+.alignright{ float: right; margin-left: 20px; margin-bottom: 20px; max-width:100%; }
+img.aligncenter { margin:0 auto; display:block; }
+hr { width: 100%;}
+.video-container {
+	position:relative;
+	padding-bottom:56.25%;
+	padding-top:30px;
+	height:0;
+	overflow:hidden;
+}
+
+.video-container iframe, .video-container object, .video-container embed {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+}
 
 @media (min-width: 1200px){
 	.container { width: 1140px !important;}

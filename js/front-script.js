@@ -65,6 +65,8 @@ jQuery( document ).ready(function() {
         }
     });
     
+    //Wrap youtube video with video container
+    jQuery("iframe[src*='youtube.com']").wrap("<div class='video-container'></div>");
     // Accordion Menu
     /*jQuery('.nav-menu li .sub-menu li a').hover(function(){
 	if(!jQuery(this).next().is(":visible"))
