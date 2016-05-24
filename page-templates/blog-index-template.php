@@ -27,7 +27,7 @@
             query_posts( array( 'posts_per_page' => 10, 'post_status' => 'publish', 'paged' => $paged ) );
 
             while( have_posts() ): the_post();
-                get_template_part( 'content', get_post_format() );
+                get_template_part( 'content', 'single' );
             endwhile;
 
             twentytwelve_content_nav( 'nav-below' );
