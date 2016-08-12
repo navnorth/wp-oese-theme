@@ -10,9 +10,9 @@
 get_header(); ?>
 
 	<div id="content" class="row site-content">
-		<div class="col-md-9 c ol-sm-12 col-xs-12 padding_left lft_sid_cntnr">
+		<div class="col-md-9 col-sm-12 col-xs-12 padding_left lft_sid_cntnr">
 			<?php while ( have_posts() ) : the_post(); ?>
-				
+
 				<?php get_template_part( 'content', 'single' ); ?>
 
 				<hr class="post_bottom_hr" />

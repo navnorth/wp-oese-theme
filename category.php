@@ -14,7 +14,7 @@
 get_header(); ?>
 
 	<div id="content" class="row site-content">
-		<div class="col-md-9 c ol-sm-12 col-xs-12 padding_left lft_sid_cntnr">
+		<div class="col-md-9 col-sm-12 col-xs-12 padding_left lft_sid_cntnr">
 
 			<?php if ( have_posts() ) : ?>
 				<header class="archive-header">
@@ -29,20 +29,20 @@ get_header(); ?>
 				<?php
 				/* Alter Query to display only posts */
 				global $wp_query;
-				
+
 				add_filter( 'posts_where' , 'related_posts_where' );
-				
+
 				$args = array_merge( $wp_query->query_vars, array('post_type' => 'page') );
 				query_posts($args);
-		
+
 				/* Start the Loop */
 				while ( have_posts() ) : the_post();
 					get_template_part( 'content', get_post_format() );
 
 				endwhile;
-				
+
 				twentytwelve_content_nav( 'nav-below' );
-				
+
 				// Reset Query
 				wp_reset_query();
 				?>

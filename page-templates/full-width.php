@@ -20,7 +20,7 @@ global $post;
 
 	<div id="content" class="row site-content" tabindex="-1">
 
-        	<div class="col-md-12 c ol-sm-12 col-xs-12 padding_left padding_right">
+        	<div class="col-md-12 col-sm-12 col-xs-12 padding_left padding_right">
 
                 <?php if ( function_exists('yoast_breadcrumb') ) { yoast_breadcrumb('<p id="breadcrumbs">','</p>'); }  ?>
 

@@ -10,7 +10,7 @@
 get_header(); ?>
 
 	<div id="content" class="row site-content">
-		<div class="col-md-9 c ol-sm-12 col-xs-12 padding_left lft_sid_cntnr">
+		<div class="col-md-9 col-sm-12 col-xs-12 padding_left lft_sid_cntnr">
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
@@ -18,8 +18,8 @@ get_header(); ?>
 			</header>
 
 			<?php while ( have_posts() ) : the_post(); ?>
-				
-				<?php 
+
+				<?php
 					//get_template_part( 'content', get_post_format() );
 				?>
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -29,7 +29,7 @@ get_header(); ?>
                     </div>
                     <?php endif; ?>
                     <header class="entry-header">
-                        
+
                         <?php if ( is_single() ) : ?>
                         <h2 class="entry-title"><?php the_title(); ?></h1>
                         <?php else : ?>
@@ -37,9 +37,9 @@ get_header(); ?>
                             <a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
                         </h2>
                         <?php endif; // is_single() ?>
-                        
+
                     </header><!-- .entry-header -->
-            
+
                     <?php if ( is_search() ) : // Only display Excerpts for Search ?>
                     <div class="entry-summary">
                         <?php the_excerpt(); ?>
@@ -50,7 +50,7 @@ get_header(); ?>
                         <?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'twentytwelve' ), 'after' => '</div>' ) ); ?>
                     </div><!-- .entry-content -->
                     <?php endif; ?>
-            
+
                 </article><!-- #post -->
 
 			<?php endwhile; ?>
@@ -75,7 +75,7 @@ get_header(); ?>
 			global $wp_query;
 
 			$big = 999999999; // need an unlikely integer
-			
+
 			echo paginate_links( array(
 				'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
 				'format' => '?paged=%#%',
@@ -88,5 +88,5 @@ get_header(); ?>
 		   <?php get_sidebar(); ?>
 	       </div>
 	</div><!-- .row -->
-	
+
 <?php get_footer(); ?>
