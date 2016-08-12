@@ -783,7 +783,7 @@ hr { width: 100%;}
 	.share_links_header { clear:both !important; margin: 5px 5px; }
 
 	#home_content .wp-caption { width:551px !important; }
-	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:549px !important; }
+	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:100% !important; height: auto; }
         .caption-image { max-width:55%; }
 	.navi_bg:hover { background:none; }
 	.navi_bg { border-top:none;margin-top: -10px; margin-right: -10px; }
@@ -796,7 +796,7 @@ hr { width: 100%;}
 	  position: absolute;
 	  left: 25%;
 	}
-	
+
 }
 @media (max-width: 500px){
 	.tlkt_stp_vdo_cntnr .pblctn_vdo_bg, .tlkt_stp_vdo_cntnr .pblctn_vdo_bg:first-child {width: 100% !important;}
@@ -810,7 +810,7 @@ hr { width: 100%;}
 	.ftr_logo { margin: 10px 0}
 
 	#home_content .wp-caption { width:451px !important; }
-	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:449px !important; }
+	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:100% !important; height: auto; }
         .caption-image { max-width:50%; }
 	.navi_icn { width:16%; float:right;margin-top:-35px; }
 	.navi_bg { border-top:none;margin-top: -10px; margin-right: -10px; }
@@ -867,7 +867,7 @@ hr { width: 100%;}
         .slideshow_container_style-dark .slideshow_description_box div.slideshow_description { background: rgba(0,0,0,0.9); padding-left:0; }
         /* End of Slideshow Dark Version */
 	#home_content .wp-caption { width:291px !important; }
-	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:289px !important; }
+	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:100% !important; height: auto; }
 	.slideshow_view > .slideshow_slide_image > a > img, .slideshow_view > .slideshow_slide_image > img { height:100% !important; }
 	.soclize { width:35% !important; position:absolute; }
 	.form-group.gray_bg {
