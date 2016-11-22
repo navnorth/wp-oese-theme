@@ -611,7 +611,7 @@ hr { width: 100%;}
 /* ------------- SEED data table -------------- */
 #resourceList tr:first-child td, #resourceList tr:first-child td a { color:#000; }
 #resourceList tbody tr:first-child { background: #fff; }
-
+#resourceList tr th { padding-right:30px; }
 .starter-template {
   padding: 40px 15px;
   text-align: center;
@@ -656,13 +656,23 @@ a.text-purple {
     padding: 6px 0;
     text-overflow: ellipsis; overflow: hidden; white-space: nowrap;
 }
-#resourceFilters .panel-title>a.collapsed { background: url(../images/pls_mns_img.png) 190px -5px no-repeat }
+#resourceFilters .panel-title>a.collapsed { background: url(../images/pls_mns_img.png) 190px -3px no-repeat; padding-right:20px; }
 
 
 #resourceFilters .panel-heading {
     padding: 15px 15px !important;
     background-color: #ddd !important;
+    overflow:hidden; 
 }
+#detailModal .panel-heading {
+    padding: 10px 15px !important;
+    border-bottom: 1px solid #ddd;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+#detailModal .panel-heading { background-color:#f5f5f5 !important; }
+#accordion.panel-group, #accordion2.panel-group, #accordion3.panel-group { margin-top:0; }
+#detailModal .panel-heading p.text-success { margin:0; }
 /*
 .panel-group { float: left; margin: 30px 0 20px; width: 100%}
 .panel-default>.panel-heading { background: none !important;}
