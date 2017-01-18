@@ -391,6 +391,8 @@ class oii_walker_nav_menu extends Walker_Nav_Menu {
 	public $db_fields = array( 'parent' => 'menu_item_parent', 'id' => 'db_id' );
 
 	public $count = 0;
+	
+	public $menu_items = array();
 	/**
 	 * Starts the list before the elements are added.
 	 *
@@ -451,6 +453,14 @@ class oii_walker_nav_menu extends Walker_Nav_Menu {
 		$classes = empty( $item->classes ) ? array() : (array) $item->classes;
 		$classes[] = 'menu-item-' . $item->ID;
 
+		if ($depth>0) {
+		    $this->menu_items[] = array(
+					'id' => $item->ID,
+					'depth' => $depth,
+					'title' => $item->title,
+					'parent' => $item->menu_item_parent
+					);
+		}
 		/**
 		 * Filter the CSS class(es) applied to a menu item's list item element.
 		 *
