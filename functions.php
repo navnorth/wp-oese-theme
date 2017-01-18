@@ -562,7 +562,6 @@ class oii_walker_nav_menu extends Walker_Nav_Menu {
 	 * @param array  $args   An array of arguments. @see wp_nav_menu()
 	 */
 	public function end_el( &$output, $item, $depth = 0, $args = array() ) {
-		var_dump($this->count);
 		$output .= "</li>\n";
 	}
 
