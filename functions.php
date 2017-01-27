@@ -392,6 +392,10 @@ class oii_walker_nav_menu extends Walker_Nav_Menu {
 
 	public $count = 0;
 	
+	public $level = 0;
+	
+	public $index = 0;
+	
 	public $menu_items = array();
 	/**
 	 * Starts the list before the elements are added.
@@ -405,6 +409,9 @@ class oii_walker_nav_menu extends Walker_Nav_Menu {
 	 * @param array  $args   An array of arguments. @see wp_nav_menu()
 	 */
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
+		$this->level = $depth;
+		var_dump($this->index);
+		var_dump($this->menu_items[$this->index-1]);
 		$indent = str_repeat("\t", $depth);
 		$display_depth = ( $depth + 1); // because it counts the first submenu as 0
 		$classes = array(
@@ -449,18 +456,22 @@ class oii_walker_nav_menu extends Walker_Nav_Menu {
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 		if ($depth>0)
 		    $this->count++;
+		
+		$this->index++;
 		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 		$classes = empty( $item->classes ) ? array() : (array) $item->classes;
 		$classes[] = 'menu-item-' . $item->ID;
-
-		if ($depth>0) {
-		    $this->menu_items[] = array(
-					'id' => $item->ID,
-					'depth' => $depth,
-					'title' => $item->title,
-					'parent' => $item->menu_item_parent
-					);
-		}
+		//var_dump($depth);
+		//var_dump($item->title);
+		
+		$this->menu_items[] = array(
+				    'index' => $this->index,
+				    'id' => $item->ID,
+				    'depth' => $depth,
+				    'title' => $item->title,
+				    'parent' => $item->menu_item_parent
+				    );
+		
 		/**
 		 * Filter the CSS class(es) applied to a menu item's list item element.
 		 *
@@ -562,6 +573,7 @@ class oii_walker_nav_menu extends Walker_Nav_Menu {
 	 * @param array  $args   An array of arguments. @see wp_nav_menu()
 	 */
 	public function end_el( &$output, $item, $depth = 0, $args = array() ) {
+	    
 		$output .= "</li>\n";
 	}
 
