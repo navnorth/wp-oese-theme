@@ -410,8 +410,9 @@ class oii_walker_nav_menu extends Walker_Nav_Menu {
 	 */
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
 		$this->level = $depth;
+		
 		var_dump($this->index);
-		var_dump($this->menu_items[$this->index-1]);
+		var_dump($this->menu_items[$this->index-1]->ancestor);
 		$indent = str_repeat("\t", $depth);
 		$display_depth = ( $depth + 1); // because it counts the first submenu as 0
 		$classes = array(
@@ -454,6 +455,7 @@ class oii_walker_nav_menu extends Walker_Nav_Menu {
 	 * @param int    $id     Current item ID.
 	 */
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+		$ancestor = null;
 		if ($depth>0)
 		    $this->count++;
 		
@@ -462,14 +464,19 @@ class oii_walker_nav_menu extends Walker_Nav_Menu {
 		$classes = empty( $item->classes ) ? array() : (array) $item->classes;
 		$classes[] = 'menu-item-' . $item->ID;
 		//var_dump($depth);
-		//var_dump($item->title);
+		//var_dump($item);
 		
-		$this->menu_items[] = array(
+		if  ($item->menu_item_parent==0 && in_array('menu-item-has-children', $item->classes))
+		    $ancestor = $item->ID;
+		
+		$this->menu_items[] = (object)array(
 				    'index' => $this->index,
 				    'id' => $item->ID,
 				    'depth' => $depth,
 				    'title' => $item->title,
-				    'parent' => $item->menu_item_parent
+				    'parent' => $item->menu_item_parent,
+				    'haschildren' => in_array('menu-item-has-children',$item->classes),
+				    'ancestor' => $ancestor
 				    );
 		
 		/**
