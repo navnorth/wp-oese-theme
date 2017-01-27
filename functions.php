@@ -411,8 +411,8 @@ class oii_walker_nav_menu extends Walker_Nav_Menu {
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
 		$this->level = $depth;
 		
-		var_dump($this->index);
-		var_dump($this->menu_items[$this->index-1]->ancestor);
+		//var_dump($this->index);
+		//var_dump($this->menu_items[$this->index-1]->ancestor);
 		$indent = str_repeat("\t", $depth);
 		$display_depth = ( $depth + 1); // because it counts the first submenu as 0
 		$classes = array(
