@@ -396,7 +396,17 @@ class oii_walker_nav_menu extends Walker_Nav_Menu {
 	
 	public $index = 0;
 	
+	public $items = array();
+	
 	public $menu_items = array();
+	
+	public $mega_menu_items = array();
+	
+	public $mega_menu_item_count = 0;
+	
+	public function __construct($menuitems){
+	    $this->items = $menuitems;
+	}
 	/**
 	 * Starts the list before the elements are added.
 	 *
@@ -411,16 +421,17 @@ class oii_walker_nav_menu extends Walker_Nav_Menu {
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
 		$this->level = $depth;
 		
-		//var_dump($this->index);
-		//var_dump($this->menu_items[$this->index-1]->ancestor);
 		$indent = str_repeat("\t", $depth);
 		$display_depth = ( $depth + 1); // because it counts the first submenu as 0
 		$classes = array(
 		    'sub-menu',
-		    ( $display_depth % 2  ? 'menu-odd' : 'menu-even' ),
-		    ( $display_depth >=2 ? 'sub-sub-menu' : '' ),
 		    'menu-depth-' . $display_depth
 		    );
+		if ($this->menu_items[$this->index-1]->ancestor) {
+		    $classes[] = 'mega-menu';
+		    $this->mega_menu_items = $this->get_nav_menu_item_children($this->menu_items[$this->index-1]->ancestor, $this->items);
+		    $this->mega_menu_item_count = count($this->mega_menu_items); 
+		}
 		$class_names = implode( ' ', $classes );
 		$output .= "\n$indent<ul class=\"$class_names\">\n";
 	}
@@ -463,8 +474,6 @@ class oii_walker_nav_menu extends Walker_Nav_Menu {
 		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 		$classes = empty( $item->classes ) ? array() : (array) $item->classes;
 		$classes[] = 'menu-item-' . $item->ID;
-		//var_dump($depth);
-		//var_dump($item);
 		
 		if  ($item->menu_item_parent==0 && in_array('menu-item-has-children', $item->classes))
 		    $ancestor = $item->ID;
@@ -598,7 +607,7 @@ class oii_walker_nav_menu extends Walker_Nav_Menu {
 		if ( $nav_menu_item->menu_item_parent == $parent_id ) {
 		    $nav_menu_item_list[] = $nav_menu_item;
 		if ( $depth ) {
-		    if ( $children = get_nav_menu_item_children( $nav_menu_item->ID, $nav_menu_items ) )
+		    if ( $children = $this->get_nav_menu_item_children( $nav_menu_item->ID, $nav_menu_items ) )
 			$nav_menu_item_list = array_merge( $nav_menu_item_list, $children );
 		    }
 		}

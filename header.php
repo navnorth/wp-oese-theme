@@ -112,7 +112,13 @@
 
         <div class="row navi_bg">
         	<div class="main-menu">
-			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu', 'walker' => new oii_walker_nav_menu ) ); ?>
+			<?php
+			$menu_name = "primary";
+			$locations = get_nav_menu_locations();
+			$menu = wp_get_nav_menu_object( $locations["$menu_name"] );
+			$menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) );
+			wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu', 'walker' => new oii_walker_nav_menu($menuitems) ) );
+			?>
             </div>
 
             <span class="navi_icn fa-stack"><i class="fa fa-bars fa-stack-2x"></i></span>
