@@ -396,14 +396,25 @@ class oii_walker_nav_menu extends Walker_Nav_Menu {
 	
 	public $index = 0;
 	
+	public $mega_menu_item_count = 0;
+	
+	public $left = false;
+	
+	public $separator = false;
+	
+	public $mega_index = 0;
+	
+	public $mega_menu_id;
+	
 	public $items = array();
 	
 	public $menu_items = array();
 	
 	public $mega_menu_items = array();
 	
-	public $mega_menu_item_count = 0;
+	public $mega_menu_ids = array();
 	
+	//Pass menu items from wp_nav_menu 
 	public function __construct($menuitems){
 	    $this->items = $menuitems;
 	}
@@ -427,10 +438,18 @@ class oii_walker_nav_menu extends Walker_Nav_Menu {
 		    'sub-menu',
 		    'menu-depth-' . $display_depth
 		    );
+		
+		
 		if ($this->menu_items[$this->index-1]->ancestor) {
-		    $classes[] = 'mega-menu';
+		    $this->left = true;
+		    $this->mega_menu_id = $this->menu_items[$this->index-1]->ancestor;
+		    $classes[] = 'mega-menu-left';
 		    $this->mega_menu_items = $this->get_nav_menu_item_children($this->menu_items[$this->index-1]->ancestor, $this->items);
-		    $this->mega_menu_item_count = count($this->mega_menu_items); 
+		    
+		    foreach($this->mega_menu_items as $mega_menu_item) {
+			$this->mega_menu_ids[] = $mega_menu_item->ID;
+		    }
+		    $this->mega_menu_item_count = count($this->mega_menu_items);
 		}
 		$class_names = implode( ' ', $classes );
 		$output .= "\n$indent<ul class=\"$class_names\">\n";
@@ -467,6 +486,9 @@ class oii_walker_nav_menu extends Walker_Nav_Menu {
 	 */
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 		$ancestor = null;
+		$grandparent = null;
+		$mega_index = -1;
+		
 		if ($depth>0)
 		    $this->count++;
 		
@@ -477,15 +499,23 @@ class oii_walker_nav_menu extends Walker_Nav_Menu {
 		
 		if  ($item->menu_item_parent==0 && in_array('menu-item-has-children', $item->classes))
 		    $ancestor = $item->ID;
+		    
+		if (in_array($item->ID,$this->mega_menu_ids)){
+		    $grandparent = $this->mega_menu_id;
+		    $this->mega_index++;
+		    $mega_index = $this->mega_index;
+		}
 		
 		$this->menu_items[] = (object)array(
 				    'index' => $this->index,
+				    'mega_index' => $this->mega_index,
 				    'id' => $item->ID,
 				    'depth' => $depth,
 				    'title' => $item->title,
 				    'parent' => $item->menu_item_parent,
 				    'haschildren' => in_array('menu-item-has-children',$item->classes),
-				    'ancestor' => $ancestor
+				    'ancestor' => $ancestor,
+				    'grandparent' => $grandparent
 				    );
 		
 		/**
@@ -591,6 +621,15 @@ class oii_walker_nav_menu extends Walker_Nav_Menu {
 	public function end_el( &$output, $item, $depth = 0, $args = array() ) {
 	    
 		$output .= "</li>\n";
+		if(($this->mega_index>=$this->mega_menu_item_count/2) && $this->menu_items[$this->index-1]->parent==$this->mega_menu_id){
+		    $this->separator = true;
+		}
+		if ($this->separator && $this->left) {
+		    $this->left = false;
+		    $output .= "</ul><!-- End of Left Menu -->";
+		    $output .= "<ul class='mega-menu-right'>";
+		    $this->separator = false;
+		}
 	}
 	
 	/**
