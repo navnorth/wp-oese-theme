@@ -258,7 +258,7 @@ ul .tour_dates { list-style: none; }
 .main-menu {  background: #00529f; width: 100%; float: left }
 .main-menu li { position: relative}
 .sub-menu { background: #00529f; float: left; left: 0; width: 250px; position: absolute; z-index: 999; display: none; top: 39px; border-top: 1px solid #fff }
-.sub-menu li { display: block; width: 100%; padding-left: 20px; border-top: 1px solid #ccc;}
+.sub-menu li { display: block; width: 100%; padding-left: 15px; border-top: 1px solid #ccc;}
 .sub-menu li:first-child { border-top:none;}
 .sub-menu li a { font-size: 14px; padding: 8px 0 !important; width: 100%}
 .main-menu li:hover .sub-menu { display: block}
@@ -276,7 +276,7 @@ ul .tour_dates { list-style: none; }
 .responsiv-menu .sub-menu li a { padding: 8px 40px !important; }
 
 .main-menu .sub-menu li, .responsiv-menu .sub-menu li { position: relative !important}
-.main-menu .sub-menu li:first-child { margin-top: 5px}
+/*.main-menu .sub-menu li:first-child { margin-top: 5px}*/
 .main-menu .sub-menu .sub-menu { left: 235px; top: -6px; display: none !important; border-left: 1px solid #fff}
 .main-menu .sub-menu li:hover .sub-menu { display: block !important; transition:opacity 1s linear; }
 
@@ -303,24 +303,27 @@ ul .tour_dates { list-style: none; }
 }
 .main-menu .sub-menu {
     width:1012px !important;
-    -webkit-column-count: 2;
+    /*-webkit-column-count: 2;
        -moz-column-count: 2;
-            column-count: 2;
+            column-count: 2;*/
 }
-.main-menu .sub-menu li { display:inline-block; }
+.oii-mega-menu { overflow:hidden; }
+.oii-mega-menu .oii-mega-menu-left { border-right:1px solid #fff; width:500px !important; }
+.oii-mega-menu .oii-mega-menu-right { width:500px !important; }
+/*.main-menu .sub-menu li { display:inline-block; }*/
 .main-menu .sub-menu li a:after { content:'';border:none !important; }
 .main-menu .sub-menu .sub-menu {
-    -webkit-column-count: 1;
+    /*-webkit-column-count: 1;
        -moz-column-count: 1;
-            column-count: 1;
+            column-count: 1;*/
             display: block !important;
 	    width:100% !important;
 }
 .main-menu .sub-menu li a { margin-left:0; padding-left:20px; font-size:16px; float:left; text-decoration:underline; }
 .nav-menu li .sub-menu .sub-menu li { padding-left:20px; background:#00529F; }
 .main-menu .sub-menu li a:after { content:'';border:none !important; }
-.main-menu .sub-menu li { width:500px !important; display:inline-block !important; border-right: 1px solid #fff; border-top:none !important; }
-.main-menu .sub-menu .menu-item-has-children li:first-child a { margin-top:-15px; }
+.main-menu .sub-menu li { /*width:500px !important;*/ display:inline-block !important; /*border-right: 1px solid #fff;*/ border-top:none !important; }
+/*.main-menu .sub-menu .menu-item-has-children li:first-child a { margin-top:-15px; }*/
 .main-menu .sub-menu .sub-menu li a { border-bottom:none !important; text-decoration:none !important; margin: -3px 0 -10px 0; }
 .main-menu .sub-menu li .sub-menu li a { font-size:13px !important; }
 .main-menu .sub-menu li a:hover, .main-menu .sub-menu li a:focus { color:#bcbcbc; }

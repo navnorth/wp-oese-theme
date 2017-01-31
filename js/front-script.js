@@ -67,6 +67,11 @@ jQuery( document ).ready(function() {
     
     //Wrap youtube video with video container
     jQuery("iframe[src*='youtube.com']").wrap("<div class='video-container'></div>");
+    
+    //Set the height of mega menu left to the height of the entire mega menu
+    if (jQuery(".oii-mega-menu-left").length) {
+	jQuery(".oii-mega-menu-left").height(jQuery(".oii-mega-menu").css('height'));
+    }
     // Accordion Menu
     /*jQuery('.nav-menu li .sub-menu li a').hover(function(){
 	if(!jQuery(this).next().is(":visible"))
