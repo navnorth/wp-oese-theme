@@ -48,7 +48,7 @@
         <div class="row hdr">
         	<div class="col-md-7 col-sm-8 col-xs-12">
             	<a href="<?php echo site_url();?>" Title="Home">
-                	<img src="<?php echo get_stylesheet_directory_uri();?>/images/logo.png" alt="Office of Innovation and Improvement"/>
+                    <img src="<?php echo get_stylesheet_directory_uri();?>/images/logo.svg" alt="Office of Innovation and Improvement" class="svg-replace" id="header_logo" />
                 </a>
             </div>
 
@@ -61,7 +61,7 @@
                         	<input type="text" class="form-control" id="inputSuccess2" placeholder="Search" name="s" />
                       		<a href="javascript:" onClick="jQuery(this).closest('form').submit()">
                                 <span class="form-control-feedback ">
-                              		<img src="<?php echo get_stylesheet_directory_uri();?>/images/search_icn.png" alt="Search"/>
+                              		<img src="<?php echo get_stylesheet_directory_uri();?>/images/search_icn.png" alt="Search" width="645" height="136" />
                                 </span>
                             </a>
                         </form>

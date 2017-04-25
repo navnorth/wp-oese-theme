@@ -64,10 +64,10 @@ jQuery( document ).ready(function() {
             jQuery(this).addClass( 'external_link' );
         }
     });
-    
+
     //Wrap youtube video with video container
     jQuery("iframe[src*='youtube.com']").wrap("<div class='video-container'></div>");
-    
+
     //Set the height of mega menu left to the height of the entire mega menu
     if (jQuery(".oii-mega-menu-left").length) {
 	jQuery(".oii-mega-menu-left").height(jQuery(".oii-mega-menu").css('height'));
@@ -79,4 +79,14 @@ jQuery( document ).ready(function() {
 		jQuery(this).next().slideDown("slow");
 	}
     });*/
+
+    // Replace SVGs with PNG on unsupported browsers
+    if (!Modernizr.svg) {
+        jQuery('img.svg-replace[src*="svg"]').attr('src', function() {
+            return jQuery(this).attr('src').replace('.svg', '.png');
+        });
+        //jQuery('*[class=".slideshow_container_style-light .slideshow_pagination ul li"]').css('background', 'url(../images/slider_pager.png) 0 0 no-repeat !important;');
+        console.log('Replaced SVG images with PNG');
+    }
+
 });
