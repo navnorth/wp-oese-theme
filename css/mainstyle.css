@@ -181,7 +181,7 @@ iframe { border: 0; max-width:100%;}
 .story_scl_icns { margin-bottom: 18px; }
 
 /* news category listing page */
-.entry-header h1.entry-title { font-size:24px;}
+.entry-header h1.entry-title { font-size:24px; margin-bottom: 20px; line-height: 1.25em; }
 /* .btn_readmore { clear:both; display:block; padding: 5px 8px; margin: 15px 8px; background: #1f5c99; }
 #content .btn_readmore {clear:both;float:right; margin-top:10px;} */
 .entry-meta { clear:both; text-align: right; padding-top:10px;}
