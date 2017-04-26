@@ -402,7 +402,7 @@ ul .tour_dates { list-style: none; }
 
 /*---------------- Default Page -----------------*/
 
-h1 { font-family: 'Raleway-Semibold' !important; font-size:36px !important; line-height:40px; color:#294179 !important; }
+h1 { font-family: 'Raleway-Semibold' !important; font-size: 36px; line-height:40px !important; color:#294179 !important; }
 h2 { font-family: 'Raleway-Semibold' !important; font-size: 30px !important; line-height:33px; color:#4b4e53; }
 h3 { font-family: 'Raleway-Semibold' !important; font-size: 24px !important; color: #294179 !important; line-height:26px; }
 h4 { font-family: 'Raleway-Light' !important; font-size: 18px !important; line-height:20px; color:#4b4e53; }
