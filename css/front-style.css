@@ -190,3 +190,4 @@ ul.program_toc, .cntnbx_cntnr ul {
    list-style-type: none;
    margin: 4px 0 8px 1px;
 }
+.wp-caption p.wp-caption-text { margin:20px; }
