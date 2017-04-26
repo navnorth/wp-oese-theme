@@ -408,7 +408,7 @@ h3 { font-family: 'Raleway-Semibold' !important; font-size: 24px !important; col
 h4 { font-family: 'Raleway-Light' !important; font-size: 18px !important; line-height:20px; color:#4b4e53; }
 h5 { font-family: 'CharisSILR' !important; font-weight:500; font-size:14px !important; line-height:15px; color:#4b4e53; }
 h6 { font-family: 'CharisSILR' !important; font-weight:500; font-size:12px !important; line-height:13px; color:#4b4e53; }
-/*h1,h2,h4 { color: #2d8700 !important }*/
+h1,h2,h4 { color: #2d8700 !important }
 p { font-weight:normal; color:#4b4e53; }
 a { font-family: 'CharisSILR'; font-size:14px; color:#294179; }
 .custom-button {
