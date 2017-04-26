@@ -99,7 +99,7 @@ hr { width: 100%}
     position:absolute;
     left:0px;
     top:0px;
-    background:#00529f;
+    background:#294179;
     outline:0;
     -webkit-transition: top .1s ease-in, background .5s linear;
         transition: top .1s ease-in, background .5s linear;
@@ -138,7 +138,7 @@ hr { width: 100%}
     margin-bottom:8px;
 }
 .widget_recent_entries a, .related-posts a {
-    color: #00529f;
+    color: #294179;
     font-family:'Raleway-SemiBold';
 }
 .widget_recent_entries .post-date::before,

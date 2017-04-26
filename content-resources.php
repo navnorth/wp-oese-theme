@@ -12,7 +12,7 @@ else {
 ?>
 <div class="right_sid_mtr program_toc_box" id="toc">
 	<?php if ($withChild): ?>
-	<div class="col-md-12 col-sm-6 col-xs-6" style="border: 3px solid #00529f;margin-bottom:10px;">
+	<div class="col-md-12 col-sm-6 col-xs-6" style="border: 3px solid #294179;margin-bottom:10px;">
 		<div class="pblctn_box">
 			<span class="socl_icns fa-stack"><i class="fa fa-link"></i></span>
 		</div>
