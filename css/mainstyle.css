@@ -410,7 +410,7 @@ h5 { font-family: 'CharisSILR' !important; font-weight:500; font-size:14px !impo
 h6 { font-family: 'CharisSILR' !important; font-weight:500; font-size:12px !important; line-height:13px; color:#4b4e53; }
 /*h1,h2,h4 { color: #2d8700 !important }*/
 p { font-weight:normal; color:#4b4e53; }
-a { font-family: 'CharisSILR' !important; font-size:14px; color:#294179 !important; }
+a { font-family: 'CharisSILR' !important; font-size:14px; color:#294179; }
 .custom-button {
     background-color: #e57200;
     color: #fff;
