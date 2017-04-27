@@ -752,6 +752,8 @@ a.text-purple {
 
 @media (max-width: 800px){
   .slideshow_container, .slideshow_container .slideshow_content { height: 380px !important}
+  .main-menu { display:none; }
+  .navi_icn { display:block !important; }
 }
 
 @media (max-width: 768px){
@@ -878,7 +880,7 @@ a.text-purple {
         .slideshow_container_style-dark .slideshow_pagination .slideshow_pagination_center { float:none; }
         /* End of Slideshow Dark Version */
         .slideshow_container .slideshow_pagination .slideshow_pagination_center { bottom:0; }
-        .slideshow_container, .slideshow_container .slideshow_content { height:180px !important; }
+        .slideshow_container, .slideshow_container .slideshow_content { height:275px !important; }
         .slideshow_container .slideshow_pagination { bottom:10px !important; }
 	.share_links_header { clear:both !important; margin: 5px 5px; }
 
@@ -896,7 +898,9 @@ a.text-purple {
 	  position: absolute;
 	  left: 25%;
 	}
-
+}
+@media (max-width: 500px){
+  .slideshow_container, .slideshow_container .slideshow_content { height:250px !important; }
 }
 @media (max-width: 500px){
 	.tlkt_stp_vdo_cntnr .pblctn_vdo_bg, .tlkt_stp_vdo_cntnr .pblctn_vdo_bg:first-child {width: 100% !important;}
@@ -928,7 +932,7 @@ a.text-purple {
 	.rght_sid_mtr>.hdng_mtr, .hdng_mtr a { margin-top: 0;  }
 	.rght_sid_mtr .rght_sid_mtr .btn_dwnld { margin: 0 2% 5px 0}
 	/*.slideshow_container { display: none !important}*/
-        .slideshow_container, .slideshow_container .slideshow_content, .slideshow_container .slideshow_view, .slideshow_container .slideshow_view .slideshow_slide { height:185px !important; }
+        .slideshow_container, .slideshow_container .slideshow_content, .slideshow_container .slideshow_view, .slideshow_container .slideshow_view .slideshow_slide { height:185px !important; width:100% !important; }
         .slideshow_container_style-light .slideshow_view > .slideshow_slide_image > a > img { height:175px !important; }
         .slideshow_container_style-light .slideshow_description_box div.slideshow_description,
         .slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box{ width: auto !important; top: 0; left: 0; bottom: 0 !important; right: 0; background: rgba(255, 255, 255, 0.7) !important; padding: 0;
