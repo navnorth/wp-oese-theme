@@ -104,6 +104,7 @@ hr { width: 100%}
     -webkit-transition: top .1s ease-in, background .5s linear;
         transition: top .1s ease-in, background .5s linear;
 }
+#content { outline:none; }
 #content div, #home_content div { outline: 0; }
 
 /* external links */
