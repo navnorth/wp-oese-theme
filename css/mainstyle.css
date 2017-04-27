@@ -899,7 +899,7 @@ a.text-purple {
 	  left: 25%;
 	}
 }
-@media (max-width: 500px){
+@media (max-width: 550px){
   .slideshow_container, .slideshow_container .slideshow_content { height:250px !important; }
 }
 @media (max-width: 500px){
@@ -925,6 +925,9 @@ a.text-purple {
 	  position: absolute;
 	  left: 25%;
 	}
+}
+@media (max-width: 480px){
+  .slideshow_container, .slideshow_container .slideshow_content { height:200px !important; }
 }
 @media (max-width: 400px){
 
