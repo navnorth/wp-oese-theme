@@ -358,7 +358,7 @@ ul .tour_dates { list-style: none; }
 .overflow { overflow: hidden}
 .ssba img:hover { opacity: .8; transition: opacity .3s; -webkit-transition: opacity .3s; -moz-transition: opacity .3s}
 /*.share_links_header { float:right; margin: -45px 0 0px 10px; padding: 0px; }*/
-.share_links_header { float:none; margin: -15px 0 0 -5px; padding: 0px; }
+.share_links_header { float:none; /*margin: -15px 0 0 -5px;*/ margin:0; padding: 0px; }
 
 /*---------------- Slider -----------------*/
 .slideshow_slide.slideshow_slide_image img { float: right !important; width: 48% !important;}
