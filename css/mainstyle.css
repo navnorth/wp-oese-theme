@@ -902,7 +902,7 @@ a.text-purple {
 	}
 }
 @media (max-width: 550px){
-  .slideshow_container, .slideshow_container .slideshow_content { height:250px !important; }
+  .slideshow_container, .slideshow_container .slideshow_content { height:235px !important; }
 }
 @media (max-width: 500px){
 	.tlkt_stp_vdo_cntnr .pblctn_vdo_bg, .tlkt_stp_vdo_cntnr .pblctn_vdo_bg:first-child {width: 100% !important;}
