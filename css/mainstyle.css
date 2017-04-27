@@ -272,7 +272,7 @@ ul .tour_dates { list-style: none; }
 .responsiv-menu li { border-bottom: 1px solid #054480; border-top: 1px solid #095AA6;}
 .responsiv-menu li:first-child { border-top: none}
 
-.responsiv-menu .sub-menu { background: #014A8E; display: block; top: 0; border-top: none; position: relative; width: 100%; left: 0}
+.responsiv-menu .sub-menu { background: #294179; display: block; top: 0; border-top: none; position: relative; width: 100%; left: 0}
 .responsiv-menu .sub-menu li { border-bottom: none; border-top: none; position: relative !important}
 .responsiv-menu .sub-menu li a { padding: 8px 40px !important; }
 
@@ -796,6 +796,7 @@ a.text-purple {
 	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:733px !important; }
         .slideshow_container_style-light .slideshow_pagination { bottom:10px !important; }
         .caption-image { max-width:60%; }
+	.main-menu { display:none; }
 }
 @media (max-width: 750px){
 	.hdr .col-xs-offset-2  {margin-left: 16.66666667% !important;}
