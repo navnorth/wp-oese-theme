@@ -267,12 +267,14 @@ ul .tour_dates { list-style: none; }
 .main-menu li.menu-item-has-children > a { margin-right: 8px; }
 .main-menu li.menu-item-has-children > a:after { width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #ffffff; content: ""; position: absolute; top: 16px; right: 13px; }
 
-.responsiv-menu { display: none; background: #294179; float: left; border-top: 1px solid #00407C}
+.responsiv-menu { display: none; background: #294179; float: left; border-top: 1px solid #00407C; width:100%; }
 .responsiv-menu li, .responsiv-menu li a { width: 100% }
 .responsiv-menu li { border-bottom: 1px solid #054480; border-top: 1px solid #095AA6;}
 .responsiv-menu li:first-child { border-top: none}
 
-.responsiv-menu .sub-menu { background: #294179; display: block; top: 0; border-top: none; position: relative; width: 100%; left: 0}
+.responsiv-menu li.menu-item-has-children > a { position:relative; }
+.responsiv-menu li.menu-item-has-children .mobile-parent-menu { position:absolute; text-align:right; right:2.5%; z-index:999; }
+.responsiv-menu .sub-menu { background: #294179; display: none; top: 0; border-top: none; position: relative; width: 100%; left: 0}
 .responsiv-menu .sub-menu li { border-bottom: none; border-top: none; position: relative !important}
 .responsiv-menu .sub-menu li a { padding: 8px 40px !important; }
 
