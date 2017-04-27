@@ -58,18 +58,18 @@ jQuery( document ).ready(function() {
 	
 	/** Mobile Menu **/
 	if (jQuery('.responsiv-menu').length>0) {
-	    jQuery('.responsiv-menu .responsiv-menu_ul > li.menu-item-has-children > a').append('<i class="fa fa-sort-asc mobile-parent-menu" aria-hidden="true"></i>');
-	    jQuery('.responsiv-menu .responsiv-menu_ul > li.menu-item-has-children > a > .mobile-parent-menu').on('click' , function(){
-	     if (jQuery(this).parent().parent().has('.sub-menu').length==0) {
+	    jQuery('.responsiv-menu .responsiv-menu_ul > li.menu-item-has-children > a').after('<i class="fa fa-sort-asc mobile-parent-menu" aria-hidden="true"></i>');
+	    jQuery('.responsiv-menu .responsiv-menu_ul > li.menu-item-has-children > .mobile-parent-menu').on('click' , function(){
+	     if (jQuery(this).parent().has('.sub-menu').length==0) {
 		jQuery('.sub-menu').hide();
 	     } else {
-		jQuery(this).parent().parent().find('.sub-menu').toggle();
-		if (jQuery('.responsiv-menu .responsiv-menu_ul > li.menu-item-has-children > a > .mobile-parent-menu').hasClass('fa-sort-asc')){
-		    jQuery('.responsiv-menu .responsiv-menu_ul > li.menu-item-has-children > a > .mobile-parent-menu').removeClass('fa-sort-asc')
-		    jQuery('.responsiv-menu .responsiv-menu_ul > li.menu-item-has-children > a > .mobile-parent-menu').addClass('fa-sort-desc')
+		jQuery(this).parent().find('.sub-menu').toggle();
+		if (jQuery('.responsiv-menu .responsiv-menu_ul > li.menu-item-has-children > .mobile-parent-menu').hasClass('fa-sort-asc')){
+		    jQuery('.responsiv-menu .responsiv-menu_ul > li.menu-item-has-children > .mobile-parent-menu').removeClass('fa-sort-asc')
+		    jQuery('.responsiv-menu .responsiv-menu_ul > li.menu-item-has-children > .mobile-parent-menu').addClass('fa-sort-desc')
 		} else {
-		    jQuery('.responsiv-menu .responsiv-menu_ul > li.menu-item-has-children > a > .mobile-parent-menu').removeClass('fa-sort-desc')
-		    jQuery('.responsiv-menu .responsiv-menu_ul > li.menu-item-has-children > a > .mobile-parent-menu').addClass('fa-sort-asc')
+		    jQuery('.responsiv-menu .responsiv-menu_ul > li.menu-item-has-children > .mobile-parent-menu').removeClass('fa-sort-desc')
+		    jQuery('.responsiv-menu .responsiv-menu_ul > li.menu-item-has-children > .mobile-parent-menu').addClass('fa-sort-asc')
 		}
 	     }
 	});
