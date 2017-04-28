@@ -423,6 +423,7 @@ h6 { font-family: 'CharisSILR' !important; font-weight:500; font-size:12px !impo
 h1,h2,h4 { color: #2d8700 !important }
 p { font-weight:normal; color:#4b4e53; }
 a { font-family: 'CharisSILR'; color:#294179; }
+h3 a { font-family: 'Raleway-Semibold'; }
 .custom-button {
     background-color: #e57200;
     color: #fff;

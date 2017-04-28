@@ -31,11 +31,11 @@ get_header(); ?>
                     <header class="entry-header">
 
                         <?php if ( is_single() ) : ?>
-                        <h2 class="entry-title"><?php the_title(); ?></h1>
+                        <h2 class="entry-title"><?php the_title(); ?></h2>
                         <?php else : ?>
-                        <h2 class="entry-title">
+                        <h3 class="entry-title">
                             <a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
-                        </h2>
+                        </h3>
                         <?php endif; // is_single() ?>
 
                     </header><!-- .entry-header -->
