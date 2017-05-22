@@ -1,10 +1,13 @@
 <?php
-require_once('../../../../wp-load.php');
+/** Load WordPress Bootstrap */
+$parse_uri = explode( 'wp-content', $_SERVER['SCRIPT_FILENAME'] );
+require_once( $parse_uri[0] . 'wp-load.php' );
+
 extract($_REQUEST);
 if($action == "show_popup")
 {
 	$return = '';
-	$return .= '<div id="oet-shortcode-form"><div id="oet-table" class="form-table" style="margin-top: 10px;">
+	$return .= '<div id="oet-shortcode-form"><div id="oet-table" class="form-table">
 					<div class="oet_sngltinyrow">
 						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="accordian">
 							<div class="oert_snglimgtiny">
@@ -22,12 +25,12 @@ if($action == "show_popup")
 								Disruptive Content
 							</div>
 						</div>
-						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="featured_area">
-							<div class="oert_snglimgtiny">
-								<img src="'.get_stylesheet_directory_uri().'/tinymce_button/images/featured_area.png">
+						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="button">
+							<div class="oert_snglimgtiny" style="height:90px; vertical-align:middle;">
+								<button class="btn custom-button" style="margin-top:40px;">button</button>
 							</div>
 							<div class="oert_snglttltiny">
-								Featured Area
+								Button
 							</div>
 						</div>
 						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="featured_content">
@@ -92,10 +95,53 @@ if($action == "show_popup")
 								Featured Content Box
 							</div>
 						</div>
+						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="bsgrid">
+							<div class="oert_snglimgtiny">
+								<div class="oet_bs_row"></div>
+								<div class="oet_bs_row2"><div class="oet_bs_col"></div><div class="oet_bs_col"></div><div class="oet_bs_col"></div></div>
+							</div>
+							<div class="oert_snglttltiny">
+								Bootstrap Grid
+							</div>
+						</div>
+						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="spacer">
+							<div class="oert_snglimgtiny" style="height:60px; vertical-align:middle;">
+								<hr style="margin-top:35px;" />
+							</div>
+							<div class="oert_snglttltiny">
+								Spacer
+							</div>
+						</div>
 					</div>
-		</div>
-		<div class="submit">
-			<input type="button" id="oet-tinymce-submit" onclick="placeoetshortcode();" class="button-primary" value="Insert Shortcode" name="submit" />
+					<div class="oet_sngltinyrow">
+						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="callout_box">
+							<div class="oert_snglimgtiny">
+								<img src="'.get_stylesheet_directory_uri().'/tinymce_button/images/callout-box.png">
+							</div>
+							<div class="oert_snglttltiny">
+								Callout Box
+							</div>
+						</div>
+						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="publication_intro">
+							<div class="oert_snglimgtiny">
+								<img src="'.get_stylesheet_directory_uri().'/tinymce_button/images/pubintro.png">
+							</div>
+							<div class="oert_snglttltiny">
+								Publication Intro
+							</div>
+						</div>
+						<!--<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="oet_story">
+							<div class="oert_snglimgtiny">
+								<img src="'.get_stylesheet_directory_uri().'/tinymce_button/images/featured_area.png">
+							</div>
+							<div class="oert_snglttltiny">
+								Story Embed
+							</div>
+						</div>-->
+						<div class="submit">
+							<input type="button" id="oet-tinymce-submit" onclick="placeoetshortcode();" class="button-primary" value="Insert Shortcode" name="submit" />
+						</div>
+					</div>
 		</div>
 		</div>
 		<script type="text/javascript">
@@ -129,19 +175,19 @@ if($action == "show_popup")
 				switch (shortcode_type)
 				{
 				   case "accordian":
-					   var shortcode = "[oet_accordion_group][oet_accordion title=\'\' accordion_series=\'one\' expanded=\'\'] your content goes here [/oet_accordion][oet_accordion title=\'\' accordion_series=\'two\' expanded=\'\'] your content goes here [/oet_accordion][oet_accordion title=\'\' accordion_series=\'three\' expanded=\'\'] your content goes here [/oet_accordion][/oet_accordion_group]";
+					   var shortcode = "[oet_accordion_group id=\'accordion1\'][oet_accordion title=\'\' accordion_series=\'one\' expanded=\'\' group_id=\'accordion1\'] your content goes here [/oet_accordion][oet_accordion title=\'\' accordion_series=\'two\' expanded=\'\' group_id=\'accordion1\'] your content goes here [/oet_accordion][oet_accordion title=\'\' accordion_series=\'three\' expanded=\'\' group_id=\'accordion\'] your content goes here [/oet_accordion][/oet_accordion_group]";
 					   break;
 				   case "banner":
 					   var shortcode = "[disruptive_content title=\'\' main_text=\'\' button_text=\'\' button_color=\'\' button_url=\'\']";
 					   break;
-				   case "featured_area":
-					   var shortcode = "[oet_featured_area heading=\'\' image=\'\' title=\'\']your content goes here[/oet_featured_area]";
+				   case "button":
+					   var shortcode = "[oet_button text=\'\' button_color=\'\' text_color=\'\' font_face=\'\' font_size=\'\' font_weight=\'\' url=\'\' new_window=\'yes/no\']";
 					   break;
 				   case "featured_content":
 					   var shortcode = "[featured_item heading=\'\' url=\'\' image=\'\' title=\'\' date=\'\' button=\'\' button_text=\'\' sharing=\'\']your content goes here[/featured_item]";
 					   break;
 				   case "featured_video":
-					   var shortcode = "[featured_video heading=\'\' src=\'\' description=\'\' height=\'\']";
+					   var shortcode = "[featured_video heading=\'\' videoid=\'\' description=\'\' height=\'\']";
 					   break;
 				   case "left_column":
 					   var shortcode = "[home_left_column heading=\'yes/no\'] your content goes here [/home_left_column]";
@@ -157,6 +203,21 @@ if($action == "show_popup")
 					   break;
 				   case "featured_content_box":
 					   var shortcode = "[featured_content_box title=\'\' top_icon=\'\' align=\'\']your content goes here[/featured_content_box]";
+					   break;
+				   case "bsgrid":
+					   var shortcode = "[row][column md=\'4\'] your 1st column content here[/column][column md=\'4\'] your 2nd column content here[/column][column md=\'4\'] your 3rd column content here[/column][/row]";
+					   break;
+				   case "spacer":
+					   var shortcode = "[spacer height=\'16\']";
+					   break;
+				   case "callout_box":
+					   var shortcode = "[oet_callout type=\'\' width=\'\' color=\'\' alignment=\'\']Your content goes here[/oet_callout]";
+					   break;
+				   case "publication_intro":
+					   var shortcode = "[publication_intro title=\'\']Intro content goes here[/publication_intro]";
+					   break;
+				    case "oet_story":
+					   var shortcode = "[oet_story id=\'\' width=6 alignment=\'\' callout_color=\'\' callout_type=\'\' title=\'\'][/oet_story]";
 					   break;
 				   default:
 				   	   var shortcode = "";

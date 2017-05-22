@@ -109,6 +109,8 @@ body { padding-top: 15px; font-family: 'CharisSILR' !important; color: #4b4e53 !
 .rght_sid_mtr>.hdng_mtr, .hdng_mtr a { margin-bottom: 0; }
 .right_sid_mtr .hdng_mtr { font-size: 13px; margin-bottom: 0; border-top: 1px solid #ccc; padding-top: 10px; width: 100%; margin-top: 5px}
 .right_sid_mtr .hdng_mtr:first-child { border-top: none; margin-top: 0}
+.pblctn_right_sid_mtr .hdng_mtr { font-size: 13px; margin-bottom: 0; border-top: 1px solid #ccc; padding-top: 10px; width: 100%; margin-top: 5px}
+.pblctn_right_sid_mtr .hdng_mtr:first-child { border-top: none; margin-top: 0}
 /*.rght_mtr { font-size: 12px}*/
 .rght_mtr a, .rght_mtr a:hover { color: #4b4e53 }
 
@@ -167,12 +169,19 @@ iframe { border: 0; max-width:100%;}
 .right_sid_mtr span img  { width: auto; margin-right: 4px}
 .right_sid_mtr .col-md-12 { margin-top: 35px; border: 1px solid #9fbedb; padding: 20px;}
 .right_sid_mtr p { float: left; width: 100%}
+.pblctn_right_sid_mtr { padding: 0 !important;}
+.pblctn_right_sid_mtr img, .pblctn_right_sid_mtr iframe { width: 100%; margin: 7px 0}
+.pblctn_right_sid_mtr span img  { width: auto; margin-right: 4px}
+.pblctn_right_sid_mtr .col-md-12 { margin-top: 35px; border: 1px solid #94a0bc; padding: 20px;}
+.pblctn_right_sid_mtr p { float: left; width: 100%}
 .padding_left { padding-left: 0 !important}
 .padding_right { padding-right: 0 !important}
 .col-md-9 .col-md-3 img { width: 100%}
 
 .lft_sid_cntnr .col-md-3{ text-align: center}
 .lft_sid_cntnr .rght_sid_mtr { padding-left: 0 !important}
+.pblctn_lft_sid_img_cntnr .col-md-3{ text-align: center}
+.pblctn_lft_sid_img_cntnr .rght_sid_mtr { padding-left: 0 !important}
 /* pumpkin e57200 to violet 2d8700 */
 .btn_dwnld {width: 129px; padding: 10px 10px; margin: 15px 10px; text-align: center; background: #2d8700; border: none; color: #fff; border-radius: 3px; cursor: pointer; float: left; font-family: 'Raleway-Regular';}
 .btn_dwnld:hover, .btn_dwnld:focus { opacity: .9; color:#fff;}
@@ -247,7 +256,7 @@ ul .tour_dates { list-style: none; }
 
 .bg_img_of_icns h3 { color: #fff !important}
 .bg_img_of_icns .btn_dwnld, .btn_readmore, .bg_img_of_icns .link_dwnlds { margin-top: 0; margin-bottom: 0}
-.bg_img_of_icns { background: url(../images/top_strap_img.jpg) -1px -1px no-repeat; color: #fff; font-style: italic; margin: 5px 0 15px !important; float: left;}
+.bg_img_of_icns { background: #294179; color: #fff; font-style: italic; margin: 5px 0 15px !important; float: left;}
 .bg_img_of_icns a {font-family: 'Raleway-Light'; font-style: normal }
 
 
@@ -345,7 +354,7 @@ ul .tour_dates { list-style: none; }
 .navi_icn { color: #fff; width: 100%; padding: 20px 0; display: none !important; background: #294179; cursor: pointer }
 .responsiv-menu li:last-child { border-bottom: none}
 
-.bg_img_of_icns p { font-style: normal}
+.bg_img_of_icns p { font-style: normal; color:#fff; }
 
 .link_dwnlds { float: left; width: 100%; margin-bottom: 20px}
 .link_dwnlds > div { margin: 0 auto; width: 129px;}
@@ -469,6 +478,135 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 .callout_border { border: 1px solid #1a558d; padding: 17px 19px; }
 .callout_border .callout_notch_border { border-bottom-color: #1a558d; top: -11px; }
 /* -------- end CALLOUT BOX --------- */
+
+/** Pull Out box styles **/
+.pull-out-box {
+    position: relative;
+    margin: 30px;
+    width: auto; /* so margin matches others */
+}
+.pull-out-box.big-text {
+    font-size: 1.4em;
+}
+.pull-out-box.book {
+    border: 2px solid #e57200;
+    padding: 30px;
+}
+.pull-out-box.book:before {
+    content: '\f02d';
+    font-family: FontAwesome;
+    font-size: 20px;
+    padding: 5px 10px;
+    color: white;
+    background-color: #e57200;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    position: absolute;
+    border: 10px solid white;
+    top: -30px;
+}
+.pull-out-box.light-bulb {
+    border: 2px solid darkgray;
+    padding: 30px;
+}
+.pull-out-box.light-bulb:before {
+    content: '\f0eb';
+    font-family: FontAwesome;
+    font-size: 20px;
+    padding: 6px 15px;
+    color: white;
+    background-color: darkgray;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    position: absolute;
+    border: 10px solid white;
+    top: -30px;
+}
+.pull-out-box.exclamation {
+    border: 2px solid green;
+    padding: 30px;
+}
+.pull-out-box.exclamation:before {
+    content: '\f12a';
+    font-family: FontAwesome;
+    font-size: 20px;
+    padding: 6px 17px;
+    color: white;
+    background-color: green;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    position: absolute;
+    border: 10px solid white;
+    top: -30px;
+}
+.pull-out-box.checkmark {
+    border: 2px solid #294179;
+    padding: 30px;
+}
+.pull-out-box.checkmark:before {
+    content: '\f00c';
+    font-family: FontAwesome;
+    font-size: 20px;
+    padding: 6px 11px;
+    color: white;
+    background-color: #294179;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    position: absolute;
+    border: 10px solid white;
+    top: -30px;
+}
+.pull-out-box.sun {
+    border: 2px solid red;
+    padding: 30px;
+}
+.pull-out-box.sun:before {
+    content: '\f185';
+    font-family: FontAwesome;
+    font-size: 20px;
+    padding: 6px 11px;
+    color: white;
+    background-color: red;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    position: absolute;
+    border: 10px solid white;
+    top: -30px;
+}
+
+/* Publication Intro Shortcode styles */
+.page .intro {
+    position: relative;
+    margin-bottom: 60px;
+    font-family: 'Raleway-Semibold', sans-serif !important;
+    background:#294179;
+}
+.page .intro:before {
+    content: "";
+    background-position: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.page .intro .intro-goal {
+    position: relative;
+    color: white !important;
+    padding: 60px;
+    font-size: 18px;
+}
+.page .intro .intro-goal .title {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
 
 /* -------- begin FRONT PAGE --------- */
 .front_summary {
