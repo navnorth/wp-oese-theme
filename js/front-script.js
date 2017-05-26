@@ -91,6 +91,13 @@ jQuery( document ).ready(function() {
     if (jQuery(".oii-mega-menu-left").length) {
 	jQuery(".oii-mega-menu-left").height(jQuery(".oii-mega-menu").css('height'));
     }
+    
+    jQuery("#state-btn").on("click", function(){
+	var state_url = jQuery("#us-states").val();
+	if (state_url) {
+	    window.open(state_url,'_blank');
+	}
+    });
     // Accordion Menu
     /*jQuery('.nav-menu li .sub-menu li a').hover(function(){
 	if(!jQuery(this).next().is(":visible"))
