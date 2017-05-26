@@ -839,6 +839,7 @@ a.text-purple {
 #detailModal .panel-heading { background-color:#f5f5f5 !important; }
 #accordion.panel-group, #accordion2.panel-group, #accordion3.panel-group { margin-top:0; }
 #detailModal .panel-heading p.text-success { margin:0; }
+.state-btn { background: none repeat scroll 0 0 #294179; border: medium none; color: #fff; }
 /*
 .panel-group { float: left; margin: 30px 0 20px; width: 100%}
 .panel-default>.panel-heading { background: none !important;}
