@@ -95,7 +95,7 @@ jQuery( document ).ready(function() {
     jQuery("#state-btn").on("click", function(){
 	var state_url = jQuery("#us-states").val();
 	if (state_url) {
-	    window.open(state_url,'_blank');
+	    window.location.href = state_url;
 	}
     });
     // Accordion Menu
