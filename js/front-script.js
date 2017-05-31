@@ -76,12 +76,21 @@ jQuery( document ).ready(function() {
 	}
 
     // set external links to open in new window and have distinct style
-    jQuery(':not(svg) a').each(function() {
+    jQuery('a').each(function() {
 	var a = new RegExp('' + window.location.host + '|mailto' , 'i');
         if(!a.test(this.href)) {
             jQuery(this).attr( 'target','_blank' );
             jQuery(this).addClass( 'external_link' );
         }
+    });
+    
+    jQuery('svg a').each(function() {
+	if (jQuery(this).attr('target')) {
+	    jQuery(this).removeAttr( 'target' );
+	}
+	if (jQuery(this).hasClass( 'external_link' )) {
+	    jQuery(this).removeClass( 'external_link' );
+	}
     });
 
     //Wrap youtube video with video container
