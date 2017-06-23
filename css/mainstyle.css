@@ -841,6 +841,17 @@ a.text-purple {
 #detailModal .panel-heading p.text-success { margin:0; }
 .state-btn { background: none repeat scroll 0 0 #294179; border: medium none; color: #fff; border-radius:0 !important; padding:5px 20px !important; }
 #us-states { margin-bottom:5px; }
+.svg-container {
+    width: 50%;
+    height: 0;
+    padding-top: 48%;
+    position: relative;
+}
+svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 /*
 .panel-group { float: left; margin: 30px 0 20px; width: 100%}
 .panel-default>.panel-heading { background: none !important;}
