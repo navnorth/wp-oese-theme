@@ -15,7 +15,7 @@ jQuery( document ).ready(function() {
     });
 });
 
-function oii_redirect_state() {
+/*function oii_redirect_state() {
     event.preventDefault();
     
     var url;
@@ -203,4 +203,4 @@ function oii_redirect_state() {
 	    return false;
 	}
     }
-}    
+} */   
