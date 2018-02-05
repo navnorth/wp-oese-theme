@@ -40,7 +40,10 @@ get_header();
          </div>
 
         <div class="col-md-3 col-sm-12 col-xs-12 right_sid_mtr">
-            <?php get_template_part( 'content', 'contact' ); ?>
+            <?php
+                dynamic_sidebar('thematic-template');
+                get_template_part( 'content', 'contact' );
+            ?>
         </div>
 
     </div>
