@@ -34,14 +34,13 @@ get_header();
 
             <?php while ( have_posts() ) : the_post(); ?>
                 <?php
-                    get_template_part( 'content', 'contact' );
                     get_template_part( 'content', 'page' );
                 ?>
             <?php endwhile; ?>
          </div>
 
         <div class="col-md-3 col-sm-12 col-xs-12 right_sid_mtr">
-            <?php dynamic_sidebar( 'thematic-template' ); ?>
+            <?php get_template_part( 'content', 'contact' ); ?>
         </div>
 
     </div>
