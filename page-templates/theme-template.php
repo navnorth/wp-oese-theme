@@ -18,7 +18,7 @@ get_header();
 
     <div id="content" class="row site-content" tabindex="-1">
 
-        <div class="col-md-9 col-sm-12 col-xs-12 padding_left lft_sid_cntnr">
+        <div class="col-md-9 col-sm-8 col-xs-12 padding_left lft_sid_cntnr">
 
         <?php if ( function_exists('yoast_breadcrumb') ) { yoast_breadcrumb('<p id="breadcrumbs">','</p>'); }  ?>
 
@@ -39,7 +39,7 @@ get_header();
             <?php endwhile; ?>
          </div>
 
-        <div class="col-md-3 col-sm-12 col-xs-12 right_sid_mtr">
+        <div class="col-md-3 col-sm-4 col-xs-12 right_sid_mtr">
             <?php
                 dynamic_sidebar('thematic-template');
                 get_template_part( 'content', 'contact' );
