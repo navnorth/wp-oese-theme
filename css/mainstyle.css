@@ -972,6 +972,7 @@ svg {
         .slideshow_container_style-light .slideshow_pagination { bottom:10px !important; }
         .caption-image { max-width:60%; }
 	.main-menu { display:none; }
+	#content .program_header_image img, #content .thematic_header_image img { width:100% !important; }
 }
 @media (max-width: 750px){
 	.hdr .col-xs-offset-2  {margin-left: 16.66666667% !important;}
