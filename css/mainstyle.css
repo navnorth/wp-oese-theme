@@ -916,6 +916,7 @@ svg {
         .program_toc_box .col-xs-6 { width: 220px; }
 	.page-template-program-template .lft_sid_cntnr,
 	.page-template-theme-template .lft_sid_cntnr { padding-right: 15px !important; }
+	 #content .program_header_image img, #content .thematic_header_image img { width:100% !important; }
 }
 
 @media (max-width: 800px){
