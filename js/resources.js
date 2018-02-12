@@ -49,8 +49,10 @@
         IS_GUIDE: 42,
         IS_TOOL: 43,
         IS_METHODS_REPORTS: 44,
-        IS_VIDEO_OR_WEBINAR: 45,
-        IS_SLIDE_PRESENTATION: 46
+        IS_VIDEO: 45,
+        IS_WEBINAR: 46,
+        IS_SLIDE_PRESENTATION: 47,
+        INITIAL_PLANNING: 48
     };
 
     var HeadersAndLabels = [
@@ -74,19 +76,19 @@
         "Quasi-Experimental Design (QED)",
         "Regression Discontinuity Design (RDD)",
         "SCD",
-        "Identifying Comparison Groups",
-        "Determining Sample Sizes",
-        "Recruiting Study Participants",
-        "Addressing Changes in your Sample",
-        "Reducing Bias in Comparison Groups",
-        "Acquiring Administrative Data",
-        "Selecting Appropriate Outcome Measures",
-        "Collecting New Data",
-        "Combining Data Systems",
-        "Understanding Data Analytic Models",
-        "Addressing Analysis Challenges",
-        "Interpreting Findings",
-        "Visualizing Data",
+        "Identify Comparison Groups",
+        "Determine Sample Sizes",
+        "Recruit Study Participants",
+        "Address Changes in your Sample",
+        "Reduce Bias in Comparison Groups",
+        "Acquire Administrative Data",
+        "Select Appropriate Outcome Measures",
+        "Collect New Data",
+        "Combine Data Systems",
+        "Understand Data Analytic Models",
+        "Address Analysis Challenges",
+        "Report, Interpret, and Use Findings",
+        "Visualize Data",
         "Student Achievement",
         "Student Behavior",
         "Teacher",
@@ -99,8 +101,10 @@
         "Guide",
         "Tool",
         "Methods Reports",
-        "Video or Webinar",
-        "Slide Presentation"
+        "Video",
+        "Webinar",
+        "Slide Presentation",
+        "Initial Planning"
     ];
 
     var filteredColumns = [];
@@ -117,7 +121,7 @@
               "searchable": false
           },
           {
-              "targets": [4, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46],
+              "targets": [4, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
               "visible": false
           },
           {
@@ -191,49 +195,49 @@
 
             var sampleList = [];
             if (resource[DataSetIndexes.IDENTIFYING_COMPARISON_GROUPS].toUpperCase() === TRUE) {
-                sampleList.push("Identifying Comparison Groups");
+                sampleList.push("Identify Comparison Groups");
             }
             if (resource[DataSetIndexes.DETERMINING_SAMPLE_SIZES].toUpperCase() === TRUE) {
-                sampleList.push("Determining Sample Sizes");
+                sampleList.push("Determine Sample Sizes");
             }
             if (resource[DataSetIndexes.RECRUITING_STUDY_PARTICIPANTS].toUpperCase() === TRUE) {
-                sampleList.push("Recruiting Study Participants");
+                sampleList.push("Recruit Study Participants");
             }
             if (resource[DataSetIndexes.ADDRESSING_CHANGES_IN_YOUR_SAMPLE].toUpperCase() === TRUE) {
-                sampleList.push("Addressing Changes in your Sample");
+                sampleList.push("Address Changes in your Sample");
             }
             if (resource[DataSetIndexes.REDUCING_BIAS_IN_COMPARISON_GROUPS].toUpperCase() === TRUE) {
-                sampleList.push("Reducing Bias in Comparison Groups");
+                sampleList.push("Reduce Bias in Comparison Groups");
             }
 
             var dataCollectionList = [];
             if (resource[DataSetIndexes.SELECTING_APPROPRIATE_OUTCOME_MEASURES].toUpperCase() === TRUE) {
-                dataCollectionList.push("Selecting Appropriate Outcome Measures");
+                dataCollectionList.push("Select Appropriate Outcome Measures");
             }
             if (resource[DataSetIndexes.ACQUIRING_ADMINISTRATIVE_DATA].toUpperCase() === TRUE) {
-                dataCollectionList.push("Acquiring Administrative Data");
+                dataCollectionList.push("Acquire Administrative Data");
             }
             if (resource[DataSetIndexes.COLLECTING_NEW_DATA].toUpperCase() === TRUE) {
-                dataCollectionList.push("Collecting New Data");
+                dataCollectionList.push("Collect New Data");
             }
 
             var dataAnalysisList = [];
             if (resource[DataSetIndexes.COMBINING_DATA_SYSTEMS].toUpperCase() === TRUE) {
-                dataAnalysisList.push("Combining Data Systems");
+                dataAnalysisList.push("Combine Data Systems");
             }
             if (resource[DataSetIndexes.UNDERSTANDING_DATA_ANALYTIC_MODELS].toUpperCase() === TRUE) {
-                dataAnalysisList.push("Understanding Data Analytic Models");
+                dataAnalysisList.push("Understand Data Analytic Models");
             }
             if (resource[DataSetIndexes.ADDRESSING_ANALYSIS_CHALLENGES].toUpperCase() === TRUE) {
-                dataAnalysisList.push("Addressing Analysis Challenges");
+                dataAnalysisList.push("Address Analysis Challenges");
             }
 
             var reportingDataList = [];
             if (resource[DataSetIndexes.REPORTING_FINDINGS].toUpperCase() === TRUE) {
-                reportingDataList.push("Interpreting Findings");
+                reportingDataList.push("Report, Interpret, and Use Findings");
             }
             if (resource[DataSetIndexes.VISUALIZING_DATA].toUpperCase() === TRUE) {
-                reportingDataList.push("Visualizing Data");
+                reportingDataList.push("Visualize Data");
             }
 
             var researchMethodologyBody = "";
@@ -241,7 +245,7 @@
             if (studyDesignList.length > 0) {
                 researchMethodologyBody += "<p><b>Plan and Design:</b> " + studyDesignList.join(", ");
             }
-            if (sampleList.lenght > 0) {
+            if (sampleList.length > 0) {
                 researchMethodologyBody += "<p><b>Identify and Follow Participants:</b> " + sampleList.join(", ");
             }
             if (dataCollectionList.length > 0) {
@@ -354,16 +358,16 @@
             if (filteredColumns.indexOf('5 Pages or Less/5 min video or less') < 0) {
                 filteredColumns.push('5 Pages or Less/5 min video or less');
             }
-            if (filteredColumns.indexOf('20 Pages or Less/20 min video or less') >= 0) {
-                filteredColumns.splice(filteredColumns.indexOf('20 Pages or Less/20 min video or less'), 1);
+            if (filteredColumns.indexOf('6-20 pages/6-20 min video') >= 0) {
+                filteredColumns.splice(filteredColumns.indexOf('6-20 pages/6-20 min video'), 1);
             }
             if (filteredColumns.indexOf('More than 20 Pages/ More than 20 min video') >= 0) {
                 filteredColumns.splice(filteredColumns.indexOf('More than 20 Pages/ More than 20 min video'), 1);
             }
             filterColumn(DataSetIndexes.LENGTH_FILTER_GROUP, $(this).val());
         } else if ($(this).val() === '2') {
-            if (filteredColumns.indexOf('20 Pages or Less/20 min video or less') < 0) {
-                filteredColumns.push('20 Pages or Less/20 min video or less');
+            if (filteredColumns.indexOf('6-20 pages/6-20 min video') < 0) {
+                filteredColumns.push('6-20 pages/6-20 min video');
             }
             if (filteredColumns.indexOf('5 Pages or Less/5 min video or less') >= 0) {
                 filteredColumns.splice(filteredColumns.indexOf('5 Pages or Less/5 min video or less'), 1);
@@ -379,16 +383,16 @@
             if (filteredColumns.indexOf('5 Pages or Less/5 min video or less') >= 0) {
                 filteredColumns.splice(filteredColumns.indexOf('5 Pages or Less/5 min video or less'), 1);
             }
-            if (filteredColumns.indexOf('20 Pages or Less/20 min video or less') >= 0) {
-                filteredColumns.splice(filteredColumns.indexOf('20 Pages or Less/20 min video or less'), 1);
+            if (filteredColumns.indexOf('6-20 pages/6-20 min video') >= 0) {
+                filteredColumns.splice(filteredColumns.indexOf('6-20 pages/6-20 min video'), 1);
             }
             filterColumn(DataSetIndexes.LENGTH_FILTER_GROUP, $(this).val());
         } else {
             if (filteredColumns.indexOf('5 Pages or Less/5 min video or less') >= 0) {
                 filteredColumns.splice(filteredColumns.indexOf('5 Pages or Less/5 min video or less'), 1);
             }
-            if (filteredColumns.indexOf('20 Pages or Less/20 min video or less') >= 0) {
-                filteredColumns.splice(filteredColumns.indexOf('20 Pages or Less/20 min video or less'), 1);
+            if (filteredColumns.indexOf('6-20 pages/6-20 min video') >= 0) {
+                filteredColumns.splice(filteredColumns.indexOf('6-20 pages/6-20 min video'), 1);
             }
             if (filteredColumns.indexOf('More than 20 Pages/ More than 20 min video') >= 0) {
                 filteredColumns.splice(filteredColumns.indexOf('More than 20 Pages/ More than 20 min video'), 1);
