@@ -1159,6 +1159,7 @@ svg {
 	  font-size:1.5em !important;
 	  top:10px !important;
 	}
+	#resourceFilters .panel-title>a.collapsed { background-position:105% -3px; }
 }
 @media (max-width: 300px){
 
