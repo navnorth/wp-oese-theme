@@ -92,6 +92,8 @@ body { padding-top: 15px; font-family: 'CharisSILR' !important; color: #4b4e53 !
 .ftr_lnks ul { padding: 0 !important}
 .ftr_lnks { padding-left: 0 !important}
 .ftr_lnks li a { color: #555}
+#searchform.searchform a { height:34px;width:34px;position:absolute;top:0;right:0; }
+#searchform.searchform a:hover .form-control-feedback img { opacity: .6; }
 .form-control-feedback { top: 1px !important; cursor: pointer}
 .form-control-feedback:hover { opacity: .6}
 .form-control { background: #f2f2f2 !important; height: 40px !important; box-shadow: none !important}
