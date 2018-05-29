@@ -92,6 +92,11 @@ jQuery( document ).ready(function() {
 	    jQuery(this).removeClass( 'external_link' );
 	}
     });
+    
+    if (jQuery('#searchform.searchform a.external_link').length>0){
+	jQuery('#searchform.searchform a.external_link').removeAttr('target');
+	jQuery('#searchform.searchform a.external_link').removeClass( 'external_link' );
+    }
 
     //Wrap youtube video with video container
     jQuery("iframe[src*='youtube.com']").wrap("<div class='video-container'></div>");
