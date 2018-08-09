@@ -99,14 +99,16 @@
 	background-image: linear-gradient(#294179, #6fa2d5);
     border-color: #ddd;
 }
-.evalseries .panel-default>.panel-heading:hover { background-color: #6fa2d5 !important; background-image: linear-gradient(#6fa2d5, #294179);}
+.evalseries .panel-default>.panel-heading:hover,
+.evalseries .panel-default>.panel-heading:focus-within { background-color: #6fa2d5 !important; background-image: linear-gradient(#6fa2d5, #294179);}
 .evalseries .panel-title>a {
 	color: #ffffff !important;
 	font-size:1.74em;
 	text-decoration-line:none;
 }
 .evalseries .panel-title>a, .panel-title>a.collapsed {background-image:none;}
-.evalseries .panel-title>a:hover { color: #000000 !important; }
+.evalseries .panel-title>a:hover,
+.evalseries .panel-title>a:focus { color: #000000 !important; }
 .evalseries ul#suite1 li div,
 .evalseries ul#suite2 li div,
 .evalseries ul#suite3 li div {
