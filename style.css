@@ -22,7 +22,7 @@
 	width:80%;
 	min-height: 175px;
     margin: 0 auto;
-	background: #194a7e url("http://ec2-54-165-245-129.compute-1.amazonaws.com/wp-content/uploads/2018/05/arch.png") no-repeat;
+	background: #194a7e url("/wp-content/themes/wp-oii-theme-new/seed/assets/arch.png") no-repeat;
 	background-position: right -85px  bottom -20px;
 	background-size: auto 100px;
 }
