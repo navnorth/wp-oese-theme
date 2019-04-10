@@ -4,9 +4,8 @@
  *
  * Contains footer content and the closing of the #main and #page div elements.
  *
- * @package WordPress
- * @subpackage Twenty_Twelve
- * @since Twenty Twelve 1.0
+ * @package wp_oese_theme
+ * @since 1.5.0
  */
 ?>
         <div class="row ftr">

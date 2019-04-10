@@ -73,7 +73,6 @@
 					define("twitter_url", get_option("twitter_url"));
 					define("facebook_url", get_option("facebook_url"));
 					define("yotube_url", get_option("yotube_url"));
-					define("google_url", get_option("google_url"));
 					define("linkedin_url", get_option("linkedin_url"));
 					define("linktonwltr", get_option("linktonwltr"));
 				?>

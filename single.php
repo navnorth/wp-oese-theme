@@ -2,9 +2,8 @@
 /**
  * The Template for displaying all single posts
  *
- * @package WordPress
- * @subpackage Twenty_Twelve
- * @since Twenty Twelve 1.0
+ * @package wp_oese_theme
+ * @since 1.5.0
  */
 
 get_header(); ?>
