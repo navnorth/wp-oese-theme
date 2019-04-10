@@ -72,9 +72,9 @@
                 <?php
 					define("twitter_url", get_option("twitter_url"));
 					define("facebook_url", get_option("facebook_url"));
-					define("yotube_url", get_option("yotube_url"));
+					define("youtube_url", get_option("youtube_url"));
 					define("linkedin_url", get_option("linkedin_url"));
-					define("linktonwltr", get_option("linktonwltr"));
+					define("subscribe_url", get_option("subscribe_url"));
 				?>
 
                 <div class="col-md-11 col-sm-12 col-xs-5 col-xs-offset-2 col-md-offset-1 soclize">
@@ -89,18 +89,13 @@
             			    <span class="socl_icns fa-stack"><i class="fa fa-facebook fa-stack-2x"></i></span>
             			</a>
         			<?php endif; ?>
-        			<?php if ( yotube_url !== "" ) : ?>
-            			<a href="<?php echo yotube_url;?>" target="_blank" title="Subscribe on YouTube">
+        			<?php if ( youtube_url !== "" ) : ?>
+            			<a href="<?php echo youtube_url;?>" target="_blank" title="Subscribe on YouTube">
             			    <span class="socl_icns fa-stack"><i class="fa fa-youtube-play fa-stack-2x"></i></span>
             			</a>
         			<?php endif; ?>
-        			<?php if ( google_url !== "" ) : ?>
-            			<a href="<?php echo google_url;?>" target="_blank" title="Follow Us on Google+">
-            			    <span class="socl_icns fa-stack"><i class="fa fa-google-plus fa-stack-2x"></i></span>
-            			</a>
-        			<?php endif; ?>
-        			<?php if ( linktonwltr !== "" ) : ?>
-            			<a href="<?php echo linktonwltr;?>" target="_blank" title="Sign Up for our Newsletter">
+        			<?php if ( subscribe_url !== "" ) : ?>
+            			<a href="<?php echo subscribe_url;?>" target="_blank" title="Sign Up for our Newsletter">
             			    <span class="socl_icns fa-stack"><i class="fa fa-envelope fa-stack-2x"></i></span>
             			</a>
         			<?php endif; ?>

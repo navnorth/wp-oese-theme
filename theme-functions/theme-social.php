@@ -1,9 +1,10 @@
 <?php
-function twentytwelve_menu()
+function theme_admin_menu()
 {
 	add_theme_page('Social Media Options', 'Social Media Options', 'edit_theme_options', 'socialmedia-options', 'socialmedia_settings');
 }
-add_action('admin_menu', 'twentytwelve_menu');
+add_action('admin_menu', 'theme_admin_menu');
+
 function socialmedia_settings()
 {
 	if(isset($_POST["save_social"]))
@@ -11,17 +12,15 @@ function socialmedia_settings()
 		extract($_POST);
 		update_option("twitter_url", $twitter_url);
 		update_option("facebook_url", $facebook_url);
-		update_option("yotube_url", $yotube_url);
-		update_option("google_url", $google_url);
+		update_option("youtube_url", $youtube_url);
 		update_option("linkedin_url", $linkedin_url);
-		update_option("linktonwltr", $linktonwltr);
+		update_option("subscribe_url", $subscribe_url);
 	}
 
 	$twitter_url = get_option("twitter_url");
 	$facebook_url = get_option("facebook_url");
-	$yotube_url = get_option("yotube_url");
-	$google_url = get_option("google_url");
-	$linktonwltr = get_option("linktonwltr");
+	$youtube_url = get_option("youtube_url");
+	$subscribe_url = get_option("subscribe_url");
 
 
 	$return = '';
@@ -40,7 +39,7 @@ function socialmedia_settings()
 					  </div>
 					  <div class="sclmda_sub_wrapper">
 							<div class="sclmda_txt"><strong>Youtube</strong></div>
-							<div class="sclmda_fld"><input type="text" name="yotube_url" value="'. $yotube_url.'" /></div>
+							<div class="sclmda_fld"><input type="text" name="youtube_url" value="'. $youtube_url.'" /></div>
 					  </div>
 					  <div class="sclmda_sub_wrapper">
 							<div class="sclmda_txt"><strong>Google Plus</strong></div>
@@ -48,7 +47,7 @@ function socialmedia_settings()
 					  </div>
 					  <div class="sclmda_sub_wrapper">
 							<div class="sclmda_txt"><strong>Link To Newsletter</strong></div>
-							<div class="sclmda_fld"><input type="text" name="linktonwltr" value="'. $linktonwltr.'" /></div>
+							<div class="sclmda_fld"><input type="text" name="subscribe_url" value="'. $subscribe_url.'" /></div>
 					  </div>
 					  <div class="sclmda_sub_wrapper">
 							<div class="sclmda_txt"></div>

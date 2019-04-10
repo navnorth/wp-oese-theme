@@ -10,7 +10,7 @@ function disruptive_content_fun($attr, $content = null)
 
 	if (strpos($button_color,"#")===false)
 		$button_color = "#".$button_color;
-	
+
 	$return = '';
     $return .= '<div class="row bg_img_of_icns" id="lnk_btn_cntnr_center">';
         $return .= '<div class="col-md-8 col-sm-8 col-xs-8" >';
@@ -36,13 +36,13 @@ add_shortcode('oet_accordion_group', 'oet_accordion_group_func');
 function oet_accordion_group_func($atts, $content = null)
 {
 	$accordion_id = "accordion";
-	
+
 	if (!empty($atts)) {
 		extract($atts);
 		if ($id)
 			$accordion_id = $id;
 	}
-	
+
 	$return = '';
 	$return .= '<div class="panel-group" id="'.$accordion_id.'" role="tablist" aria-multiselectable="true">';
 			$content = str_replace( "<p>","", $content );
@@ -387,9 +387,8 @@ function share_the_toolkit_func($atts, $content = null)
 	$return .= '<p class="pblctn_scl_icn_hedng"> Share the Toolkit </p>';
         $return .= '<p class="pblctn_scl_icns">';
             $return .= '<a href="'. facebook_url.'"><span class="socl_icns fa-stack"><i class="fa fa-facebook fa-stack-2x"></i></span></a>';
-            $return .= '<a href="'. google_url.'"><span class="socl_icns fa-stack"><i class="fa fa-google-plus fa-stack-2x"></i></span></a>';
             $return .= '<a href="'. twitter_url.'"><span class="socl_icns fa-stack"><i class="fa fa-twitter fa-stack-2x"></i></span></a>';
-            $return .= '<a href="'. linktonwltr.'"><span class="socl_icns fa-stack"><i class="fa fa-envelope fa-stack-2x"></i></span></a>';
+            $return .= '<a href="'. subscribe_url.'"><span class="socl_icns fa-stack"><i class="fa fa-envelope fa-stack-2x"></i></span></a>';
        $return .= ' </p>';
 	$return .= '</div>';
 	return $return;
@@ -856,7 +855,7 @@ function parse_data_attributes( $data ) {
  function publication_intro_func($attribute, $content = null) {
 
 	if (is_array($attribute)) extract($attribute);
-	
+
 	$return = '<div class="intro">
 			<div class="intro-goal">
 				<div class="title">'.$title.'</div>
