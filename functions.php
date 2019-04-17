@@ -1042,3 +1042,34 @@ if (is_admin()) {
  * Register the footer Menu - removed in base twentytwelve theme
  */
 register_nav_menu( 'Footer Menu', __( 'Footer Menu', 'twentytwelve' ) );
+
+
+/**
+* Getting Populars post from Pages OESE Theme
+*/
+  function getPopularResources(){
+
+      $output = "<div><h2>". get_field('popular_resources_title')."</h2>";
+      // check if the repeater field has rows of data
+      if( have_rows('popular_resources_links') ):
+        $output.=  "<ul>";
+        // loop through the rows of data
+          while ( have_rows('popular_resources_links') ) : the_row();
+            $resourceLabel =  get_sub_field('resource_label');
+            $resourceLink =  get_sub_field('resource_link');
+            $externaLink =  get_sub_field('external_link');
+            $target = ($externaLink ? "_blank" : "");
+            $link = ($externaLink)? $resourceLink:home_url()."/".$resourceLink;
+            $output.= "<li><a ". $target." href=".$link.">".$resourceLabel."</a></li>";
+          endwhile;
+        $output.=  "</ul>";  
+      else :
+        $output.="<p>No resources added to page</p>";
+          // no rows found
+      endif;
+      $output.="</div>";
+      echo $output;
+   }
+
+
+
