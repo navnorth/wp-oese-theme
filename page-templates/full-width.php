@@ -17,22 +17,23 @@ get_header();
 global $post;
 ?>
 
-	<div id="content" class="row site-content" tabindex="-1">
+<div id="content" class="row site-content" tabindex="-1">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
-        	<div class="col-md-12 col-sm-12 col-xs-12 padding_left padding_right">
+        <?php if (function_exists('yoast_breadcrumb')) {
+            yoast_breadcrumb('<p id="breadcrumbs">', '</p>');
+        } ?>
 
-                <?php if ( function_exists('yoast_breadcrumb') ) { yoast_breadcrumb('<p id="breadcrumbs">','</p>'); }  ?>
+        <h1 class="page_header"><?php echo $post->post_title; ?></h1>
+        <div class="share_links_header"><?php echo do_shortcode("[ssba]"); ?></div>
 
-            	<h1 class="page_header"><?php echo $post->post_title;?></h1>
-                <div class="share_links_header"><?php echo do_shortcode("[ssba]"); ?></div>
+        <?php while (have_posts()) : the_post(); ?>
 
-				<?php while ( have_posts() ) : the_post(); ?>
+            <?php get_template_part('content', 'page'); ?>
 
-                	<?php get_template_part( 'content', 'page' ); ?>
+        <?php endwhile; ?>
 
-				<?php endwhile;?>
-
-            </div>
-	</div>
+    </div>
+</div>
 
 <?php get_footer(); ?>
