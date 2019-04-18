@@ -9,7 +9,7 @@
 get_header(); ?>
 
 	<div id="content" class="row site-content">
-		<div class="col-md-9 col-sm-12 col-xs-12 padding_left lft_sid_cntnr">
+		<div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12 lft_sid_cntnr">
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
@@ -83,7 +83,7 @@ get_header(); ?>
 			) );
 			?>
 		</div>
-		<div class="col-md-3 col-sm-12 col-xs-12 right_sid_mtr">
+		<div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
 		   <?php get_sidebar(); ?>
 	       </div>
 	</div><!-- .row -->
