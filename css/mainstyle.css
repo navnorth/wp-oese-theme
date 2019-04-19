@@ -92,7 +92,7 @@ body { padding-top: 15px; font-family: 'CharisSILR' !important; color: #4b4e53 !
 .ftr_lnks ul { padding: 0 !important}
 .ftr_lnks { padding-left: 0 !important}
 .ftr_lnks li a { color: #555}
-#searchform.searchform a { height:34px;width:34px;position:absolute;top:7px;right:10px; }
+#searchform.searchform a {height: 24px;width: 30px;position: absolute;top: 16%;right: 10px; color: #818181 !important;}
 #searchform.searchform a:hover .form-control-feedback img { opacity: .6; }
 .form-control-feedback { top: 1px !important; cursor: pointer}
 .form-control-feedback:hover { opacity: .6}
@@ -150,7 +150,7 @@ iframe { border: 0; max-width:100%;}
 .ftr_strp { /*background: url(../images/top_strap_img.png) 0 0 no-repeat;*/ background: #294179; height: 25px; margin-top: 30px}
 .ftr { border-bottom: 1px solid #ccc; margin-bottom: 10px;}
 .ftr_logo { padding-right: 0 !important}
-.fa-envelope, .fa-youtube-play, .fa-google-plus { font-size: 20px !important}
+.fa-google-plus { font-size: 20px !important}
 .soclize a { color: #fff; text-decoration: none}
 .soclize a:hover {text-decoration: none}
 .soclize .socl_icns:hover { background: #f2f2f2; transition: background .3s}
@@ -1063,9 +1063,6 @@ svg {
 	.navi_bg:hover { background:none; }
 	.navi_bg { border-top:none;margin-top: -10px; margin-right: -10px; }
 	.hdr { position:relative;}
-	.navi_icn { width:16%; float:right; }
-	.soclize { width:25% !important; position:absolute; }
-	.hdr { position:relative;}
 }
 @media (max-width: 550px){
   .slideshow_container, .slideshow_container .slideshow_content { height:235px !important; }
@@ -1084,9 +1081,7 @@ svg {
 	#home_content .wp-caption { width:451px !important; }
 	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:100% !important; height: auto; }
         .caption-image { max-width:50%; }
-	.navi_icn { width:16%; float:right;}
 	.navi_bg { border-top:none;margin-top: -10px; margin-right: -10px; }
-	.soclize { width:25% !important; position:absolute; }
 	.hdr { position:relative;}
 }
 @media (max-width: 480px){
@@ -1148,8 +1143,10 @@ svg {
 	}
 	#resourceFilters .panel-title>a.collapsed { background-position:105% -3px; }
 }
-@media (max-width: 300px){
-
+@media (max-width: 320px){
+    .topbar-social-icons {
+        width: 40% !important;
+    }
 }
 @media (max-width: 575.98px) {
     .topbar-search-section{left: 30%}
@@ -1158,14 +1155,67 @@ svg {
     .responsiv-menu .responsiv-menu_ul li{display: inline;float: left;}
     .responsiv-menu .responsiv-menu_ul li a{font-size: 15px;padding: 10px 40px;color: #fff;float: left;}
     .responsive-menu-section{top: -28px;}
-    #searchform.searchform a {top: 6px;right: 15px;}
+    #searchform.searchform a {right: 15px;}
     .responsive-menu-section .navi_icn .fa-bars{top:5px !important;}
+    .social_icons {
+        font-size: 22px !important;
+        padding: 0px 10px 1px 3px !important;
+        float: left !important;
+    }
+    .social_icons:nth-child(1),
+    .social_icons:nth-child(2){
+        padding: 0px 11px 1px 4px !important
+    }
+    .social_icons:nth-child(2){
+        margin-left: 7px;
+    }
+    .topbar-social-icons{
+        position: absolute;
+        left: 0;
+        width: 35%;
+    }
+    .navi_icn { width:14%; float:right;}
+
+}
+@media (min-width: 481px) and (max-width: 575.98px){
+    .topbar-social-icons{width: 26%;}
+}
+
+@media (max-width: 767.98px){
+    #searchform.searchform a {right: 15px;}
 }
 @media (max-width: 991.98px) {
     .responsiv-menu .responsiv-menu_ul{display: block;list-style: none;padding: 0;margin-bottom: 0;}
     .responsiv-menu .responsiv-menu_ul li{display: inline;float: left;}
     .responsiv-menu .responsiv-menu_ul li a{font-size: 15px;padding: 10px 40px;color: #fff;float: left;}
     .responsive-menu-section .navi_icn .fa-bars{top:5px !important;}
+
 }
 
 /*New styles*/
+
+.social-icons a{
+    background-color: #ccc;
+    -webkit-border-radius:;
+    -moz-border-radius:;
+    border-radius:100%;
+    padding: 10px;
+}
+.social_icons{
+    background: #4a4f55;
+    font-size: 22px;
+    padding: 0 5px;
+    margin: 0 0 0 6px;
+    border-radius:100%;
+}
+.social_icons:hover{
+    background: #f2f2f2;
+}
+.social_icons:nth-child(4){
+    padding: 0 12px 0 5px;
+}
+.social_icons i{
+    position: relative;
+    left: 4px;
+    top: 1px;
+}
