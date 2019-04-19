@@ -1072,4 +1072,17 @@ register_nav_menu( 'Footer Menu', __( 'Footer Menu', 'twentytwelve' ) );
    }
 
 
+/**
+Enabling the Category and Tags for the media attachment
+*
+**/
+function addingCategoryToAttachment() {
+    register_taxonomy_for_object_type( 'category', 'attachment' );
+}
+add_action( 'init' , 'addingCategoryToAttachment' );
 
+
+function addingTagsToAttachment() {
+    register_taxonomy_for_object_type( 'post_tag', 'attachment' );
+}
+add_action( 'init' , 'addingTagsToAttachment' );
