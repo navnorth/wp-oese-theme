@@ -25,8 +25,7 @@ global $post;
         } ?>
 
         <h1 class="page_header"><?php echo $post->post_title; ?></h1>
-        <div class="share_links_header"><?php echo do_shortcode("[ssba]"); ?></div>
-
+       
         <?php while (have_posts()) : the_post(); ?>
 
             <?php get_template_part('content', 'page'); ?>
