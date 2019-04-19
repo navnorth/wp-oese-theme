@@ -35,6 +35,47 @@ $img_alt = get_post_meta(get_post_thumbnail_id($post->ID), '_wp_attachment_image
         <?php while (have_posts()) : the_post(); ?>
             <?php get_template_part('content', 'page'); ?>
         <?php endwhile; ?>
+
+<!--        Code for audience page START -->
+
+       <!-- <div class="row">
+            <div class="col-md-6">
+                <div class="left-section-featured-image">
+                    <img src="">
+                </div>
+                <div class="left-description-section">
+                    <h1>Families</h1>
+                    <p>
+                        Families serve as the cornerstone of every community across our nation. As such, the Office of Elementary and Secondary Education is dedicated to helping provide each family access to world-class schools, research-based programs, and effective practitioners.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="secondary-navigation-menu">
+                    <div class="secondary-navigation-menu-header">
+                        <p>Popular Resources</p>
+                    </div>
+                    <ul class="secondary-navigation-menu-list">
+                        <li>
+                            <a href="#">Early Learning</a>
+                        </li>
+                        <li>
+                            <a href="#">Family & Community Engagement</a>
+                        </li>
+                        <li>
+                            <a href="#">Every Student Succeeds Act</a>
+                        </li>
+                        <li>
+                            <a href="#">FERPA</a>
+                        </li>
+                        <li>
+                            <a href="#">Project Prevent Grant</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>-->
+        <!--        Code for audience page END -->
     </div>
 
     <div class="col-md-3 col-sm-12 col-xs-12 right_sid_mtr">

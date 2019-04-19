@@ -13,6 +13,11 @@ color palette:
 	Tassel green:       #6ec940
 */
 
+@import url('https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i');
+
+@font-face{font-family:'Helvetica Neue';
+	src:url(../fonts/helvetica_neue/helveticaneue.ttf)format('truetype');}
+
 @font-face{font-family:'Raleway-Bold';
 	src:url(../fonts/Raleway-Bold.eot);
 	src:url(../fonts/Raleway-Bold.eot?#iefix) format('embedded-opentype'),
@@ -88,11 +93,13 @@ body { padding-top: 15px; font-family: 'CharisSILR' !important; color: #4b4e53 !
 .navi_bg li, .ftr_lnks li { display: inline; float: left; font-family: 'Raleway-SemiBold'}
 .navi_bg li a {color: #fff; font-size: 16px; padding: 8px 18px; float: left}
 .navi_bg li a:focus { outline: none;}
-.ftr_lnks li { font-size: 13px; padding: 13px 35px 13px 0;}
+.ftr_lnks li { font-size: 13px;padding: 13px 35px 13px 0;}
+.ftr_lnks li a{ font-size: 13px;text-decoration: none;}
+.ftr_lnks li a:hover{ text-decoration: underline;}
 .ftr_lnks ul { padding: 0 !important}
 .ftr_lnks { padding-left: 0 !important}
 .ftr_lnks li a { color: #555}
-#searchform.searchform a {height: 24px;width: 30px;position: absolute;top: 16%;right: 10px; color: #818181 !important;}
+#searchform.searchform a {height: 24px;width: 30px;position: absolute;top: 16%;right: 10px; color: #818181 !important;font-size: 16px;}
 #searchform.searchform a:hover .form-control-feedback img { opacity: .6; }
 .form-control-feedback { top: 1px !important; cursor: pointer}
 .form-control-feedback:hover { opacity: .6}
@@ -269,6 +276,8 @@ ul .tour_dates { list-style: none; }
 
 .main-menu {  background: #294179; width: 100%; float: left }
 .main-menu li { position: relative}
+.main-menu li a, .responsiv-menu li a{ text-decoration: none;}
+.main-menu li a:hover, .responsiv-menu li a:hover{ text-decoration: underline;}
 .sub-menu { background: #294179; float: left; left: 0; width: 250px; position: absolute; z-index: 999; display: none; top: 39px; border-top: 1px solid #fff }
 .sub-menu li { display: block; width: 100%; padding-left: 15px; border-top: 1px solid #ccc;}
 .sub-menu li:first-child { border-top:none;}
@@ -425,15 +434,12 @@ ul .tour_dates { list-style: none; }
 
 /*---------------- Default Page -----------------*/
 
-h1 { font-family: 'Raleway-Semibold' !important; font-size: 36px; line-height:40px; color:#294179 !important; }
-h2 { font-family: 'Raleway-Semibold' !important; font-size: 30px !important; line-height:33px; color:#4b4e53; }
 h3 { font-family: 'Raleway-Semibold' !important; font-size: 24px !important; color: #294179 !important; line-height:26px; }
 h4 { font-family: 'Raleway-Light' !important; font-size: 18px !important; line-height:20px; color:#4b4e53; }
 h5 { font-family: 'CharisSILR' !important; font-weight:500; font-size:14px !important; line-height:15px; color:#4b4e53; }
 h6 { font-family: 'CharisSILR' !important; font-weight:500; font-size:12px !important; line-height:13px; color:#4b4e53; }
 h1,h2,h4 { color: #2d8700 !important }
 p { font-weight:normal; color:#4b4e53; }
-a { font-family: 'CharisSILR'; color:#294179; }
 h3 a { font-family: 'Raleway-Semibold'; }
 .custom-button {
     background-color: #e57200;
@@ -1204,7 +1210,7 @@ svg {
 .social_icons{
     background: #4a4f55;
     font-size: 22px;
-    padding: 0 5px;
+    padding: 5px;
     margin: 0 0 0 6px;
     border-radius:100%;
 }
@@ -1212,10 +1218,69 @@ svg {
     background: #f2f2f2;
 }
 .social_icons:nth-child(4){
-    padding: 0 12px 0 5px;
+    padding: 5px 12px 5px 5px;
 }
 .social_icons i{
     position: relative;
     left: 4px;
     top: 1px;
 }
+
+body{
+    font-family:'Helvetica Neue' !important;
+    font-size: 24px;
+    color: #333333;
+}
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Merriweather', serif !important;
+}
+h1{
+    font-size: 38px !important;
+    font-weight: 700;
+    color: #2D8700 !important;
+}
+h2{
+    font-size: 34px !important;
+    font-weight: 700;
+    color: #1F5C99 !important;
+}
+a{
+    font-family:'Helvetica Neue' !important;
+    text-decoration: underline;
+    font-size: 24px;
+    color: #333333;
+}
+.custom-search-btn{
+    background: unset !important;
+    border-left: unset !important;
+    border-color: #ced4da !important;
+}
+.custom-search-btn:hover{
+    background: #1F5C99 !important;
+}
+.custom-search-btn:focus{
+    box-shadow: unset !important;
+}
+
+/*Secondary navigation menu css START*/
+.secondary-navigation-menu-header{
+    background: #1F5C99;
+    color: #fff;
+    padding: 15px 30px;
+}
+.secondary-navigation-menu-header p{
+    color: #fff;
+    margin-bottom: 0 !important;
+    font-weight: 700;
+}
+.secondary-navigation-menu-list{
+    list-style: none;
+    margin:0;
+    padding:0;
+    background: #004285;
+}
+.secondary-navigation-menu-list li a{
+    text-decoration: none;
+    color: #fff;
+}
+/*Secondary navigation menu css END*/

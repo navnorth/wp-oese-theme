@@ -66,13 +66,14 @@
 
                             <form id="searchform" class="searchform" action="<?php echo site_url(); ?>" method="get"
                                   role="search">
-                                <input type="text" class="form-control" id="inputSuccess2" placeholder="Search"
-                                       name="s"/>
-                                <a href="javascript:" onClick="jQuery(this).closest('form').submit()">
-                                <span class="form-control-feedback ">
-                              		<i class="fas fa-search"></i>
-                                </span>
-                                </a>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="inputSuccess2" placeholder="Search" name="s"/>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-secondary custom-search-btn" type="button" onClick="jQuery(this).closest('form').submit()">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
                             </form>
 
                         </div>
