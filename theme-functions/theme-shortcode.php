@@ -385,11 +385,11 @@ function share_the_toolkit_func($atts, $content = null)
 	$return = '';
 	$return .= '<div class="pblctn_right_sid_mtr">';
 	$return .= '<p class="pblctn_scl_icn_hedng"> Share the Toolkit </p>';
-        $return .= '<p class="pblctn_scl_icns">';
-            $return .= '<a href="'. facebook_url.'"><span class="socl_icns fa-stack"><i class="fa fa-facebook fa-stack-2x"></i></span></a>';
-            $return .= '<a href="'. twitter_url.'"><span class="socl_icns fa-stack"><i class="fa fa-twitter fa-stack-2x"></i></span></a>';
-            $return .= '<a href="'. subscribe_url.'"><span class="socl_icns fa-stack"><i class="fa fa-envelope fa-stack-2x"></i></span></a>';
-       $return .= ' </p>';
+    $return .= '<p class="pblctn_scl_icns">';
+    $return .= '<a href="'. facebook_url.'" class="social_icons"><i class="fab fa-facebook"></i></a>';
+    $return .= '<a href="'. twitter_url.'" class="social_icons"><i class="fab fa-twitter"></i></a>';
+    $return .= '<a href="'. subscribe_url.'" class="social_icons"><i class="fas fa-envelope"></i></a>';
+    $return .= ' </p>';
 	$return .= '</div>';
 	return $return;
 }

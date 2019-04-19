@@ -51,17 +51,17 @@
     <div class="container">
 
         <div class="row hdr">
-            <div class="col-xl-7 col-lg-7 col-md-7 col-sm-8 col-12">
+            <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12">
                 <a href="<?php echo site_url(); ?>" Title="Home">
                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.svg"
                          alt="Office of Innovation and Improvement" class="svg-replace" id="header_logo"/>
                 </a>
             </div>
 
-            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-12 offset-xl-2 offset-lg-2 offset-md-1">
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-12 offset-xl-2 offset-lg-2 offset-md-1">
                 <div class="row">
 
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-6 topbar-search-section">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-6 col-6 topbar-search-section">
                         <div class="form-group has-feedback gray_bg">
 
                             <form id="searchform" class="searchform" action="<?php echo site_url(); ?>" method="get"
@@ -70,8 +70,7 @@
                                        name="s"/>
                                 <a href="javascript:" onClick="jQuery(this).closest('form').submit()">
                                 <span class="form-control-feedback ">
-                              		<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/search_icn.png"
-                                         alt="Search"/>
+                              		<i class="fas fa-search"></i>
                                 </span>
                                 </a>
                             </form>
@@ -87,26 +86,26 @@
                     define("subscribe_url", get_option("subscribe_url"));
                     ?>
 
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-6 topbar-social-icons soclize text-right">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-6 col-6 topbar-social-icons soclize text-right">
 
                         <?php if (twitter_url !== "") : ?>
-                            <a href="<?php echo twitter_url; ?>" target="_blank" title="Follow Us on Twitter">
-                                <span class="socl_icns fa-stack"><i class="fa fa-twitter fa-stack-2x"></i></span>
+                            <a href="<?php echo twitter_url; ?>" target="_blank" title="Follow Us on Twitter" class="social_icons">
+                                <i class="fab fa-twitter"></i>
                             </a>
                         <?php endif; ?>
                         <?php if (facebook_url !== "") : ?>
-                            <a href="<?php echo facebook_url; ?>" target="_blank" title="Follow Us on Facebook">
-                                <span class="socl_icns fa-stack"><i class="fa fa-facebook fa-stack-2x"></i></span>
+                            <a href="<?php echo facebook_url; ?>" target="_blank" title="Follow Us on Facebook" class="social_icons">
+                                <i class="fab fa-facebook"></i>
                             </a>
                         <?php endif; ?>
                         <?php if (youtube_url !== "") : ?>
-                            <a href="<?php echo youtube_url; ?>" target="_blank" title="Subscribe on YouTube">
-                                <span class="socl_icns fa-stack"><i class="fa fa-youtube-play fa-stack-2x"></i></span>
+                            <a href="<?php echo youtube_url; ?>" target="_blank" title="Subscribe on YouTube" class="social_icons">
+                                <i class="fab fa-youtube"></i>
                             </a>
                         <?php endif; ?>
                         <?php if (subscribe_url !== "") : ?>
-                            <a href="<?php echo subscribe_url; ?>" target="_blank" title="Sign Up for our Newsletter">
-                                <span class="socl_icns fa-stack"><i class="fa fa-envelope fa-stack-2x"></i></span>
+                            <a href="<?php echo subscribe_url; ?>" target="_blank" title="Sign Up for our Newsletter" class="social_icons">
+                                <i class="fas fa-envelope"></i>
                             </a>
                         <?php endif; ?>
                     </div>
@@ -127,8 +126,8 @@
                     ?>
                 </div>
             </div>
-            <div class="col-md-12 responsive-menu-section">
-                <span class="navi_icn fa-stack"><i class="fa fa-bars fa-stack-2x"></i></span>
+            <div class="col-md-12 col-sm-12 responsive-menu-section">
+                <span class="navi_icn fa-stack"><i class="fas fa-bars fa-stack-2x"></i></span>
                 <div class="responsiv-menu">
                     <?php wp_nav_menu(array('theme_location' => 'primary', 'menu_class' => 'responsiv-menu_ul')); ?>
                 </div>
