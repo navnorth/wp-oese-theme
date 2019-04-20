@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <meta name="viewport" content="width=device-width">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.css' type='text/css' media='all'/>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css' type='text/css' media='all'/>
+    <link rel='stylesheet' href='css/mainstyle.css' type='text/css'/>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="container">
+
+        <div class="row hdr">
+            <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12">
+                <a href="<?php echo site_url(); ?>" Title="Home">
+                    <img src="images/logo.svg"
+                         alt="Office of Innovation and Improvement" class="svg-replace" id="header_logo"/>
+                </a>
+            </div>
+
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-12 offset-xl-2 offset-lg-2 offset-md-1">
+                <div class="row">
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-6 col-6 topbar-search-section">
+                        <div class="form-group has-feedback gray_bg">
+
+                            <form id="searchform" class="searchform" action="<?php echo site_url(); ?>" method="get"
+                                  role="search">
+                                <div class="input-group to-focus">
+                                    <input type="text" class="form-control top-search-input" id="inputSuccess2" placeholder="Search" name="s"/>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-secondary custom-search-btn" type="button" onClick="jQuery(this).closest('form').submit()">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-6 col-6 topbar-social-icons soclize text-right">
+
+
+                        <a href="<?php echo twitter_url; ?>" target="_blank" title="Follow Us on Twitter" class="social_icons">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+
+
+                        <a href="<?php echo facebook_url; ?>" target="_blank" title="Follow Us on Facebook" class="social_icons">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+
+
+                        <a href="<?php echo youtube_url; ?>" target="_blank" title="Subscribe on YouTube" class="social_icons">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+
+                        <?php if (subscribe_url !== "") : ?>
+                        <a href="<?php echo subscribe_url; ?>" target="_blank" title="Sign Up for our Newsletter" class="social_icons">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="main-menu navi_bg">
+
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12 responsive-menu-section">
+                <span class="navi_icn fa-stack"><i class="fas fa-bars fa-stack-2x"></i></span>
+                <div class="responsiv-menu">
+
+                </div>
+            </div>
+        </div>
+
+
+        <!--Audience Page Custom Design -- START-->
+
+        <div class="col-md-12">
+            <!--Families section START-->
+            <div class="row custom-common-padding">
+                <div class="col-md-8">
+                    <div class="left-section-featured-image">
+                        <img src="">
+                    </div>
+                    <div class="left-description-section">
+                        <h1>Families</h1>
+                        <p>
+                            Families serve as the cornerstone of every community across our nation. As such, the Office of Elementary and Secondary Education is dedicated to helping provide each family access to world-class schools, research-based programs, and effective practitioners.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="secondary-navigation-menu">
+                        <div class="secondary-navigation-menu-header">
+                            <p>Popular Resources</p>
+                        </div>
+                        <ul class="secondary-navigation-menu-list">
+                            <li>
+                                <a href="#">Early Learning</a>
+                            </li>
+                            <li>
+                                <a href="#">Family & Community Engagement</a>
+                            </li>
+                            <li>
+                                <a href="#">Every Student Succeeds Act</a>
+                            </li>
+                            <li>
+                                <a href="#">FERPA</a>
+                            </li>
+                            <li>
+                                <a href="#">Project Prevent Grant</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--Families section END-->
+
+            <!--Div seperator-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="seperate-dark-blue-border"></div>
+                </div>
+            </div>
+            <!--Div seperator END-->
+
+            <!--Post in grids section START-->
+            <div class="row custom-common-padding">
+                <div class="col-md-4 custom-col-md-4-padding custom-col-md-4-margin">
+                    <div class="custom-image-main-section">
+                        <div class="custom-image-media">
+                            <a href="#">
+                                <div class="custom-image-thumbnail">
+                                    <div>
+                                        <img src="" alt="" class="img-responsive img-thumbnail-square">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="custom-image-heading text-center">
+                            <p>READING FIRST</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 custom-col-md-4-padding custom-col-md-4-margin">
+                    <div class="custom-image-main-section">
+                        <div class="custom-image-media">
+                            <a href="#">
+                                <div class="custom-image-thumbnail">
+                                    <div>
+                                        <img src="" alt="" class="img-responsive img-thumbnail-square">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="custom-image-heading text-center">
+                            <p>Smaller Learning Communities</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 custom-col-md-4-padding custom-col-md-4-margin">
+                    <div class="custom-image-main-section">
+                        <div class="custom-image-media">
+                            <a href="#">
+                                <div class="custom-image-thumbnail">
+                                    <div>
+                                        <img src="" alt="" class="img-responsive img-thumbnail-square">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="custom-image-heading text-center">
+                            <p>Statewide Family Engagement Centers</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 custom-col-md-4-padding custom-col-md-4-margin">
+                    <div class="custom-image-main-section">
+                        <div class="custom-image-media">
+                            <a href="#">
+                                <div class="custom-image-thumbnail">
+                                    <div>
+                                        <img src="" alt="" class="img-responsive img-thumbnail-square">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="custom-image-heading text-center">
+                            <p>Promise Neighborhoods</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 custom-col-md-4-padding custom-col-md-4-margin">
+                    <div class="custom-image-main-section">
+                        <div class="custom-image-media">
+                            <a href="#">
+                                <div class="custom-image-thumbnail">
+                                    <div>
+                                        <img src="" alt="" class="img-responsive img-thumbnail-square">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="custom-image-heading text-center">
+                            <p>Safe & Healthy Students</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 custom-col-md-4-padding custom-col-md-4-margin">
+                    <div class="custom-image-main-section">
+                        <div class="custom-image-media">
+                            <a href="#">
+                                <div class="custom-image-thumbnail">
+                                    <div>
+                                        <img src="" alt="" class="img-responsive img-thumbnail-square">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="custom-image-heading text-center">
+                            <p>School Support & Rural Programs</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Post in grids section START-->
+
+            <!--Div seperator START-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="seperate-dark-blue-border"></div>
+                </div>
+            </div>
+            <!--Div seperator END-->
+
+            <!--Full width Search Section START-->
+            <div class="row custom-common-padding">
+                <div class="full-search-section m-auto text-center">
+                    <div class="full-search-heading">
+                        <h1>What can we help you find?</h1>
+                    </div>
+
+                    <div class="full-search-field">
+                        <div class="input-group to-focus">
+                            <input type="text" class="form-control full-search-input" id="inputSuccess2" placeholder="Search" name="s"/>
+                            <div class="input-group-append">
+                                <button class="btn btn-secondary full-search-btn" type="button">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Full width Search Section END-->
+
+        </div>
+
+        <!--Audience Page Custom Design -- END-->
+
+
+        <!--Footer Custom Design START-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row custom-common-padding footer-main-section mr-0 ml-0">
+                    <div class="col-md-3">
+                        <div class="footer-title">
+                            <p>Educators</p>
+                        </div>
+                        <div class="footer-sub-menu">
+                            <ul class="sub-menu-links">
+                                <li>
+                                    <a href="">
+                                        Transition to Teaching
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        Transition to Teaching
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        Transition to Teaching
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        Transition to Teaching
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="footer-title">
+                            <p>Families</p>
+                        </div>
+                        <div class="footer-sub-menu">
+                            <ul class="sub-menu-links">
+                                <li>
+                                    <a href="">
+                                        Early Learning
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        Reading First
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        Transition to Teaching
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        Transition to Teaching
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="footer-title">
+                            <p>Administrators</p>
+                        </div>
+                        <div class="footer-sub-menu">
+                            <ul class="sub-menu-links">
+                                <li>
+                                    <a href="">
+                                        Transition to Teaching
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        Transition to Teaching
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        Transition to Teaching
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        Transition to Teaching
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="footer-title">
+                            <p>Contacts</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="row bottom-footer-section mr-0 ml-0">
+                    <div class="col-md-2">
+                        <div class="footer-bottom-left-logo">
+                            <a href="javascript:void(0);">
+                                <img src="http://oese.localhost.localdomain/wp-content/themes/wp-oese-theme/images/footer_logo.png">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="footer-bottom-right-links text-right">
+                            <a href="javascript:void(0);">
+                                Privacy Policy
+                            </a>
+
+                            <a href="javascript:void(0);">
+                                Topics A-Z
+                            </a>
+
+                            <a href="javascript:void(0);">
+                                ED.gov
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Footer Custom Design END-->
+
+    </div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js" type="text/javascript"></script>
+
+</body>
+</html>
