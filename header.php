@@ -66,8 +66,8 @@
 
                             <form id="searchform" class="searchform" action="<?php echo site_url(); ?>" method="get"
                                   role="search">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="inputSuccess2" placeholder="Search" name="s"/>
+                                <div class="input-group to-focus">
+                                    <input type="text" class="form-control top-search-input" id="inputSuccess2" placeholder="Search" name="s"/>
                                     <div class="input-group-append">
                                         <button class="btn btn-secondary custom-search-btn" type="button" onClick="jQuery(this).closest('form').submit()">
                                             <i class="fas fa-search"></i>

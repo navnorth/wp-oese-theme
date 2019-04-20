@@ -34,11 +34,19 @@ $img_alt = get_post_meta(get_post_thumbnail_id($post->ID), '_wp_attachment_image
         <?php while (have_posts()) : the_post(); ?>
             <?php get_template_part('content', 'page'); ?>
         <?php endwhile; ?>
+    </div>
 
-<!--        Code for audience page START -->
+    <div class="col-md-3 col-sm-12 col-xs-12 right_sid_mtr">
+        <?php get_sidebar(); ?>
+    </div>
 
-       <!-- <div class="row">
-            <div class="col-md-6">
+
+    <!--Audience Page Custom Design -- START-->
+
+    <div class="col-md-12">
+        <!--Families section START-->
+        <div class="row custom-common-padding">
+            <div class="col-md-8">
                 <div class="left-section-featured-image">
                     <img src="">
                 </div>
@@ -49,7 +57,7 @@ $img_alt = get_post_meta(get_post_thumbnail_id($post->ID), '_wp_attachment_image
                     </p>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="secondary-navigation-menu">
                     <div class="secondary-navigation-menu-header">
                         <p>Popular Resources</p>
@@ -73,13 +81,150 @@ $img_alt = get_post_meta(get_post_thumbnail_id($post->ID), '_wp_attachment_image
                     </ul>
                 </div>
             </div>
-        </div>-->
-        <!--        Code for audience page END -->
+        </div>
+        <!--Families section END-->
+
+        <!--Div seperator-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="seperate-dark-blue-border"></div>
+            </div>
+        </div>
+        <!--Div seperator END-->
+
+        <!--Post in grids section START-->
+        <div class="row custom-common-padding">
+            <div class="col-md-4 custom-col-md-4-padding custom-col-md-4-margin">
+                <div class="custom-image-main-section">
+                    <div class="custom-image-media">
+                        <a href="#">
+                            <div class="custom-image-thumbnail">
+                                <div>
+                                    <img src="" alt="" class="img-responsive img-thumbnail-square">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="custom-image-heading text-center">
+                        <p>READING FIRST</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 custom-col-md-4-padding custom-col-md-4-margin">
+                <div class="custom-image-main-section">
+                    <div class="custom-image-media">
+                        <a href="#">
+                            <div class="custom-image-thumbnail">
+                                <div>
+                                    <img src="" alt="" class="img-responsive img-thumbnail-square">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="custom-image-heading text-center">
+                        <p>Smaller Learning Communities</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 custom-col-md-4-padding custom-col-md-4-margin">
+                <div class="custom-image-main-section">
+                    <div class="custom-image-media">
+                        <a href="#">
+                            <div class="custom-image-thumbnail">
+                                <div>
+                                    <img src="" alt="" class="img-responsive img-thumbnail-square">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="custom-image-heading text-center">
+                        <p>Statewide Family Engagement Centers</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 custom-col-md-4-padding custom-col-md-4-margin">
+                <div class="custom-image-main-section">
+                    <div class="custom-image-media">
+                        <a href="#">
+                            <div class="custom-image-thumbnail">
+                                <div>
+                                    <img src="" alt="" class="img-responsive img-thumbnail-square">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="custom-image-heading text-center">
+                        <p>Promise Neighborhoods</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 custom-col-md-4-padding custom-col-md-4-margin">
+                <div class="custom-image-main-section">
+                    <div class="custom-image-media">
+                        <a href="#">
+                            <div class="custom-image-thumbnail">
+                                <div>
+                                    <img src="" alt="" class="img-responsive img-thumbnail-square">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="custom-image-heading text-center">
+                        <p>Safe & Healthy Students</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 custom-col-md-4-padding custom-col-md-4-margin">
+                <div class="custom-image-main-section">
+                    <div class="custom-image-media">
+                        <a href="#">
+                            <div class="custom-image-thumbnail">
+                                <div>
+                                    <img src="" alt="" class="img-responsive img-thumbnail-square">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="custom-image-heading text-center">
+                        <p>School Support & Rural Programs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Post in grids section START-->
+
+        <!--Div seperator START-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="seperate-dark-blue-border"></div>
+            </div>
+        </div>
+        <!--Div seperator END-->
+
+        <!--Full width Search Section START-->
+        <div class="row custom-common-padding">
+            <div class="full-search-section m-auto text-center">
+                <div class="full-search-heading">
+                    <h1>What can we help you find?</h1>
+                </div>
+
+                <div class="full-search-field">
+                    <div class="input-group to-focus">
+                        <input type="text" class="form-control full-search-input" id="inputSuccess2" placeholder="Search" name="s"/>
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary full-search-btn" type="button">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Full width Search Section END-->
+
     </div>
 
-    <div class="col-md-3 col-sm-12 col-xs-12 right_sid_mtr">
-        <?php get_sidebar(); ?>
-    </div>
+    <!--Audience Page Custom Design -- END-->
 
 </div>
 

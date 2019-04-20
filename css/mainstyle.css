@@ -88,10 +88,10 @@ body { padding-top: 15px; font-family: 'CharisSILR' !important; color: #4b4e53 !
 #header_logo {max-width:660px; max-height:142;}
 .top_strp_img { float: left; background: url(../images/top_strap_img.png) 0 0 no-repeat}
 .top_strp { overflow: hidden; background: url(../images/top_strap_img.png) 0 0 no-repeat; height: 55px}
-.navi_bg, .ftr_strp { border-top: 2px solid #d2d3d4 }
+.ftr_strp { border-top: 2px solid #d2d3d4 }
 .navi_bg ul { padding: 0; margin-bottom: 0}
 .navi_bg li, .ftr_lnks li { display: inline; float: left; font-family: 'Raleway-SemiBold'}
-.navi_bg li a {color: #fff; font-size: 16px; padding: 8px 18px; float: left}
+.navi_bg li a {color: #fff; font-size: 24px; padding: 15px 28px; float: left; font-weight: 600;}
 .navi_bg li a:focus { outline: none;}
 .ftr_lnks li { font-size: 13px;padding: 13px 35px 13px 0;}
 .ftr_lnks li a{ font-size: 13px;text-decoration: none;}
@@ -103,7 +103,7 @@ body { padding-top: 15px; font-family: 'CharisSILR' !important; color: #4b4e53 !
 #searchform.searchform a:hover .form-control-feedback img { opacity: .6; }
 .form-control-feedback { top: 1px !important; cursor: pointer}
 .form-control-feedback:hover { opacity: .6}
-.form-control { background: #f2f2f2 !important; height: 40px !important; box-shadow: none !important}
+.form-control { background: #f1f1f1 !important; height: 40px !important; box-shadow: none !important}
 .border_blue { border: 1px solid #9fbedb; margin-top: 12px; border-radius: 3px; margin-bottom: 20px}
 .border_blue h1 { font-family: 'Raleway-SemiBold'; color: #2d8700; font-size: 40px !important; letter-spacing: 1.5px}
 .pblctn_hed { font-family: 'Raleway-SemiBold'; color: #2d8700; margin-bottom: 20px;}
@@ -274,7 +274,7 @@ ul .tour_dates { list-style: none; }
 
 .acrdn_pnl_cntnr { padding-left: 0 !important}
 
-.main-menu {  background: #294179; width: 100%; float: left }
+.main-menu {  background: #294179; width: 100%; float: left;padding: 4px 0; }
 .main-menu li { position: relative}
 .main-menu li a, .responsiv-menu li a{ text-decoration: none;}
 .main-menu li a:hover, .responsiv-menu li a:hover{ text-decoration: underline;}
@@ -877,9 +877,6 @@ svg {
 /* -------- End of SEED data Styles ----------*/
 
 
-@media (min-width: 1200px){
-	.container { width: 1140px !important;}
-}
 
 @media (max-width: 1200px){
 	.soclize .socl_icns { margin: 0 0 0 2px; }
@@ -1250,23 +1247,44 @@ a{
     font-size: 24px;
     color: #333333;
 }
+.custom-common-padding{
+    padding-left: 6%;
+    padding-right: 6%;
+    padding-top: 7%;
+    padding-bottom: 7%;
+}
 .custom-search-btn{
-    background: unset !important;
+    background: #F1F1F1 !important;
     border-left: unset !important;
     border-color: #ced4da !important;
 }
+.custom-search-btn i{
+    color: #818181;
+}
+.custom-search-btn:hover i{
+    color: #fff;
+}
 .custom-search-btn:hover{
     background: #1F5C99 !important;
+    border-color: #1F5C99 !important;
 }
 .custom-search-btn:focus{
     box-shadow: unset !important;
+}
+.top-search-input{
+    background: #F1F1F1 !important;
+}
+.top-search-input:focus{
+    border-color: #ced4da !important;
+    border: 1px solid #ced4da !important;
+    border-right: unset !important;
 }
 
 /*Secondary navigation menu css START*/
 .secondary-navigation-menu-header{
     background: #1F5C99;
     color: #fff;
-    padding: 15px 30px;
+    padding: 0.9375rem 1.875rem;
 }
 .secondary-navigation-menu-header p{
     color: #fff;
@@ -1276,11 +1294,153 @@ a{
 .secondary-navigation-menu-list{
     list-style: none;
     margin:0;
-    padding:0;
+    padding: 1.875rem 2.25rem 1.25rem 2.25rem;
     background: #004285;
+}
+.secondary-navigation-menu-list li{
+    padding:10px 0;
 }
 .secondary-navigation-menu-list li a{
     text-decoration: none;
     color: #fff;
 }
 /*Secondary navigation menu css END*/
+
+.seperate-dark-blue-border{
+    height: 12px;
+    background: #004285;
+}
+.custom-padding-left-right{
+    padding-left: 6%;
+    padding-right: 6%;
+}
+
+/*CSS for images START*/
+.custom-image-media a .custom-image-thumbnail{
+    height: 0;
+    overflow: hidden;
+    border-top: none;
+    text-align: center;
+    display: block;
+    padding: 0;
+    padding-bottom: 100%;
+    position: relative;
+    vertical-align: middle;
+}
+.custom-image-media a .custom-image-thumbnail > div{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.custom-image-thumbnail img.img-thumbnail-square{
+    max-width: none;
+    margin: auto;
+    vertical-align: middle;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+/*CSS for images END*/
+
+.custom-col-md-4-margin:nth-child(1),
+.custom-col-md-4-margin:nth-child(2),
+.custom-col-md-4-margin:nth-child(3){
+    margin-top: 0;
+}
+.custom-col-md-4-margin{
+    margin-top: 52px;
+}
+.custom-col-md-4-padding{
+    padding-left: 1.75rem !important;
+    padding-right: 1.75rem !important;
+}
+.custom-image-heading {
+    background: #1F5C99;
+    position: absolute;
+    bottom:0;
+    width: 100%;
+    min-height: 88px;
+    transition: all ease-in-out .3s;
+    box-sizing: border-box;
+    display: table;
+    padding: 0 1.25rem;
+}
+.custom-image-heading p{
+    font-family: 'Helvetica Neue', sans-serif !important;
+    font-weight: 700;
+    font-size: 22px !important;
+    margin-bottom: 0;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    color: #fff;
+    line-height: 30px;
+    text-transform: uppercase;
+}
+.custom-image-main-section{
+    position: relative;
+}
+
+/*Full Search CSS START*/
+.full-search-section{
+    width: 60%;
+}
+.full-search-input{
+    height: 100px !important;
+    font-size: 2rem !important;
+    padding: .375rem 2.5rem !important;
+}
+.full-search-btn{
+    font-size: 3.25rem;
+    padding: .375rem 3.25rem;
+    background: #1F5C99 !important;
+    border-color: #1F5C99 !important;
+}
+.full-search-heading h1{
+    margin-bottom: 3.375rem !important;
+}
+/*Full Search CSS END*/
+
+
+/*Footer Section Css*/
+.footer-main-section{
+    background: #1F5C99;
+}
+.footer-title{
+    margin-bottom: 7px;
+}
+.footer-title p{
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom:0;
+}
+.footer-sub-menu .sub-menu-links{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    line-height: 34px;
+}
+.footer-sub-menu .sub-menu-links li a{
+    text-decoration: none;
+    color: #fff;
+}
+.bottom-footer-section{
+    background: #002649;
+    padding: 12px 16px;
+}
+.footer-bottom-left-logo{
+    width: 40px;
+}
+.footer-bottom-left-logo img{
+    width: 100%;
+}
+.footer-bottom-right-links a{
+    text-decoration: none;
+    color: #fff;
+    margin-left:48px;
+}
