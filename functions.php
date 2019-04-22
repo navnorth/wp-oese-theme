@@ -1049,10 +1049,10 @@ register_nav_menu( 'Footer Menu', __( 'Footer Menu', 'twentytwelve' ) );
 */
   function getPopularResources(){
 
-      $output = "<div><h2>". get_field('popular_resources_title')."</h2>";
+      $output = "<div class='secondary-navigation-menu'><div class='secondary-navigation-menu-header'><p>". get_field('popular_resources_title')."</p></div>";
       // check if the repeater field has rows of data
       if( have_rows('popular_resources_links') ):
-        $output.=  "<ul>";
+        $output.=  "<ul class='secondary-navigation-menu-list'>";
         // loop through the rows of data
           while ( have_rows('popular_resources_links') ) : the_row();
             $resourceLabel =  get_sub_field('resource_label');
@@ -1086,3 +1086,48 @@ function addingTagsToAttachment() {
     register_taxonomy_for_object_type( 'post_tag', 'attachment' );
 }
 add_action( 'init' , 'addingTagsToAttachment' );
+
+/**
+  Filt
+*
+**/
+
+add_action('pre_get_posts', 'mediaFilterByCategory');
+
+function mediaFilterByCategory( $q ) {
+if(is_admin()){
+  $scr = get_current_screen();
+  $cat = filter_input(INPUT_GET, 'category_name', FILTER_SANITIZE_STRING );   
+  if ( ! $q->is_main_query() || ! is_admin() || (int)$cat <= 0 || $scr->base !== 'upload' )
+      return;
+    $posts = get_posts( 'nopaging=1&category=' . $cat );
+    $pids = ( ! empty( $posts ) ) ? wp_list_pluck($posts, 'ID') : false;
+    if ( ! empty($pids) ) {
+      $pidstxt = implode($pids, ',');
+      global $wpdb;
+      $mids = $wpdb->get_col("SELECT ID FROM $wpdb->posts WHERE post_parent IN ($pidstxt)");
+      if ( ! empty($mids) ) {
+      
+        $q->set( 'post__in', $mids );
+      } else {
+        $q->set( 'p', -1 ); 
+      }
+    }
+  }  
+}
+
+add_action( 'restrict_manage_posts', 'mediaCategoryDropdown' );
+
+function mediaCategoryDropdown() {
+  $scr = get_current_screen();
+  if ( $scr->base !== 'upload' ) return;
+  $cat = filter_input(INPUT_GET, 'category_name', FILTER_SANITIZE_STRING );   
+  $selected = (int)$cat > 0 ? $cat : '-1';  
+  $args = array(
+      'show_option_none'   => 'All Post Categories',
+      'name'               => 'category_name',
+      'selected'           => $selected,
+      'value_field'       => 'slug'
+  ); 
+  wp_dropdown_categories( $args );
+}

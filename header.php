@@ -29,6 +29,9 @@
     <link rel='stylesheet' id='multicolumn-style-css'
           href='<?php echo get_stylesheet_directory_uri(); ?>/css/multicolumn.css' type='text/css' media='all'/>
     <![endif]-->
+
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.css' type='text/css' media='all'/>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css' type='text/css' media='all'/>
 </head>
 
 <!--[if IE 7]>
