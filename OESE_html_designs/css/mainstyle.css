@@ -1365,6 +1365,7 @@ a{
 }
 .secondary-navigation-menu-list li{
     padding:10px 0;
+    line-height: 28px;
 }
 .secondary-navigation-menu-list li a{
     text-decoration: none;
@@ -1534,6 +1535,10 @@ a{
 .h1-bottom-space{
     margin-bottom:20px;
 }
+.h2-top-bottom-space{
+    margin-top:55px;
+    margin-bottom:20px;
+}
 .slider-section{
     margin-top: 5%;
     margin-bottom: 5%;
@@ -1552,6 +1557,27 @@ a{
     background: #5D111E;
     color: #fff;
 }
+
+.oese-blue-btn{
+    background: #1F5C99;
+    color: #fff;
+    border-radius: unset !important;
+    border: 1px solid #1F5C99;
+    font-size: 24px;
+    padding: .375rem 1.5rem;
+}
+.oese-blue-btn:hover{
+    background: #fff;
+    color: #1F5C99;
+}
+.by-office-btn{
+    margin-right: 30px;
+}
+.office-programs-btn-section{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 .custom-image-thumbnail{
     background: #ccc;
 }
@@ -1675,3 +1701,16 @@ a{
     margin-bottom: 55px;
 }
 /*Home Page Design END*/
+.page-list-section{
+    padding-left: 45px !important;
+}
+.page-list-section li{
+    list-style: none;
+    font-weight: 600;
+}
+.page-list-section li::before {
+    content: "\25AA";
+    padding-right: 18px;
+    color: #2d8700;
+    font-size: 34px;
+}
