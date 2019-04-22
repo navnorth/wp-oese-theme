@@ -14,7 +14,7 @@
 <div class="container-fluid">
     <div class="container">
 
-        <div class="row hdr">
+        <div class="row">
             <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12">
                 <a href="<?php echo site_url(); ?>" Title="Home">
                     <img src="images/logo.svg"
@@ -43,36 +43,24 @@
                         </div>
                     </div>
 
-                    <?php
-                    define("twitter_url", get_option("twitter_url"));
-                    define("facebook_url", get_option("facebook_url"));
-                    define("youtube_url", get_option("youtube_url"));
-                    define("linkedin_url", get_option("linkedin_url"));
-                    define("subscribe_url", get_option("subscribe_url"));
-                    ?>
 
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-6 col-6 topbar-social-icons soclize text-right">
-
-                        <?php if (twitter_url !== "") : ?>
                         <a href="<?php echo twitter_url; ?>" target="_blank" title="Follow Us on Twitter" class="social_icons">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <?php endif; ?>
-                        <?php if (facebook_url !== "") : ?>
+
+
                         <a href="<?php echo facebook_url; ?>" target="_blank" title="Follow Us on Facebook" class="social_icons">
                             <i class="fab fa-facebook"></i>
                         </a>
-                        <?php endif; ?>
-                        <?php if (youtube_url !== "") : ?>
+
                         <a href="<?php echo youtube_url; ?>" target="_blank" title="Subscribe on YouTube" class="social_icons">
                             <i class="fab fa-youtube"></i>
                         </a>
-                        <?php endif; ?>
-                        <?php if (subscribe_url !== "") : ?>
+
                         <a href="<?php echo subscribe_url; ?>" target="_blank" title="Sign Up for our Newsletter" class="social_icons">
                             <i class="fas fa-envelope"></i>
                         </a>
-                        <?php endif; ?>
                     </div>
 
                 </div>
@@ -96,220 +84,211 @@
 
         <!--Audience Page Custom Design -- START-->
 
+        <div class="row custom-common-padding mr-0 ml-0">
 
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-            <div class="row custom-common-padding">
+            <h1>Welcome to OESE!</h1>
 
-                <h1>Welcome to OESE!</h1>
+            <div class="welcome-description">
+                <p>
+                    Thank you very much for visiting the Office of Elementary and Secondary Education (OESE) Website. It is our desire to provide you with useful and secondary education programs and issues. Your questions and comments are always welcome.
+                </p>
+            </div>
 
-                <div class="welcome-description">
-                    <p>
-                        Thank you very much for visiting the Office of Elementary and Secondary Education (OESE) Website. It is our desire to provide you with useful and secondary education programs and issues. Your questions and comments are always welcome.
-                    </p>
-                </div>
+            <div class="slider-section w-100">
+                [placeholder: slideshow]
+            </div>
 
-                <div class="slider-section w-100">
-                    [placeholder: slideshow]
-                </div>
+            <h1>Mission & Responsibilities</h1>
 
-                <h1>Mission & Responsibilities</h1>
+            <div class="mission-responsibilities-description">
+                <p>
+                    Thank you very much for visiting the Office of Elementary and Secondary Education (OESE) Website. It is our desire to provide you with useful and secondary education programs and issues. Your questions and comments are always welcome.
+                </p>
+                <button type="button" class="btn oese-btn-danger float-right">Read More</button>
+            </div>
 
-                <div class="mission-responsibilities-description">
-                    <p>
-                        Thank you very much for visiting the Office of Elementary and Secondary Education (OESE) Website. It is our desire to provide you with useful and secondary education programs and issues. Your questions and comments are always welcome.
-                    </p>
-                    <button type="button" class="btn oese-btn-danger float-right">Read More</button>
-                </div>
-
-                <div class="col-md-12 home-grid-section">
-                    <div class="row">
-                        <div class="col-md-4 pl-0 pr-0 ml-0 mr-0 home-col-md-4">
-                            <div class="custom-home-image-section">
-                                <div class="custom-image-media">
-                                    <a href="#">
-                                        <div class="custom-image-thumbnail">
-                                            <div>
-                                                <img src="images/top-grid-1.png" alt="" class="img-responsive img-thumbnail-square">
-                                            </div>
+            <div class="col-md-12 home-grid-section">
+                <div class="row">
+                    <div class="col-md-4 pl-0 pr-0 ml-0 mr-0 home-col-md-4">
+                        <div class="custom-home-image-section">
+                            <div class="custom-image-media">
+                                <a href="#">
+                                    <div class="custom-image-thumbnail">
+                                        <div>
+                                            <img src="images/top-grid-1.png" alt="" class="img-responsive img-thumbnail-square">
                                         </div>
-                                    </a>
-                                </div>
-                                <div class="custom-home-image-heading text-center">
-                                    <p>READING FIRST</p>
-                                </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="custom-home-image-heading text-center">
+                                <p>READING FIRST</p>
                             </div>
                         </div>
-                        <div class="col-md-4 pl-0 pr-0 ml-0 mr-0 home-col-md-4">
-                            <div class="custom-home-image-section">
-                                <div class="custom-image-media">
-                                    <a href="#">
-                                        <div class="custom-image-thumbnail">
-                                            <div>
-                                                <img src="images/top-grid-1.png" alt="" class="img-responsive img-thumbnail-square">
-                                            </div>
+                    </div>
+                    <div class="col-md-4 pl-0 pr-0 ml-0 mr-0 home-col-md-4">
+                        <div class="custom-home-image-section">
+                            <div class="custom-image-media">
+                                <a href="#">
+                                    <div class="custom-image-thumbnail">
+                                        <div>
+                                            <img src="images/top-grid-1.png" alt="" class="img-responsive img-thumbnail-square">
                                         </div>
-                                    </a>
-                                </div>
-                                <div class="custom-home-image-heading text-center">
-                                    <p>READING FIRST</p>
-                                </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="custom-home-image-heading text-center">
+                                <p>READING FIRST</p>
                             </div>
                         </div>
-                        <div class="col-md-4 pl-0 pr-0 ml-0 mr-0 home-col-md-4">
-                            <div class="custom-home-image-section">
-                                <div class="custom-image-media">
-                                    <a href="#">
-                                        <div class="custom-image-thumbnail">
-                                            <div>
-                                                <img src="images/top-grid-1.png" alt="" class="img-responsive img-thumbnail-square">
-                                            </div>
+                    </div>
+                    <div class="col-md-4 pl-0 pr-0 ml-0 mr-0 home-col-md-4">
+                        <div class="custom-home-image-section">
+                            <div class="custom-image-media">
+                                <a href="#">
+                                    <div class="custom-image-thumbnail">
+                                        <div>
+                                            <img src="images/top-grid-1.png" alt="" class="img-responsive img-thumbnail-square">
                                         </div>
-                                    </a>
-                                </div>
-                                <div class="custom-home-image-heading text-center">
-                                    <p>READING FIRST</p>
-                                </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="custom-home-image-heading text-center">
+                                <p>READING FIRST</p>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!--Div seperator-->
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-12 pr-0 pl-0">
-                            <div class="seperate-dark-blue-border"></div>
-                        </div>
-                    </div>
-                </div>
-                <!--Div seperator END-->
-
-                <div class="col-md-12">
-                    <div class="row custom-common-padding office-section-bg">
-                        <div class="col-md-6 pr-xl-5 pl-xl-5 pr-lg-5 pl-lg-5 pr-md-5 pl-md-5 pr-sm-5 pl-sm-5 pr-3 pl-3 office-grid-section-custom-margin">
-                            <div class="office-grid-section">
-                                <div class="office-grid-list-details text-center">
-                                    <p>
-                                        Office of Administration
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 pr-xl-5 pl-xl-5 pr-lg-5 pl-lg-5 pr-md-5 pl-md-5 pr-sm-5 pl-sm-5 pr-3 pl-3 office-grid-section-custom-margin">
-                            <div class="office-grid-section">
-                                <div class="office-grid-list-details text-center">
-                                    <p>
-                                        Office of Evidence - Based Practices and State & Grantee Relations
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 pr-xl-5 pl-xl-5 pr-lg-5 pl-lg-5 pr-md-5 pl-md-5 pr-sm-5 pl-sm-5 pr-3 pl-3 office-grid-section-custom-margin">
-                            <div class="office-grid-section">
-                                <div class="office-grid-list-details text-center">
-                                    <p>
-                                        Office of Administration
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 pr-xl-5 pl-xl-5 pr-lg-5 pl-lg-5 pr-md-5 pl-md-5 pr-sm-5 pl-sm-5 pr-3 pl-3 office-grid-section-custom-margin">
-                            <div class="office-grid-section">
-                                <div class="office-grid-list-details text-center">
-                                    <p>
-                                        Office of Evidence - Based Practices and State & Grantee Relations
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 pr-xl-5 pl-xl-5 pr-lg-5 pl-lg-5 pr-md-5 pl-md-5 pr-sm-5 pl-sm-5 pr-3 pl-3 office-grid-section-custom-margin">
-                            <div class="office-grid-section">
-                                <div class="office-grid-list-details text-center">
-                                    <p>
-                                        Office of Administration
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 pr-xl-5 pl-xl-5 pr-lg-5 pl-lg-5 pr-md-5 pl-md-5 pr-sm-5 pl-sm-5 pr-3 pl-3 office-grid-section-custom-margin">
-                            <div class="office-grid-section">
-                                <div class="office-grid-list-details text-center">
-                                    <p>
-                                        Office of Evidence - Based Practices and State & Grantee Relations
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <!--Div seperator-->
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-12 pr-0 pl-0">
-                            <div class="seperate-dark-blue-border"></div>
-                        </div>
-                    </div>
-                </div>
-                <!--Div seperator END-->
-
-                <div class="col-md-12">
-                    <div class="row custom-common-padding">
-                        <div class="col-md-4">
-                            <div class="trending-now-section rounded">
-                                <div class="trending-image-section">
-                                    <img src="images/trending-image.png">
-                                </div>
-                                <div class="trending-image-details">
-                                    <p class="trending-image-details-title">
-                                        Safe & Healthy Students
-                                    </p>
-                                    <p class="trending-image-details-description">
-                                        OSHS directly supports efforts at the State and local level to and local level to
-                                    </p>
-                                    <button type="button" class="btn oese-btn-danger oese-btn-danger-small">Read More</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="trending-now-section rounded">
-                                <div class="trending-image-section">
-                                    <img src="images/trending-image.png">
-                                </div>
-                                <div class="trending-image-details">
-                                    <p class="trending-image-details-title">
-                                        Safe & Healthy Students
-                                    </p>
-                                    <p class="trending-image-details-description">
-                                        OSHS directly supports efforts at the State and local level to and local level to
-                                    </p>
-                                    <button type="button" class="btn oese-btn-danger oese-btn-danger-small">Read More</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="trending-now-section rounded">
-                                <div class="trending-image-section">
-                                    <img src="images/trending-image.png">
-                                </div>
-                                <div class="trending-image-details">
-                                    <p class="trending-image-details-title">
-                                        Safe & Healthy Students
-                                    </p>
-                                    <p class="trending-image-details-description">
-                                        OSHS directly supports efforts at the State and local level to and local level to
-                                    </p>
-                                    <button type="button" class="btn oese-btn-danger oese-btn-danger-small">Read More</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
         </div>
+
+
+        <!--Div seperator-->
+        <div class="row mr-0 ml-0">
+            <div class="col-md-12 pr-0 pl-0">
+                <div class="seperate-dark-blue-border"></div>
+            </div>
+        </div>
+        <!--Div seperator END-->
+
+        <div class="row custom-common-padding office-section-bg mr-0 ml-0">
+                    <div class="col-md-6 pr-xl-5 pl-xl-5 pr-lg-5 pl-lg-5 pr-md-5 pl-md-5 pr-sm-5 pl-sm-5 pr-3 pl-3 office-grid-section-custom-margin">
+                        <div class="office-grid-section">
+                            <div class="office-grid-list-details text-center">
+                                <p>
+                                    Office of Administration
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 pr-xl-5 pl-xl-5 pr-lg-5 pl-lg-5 pr-md-5 pl-md-5 pr-sm-5 pl-sm-5 pr-3 pl-3 office-grid-section-custom-margin">
+                        <div class="office-grid-section">
+                            <div class="office-grid-list-details text-center">
+                                <p>
+                                    Office of Evidence - Based Practices and State & Grantee Relations
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 pr-xl-5 pl-xl-5 pr-lg-5 pl-lg-5 pr-md-5 pl-md-5 pr-sm-5 pl-sm-5 pr-3 pl-3 office-grid-section-custom-margin">
+                        <div class="office-grid-section">
+                            <div class="office-grid-list-details text-center">
+                                <p>
+                                    Office of Administration
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 pr-xl-5 pl-xl-5 pr-lg-5 pl-lg-5 pr-md-5 pl-md-5 pr-sm-5 pl-sm-5 pr-3 pl-3 office-grid-section-custom-margin">
+                        <div class="office-grid-section">
+                            <div class="office-grid-list-details text-center">
+                                <p>
+                                    Office of Evidence - Based Practices and State & Grantee Relations
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 pr-xl-5 pl-xl-5 pr-lg-5 pl-lg-5 pr-md-5 pl-md-5 pr-sm-5 pl-sm-5 pr-3 pl-3 office-grid-section-custom-margin">
+                        <div class="office-grid-section">
+                            <div class="office-grid-list-details text-center">
+                                <p>
+                                    Office of Administration
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 pr-xl-5 pl-xl-5 pr-lg-5 pl-lg-5 pr-md-5 pl-md-5 pr-sm-5 pl-sm-5 pr-3 pl-3 office-grid-section-custom-margin">
+                        <div class="office-grid-section">
+                            <div class="office-grid-list-details text-center">
+                                <p>
+                                    Office of Evidence - Based Practices and State & Grantee Relations
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+        <!--Div seperator-->
+        <div class="row mr-0 ml-0">
+            <div class="col-md-12 pr-0 pl-0">
+                <div class="seperate-dark-blue-border"></div>
+            </div>
+        </div>
+        <!--Div seperator END-->
+
+        <div class="row custom-common-padding mr-0 ml-0">
+                    <div class="col-md-4">
+                        <div class="trending-now-section rounded">
+                            <div class="trending-image-section">
+                                <img src="images/trending-image.png">
+                            </div>
+                            <div class="trending-image-details">
+                                <p class="trending-image-details-title">
+                                    Safe & Healthy Students
+                                </p>
+                                <p class="trending-image-details-description">
+                                    OSHS directly supports efforts at the State and local level to and local level to
+                                </p>
+                                <button type="button" class="btn oese-btn-danger oese-btn-danger-small">Read More</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="trending-now-section rounded">
+                            <div class="trending-image-section">
+                                <img src="images/trending-image.png">
+                            </div>
+                            <div class="trending-image-details">
+                                <p class="trending-image-details-title">
+                                    Safe & Healthy Students
+                                </p>
+                                <p class="trending-image-details-description">
+                                    OSHS directly supports efforts at the State and local level to and local level to
+                                </p>
+                                <button type="button" class="btn oese-btn-danger oese-btn-danger-small">Read More</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="trending-now-section rounded">
+                            <div class="trending-image-section">
+                                <img src="images/trending-image.png">
+                            </div>
+                            <div class="trending-image-details">
+                                <p class="trending-image-details-title">
+                                    Safe & Healthy Students
+                                </p>
+                                <p class="trending-image-details-description">
+                                    OSHS directly supports efforts at the State and local level to and local level to
+                                </p>
+                                <button type="button" class="btn oese-btn-danger oese-btn-danger-small">Read More</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
         <!--Audience Page Custom Design -- END-->
 
 

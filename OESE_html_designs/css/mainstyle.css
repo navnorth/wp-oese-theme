@@ -1429,6 +1429,9 @@ a{
 /*Footer Section Css*/
 .footer-main-section{
     background: #1F5C99;
+    background-image: url("../images/overlay-diamonds.png");
+    background-size: contain;
+    background-repeat: repeat-x;
 }
 .footer-title{
     margin-bottom: 7px;
@@ -1527,7 +1530,6 @@ a{
 }
 
 .office-grid-list-details{
-    background: #1F5C99;
     width: 100%;
     min-height: 200px;
     display: table;
@@ -1547,8 +1549,11 @@ a{
 }
 .office-grid-section{
     height: 100%;
-    background: #1F5C99;
     border-radius: 10px;
+    background: #1F5C99;
+    background-image: url("../images/overlay-diamonds.png");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .office-grid-section-custom-margin{
     margin-top: 72px;
