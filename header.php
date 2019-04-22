@@ -29,17 +29,20 @@
 <body <?php body_class(); ?>>
 <!--<![endif]-->
 
-<!-- Skip Content Navigation -->
-<div id="skipcontent"><a class="assistive-text" href="#content"
-                         title="<?php esc_attr_e('Skip to Content', 'wp-oet-theme'); ?>"><?php _e('Skip to Content', 'wp-oet-theme'); ?></a>
-</div>
 
 <!-- Container -->
 <div class="container-fluid">
     <div class="container">
 
-        <div class="row hdr">
-            <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12">
+         <!--Div seperator-->
+        <div class="row mr-0 ml-0">
+            <div class="col-md-12 pr-0 pl-0">
+                <div class="seperate-dark-blue-border"></div>
+            </div>
+        </div>
+
+        <div class="row top-nav-spacing">
+           <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12">
                 <a href="<?php echo site_url(); ?>" Title="Home">
                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.svg"
                          alt="Office of Innovation and Improvement" class="svg-replace" id="header_logo"/>
@@ -48,7 +51,6 @@
 
             <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-12 offset-xl-2 offset-lg-2 offset-md-1">
                 <div class="row">
-
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-6 col-6 topbar-search-section">
                         <div class="form-group has-feedback gray_bg">
 
@@ -66,39 +68,6 @@
 
                         </div>
                     </div>
-
-                    <?php
-                    define("twitter_url", get_option("twitter_url"));
-                    define("facebook_url", get_option("facebook_url"));
-                    define("youtube_url", get_option("youtube_url"));
-                    define("linkedin_url", get_option("linkedin_url"));
-                    define("subscribe_url", get_option("subscribe_url"));
-                    ?>
-
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-6 col-6 topbar-social-icons soclize text-right">
-
-                        <?php if (twitter_url !== "") : ?>
-                            <a href="<?php echo twitter_url; ?>" target="_blank" title="Follow Us on Twitter" class="social_icons">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                        <?php endif; ?>
-                        <?php if (facebook_url !== "") : ?>
-                            <a href="<?php echo facebook_url; ?>" target="_blank" title="Follow Us on Facebook" class="social_icons">
-                                <i class="fab fa-facebook"></i>
-                            </a>
-                        <?php endif; ?>
-                        <?php if (youtube_url !== "") : ?>
-                            <a href="<?php echo youtube_url; ?>" target="_blank" title="Subscribe on YouTube" class="social_icons">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                        <?php endif; ?>
-                        <?php if (subscribe_url !== "") : ?>
-                            <a href="<?php echo subscribe_url; ?>" target="_blank" title="Sign Up for our Newsletter" class="social_icons">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                        <?php endif; ?>
-                    </div>
-
                 </div>
             </div>
         </div>
