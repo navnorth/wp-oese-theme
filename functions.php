@@ -1087,7 +1087,7 @@ function addingTagsToAttachment() {
 add_action( 'init' , 'addingTagsToAttachment' );
 
 /**
-  Filt
+  Category Filter for Media List Page
 *
 **/
 
@@ -1129,4 +1129,32 @@ function mediaCategoryDropdown() {
       'value_field'       => 'slug'
   ); 
   wp_dropdown_categories( $args );
+}
+
+
+function oeseBreadcrumb() {
+  if(!is_front_page()){  
+    $html = ' <div class="col-md-12"><a class="breadcrumbs-link" href="'.home_url().'" rel="nofollow">Home</a>';
+    
+    if (is_category() || is_single()) {
+        $html .=  "&nbsp;&nbsp;&#47;&nbsp;&nbsp;";
+        the_category(' &bull; ');
+        if (is_single()) {
+            $html .= "&nbsp;&nbsp;&#47;&nbsp;&nbsp;";
+            $html .= "<a href='#' class='breadcrumbs-link active'>".get_the_title()."</a>"; 
+        }
+    } elseif (is_page()) {
+        $html .= " &nbsp;&nbsp;&#47;&nbsp;&nbsp;";
+        $html .=  "<a href='#' class='breadcrumbs-link active'>".get_the_title()."</a>";
+
+    } elseif (is_search()) {
+        $html .=  "&nbsp;&nbsp;&#47;&nbsp;&nbsp;Search Results for... ";
+        $html .=  '"<em>';
+        $html .=  the_search_query();
+        $html .=  '</em>"';
+    }
+    $html .="</div>";
+    echo $html;
+
+  }  
 }
