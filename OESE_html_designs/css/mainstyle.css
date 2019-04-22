@@ -1358,7 +1358,10 @@ a{
     list-style: none;
     margin:0;
     padding: 1.875rem 2.25rem 1.25rem 2.25rem;
-    background: #004285;
+    background: #1F5C99;
+    background-image: url("../images/overlay-diamonds.png");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .secondary-navigation-menu-list li{
     padding:10px 0;
@@ -1376,6 +1379,12 @@ a{
 .custom-padding-left-right{
     padding-left: 6%;
     padding-right: 6%;
+}
+.left-section-featured-image{
+    margin-bottom: 30px;
+}
+.left-section-featured-image img{
+    width:100%;
 }
 
 /*CSS for images START*/
@@ -1451,7 +1460,7 @@ a{
 
 /*Full Search CSS START*/
 .full-search-section{
-    width: 60%;
+    width: 75%;
 }
 .full-search-input{
     height: 100px !important;
@@ -1621,7 +1630,7 @@ a{
 .office-grid-section-custom-margin:nth-child(2){
     margin-top: 0;
 }
-.office-section-bg{
+.gray-background-color{
     background: #F1F1F1;
 }
 
