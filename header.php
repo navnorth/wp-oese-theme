@@ -16,25 +16,10 @@
           type="image/x-icon">
     <link rel="profile" href="http://gmpg.org/xfn/11"/>
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>"/>
-
-    <?php // Loads HTML5 JavaScript file to add support for HTML5 elements in older IE versions. ?>
-    <!--[if lt IE 9]>
-    <script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
-    <![endif]-->
     <?php wp_head(); ?>
-
-    <!--[if lt IE 10]>
-    <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/ie-multiple-columns.js"
-            type="text/javascript"></script>
-    <link rel='stylesheet' id='multicolumn-style-css'
-          href='<?php echo get_stylesheet_directory_uri(); ?>/css/multicolumn.css' type='text/css' media='all'/>
-    <![endif]-->
-
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.css' type='text/css' media='all'/>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css' type='text/css' media='all'/>
 </head>
 
-<!--[if IE 7]>
+<!--[if IE 7]> 
 <body <?php body_class("ie ie7"); ?>>
 <![endif]-->
 <!--[if IE 8]>

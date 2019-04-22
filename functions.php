@@ -1059,8 +1059,7 @@ register_nav_menu( 'Footer Menu', __( 'Footer Menu', 'twentytwelve' ) );
             $resourceLink =  get_sub_field('resource_link');
             $externaLink =  get_sub_field('external_link');
             $target = ($externaLink ? "_blank" : "");
-            $link = ($externaLink)? $resourceLink:home_url()."/".$resourceLink;
-            $output.= "<li><a ". $target." href=".$link.">".$resourceLabel."</a></li>";
+            $output.= "<li><a ". $target." href=".$resourceLink.">".$resourceLabel."</a></li>";
           endwhile;
         $output.=  "</ul>";  
       else :
