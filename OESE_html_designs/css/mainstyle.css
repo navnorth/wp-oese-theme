@@ -1752,5 +1752,9 @@ a{
 }
 .breadcrumbs-section .breadcrumbs-link{
     text-decoration: none;
-    color: #1F5C99;
+    color: #818181 !important;
+}
+.breadcrumbs-section .breadcrumbs-link.active{
+    text-decoration: none;
+    color: #1F5C99 !important;
 }
