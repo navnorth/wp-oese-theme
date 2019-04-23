@@ -1156,7 +1156,7 @@ svg {
     .responsiv-menu .responsiv-menu_ul{display: block;list-style: none;padding: 0;margin-bottom: 0;}
     .responsiv-menu .responsiv-menu_ul li{display: inline;float: left;}
     .responsiv-menu .responsiv-menu_ul li a{font-size: 24px;padding: 10px 40px;color: #fff;float: left;}
-    .responsive-menu-section{top: -28px;}
+    .responsive-menu-section{top: -22px;}
     #searchform.searchform a {right: 15px;}
     .responsive-menu-section .navi_icn .fa-bars{top:5px !important;}
     .social_icons {
@@ -1225,12 +1225,16 @@ svg {
 
     body{
         font-size: 16px !important;
+        line-height: 18px !important;
+    }
+    p{
+        line-height: 18px !important;
     }
     .footer-title p{
         font-size: 18px !important;
     }
     .navi_icn .fa-bars,.navi_icn .fa-times{font-size: 22px !important;}
-    .navi_icn .fa-times{top: 4px;}
+    .responsive-menu-section .mobile-nav-icons.navi_icn .fa-times{top: 0 !important;}
     .mobile-nav-bar{position: relative;top: -43px;}
 }
 @media (min-width: 481px) and (max-width: 575.98px){
@@ -1272,7 +1276,7 @@ svg {
     .responsiv-menu .responsiv-menu_ul{display: block;list-style: none;padding: 0;margin-bottom: 0;}
     .responsiv-menu .responsiv-menu_ul li{display: inline;float: left;}
     .responsiv-menu .responsiv-menu_ul li a{font-size: 15px;padding: 10px 40px;color: #fff;float: left;}
-    .responsive-menu-section .navi_icn .fa-bars{top:5px !important;}
+    .responsive-menu-section .navi_icn .fa-bars, .responsive-menu-section .navi_icn .fa-times{top:0 !important;}
     .footer-col-custom-spacing{margin-top:20px;}
     .footer-col-custom-spacing:nth-child(1),
     .footer-col-custom-spacing:nth-child(2){
@@ -1679,7 +1683,7 @@ a{
     vertical-align: middle;
     text-align: center;
     color: #fff;
-    line-height: 32px;
+    line-height: 32px !important;
 }
 .office-grid-section{
     height: 100%;
@@ -1716,7 +1720,7 @@ a{
     font-size: 28px;
     color: #4f4f4f;
     margin-bottom: 0 !important;
-    line-height: 31px;
+    line-height: 31px !important;
     height: 64px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1726,7 +1730,7 @@ a{
 }
 .trending-image-details-description{
     font-size: 18px;
-    line-height: 20px;
+    line-height: 20px !important;
     margin-top: 20px;
     margin-bottom: 20px;
     overflow: hidden;
