@@ -6,8 +6,10 @@ jQuery( document ).ready(function() {
 	jQuery(".fa-bars").click(function(){
 		jQuery(".menu-primary-menu-container").css("display", "block");
 		jQuery(".responsiv-menu_ul").css("display", "block");
+		jQuery('.mobile-nav-icons i').toggleClass("fa-bars fa-times");
    		jQuery(".responsiv-menu").slideToggle("slow");
  	});
+
 	jQuery(".fa-print").click(function(){
 		window.print();
 	});
