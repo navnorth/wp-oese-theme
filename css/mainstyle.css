@@ -1440,6 +1440,7 @@ a{
     background-image: url("../images/overlay-diamonds.png");
     background-repeat: no-repeat;
     background-size: cover;
+    color: #fff;
 }
 .secondary-navigation-menu-list li{
     padding:10px 0;
@@ -1841,3 +1842,15 @@ a{
     color: #333 !important;
 }
 /*Program Information Block END*/
+
+/*Office Page Css START*/
+.sub-nav-icons i{
+    margin-right: 10px;
+}
+.sub-nav-icons p{
+    margin-bottom: 0 !important;
+    display: inline-block !important;
+    color: #fff;
+}
+
+/*Office Page Css END*/
