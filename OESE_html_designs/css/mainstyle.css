@@ -1237,6 +1237,19 @@ svg {
     .navi_icn .fa-bars,.navi_icn .fa-times{font-size: 22px !important;}
     .responsive-menu-section .mobile-nav-icons.navi_icn .fa-times{top: 0 !important;}
     .mobile-nav-bar{position: relative;top: -43px;}
+    .office-grid-section .office-grid-list-details p {
+        font-size: 18px !important;
+        line-height: 24px !important;
+    }
+    .office-grid-section .office-grid-list-details {
+        min-height: 135px;
+    }
+    h1{
+        font-size: 26px !important;
+    }
+    h2{
+        font-size: 20px !important;
+    }
 }
 @media (min-width: 481px) and (max-width: 575.98px){
     .topbar-social-icons{width: 26%;}
@@ -1293,6 +1306,31 @@ svg {
         font-size: 18px !important;
     }
 }
+@media(min-width: 768px) and (max-width: 992px){
+    .trending-image-details .trending-image-details-title {
+        font-size: 18px !important;
+        line-height: 22px !important;
+        height: 45px !important;
+        margin-bottom:10px !important;
+    }
+    .trending-image-details-description {
+        display: none !important;
+    }
+    .office-grid-section .office-grid-list-details p {
+        font-size: 18px !important;
+        line-height: 22px !important;
+    }
+    .office-grid-section .office-grid-list-details {
+        min-height: 130px;
+    }
+    .home-grid-section .custom-home-image-section .custom-home-image-heading p {
+        font-size: 16px !important;
+        line-height: 16px !important;
+    }
+    .home-grid-section .custom-home-image-section .custom-home-image-heading {
+        min-height: 50px !important;
+    }
+}
 
 /*New styles*/
 
@@ -1335,12 +1373,12 @@ h1,h2,h3,h4,h5,h6{
     font-family: 'Merriweather', serif !important;
 }
 h1{
-    font-size: 38px !important;
+    font-size: 38px;
     font-weight: 700;
     color: #2D8700 !important;
 }
 h2{
-    font-size: 34px !important;
+    font-size: 34px;
     font-weight: 700;
     color: #1F5C99 !important;
 }
@@ -1595,7 +1633,7 @@ a{
     padding: 5px 22px;
 }
 .oese-btn-danger-small{
-    font-size: 18px;
+    font-size: 14px;
     padding: 5px 10px;
 }
 .oese-btn-danger:hover{
@@ -1701,6 +1739,10 @@ a{
 .office-grid-section-custom-margin:nth-child(2){
     margin-top: 0;
 }
+.office-custom-padding{
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+}
 .gray-background-color{
     background: #F1F1F1;
 }
@@ -1713,7 +1755,7 @@ a{
     width: 100%;
 }
 .trending-image-details{
-    padding: 31px 17px 18px 17px;
+    padding: 18px;
 }
 .trending-image-details-title{
     font-family: 'Helvetica Neue', sans-serif !important;
