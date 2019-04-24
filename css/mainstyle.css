@@ -286,9 +286,9 @@ ul.tour_dates li {
 .main-menu li.menu-item-has-children > a { margin-right: 8px; }
 .main-menu li.menu-item-has-children > a:after { width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #ffffff; content: ""; position: absolute; top: 16px; right: 13px; }
 
-.responsiv-menu { display: none; background: #294179; float: left; border-top: 1px solid #00407C; width:100%; }
+.responsiv-menu { display: none; background: #1F5C99; float: left; border-top: 1px solid #2873BF; width:100%; margin-top: 12px;}
 .responsiv-menu li, .responsiv-menu li a { width: 100% }
-.responsiv-menu li { border-bottom: 1px solid #054480; border-top: 1px solid #095AA6;}
+.responsiv-menu li { border-bottom:1px solid #2873BF; border-top: 1px solid #095AA6;}
 .responsiv-menu li:first-child { border-top: none}
 
 .responsiv-menu li.menu-item-has-children { position:relative; }
@@ -361,7 +361,8 @@ ul.tour_dates li {
 .main-menu .sub-menu li a:hover, .main-menu .sub-menu li a:focus { color:#bcbcbc; }
 /* End of Mega Menu */
 
-.navi_icn { color: #fff; width: 100%; padding: 20px 0; display: none !important; background: #294179; cursor: pointer }
+.navi_icn { color: #fff; width: 100%; padding: 20px 0; display: none !important; cursor: pointer }
+.navi_icn .fa-bars,.navi_icn .fa-times{color: #004285;}
 .responsiv-menu li:last-child { border-bottom: none}
 
 .bg_img_of_icns p { font-style: normal; color:#fff; }
@@ -903,7 +904,6 @@ svg {
 
     .right_sid_mtr .col-sm-6 {  width: 46.5%; margin-left: 5%}
     .right_sid_mtr .col-sm-6:first-child { margin-left: 0}
-    body { padding-top: 25px;}
     .lft_sid_mtr { margin-bottom: 15px;}
     .hdr .col-xs-offset-2 { margin-left: 0px !important; }
     .panel-group { width: 100%}
@@ -1155,8 +1155,8 @@ svg {
     .topbar-social-icons{margin-left: 0;left: 0;position: absolute !important;}
     .responsiv-menu .responsiv-menu_ul{display: block;list-style: none;padding: 0;margin-bottom: 0;}
     .responsiv-menu .responsiv-menu_ul li{display: inline;float: left;}
-    .responsiv-menu .responsiv-menu_ul li a{font-size: 15px;padding: 10px 40px;color: #fff;float: left;}
-    .responsive-menu-section{top: -28px;}
+    .responsiv-menu .responsiv-menu_ul li a{font-size: 24px;padding: 10px 40px;color: #fff;float: left;}
+    .responsive-menu-section{top: -22px;}
     #searchform.searchform a {right: 15px;}
     .responsive-menu-section .navi_icn .fa-bars{top:5px !important;}
     .social_icons {
@@ -1222,6 +1222,33 @@ svg {
         font-size: 2rem !important;
         padding: .375rem 1.25rem !important;
     }
+
+    body{
+        font-size: 16px !important;
+        line-height: 18px !important;
+    }
+    p{
+        line-height: 18px !important;
+    }
+    .footer-title p{
+        font-size: 18px !important;
+    }
+    .navi_icn .fa-bars,.navi_icn .fa-times{font-size: 22px !important;}
+    .responsive-menu-section .mobile-nav-icons.navi_icn .fa-times{top: 0 !important;}
+    .mobile-nav-bar{position: relative;top: -43px;}
+    .office-grid-section .office-grid-list-details p {
+        font-size: 18px !important;
+        line-height: 24px !important;
+    }
+    .office-grid-section .office-grid-list-details {
+        min-height: 135px;
+    }
+    h1{
+        font-size: 26px !important;
+    }
+    h2{
+        font-size: 20px !important;
+    }
 }
 @media (min-width: 481px) and (max-width: 575.98px){
     .topbar-social-icons{width: 26%;}
@@ -1262,7 +1289,7 @@ svg {
     .responsiv-menu .responsiv-menu_ul{display: block;list-style: none;padding: 0;margin-bottom: 0;}
     .responsiv-menu .responsiv-menu_ul li{display: inline;float: left;}
     .responsiv-menu .responsiv-menu_ul li a{font-size: 15px;padding: 10px 40px;color: #fff;float: left;}
-    .responsive-menu-section .navi_icn .fa-bars{top:5px !important;}
+    .responsive-menu-section .navi_icn .fa-bars, .responsive-menu-section .navi_icn .fa-times{top:0 !important;}
     .footer-col-custom-spacing{margin-top:20px;}
     .footer-col-custom-spacing:nth-child(1),
     .footer-col-custom-spacing:nth-child(2){
@@ -1276,6 +1303,31 @@ svg {
     }
     .custom-image-main-section .custom-image-heading p {
         font-size: 18px !important;
+    }
+}
+@media(min-width: 768px) and (max-width: 992px){
+    .trending-image-details .trending-image-details-title {
+        font-size: 18px !important;
+        line-height: 22px !important;
+        height: 45px !important;
+        margin-bottom:10px !important;
+    }
+    .trending-image-details-description {
+        display: none !important;
+    }
+    .office-grid-section .office-grid-list-details p {
+        font-size: 18px !important;
+        line-height: 22px !important;
+    }
+    .office-grid-section .office-grid-list-details {
+        min-height: 130px;
+    }
+    .home-grid-section .custom-home-image-section .custom-home-image-heading p {
+        font-size: 16px !important;
+        line-height: 16px !important;
+    }
+    .home-grid-section .custom-home-image-section .custom-home-image-heading {
+        min-height: 50px !important;
     }
 }
 
@@ -1320,12 +1372,12 @@ h1,h2,h3,h4,h5,h6{
     font-family: 'Merriweather', serif !important;
 }
 h1{
-    font-size: 38px !important;
+    font-size: 38px;
     font-weight: 700;
     color: #2D8700 !important;
 }
 h2{
-    font-size: 34px !important;
+    font-size: 34px;
     font-weight: 700;
     color: #1F5C99 !important;
 }
@@ -1388,6 +1440,7 @@ a{
     background-image: url("../images/overlay-diamonds.png");
     background-repeat: no-repeat;
     background-size: cover;
+    color: #fff;
 }
 .secondary-navigation-menu-list li{
     padding:10px 0;
@@ -1513,7 +1566,7 @@ a{
     background-size: contain;
 }
 .footer-title{
-    margin-bottom: 7px;
+    margin-bottom: 10px;
 }
 .footer-title p{
     color: #fff;
@@ -1530,9 +1583,13 @@ a{
     list-style: none;
     line-height: 34px;
 }
+.footer-sub-menu .sub-menu-links li{
+    line-height: 28px;
+}
 .footer-sub-menu .sub-menu-links li a{
     text-decoration: none;
     color: #fff;
+    font-size: 18px;
 }
 .bottom-footer-section{
     background: #002649;
@@ -1576,7 +1633,7 @@ a{
     padding: 5px 22px;
 }
 .oese-btn-danger-small{
-    font-size: 18px;
+    font-size: 14px;
     padding: 5px 10px;
 }
 .oese-btn-danger:hover{
@@ -1665,7 +1722,7 @@ a{
     vertical-align: middle;
     text-align: center;
     color: #fff;
-    line-height: 32px;
+    line-height: 32px !important;
 }
 .office-grid-section{
     height: 100%;
@@ -1682,6 +1739,10 @@ a{
 .office-grid-section-custom-margin:nth-child(2){
     margin-top: 0;
 }
+.office-custom-padding{
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+}
 .gray-background-color{
     background: #F1F1F1;
 }
@@ -1694,7 +1755,7 @@ a{
     width: 100%;
 }
 .trending-image-details{
-    padding: 31px 17px 18px 17px;
+    padding: 18px;
 }
 .trending-image-details-title{
     font-family: 'Helvetica Neue', sans-serif !important;
@@ -1702,8 +1763,8 @@ a{
     font-size: 28px;
     color: #4f4f4f;
     margin-bottom: 0 !important;
-    line-height: 31px;
-    height: 65px;
+    line-height: 31px !important;
+    height: 64px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -1712,7 +1773,7 @@ a{
 }
 .trending-image-details-description{
     font-size: 18px;
-    line-height: 20px;
+    line-height: 20px !important;
     margin-top: 20px;
     margin-bottom: 20px;
     overflow: hidden;
@@ -1757,3 +1818,39 @@ a{
     text-decoration: none;
     color: #1F5C99 !important;
 }
+
+/*Program Information Block START*/
+.program-block-section{
+    margin-bottom: 50px;
+}
+.program-block-inner-section{
+    padding: 20px 28px 13px 28px;
+    border-radius: 5px;
+}
+.program-block-title{
+    font-family: 'Helvetica Neue', sans-serif !important;
+    font-size: 20px !important;
+    color: #4f4f4f !important;
+    text-transform: uppercase;
+    margin-bottom:0 !important;
+    vertical-align: top;
+}
+.program-block-description{
+    font-family: 'Helvetica Neue', sans-serif !important;
+    font-size: 20px !important;
+    margin-bottom: 0;
+    color: #333 !important;
+}
+/*Program Information Block END*/
+
+/*Office Page Css START*/
+.sub-nav-icons i{
+    margin-right: 10px;
+}
+.sub-nav-icons p{
+    margin-bottom: 0 !important;
+    display: inline-block !important;
+    color: #fff;
+}
+
+/*Office Page Css END*/

@@ -42,14 +42,14 @@
         </div>
 
         <div class="row top-nav-spacing">
-           <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12">
+           <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-9">
                 <a href="<?php echo site_url(); ?>" Title="Home">
                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.svg"
                          alt="Office of Innovation and Improvement" class="svg-replace" id="header_logo"/>
                 </a>
             </div>
 
-            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-12 offset-xl-2 offset-lg-2 offset-md-1">
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-12 offset-xl-2 offset-lg-2 offset-md-1 d-sm-none d-none d-md-block d-lg-block d-xl-block">
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-6 col-6 topbar-search-section">
                         <div class="form-group has-feedback gray_bg">
@@ -72,7 +72,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row mobile-nav-bar">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="main-menu navi_bg">
                     <?php
@@ -85,7 +85,7 @@
                 </div>
             </div>
             <div class="col-md-12 col-sm-12 responsive-menu-section">
-                <span class="navi_icn fa-stack"><i class="fas fa-bars fa-stack-2x"></i></span>
+                <span class="navi_icn fa-stack mobile-nav-icons"><i class="fas fa-bars fa-stack-2x"></i></span>
                 <div class="responsiv-menu">
                     <?php wp_nav_menu(array('theme_location' => 'primary', 'menu_class' => 'responsiv-menu_ul')); ?>
                 </div>
