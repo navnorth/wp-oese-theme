@@ -702,7 +702,7 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-social.php' )
  /**
   * Contact Metabox
   **/
- require_once( get_stylesheet_directory() . '/metaboxes/contact-metabox.php' );
+ //require_once( get_stylesheet_directory() . '/metaboxes/contact-metabox.php' );
 
   /**
   * OII Menu Walker
@@ -1034,9 +1034,9 @@ function wp_list_categories_for_posts( $args = '' ) {
     }
 }
 
-if (is_admin()) {
-    $contact_metabox = new Contact_Metabox();
-}
+// if (is_admin()) {
+//     $contact_metabox = new Contact_Metabox();
+// }
 
  /**
  * Register the footer Menu - removed in base twentytwelve theme
