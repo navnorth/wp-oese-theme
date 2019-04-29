@@ -702,7 +702,7 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-social.php' )
  /**
   * Contact Metabox
   **/
- //require_once( get_stylesheet_directory() . '/metaboxes/contact-metabox.php' );
+ require_once( get_stylesheet_directory() . '/metaboxes/contact-metabox.php' );
 
   /**
   * OII Menu Walker
@@ -1034,9 +1034,9 @@ function wp_list_categories_for_posts( $args = '' ) {
     }
 }
 
-// if (is_admin()) {
-//     $contact_metabox = new Contact_Metabox();
-// }
+if (is_admin()) {
+    $contact_metabox = new Contact_Metabox();
+}
 
  /**
  * Register the footer Menu - removed in base twentytwelve theme
@@ -1049,9 +1049,10 @@ register_nav_menu( 'Footer Menu', __( 'Footer Menu', 'twentytwelve' ) );
 */
   function getPopularResources(){
 
+    if( have_rows('popular_resources_links') ):
       $output = "<div class='secondary-navigation-menu'><div class='secondary-navigation-menu-header'><p>". get_field('popular_resources_title')."</p></div>";
       // check if the repeater field has rows of data
-      if( have_rows('popular_resources_links') ):
+    
         $output.=  "<ul class='secondary-navigation-menu-list'>";
         // loop through the rows of data
           while ( have_rows('popular_resources_links') ) : the_row();
@@ -1062,12 +1063,10 @@ register_nav_menu( 'Footer Menu', __( 'Footer Menu', 'twentytwelve' ) );
             $output.= "<li><a ". $target." href=".$resourceLink.">".$resourceLabel."</a></li>";
           endwhile;
         $output.=  "</ul>";  
-      else :
-        $output.="<p>No resources added to page</p>";
-          // no rows found
+        $output.="</div>";
+        echo $output;
       endif;
-      $output.="</div>";
-      echo $output;
+    
    }
 
 
@@ -1157,4 +1156,81 @@ function oeseBreadcrumb() {
     echo $html;
 
   }  
+}
+
+
+function contactInformationBlock(){
+
+  $contactTitle = get_field("ci_title");
+  $contactAddress = get_field("ci_address");
+  $contactPhone = get_field("ci_phone");
+  $contactFax = get_field("ci_fax");
+  $contactEmailCheck = get_field("ci_email");
+  $contactEmailAddress = get_field("ci_email_address");
+  
+  $output = '<div class="secondary-navigation-menu">
+                    <div class="secondary-navigation-menu-header">
+                        <p>'.$contactTitle.'</p>
+                    </div>
+                    <ul class="secondary-navigation-menu-list">
+                        <li>'.$contactAddress.'</li>';
+ if($contactPhone){
+  $output.=  '<li>
+                <div class="sub-nav-icons">
+                    <span>
+                      <i class="fas fa-phone"></i>
+                    </span>
+                    <p>'.$contactPhone.'</p>
+                </div>
+              </li>';
+ }             
+if($contactFax){
+  $output.= '<li>
+                <div class="sub-nav-icons">
+                    <span>
+                      <i class="fas fa-fax"></i>
+                    </span>
+                    <p>'.$contactFax.' FAX</p>
+                 </div>
+            </li>';
+}
+                        
+$output .= '<li>
+              <div class="sub-nav-icons">
+                <span>
+                  <i class="fas fa-envelope"></i>
+                </span>
+                <p>
+                  <a href="mailto:'.$contactEmailAddress.'">'.$contactEmailAddress.'</a>
+                </p>
+              </div>
+            </li>
+          </ul>
+      </div>';
+
+   return $output;             
+}
+
+function getTileLinks(){
+   if( have_rows('tile_links') ):
+      $output = "<div class='row custom-common-padding gray-background-color mr-0 ml-0'>";
+         while ( have_rows('tile_links') ) : the_row();
+              $tileLinkLabel =  get_sub_field('tile_link_title');
+              $tileLinkUrl =  get_sub_field('tile_link_url');
+              $externaLink =  get_sub_field('external_link');
+              $tileLinkWidth =  get_sub_field('width');
+              $target = ($externaLink ? "_blank" : "");
+              $output.= '<div class="col-md-6 office-custom-padding office-grid-section-custom-margin">
+                <div class="office-grid-section">
+                   
+                    <div class="office-grid-list-details text-center">
+                      <a '.$target.' href="'.$tileLinkUrl.'"><p>'. $tileLinkLabel.'</p></a>
+                    </div>
+                   
+                </div>
+            </div>';
+            endwhile;
+         $output.="</div>";   
+         echo $output; 
+    endif;      
 }

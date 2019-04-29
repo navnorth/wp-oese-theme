@@ -37,7 +37,7 @@ class Contact_Metabox {
          */
         add_meta_box(
             $this->id, // id
-            __("Contact Box", "OII"), // title
+            __(" Old OII Contact Metabox", "OII"), // title
             array($this, "display"), // callback
             "page", // screen
             "normal", // context
