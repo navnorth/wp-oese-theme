@@ -90,7 +90,7 @@ body { font-family: 'CharisSILR' !important; color: #4b4e53 !important;}
 .ftr_strp { border-top: 2px solid #d2d3d4 }
 .navi_bg ul { padding: 0; margin-bottom: 0}
 .navi_bg li, .ftr_lnks li { display: inline; float: left; font-family: 'Raleway-SemiBold'}
-.navi_bg li a {color: #fff; font-size: 24px; padding: 15px 28px; float: left; font-weight: 600;}
+.navi_bg li a {color: #fff; font-size: 20px; padding: 15px 28px; float: left; font-weight: 600;}
 .navi_bg li a:focus { outline: none;}
 .ftr_lnks li { font-size: 13px;padding: 13px 35px 13px 0;}
 .ftr_lnks li a{ font-size: 13px;text-decoration: none;}
@@ -877,7 +877,11 @@ svg {
 /* -------- End of SEED data Styles ----------*/
 
 
-
+@media (min-width: 1200px) {
+    .container{
+        max-width: 1200px;
+    }
+}
 @media (max-width: 1200px){
     .soclize .socl_icns { margin: 0 0 0 2px; }
     .tlkt_stp_vdo_cntnr .pblctn_vdo_bg { width: 32.8222% !important; }
@@ -1214,8 +1218,8 @@ svg {
         width: 90% !important;
     }
     .full-search-field .full-search-input {
-        height: 80px !important;
-        font-size: 2rem !important;
+        height: 65px !important;
+        font-size: 1.5rem !important;
         padding: .375rem 1.5rem !important;
     }
     .full-search-field .full-search-btn {
@@ -1396,26 +1400,26 @@ svg {
 
 body{
     font-family:'Helvetica Neue' !important;
-    font-size: 24px;
+    font-size: 16px;
     color: #333333;
 }
 h1,h2,h3,h4,h5,h6{
     font-family: 'Merriweather', serif !important;
 }
 h1{
-    font-size: 38px;
+    font-size: 28px;
     font-weight: 700;
     color: #2D8700 !important;
 }
 h2{
-    font-size: 34px;
+    font-size: 24px;
     font-weight: 700;
     color: #1F5C99 !important;
 }
 a{
     font-family:'Helvetica Neue' !important;
     text-decoration: underline;
-    font-size: 24px;
+    font-size: 16px;
     color: #333333;
 }
 
@@ -1574,8 +1578,8 @@ a{
     width: 75%;
 }
 .full-search-input{
-    height: 100px !important;
-    font-size: 2rem !important;
+    height: 65px !important;
+    font-size: 1.5rem !important;
     padding: .375rem 2.5rem !important;
 }
 .full-search-btn{
