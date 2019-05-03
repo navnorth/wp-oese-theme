@@ -12,34 +12,128 @@ $img_alt = get_post_meta(get_post_thumbnail_id($post->ID), '_wp_attachment_image
 get_header();
 ?>
 
-    <div id="content" class="row site-content" tabindex="-1">
+           <!--Offices/Programs Design START-->
+        <div class="row custom-common-padding mr-0 ml-0">
 
-        <div class="col-md-9 col-sm-8 col-xs-12 padding_left lft_sid_cntnr">
+            <div class="col-md-8">
+                <!--Program Blocks START-->
+                <div class="row program-block-section">
+                    <div class="gray-background-color program-block-inner-section">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label class="program-block-title">Program Office</label>
+                            </div>
+                            <div class="col-md-7">
+                                <p class="program-block-description">Office of Formula Grants</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label class="program-block-title">Program Type</label>
+                            </div>
+                            <div class="col-md-7">
+                                <p class="program-block-description">Discretionary/Competitive Grants</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label class="program-block-title">CFDA Number</label>
+                            </div>
+                            <div class="col-md-7">
+                                <p class="program-block-description">12.345A</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label class="program-block-title">Also Known as</label>
+                            </div>
+                            <div class="col-md-7">
+                                <p class="program-block-description">Aid for Impacted Schools</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Program Blocks END-->
 
-        <?php if ( function_exists('yoast_breadcrumb') ) { yoast_breadcrumb('<p id="breadcrumbs">','</p>'); }  ?>
 
-            <?php
-                if(isset($img_url) && !empty($img_url))
-                {
-                    echo '<div class="program_header_image"><img src="'. $img_url .'" alt="'.$img_alt. '" /></div>';
-                }
-            ?>
+                <h1 class="h1-bottom-space">Offices & Programs</h1>
 
-            <h1 class="program_header"><?php echo $post->post_title;?></h1>
-            <?php while ( have_posts() ) : the_post(); ?>
-                <?php
-                    get_template_part( 'content', 'page' );
-                ?>
-            <?php endwhile; ?>
-         </div>
+                <div class="office-programs-btn-section">
+                    <button class="btn oese-blue-btn by-office-btn" title="By Office">By Office</button>
+                    <button class="btn oese-blue-btn" title="By Subject">By Subject</button>
+                </div>
 
-        <div class="col-md-3 col-sm-4 col-xs-12 right_sid_mtr">
-            <?php
-                dynamic_sidebar('program-template');
-                get_template_part( 'content', 'resources' );
-            ?>
+                <h2 class="h2-top-bottom-space">Office of Administration</h2>
+                <ul class="page-list-section">
+                    <li>Executive Office</li>
+                    <li>Management Support Office</li>
+                </ul>
+
+                <h2 class="h2-top-bottom-space">Office of Discretionary Grants & Support Services</h2>
+                <ul class="page-list-section">
+                    <li>Innovation & Early Learning Programs</li>
+                    <li>Well-Rounded Education Programs</li>
+                    <li>Charter School Programs</li>
+                    <li>School Choice & Improvement Programs</li>
+                    <li>Effective Educator Development Programs</li>
+                    <li>Program & Grantee Support Services</li>
+                </ul>
+
+                <h2 class="h2-top-bottom-space">Office of Formula Grants</h2>
+                <ul class="page-list-section">
+                    <li>School Support & Accountability</li>
+                    <li>Safe & Supportive Schools</li>
+                    <li>Impact Aid Program</li>
+                    <li>Rural, Insular, & Native Achievement Programs</li>
+                </ul>
+
+                <h2 class="h2-top-bottom-space">Office of Evidence - Based Practices and State & Grantee Relations</h2>
+                <ul class="page-list-section">
+                    <li>Expanding Student Choice & High Quality Schools</li>
+                    <li>Effective Teaching & Social Emotional Learning</li>
+                    <li>High Quality Assessments & Accountability Systems</li>
+                    <li>State & Grantee Relations</li>
+                </ul>
+
+                <h2 class="h2-top-bottom-space">Office of Migrant Education</h2>
+                <ul class="page-list-section">
+                    <li>Migrant Education Group 1</li>
+                    <li>Migrant Education Group 2</li>
+                </ul>
+
+                <h2 class="h2-top-bottom-space">Office of Indian Education</h2>
+                <ul class="page-list-section">
+                    <li>Migrant Education Group 1</li>
+                    <li>Migrant Education Group 2</li>
+                </ul>
+
+            </div>
+            <div class="col-md-4">
+                <div class="secondary-navigation-menu">
+                    <div class="secondary-navigation-menu-header">
+                        <p>Popular Resources</p>
+                    </div>
+                    <ul class="secondary-navigation-menu-list">
+                        <li>
+                            <a href="#">Early Learning</a>
+                        </li>
+                        <li>
+                            <a href="#">Family & Community Engagement</a>
+                        </li>
+                        <li>
+                            <a href="#">Every Student Succeeds Act</a>
+                        </li>
+                        <li>
+                            <a href="#">FERPA</a>
+                        </li>
+                        <li>
+                            <a href="#">Project Prevent Grant</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
-
-    </div>
+        <!--Offices/Programs Design STOP-->
 
 <?php get_footer(); ?>
