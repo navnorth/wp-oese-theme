@@ -1250,6 +1250,27 @@ svg {
     h2{
         font-size: 20px !important;
     }
+    .program-block-section .program-block-inner-section {
+        width: 100%;
+    }
+    .program-block-inner-section .program-block-title,
+    .program-block-inner-section .program-block-description {
+        font-size: 18px !important;
+        line-height: 24px !important;
+    }
+    .program-list-detail:nth-child(1){
+        margin-top: 0;
+    }
+    .program-list-detail{
+        margin-top: 18px;
+    }
+    .overview-custom-padding .secondary-navigation-menu{
+        margin-top: 25px;
+    }
+    .payments-overlay-section .payments-details-list p {
+        font-size: 18px !important;
+        line-height: 24px !important;
+    }
 }
 @media (min-width: 481px) and (max-width: 575.98px){
     .topbar-social-icons{width: 26%;}
@@ -1329,6 +1350,16 @@ svg {
     }
     .home-grid-section .custom-home-image-section .custom-home-image-heading {
         min-height: 50px !important;
+    }
+    .program-list-detail:nth-child(1){
+        margin-top: 0;
+    }
+    .program-list-detail{
+        margin-top: 18px;
+    }
+    .payments-overlay-section .payments-details-list p {
+        font-size: 18px !important;
+        line-height: 22px !important;
     }
 }
 
@@ -1822,11 +1853,20 @@ a{
 
 /*Program Information Block START*/
 .program-block-section{
+    margin-top: 50px;
     margin-bottom: 50px;
+}
+.program-list-detail{
+    margin-top: 10px;
+}
+.program-list-detail:nth-child(1){
+    margin-top: 0;
 }
 .program-block-inner-section{
     padding: 20px 28px 13px 28px;
     border-radius: 5px;
+    width: 92%;
+    line-height: 26px;
 }
 .program-block-title{
     font-family: 'Helvetica Neue', sans-serif !important;
@@ -1835,12 +1875,15 @@ a{
     text-transform: uppercase;
     margin-bottom:0 !important;
     vertical-align: top;
+    line-height: 24px;
 }
 .program-block-description{
     font-family: 'Helvetica Neue', sans-serif !important;
     font-size: 20px !important;
     margin-bottom: 0;
     color: #333 !important;
+    line-height: 24px;
+    word-break: break-word;
 }
 /*Program Information Block END*/
 
@@ -1850,8 +1893,49 @@ a{
 }
 .sub-nav-icons p{
     margin-bottom: 0 !important;
-    display: inline-block !important;
+    display: inline !important;
     color: #fff;
 }
 
 /*Office Page Css END*/
+
+/*Program Landing Css START*/
+.overview-custom-padding{
+    padding-top: 0 !important;
+}
+.payments-custom-padding{
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+    margin-top: 72px;
+}
+.payments-custom-padding:nth-child(1){
+    margin-top: 0;
+}
+.payments-overlay-section{
+    height: 100%;
+    border-radius: 5px;
+    background: #1F5C99;
+    background-image: url(../images/overlay-diamonds.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.payments-details-list{
+    width: 100%;
+    min-height: 90px;
+    display: table;
+    padding: 0 1.25rem;
+    border-radius: 5px;
+}
+.payments-details-list p{
+    font-family: 'Merriweather', sans-serif !important;
+    font-weight: 500;
+    font-size: 30px !important;
+    margin-bottom: 0;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    color: #fff;
+    line-height: 32px !important;
+}
+
+/*Program Landing Css END*/
