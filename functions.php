@@ -1219,16 +1219,24 @@ function getTileLinks(){
               $tileLinkUrl =  get_sub_field('tile_link_url');
               $externaLink =  get_sub_field('external_link');
               $tileLinkWidth =  get_sub_field('width');
+              if($tileLinkWidth == "half"){
+                $colSize = "col-md-6 office-custom-padding office-grid-section-custom-margin";
+                $outerDivClass = "office-grid-section";
+                $innerDivClass = "office-grid-list-details text-center";
+              }
+              else{
+                $colSize = "col-md-12 col-md-12 payments-custom-padding";
+                $outerDivClass = "payments-overlay-section";
+                $innerDivClass = "payments-details-list text-center";
+              }
               $target = ($externaLink ? "_blank" : "");
-              $output.= '<div class="col-md-6 office-custom-padding office-grid-section-custom-margin">
-                <div class="office-grid-section">
-                   
-                    <div class="office-grid-list-details text-center">
-                      <a '.$target.' href="'.$tileLinkUrl.'"><p>'. $tileLinkLabel.'</p></a>
-                    </div>
-                   
-                </div>
-            </div>';
+              $output.= '<div class="'.$colSize.'">
+                            <div class="'.$outerDivClass.'">
+                                <div class="'.$innerDivClass.'">
+                                  <p>'.$tileLinkLabel.'</p>
+                                </div>
+                            </div>
+                          </div>';
             endwhile;
          $output.="</div>";   
          echo $output; 
