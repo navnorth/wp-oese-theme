@@ -1168,7 +1168,7 @@ function contactInformationBlock(){
   $contactEmailCheck = get_field("ci_email");
   $contactEmailAddress = get_field("ci_email_address");
   $output = "";
-  if($contactAddress){
+  if(!empty($contactAddress)){
       $output = '<div class="secondary-navigation-menu">
                         <div class="secondary-navigation-menu-header">
                             <p>'.$contactTitle.'</p>
@@ -1245,4 +1245,21 @@ function getTileLinks(){
     endif;      
 }
 
+
+function oeseListChildPages() { 
+ 
+  global $post; 
+  if ( is_page() && $post->post_parent )
+   
+      $childpages = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->post_parent . '&echo=0' );
+  else
+      $childpages = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->ID . '&echo=0' );
+   
+  if ( $childpages ) {
+    $string = '<ul class="secondary-navigation-menu-list">' . $childpages . '</ul>';
+  }
+   
+  return $string;
+ 
+}
 
