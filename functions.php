@@ -1167,48 +1167,50 @@ function contactInformationBlock(){
   $contactFax = get_field("ci_fax");
   $contactEmailCheck = get_field("ci_email");
   $contactEmailAddress = get_field("ci_email_address");
-  
-  $output = '<div class="secondary-navigation-menu">
-                    <div class="secondary-navigation-menu-header">
-                        <p>'.$contactTitle.'</p>
+  $output = "";
+  if($contactAddress){
+      $output = '<div class="secondary-navigation-menu">
+                        <div class="secondary-navigation-menu-header">
+                            <p>'.$contactTitle.'</p>
+                        </div>
+                        <ul class="secondary-navigation-menu-list">
+                            <li>'.$contactAddress.'</li>';
+     if($contactPhone){
+      $output.=  '<li>
+                    <div class="sub-nav-icons">
+                        <span>
+                          <i class="fas fa-phone"></i>
+                        </span>
+                        <p>'.$contactPhone.'</p>
                     </div>
-                    <ul class="secondary-navigation-menu-list">
-                        <li>'.$contactAddress.'</li>';
- if($contactPhone){
-  $output.=  '<li>
-                <div class="sub-nav-icons">
+                  </li>';
+     }             
+    if($contactFax){
+      $output.= '<li>
+                    <div class="sub-nav-icons">
+                        <span>
+                          <i class="fas fa-fax"></i>
+                        </span>
+                        <p>'.$contactFax.' FAX</p>
+                     </div>
+                </li>';
+    }
+                            
+    $output .= '<li>
+                  <div class="sub-nav-icons">
                     <span>
-                      <i class="fas fa-phone"></i>
+                      <i class="fas fa-envelope"></i>
                     </span>
-                    <p>'.$contactPhone.'</p>
-                </div>
-              </li>';
- }             
-if($contactFax){
-  $output.= '<li>
-                <div class="sub-nav-icons">
-                    <span>
-                      <i class="fas fa-fax"></i>
-                    </span>
-                    <p>'.$contactFax.' FAX</p>
-                 </div>
-            </li>';
-}
-                        
-$output .= '<li>
-              <div class="sub-nav-icons">
-                <span>
-                  <i class="fas fa-envelope"></i>
-                </span>
-                <p>
-                  <a href="mailto:'.$contactEmailAddress.'">'.$contactEmailAddress.'</a>
-                </p>
-              </div>
-            </li>
-          </ul>
-      </div>';
+                    <p>
+                      <a href="mailto:'.$contactEmailAddress.'">'.$contactEmailAddress.'</a>
+                    </p>
+                  </div>
+                </li>
+              </ul>
+          </div>';
+  }        
+  return $output;   
 
-   return $output;             
 }
 
 function getTileLinks(){
@@ -1242,3 +1244,5 @@ function getTileLinks(){
          echo $output; 
     endif;      
 }
+
+

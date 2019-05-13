@@ -44,10 +44,11 @@ get_header();
                         </div>
                     <?php endif; ?>    
                     <!--Program Blocks END-->
-
-                    <p class="">
-                        <?php get_field("program_short_description") ?>
-                    </p>
+                    <?php if( get_field('program_short_description') ): ?>
+                        <p class="">
+                            <?php echo  the_field("program_short_description") ?>
+                        </p>
+                    <?php endif; ?>    
                 </div>
             </div>
             <div class="col-md-4">
