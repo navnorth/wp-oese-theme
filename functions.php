@@ -1133,7 +1133,7 @@ function mediaCategoryDropdown() {
 
 function oeseBreadcrumb() {
   if(!is_front_page()){
-    $html = ' <div class="col-md-12"><a class="breadcrumbs-link" href="'.home_url().'" rel="nofollow">Home</a>';
+    $html = ' <div class="col-md-12"><a class="breadcrumbs-link" href="'.home_url().'" rel="nofollow">OESE</a>';
 
     if (is_category() || is_single()) {
         $html .=  "&nbsp;&nbsp;&#47;&nbsp;&nbsp;";
@@ -1166,6 +1166,7 @@ function contactInformationBlock(){
   $contactPhone = get_field("ci_phone");
   $contactFax = get_field("ci_fax");
   $contactEmailCheck = get_field("ci_email");
+  $contactEmailOption = get_field("ci_email");
   $contactEmailAddress = get_field("ci_email_address");
   $output = "";
   if(!empty($contactAddress)){
@@ -1201,9 +1202,17 @@ function contactInformationBlock(){
                     <span>
                       <i class="fas fa-envelope"></i>
                     </span>
-                    <p>
-                      <a href="mailto:'.$contactEmailAddress.'">'.$contactEmailAddress.'</a>
-                    </p>
+                    <p>';
+
+    if($contactEmailOption != 'disabled'){
+      if( ($contactEmailOption == 'email') && ($contactEmailAddress) ){
+        $output.= '<a href="mailto:'.$contactEmailAddress.'?subject=OESE Website Contact">'.$contactEmailAddress.'</a>';
+      } elseif ($contactEmailOption == 'contact_form'){
+        $output.= '<button onclick="window.location.href=\'/contact\';">Contact Us</button>';
+      }
+    }
+
+    $output .= '</p>
                   </div>
                 </li>
               </ul>
