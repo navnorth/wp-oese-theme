@@ -1052,7 +1052,7 @@ register_nav_menu( 'Footer Menu', __( 'Footer Menu', 'twentytwelve' ) );
     if( have_rows('popular_resources_links') ):
       $output = "<div class='secondary-navigation-menu'><div class='secondary-navigation-menu-header'><p>". get_field('popular_resources_title')."</p></div>";
       // check if the repeater field has rows of data
-    
+
         $output.=  "<ul class='secondary-navigation-menu-list'>";
         // loop through the rows of data
           while ( have_rows('popular_resources_links') ) : the_row();
@@ -1062,11 +1062,11 @@ register_nav_menu( 'Footer Menu', __( 'Footer Menu', 'twentytwelve' ) );
             $target = ($externaLink ? "_blank" : "");
             $output.= "<li><a ". $target." href=".$resourceLink.">".$resourceLabel."</a></li>";
           endwhile;
-        $output.=  "</ul>";  
+        $output.=  "</ul>";
         $output.="</div>";
         echo $output;
       endif;
-    
+
    }
 
 
@@ -1085,17 +1085,17 @@ function addingTagsToAttachment() {
 }
 add_action( 'init' , 'addingTagsToAttachment' );
 
-/**
+/*
   Category Filter for Media List Page
 *
-**/
+
 
 add_action('pre_get_posts', 'mediaFilterByCategory');
 
 function mediaFilterByCategory( $q ) {
 if(is_admin()){
   $scr = get_current_screen();
-  $cat = filter_input(INPUT_GET, 'category_name', FILTER_SANITIZE_STRING );   
+  $cat = filter_input(INPUT_GET, 'category_name', FILTER_SANITIZE_STRING );
   if ( ! $q->is_main_query() || ! is_admin() || (int)$cat <= 0 || $scr->base !== 'upload' )
       return;
     $posts = get_posts( 'nopaging=1&category=' . $cat );
@@ -1105,13 +1105,13 @@ if(is_admin()){
       global $wpdb;
       $mids = $wpdb->get_col("SELECT ID FROM $wpdb->posts WHERE post_parent IN ($pidstxt)");
       if ( ! empty($mids) ) {
-      
+
         $q->set( 'post__in', $mids );
       } else {
-        $q->set( 'p', -1 ); 
+        $q->set( 'p', -1 );
       }
     }
-  }  
+  }
 }
 
 add_action( 'restrict_manage_posts', 'mediaCategoryDropdown' );
@@ -1119,28 +1119,28 @@ add_action( 'restrict_manage_posts', 'mediaCategoryDropdown' );
 function mediaCategoryDropdown() {
   $scr = get_current_screen();
   if ( $scr->base !== 'upload' ) return;
-  $cat = filter_input(INPUT_GET, 'category_name', FILTER_SANITIZE_STRING );   
-  $selected = (int)$cat > 0 ? $cat : '-1';  
+  $cat = filter_input(INPUT_GET, 'category_name', FILTER_SANITIZE_STRING );
+  $selected = (int)$cat > 0 ? $cat : '-1';
   $args = array(
       'show_option_none'   => 'All Post Categories',
       'name'               => 'category_name',
       'selected'           => $selected,
       'value_field'       => 'slug'
-  ); 
+  );
   wp_dropdown_categories( $args );
 }
-
+**/
 
 function oeseBreadcrumb() {
-  if(!is_front_page()){  
+  if(!is_front_page()){
     $html = ' <div class="col-md-12"><a class="breadcrumbs-link" href="'.home_url().'" rel="nofollow">Home</a>';
-    
+
     if (is_category() || is_single()) {
         $html .=  "&nbsp;&nbsp;&#47;&nbsp;&nbsp;";
         the_category(' &bull; ');
         if (is_single()) {
             $html .= "&nbsp;&nbsp;&#47;&nbsp;&nbsp;";
-            $html .= "<a href='#' class='breadcrumbs-link active'>".get_the_title()."</a>"; 
+            $html .= "<a href='#' class='breadcrumbs-link active'>".get_the_title()."</a>";
         }
     } elseif (is_page()) {
         $html .= " &nbsp;&nbsp;&#47;&nbsp;&nbsp;";
@@ -1155,7 +1155,7 @@ function oeseBreadcrumb() {
     $html .="</div>";
     echo $html;
 
-  }  
+  }
 }
 
 
@@ -1184,7 +1184,7 @@ function contactInformationBlock(){
                         <p>'.$contactPhone.'</p>
                     </div>
                   </li>';
-     }             
+     }
     if($contactFax){
       $output.= '<li>
                     <div class="sub-nav-icons">
@@ -1195,7 +1195,7 @@ function contactInformationBlock(){
                      </div>
                 </li>';
     }
-                            
+
     $output .= '<li>
                   <div class="sub-nav-icons">
                     <span>
@@ -1208,8 +1208,8 @@ function contactInformationBlock(){
                 </li>
               </ul>
           </div>';
-  }        
-  return $output;   
+  }
+  return $output;
 
 }
 
@@ -1240,26 +1240,26 @@ function getTileLinks(){
                             </div>
                           </div>';
             endwhile;
-         $output.="</div>";   
-         echo $output; 
-    endif;      
+         $output.="</div>";
+         echo $output;
+    endif;
 }
 
 
-function oeseListChildPages() { 
- 
-  global $post; 
+function oeseListChildPages() {
+
+  global $post;
   if ( is_page() && $post->post_parent )
-   
+
       $childpages = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->post_parent . '&echo=0' );
   else
       $childpages = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->ID . '&echo=0' );
-   
+
   if ( $childpages ) {
     $string = '<ul class="secondary-navigation-menu-list">' . $childpages . '</ul>';
   }
-   
+
   return $string;
- 
+
 }
 
