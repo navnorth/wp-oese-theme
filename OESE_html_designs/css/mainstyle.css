@@ -1756,6 +1756,11 @@ a{
     color: #fff;
     line-height: 32px !important;
 }
+.tile-link a{
+    font-size: 30px !important;
+    color: #fff !important;
+    font-family: 'Merriweather', sans-serif !important;
+}
 .office-grid-section{
     height: 100%;
     border-radius: 5px;
