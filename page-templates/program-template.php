@@ -66,46 +66,7 @@ get_header();
                ?>
             </div>
             <div class="col-md-4">
-                <div class="secondary-navigation-menu">
-                    <div class="secondary-navigation-menu-header">
-                        <p>Impact Aid Program</p>
-                    </div>
-                    <ul class="secondary-navigation-menu-list">
-                        <li>
-                            <a href="#">Families</a>
-                        </li>
-                        <li>
-                            <a href="#">Educators</a>
-                        </li>
-                        <li>
-                            <a href="#">Administrators</a>
-                        </li>
-                        <li>
-                            <a href="#">Eligibility</a>
-                        </li>
-                        <li>
-                            <a href="#">Applicant Info</a>
-                        </li>
-                        <li>
-                            <a href="#">Awards</a>
-                        </li>
-                        <li>
-                            <a href="#">Performance</a>
-                        </li>
-                        <li>
-                            <a href="#">Funding Status</a>
-                        </li>
-                        <li>
-                            <a href="#">Laws, Regs, & Guidance</a>
-                        </li>
-                        <li>
-                            <a href="#">Resources</a>
-                        </li>
-                        <li>
-                            <a href="#">FAQs</a>
-                        </li>
-                    </ul>
-                </div>
+                 <?php get_template_part( 'content', 'resources' ); ?>
             </div>
         </div>
         <!--Program Landing Template Overview Section END-->

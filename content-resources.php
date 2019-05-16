@@ -1,5 +1,7 @@
 <?php
 //Initial Checking for showing the resources box
+
+
 $withChild = false;
 $subpages = get_pages( array( 'child_of' => $post->ID, 'sort_column' => 'menu_order', 'sort_order' => 'asc' ) );
 if ($subpages)
@@ -9,21 +11,23 @@ else {
 	if ($parent_id>0)
 		$withChild = true;
 }
+
+if($post->post_parent == 0){
+	$sidebarTitle = $post->post_title;
+}
+else{
+	$sidebarTitle = get_the_title($post->post_parent);
+}
+
 ?>
-<div class="right_sid_mtr program_toc_box" id="toc">
+<div class="secondary-navigation-menu" id="toc">
 	<?php if ($withChild): ?>
-	<div class="col-md-12 col-sm-12 col-xs-12" style="border: 3px solid #294179;margin-bottom:10px;">
-		<div class="pblctn_box">
-			<span class="socl_icns fa-stack"><i class="fa fa-link"></i></span>
+		<div class="secondary-navigation-menu-header">
+			<p><?php echo $sidebarTitle; ?></p>
 		</div>
-		<div class="cntnbx_cntnr">
-			<span class="program_toc_header">Additional Info</span>
-			<ul class="program_toc">
+		<ul class="secondary-navigation-menu-list">
 				<?php
 					if ($subpages) {
-						?>
-						<li>Main</li>
-						<?php
 						foreach($subpages as $spage) {
 							?>
 							<li><a href="<?php echo get_page_link($spage->ID); ?>"><?php echo $spage->post_title; ?></a></li>
@@ -34,14 +38,12 @@ else {
 						$parent_id = $post->post_parent;
 						if ($parent_id>0) {
 							$parent_page = get_page($parent_id);
-							echo "<li><a href='".get_page_link($parent_id)."'>Main</a></li>";
-
 							//Display Sub page links
 							$subpages = get_pages( array( 'child_of' => $parent_id, 'sort_column' => 'menu_order', 'sort_order' => 'asc', 'parent' => $parent_id ) );
 
 							foreach($subpages as $spage) {
 								if ($post->ID==$spage->ID){
-									echo "<li>" . $spage->post_title . "</li>";
+									echo "<li class='current-page'>" . $spage->post_title . "</li>";
 								} else {
 								?>
 									<li><a href="<?php echo get_page_link($spage->ID); ?>"><?php echo $spage->post_title; ?></a></li>
@@ -51,10 +53,6 @@ else {
 						}
 					}
 				?>
-			</ul>
-			<p>
-		</div>
-	</div>
+		</ul>
 	<?php endif; ?>
-	<?php get_template_part( 'content', 'contact' ); ?>
 </div>
