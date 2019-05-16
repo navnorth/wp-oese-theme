@@ -1098,9 +1098,9 @@ if(is_admin()){
   global $current_user, $pagenow;
 
   if( !is_a( $current_user, 'WP_User') )
-  return;  
+  return;
 
-  $cat = filter_input(INPUT_GET, 'category_name', FILTER_SANITIZE_STRING );   
+  $cat = filter_input(INPUT_GET, 'category_name', FILTER_SANITIZE_STRING );
   if ( ! $q->is_main_query() || ! is_admin() || (int)$cat <= 0 || !in_array( $pagenow, array( 'upload.php', 'admin-ajax.php' ) ))
   return;
     $posts = get_posts( 'nopaging=1&category=' . $cat );
@@ -1244,11 +1244,11 @@ function getTileLinks(){
                 $outerDivClass = "payments-overlay-section";
                 $innerDivClass = "payments-details-list text-center";
               }
-              $target = ($externaLink ? "_blank" : "");
+              $target = ($externaLink ? "_blank" : "_self");
               $output.= '<div class="'.$colSize.'">
                             <div class="'.$outerDivClass.'">
                                 <div class="'.$innerDivClass.'">
-                                  <p>'.$tileLinkLabel.'</p>
+                                  <p><a target="'.$target.'" href="'.$tileLinkUrl.'" class="tile-link">'.$tileLinkLabel.'</a></p>
                                 </div>
                             </div>
                           </div>';
