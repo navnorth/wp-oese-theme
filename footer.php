@@ -56,8 +56,8 @@ foreach ($footerNav as $key => $navItems) {
                 <div class="row bottom-footer-section mr-0 ml-0">
                     <div class="col-md-2">
                         <div class="footer-bottom-left-logo">
-                            <a href="javascript:void(0);">
-                                <img src="http://oese.localhost.localdomain/wp-content/themes/wp-oese-theme/images/footer_logo.png">
+                            <a href="https://www.ed.gov/">
+                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/footer_logo.png">
                             </a>
                         </div>
                     </div>
