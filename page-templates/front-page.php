@@ -5,14 +5,14 @@
 ?>
 <?php get_header();?>
 
-               <!--Home Page Custom Design -- START-->
+               <!--Home Page Custom Design - START-->
 
         <div class="row custom-common-padding mr-0 ml-0">
 
-            <h1 class="h1-bottom-space"><?php the_title(); ?></h1>
+            <!-- <h1 class="h1-bottom-space"><?php the_title(); ?></h1> -->
              <?php
-                if(have_posts()):     
-                     while (have_posts()) : the_post(); get_template_part('content', 'page'); 
+                if(have_posts()):
+                     while (have_posts()) : the_post(); get_template_part('content', 'page');
                      endwhile;
                 endif;
             ?>
@@ -21,8 +21,8 @@
 
                 <div class="col-md-12 home-grid-section">
                     <div class="row">
-                        <?php  
-                            while ( have_rows('categories') ) : the_row();  
+                        <?php
+                            while ( have_rows('categories') ) : the_row();
                                 $cImage =  get_sub_field('c_image');
                                 $cTitle =  get_sub_field('c_title');
                                 $cLink =  get_sub_field('link');
@@ -60,62 +60,13 @@
         </div>
         <!--Div seperator END-->
 
-        <div class="row custom-common-padding gray-background-color mr-0 ml-0">
-                    <div class="col-md-6 office-custom-padding office-grid-section-custom-margin">
-                        <div class="office-grid-section">
-                            <div class="office-grid-list-details text-center">
-                                <p>
-                                    Office of Administration
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 office-custom-padding office-grid-section-custom-margin">
-                        <div class="office-grid-section">
-                            <div class="office-grid-list-details text-center">
-                                <p>
-                                    Office of Evidence - Based Practices and State & Grantee Relations
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 office-custom-padding office-grid-section-custom-margin">
-                        <div class="office-grid-section">
-                            <div class="office-grid-list-details text-center">
-                                <p>
-                                    Office of Administration
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 office-custom-padding office-grid-section-custom-margin">
-                        <div class="office-grid-section">
-                            <div class="office-grid-list-details text-center">
-                                <p>
-                                    Office of Evidence - Based Practices and State & Grantee Relations
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 office-custom-padding office-grid-section-custom-margin">
-                        <div class="office-grid-section">
-                            <div class="office-grid-list-details text-center">
-                                <p>
-                                    Office of Administration
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 office-custom-padding office-grid-section-custom-margin">
-                        <div class="office-grid-section">
-                            <div class="office-grid-list-details text-center">
-                                <p>
-                                    Office of Evidence - Based Practices and State & Grantee Relations
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+        <!--Tile Links Grid Section START-->
+
+            <?php getTileLinks(); ?>
+
+        <!--Tile Links Grid Section END-->
+
 
 
         <!--Div seperator-->
@@ -136,8 +87,8 @@
             </div>
             <div class="col-md-12 pl-0 pr-0">
                 <div class="row">
-                    <?php  
-                        while ( have_rows('trending_now') ) : the_row();  
+                    <?php
+                        while ( have_rows('trending_now') ) : the_row();
                             $tImage =  get_sub_field('image');
                             $tTitle =  get_sub_field('title');
                             $tDescription =  get_sub_field('description');
@@ -170,7 +121,7 @@
         </div>
 
        <?php endif; ?>
-        <!--Audience Page Custom Design -- END-->
+        <!--Audience Page Custom Design - END-->
 
 
 <?php get_footer();?>
