@@ -18,13 +18,12 @@ $items= array();
 foreach ($footerNav as $key => $navItems) {
    // print_r($navItems);
     if($navItems->menu_item_parent == 0){
-        $parentMenuItems[$navItems->ID]=$navItems->title;
+        $parentMenuItems[$navItems->ID]=array('title'=>$navItems->title,'url'=>$navItems->url);
     }
     else{
         $childMenuItems[$navItems->menu_item_parent][]=array('title'=>$navItems->title,'url'=>$navItems->url);
     }
 }
-
 ?>
         <div class="row">
             <div class="col-md-12">
@@ -32,7 +31,7 @@ foreach ($footerNav as $key => $navItems) {
                 <?php foreach ($parentMenuItems as $key => $menuItems) { ?>
                     <div class="col-md-3">
                         <div class="footer-title">
-                            <p><?php echo $menuItems; ?></p>
+                            <p><a href="<?php echo $menuItems['url']; ?>"><?php echo $menuItems['title']; ?></a></p>
                         </div>
                         <div class="footer-sub-menu">
                         <?php 
@@ -51,13 +50,6 @@ foreach ($footerNav as $key => $navItems) {
                         </div>
                     </div>   
                     <?php } ?>    
-                  
-
-                    <div class="col-md-3">
-                        <div class="footer-title">
-                            <p>Contacts</p>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="col-md-12">
