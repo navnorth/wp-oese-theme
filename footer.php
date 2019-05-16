@@ -63,15 +63,15 @@ foreach ($footerNav as $key => $navItems) {
                     </div>
                     <div class="col-md-10">
                         <div class="footer-bottom-right-links text-right">
-                            <a href="javascript:void(0);">
+                            <a href="<?php echo site_url(); ?>/privacy-policy">
                                 Privacy Policy
                             </a>
 
-                            <a href="javascript:void(0);">
+                            <a href="<?php echo site_url(); ?>/topics-a-z">
                                 Topics A-Z
                             </a>
 
-                            <a href="javascript:void(0);">
+                            <a href="https://www.ed.gov">
                                 ED.gov
                             </a>
                         </div>

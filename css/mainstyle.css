@@ -1636,6 +1636,7 @@ a{
 .bottom-footer-section{
     background: #002649;
     padding: 12px 16px;
+    align-items: center;
 }
 .footer-bottom-left-logo{
     width: 40px;
