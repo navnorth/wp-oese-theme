@@ -7,7 +7,7 @@
 
                <!--Home Page Custom Design -- START-->
 
-        <div class="row custom-common-padding mr-0 ml-0">
+        <div class="row custom-common-padding front-page-content mr-0 ml-0">
 
             <h1 class="h1-bottom-space"><?php the_title(); ?></h1>
              <?php

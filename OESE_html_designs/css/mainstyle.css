@@ -628,6 +628,10 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
     /*line-height: 1.0909090909;*/
 }
 
+.front-page-content {
+    padding-top: 1%;
+}
+
 #home_content h1 { font-size: 30px; }
 
 #front_feature_container a { text-decoration: none }
