@@ -8,97 +8,51 @@
  * @since 1.5.0
  */
 ?>
+<?php 
+$menuLocations = get_nav_menu_locations();
+$menuID = $menuLocations['footer'];
+$footerNav = wp_get_nav_menu_items($menuID);
+$childMenuItems = array();
+$parentMenuItems = array();
+$items= array();
+foreach ($footerNav as $key => $navItems) {
+   // print_r($navItems);
+    if($navItems->menu_item_parent == 0){
+        $parentMenuItems[$navItems->ID]=$navItems->title;
+    }
+    else{
+        $childMenuItems[$navItems->menu_item_parent][]=array('title'=>$navItems->title,'url'=>$navItems->url);
+    }
+}
 
-          <div class="row">
+?>
+        <div class="row">
             <div class="col-md-12">
                 <div class="row custom-common-padding footer-main-section mr-0 ml-0">
+                <?php foreach ($parentMenuItems as $key => $menuItems) { ?>
                     <div class="col-md-3">
                         <div class="footer-title">
-                            <p>Educators</p>
+                            <p><?php echo $menuItems; ?></p>
                         </div>
                         <div class="footer-sub-menu">
-                            <ul class="sub-menu-links">
-                                <li>
-                                    <a href="">
-                                        Transition to Teaching
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        Transition to Teaching
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        Transition to Teaching
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        Transition to Teaching
-                                    </a>
-                                </li>
-                            </ul>
+                        <?php 
+                            $childMenu = $childMenuItems[$key];
+                            if($childMenu){ ?>
+                                <ul class='sub-menu-links'>
+                                <?php  foreach ($childMenu as $key => $value) { ?>
+                                    <li>
+                                        <a href="<?php echo $value['url']; ?>">
+                                            <?php echo $value['title']; ?>
+                                        </a>
+                                    </li>
+                               <?php  } 
+                            }
+                        ?>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="footer-title">
-                            <p>Families</p>
-                        </div>
-                        <div class="footer-sub-menu">
-                            <ul class="sub-menu-links">
-                                <li>
-                                    <a href="">
-                                        Early Learning
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        Reading First
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        Transition to Teaching
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        Transition to Teaching
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="footer-title">
-                            <p>Administrators</p>
-                        </div>
-                        <div class="footer-sub-menu">
-                            <ul class="sub-menu-links">
-                                <li>
-                                    <a href="">
-                                        Transition to Teaching
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        Transition to Teaching
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        Transition to Teaching
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        Transition to Teaching
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    </div>   
+                    <?php } ?>    
+                  
+
                     <div class="col-md-3">
                         <div class="footer-title">
                             <p>Contacts</p>

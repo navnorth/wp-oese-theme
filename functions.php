@@ -1041,7 +1041,7 @@ if (is_admin()) {
  /**
  * Register the footer Menu - removed in base twentytwelve theme
  */
-register_nav_menu( 'Footer Menu', __( 'Footer Menu', 'twentytwelve' ) );
+register_nav_menu( 'footer', __( 'Footer Menu', 'twentytwelve' ) );
 
 
 /**
@@ -1094,9 +1094,14 @@ add_action('pre_get_posts', 'mediaFilterByCategory');
 
 function mediaFilterByCategory( $q ) {
 if(is_admin()){
-  $scr = get_current_screen();
+  //$scr = get_current_screen();
+  global $current_user, $pagenow;
+
+  if( !is_a( $current_user, 'WP_User') )
+  return;  
+
   $cat = filter_input(INPUT_GET, 'category_name', FILTER_SANITIZE_STRING );   
-  if ( ! $q->is_main_query() || ! is_admin() || (int)$cat <= 0 || $scr->base !== 'upload' )
+  if ( ! $q->is_main_query() || ! is_admin() || (int)$cat <= 0 || !in_array( $pagenow, array( 'upload.php', 'admin-ajax.php' ) ))
       return;
     $posts = get_posts( 'nopaging=1&category=' . $cat );
     $pids = ( ! empty( $posts ) ) ? wp_list_pluck($posts, 'ID') : false;
