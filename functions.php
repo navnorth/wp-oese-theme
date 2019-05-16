@@ -1134,7 +1134,6 @@ function mediaCategoryDropdown() {
   );
   wp_dropdown_categories( $args );
 }
-**/
 
 function oeseBreadcrumb() {
   if(!is_front_page()){
