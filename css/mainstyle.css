@@ -1379,10 +1379,7 @@ a{
 }
 
 .custom-common-padding{
-    padding-left: 6%;
-    padding-right: 6%;
-    padding-top: 7%;
-    padding-bottom: 7%;
+    padding: 2%;
 }
 .custom-search-btn{
     background: #F1F1F1 !important;

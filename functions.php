@@ -1071,7 +1071,7 @@ register_nav_menu( 'footer', __( 'Footer Menu', 'twentytwelve' ) );
 
 
 /**
-Enabling the Category and Tags for the media attachment
+*Enabling the Category and Tags for the media attachment
 *
 **/
 function addingCategoryToAttachment() {
