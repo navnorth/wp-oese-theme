@@ -1536,7 +1536,6 @@ a{
     padding: 0 1.25rem;
 }
 .custom-image-heading p{
-    /* font-family: 'Helvetica Neue', sans-serif !important; */
     font-weight: 700;
     font-size: 24px !important;
     margin-bottom: 0;
@@ -1546,6 +1545,7 @@ a{
     color: #fff;
     line-height: 30px;
     text-transform: uppercase;
+    transition: all .2s ease-in;
 }
 .custom-image-main-section{
     position: relative;
@@ -1702,7 +1702,6 @@ a{
     padding: 0 1.25rem;
 }
 .custom-home-image-section .custom-home-image-heading p{
-    /* font-family: 'Helvetica Neue', sans-serif !important; */
     font-weight: 700;
     font-size: 22px !important;
     margin-bottom: 0;
@@ -1712,6 +1711,11 @@ a{
     color: #fff;
     line-height: 30px;
     text-transform: uppercase;
+}
+.custom-home-image-section:hover .custom-home-image-heading {
+    text-decoration: underline;
+    background: #002649;
+    color: #fff;
 }
 .home-col-md-4{
     margin-right: 8.67% !important;

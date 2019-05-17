@@ -38,10 +38,10 @@
                                                 <img src="<?php echo $cImage ;?>" alt="<?php echo $cTitle; ?>" class="img-responsive img-thumbnail-square">
                                             </div>
                                         </div>
+                                        <div class="custom-home-image-heading text-center">
+                                            <p><?php echo $cTitle; ?></p>
+                                        </div>
                                     </a>
-                                </div>
-                                <div class="custom-home-image-heading text-center">
-                                    <p><?php echo $cTitle; ?></p>
                                 </div>
                             </div>
                         </div>
