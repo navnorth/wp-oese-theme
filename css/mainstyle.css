@@ -1439,7 +1439,7 @@ a{
 .secondary-navigation-menu-list li{
     padding: 10px 20px;
     line-height: 28px;
-    transition: all .2s ease-in;
+    transition: all .1s ease-in;
 }
 .secondary-navigation-menu-list li:hover {
     cursor: pointer;
@@ -1455,7 +1455,7 @@ a{
 .secondary-navigation-menu-list li a{
     text-decoration: none;
     color: #fff;
-    transition: all .2s ease-in;
+    transition: all .1s ease-in;
 }
 .secondary-navigation-menu-list .current-page {
       background-color:#1F5C99;
@@ -1556,6 +1556,15 @@ a{
 .custom-image-main-section{
     position: relative;
 }
+.custom-image-main-section:hover .custom-image-heading {
+    text-decoration: underline;
+    background: #002649;
+    color: #fff;
+}
+.custom-image-main-section .custom-image-heading p {
+    font-size: 20px !important;
+    line-height: 26px;
+}
 
 /*Full Search CSS START*/
 .full-search-section{
@@ -1583,6 +1592,7 @@ a{
     background: #1F5C99;
     background-image: url("../images/overlay-diamonds.png");
     background-size: contain;
+    margin-top: 5%;
 }
 .footer-title{
     margin-bottom: 10px;
@@ -1603,16 +1613,22 @@ a{
     line-height: 34px;
 }
 .footer-sub-menu .sub-menu-links li{
-    line-height: 28px;
+    line-height: 24px;
 }
 .footer-sub-menu .sub-menu-links li a{
     text-decoration: none;
     color: #fff;
-    font-size: 18px;
+    font-size: 14px;
+}
+.footer-sub-menu .sub-menu-links li a:hover{
+    text-decoration: underline;
 }
 .footer-main-section .footer-title a{
     text-decoration: none ;
     color: #fff;
+}
+.footer-main-section .footer-title a:hover {
+    text-decoration: underline;
 }
 .bottom-footer-section{
     background: #002649;
@@ -1640,6 +1656,10 @@ a{
 /*Home Page Design START*/
 .front-page-content {
     padding-top: 1%;
+}
+.trending-now {
+    padding-left: 5%;
+    padding-right: 5%;
 }
 .oese-btn-readmore{
     margin-top: 20px;
@@ -1792,11 +1812,11 @@ a{
 }
 .trending-image-details-title{
     font-weight: 600;
-    font-size: 24px;
+    font-size: 22px;
     color: #4f4f4f;
     margin-bottom: 0 !important;
-    line-height: 31px !important;
-    height: 60px;
+    line-height: 26px !important;
+    height: 75px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -1804,7 +1824,7 @@ a{
     -webkit-box-orient: vertical;
 }
 .trending-image-details-description{
-    font-size: 18px;
+    font-size: 14px;
     line-height: 20px !important;
     margin-top: 0;
     margin-bottom: 30px;

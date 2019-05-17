@@ -65,10 +65,10 @@ $page_id = get_the_ID();
                                     <img src="<?php echo $cImage; ?>" alt="" class="img-responsive img-thumbnail-square">
                                 </div>
                             </div>
+                            <div class="custom-image-heading text-center">
+                                <p><?php echo $cTitle; ?></p>
+                            </div>
                         </a>
-                    </div>
-                    <div class="custom-image-heading text-center">
-                         <p><?php echo $cTitle; ?></p>
                     </div>
                 </div>
             </div>

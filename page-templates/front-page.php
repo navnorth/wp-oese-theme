@@ -78,7 +78,7 @@
         <!--Div seperator END-->
         <?php if( have_rows('trending_now') ):  ?>
 
-        <div class="row custom-common-padding mr-0 ml-0">
+        <div class="row custom-common-padding trending-now mr-0 ml-0">
 
             <div class="col-md-12">
                 <div class="row text-center">
