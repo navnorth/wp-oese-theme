@@ -1172,15 +1172,30 @@ function contactInformationBlock(){
   $contactEmailCheck = get_field("ci_email");
   $contactEmailOption = get_field("ci_email");
   $contactEmailAddress = get_field("ci_email_address");
+
+  // email link option - contact page or email address
+  $contactEmailLink = "";
+  if($contactEmailOption != 'disabled'){
+    if( ($contactEmailOption == 'email') && ($contactEmailAddress) ){
+      $contactEmailLink = 'mailto:'.$contactEmailAddress.'?subject=OESE Website Contact';
+    } elseif ($contactEmailOption == 'contact_form'){
+      $contactEmailLink = '/contact-us';
+    }
+  }
+
   $output = "";
-  if(!empty($contactAddress)){
+  if(!empty($contactAddress) || (!empty($contactPhone)) || (!empty($contactFax)) || (!empty($contactEmailLink))){
       $output = '<div class="secondary-navigation-menu contact-box">
                         <div class="secondary-navigation-menu-header">
                             <p>'.$contactTitle.'</p>
                         </div>
-                        <ul class="secondary-navigation-menu-list">
-                            <li>'.$contactAddress.'</li>';
-     if($contactPhone){
+                        <ul class="secondary-navigation-menu-list">';
+
+     if(!empty($contactAddress)){
+       $output.=  '<li>'.$contactAddress.'</li>';
+     }
+
+     if(!empty($contactPhone)){
       $output.=  '<li>
                     <div class="sub-nav-icons">
                         <span>
@@ -1190,7 +1205,7 @@ function contactInformationBlock(){
                     </div>
                   </li>';
      }
-    if($contactFax){
+    if(!empty($contactFax)){
       $output.= '<li>
                     <div class="sub-nav-icons">
                         <span>
@@ -1201,26 +1216,16 @@ function contactInformationBlock(){
                 </li>';
     }
 
-    $output .= '<li>
+    if(!empty($contactEmailLink)){
+      $output .= '<li>
                   <div class="sub-nav-icons">
-                    <span>
-                      <i class="fas fa-envelope"></i>
-                    </span>
-                    <p>';
-
-    if($contactEmailOption != 'disabled'){
-      if( ($contactEmailOption == 'email') && ($contactEmailAddress) ){
-        $output.= '<a href="mailto:'.$contactEmailAddress.'?subject=OESE Website Contact">'.$contactEmailAddress.'</a>';
-      } elseif ($contactEmailOption == 'contact_form'){
-        $output.= '<button onclick="window.location.href=\'/contact\';">Contact Us</button>';
-      }
+                    <span><i class="fas fa-envelope"></i></span>
+                    <p><a href="'.$contactEmailLink.'">E-mail</a></p>
+                  </div>
+                </li>';
     }
 
-    $output .= '</p>
-                  </div>
-                </li>
-              </ul>
-          </div>';
+    $output .= '</ul></div>';
   }
   return $output;
 
