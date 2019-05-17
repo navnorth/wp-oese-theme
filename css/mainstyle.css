@@ -1136,6 +1136,23 @@ svg {
     }
     .office-grid-list-details{
         padding: 1rem !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .office-grid-list-details a{
+        font-family: 'Merriweather', sans-serif !important;
+        font-weight: 500;
+        font-size: 26px !important;
+        margin-bottom: 0;
+        text-align: center;
+        color: #fff;
+        line-height: 32px !important;
+        text-decoration: none;
+    }
+    .office-grid-list-details a:hover {
+        text-decoration: underline;
+        color: #fff;
     }
     .footer-col-custom-spacing{margin-top:20px;}
     .footer-col-custom-spacing:nth-child(1){
