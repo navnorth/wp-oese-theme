@@ -1439,6 +1439,9 @@ a{
     cursor: pointer;
     background: #004285;
 }
+.secondary-navigation-menu-list li:hover a {
+    text-decoration: underline;
+}
 .secondary-navigation-menu.contact-box .secondary-navigation-menu-list li:hover {
     background: transparent;
     cursor: auto;
@@ -1446,6 +1449,7 @@ a{
 .secondary-navigation-menu-list li a{
     text-decoration: none;
     color: #fff;
+    transition: all .2s ease-in;
 }
 .secondary-navigation-menu-list .current-page {
       background-color:#1F5C99;
@@ -1847,14 +1851,13 @@ a{
     margin-top: 0;
 }
 .program-block-inner-section{
-    padding: 20px 28px 13px 28px;
+    padding: 20px;
     border-radius: 5px;
-    width: 92%;
-    line-height: 26px;
+    width: 70%;
+    line-height: 22px;
 }
 .program-block-title{
-    /* font-family: 'Helvetica Neue', sans-serif !important; */
-    font-size: 20px !important;
+    font-size: 14px !important;
     color: #4f4f4f !important;
     text-transform: uppercase;
     margin-bottom:0 !important;
@@ -1862,8 +1865,7 @@ a{
     line-height: 24px;
 }
 .program-block-description{
-    /* font-family: 'Helvetica Neue', sans-serif !important; */
-    font-size: 20px !important;
+    font-size: 14px !important;
     margin-bottom: 0;
     color: #333 !important;
     line-height: 24px;
