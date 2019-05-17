@@ -18,59 +18,6 @@ color palette:
 @font-face{font-family:'Helvetica Neue';
 	src:url(../fonts/helvetica_neue/helveticaneue.ttf)format('truetype');}
 
-@font-face{font-family:'Raleway-Bold';
-	src:url(../fonts/Raleway-Bold.eot);
-	src:url(../fonts/Raleway-Bold.eot?#iefix) format('embedded-opentype'),
-		url(../fonts/Raleway-Bold.ttf) format('truetype'),
-		url(../fonts/Raleway-Bold.svg#glyphicons_halflingsregular) format('svg')}
-
-@font-face{font-family:'Raleway-SemiBold';
-	src:url(../fonts/Raleway-SemiBold.eot);
-	src:url(../fonts/Raleway-SemiBold.eot?#iefix) format('embedded-opentype'),
-		url(../fonts/Raleway-SemiBold.ttf) format('truetype'),
-		url(../fonts/Raleway-SemiBold.svg#glyphicons_halflingsregular) format('svg')}
-
-@font-face{font-family:'Raleway-Regular';
-	src:url(../fonts/Raleway-Regular.eot);
-	src:url(../fonts/Raleway-Regular.eot?#iefix) format('embedded-opentype'),
-		url(../fonts/Raleway-Regular.ttf) format('truetype'),
-		url(../fonts/Raleway-Regular.svg#glyphicons_halflingsregular) format('svg')}
-
-@font-face{font-family:'Raleway-Light';
-	src:url(../fonts/Raleway-Light.eot);
-	src:url(../fonts/Raleway-Light.eot?#iefix) format('embedded-opentype'),
-		url(../fonts/Raleway-Light.ttf) format('truetype'),
-		url(../fonts/Raleway-Light.svg#glyphicons_halflingsregular) format('svg')}
-
-
-@font-face{font-family:'Raleway-SemiBold-Italic';
-	src:url(../fonts/Raleway-SemiBold-Italic.eot);
-	src:url(../fonts/Raleway-SemiBold-Italic.eot?#iefix) format('embedded-opentype'),
-		url(../fonts/Raleway-SemiBold-Italic.ttf) format('truetype'),
-		url(../fonts/Raleway-SemiBold-Italic.svg#glyphicons_halflingsregular) format('svg')}
-
-
-@font-face{font-family:'Raleway-Light-Italic';
-	src:url(../fonts/Raleway-Light-Italic.eot);
-	src:url(../fonts/Raleway-Light-Italic.eot?#iefix) format('embedded-opentype'),
-		url(../fonts/Raleway-Light-Italic.ttf) format('truetype'),
-		url(../fonts/Raleway-Light-Italic.svg#glyphicons_halflingsregular) format('svg')}
-
-
-@font-face{font-family:'CharisSILR';
-	src:url(../fonts/CharisSILR.eot);
-	src:url(../fonts/CharisSILR.eot?#iefix) format('embedded-opentype'),
-		url(../fonts/CharisSILR.ttf) format('truetype'),
-		url(../fonts/CharisSILR.svg#glyphicons_halflingsregular) format('svg')}
-
-
-@font-face{font-family:'CharisSILB';
-	src:url(../fonts/CharisSILB.eot);
-	src:url(../fonts/CharisSILB.eot?#iefix) format('embedded-opentype'),
-		url(../fonts/CharisSILB.ttf) format('truetype'),
-		url(../fonts/CharisSILB.svg#glyphicons_halflingsregular) format('svg')}
-
-body { font-family: 'CharisSILR' !important; color: #4b4e53 !important;}
 .soclize .socl_icns, .rght_sid_socl_icn .socl_icns, .pblctn_box .socl_icns { border-radius: 30px; }
 .pblctn_box .socl_icns { background: #294179; font-size: 18px; padding: 7px 0; width: 50px; height: 50px; color: #fff; border: 5px solid #fff; text-align: center}
 .pblctn_box { width: 50px; margin: -40px auto 0}
@@ -89,7 +36,7 @@ body { font-family: 'CharisSILR' !important; color: #4b4e53 !important;}
 .top_strp { overflow: hidden; background: url(../images/top_strap_img.png) 0 0 no-repeat; height: 55px}
 .ftr_strp { border-top: 2px solid #d2d3d4 }
 .navi_bg ul { padding: 0; margin-bottom: 0}
-.navi_bg li, .ftr_lnks li { display: inline; float: left; font-family: 'Raleway-SemiBold'}
+.navi_bg li, .ftr_lnks li { display: inline; float: left;}
 .navi_bg li a {color: #fff; font-size: 20px; padding: 15px 28px; float: left; font-weight: 600;}
 .navi_bg li a:focus { outline: none;}
 .ftr_lnks li { font-size: 13px;padding: 13px 35px 13px 0;}
@@ -104,13 +51,13 @@ body { font-family: 'CharisSILR' !important; color: #4b4e53 !important;}
 .form-control-feedback:hover { opacity: .6}
 .form-control { background: #f1f1f1 !important; height: 40px !important; box-shadow: none !important}
 .border_blue { border: 1px solid #9fbedb; margin-top: 12px; border-radius: 3px; margin-bottom: 20px}
-.border_blue h1 { font-family: 'Raleway-SemiBold'; color: #2d8700; font-size: 40px !important; letter-spacing: 1.5px}
-.pblctn_hed { font-family: 'Raleway-SemiBold'; color: #2d8700; margin-bottom: 20px;}
+.border_blue h1 { color: #2d8700; font-size: 40px !important; letter-spacing: 1.5px}
+.pblctn_hed { color: #2d8700; margin-bottom: 20px;}
 .bnr_img img { width: 100.2%}
 .bnr_img { padding-right: 0 !important }
-.border_blue p { margin-left: 20px; font-size: 16px; line-height: 35px; margin-top: 20px; font-family: 'Raleway-Bold'; letter-spacing: .5px }
+.border_blue p { margin-left: 20px; font-size: 16px; line-height: 35px; margin-top: 20px; letter-spacing: .5px }
 /* pumpkin e57200 to violet 2d8700 */
-.hdng_mtr, .hdng_mtr a { font-size: 18px; color: #2d8700; font-family: 'Raleway-Bold' !important}
+.hdng_mtr, .hdng_mtr a { font-size: 18px; color: #2d8700;}
 /* old hover orangish F58516 to tassel green 6ec940 */
 .hdng_mtr a:hover { cursor: pointer; color: #6ec940}
 /*.rght_sid_mtr>.hdng_mtr, .hdng_mtr a { font-size: 13px; margin-bottom: 0; margin-top: 40px}*/
@@ -124,9 +71,9 @@ body { font-family: 'CharisSILR' !important; color: #4b4e53 !important;}
 
 .lft_sid_mtr { padding-left: 0 !important; margin-bottom: 30px; position: relative}
 .lft_sid_mtr img, .rght_sid_mtr img { float: left; margin: 0 25px 25px 0}
-.lft_sid_mtr h4:first-child, .rght_sid_mtr h4:first-child { border-bottom: 1px solid #ccc; margin-bottom: 15px; padding-bottom: 5px; font-family:'Raleway-Light'; font-size: 15px}
+.lft_sid_mtr h4:first-child, .rght_sid_mtr h4:first-child { border-bottom: 1px solid #ccc; margin-bottom: 15px; padding-bottom: 5px; font-size: 15px}
 .lft_sid_mtr p, .rght_sid_mtr p {  margin: 0 0 10px}
-.date { font-family: 'Raleway-Bold' !important; font-size: 13px}
+.date { font-size: 13px}
 .sprtn_brdr { position: absolute; top: 80px; bottom: 35px; width: 1px; background: #ddd; right: 0}
 
 .rght_sid_mtr { padding-right: 0 !important; margin-bottom: 30px}
@@ -167,7 +114,7 @@ iframe { border: 0; max-width:100%;}
 
 
 .pblctn_scl_icns a, .story_scl_icns a,  { margin: 0 8% 0}
-.pblctn_scl_icn_hedng, .story_scl_icn_hedng  { font-size: 15px; border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-bottom: 0; font-family: 'Raleway-Light'; margin-top: 30px}
+.pblctn_scl_icn_hedng, .story_scl_icn_hedng  { font-size: 15px; border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-bottom: 0; margin-top: 30px}
 /* pumpkin e57200 to violet 2d8700 */
 .dbl_coad_sign { font-size: 25px; color: #2d8700}
 
@@ -191,7 +138,7 @@ iframe { border: 0; max-width:100%;}
 .pblctn_lft_sid_img_cntnr .col-md-3{ text-align: center}
 .pblctn_lft_sid_img_cntnr .rght_sid_mtr { padding-left: 0 !important}
 /* pumpkin e57200 to violet 2d8700 */
-.btn_dwnld {width: 129px; padding: 10px 10px; margin: 15px 10px; text-align: center; background: #2d8700; border: none; color: #fff; border-radius: 3px; cursor: pointer; float: left; font-family: 'Raleway-Regular';}
+.btn_dwnld {width: 129px; padding: 10px 10px; margin: 15px 10px; text-align: center; background: #2d8700; border: none; color: #fff; border-radius: 3px; cursor: pointer; float: left;}
 .btn_dwnld:hover, .btn_dwnld:focus { opacity: .9; color:#fff;}
 .link_dwnlds a, .link_dwnlds a:hover { color: #fff; text-decoration: none}
 .pblctn_scl_icns { height: 50px	}
@@ -209,7 +156,7 @@ article { padding-bottom:20px; }
 .panel-default>.panel-heading { background: none !important;}
 .panel-default>.panel-heading+.panel-collapse>.panel-body { line-height: 23px}
 .panel-heading { padding: 5px 15px 46px !important}
-.panel-title>a { color: #294179 !important; font-family: 'Raleway-Bold'; float: left; width: 100%; background: url(../images/pls_mns_img.png) right -29px no-repeat; padding: 17px 0; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; padding-right: 50px}
+.panel-title>a { color: #294179 !important; float: left; width: 100%; background: url(../images/pls_mns_img.png) right -29px no-repeat; padding: 17px 0; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; padding-right: 50px}
 .panel-title>a:focus { outline: none}
 .panel-title>a.collapsed { background: url(../images/pls_mns_img.png) right 9px no-repeat }
 .panel-group .panel+.panel { margin-top: 10px !important}
@@ -217,22 +164,22 @@ article { padding-bottom:20px; }
 
 .pblctn_scl_icns .fa-envelope, .pblctn_scl_icns .fa-youtube-play, .pblctn_scl_icns .fa-google-plus { font-size: 25px !important}
 .pblctn_scl_icns .fa-google-plus { font-weight: bold}
-.blog_mtr { color: #294179; font-family: "Raleway-Regular"; font-style: italic; font-size: 20px; line-height: 30px; margin: 0 0 15px;}
-blockquote { border-left: none !important; font-family: 'CharisSILR' !important; font-size: 18px !important; line-height:25px; }
+.blog_mtr { color: #294179; font-style: italic; font-size: 20px; line-height: 30px; margin: 0 0 15px;}
+blockquote { border-left: none !important; font-size: 18px !important; line-height:25px; }
 .blog_date { margin: 0 0 30px; font-size: 16px }
-.blog_athr { font-size: 16px; margin:0; font-family: 'CharisSILB' }
+.blog_athr { font-size: 16px; margin:0; }
 .blog_date, .panel-default>.panel-heading+.panel-collapse>.panel-body {  }
 .pblctn_paramtr { letter-spacing: .5px; line-height: 25px;}
 .pblctn_paramtr ul { margin-bottom: 25px}
-.rght_sid_wdgt_hedng { font-family: 'Raleway-Bold' !important; font-size: 17px !important}
+.rght_sid_wdgt_hedng { font-size: 17px !important}
 .right_sid_mtr p{ margin: 0 0 10px}
-.meta_date { font-family: 'Raleway-Bold'; margin: -19px 0 10px; float: left; text-align: center; width: 100%; }
+.meta_date { margin: -19px 0 10px; float: left; text-align: center; width: 100%; }
 .brdr_mrgn_none { border-top: none !important; margin: 0 !important}
 
 .stp_cntnr { background: #294179; color: #fff; margin-bottom: 20px;}
 .stp_cntnr a { color: #fff;}
 .stp_cntnr a:hover { color: #bbb; text-decoration: none}
-.stp_cntnr h1, .stp_cntnr h3 {font-family: 'Raleway-Bold'; font-style: italic}
+.stp_cntnr h1, .stp_cntnr h3 {font-style: italic}
 .tlkt_lft_sid h1, .tlkt_lft_sid h3 { float: left;}
 
 ul .tour_dates { list-style: none; }
@@ -259,13 +206,13 @@ ul.tour_dates li {
 .btm_lnk_blustrp a { color: #2d8700; }
 /* old hover orangish F58516 to tassel green 6ec940 */
 .btm_lnk_blustrp a:hover, .btm_lnk_blustrp a:focus { color: #6ec940}
-.btm_lnk_blustrp { text-align: center; font-family: 'CharisSILB'; font-size: 18px; margin: 20px 0 70px}
-.story_right_sid_mtr>.pblctn_scl_icn_hedng, .right_sid_mtr>.story_scl_icn_hedng { font-family: 'Raleway-Light'; margin-top: 25px}
+.btm_lnk_blustrp { text-align: center; font-size: 18px; margin: 20px 0 70px}
+.story_right_sid_mtr>.pblctn_scl_icn_hedng, .right_sid_mtr>.story_scl_icn_hedng { margin-top: 25px}
 
 .bg_img_of_icns h3 { color: #fff !important}
 .bg_img_of_icns .btn_dwnld, .btn_readmore, .bg_img_of_icns .link_dwnlds { margin-top: 0; margin-bottom: 0}
 .bg_img_of_icns { background: #294179; color: #fff; font-style: italic; margin: 5px 0 15px !important; float: left;}
-.bg_img_of_icns a {font-family: 'Raleway-Light'; font-style: normal }
+.bg_img_of_icns a {font-style: normal }
 
 
 .right_sid_mtr ul { float: left; padding-left: 0; list-style: none; }
@@ -381,12 +328,6 @@ ul.tour_dates li {
 
 .blue_textclr { color: #294179}
 
-.raleway_reg_font { font-family: 'Raleway-Regular' }
-.raleway_lght_font { font-family: 'Raleway-Light' }
-.raleway_smbold_font { font-family: 'Raleway-Semibold' }
-
-.charis_bold_font { font-family: 'CharisSILB' }
-
 .overflow { overflow: hidden}
 .ssba img:hover { opacity: .8; transition: opacity .3s; -webkit-transition: opacity .3s; -moz-transition: opacity .3s}
 /*.share_links_header { float:right; margin: -45px 0 0px 10px; padding: 0px; }*/
@@ -397,12 +338,12 @@ ul.tour_dates li {
 .slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box { width: 48% !important; top: 20px; left: 15px;}
 .slideshow_container .slideshow_view .slideshow_slide { /*border: 1px solid #9fbedb;*/ }
 .slideshow_container_style-light .slideshow_description_box div.slideshow_title,
-.slideshow_container_style-light .slideshow_description_box div.slideshow_title a { font-family: 'Raleway-SemiBold'; text-align: left; color: #294179; font-size: 40px !important; letter-spacing: 1.5px; line-height: 45px}
+.slideshow_container_style-light .slideshow_description_box div.slideshow_title a { text-align: left; color: #294179; font-size: 40px !important; letter-spacing: 1.5px; line-height: 45px}
 .slideshow_container_style-light .slideshow_transparent:hover, .slideshow_container_style-light .slideshow_transparent { opacity: 1 !important}
 .slideshow_container_style-light .slideshow_description_box { background: none !important}
 .slideshow_container_style-light .slideshow_description_box div.slideshow_description,
 .slideshow_container_style-light .slideshow_description_box div.slideshow_description a,
-.slideshow_container_style-light .slideshow_description_box div.slideshow_description{ margin-left: 20px; text-align: left; font-size: 16px; line-height: 1.5em; margin-top: 20px; font-family: 'Raleway-Bold'; letter-spacing: .5px; color: #4b4e53}
+.slideshow_container_style-light .slideshow_description_box div.slideshow_description{ margin-left: 20px; text-align: left; font-size: 16px; line-height: 1.5em; margin-top: 20px; letter-spacing: .5px; color: #4b4e53}
 
 .slideshow_container_style-light .slideshow_description_box div.slideshow_description a:hover,
 .slideshow_container_style-light .slideshow_description_box div.slideshow_description a:focus,
@@ -420,7 +361,7 @@ ul.tour_dates li {
 /*---------------- Newsletter -----------------*/
 .eemail_button { padding-left: 6px; float: left; margin-left: -1px;}
 /* pumpkin e57200 to violet 2d8700 */
-.eemail_textbox_button { background: #580085; padding: 15px 0 14px; text-align: center; background: #2d8700; border: 1px solid #CF6B08; color: #fff; font-family: 'Raleway-Regular';}
+.eemail_textbox_button { background: #580085; padding: 15px 0 14px; text-align: center; background: #2d8700; border: 1px solid #CF6B08; color: #fff; }
 .eemail_textbox_button:hover, .eemail_textbox_button:focus { opacity: .9}
 .eemail_textbox_class { width: 100% !important; padding: 12px 10px 14px;}
 
@@ -434,13 +375,12 @@ ul.tour_dates li {
 
 /*---------------- Default Page -----------------*/
 
-h3 { font-family: 'Raleway-Semibold' !important; font-size: 24px !important; color: #294179 !important; line-height:26px; }
-h4 { font-family: 'Raleway-Light' !important; font-size: 18px !important; line-height:20px; color:#4b4e53; }
-h5 { font-family: 'CharisSILR' !important; font-weight:500; font-size:14px !important; line-height:15px; color:#4b4e53; }
-h6 { font-family: 'CharisSILR' !important; font-weight:500; font-size:12px !important; line-height:13px; color:#4b4e53; }
+h3 { font-size: 24px !important; color: #294179 !important; line-height:26px; }
+h4 { font-size: 18px !important; line-height:20px; color:#4b4e53; }
+h5 { font-weight:500; font-size:14px !important; line-height:15px; color:#4b4e53; }
+h6 { font-weight:500; font-size:12px !important; line-height:13px; color:#4b4e53; }
 h1,h2,h4 { color: #2d8700 !important }
 p { font-weight:normal; color:#4b4e53; line-height: 28px;}
-h3 a { font-family: 'Raleway-Semibold'; }
 .custom-button {
     background-color: #e57200;
     color: #fff;
@@ -448,7 +388,6 @@ h3 a { font-family: 'Raleway-Semibold'; }
     font-size: 14px;
     padding: 20px !important;
 }
-.navi_bg li a { font-family: 'Raleway-SemiBold'; }
 
 /* -------- begin CALLOUT BOX ---------
 http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
@@ -591,7 +530,6 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 .page .intro {
     position: relative;
     margin-bottom: 60px;
-    font-family: 'Raleway-Semibold', sans-serif !important;
     background:#294179;
 }
 .page .intro:before {
@@ -1399,7 +1337,6 @@ svg {
 }
 
 body{
-    font-family:'Helvetica Neue', Arial, Helvetica, sans-serif !important;
     font-size: 16px;
     color: #333333;
     -webkit-font-smoothing: antialiased;
@@ -1419,7 +1356,6 @@ h2{
     color: #1F5C99 !important;
 }
 a{
-    font-family:'Helvetica Neue' !important;
     text-decoration: underline;
     font-size: 16px;
     color: #333333;
@@ -1468,6 +1404,7 @@ a{
     color: #fff;
     margin-bottom: 0 !important;
     font-weight: 700;
+    font-size: 22px;
 }
 .secondary-navigation-menu-list{
     list-style: none;
@@ -1567,7 +1504,7 @@ a{
     padding: 0 1.25rem;
 }
 .custom-image-heading p{
-    font-family: 'Helvetica Neue', sans-serif !important;
+    /* font-family: 'Helvetica Neue', sans-serif !important; */
     font-weight: 700;
     font-size: 24px !important;
     margin-bottom: 0;
@@ -1733,7 +1670,7 @@ a{
     padding: 0 1.25rem;
 }
 .custom-home-image-section .custom-home-image-heading p{
-    font-family: 'Helvetica Neue', sans-serif !important;
+    /* font-family: 'Helvetica Neue', sans-serif !important; */
     font-weight: 700;
     font-size: 22px !important;
     margin-bottom: 0;
@@ -1809,7 +1746,7 @@ a{
     padding: 18px;
 }
 .trending-image-details-title{
-    font-family: 'Helvetica Neue', sans-serif !important;
+    /* font-family: 'Helvetica Neue', sans-serif !important; */
     font-weight: 700;
     font-size: 28px;
     color: #4f4f4f;
@@ -1888,7 +1825,7 @@ a{
     line-height: 26px;
 }
 .program-block-title{
-    font-family: 'Helvetica Neue', sans-serif !important;
+    /* font-family: 'Helvetica Neue', sans-serif !important; */
     font-size: 20px !important;
     color: #4f4f4f !important;
     text-transform: uppercase;
@@ -1897,7 +1834,7 @@ a{
     line-height: 24px;
 }
 .program-block-description{
-    font-family: 'Helvetica Neue', sans-serif !important;
+    /* font-family: 'Helvetica Neue', sans-serif !important; */
     font-size: 20px !important;
     margin-bottom: 0;
     color: #333 !important;
