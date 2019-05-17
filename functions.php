@@ -1174,7 +1174,7 @@ function contactInformationBlock(){
   $contactEmailAddress = get_field("ci_email_address");
   $output = "";
   if(!empty($contactAddress)){
-      $output = '<div class="secondary-navigation-menu">
+      $output = '<div class="secondary-navigation-menu contact-box">
                         <div class="secondary-navigation-menu-header">
                             <p>'.$contactTitle.'</p>
                         </div>
