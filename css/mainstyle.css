@@ -335,7 +335,7 @@ ul.tour_dates li {
 
 /*---------------- Slider -----------------*/
 .slideshow_slide.slideshow_slide_image img { float: right !important; width: 48% !important;}
-.slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box { width: 48% !important; top: 20px; left: 15px;}
+.slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box { width: 48% !important; left: 15px;}
 .slideshow_container .slideshow_view .slideshow_slide { /*border: 1px solid #9fbedb;*/ }
 .slideshow_container_style-light .slideshow_description_box div.slideshow_title,
 .slideshow_container_style-light .slideshow_description_box div.slideshow_title a { text-align: left; color: #294179; font-size: 40px !important; letter-spacing: 1px; line-height: 45px}
@@ -639,9 +639,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
     height:auto !important;
 }
 .slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box {
-    position:relative !important;
     width:100% !important;
-    top:0;
     left:0;
 }
 .slideshow_container { height:400px !important }
