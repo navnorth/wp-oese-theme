@@ -912,7 +912,7 @@ function taxonomies_for_pages() {
 
  add_action( 'wp_footer' , 'add_footer_script' );
  function add_footer_script(){
-    wp_enqueue_script('theme-bottom-script', get_stylesheet_directory_uri() . '/js/bottom-script.js' );
+    // wp_enqueue_script('theme-bottom-script', get_stylesheet_directory_uri() . '/js/bottom-script.js' );
  }
 
 function related_posts_where( $where ) {
