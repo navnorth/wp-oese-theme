@@ -49,31 +49,23 @@ get_header();
                             <?php echo  the_field("program_short_description") ?>
                         </p>
                     <?php endif; ?>
+                    <?php
+                         while (have_posts()) : the_post(); get_template_part('content', 'page');
+                        endwhile;
+                    ?>
                 </div>
             </div>
             <div class="col-md-4">
                 <?php echo contactInformationBlock() ?>
 
-                <div class="spacer" style="height:15px;"></div>
+                <div class="spacer" style="height:20px;"></div>
 
                 <?php echo getSidebarLinks(); ?>
+
+                <?php get_template_part( 'content', 'resources' ); ?>
             </div>
         </div>
         <!--Program Landing Template Top Section END-->
-
-        <!--Program Landing Template Overview Section START-->
-        <div class="row custom-common-padding overview-custom-padding">
-            <div class="col-md-8">
-               <?php
-                 while (have_posts()) : the_post(); get_template_part('content', 'page');
-                endwhile;
-               ?>
-            </div>
-            <div class="col-md-4">
-                 <?php get_template_part( 'content', 'resources' ); ?>
-            </div>
-        </div>
-        <!--Program Landing Template Overview Section END-->
 
         <!--Div seperator-->
         <div class="row mr-0 ml-0">
