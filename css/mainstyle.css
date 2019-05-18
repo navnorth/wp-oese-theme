@@ -940,6 +940,9 @@ svg {
     .caption-image { max-width:60%; }
     .main-menu { display:none; }
     #content .program_header_image img, #content .thematic_header_image img { width:100% !important; }
+    .breadcrumbs-section {
+        padding-left: 0 !important;
+    }
 }
 @media (max-width: 750px){
     .hdr .col-xs-offset-2  {margin-left: 16.66666667% !important;}
@@ -1140,6 +1143,9 @@ svg {
         left: 0;
         width: 35%;
     }
+    .breadcrumbs-section {
+        padding-left: 0;
+    }
     .navi_icn { width:14%; float:right;}
     .home-col-md-4{
         margin-right: 0 !important;
@@ -1185,7 +1191,7 @@ svg {
     }
     .footer-bottom-right-links a {
         margin-left: 20px !important;
-        font-size: 20px;
+        font-size: 14px;
     }
     .footer-bottom-right-links a:hover {
         text-decoration: underline;
@@ -1254,6 +1260,12 @@ svg {
         font-size: 18px !important;
         line-height: 24px !important;
     }
+    .secondary-navigation-menu {
+        margin: 10px 0;
+    }
+    .footer-title {
+        margin-top: 25px;
+    }
 }
 @media (min-width: 481px) and (max-width: 575.98px){
     .topbar-social-icons{width: 26%;}
@@ -1283,7 +1295,7 @@ svg {
     }
     .footer-bottom-right-links a {
         margin-left: 20px !important;
-        font-size: 20px;
+        font-size: 14px;
     }
     .custom-grid-mobile-margin-top:nth-child(2),
     .custom-grid-mobile-margin-top:nth-child(3){
@@ -1404,7 +1416,7 @@ a{
 }
 
 .custom-common-padding{
-    padding: 3% 2%;
+    padding: 5% 3%;
 }
 .custom-search-btn{
     background: #F1F1F1 !important;
