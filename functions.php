@@ -1047,19 +1047,19 @@ register_nav_menu( 'footer', __( 'Footer Menu', 'twentytwelve' ) );
 /**
 * Getting Populars post from Pages OESE Theme
 */
-  function getPopularResources(){
+  function getSidebarLinks(){
 
-    if( have_rows('popular_resources_links') ):
-      $output = "<div class='secondary-navigation-menu'><div class='secondary-navigation-menu-header'><p>". get_field('popular_resources_title')."</p></div>";
+    if( have_rows('sidebar_links') ):
+      $output = "<div class='secondary-navigation-menu'><div class='secondary-navigation-menu-header'><p>". get_field('sidebar_box_title')."</p></div>";
       // check if the repeater field has rows of data
 
         $output.=  "<ul class='secondary-navigation-menu-list'>";
         // loop through the rows of data
-          while ( have_rows('popular_resources_links') ) : the_row();
+          while ( have_rows('sidebar_links') ) : the_row();
             $resourceLabel =  get_sub_field('resource_label');
             $resourceLink =  get_sub_field('resource_link');
             $externaLink =  get_sub_field('external_link');
-            $target = ($externaLink ? "_blank" : "");
+            $target = ($externaLink ? "_blank" : "_self");
             $output.= "<li><a ". $target." href=".$resourceLink.">".$resourceLabel."</a></li>";
           endwhile;
         $output.=  "</ul>";
