@@ -20,13 +20,13 @@ get_header();
 
                             echo "<div class='left-section-featured-image'>
                                     <img src=".$image[0]."></div>";
-                        } 
+                        }
                     ?>
                     <!--Program Blocks START-->
                     <?php  if( have_rows('program_info') ): ?>
                         <div class="program-block-section">
                             <div class="gray-background-color program-block-inner-section">
-                                <?php 
+                                <?php
                                     while ( have_rows('program_info') ) : the_row();
                                       $programLabel =  get_sub_field('program_title');
                                       $programDescription =  get_sub_field('program_description');
@@ -39,20 +39,24 @@ get_header();
                                         <p class="program-block-description"><?php echo $programDescription;?></p>
                                     </div>
                                 </div>
-                             <?php endwhile; ?>   
+                             <?php endwhile; ?>
                             </div>
                         </div>
-                    <?php endif; ?>    
+                    <?php endif; ?>
                     <!--Program Blocks END-->
                     <?php if( get_field('program_short_description') ): ?>
                         <p class="">
                             <?php echo  the_field("program_short_description") ?>
                         </p>
-                    <?php endif; ?>    
+                    <?php endif; ?>
                 </div>
             </div>
             <div class="col-md-4">
                 <?php echo contactInformationBlock() ?>
+
+                <div class="spacer" style="height:15px;"></div>
+
+                <?php echo getSidebarLinks(); ?>
             </div>
         </div>
         <!--Program Landing Template Top Section END-->
@@ -61,7 +65,7 @@ get_header();
         <div class="row custom-common-padding overview-custom-padding">
             <div class="col-md-8">
                <?php
-                 while (have_posts()) : the_post(); get_template_part('content', 'page'); 
+                 while (have_posts()) : the_post(); get_template_part('content', 'page');
                 endwhile;
                ?>
             </div>
@@ -81,9 +85,9 @@ get_header();
 
 
         <!--Payments Section START-->
-     
+
         <?php getTileLinks(); ?>
-        
+
         <!--Payments Section END-->
 
 <?php get_footer(); ?>
