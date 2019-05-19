@@ -1240,21 +1240,23 @@ function getTileLinks(){
               $externaLink =  get_sub_field('external_link');
               $tileLinkWidth =  get_sub_field('width');
               if($tileLinkWidth == "half"){
-                $colSize = "col-md-6 office-custom-padding office-grid-section-custom-margin";
+                $colSize = "col-md-6 office-custom-padding office-grid-section-custom-margin half-tile-link";
                 $outerDivClass = "office-grid-section";
                 $innerDivClass = "office-grid-list-details text-center";
               }
               else{
-                $colSize = "col-md-12 col-md-12 payments-custom-padding";
-                $outerDivClass = "payments-overlay-section";
+                $colSize = "col-md-12 col-md-12 payments-custom-padding full-tile-link";
+                $outerDivClass = "payments-overlay-section full-tile-link";
                 $innerDivClass = "payments-details-list text-center";
               }
               $target = ($externaLink ? "_blank" : "_self");
               $output.= '<div class="'.$colSize.'">
                             <div class="'.$outerDivClass.'">
+                              <a target="'.$target.'" href="'.$tileLinkUrl.'" class="tile-link">
                                 <div class="'.$innerDivClass.'">
-                                  <p><a target="'.$target.'" href="'.$tileLinkUrl.'" class="tile-link">'.$tileLinkLabel.'</a></p>
+                                  <p>'.$tileLinkLabel.'</p>
                                 </div>
+                                </a>
                             </div>
                           </div>';
             endwhile;

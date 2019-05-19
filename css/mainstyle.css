@@ -932,7 +932,7 @@ a{
     color: #fff;
     margin-bottom: 0 !important;
     font-weight: 700;
-    font-size: 22px;
+    font-size: 20px;
 }
 .secondary-navigation-menu-list{
     list-style: none;
@@ -1276,7 +1276,7 @@ a{
     align-items: center;
     justify-content: center;
 }
-.office-grid-list-details p{
+.office-grid-list-details p, .payments-details-list p{
     font-family: 'Merriweather', sans-serif !important;
     font-weight: 500;
     font-size: 30px !important;
@@ -1308,12 +1308,19 @@ a{
     background-size: cover;
     background-repeat: no-repeat;
 }
-.office-grid-section-custom-margin{
-    margin-top: 72px;
+.half-tile-link, .full-tile-link  {
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
-.office-grid-section-custom-margin:nth-child(1),
-.office-grid-section-custom-margin:nth-child(2){
-    margin-top: 0;
+.half-tile-link a, .full-tile-link a {
+    text-decoration: none;
+}
+.half-tile-link a:hover, .full-tile-link a:hover {
+    text-decoration: underline;
+    color: #fff;
+}
+.tile-link {
+    width: 100%;
 }
 .office-custom-padding{
     padding-left: 2rem !important;
@@ -1449,7 +1456,6 @@ a{
 .payments-custom-padding{
     padding-left: 2rem !important;
     padding-right: 2rem !important;
-    margin-top: 72px;
 }
 .payments-custom-padding:nth-child(1){
     margin-top: 0;
@@ -1465,6 +1471,7 @@ a{
 .payments-details-list{
     width: 100%;
     min-height: 90px;
+    height: 100%;
     padding: 0 1.25rem;
     border-radius: 5px;
     display: flex;
@@ -1825,7 +1832,7 @@ a{
         align-items: center;
         justify-content: center;
     }
-    .office-grid-list-details a{
+    .office-grid-list-details a, .payments-details-list p{
         font-family: 'Merriweather', sans-serif !important;
         font-weight: 500;
         font-size: 26px !important;
