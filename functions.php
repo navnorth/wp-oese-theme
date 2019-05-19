@@ -1246,7 +1246,7 @@ function getTileLinks(){
               }
               else{
                 $colSize = "col-md-12 col-md-12 payments-custom-padding full-tile-link";
-                $outerDivClass = "payments-overlay-section full-tile-link";
+                $outerDivClass = "payments-overlay-section";
                 $innerDivClass = "payments-details-list text-center";
               }
               $target = ($externaLink ? "_blank" : "_self");
