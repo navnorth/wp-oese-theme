@@ -1050,7 +1050,7 @@ register_nav_menu( 'footer', __( 'Footer Menu', 'twentytwelve' ) );
   function getSidebarLinks(){
 
     if( have_rows('sidebar_links') ):
-      $output = "<div class='secondary-navigation-menu'><div class='secondary-navigation-menu-header'><p>". get_field('sidebar_box_title')."</p></div>";
+      $output = "<div class='secondary-navigation-menu sidebar-links'><div class='secondary-navigation-menu-header'><p>". get_field('sidebar_box_title')."</p></div>";
       // check if the repeater field has rows of data
 
         $output.=  "<ul class='secondary-navigation-menu-list'>";

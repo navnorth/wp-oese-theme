@@ -60,9 +60,10 @@ get_header();
 
                 <div class="spacer" style="height:20px;"></div>
 
-                <?php echo getSidebarLinks(); ?>
-
                 <?php get_template_part( 'content', 'resources' ); ?>
+
+                <?php echo getSidebarLinks(); ?>
+                
             </div>
         </div>
         <!--Program Landing Template Top Section END-->
