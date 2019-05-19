@@ -997,7 +997,7 @@ a{
 }
 .secondary-navigation-menu-list li{
     padding: 10px 20px;
-    line-height: 28px;
+    line-height: 24px;
     transition: all .1s ease-in;
 }
 .secondary-navigation-menu-list li:hover {
