@@ -21,6 +21,7 @@ $page_id = get_the_ID();
             </div>
             <div class="col-md-4">
                 <?php echo contactInformationBlock() ?>
+                <?php echo getSidebarLinks(); ?>
             </div>
         </div>
         <!--Office Template Top Section END-->

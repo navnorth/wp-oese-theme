@@ -33,6 +33,7 @@ $page_id = get_the_ID();
             </div>
             <div class="col-md-4">
                 <?php get_sidebar(); ?>
+                <?php echo getSidebarLinks(); ?>
             </div>
         </div>
         <!--Families section END-->
