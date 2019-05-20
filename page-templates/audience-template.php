@@ -12,7 +12,7 @@ $page_id = get_the_ID();
         <!--Audience Page Custom Design -- START-->
 
         <!--Families section START-->
-        <div class="row custom-common-padding">
+        <div id="content" class="row custom-common-padding">
             <div class="col-md-8">
                 <?php
                     if ( has_post_thumbnail() ) {
