@@ -18,6 +18,6 @@
 </script>
 <style type="text/css">
     .oese-modal .modal-header{
-        background-image: url(<?php echo get_template_directory(); ?> ."/images/overlay-diamonds.png");
+        background-image: url("<?php echo get_template_directory_uri(); ?>/images/overlay-diamonds.png");
     }
 </style>
