@@ -55,15 +55,17 @@ class oii_walker_nav_menu extends Walker_Nav_Menu {
 	    
 	    $itemindex = 0;
 	    
-	    foreach($this->items as $item) {
-		$itemindex++;
-		$this->all_items[] = (object)array(
-					'index' => $itemindex,
-					'id' => $item->ID,
-					'title' => $item->title,
-					'parent' => $item->menu_item_parent,
-					'haschildren' => in_array('menu-item-has-children',$item->classes)
-					);
+	    if (!empty($this->items)){
+		foreach($this->items as $item) {
+		    $itemindex++;
+		    $this->all_items[] = (object)array(
+					    'index' => $itemindex,
+					    'id' => $item->ID,
+					    'title' => $item->title,
+					    'parent' => $item->menu_item_parent,
+					    'haschildren' => in_array('menu-item-has-children',$item->classes)
+					    );
+		}
 	    }
 	}
 	/**
@@ -158,7 +160,8 @@ class oii_walker_nav_menu extends Walker_Nav_Menu {
 		$classes = empty( $item->classes ) ? array() : (array) $item->classes;
 		$classes[] = 'menu-item-' . $item->ID;
 		
-		if  ($item->menu_item_parent==0 && in_array('menu-item-has-children', $item->classes))
+		//if  ($item->menu_item_parent==0 && in_array('menu-item-has-children', $item->classes))
+		if  ($item->menu_item_parent==0 && in_array('menu-item-has-children', $classes))
 		    $ancestor = $item->ID;
 		    
 		if (in_array($item->ID,$this->mega_menu_ids)){
@@ -174,7 +177,8 @@ class oii_walker_nav_menu extends Walker_Nav_Menu {
 				    'depth' => $depth,
 				    'title' => $item->title,
 				    'parent' => $item->menu_item_parent,
-				    'haschildren' => in_array('menu-item-has-children',$item->classes),
+				    //'haschildren' => in_array('menu-item-has-children',$item->classes),
+				    'haschildren' => in_array('menu-item-has-children',$classes),
 				    'ancestor' => $ancestor,
 				    'grandparent' => $grandparent
 				    );

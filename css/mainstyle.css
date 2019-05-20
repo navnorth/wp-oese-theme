@@ -1204,6 +1204,8 @@ a{
     color: #fff;
     margin-left:48px;
 }
+.footer-bottom-right-links ul { margin-bottom:0; }
+.footer-bottom-right-links li { display:inline-block; }
 .footer-bottom-right-links a:hover {
     text-decoration: underline;
 }

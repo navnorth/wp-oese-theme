@@ -6,7 +6,9 @@
  * in the theme as custom template tags. Others are attached to action and
  * filter hooks in WordPress to change core functionality.
  */
-
+define( "WP_OESE_THEME_NAME", "WP OESE Theme" );
+define( "WP_OESE_THEME_VERSION", "1.5.0" );
+define( "WP_OESE_THEME_SLUG", "wp_oese_theme" );
 
 // Set up the content width value based on the theme's design and stylesheet.
 if ( ! isset( $content_width ) ) {
@@ -1043,7 +1045,7 @@ if (is_admin()) {
  */
 register_nav_menu( 'footer', __( 'Footer Menu', 'twentytwelve' ) );
 
-
+register_nav_menu( 'sub-footer', __( 'Sub Footer', WP_OESE_THEME_SLUG ) );
 /**
 * Getting Populars post from Pages OESE Theme
 */
