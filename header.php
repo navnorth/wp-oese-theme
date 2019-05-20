@@ -28,7 +28,7 @@
 <!--[if !(IE 7) & !(IE 8)]><!-->
 <body <?php body_class(); ?>>
 <!--<![endif]-->
-
+<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'wp_nn_theme' ); ?></a>
 
 <!-- Container -->
 <div class="container-fluid">
