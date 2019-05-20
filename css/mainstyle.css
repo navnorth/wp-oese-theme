@@ -1326,7 +1326,22 @@ a{
     padding-top: 20px;
     padding-bottom: 20px;
 }
-
+.program-offices-section h2 a {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1F5C99 !important;
+}
+.program-offices-section h2 a:hover {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000 !important;
+}
+.program-offices-section ul {
+    list-style-type: square;
+}
+.program-offices-section ul ul {
+    list-style-type: circle;
+}
 .custom-image-thumbnail{
     background: #ccc;
 }
