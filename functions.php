@@ -839,6 +839,35 @@ function oii_turnoff_twentytwelve_title() {
 // }
 // add_action('wp_head', 'google_analytics_with_pagetitle');
 
+/**
+ * Shorten any title that is more than X characters long
+ *
+ * @param  string $link_text 	The title of the post
+ * @param  int $id 		The ID of the post
+ *
+ * @return  string 		The title, shortened if too long
+ */
+add_filter('wpseo_breadcrumb_single_link_info', 'truncate_breadcrumbs', 10, 2);
+function truncate_breadcrumbs($link, $id) {
+
+  $crumb_length = strlen( $link['text'] );
+ 
+	// Allowed breadcrumb size.
+	$crumb_size = 24;
+ 
+	// Shorten the title.
+  $truncated = substr( $link['text'], 0, $crumb_size );
+		
+	// Add an ellipsis if the title has been truncated.
+	if ( $crumb_length > $crumb_size ) {
+		$truncated .= '...';
+  }
+  
+  $link['text'] = $truncated;
+ 
+	return $link;
+		
+}
 
 /**
  * Related Posts Widget.

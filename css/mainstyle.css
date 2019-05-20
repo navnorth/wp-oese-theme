@@ -771,7 +771,14 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 #content .table-responsive { display:flex; } /* for mirrored content styles, to keep Resources box from pushing down */
 /* -------- End of Table Styles ----------*/
 
-#breadcrumbs { margin:0 0 10px; line-height:1em; }
+#breadcrumbs { 
+    margin:0 0 10px; 
+    line-height:1em;
+    font-size: 14px;
+}
+#breadcrumbs a {
+    font-size: 14px;
+}
 .caption-image { max-width:65%; }
 
 /* ------------- Image and Video Styles -------------- */
