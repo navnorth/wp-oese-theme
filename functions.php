@@ -711,9 +711,14 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-social.php' )
 
 function theme_back_enqueue_script()
 {
-    wp_enqueue_script( 'theme-back-script', get_stylesheet_directory_uri() . '/js/back-script.js' );
-	wp_enqueue_style( 'theme-back-style',get_stylesheet_directory_uri() . '/css/back-style.css' );
+  wp_enqueue_script( 'theme-back-script', get_stylesheet_directory_uri() . '/js/back-script.js' );
+	wp_enqueue_script('csv-media-script', get_stylesheet_directory_uri() . '/js/csv-media-import-script.js' ); 
+
+  wp_enqueue_style( 'theme-back-style',get_stylesheet_directory_uri() . '/css/back-style.css' );
 	wp_enqueue_style( 'tinymce_button_backend',get_stylesheet_directory_uri() . '/tinymce_button/shortcode_button.css' );
+
+  wp_enqueue_style('csv-media-styles', get_stylesheet_directory_uri() . '/css/csv-media-import-style.css' ); 
+
 }
 add_action( 'admin_enqueue_scripts', 'theme_back_enqueue_script' );
 
@@ -728,7 +733,8 @@ function theme_front_enqueue_script()
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('theme-front-script', get_stylesheet_directory_uri() . '/js/front-script.js' );
 	wp_enqueue_script('bootstrap-script', get_stylesheet_directory_uri() . '/js/bootstrap.js' );
-    wp_enqueue_script('theme-back-script', get_stylesheet_directory_uri() . '/js/modernizr-custom.js' );
+  wp_enqueue_script('theme-back-script', get_stylesheet_directory_uri() . '/js/modernizr-custom.js' );
+
 }
 add_action( 'wp_enqueue_scripts', 'theme_front_enqueue_script' );
 
@@ -1283,3 +1289,75 @@ function oeseListChildPages() {
 
 }
 
+
+/**Csv import Media Library***/
+
+function csvImportMediaForm(){
+    $samplecsvfile = get_template_directory_uri() . '/images/ajax-load.gif';
+    $ajaxload = get_template_directory_uri() . '/images/ajax-load.gif';
+
+      echo '<div class="wrap">
+            <div class="csv-media-import">
+                <h2>WP Media Importer</h2>
+                  <div class="form-section">
+                    <div class="error_message"></div>  
+                    <form name="wp_importer" class="importer"  method="post" enctype="multipart/form-data">
+                      <input type="file" accept=".csv" name="fileToUpload" id="fileToUpload">
+                      <input type="button" id="csv_media_upload" value="Upload Csv" name="submit">
+                       <img style="display: none;" class="ajaxload" width="65" src="'.$ajaxload.'">
+                    </form>
+                   
+                    <a class="csv_file" href="'.$samplecsvfile.'">Download sample csv</a>  
+                  </div>   
+                  <div class="results_table" style="display: none;">
+                    <p class="page_count"></p>
+                    <table class="fixed_header" id="page_result">
+                      <thead>
+                        <tr>
+                          <th>Page Name</th>
+                          <th>Action</th>
+                        </tr>
+                       </thead>  
+                    </table>
+
+                  </div>
+               </div>       
+            </div>';
+    }
+
+  add_action('admin_menu', 'createCsvImportMenu' , 30);
+  function createCsvImportMenu(){
+    add_options_page( 'Csv Media Import','Csv Media Import','manage_options','csv-media-import.php','csvImportMediaForm');
+  }    
+
+
+  add_action('wp_ajax_csvMediaImport','csvMediaImport');
+
+  function csvMediaImport(){
+
+      $csvImportFile = $_FILES['file']['tmp_name'];
+      $csvAsArray = array_map('str_getcsv', file($csvImportFile));
+      array_shift($csvAsArray);
+      $output = array();
+      foreach ($csvAsArray as $key => $csvVal) {
+          $pageUrl = $csvVal[0];
+          $pageStartCode = $csvVal[1];  
+          $pageEndCode = $csvVal[2];  
+          $pageTitle = $csvVal[3];
+          $pageTemplate = $csvVal[4];  
+          
+          // $post      = get_page_by_title($pageTitle, 'OBJECT', 'page');
+          // $post_id   = $post->ID;
+          // if(!$post_id){
+          //   $filteredHtml = $this->getFilteredContentHtml($pageUrl,$pageStartCode,$pageEndCode);
+            
+          //   if($filteredHtml){
+          //     $output[] = $this->createNewPage($pageTitle,$filteredHtml,$pageTemplate);
+          //   }
+          // }  
+      }
+      print_r($csvAsArray);
+      // wp_send_json($output);
+      // die();
+
+  }
