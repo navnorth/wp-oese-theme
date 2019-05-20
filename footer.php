@@ -67,7 +67,9 @@ if($footerNav) {
                         <div class="col-md-10">
                             <div class="footer-bottom-right-links text-right">
                                 <?php
-                                wp_nav_menu(array('theme_location' => 'sub-footer', 'menu_class' => 'nav-menu nav-sub-footer'));
+                                $menu_location = "sub-footer";
+                                if ( has_nav_menu($menu_location) )
+                                wp_nav_menu(array('theme_location' => $menu_location, 'menu_class' => 'nav-menu nav-sub-footer'));
                                 ?>
                             </div>
                         </div>
