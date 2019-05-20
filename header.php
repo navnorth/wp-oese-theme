@@ -93,7 +93,11 @@
         </div>
 
          <div class="row breadcrumbs-section mr-0 ml-0">
-            <?php if ( function_exists('yoast_breadcrumb') ) { yoast_breadcrumb('<p id="breadcrumbs">','</p>'); }  ?>
+            <?php
+            if (!is_front_page()){
+                if ( function_exists('yoast_breadcrumb') ) { yoast_breadcrumb('<p id="breadcrumbs">','</p>'); }
+            }
+            ?>
         </div>
 
        
