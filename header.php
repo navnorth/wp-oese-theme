@@ -93,7 +93,7 @@
         </div>
 
          <div class="row breadcrumbs-section mr-0 ml-0">
-            <?php oeseBreadcrumb(); ?>
+            <?php if ( function_exists('yoast_breadcrumb') ) { yoast_breadcrumb('<p id="breadcrumbs">','</p>'); }  ?>
         </div>
 
        
