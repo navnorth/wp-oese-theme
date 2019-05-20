@@ -1413,13 +1413,18 @@ a{
 .gray-background-color{
     background: #F1F1F1;
 }
-
+.trending-row {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 500px;
+}
 .trending-now-section{
     border: 1px solid #ccc;
     box-shadow: 1px 1px 15px 0 #ccc;
 }
 .trending-image-section img{
     width: 100%;
+    height: 200px;
 }
 .trending-image-details{
     padding: 18px;

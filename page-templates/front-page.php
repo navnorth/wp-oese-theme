@@ -52,13 +52,13 @@
         </div>
 
 
-        <!--Div seperator-->
-        <div class="row mr-0 ml-0">
+        <!-- Div seperator-->
+        <!-- <div class="row mr-0 ml-0">
             <div class="col-md-12 pr-0 pl-0">
                 <div class="seperate-dark-blue-border"></div>
             </div>
-        </div>
-        <!--Div seperator END-->
+        </div> -->
+        <!--Div seperator END -->
 
 
         <!--Tile Links Grid Section START-->
@@ -86,7 +86,8 @@
                 </div>
             </div>
             <div class="col-md-12 pl-0 pr-0">
-                <div class="row">
+                <div class="trending-row">
+                <?php $i = 1; ?>
                     <?php
                         while ( have_rows('trending_now') ) : the_row();
                             $tImage =  get_sub_field('image');
@@ -107,7 +108,7 @@
                                     <?php echo $tTitle; ?>
                                 </p>
                                 <p class="trending-image-details-description">
-                                   <?php echo $tDescription; ?>
+                                <?php echo $tDescription; ?>
                                 </p>
                                 <a target="<?php echo $target; ?>" href="<?php echo $tLink; ?>">
                                 <button type="button" class="btn oese-btn-danger oese-btn-danger-small" title="Read More"><?php echo $tButtonLabel; ?></button>
@@ -115,7 +116,8 @@
                             </div>
                         </div>
                     </div>
-                <?php endwhile; ?>
+                    <?php if($i !== 6 && $i % 3 == 0) { echo '</div><div class="trending-row">'; } ?>
+                    <?php $i++; endwhile; ?>
                 </div>
             </div>
         </div>
