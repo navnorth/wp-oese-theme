@@ -8,7 +8,7 @@ global $post;
 $page_id = get_the_ID();
 ?>
 
-      
+
         <!--Audience Page Custom Design -- START-->
 
         <!--Families section START-->
@@ -20,19 +20,18 @@ $page_id = get_the_ID();
 
                         echo "<div class='left-section-featured-image'>
                                 <img src=".$image[0]."></div>";
-                    } 
+                    }
 
                 ?>
                 <div class="left-description-section">
                    <h1><?php echo get_the_title(); ?></h1>
                    <?php
-                     while (have_posts()) : the_post(); get_template_part('content', 'page'); 
+                     while (have_posts()) : the_post(); get_template_part('content', 'page');
                      endwhile;
                    ?>
                 </div>
             </div>
             <div class="col-md-4">
-                <?php get_sidebar(); ?>
                 <?php echo getSidebarLinks(); ?>
             </div>
         </div>
@@ -48,9 +47,9 @@ $page_id = get_the_ID();
 
         <!--Post in grids section START-->
         <div class="row custom-common-padding gray-background-color mr-0 ml-0">
-                <?php  
-                if( have_rows('categories') ): 
-                    while ( have_rows('categories') ) : the_row();  
+                <?php
+                if( have_rows('categories') ):
+                    while ( have_rows('categories') ) : the_row();
                         $cImage =  get_sub_field('c_image');
                         $cTitle =  get_sub_field('c_title');
                         $cLink =  get_sub_field('link');
@@ -73,12 +72,12 @@ $page_id = get_the_ID();
                     </div>
                 </div>
             </div>
-           <?php        
+           <?php
                 endwhile;
-                      
+
                 else :
-                       
-                endif;    
+
+                endif;
 
             ?>
         </div>
