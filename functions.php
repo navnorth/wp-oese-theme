@@ -1338,9 +1338,24 @@ function wp_oese_theme_settings_page() {
 			'name' =>  __('Content: ', WP_OESE_THEME_SLUG)
 		)
 	);
+        
+        //Add Settings field to Enabled Redirect Modal
+	add_settings_field(
+		'wp_oese_theme_modal_enable_redirect',
+		'',
+		'wp_oese_theme_settings_field',
+		$page,
+		'wp_oese_theme_settings',
+		array(
+			'uid' => 'wp_oese_theme_modal_enable_redirect',
+			'type' => 'checkbox',
+			'name' =>  __('Enable Redirect Modal:', WP_OESE_THEME_SLUG)
+		)
+	);
 
 	register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_heading' );
         register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_content' );
+        register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_enable_redirect' );
 }
 add_action( 'admin_init' , 'wp_oese_theme_settings_page' );
 
@@ -1368,6 +1383,11 @@ function wp_oese_theme_settings_field($arguments){
     
     echo wp_editor($value, $arguments['uid'],array('media_buttons'=>false));
     
+  } elseif ($arguments['type']=="checkbox"){
+    echo '<div class="form-row"><div class="form-group">
+      <input name="'.$arguments['uid'].'" id="'.$arguments['uid'].'" type="'.$arguments['type'].'" value="1" '.checked(1,$value,false).' />
+      <label class="inline" for="'.$arguments['uid'].'"><strong>'.$arguments['name'].'</strong></label>
+    </div></div>';
   }
 }
 
