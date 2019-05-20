@@ -79,3 +79,8 @@
     padding: 10px;
     text-transform: uppercase;
 }
+#wp-oese-theme-settings fieldset { border:1px solid #cdcdcd; padding:30px; }
+#wp-oese-theme-settings fieldset legend { padding:0 20px; }
+#wp-oese-theme-settings fieldset label { display:block; }
+#wp-oese-theme-settings fieldset input[type=textbox] { width:100%; }
+#wp-oese-theme-settings fieldset .form-group { margin-bottom:15px; }
