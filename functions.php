@@ -721,16 +721,16 @@ add_action( 'admin_enqueue_scripts', 'theme_back_enqueue_script' );
 
 function theme_front_enqueue_script()
 {
-	wp_enqueue_style( 'theme-front-style',get_stylesheet_directory_uri() . '/css/front-style.css' );
-    wp_enqueue_style( 'theme-bootstrap-style',get_stylesheet_directory_uri() . '/css/bootstrap.min.css' );
-    wp_enqueue_style( 'theme-font-style',get_stylesheet_directory_uri() . '/css/fontawesome/css/all.min.css' );
+  wp_enqueue_style( 'theme-front-style',get_stylesheet_directory_uri() . '/css/front-style.css' );
+  wp_enqueue_style( 'theme-bootstrap-style',get_stylesheet_directory_uri() . '/css/bootstrap.min.css' );
+  wp_enqueue_style( 'theme-font-style',get_stylesheet_directory_uri() . '/css/fontawesome/css/all.min.css' );
 
-	wp_enqueue_style( 'theme-main-style',get_stylesheet_directory_uri() . '/css/mainstyle.css' );
+  wp_enqueue_style( 'theme-main-style',get_stylesheet_directory_uri() . '/css/mainstyle.css' );
 
-	wp_enqueue_script('jquery');
-	wp_enqueue_script('theme-front-script', get_stylesheet_directory_uri() . '/js/front-script.js' );
-	wp_enqueue_script('bootstrap-script', get_stylesheet_directory_uri() . '/js/bootstrap.js' );
-    wp_enqueue_script('theme-back-script', get_stylesheet_directory_uri() . '/js/modernizr-custom.js' );
+  wp_enqueue_script('jquery');
+  wp_enqueue_script('theme-front-script', get_stylesheet_directory_uri() . '/js/front-script.js' );
+  wp_enqueue_script('bootstrap-script', get_stylesheet_directory_uri() . '/js/bootstrap.js' );
+  wp_enqueue_script('theme-back-script', get_stylesheet_directory_uri() . '/js/modernizr-custom.js' );
 }
 add_action( 'wp_enqueue_scripts', 'theme_front_enqueue_script' );
 
@@ -1349,7 +1349,7 @@ function wp_oese_theme_settings_page() {
 		array(
 			'uid' => 'wp_oese_theme_modal_enable_redirect',
 			'type' => 'checkbox',
-			'name' =>  __('Enable Redirect Modal:', WP_OESE_THEME_SLUG)
+			'name' =>  __('Enable redirect modal', WP_OESE_THEME_SLUG)
 		)
 	);
 
@@ -1391,13 +1391,16 @@ function wp_oese_theme_settings_field($arguments){
   }
 }
 
-/**
- * Theme Settings field
- **/
-function wp_nn_theme_settings_field( $arguments ) {
-    
-    $value = get_option($arguments['uid']);
-    
-    echo '<div class="form-group"><label for="'.$arguments['uid'].'"><strong>'.$arguments['name'].'</strong></label>
-            <input name="'.$arguments['uid'].'" id="'.$arguments['uid'].'" type="'.$arguments['type'].'" value="' . $value . '" /></div>';
+function wp_oese_theme_add_modal(){
+  global $wp;
+  $redirect = get_option('wp_oese_theme_modal_enable_redirect');
+  if ($redirect=="1"){
+    if (isset($_REQUEST['redirectold'])) {
+      $modal_header = get_option('wp_oese_theme_modal_heading');
+      $modal_content = get_option('wp_oese_theme_modal_content');
+      include( get_template_directory() . "/inc/modal/redirect_modal.php");
+    }
+  }
+  
 }
+add_action( 'wp_footer', 'wp_oese_theme_add_modal');
