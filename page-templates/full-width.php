@@ -20,12 +20,8 @@ global $post;
 <div id="content" class="row site-content" tabindex="-1">
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
-        <?php if (function_exists('yoast_breadcrumb')) {
-            yoast_breadcrumb('<p id="breadcrumbs">', '</p>');
-        } ?>
-
         <h1 class="page_header"><?php echo $post->post_title; ?></h1>
-       
+
         <?php while (have_posts()) : the_post(); ?>
 
             <?php get_template_part('content', 'page'); ?>
