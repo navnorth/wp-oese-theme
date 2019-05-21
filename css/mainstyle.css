@@ -633,6 +633,27 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
     margin-bottom: 20px;
 }
 
+/* Audience link shortcode styles */
+.audience-link {
+    color: #fff;
+    background-color: #243C54;
+    padding: 15px 30px;
+    margin: 10px 0;
+    border-radius: 2px;
+    font-size: 16px;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: block;
+    transition: all .2s ease-in;
+    width: 300px;
+    font-weight: 500;
+    text-align: center;
+}
+.audience-link:hover {
+    background-color: #1F5C99;
+    color: #fff;
+    text-decoration: none;
+}
 /* -------- begin FRONT PAGE --------- */
 .front_summary {
     position: relative;
