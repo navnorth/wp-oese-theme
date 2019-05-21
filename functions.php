@@ -713,30 +713,27 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-social.php' )
 
 function theme_back_enqueue_script()
 {
-  wp_enqueue_script( 'theme-back-script', get_stylesheet_directory_uri() . '/js/back-script.js' );
-	wp_enqueue_script('csv-media-script', get_stylesheet_directory_uri() . '/js/csv-media-import-script.js' ); 
-
-  wp_enqueue_style( 'theme-back-style',get_stylesheet_directory_uri() . '/css/back-style.css' );
-	wp_enqueue_style( 'tinymce_button_backend',get_stylesheet_directory_uri() . '/tinymce_button/shortcode_button.css' );
-
-  wp_enqueue_style('csv-media-styles', get_stylesheet_directory_uri() . '/css/csv-media-import-style.css' ); 
-
+    wp_enqueue_script( 'theme-back-script', get_stylesheet_directory_uri() . '/js/back-script.js' );
+    wp_enqueue_script('csv-media-script', get_stylesheet_directory_uri() . '/js/csv-media-import-script.js' ); 
+  
+    wp_enqueue_style( 'theme-back-style',get_stylesheet_directory_uri() . '/css/back-style.css' );
+    wp_enqueue_style( 'tinymce_button_backend',get_stylesheet_directory_uri() . '/tinymce_button/shortcode_button.css' );
+    wp_enqueue_style('csv-media-styles', get_stylesheet_directory_uri() . '/css/csv-media-import-style.css' ); 
 }
 add_action( 'admin_enqueue_scripts', 'theme_back_enqueue_script' );
 
 function theme_front_enqueue_script()
 {
-	wp_enqueue_style( 'theme-front-style',get_stylesheet_directory_uri() . '/css/front-style.css' );
-    wp_enqueue_style( 'theme-bootstrap-style',get_stylesheet_directory_uri() . '/css/bootstrap.min.css' );
-    wp_enqueue_style( 'theme-font-style',get_stylesheet_directory_uri() . '/css/fontawesome/css/all.min.css' );
+  wp_enqueue_style( 'theme-front-style',get_stylesheet_directory_uri() . '/css/front-style.css' );
+  wp_enqueue_style( 'theme-bootstrap-style',get_stylesheet_directory_uri() . '/css/bootstrap.min.css' );
+  wp_enqueue_style( 'theme-font-style',get_stylesheet_directory_uri() . '/css/fontawesome/css/all.min.css' );
 
-	wp_enqueue_style( 'theme-main-style',get_stylesheet_directory_uri() . '/css/mainstyle.css' );
+  wp_enqueue_style( 'theme-main-style',get_stylesheet_directory_uri() . '/css/mainstyle.css' );
 
-	wp_enqueue_script('jquery');
-	wp_enqueue_script('theme-front-script', get_stylesheet_directory_uri() . '/js/front-script.js' );
-	wp_enqueue_script('bootstrap-script', get_stylesheet_directory_uri() . '/js/bootstrap.js' );
+  wp_enqueue_script('jquery');
+  wp_enqueue_script('theme-front-script', get_stylesheet_directory_uri() . '/js/front-script.js' );
+  wp_enqueue_script('bootstrap-script', get_stylesheet_directory_uri() . '/js/bootstrap.js' );
   wp_enqueue_script('theme-back-script', get_stylesheet_directory_uri() . '/js/modernizr-custom.js' );
-
 }
 add_action( 'wp_enqueue_scripts', 'theme_front_enqueue_script' );
 
@@ -744,13 +741,13 @@ function the_content_filter($content) {
     $block = join("|",array("home_left_column", "home_right_column"));
     $rep = preg_replace("/(<p>)?\[($block)(\s[^\]]+)?\](<\/p>|<br \/>)?/","[$2$3]",$content);
     $rep = preg_replace("/(<p>)?\[\/($block)](<\/p>|<br \/>)?/","[/$2]",$rep);
-	return $rep;
+  return $rep;
 }
 add_filter("the_content", "the_content_filter");
 
 function wpse_wpautop_nobr( $content )
 {
-	return wpautop( $content, false );
+  return wpautop( $content, false );
 }
 
 function my_remove_version_info() {
@@ -796,7 +793,7 @@ add_action('wp_head', 'federated_analytics_tracking_code');
 //     $title = trim( str_replace( $sep, '', $title ) );
 
 //     if(intval($post->post_parent)>0)
-//     	$title = get_the_title($post->post_parent) . ' '.$sep.' '. $title;
+//      $title = get_the_title($post->post_parent) . ' '.$sep.' '. $title;
 
 //     // determine order based on seplocation
 //     $parts = array( get_bloginfo( 'name' ), $type, $title, $page_num );
@@ -818,33 +815,62 @@ function oii_turnoff_twentytwelve_title() {
 // Google Analytics script
 // function google_analytics_with_pagetitle(){
 //     $ga_id = 'UA-64242956-1';
-// 	$sep = '|';
+//  $sep = '|';
 
 //     $pagetitle = trim( str_replace( get_bloginfo('name'), '', wp_title('|', false) ), $sep.' ');
 
-// 	// is the current page a tag archive page?
-// 	if ( is_home() || is_front_page() ) {
-// 		$pagetitle = 'Home';
+//  // is the current page a tag archive page?
+//  if ( is_home() || is_front_page() ) {
+//    $pagetitle = 'Home';
 
-// 	} elseif (function_exists('is_tag') && is_tag()) {
-// 		$pagetitle = 'Tag Archive - '.$tag;
+//  } elseif (function_exists('is_tag') && is_tag()) {
+//    $pagetitle = 'Tag Archive - '.$tag;
 
-// 	// or, is the page a search page?
-// 	} elseif (is_search()) {
-// 		$pagetitle = 'Search for &quot;'.get_search_query().'&quot;';
+//  // or, is the page a search page?
+//  } elseif (is_search()) {
+//    $pagetitle = 'Search for &quot;'.get_search_query().'&quot;';
 
-// 	// or, is the page an error page?
-// 	} elseif (is_404()) {
-// 		$pagetitle = '404 Error - Page Not Found';
-// 	}
+//  // or, is the page an error page?
+//  } elseif (is_404()) {
+//    $pagetitle = '404 Error - Page Not Found';
+//  }
 
 //     echo "<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga'); ";
 //     echo "ga('create', '" . $ga_id . "', 'auto'); ";
-// 	echo "ga('send', 'pageview', {'title': '". $pagetitle ."' }); </script>";
+//  echo "ga('send', 'pageview', {'title': '". $pagetitle ."' }); </script>";
 
 // }
 // add_action('wp_head', 'google_analytics_with_pagetitle');
 
+/**
+ * Shorten any title that is more than X characters long
+ *
+ * @param  string $link_text  The title of the post
+ * @param  int $id    The ID of the post
+ *
+ * @return  string    The title, shortened if too long
+ */
+add_filter('wpseo_breadcrumb_single_link_info', 'truncate_breadcrumbs', 10, 2);
+function truncate_breadcrumbs($link, $id) {
+
+  $crumb_length = strlen( $link['text'] );
+ 
+  // Allowed breadcrumb size.
+  $crumb_size = 24;
+ 
+  // Shorten the title.
+  $truncated = substr( $link['text'], 0, $crumb_size );
+    
+  // Add an ellipsis if the title has been truncated.
+  if ( $crumb_length > $crumb_size ) {
+    $truncated .= '...';
+  }
+  
+  $link['text'] = $truncated;
+ 
+  return $link;
+    
+}
 
 /**
  * Related Posts Widget.
@@ -868,7 +894,7 @@ function register_news_categories_widget(){
 /* minor style changes to News "Continue Reading" links */
 add_filter( 'the_content_more_link', 'modify_read_more_link' );
 function modify_read_more_link() {
-	return ' <a class="more-link" href="' . get_permalink() . '">Read More</a>';
+  return ' <a class="more-link" href="' . get_permalink() . '">Read More</a>';
 }
 
 
@@ -930,34 +956,34 @@ function related_posts_where( $where ) {
 // altered wp_list_categories
 function wp_list_categories_for_posts( $args = '' ) {
     $defaults = array(
-	    'show_option_all' => '', 'show_option_none' => __('No categories'),
-	    'orderby' => 'name', 'order' => 'ASC',
-	    'style' => 'list',
-	    'show_count' => 0, 'hide_empty' => 1,
-	    'use_desc_for_title' => 1, 'child_of' => 0,
-	    'feed' => '', 'feed_type' => '',
-	    'feed_image' => '', 'exclude' => '',
-	    'exclude_tree' => '', 'current_category' => 0,
-	    'hierarchical' => true, 'title_li' => __( 'Categories' ),
-	    'echo' => 1, 'depth' => 0,
-	    'taxonomy' => 'category'
+      'show_option_all' => '', 'show_option_none' => __('No categories'),
+      'orderby' => 'name', 'order' => 'ASC',
+      'style' => 'list',
+      'show_count' => 0, 'hide_empty' => 1,
+      'use_desc_for_title' => 1, 'child_of' => 0,
+      'feed' => '', 'feed_type' => '',
+      'feed_image' => '', 'exclude' => '',
+      'exclude_tree' => '', 'current_category' => 0,
+      'hierarchical' => true, 'title_li' => __( 'Categories' ),
+      'echo' => 1, 'depth' => 0,
+      'taxonomy' => 'category'
     );
 
     $r = wp_parse_args( $args, $defaults );
 
     if ( !isset( $r['pad_counts'] ) && $r['show_count'] && $r['hierarchical'] )
-	$r['pad_counts'] = true;
+  $r['pad_counts'] = true;
 
     if ( true == $r['hierarchical'] ) {
-	$r['exclude_tree'] = $r['exclude'];
-	$r['exclude'] = '';
+  $r['exclude_tree'] = $r['exclude'];
+  $r['exclude'] = '';
     }
 
     if ( ! isset( $r['class'] ) )
-	$r['class'] = ( 'category' == $r['taxonomy'] ) ? 'categories' : $r['taxonomy'];
+  $r['class'] = ( 'category' == $r['taxonomy'] ) ? 'categories' : $r['taxonomy'];
 
     if ( ! taxonomy_exists( $r['taxonomy'] ) ) {
-	return false;
+  return false;
     }
 
     $show_option_all = $r['show_option_all'];
@@ -966,64 +992,64 @@ function wp_list_categories_for_posts( $args = '' ) {
     $categories = get_categories( $r );
     foreach ($categories as $key => $category){
        add_filter( 'posts_where' , 'related_posts_where' );
-	$rPosts = new WP_Query(array(
-		'post_type'             => array('post'),
-		'posts_per_page'	=> -1,
-		'is_single'             => true,
-		'no_found_rows'         => true,
-		'post_status'           => array('publish'),
-		'ignore_sticky_posts'   => true,
-		'cat'                   => $category->cat_ID
-	));
+  $rPosts = new WP_Query(array(
+    'post_type'             => array('post'),
+    'posts_per_page'  => -1,
+    'is_single'             => true,
+    'no_found_rows'         => true,
+    'post_status'           => array('publish'),
+    'ignore_sticky_posts'   => true,
+    'cat'                   => $category->cat_ID
+  ));
 
-	// If no posts found, ...
-	if ($rPosts->post_count==0) {
-	    unset($categories[$key]);
-	} else {
-	    $categories[$key]->count = $rPosts->post_count;
-	}
+  // If no posts found, ...
+  if ($rPosts->post_count==0) {
+      unset($categories[$key]);
+  } else {
+      $categories[$key]->count = $rPosts->post_count;
+  }
     }
 
     $output = '';
     if ( $r['title_li'] && 'list' == $r['style'] ) {
-	    $output = '<li class="' . esc_attr( $r['class'] ) . '">' . $r['title_li'] . '<ul>';
+      $output = '<li class="' . esc_attr( $r['class'] ) . '">' . $r['title_li'] . '<ul>';
     }
     if ( empty( $categories ) ) {
-	    if ( ! empty( $show_option_none ) ) {
-		    if ( 'list' == $r['style'] ) {
-			    $output .= '<li class="cat-item-none">' . $show_option_none . '</li>';
-		    } else {
-			    $output .= $show_option_none;
-		    }
-	    }
+      if ( ! empty( $show_option_none ) ) {
+        if ( 'list' == $r['style'] ) {
+          $output .= '<li class="cat-item-none">' . $show_option_none . '</li>';
+        } else {
+          $output .= $show_option_none;
+        }
+      }
     } else {
-	    if ( ! empty( $show_option_all ) ) {
-		    $posts_page = ( 'page' == get_option( 'show_on_front' ) && get_option( 'page_for_posts' ) ) ? get_permalink( get_option( 'page_for_posts' ) ) : home_url( '/' );
-		    $posts_page = esc_url( $posts_page );
-		    if ( 'list' == $r['style'] ) {
-			    $output .= "<li class='cat-item-all'><a href='$posts_page'>$show_option_all</a></li>";
-		    } else {
-			    $output .= "<a href='$posts_page'>$show_option_all</a>";
-		    }
-	    }
+      if ( ! empty( $show_option_all ) ) {
+        $posts_page = ( 'page' == get_option( 'show_on_front' ) && get_option( 'page_for_posts' ) ) ? get_permalink( get_option( 'page_for_posts' ) ) : home_url( '/' );
+        $posts_page = esc_url( $posts_page );
+        if ( 'list' == $r['style'] ) {
+          $output .= "<li class='cat-item-all'><a href='$posts_page'>$show_option_all</a></li>";
+        } else {
+          $output .= "<a href='$posts_page'>$show_option_all</a>";
+        }
+      }
 
-	    if ( empty( $r['current_category'] ) && ( is_category() || is_tax() || is_tag() ) ) {
-		    $current_term_object = get_queried_object();
-		    if ( $current_term_object && $r['taxonomy'] === $current_term_object->taxonomy ) {
-			    $r['current_category'] = get_queried_object_id();
-		    }
-	    }
+      if ( empty( $r['current_category'] ) && ( is_category() || is_tax() || is_tag() ) ) {
+        $current_term_object = get_queried_object();
+        if ( $current_term_object && $r['taxonomy'] === $current_term_object->taxonomy ) {
+          $r['current_category'] = get_queried_object_id();
+        }
+      }
 
-	    if ( $r['hierarchical'] ) {
-		    $depth = $r['depth'];
-	    } else {
-		    $depth = -1; // Flat.
-	    }
-	    $output .= walk_category_tree( $categories, $depth, $r );
+      if ( $r['hierarchical'] ) {
+        $depth = $r['depth'];
+      } else {
+        $depth = -1; // Flat.
+      }
+      $output .= walk_category_tree( $categories, $depth, $r );
     }
 
     if ( $r['title_li'] && 'list' == $r['style'] )
-	    $output .= '</ul></li>';
+      $output .= '</ul></li>';
 
     /**
      * Filter the HTML output of a taxonomy list.
@@ -1036,9 +1062,9 @@ function wp_list_categories_for_posts( $args = '' ) {
     $html = apply_filters( 'wp_list_categories', $output, $args );
     wp_reset_postdata();
     if ( $r['echo'] ) {
-	    echo $html;
+      echo $html;
     } else {
-	    return $html;
+      return $html;
     }
 }
 
@@ -1291,6 +1317,126 @@ function oeseListChildPages() {
 
 }
 
+/**
+ * Add Theme Settings Page
+ **/
+function add_oese_theme_settings_menu(){
+    add_theme_page("Theme Settings", "Settings", "edit_theme_options", "theme_settings_page",  "add_wp_oese_theme_settings_page", 10);
+}
+add_action( "admin_menu", "add_oese_theme_settings_menu" );
+
+function add_wp_oese_theme_settings_page(){
+  include( get_template_directory() . "/theme-functions/theme-settings.php");
+}
+
+/**
+ * Theme Settings page
+ **/
+function wp_oese_theme_settings_page() {
+        $page = "theme_settings_page";
+    
+  //Create Settings Section
+  add_settings_section(
+    'wp_oese_theme_settings',
+    __('Modal', WP_OESE_THEME_SLUG),
+    'wp_oese_theme_settings_callback',
+    $page
+  );
+        
+        //Add Settings field for Modal Heading
+  add_settings_field(
+    'wp_oese_theme_modal_heading',
+    '',
+    'wp_oese_theme_settings_field',
+    $page,
+    'wp_oese_theme_settings',
+    array(
+      'uid' => 'wp_oese_theme_modal_heading',
+      'type' => 'textbox',
+      'name' =>  __('Heading: ', WP_OESE_THEME_SLUG)
+    )
+  );
+        
+        //Add Settings field for Modal Content
+  add_settings_field(
+    'wp_oese_theme_modal_content',
+    '',
+    'wp_oese_theme_settings_field',
+    $page,
+    'wp_oese_theme_settings',
+    array(
+      'uid' => 'wp_oese_theme_modal_content',
+      'type' => 'editor',
+      'name' =>  __('Content: ', WP_OESE_THEME_SLUG)
+    )
+  );
+        
+        //Add Settings field to Enabled Redirect Modal
+  add_settings_field(
+    'wp_oese_theme_modal_enable_redirect',
+    '',
+    'wp_oese_theme_settings_field',
+    $page,
+    'wp_oese_theme_settings',
+    array(
+      'uid' => 'wp_oese_theme_modal_enable_redirect',
+      'type' => 'checkbox',
+      'name' =>  __('Enable redirect modal', WP_OESE_THEME_SLUG)
+    )
+  );
+
+  register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_heading' );
+        register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_content' );
+        register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_enable_redirect' );
+}
+add_action( 'admin_init' , 'wp_oese_theme_settings_page' );
+
+/**
+ * Theme Settings Callback
+ **/
+function wp_oese_theme_settings_callback() {
+
+}
+
+/**
+ * Theme Settings Field Callback
+ **/
+function wp_oese_theme_settings_field($arguments){
+  $value = get_option($arguments['uid']);
+  
+  if ($arguments['type']=="textbox") {
+    echo '<div class="form-row"><div class="form-group">
+      <label for="'.$arguments['uid'].'"><strong>'.$arguments['name'].'</strong></label>
+      <input name="'.$arguments['uid'].'" id="'.$arguments['uid'].'" type="'.$arguments['type'].'" value="' . $value . '" />
+    </div></div>';
+  } elseif ($arguments['type']=="editor"){
+    echo '<div class="form-row"><div class="form-group">
+      <label for="'.$arguments['uid'].'"><strong>'.$arguments['name'].'</strong></label></div></div>';
+    
+    echo wp_editor($value, $arguments['uid'],array('media_buttons'=>false));
+    
+  } elseif ($arguments['type']=="checkbox"){
+    echo '<div class="form-row"><div class="form-group">
+      <input name="'.$arguments['uid'].'" id="'.$arguments['uid'].'" type="'.$arguments['type'].'" value="1" '.checked(1,$value,false).' />
+      <label class="inline" for="'.$arguments['uid'].'"><strong>'.$arguments['name'].'</strong></label>
+    </div></div>';
+  }
+}
+
+function wp_oese_theme_add_modal(){
+  global $wp;
+  $redirect = get_option('wp_oese_theme_modal_enable_redirect');
+  if ($redirect=="1"){
+    if (isset($_REQUEST['redirectold'])) {
+      $modal_header = get_option('wp_oese_theme_modal_heading');
+      $modal_content = get_option('wp_oese_theme_modal_content');
+      include( get_template_directory() . "/inc/modal/redirect_modal.php");
+    }
+  }
+  
+}
+add_action( 'wp_footer', 'wp_oese_theme_add_modal');
+
 
 /**Csv import Media Library***/
 
@@ -1332,131 +1478,106 @@ function csvImportMediaForm(){
     add_options_page( 'Csv Media Import','Csv Media Import','manage_options','csv-media-import.php','csvImportMediaForm');
   }    
 
+  function getUrlContents ($url) {
+    if (function_exists('curl_exec')){ 
+        $conn = curl_init($url);
+        curl_setopt($conn, CURLOPT_SSL_VERIFYPEER, true);
+        curl_setopt($conn, CURLOPT_FRESH_CONNECT,  true);
+        curl_setopt($conn, CURLOPT_RETURNTRANSFER, 1);
+        $url_get_contents_data = (curl_exec($conn));
+        curl_close($conn);
+    }elseif(function_exists('file_get_contents') && !$url_get_contents_data){
+        $url_get_contents_data = file_get_contents($url);
+    }elseif(function_exists('fopen') && function_exists('stream_get_contents') && !$url_get_contents_data){
+        $handle = fopen ($url, "r");
+        $url_get_contents_data = stream_get_contents($handle);
+    }else{
+        $url_get_contents_data = false;
+    }
+return $url_get_contents_data;
+} 
+
+
+function insertNewMedia($file,$date,$mediaCat,$mediaTag){
+  $filename = basename($file);
+  $data = getUrlContents($file);
+  $_newDate = date("Y-m-d H:i:s ",strtotime($date));
+  $wp_upload_dir = wp_upload_dir();
+  $upload_file = wp_upload_bits($filename, null,$data);
+  if (!$upload_file['error']) {
+    $wp_filetype = wp_check_filetype($filename, null );
+    $attachment = array(
+      'post_mime_type' => $wp_filetype['type'],
+      'post_title' => preg_replace('/\.[^.]+$/', '', $filename),
+      'post_content' => '',
+      'guid' => $wp_upload_dir['url'] . '/' . $filename ,
+      'post_status' => 'inherit',
+      'post_date'=>$_newDate,
+    );
+    $attachment_id = wp_insert_attachment( $attachment, $upload_file['file'], $parent_post_id );
+
+    if (!is_wp_error($attachment_id)) {
+      require_once(ABSPATH . "wp-admin" . '/includes/image.php');
+      require_once( ABSPATH . 'wp-admin' . '/includes/file.php' );
+      require_once( ABSPATH . 'wp-admin' . '/includes/media.php' );
+      $attachment_data = wp_generate_attachment_metadata( $attachment_id, $upload_file['file'] );
+      wp_update_attachment_metadata( $attachment_id,  $attachment_data );
+      
+      /***Adding Category for media****/
+
+      if($mediaCat){
+        $attachmentCatObj =  get_category_by_slug($mediaCat);
+        if($attachmentCatObj){
+          $catId = $attachmentCatObj->term_id;
+        }
+        else{
+          $catId = wp_create_category($mediaCat);
+        }  
+        
+        wp_set_post_categories($attachment_id,array($catId));
+      }
+
+      /***Adding Tags for media****/
+      
+      if($mediaTag){
+        $tagId = term_exists($mediaTag,"post_tag");
+        if($tagId){
+          wp_set_post_tags($attachment_id,array($mediaTag));
+        }
+        else{
+          $termObj = wp_insert_term($mediaTag,"post_tag");
+          if($termObj){
+            wp_set_post_tags($attachment_id,array($mediaTag));
+          }
+        }
+      }
+           
+      return $attachment_id;
+
+    }
+  }
+}
+
 
   add_action('wp_ajax_csvMediaImport','csvMediaImport');
 
   function csvMediaImport(){
-
+      error_reporting(E_ALL);
+      ini_set('display_errors', 1);
       $csvImportFile = $_FILES['file']['tmp_name'];
       $csvAsArray = array_map('str_getcsv', file($csvImportFile));
       array_shift($csvAsArray);
       $output = array();
-      foreach ($csvAsArray as $key => $csvVal) {
-          $pageUrl = $csvVal[0];
-          $pageStartCode = $csvVal[1];  
-          $pageEndCode = $csvVal[2];  
-          $pageTitle = $csvVal[3];
-          $pageTemplate = $csvVal[4];  
-          
-          // $post      = get_page_by_title($pageTitle, 'OBJECT', 'page');
-          // $post_id   = $post->ID;
-          // if(!$post_id){
-          //   $filteredHtml = $this->getFilteredContentHtml($pageUrl,$pageStartCode,$pageEndCode);
-            
-          //   if($filteredHtml){
-          //     $output[] = $this->createNewPage($pageTitle,$filteredHtml,$pageTemplate);
-          //   }
-          // }  
-      }
       print_r($csvAsArray);
-      // wp_send_json($output);
-      // die();
+      foreach ($csvAsArray as $key => $csvVal) {
+          $mediaUrl = $csvVal[0];
+          $mediaCat = $csvVal[1];  
+          $mediaDate = $csvVal[2];  
+          $mediaTags = $csvVal[4];  
+            
+          $attachmentId = insertNewMedia($mediaUrl,$mediaDate,$mediaCat,$mediaTags);
+         
+      }
 
   }
 
-/**
- * Add Theme Settings Page
- **/
-function add_oese_theme_settings_menu(){
-    add_theme_page("Theme Settings", "Settings", "edit_theme_options", "theme_settings_page",  "add_wp_oese_theme_settings_page", 10);
-}
-add_action( "admin_menu", "add_oese_theme_settings_menu" );
-
-function add_wp_oese_theme_settings_page(){
-  include( get_template_directory() . "/theme-functions/theme-settings.php");
-}
-
-/**
- * Theme Settings page
- **/
-function wp_oese_theme_settings_page() {
-        $page = "theme_settings_page";
-    
-	//Create Settings Section
-	add_settings_section(
-		'wp_oese_theme_settings',
-		__('Modal', WP_OESE_THEME_SLUG),
-		'wp_oese_theme_settings_callback',
-		$page
-	);
-        
-        //Add Settings field for Modal Heading
-	add_settings_field(
-		'wp_oese_theme_modal_heading',
-		'',
-		'wp_oese_theme_settings_field',
-		$page,
-		'wp_oese_theme_settings',
-		array(
-			'uid' => 'wp_oese_theme_modal_heading',
-			'type' => 'textbox',
-			'name' =>  __('Heading: ', WP_OESE_THEME_SLUG)
-		)
-	);
-        
-        //Add Settings field for Modal Content
-	add_settings_field(
-		'wp_oese_theme_modal_content',
-		'',
-		'wp_oese_theme_settings_field',
-		$page,
-		'wp_oese_theme_settings',
-		array(
-			'uid' => 'wp_oese_theme_modal_content',
-			'type' => 'editor',
-			'name' =>  __('Content: ', WP_OESE_THEME_SLUG)
-		)
-	);
-
-	register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_heading' );
-        register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_content' );
-}
-add_action( 'admin_init' , 'wp_oese_theme_settings_page' );
-
-/**
- * Theme Settings Callback
- **/
-function wp_oese_theme_settings_callback() {
-
-}
-
-/**
- * Theme Settings Field Callback
- **/
-function wp_oese_theme_settings_field($arguments){
-  $value = get_option($arguments['uid']);
-  
-  if ($arguments['type']=="textbox") {
-    echo '<div class="form-row"><div class="form-group">
-      <label for="'.$arguments['uid'].'"><strong>'.$arguments['name'].'</strong></label>
-      <input name="'.$arguments['uid'].'" id="'.$arguments['uid'].'" type="'.$arguments['type'].'" value="' . $value . '" />
-    </div></div>';
-  } elseif ($arguments['type']=="editor"){
-    echo '<div class="form-row"><div class="form-group">
-      <label for="'.$arguments['uid'].'"><strong>'.$arguments['name'].'</strong></label></div></div>';
-    
-    echo wp_editor($value, $arguments['uid'],array('media_buttons'=>false));
-    
-  }
-}
-
-/**
- * Theme Settings field
- **/
-function wp_nn_theme_settings_field( $arguments ) {
-    
-    $value = get_option($arguments['uid']);
-    
-    echo '<div class="form-group"><label for="'.$arguments['uid'].'"><strong>'.$arguments['name'].'</strong></label>
-            <input name="'.$arguments['uid'].'" id="'.$arguments['uid'].'" type="'.$arguments['type'].'" value="' . $value . '" /></div>';
-}

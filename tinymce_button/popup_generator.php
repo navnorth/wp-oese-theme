@@ -130,6 +130,14 @@ if($action == "show_popup")
 								Publication Intro
 							</div>
 						</div>
+						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="audience_link">
+						<div class="oert_snglimgtiny" style="height:70px; vertical-align:middle;">
+							<button class="btn custom-button" style="margin-top:30px;">button</button>
+						</div>
+						<div class="oert_snglttltiny">
+							Audience Link
+						</div>
+					</div>
 						<!--<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="oet_story">
 							<div class="oert_snglimgtiny">
 								<img src="'.get_stylesheet_directory_uri().'/tinymce_button/images/featured_area.png">
@@ -219,6 +227,9 @@ if($action == "show_popup")
 				    case "oet_story":
 					   var shortcode = "[oet_story id=\'\' width=6 alignment=\'\' callout_color=\'\' callout_type=\'\' title=\'\'][/oet_story]";
 					   break;
+					case "audience_link":
+						var shortcode = "[audience_link url=\'\']Audience name goes here[/audience_link]";
+						break;
 				   default:
 				   	   var shortcode = "";
 				   	   break

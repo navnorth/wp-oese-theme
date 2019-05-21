@@ -17,8 +17,6 @@ get_header();
 
         <div class="col-md-12 col-sm-12 col-xs-12 padding_left padding_right">
 
-        <?php if ( function_exists('yoast_breadcrumb') ) { yoast_breadcrumb('<p id="breadcrumbs">','</p>'); }  ?>
-
             <?php
                 if(isset($img_url) && !empty($img_url))
                 {

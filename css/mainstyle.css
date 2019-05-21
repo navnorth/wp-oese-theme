@@ -633,6 +633,27 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
     margin-bottom: 20px;
 }
 
+/* Audience link shortcode styles */
+.audience-link {
+    color: #fff;
+    background-color: #243C54;
+    padding: 15px 30px;
+    margin: 10px 0;
+    border-radius: 2px;
+    font-size: 16px;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: block;
+    transition: all .2s ease-in;
+    width: 300px;
+    font-weight: 500;
+    text-align: center;
+}
+.audience-link:hover {
+    background-color: #1F5C99;
+    color: #fff;
+    text-decoration: none;
+}
 /* -------- begin FRONT PAGE --------- */
 .front_summary {
     position: relative;
@@ -771,7 +792,14 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 #content .table-responsive { display:flex; } /* for mirrored content styles, to keep Resources box from pushing down */
 /* -------- End of Table Styles ----------*/
 
-#breadcrumbs { margin:0 0 10px; line-height:1em; }
+#breadcrumbs { 
+    margin:0 0 10px; 
+    line-height:1em;
+    font-size: 14px;
+}
+#breadcrumbs a {
+    font-size: 14px;
+}
 .caption-image { max-width:65%; }
 
 /* ------------- Image and Video Styles -------------- */
@@ -1245,7 +1273,10 @@ a{
 .footer-col-custom-spacing{
 
 }
-
+.address {
+    color: #fff;
+    font-size: 14px;
+}
 /*Home Page Design START*/
 .front-page-content {
     padding-top: 1%;
@@ -1258,6 +1289,21 @@ a{
 .oese-btn-readmore{
     margin-top: 20px;
     text-decoration: none;
+}
+.oese-btn-toggle {
+    background-color: #fff;
+    transition: all .2s ease;
+    color: #004285;
+    text-decoration: none;
+    border: 1px solid #004285;
+}
+.oese-btn-toggle:hover {
+    background-color: #004285;
+    color: #fff;
+}
+.oese-btn-toggle.active {
+    background-color: #004285;
+    color: #fff;
 }
 .h1-bottom-space{
     margin-bottom:20px;
@@ -1304,7 +1350,22 @@ a{
     padding-top: 20px;
     padding-bottom: 20px;
 }
-
+.program-offices-section h2 a {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1F5C99 !important;
+}
+.program-offices-section h2 a:hover {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000 !important;
+}
+.program-offices-section ul {
+    list-style-type: square;
+}
+.program-offices-section ul ul {
+    list-style-type: circle;
+}
 .custom-image-thumbnail{
     background: #ccc;
 }
@@ -1413,13 +1474,18 @@ a{
 .gray-background-color{
     background: #F1F1F1;
 }
-
+.trending-row {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 500px;
+}
 .trending-now-section{
     border: 1px solid #ccc;
     box-shadow: 1px 1px 15px 0 #ccc;
 }
 .trending-image-section img{
     width: 100%;
+    height: 200px;
 }
 .trending-image-details{
     padding: 18px;
@@ -1578,7 +1644,20 @@ a{
 
 /*Program Landing Css END*/
 
-
+/** Modal Styles **/
+.oese-modal .modal-header {
+    background: #1F5C99;
+    background-image: url(../images/overlay-diamonds.png);
+    background-size: contain;
+}
+.oese-modal .modal-header h4.modal-title,
+.oese-modal .modal-header button{
+    font-size:24px !important;
+    color:#ffffff !important;
+}
+.oese-modal .modal-body { padding:30px; font-size:18px; line-height:24px; }
+.modal-backdrop.show { opacity: .7 }
+/** End of Modal Styles **/
 @media (min-width: 1200px) {
     .container{
         max-width: 1200px;
