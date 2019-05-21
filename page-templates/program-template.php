@@ -10,7 +10,7 @@ get_header();
 ?>
 
            <!--Program Landing Template Top Section START-->
-        <div class="row custom-common-padding">
+        <div id="content" class="row custom-common-padding">
             <div class="col-md-8">
                 <div class="left-description-section">
                     <h1 class="h1-bottom-space"><?php echo get_the_title(); ?></h1>

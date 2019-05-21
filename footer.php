@@ -66,9 +66,11 @@ if($footerNav) {
                         </div>
                         <div class="col-md-10">
                             <div class="footer-bottom-right-links text-right">
-                                <a href="<?php echo site_url(); ?>/privacy-policy">Privacy Policy</a>
-                                <a href="<?php echo site_url(); ?>/topics-a-z">Topics A-Z</a>
-                                <a href="https://www.ed.gov">ED.gov</a>
+                                <?php
+                                $menu_location = "sub-footer";
+                                if ( has_nav_menu($menu_location) )
+                                wp_nav_menu(array('theme_location' => $menu_location, 'menu_class' => 'nav-menu nav-sub-footer'));
+                                ?>
                             </div>
                         </div>
                     </div>

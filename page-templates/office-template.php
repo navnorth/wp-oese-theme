@@ -9,7 +9,7 @@ $page_id = get_the_ID();
 ?>
 
         <!--Office Template Top Section START-->
-        <div class="row custom-common-padding office-template">
+        <div id="content" class="row custom-common-padding office-template">
             <div class="col-md-8">
                 <div class="left-description-section">
                     <h1 class="h1-bottom-space"><?php echo get_the_title(); ?></h1>

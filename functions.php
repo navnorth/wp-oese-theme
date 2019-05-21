@@ -6,7 +6,9 @@
  * in the theme as custom template tags. Others are attached to action and
  * filter hooks in WordPress to change core functionality.
  */
-
+define( "WP_OESE_THEME_NAME", "WP OESE Theme" );
+define( "WP_OESE_THEME_VERSION", "1.5.0" );
+define( "WP_OESE_THEME_SLUG", "wp_oese_theme" );
 
 // Set up the content width value based on the theme's design and stylesheet.
 if ( ! isset( $content_width ) ) {
@@ -1049,7 +1051,7 @@ if (is_admin()) {
  */
 register_nav_menu( 'footer', __( 'Footer Menu', 'twentytwelve' ) );
 
-
+register_nav_menu( 'sub-footer', __( 'Sub Footer', WP_OESE_THEME_SLUG ) );
 /**
 * Getting Populars post from Pages OESE Theme
 */
@@ -1361,3 +1363,100 @@ function csvImportMediaForm(){
       // die();
 
   }
+
+/**
+ * Add Theme Settings Page
+ **/
+function add_oese_theme_settings_menu(){
+    add_theme_page("Theme Settings", "Settings", "edit_theme_options", "theme_settings_page",  "add_wp_oese_theme_settings_page", 10);
+}
+add_action( "admin_menu", "add_oese_theme_settings_menu" );
+
+function add_wp_oese_theme_settings_page(){
+  include( get_template_directory() . "/theme-functions/theme-settings.php");
+}
+
+/**
+ * Theme Settings page
+ **/
+function wp_oese_theme_settings_page() {
+        $page = "theme_settings_page";
+    
+	//Create Settings Section
+	add_settings_section(
+		'wp_oese_theme_settings',
+		__('Modal', WP_OESE_THEME_SLUG),
+		'wp_oese_theme_settings_callback',
+		$page
+	);
+        
+        //Add Settings field for Modal Heading
+	add_settings_field(
+		'wp_oese_theme_modal_heading',
+		'',
+		'wp_oese_theme_settings_field',
+		$page,
+		'wp_oese_theme_settings',
+		array(
+			'uid' => 'wp_oese_theme_modal_heading',
+			'type' => 'textbox',
+			'name' =>  __('Heading: ', WP_OESE_THEME_SLUG)
+		)
+	);
+        
+        //Add Settings field for Modal Content
+	add_settings_field(
+		'wp_oese_theme_modal_content',
+		'',
+		'wp_oese_theme_settings_field',
+		$page,
+		'wp_oese_theme_settings',
+		array(
+			'uid' => 'wp_oese_theme_modal_content',
+			'type' => 'editor',
+			'name' =>  __('Content: ', WP_OESE_THEME_SLUG)
+		)
+	);
+
+	register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_heading' );
+        register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_content' );
+}
+add_action( 'admin_init' , 'wp_oese_theme_settings_page' );
+
+/**
+ * Theme Settings Callback
+ **/
+function wp_oese_theme_settings_callback() {
+
+}
+
+/**
+ * Theme Settings Field Callback
+ **/
+function wp_oese_theme_settings_field($arguments){
+  $value = get_option($arguments['uid']);
+  
+  if ($arguments['type']=="textbox") {
+    echo '<div class="form-row"><div class="form-group">
+      <label for="'.$arguments['uid'].'"><strong>'.$arguments['name'].'</strong></label>
+      <input name="'.$arguments['uid'].'" id="'.$arguments['uid'].'" type="'.$arguments['type'].'" value="' . $value . '" />
+    </div></div>';
+  } elseif ($arguments['type']=="editor"){
+    echo '<div class="form-row"><div class="form-group">
+      <label for="'.$arguments['uid'].'"><strong>'.$arguments['name'].'</strong></label></div></div>';
+    
+    echo wp_editor($value, $arguments['uid'],array('media_buttons'=>false));
+    
+  }
+}
+
+/**
+ * Theme Settings field
+ **/
+function wp_nn_theme_settings_field( $arguments ) {
+    
+    $value = get_option($arguments['uid']);
+    
+    echo '<div class="form-group"><label for="'.$arguments['uid'].'"><strong>'.$arguments['name'].'</strong></label>
+            <input name="'.$arguments['uid'].'" id="'.$arguments['uid'].'" type="'.$arguments['type'].'" value="' . $value . '" /></div>';
+}

@@ -18,6 +18,39 @@ color palette:
 @font-face{font-family:'Helvetica Neue';
 	src:url(../fonts/helvetica_neue/helveticaneue.ttf)format('truetype');}
 
+.screen-reader-text {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    width: 1px;
+    word-wrap: normal !important;
+}
+.screen-reader-text:focus {
+    background-color: #004285;
+    border-bottom-right-radius:3px;
+    border-bottom-left-radius:3px;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+    clip: auto !important;
+    clip-path: none;
+    color: #ffffff;
+    display: block;
+    font-size: 14px;
+    font-size: 0.875rem;
+    font-weight: bold;
+    height: auto;
+    left: 5px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: 100000;
+}
 .soclize .socl_icns, .rght_sid_socl_icn .socl_icns, .pblctn_box .socl_icns { border-radius: 30px; }
 .pblctn_box .socl_icns { background: #294179; font-size: 18px; padding: 7px 0; width: 50px; height: 50px; color: #fff; border: 5px solid #fff; text-align: center}
 .pblctn_box { width: 50px; margin: -40px auto 0}
@@ -1204,6 +1237,8 @@ a{
     color: #fff;
     margin-left:48px;
 }
+.footer-bottom-right-links ul { margin-bottom:0; }
+.footer-bottom-right-links li { display:inline-block; }
 .footer-bottom-right-links a:hover {
     text-decoration: underline;
 }
