@@ -1273,7 +1273,10 @@ a{
 .footer-col-custom-spacing{
 
 }
-
+.address {
+    color: #fff;
+    font-size: 14px;
+}
 /*Home Page Design START*/
 .front-page-content {
     padding-top: 1%;

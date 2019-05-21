@@ -37,6 +37,15 @@ if($footerNav) {
                                 <p><a href="<?php echo $menuItems['url']; ?>"><?php echo $menuItems['title']; ?></a></p>
                             </div>
                             <div class="footer-sub-menu">
+                            <?php if ($menuItems['title'] === 'Contact Us'): ?>
+                                <div class="address">
+                                    U.S. Department of Education
+                                    <br />
+                                    400 Maryland Ave SW
+                                    <br />
+                                    Washington D.C. 20202-6244
+                                </div>
+                            <?php endif; ?>
                             <?php
                                 $childMenu = $childMenuItems[$key];
                                 if($childMenu){ ?>
