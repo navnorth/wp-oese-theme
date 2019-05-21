@@ -1658,6 +1658,11 @@ a{
 .oese-modal .modal-body { padding:30px; font-size:18px; line-height:24px; }
 .modal-backdrop.show { opacity: .7 }
 /** End of Modal Styles **/
+/** Search Result Styles **/
+.search-results .archive_image.col-md-3 { float:left; }
+.search-results .search-summary.col-md-9 { float:right; }
+.search-results article { overflow:hidden; }
+/** End of Search Result Styles **/
 @media (min-width: 1200px) {
     .container{
         max-width: 1200px;

@@ -6,7 +6,9 @@
  * @since 1.5.0
  */
 
-get_header(); ?>
+get_header();
+$results = array();
+?>
 
 	<div id="content" class="row site-content">
 		<div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12 lft_sid_cntnr">
@@ -16,59 +18,119 @@ get_header(); ?>
 				<h2 class="page-title"><?php printf( __( 'Search Results for: %s', 'twentytwelve' ), '<span>' . get_search_query() . '</span>' ); ?></h2>
 			</header>
 
-			<?php while ( have_posts() ) : the_post(); ?>
-
-				<?php
-					//get_template_part( 'content', get_post_format() );
+			<?php while ( have_posts() ) :
+				the_post(); 
+				
+				$id = get_the_ID();
+				$template = get_page_template_slug($id);
+				
+				switch ($template){
+					case "page-templates/program-template.php":
+						$results[] = array('typeId'=>1,'type'=>'Program','post'=>$post, 'child'=>false);
+						break;
+					case "page-templates/office-template.php":
+						$results[] = array('typeId'=>2,'type'=>'Office','post'=>$post, 'child'=>false);
+						break;
+					default:
+						if (has_tag(array("archive","archived"),$post))
+							$results[] = array('typeId'=>4,'type'=>'Archives','post'=>$post);
+						else
+							$results[] = array('typeId'=>3,'type'=>'Other results','post'=>$post, 'child'=>false);
+						break;
+				}
+				
+			endwhile;
+			
+			usort($results, 'compareType');
+			
+			$current_content_type = "";
+			foreach($results as $result){
+				if ($current_content_type!==$result['type']){
+					$heading_class="";
+					if ($result['type']=="archives")
+						$heading_class=" archive-heading";
+					echo "<h2 class='content-type-heading".$heading_class."'>".ucwords($result['type'])."</h2>";
+					$current_content_type = $result['type'];
+				}
+				
+				$post_id = $result['post']->ID;
+				
+				$current_post = get_post($post_id);
+				
+				if ($current_post)
+					setup_postdata($current_post);
+					
+				$full_width = true;
+				$parent_title = null;
+				
+				if ($result['child'] && $result['post']->post_parent!==0)
+					$parent_title = get_the_title($result['post']->post_parent);
+				
+				$img_url = wp_get_attachment_url( get_post_thumbnail_id($post_id) );
+				$img_alt = get_post_meta(get_post_thumbnail_id($post_id), '_wp_attachment_image_alt', true);
 				?>
-				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-					<?php if ( is_sticky() && is_home() && ! is_paged() ) : ?>
-                    <div class="featured-post">
-                        <?php _e( 'Featured post', 'twentytwelve' ); ?>
-                    </div>
-                    <?php endif; ?>
-                    <header class="entry-header">
+			
+				<article id="post-<?php $post_id; ?>" <?php post_class('', $post_id); ?>>
+					<header class="search-header">
+					<?php if ( is_single() ) : ?>
+						<?php if ($parent_title) : ?>
+						<h4 class="entry-parent-title"><?php echo $parent_title; ?></h4>
+						<?php endif; ?>
+						<h3 class="entry-title"><?php  echo get_the_title($post_id); ?></h3>
+					<?php else : ?>
+						<?php if ($parent_title) : ?>
+						<h4 class="entry-parent-title">
+							<?php echo $parent_title; ?>
+						</h4>
+						<?php endif; ?>
+						<h3 class="entry-title">
+						    <a href="<?php echo get_the_permalink($post_id); ?>" rel="bookmark"><?php echo get_the_title($post_id); ?></a>
+						</h3>
+					<?php endif; // is_single() ?>
+					</header><!-- .entry-header -->
+					<?php if(isset($img_url) && !empty($img_url)) : ?>
+					<div class="col-md-3 col-sm-6 col-xs-12 archive_image">
+					    <img class="search_story_featured_image" src="<?php echo $img_url; ?>" alt="<?php echo $img_alt; ?>" />
+					</div>
+					<?php endif; ?>
+					<?php if ( is_search() ) : // Only display Excerpts for Search
+					if (isset($img_url) && !empty($img_url)):
+					?>
+					<div class="col-md-9 col-sm-6 col-xs-12 search-summary">
+					<?php else: ?>
+					<div class="search-summary">
+					<?php endif; ?>
+						<?php
+						if (strlen(get_the_excerpt($current_post))>0) {
+							echo get_the_excerpt($current_post);
+						} else {
+							echo get_excerpt_by_id($post_id);
+						}
+						?>
+					</div><!-- .entry-summary -->
+					<?php else : ?>
+					<div class="search-content">
+					    <?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentytwelve' ) ); ?>
+					    <?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'twentytwelve' ), 'after' => '</div>' ) ); ?>
+					</div><!-- .entry-content -->
+					<?php endif; ?>
+				</article>
+				<?php
+			}
+			 else : ?>
 
-                        <?php if ( is_single() ) : ?>
-                        <h2 class="entry-title"><?php the_title(); ?></h2>
-                        <?php else : ?>
-                        <h3 class="entry-title">
-                            <a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
-                        </h3>
-                        <?php endif; // is_single() ?>
+				<article id="post-0" class="post no-results not-found">
+					<header class="entry-header">
+						<h1 class="entry-title"><?php _e( 'Nothing Found', 'twentytwelve' ); ?></h1>
+					</header>
+	
+					<div class="entry-content">
+						<p><?php _e( 'Sorry, but nothing matched your search criteria. Please try again with some different keywords.', 'twentytwelve' ); ?></p>
+						<?php //get_search_form(); ?>
+					</div><!-- .entry-content -->
+				</article><!-- #post-0 -->
 
-                    </header><!-- .entry-header -->
-
-                    <?php if ( is_search() ) : // Only display Excerpts for Search ?>
-                    <div class="entry-summary">
-                        <?php the_excerpt(); ?>
-                    </div><!-- .entry-summary -->
-                    <?php else : ?>
-                    <div class="entry-content">
-                        <?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentytwelve' ) ); ?>
-                        <?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'twentytwelve' ), 'after' => '</div>' ) ); ?>
-                    </div><!-- .entry-content -->
-                    <?php endif; ?>
-
-                </article><!-- #post -->
-
-			<?php endwhile; ?>
-
-
-		<?php else : ?>
-
-			<article id="post-0" class="post no-results not-found">
-				<header class="entry-header">
-					<h1 class="entry-title"><?php _e( 'Nothing Found', 'twentytwelve' ); ?></h1>
-				</header>
-
-				<div class="entry-content">
-					<p><?php _e( 'Sorry, but nothing matched your search criteria. Please try again with some different keywords.', 'twentytwelve' ); ?></p>
-					<?php get_search_form(); ?>
-				</div><!-- .entry-content -->
-			</article><!-- #post-0 -->
-
-		<?php endif; ?>
+			<?php endif; ?>
 			<?php
 			//Pagination Links
 			global $wp_query;
@@ -85,7 +147,7 @@ get_header(); ?>
 		</div>
 		<div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
 		   <?php get_sidebar(); ?>
-	       </div>
+		</div>
 	</div><!-- .row -->
 
 <?php get_footer(); ?>

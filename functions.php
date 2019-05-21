@@ -1611,3 +1611,22 @@ function oese_search_groupby($groupby){
 }
 add_filter('posts_groupby', 'oese_search_groupby');
 
+function compareType($array1, $array2) {
+  if ( $array1['typeId'] == $array2['typeId'] )
+    return 0;
+  if ( $array1['typeId'] < $array2['typeId'] )
+    return -1;
+  return 1;
+}
+
+function get_excerpt_by_id($post, $length=100) {
+  $return_excerpt = function($post, $length) {
+    if ($post->post_excerpt == '')
+      return wp_trim_words($post->post_content, apply_filters( 'excerpt_length', $length ), apply_filters( 'excerpt_more', ' ' . '[&hellip;]' ));
+    return $post->post_excerpt;
+  };
+  if (!is_object($post)) {
+    $post = get_post($post);
+  }
+  return apply_filters('the_excerpt', $return_excerpt($post, $length));
+}
