@@ -1278,6 +1278,9 @@ a{
     font-size: 14px;
 }
 /*Home Page Design START*/
+a.oese-logo-home {
+    display: inline-block;
+}
 .front-page-content {
     padding-top: 1%;
 }
@@ -1728,6 +1731,9 @@ a{
     .navi_bg:hover { background: #034B8E }
     .navi_bg li a {padding: 10px 40px;}
     .navi_icn { display: block !important}
+    .mobile-nav-icons .fa-stack-2x {
+        text-align: right;
+    }
 
     .slideshow_container, .slideshow_container .slideshow_content { height: 380px !important}
     .slideshow_container_style-light .slideshow_description_box div.slideshow_description { height: 150px; overflow: hidden; line-height: 30px; margin-top: 10px;}
@@ -1771,6 +1777,19 @@ a{
     }
     .secondary-navigation-menu-header p {
         font-size: 18px;
+    }
+}
+@media (max-width: 767px) {
+    .secondary-navigation-menu.sidebar-links {
+        margin-bottom: 20px;
+    }
+    .mobile-nav-bar {
+        margin-top: -77px;
+        margin-bottom: 45px;
+        z-index: 3;
+    }
+    .topbar-search-section {
+        margin-top: 35px;
     }
 }
 @media (max-width: 750px){
@@ -1953,7 +1972,10 @@ a{
     }
 }
 @media (max-width: 575.98px) {
-    .topbar-search-section{left: 30%}
+    .topbar-search-section{
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
     .topbar-social-icons{margin-left: 0;left: 0;position: absolute !important;}
     .responsiv-menu .responsiv-menu_ul{display: block;list-style: none;padding: 0;margin-bottom: 0;}
     .responsiv-menu .responsiv-menu_ul li{display: inline;float: left;}
@@ -2060,7 +2082,7 @@ a{
     }
     .navi_icn .fa-bars,.navi_icn .fa-times{font-size: 22px !important;}
     .responsive-menu-section .mobile-nav-icons.navi_icn .fa-times{top: 0 !important;}
-    .mobile-nav-bar{position: relative;top: -43px;}
+    .mobile-nav-bar{position: relative;top: -43px; margin-bottom: 10px;}
     .office-grid-section .office-grid-list-details p {
         font-size: 18px !important;
         line-height: 24px !important;
