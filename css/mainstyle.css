@@ -926,14 +926,17 @@ svg {
 .wpcf7-form-control-wrap input, .wpcf7-form-control-wrap textarea {
     width: 100%;
     padding: 10px 15px;
-    background:#f8f8f8;
-    border:1px solid rgba(0, 0, 0, 0.075);
+    background:#f1f1f1;
+    border:none;
     border-radius: 5px;
     color:#727272 !important;
     font-size:16px;
     -webkit-transition: all 0.2s;
     -moz-transition: all 0.2s;
     transition: all 0.2s;
+}
+.wpcf7-form-control-wrap textarea {
+    height: 120px;
 }
 .wpcf7-form input[type="submit"] {
     background: #981F33;
@@ -948,7 +951,17 @@ svg {
     color: #fff;
     cursor: pointer;
 }
-
+.contact-oese-address .text-address {
+    background-color: #f1f1f1;
+    border-radius: 2px;
+    padding: 20px 25px;
+    margin-bottom: 15px;
+}
+.oese-contact-form label span.required {
+    color: #981F33;
+    vertical-align: super;
+    font-size: 14px;
+}
 .social-icons a{
     background-color: #ccc;
     -webkit-border-radius:;
