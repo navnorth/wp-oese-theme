@@ -13,6 +13,13 @@
 
 get_header();
 $col_class = "col-md-12";
+?>
+<div style="display:none;">
+<?php
+var_dump(is_active_sidebar('sidebar-1'));
+?>
+</div>
+<?php
 if (is_active_sidebar('sidebar-1'))
     $col_class = "col-md-8";
 ?>
