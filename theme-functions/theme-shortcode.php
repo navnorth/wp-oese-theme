@@ -871,15 +871,15 @@ function parse_data_attributes( $data ) {
  * Audience Link
  * Shortcode Example : [audience_link href='Link goes here']Audience name goes here[/audience_link]
  */ 
-	add_shortcode("audience_link", "audience_link_func");
-	function audience_link_func($attribute, $content = null) {
+add_shortcode("audience_link", "audience_link_func");
+function audience_link_func($attribute, $content = null) {
 
-	
-		if (is_array($attribute)) extract($attribute);
 
-		$return = '<a class="audience-link" href="'.$url.'" alt="'.$content.'">'.$content.'</a>';
-	
-		return $return;
-	 }
+	if (is_array($attribute)) extract($attribute);
+
+	$return = '<a class="audience-link" href="'.$url.'" alt="'.$content.'">'.$content.'</a>';
+
+	return $return;
+ }
 
 ?>

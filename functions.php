@@ -689,7 +689,7 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-social.php' )
 /**
  * Theme Shortcode.
  */
-// require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php' );
+require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php' );
 
 /**
  * Theme Widget
