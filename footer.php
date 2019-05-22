@@ -31,37 +31,47 @@ if($footerNav) {
             <div class="row">
                 <div class="col-md-12">
                     <div class="row custom-common-padding footer-main-section mr-0 ml-0">
-                    <?php foreach ($parentMenuItems as $key => $menuItems) { ?>
+                    <?php
+                    $parentIndex = 1;
+                    $parentItemCount = count($parentMenuItems);
+                    foreach ($parentMenuItems as $key => $menuItems) {
+                        ?>
                         <div class="col-md-3">
                             <div class="footer-title">
                                 <p><a href="<?php echo $menuItems['url']; ?>"><?php echo $menuItems['title']; ?></a></p>
                             </div>
                             <div class="footer-sub-menu">
-                            <?php if ($menuItems['title'] === 'Contact Us'): ?>
-                                <div class="address">
-                                    U.S. Department of Education
-                                    <br />
-                                    400 Maryland Ave SW
-                                    <br />
-                                    Washington D.C. 20202-6244
-                                </div>
-                            <?php endif; ?>
                             <?php
+                                if (isset($childMenuItems[$key])) {
                                 $childMenu = $childMenuItems[$key];
-                                if($childMenu){ ?>
-                                    <ul class='sub-menu-links'>
-                                    <?php  foreach ($childMenu as $key => $value) { ?>
-                                        <li>
-                                            <a href="<?php echo $value['url']; ?>">
-                                                <?php echo $value['title']; ?>
-                                            </a>
-                                        </li>
-                                   <?php  }
+                                    if($childMenu){ ?>
+                                        <ul class='sub-menu-links'>
+                                        <?php  foreach ($childMenu as $key => $value) { ?>
+                                            <li>
+                                                <a href="<?php echo $value['url']; ?>">
+                                                    <?php echo $value['title']; ?>
+                                                </a>
+                                            </li>
+                                       <?php  }
+                                    }
+                                }
+                                if ($parentIndex==$parentItemCount){
+                                   ?>
+                                   <div class="address">
+                                        U.S. Department of Education
+                                        <br />
+                                        400 Maryland Ave SW
+                                        <br />
+                                        Washington D.C. 20202-6244
+                                    </div>
+                                   <?php
                                 }
                             ?>
                             </div>
                         </div>
-                        <?php } ?>
+                        <?php
+                        $parentIndex++;
+                    } ?>
                     </div>
                 </div>
                 <div class="col-md-12">
