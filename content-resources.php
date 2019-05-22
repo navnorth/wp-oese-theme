@@ -12,8 +12,16 @@ else {
 		$withChild = true;
 }
 
-
-$sidebarTitle = $post->post_title;
+if($post->post_parent == 0){
+	$sidebarTitle = $post->post_title;
+}
+else{
+	$template = get_page_template_slug($id);
+	if ($template=="page-templates/program-template.php")
+		$sidebarTitle = get_the_title($post->post_parent);
+	else
+		$sidebarTitle = $post->post_title;
+}
 
 ?>
 <div class="secondary-navigation-menu" id="toc">
