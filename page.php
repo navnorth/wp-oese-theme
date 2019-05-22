@@ -17,6 +17,7 @@ $col_class = "col-md-12";
 <div style="display:none;">
 <?php
 var_dump(is_active_sidebar('sidebar-1'));
+var_dump(is_dynamic_sidebar('sidebar-1'));
 ?>
 </div>
 <?php
