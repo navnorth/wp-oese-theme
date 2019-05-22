@@ -12,11 +12,14 @@
  */
 
 get_header();
+$col_class = "col-md-12";
+if (is_active_sidebar('sidebar-1'))
+    $col_class = "col-md-8";
 ?>
 
         <div id="content" class="row custom-common-padding mr-0 ml-0">
 
-            <div class="col-md-8">
+            <div class="<?php echo $col_class; ?>">
     
                 <h1 class="h1-bottom-space"><?php echo $post->post_title; ?></h1>
                 <?php while (have_posts()) : the_post(); ?>
@@ -24,9 +27,8 @@ get_header();
                 <?php endwhile; ?>
                 
             </div>
-            <div class="col-md-4">
-               <?php get_sidebar(); ?>
-            </div>
+           
+            <?php get_sidebar(); ?>
 
         </div>
     
