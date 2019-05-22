@@ -16,7 +16,7 @@ if($post->post_parent == 0){
 	$sidebarTitle = $post->post_title;
 }
 else{
-	$template = get_page_template_slug($id);
+	$template = get_page_template_slug($post->post_parent);
 	if ($template=="page-templates/program-template.php")
 		$sidebarTitle = get_the_title($post->post_parent);
 	else
