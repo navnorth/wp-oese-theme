@@ -1310,6 +1310,7 @@ a.oese-logo-home {
     color: #004285;
     text-decoration: none;
     border: 1px solid #004285;
+    margin: 10px 0;
 }
 .oese-btn-toggle:hover {
     background-color: #004285;
@@ -1783,7 +1784,7 @@ a.oese-logo-home {
     .slideshow_container_style-dark .slideshow_pagination .slideshow_pagination_center { float:none; }
     /* End of Slideshow Dark Version */
 
-    .container { width: 100% !important}
+    .container { width: 100% !important; padding-left: 0; padding-right: 0;}
     .soclize .socl_icns {margin: 0;}
 
     .hdr .col-md-7 img { width: 100%}
@@ -1949,15 +1950,15 @@ a.oese-logo-home {
     .rght_sid_mtr .rght_sid_mtr .btn_dwnld { margin: 0 2% 5px 0}
     /*.slideshow_container { display: none !important}*/
     .slideshow_container, .slideshow_container .slideshow_content, .slideshow_container .slideshow_view, .slideshow_container .slideshow_view .slideshow_slide { height:185px !important; width:100% !important; }
-    .slideshow_container_style-light .slideshow_view > .slideshow_slide_image > a > img { height:175px !important; }
+    .slideshow_container_style-light .slideshow_view > .slideshow_slide_image > a > img { height:185px !important; }
     .slideshow_container_style-light .slideshow_description_box div.slideshow_description,
-    .slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box{ width: auto !important; top: 0; left: 0; bottom: 0 !important; right: 0; background: rgba(255, 255, 255, 0.7) !important; padding: 0;
+    .slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box{ width: auto !important; top: 0; left: 0; bottom: 0 !important; right: 0; padding: 0;
     }
-    .slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box .slideshow_title { margin-top: -36px; }
+    .slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box .slideshow_title { margin-top: 0; }
     .slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box .slideshow_title a {
         font-size: 15px !important;
         line-height: 1.25em;
-        padding:5px 2px !important
+        padding:5px 5px !important
     }
     .slideshow_container_style-light .slideshow_description_box div.slideshow_description, .slideshow_container_style-light .slideshow_description_box div.slideshow_description a {
         font-size: 13px;
