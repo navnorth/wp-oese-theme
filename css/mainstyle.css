@@ -1284,9 +1284,6 @@ a{
 .footer-bottom-right-links a:hover {
     text-decoration: underline;
 }
-.footer-col-custom-spacing{
-
-}
 .address {
     color: #fff;
     font-size: 14px;
@@ -1932,6 +1929,10 @@ a.oese-logo-home {
     .caption-image { max-width:50%; }
     .navi_bg { border-top:none;margin-top: -10px; margin-right: -10px; }
     .hdr { position:relative;}
+    .left-description-section img {
+        width: 100%;
+        height: auto;
+    }
 }
 @media (max-width: 480px){
     .slideshow_container, .slideshow_container .slideshow_content { height:200px !important; }
