@@ -1874,7 +1874,7 @@ a.oese-logo-home {
 
     .slideshow_container_style-light .slideshow_pagination,
     .slideshow_slide.slideshow_slide_image img { width: 100% !important}
-    .slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box { width: auto !important; top: 0; left: 0; bottom: 0 !important; right: 0; background: rgba(255, 255, 255, 0.7) !important; padding: 0; }
+    .slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box { width: auto !important; top: 0; left: 0; bottom: 0 !important; right: 0; padding: 0; }
     .slideshow_container_style-light .slideshow_description_box div.slideshow_title,
     .slideshow_container_style-light .slideshow_description_box div.slideshow_title a { font-size: 30px !important; line-height: 36px;}
     .slideshow_container_style-light .slideshow_description_box div.slideshow_description,
@@ -1912,6 +1912,7 @@ a.oese-logo-home {
 }
 @media (max-width: 550px){
     .slideshow_container, .slideshow_container .slideshow_content { height:235px !important; }
+    .slideshow_container .slideshow_button.slideshow_previous, .slideshow_container .slideshow_button.slideshow_next { display: none !important; }
 }
 @media (max-width: 500px){
     .tlkt_stp_vdo_cntnr .pblctn_vdo_bg, .tlkt_stp_vdo_cntnr .pblctn_vdo_bg:first-child {width: 100% !important;}
@@ -1933,6 +1934,10 @@ a.oese-logo-home {
         width: 100%;
         height: auto;
     }
+    .mission-responsibilities-header {
+        margin-top: 25px;
+    }
+    .slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box .slideshow_title { margin-top: 0; padding: 0 !important; line-height: 20px;  }
 }
 @media (max-width: 480px){
     .slideshow_container, .slideshow_container .slideshow_content { height:200px !important; }
