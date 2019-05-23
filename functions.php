@@ -1216,9 +1216,9 @@ function contactInformationBlock(){
       $contactEmailLink = 'mailto:'.$contactEmailAddress.'?subject=OESE Website Contact: '.sanitize_text_field($post->post_title);
     } elseif ($contactEmailOption == 'contact_form'){
       if ($contact_page){
-        $contactEmailLink = get_the_permalink($contact_page).'?contact_reference=1';  
+        $contactEmailLink = get_the_permalink($contact_page).'?contact_reference='.$post->ID;  
       } else 
-        $contactEmailLink = '/contact-us/?contact_reference=1';
+        $contactEmailLink = '/contact-us/?contact_reference='.$post->ID;
     }
   }
 
@@ -1681,3 +1681,13 @@ function get_excerpt_by_id($post, $length=100) {
   }
   return apply_filters('the_excerpt', $return_excerpt($post, $length));
 }
+
+add_filter( 'wpcf7_form_elements', function( $form ) {
+  $page_name = "";
+  if (isset($_GET['contact_reference'])){
+    $page = get_post($_GET['contact_reference']);
+    $page_name = $page->post_title;
+  }
+  $form = str_replace( 'Your Subject Here', $page_name, $form );
+  return $form;
+} );
