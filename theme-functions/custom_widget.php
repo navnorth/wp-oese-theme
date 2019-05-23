@@ -1,7 +1,7 @@
 <?php
 class FeaturedContentWidgetDetails extends WP_Widget
 {
-     function FeaturedContentWidgetDetails()
+     function __construct()
     {
          $widget_options = array('classname'=>'FeaturedContentWidgetDetails', 'description'=> 'Widget that will show Featured Content.');
          $this->WP_Widget('FeaturedContentWidgetDetails','Featured Content', $widget_options);

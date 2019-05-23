@@ -1198,7 +1198,8 @@ function oeseBreadcrumb() {
 
 
 function contactInformationBlock(){
-
+  global $post;
+  
   $contactTitle = get_field("ci_title");
   $contactAddress = get_field("ci_address");
   $contactPhone = get_field("ci_phone");
@@ -1206,12 +1207,12 @@ function contactInformationBlock(){
   $contactEmailCheck = get_field("ci_email");
   $contactEmailOption = get_field("ci_email");
   $contactEmailAddress = get_field("ci_email_address");
-
+  
   // email link option - contact page or email address
   $contactEmailLink = "";
   if($contactEmailOption != 'disabled'){
     if( ($contactEmailOption == 'email') && ($contactEmailAddress) ){
-      $contactEmailLink = 'mailto:'.$contactEmailAddress.'?subject=OESE Website Contact';
+      $contactEmailLink = 'mailto:'.$contactEmailAddress.'?subject=OESE Website Contact: '.sanitize_text_field($post->post_title);
     } elseif ($contactEmailOption == 'contact_form'){
       $contactEmailLink = '/contact-us';
     }
@@ -1251,9 +1252,17 @@ function contactInformationBlock(){
     }
 
     if(!empty($contactEmailLink)){
-      $output .= '<li>
+      if ($contactEmailOption=="email")
+        $output .= '<li>
                   <div class="sub-nav-icons">
                     <span><i class="fas fa-envelope"></i></span>
+                    <p><a href="'.$contactEmailLink.'">E-mail</a></p>
+                  </div>
+                </li>';
+      elseif ($contactEmailOption=="contact_form")
+        $output .= '<li>
+                  <div class="sub-nav-icons">
+                    <span><i class="far fa-address-card"></i></span>
                     <p><a href="'.$contactEmailLink.'">E-mail</a></p>
                   </div>
                 </li>';
