@@ -1207,6 +1207,7 @@ function contactInformationBlock(){
   $contactEmailCheck = get_field("ci_email");
   $contactEmailOption = get_field("ci_email");
   $contactEmailAddress = get_field("ci_email_address");
+  $contact_page = get_option('wp_oese_theme_contact_page');
   
   // email link option - contact page or email address
   $contactEmailLink = "";
@@ -1214,7 +1215,10 @@ function contactInformationBlock(){
     if( ($contactEmailOption == 'email') && ($contactEmailAddress) ){
       $contactEmailLink = 'mailto:'.$contactEmailAddress.'?subject=OESE Website Contact: '.sanitize_text_field($post->post_title);
     } elseif ($contactEmailOption == 'contact_form'){
-      $contactEmailLink = '/contact-us';
+      if ($contact_page){
+        $contactEmailLink = get_the_permalink($contact_page).'?contact_reference=1';  
+      } else 
+        $contactEmailLink = '/contact-us/?contact_reference=1';
     }
   }
 
