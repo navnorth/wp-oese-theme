@@ -1513,7 +1513,7 @@ function insertNewMedia($file,$date,$mediaCat,$mediaTag){
       'post_status' => 'inherit',
       'post_date'=>$_newDate,
     );
-    $attachment_id = wp_insert_attachment( $attachment, $upload_file['file'], $parent_post_id );
+    $attachment_id = wp_insert_attachment( $attachment, $upload_file['file']);
 
     if (!is_wp_error($attachment_id)) {
       require_once(ABSPATH . "wp-admin" . '/includes/image.php');
