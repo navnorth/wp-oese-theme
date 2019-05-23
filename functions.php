@@ -1267,7 +1267,7 @@ function contactInformationBlock(){
         $output .= '<li>
                   <div class="sub-nav-icons">
                     <span><i class="far fa-address-card"></i></span>
-                    <p><a href="'.$contactEmailLink.'">E-mail</a></p>
+                    <p><a href="'.$contactEmailLink.'">Contact Form</a></p>
                   </div>
                 </li>';
     }
