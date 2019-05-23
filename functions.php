@@ -689,7 +689,7 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-social.php' )
 /**
  * Theme Shortcode.
  */
-// require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php' );
+require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php' );
 
 /**
  * Theme Widget
@@ -1198,7 +1198,8 @@ function oeseBreadcrumb() {
 
 
 function contactInformationBlock(){
-
+  global $post;
+  
   $contactTitle = get_field("ci_title");
   $contactAddress = get_field("ci_address");
   $contactPhone = get_field("ci_phone");
@@ -1206,14 +1207,18 @@ function contactInformationBlock(){
   $contactEmailCheck = get_field("ci_email");
   $contactEmailOption = get_field("ci_email");
   $contactEmailAddress = get_field("ci_email_address");
-
+  $contact_page = get_option('wp_oese_theme_contact_page');
+  
   // email link option - contact page or email address
   $contactEmailLink = "";
   if($contactEmailOption != 'disabled'){
     if( ($contactEmailOption == 'email') && ($contactEmailAddress) ){
-      $contactEmailLink = 'mailto:'.$contactEmailAddress.'?subject=OESE Website Contact';
+      $contactEmailLink = 'mailto:'.$contactEmailAddress.'?subject=OESE Website Contact: '.sanitize_text_field($post->post_title);
     } elseif ($contactEmailOption == 'contact_form'){
-      $contactEmailLink = '/contact-us';
+      if ($contact_page){
+        $contactEmailLink = get_the_permalink($contact_page).'?contact_reference='.$post->ID;  
+      } else 
+        $contactEmailLink = '/contact-us/?contact_reference='.$post->ID;
     }
   }
 
@@ -1251,10 +1256,18 @@ function contactInformationBlock(){
     }
 
     if(!empty($contactEmailLink)){
-      $output .= '<li>
+      if ($contactEmailOption=="email")
+        $output .= '<li>
                   <div class="sub-nav-icons">
                     <span><i class="fas fa-envelope"></i></span>
                     <p><a href="'.$contactEmailLink.'">E-mail</a></p>
+                  </div>
+                </li>';
+      elseif ($contactEmailOption=="contact_form")
+        $output .= '<li>
+                  <div class="sub-nav-icons">
+                    <span><i class="far fa-address-card"></i></span>
+                    <p><a href="'.$contactEmailLink.'">Contact Form</a></p>
                   </div>
                 </li>';
     }
@@ -1343,7 +1356,7 @@ function wp_oese_theme_settings_page() {
     $page
   );
         
-        //Add Settings field for Modal Heading
+  //Add Settings field for Modal Heading
   add_settings_field(
     'wp_oese_theme_modal_heading',
     '',
@@ -1357,7 +1370,7 @@ function wp_oese_theme_settings_page() {
     )
   );
         
-        //Add Settings field for Modal Content
+  //Add Settings field for Modal Content
   add_settings_field(
     'wp_oese_theme_modal_content',
     '',
@@ -1371,7 +1384,7 @@ function wp_oese_theme_settings_page() {
     )
   );
         
-        //Add Settings field to Enabled Redirect Modal
+  //Add Settings field to Enabled Redirect Modal
   add_settings_field(
     'wp_oese_theme_modal_enable_redirect',
     '',
@@ -1384,10 +1397,25 @@ function wp_oese_theme_settings_page() {
       'name' =>  __('Enable redirect modal', WP_OESE_THEME_SLUG)
     )
   );
+  
+  //Add Settings field for Modal Heading
+  add_settings_field(
+    'wp_oese_theme_contact_page',
+    '',
+    'wp_oese_theme_select_contact_field',
+    $page,
+    'wp_oese_theme_settings',
+    array(
+      'uid' => 'wp_oese_theme_contact_page',
+      'type' => 'selectbox',
+      'name' =>  __('Contact Page: ', WP_OESE_THEME_SLUG)
+    )
+  );
 
   register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_heading' );
-        register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_content' );
-        register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_enable_redirect' );
+  register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_content' );
+  register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_enable_redirect' );
+  register_setting( 'theme_settings_page' , 'wp_oese_theme_contact_page' );
 }
 add_action( 'admin_init' , 'wp_oese_theme_settings_page' );
 
@@ -1421,6 +1449,29 @@ function wp_oese_theme_settings_field($arguments){
       <label class="inline" for="'.$arguments['uid'].'"><strong>'.$arguments['name'].'</strong></label>
     </div></div>';
   }
+}
+
+function wp_oese_theme_select_contact_field($arguments){
+  $value = get_option($arguments['uid']);
+  
+  // Get All Pages
+  $args = array(
+                'numberposts' => -1,
+                'post_type' => 'page',
+                'post_status' => 'publish',
+                'orderby' => 'title',
+                'order' => 'ASC'
+                );
+  $pages = get_posts($args);
+  
+  echo '<div class="form-row"><div class="form-group">
+      <label for="'.$arguments['uid'].'"><strong>'.$arguments['name'].'</strong></label>
+      <select name="'.$arguments['uid'].'" id="'.$arguments['uid'].'">';
+      foreach($pages as $page){
+        echo '<option value="' . $page->ID . '" '.selected($page->ID,$value,true).'>'.$page->post_title.'</option>';
+      }
+  echo '</select>
+    </div></div>';
 }
 
 function wp_oese_theme_add_modal(){
@@ -1630,3 +1681,13 @@ function get_excerpt_by_id($post, $length=100) {
   }
   return apply_filters('the_excerpt', $return_excerpt($post, $length));
 }
+
+add_filter( 'wpcf7_form_elements', function( $form ) {
+  $page_name = "";
+  if (isset($_GET['contact_reference'])){
+    $page = get_post($_GET['contact_reference']);
+    $page_name = $page->post_title;
+  }
+  $form = str_replace( 'Your Subject Here', $page_name, $form );
+  return $form;
+} );
