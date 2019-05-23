@@ -1352,7 +1352,7 @@ function wp_oese_theme_settings_page() {
     $page
   );
         
-        //Add Settings field for Modal Heading
+  //Add Settings field for Modal Heading
   add_settings_field(
     'wp_oese_theme_modal_heading',
     '',
@@ -1366,7 +1366,7 @@ function wp_oese_theme_settings_page() {
     )
   );
         
-        //Add Settings field for Modal Content
+  //Add Settings field for Modal Content
   add_settings_field(
     'wp_oese_theme_modal_content',
     '',
@@ -1380,7 +1380,7 @@ function wp_oese_theme_settings_page() {
     )
   );
         
-        //Add Settings field to Enabled Redirect Modal
+  //Add Settings field to Enabled Redirect Modal
   add_settings_field(
     'wp_oese_theme_modal_enable_redirect',
     '',
@@ -1393,10 +1393,25 @@ function wp_oese_theme_settings_page() {
       'name' =>  __('Enable redirect modal', WP_OESE_THEME_SLUG)
     )
   );
+  
+  //Add Settings field for Modal Heading
+  add_settings_field(
+    'wp_oese_theme_contact_page',
+    '',
+    'wp_oese_theme_select_contact_field',
+    $page,
+    'wp_oese_theme_settings',
+    array(
+      'uid' => 'wp_oese_theme_contact_page',
+      'type' => 'selectbox',
+      'name' =>  __('Contact Page: ', WP_OESE_THEME_SLUG)
+    )
+  );
 
   register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_heading' );
-        register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_content' );
-        register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_enable_redirect' );
+  register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_content' );
+  register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_enable_redirect' );
+  register_setting( 'theme_settings_page' , 'wp_oese_theme_contact_page' );
 }
 add_action( 'admin_init' , 'wp_oese_theme_settings_page' );
 
@@ -1430,6 +1445,29 @@ function wp_oese_theme_settings_field($arguments){
       <label class="inline" for="'.$arguments['uid'].'"><strong>'.$arguments['name'].'</strong></label>
     </div></div>';
   }
+}
+
+function wp_oese_theme_select_contact_field($arguments){
+  $value = get_option($arguments['uid']);
+  
+  // Get All Pages
+  $args = array(
+                'numberposts' => -1,
+                'post_type' => 'page',
+                'post_status' => 'publish',
+                'orderby' => 'title',
+                'order' => 'ASC'
+                );
+  $pages = get_posts($args);
+  
+  echo '<div class="form-row"><div class="form-group">
+      <label for="'.$arguments['uid'].'"><strong>'.$arguments['name'].'</strong></label>
+      <select name="'.$arguments['uid'].'" id="'.$arguments['uid'].'">';
+      foreach($pages as $page){
+        echo '<option value="' . $page->ID . '" '.selected($page->ID,$value,true).'>'.$page->post_title.'</option>';
+      }
+  echo '</select>
+    </div></div>';
 }
 
 function wp_oese_theme_add_modal(){
