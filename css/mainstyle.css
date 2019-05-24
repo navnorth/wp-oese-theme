@@ -455,7 +455,7 @@ h3 { font-size: 24px !important; color: #294179; line-height:26px; }
 h4 { font-size: 18px !important; line-height:20px; color:#4b4e53; }
 h5 { font-weight:500; font-size:14px !important; line-height:15px; color:#4b4e53; }
 h6 { font-weight:500; font-size:12px !important; line-height:13px; color:#4b4e53; }
-h1,h2,h4 { color: #2d8700 !important }
+h1,h2,h4 { color: #2d8700; }
 p { font-weight:normal; color:#4b4e53; line-height: 28px;}
 .custom-button {
     background-color: #e57200;
@@ -1010,7 +1010,7 @@ h1{
 h2{
     font-size: 24px;
     font-weight: 700;
-    color: #1F5C99 !important;
+    color: #1F5C99;
 }
 a{
     text-decoration: underline;
@@ -1054,11 +1054,12 @@ a{
     color: #fff;
     padding: 0.9375rem 1.2rem;
 }
-.secondary-navigation-menu-header p{
+.secondary-navigation-menu-header h2{
     color: #fff;
     margin-bottom: 0 !important;
     font-weight: 700;
     font-size: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .secondary-navigation-menu-list{
     list-style: none;

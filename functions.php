@@ -1084,7 +1084,7 @@ register_nav_menu( 'sub-footer', __( 'Sub Footer', WP_OESE_THEME_SLUG ) );
   function getSidebarLinks(){
 
     if( have_rows('sidebar_links') ):
-      $output = "<div class='secondary-navigation-menu sidebar-links'><div class='secondary-navigation-menu-header'><p>". get_field('sidebar_box_title')."</p></div>";
+      $output = "<div class='secondary-navigation-menu sidebar-links'><div class='secondary-navigation-menu-header'><h2>". get_field('sidebar_box_title')."</h2></div>";
       // check if the repeater field has rows of data
 
         $output.=  "<ul class='secondary-navigation-menu-list'>";
@@ -1226,7 +1226,7 @@ function contactInformationBlock(){
   if(!empty($contactAddress) || (!empty($contactPhone)) || (!empty($contactFax)) || (!empty($contactEmailLink))){
       $output = '<div class="secondary-navigation-menu contact-box">
                         <div class="secondary-navigation-menu-header">
-                            <p>'.$contactTitle.'</p>
+                            <h2>'.$contactTitle.'</h2>
                         </div>
                         <ul class="secondary-navigation-menu-list">';
 
