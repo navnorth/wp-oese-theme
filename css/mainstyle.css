@@ -1666,7 +1666,8 @@ h2.trending-now-heading {
 .payments-details-list a:hover {
     text-decoration: underline;
 }
-
+ul.tile-links-wrapper { padding-left:0;margin-left:0; }
+ul.tile-links-wrapper li { list-style-type:none; }
 /*Program Landing Css END*/
 
 /** Modal Styles **/

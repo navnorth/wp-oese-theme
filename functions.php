@@ -1280,7 +1280,7 @@ function contactInformationBlock(){
 
 function getTileLinks(){
    if( have_rows('tile_links') ):
-      $output = "<div class='row custom-common-padding gray-background-color mr-0 ml-0'>";
+      $output = "<ul class='row tile-links-wrapper custom-common-padding gray-background-color mr-0 ml-0'>";
          while ( have_rows('tile_links') ) : the_row();
               $tileLinkLabel =  get_sub_field('tile_link_title');
               $tileLinkUrl =  get_sub_field('tile_link_url');
@@ -1297,7 +1297,7 @@ function getTileLinks(){
                 $innerDivClass = "payments-details-list text-center";
               }
               $target = ($externaLink ? "_blank" : "_self");
-              $output.= '<div class="'.$colSize.'">
+              $output.= '<li class="'.$colSize.'">
                             <div class="'.$outerDivClass.'">
                               <a target="'.$target.'" href="'.$tileLinkUrl.'" class="tile-link">
                                 <div class="'.$innerDivClass.'">
