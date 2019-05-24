@@ -82,7 +82,7 @@
 
             <div class="col-md-12">
                 <div class="row text-center">
-                    <h1 class="h1-bottom-space trending-now-heading">Trending Now</h1>
+                    <h2 class="h1-bottom-space trending-now-heading">Trending Now</h2>
                 </div>
             </div>
             <div class="col-md-12 pl-0 pr-0">
@@ -104,9 +104,9 @@
                                 <img src="<?php echo $tImage; ?>" alt="<?php echo $tTitle; ?>">
                             </div>
                             <div class="trending-image-details">
-                                <p class="trending-image-details-title" title="<?php echo $tTitle; ?>">
+                                <h3 class="trending-image-details-title" title="<?php echo $tTitle; ?>">
                                     <?php echo $tTitle; ?>
-                                </p>
+                                </h3>
                                 <p class="trending-image-details-description">
                                 <?php echo $tDescription; ?>
                                 </p>
