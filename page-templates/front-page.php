@@ -104,7 +104,7 @@
                                 <img src="<?php echo $tImage; ?>" alt="<?php echo $tTitle; ?>">
                             </div>
                             <div class="trending-image-details">
-                                <p class="trending-image-details-title" title="Safe & Healthy Students">
+                                <p class="trending-image-details-title" title="<?php echo $tTitle; ?>">
                                     <?php echo $tTitle; ?>
                                 </p>
                                 <p class="trending-image-details-description">
