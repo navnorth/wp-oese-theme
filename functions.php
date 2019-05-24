@@ -1260,14 +1260,14 @@ function contactInformationBlock(){
         $output .= '<li>
                   <div class="sub-nav-icons">
                     <span><i class="fas fa-envelope"></i></span>
-                    <p><a href="'.$contactEmailLink.'">E-mail</a></p>
+                    <p><a href="'.$contactEmailLink.'" onclick="oese_trackEvent(\'Contact\',\'click\',\''.$post->post_title.'\',\'Email\')">E-mail</a></p>
                   </div>
                 </li>';
       elseif ($contactEmailOption=="contact_form")
         $output .= '<li>
                   <div class="sub-nav-icons">
                     <span><i class="far fa-address-card"></i></span>
-                    <p><a href="'.$contactEmailLink.'">Contact Form</a></p>
+                    <p><a href="'.$contactEmailLink.'" onclick="oese_trackEvent(\'Contact\',\'click\',\''.$post->post_title.'\',\'Contact Form\');">Contact Form</a></p>
                   </div>
                 </li>';
     }
