@@ -145,5 +145,5 @@ function oese_trackEvent(eventCategory, eventAction, eventLabel, eventValue = nu
           eventValue = eventValue.toLowerCase()
           return ga('send', 'event',eventCategory,eventAction,eventLabel,eventValue)
     }
-    return false;
+    return 0;
 }
