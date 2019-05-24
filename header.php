@@ -19,7 +19,7 @@
     <?php wp_head(); ?>
 </head>
 
-<!--[if IE 7]> 
+<!--[if IE 7]>
 <body <?php body_class("ie ie7"); ?>>
 <![endif]-->
 <!--[if IE 8]>
@@ -45,7 +45,7 @@
            <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-9">
                 <a class="oese-logo-home" href="<?php echo site_url(); ?>" Title="Home">
                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.svg"
-                         alt="Office of Innovation and Improvement" class="svg-replace" id="header_logo"/>
+                         alt="Office of Elementary and Secondary Education" class="svg-replace" id="header_logo"/>
                 </a>
             </div>
 
@@ -100,4 +100,4 @@
             ?>
         </div>
 
-       
+
