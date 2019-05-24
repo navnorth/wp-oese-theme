@@ -20,7 +20,7 @@
             <?php if( have_rows('categories') ):  ?>
 
                 <div class="col-md-12 home-grid-section">
-                    <div class="row">
+                    <ul class="row">
                         <?php
                             while ( have_rows('categories') ) : the_row();
                                 $cImage =  get_sub_field('c_image');
@@ -29,13 +29,13 @@
                                 $externaLink =  get_sub_field('c_external_link');
                                 $target = ($externaLink ? "_blank" : "");
                         ?>
-                        <div class="col-md-4 pl-0 pr-0 ml-0 mr-0 home-col-md-4">
+                        <li class="col-md-4 pl-0 pr-0 ml-0 mr-0 home-col-md-4">
                             <div class="custom-home-image-section">
                                 <div class="custom-image-media">
                                     <a target="<?php echo $target; ?>" href="<?php echo $cLink ?>">
                                         <div class="custom-image-thumbnail">
                                             <div>
-                                                <img src="<?php echo $cImage ;?>" alt="<?php echo $cTitle; ?>" class="img-responsive img-thumbnail-square">
+                                                <img src="<?php echo $cImage ;?>" class="img-responsive img-thumbnail-square">
                                             </div>
                                         </div>
                                         <div class="custom-home-image-heading text-center">
@@ -44,7 +44,7 @@
                                     </a>
                                 </div>
                             </div>
-                        </div>
+                        </li>
                         <?php endwhile; ?>
                     </div>
                 </div>
