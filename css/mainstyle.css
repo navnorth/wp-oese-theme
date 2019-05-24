@@ -796,6 +796,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
     margin:0 0 10px; 
     line-height:1em;
     font-size: 14px;
+    color: #4b4e53;
 }
 #breadcrumbs a {
     font-size: 14px;
@@ -1561,21 +1562,11 @@ h2.trending-now-heading {
 
 .breadcrumbs-section{
     text-transform: uppercase;
-    color: #4b4e53;
     padding-right: 6%;
     padding-top: .5%;
     padding-bottom: 0;
     font-size: 14px;
     padding-left: 28px;
-}
-.breadcrumbs-section .breadcrumbs-link{
-    text-decoration: none;
-    color: #818181 !important;
-    font-size: 14px;
-}
-.breadcrumbs-section .breadcrumbs-link.active{
-    text-decoration: none;
-    color: #1F5C99 !important;
 }
 
 /*Program Information Block START*/
