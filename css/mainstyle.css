@@ -1429,6 +1429,8 @@ a.oese-logo-home {
     padding-top: 9%;
     padding-bottom: 5%;
 }
+.home-grid-section ul { margin-left:0;padding-left:0; }
+.home-grid-section ul li { list-style-type:none; }
 .office-grid-list-details{
     width: 100%;
     min-height: 200px;
