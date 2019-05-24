@@ -1305,9 +1305,9 @@ function getTileLinks(){
                                 </div>
                                 </a>
                             </div>
-                          </div>';
+                          </li>';
             endwhile;
-         $output.="</div>";
+         $output.="</ul>";
          echo $output;
     endif;
 }
