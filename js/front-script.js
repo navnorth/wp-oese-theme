@@ -124,9 +124,7 @@ jQuery( document ).ready(function() {
         //jQuery('*[class=".slideshow_container_style-light .slideshow_pagination ul li"]').css('background', 'url(../images/slider_pager.png) 0 0 no-repeat !important;');
         console.log('Replaced SVG images with PNG');
     }
-    jQuery("a").on("click", function(e){
-	e.preventDefault();
-    });
+    
 });
 
 // Event Tracker Function
