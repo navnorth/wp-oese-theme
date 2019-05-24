@@ -1316,6 +1316,7 @@ a.oese-logo-home {
 .oese-btn-toggle:hover {
     background-color: #004285;
     color: #fff;
+    text-decoration: underline;
 }
 .oese-btn-toggle.active {
     background-color: #004285;
@@ -1345,6 +1346,7 @@ a.oese-logo-home {
 .oese-btn-danger:hover{
     background: #5D111E;
     color: #fff;
+    text-decoration: underline;
 }
 
 .oese-blue-btn{
@@ -1358,6 +1360,7 @@ a.oese-logo-home {
 .oese-blue-btn:hover{
     background: #fff;
     color: #1F5C99;
+    text-decoration: underline;
 }
 .by-office-btn{
     margin-right: 30px;
