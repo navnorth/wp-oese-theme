@@ -27,7 +27,7 @@ else{
 <div class="secondary-navigation-menu" id="toc">
 	<?php if ($withChild): ?>
 		<div class="secondary-navigation-menu-header">
-			<p><?php echo $sidebarTitle; ?></p>
+			<h2><?php echo $sidebarTitle; ?></h2>
 		</div>
 		<ul class="secondary-navigation-menu-list">
 				<?php

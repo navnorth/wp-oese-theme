@@ -124,5 +124,24 @@ jQuery( document ).ready(function() {
         //jQuery('*[class=".slideshow_container_style-light .slideshow_pagination ul li"]').css('background', 'url(../images/slider_pager.png) 0 0 no-repeat !important;');
         console.log('Replaced SVG images with PNG');
     }
-
+    
 });
+
+// Event Tracker Function
+function oese_trackEvent(eventCategory, eventAction, eventLabel, eventValue = null) {
+    eventLabel = eventLabel.toString();
+
+    // To make all google event param in lower case
+    eventLabel      = eventLabel.toLowerCase();
+    eventAction     = eventAction.toLowerCase();
+    eventCategory   = eventCategory.toLowerCase();
+    
+    if (typeof ga != 'undefined' && ga != null){
+        if(eventValue == null)
+          return ga('send', 'event',eventCategory,eventAction,eventLabel)
+        else
+          eventValue = eventValue.toLowerCase()
+          return ga('send', 'event',eventCategory,eventAction,eventLabel,eventValue)
+    }
+    return 0;
+}

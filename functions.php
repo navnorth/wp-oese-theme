@@ -1084,7 +1084,7 @@ register_nav_menu( 'sub-footer', __( 'Sub Footer', WP_OESE_THEME_SLUG ) );
   function getSidebarLinks(){
 
     if( have_rows('sidebar_links') ):
-      $output = "<div class='secondary-navigation-menu sidebar-links'><div class='secondary-navigation-menu-header'><p>". get_field('sidebar_box_title')."</p></div>";
+      $output = "<div class='secondary-navigation-menu sidebar-links'><div class='secondary-navigation-menu-header'><h2>". get_field('sidebar_box_title')."</h2></div>";
       // check if the repeater field has rows of data
 
         $output.=  "<ul class='secondary-navigation-menu-list'>";
@@ -1226,7 +1226,7 @@ function contactInformationBlock(){
   if(!empty($contactAddress) || (!empty($contactPhone)) || (!empty($contactFax)) || (!empty($contactEmailLink))){
       $output = '<div class="secondary-navigation-menu contact-box">
                         <div class="secondary-navigation-menu-header">
-                            <p>'.$contactTitle.'</p>
+                            <h2>'.$contactTitle.'</h2>
                         </div>
                         <ul class="secondary-navigation-menu-list">';
 
@@ -1260,14 +1260,14 @@ function contactInformationBlock(){
         $output .= '<li>
                   <div class="sub-nav-icons">
                     <span><i class="fas fa-envelope"></i></span>
-                    <p><a href="'.$contactEmailLink.'">E-mail</a></p>
+                    <p><a href="'.$contactEmailLink.'" onclick="oese_trackEvent(\'Contact\',\'click\',\''.$post->post_title.'\',\'Email\')">E-mail</a></p>
                   </div>
                 </li>';
       elseif ($contactEmailOption=="contact_form")
         $output .= '<li>
                   <div class="sub-nav-icons">
                     <span><i class="far fa-address-card"></i></span>
-                    <p><a href="'.$contactEmailLink.'">Contact Form</a></p>
+                    <p><a href="'.$contactEmailLink.'" onclick="oese_trackEvent(\'Contact\',\'click\',\''.$post->post_title.'\',\'Contact Form\');">Contact Form</a></p>
                   </div>
                 </li>';
     }
@@ -1280,7 +1280,7 @@ function contactInformationBlock(){
 
 function getTileLinks(){
    if( have_rows('tile_links') ):
-      $output = "<div class='row custom-common-padding gray-background-color mr-0 ml-0'>";
+      $output = "<ul class='row tile-links-wrapper custom-common-padding gray-background-color mr-0 ml-0'>";
          while ( have_rows('tile_links') ) : the_row();
               $tileLinkLabel =  get_sub_field('tile_link_title');
               $tileLinkUrl =  get_sub_field('tile_link_url');
@@ -1297,7 +1297,7 @@ function getTileLinks(){
                 $innerDivClass = "payments-details-list text-center";
               }
               $target = ($externaLink ? "_blank" : "_self");
-              $output.= '<div class="'.$colSize.'">
+              $output.= '<li class="'.$colSize.'">
                             <div class="'.$outerDivClass.'">
                               <a target="'.$target.'" href="'.$tileLinkUrl.'" class="tile-link">
                                 <div class="'.$innerDivClass.'">
@@ -1305,9 +1305,9 @@ function getTileLinks(){
                                 </div>
                                 </a>
                             </div>
-                          </div>';
+                          </li>';
             endwhile;
-         $output.="</div>";
+         $output.="</ul>";
          echo $output;
     endif;
 }
