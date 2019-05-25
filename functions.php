@@ -1491,8 +1491,8 @@ add_action( 'wp_footer', 'wp_oese_theme_add_modal');
 /**Csv import Media Library***/
 
 function csvImportMediaForm(){
-    $samplecsvfile = get_template_directory_uri() . '/images/ajax-load.gif';
     $ajaxload = get_template_directory_uri() . '/images/ajax-load.gif';
+    $samplecsvfile = get_template_directory_uri() . '/images/media-migration-sample.csv';
 
       echo '<div class="wrap">
             <div class="csv-media-import">
@@ -1529,21 +1529,28 @@ function csvImportMediaForm(){
   }    
 
   function getUrlContents ($url) {
-    if (function_exists('curl_exec')){ 
-        $conn = curl_init($url);
-        curl_setopt($conn, CURLOPT_SSL_VERIFYPEER, true);
-        curl_setopt($conn, CURLOPT_FRESH_CONNECT,  true);
-        curl_setopt($conn, CURLOPT_RETURNTRANSFER, 1);
-        $url_get_contents_data = (curl_exec($conn));
-        curl_close($conn);
-    }elseif(function_exists('file_get_contents') && !$url_get_contents_data){
-        $url_get_contents_data = file_get_contents($url);
-    }elseif(function_exists('fopen') && function_exists('stream_get_contents') && !$url_get_contents_data){
-        $handle = fopen ($url, "r");
-        $url_get_contents_data = stream_get_contents($handle);
-    }else{
-        $url_get_contents_data = false;
+    $array = get_headers($url);
+    $string = $array[0];
+    if(strpos($string,"200")){
+      if (function_exists('curl_exec')){ 
+          $conn = curl_init($url);
+          curl_setopt($conn, CURLOPT_SSL_VERIFYPEER, true);
+          curl_setopt($conn, CURLOPT_FRESH_CONNECT,  true);
+          curl_setopt($conn, CURLOPT_RETURNTRANSFER, 1);
+          $url_get_contents_data = (curl_exec($conn));
+          curl_close($conn);
+      }elseif(function_exists('file_get_contents') && !$url_get_contents_data){
+          $url_get_contents_data = file_get_contents($url);
+      }elseif(function_exists('fopen') && function_exists('stream_get_contents') && !$url_get_contents_data){
+          $handle = fopen ($url, "r");
+          $url_get_contents_data = stream_get_contents($handle);
+      }else{
+          $url_get_contents_data = false;
+      }
     }
+    else{
+      $url_get_contents_data = false;
+    }  
 return $url_get_contents_data;
 } 
 
@@ -1551,61 +1558,69 @@ return $url_get_contents_data;
 function insertNewMedia($file,$date,$mediaCat,$mediaTag){
   $filename = basename($file);
   $data = getUrlContents($file);
-  $_newDate = date("Y-m-d H:i:s ",strtotime($date));
-  $wp_upload_dir = wp_upload_dir();
-  $upload_file = wp_upload_bits($filename, null,$data);
-  if (!$upload_file['error']) {
-    $wp_filetype = wp_check_filetype($filename, null );
-    $attachment = array(
-      'post_mime_type' => $wp_filetype['type'],
-      'post_title' => preg_replace('/\.[^.]+$/', '', $filename),
-      'post_content' => '',
-      'guid' => $wp_upload_dir['url'] . '/' . $filename ,
-      'post_status' => 'inherit',
-      'post_date'=>$_newDate,
-    );
-    $attachment_id = wp_insert_attachment( $attachment, $upload_file['file']);
+  $attachment_id = "";
+  if($data){
+      $mediaDate = date("Y-m-d H:i:s ",strtotime($date));
+      $wp_upload_dir = wp_upload_dir();
+      $upload_file = wp_upload_bits($filename, null,$data);
+      if (!$upload_file['error']) {
+        $wp_filetype = wp_check_filetype($filename, null );
+        $attachment = array(
+          'post_mime_type' => $wp_filetype['type'],
+          'post_title' => preg_replace('/\.[^.]+$/', '', $filename),
+          'post_content' => '',
+          'guid' => $wp_upload_dir['url'] . '/' . $filename ,
+          'post_status' => 'inherit',
+          'post_date'=>$mediaDate,
+        );
+        $attachment_id = wp_insert_attachment( $attachment, $upload_file['file']);
 
-    if (!is_wp_error($attachment_id)) {
-      require_once(ABSPATH . "wp-admin" . '/includes/image.php');
-      require_once( ABSPATH . 'wp-admin' . '/includes/file.php' );
-      require_once( ABSPATH . 'wp-admin' . '/includes/media.php' );
-      $attachment_data = wp_generate_attachment_metadata( $attachment_id, $upload_file['file'] );
-      wp_update_attachment_metadata( $attachment_id,  $attachment_data );
-      
-      /***Adding Category for media****/
+        if (!is_wp_error($attachment_id)) {
+          require_once(ABSPATH . "wp-admin" . '/includes/image.php');
+          require_once( ABSPATH . 'wp-admin' . '/includes/file.php' );
+          require_once( ABSPATH . 'wp-admin' . '/includes/media.php' );
+          $attachment_data = wp_generate_attachment_metadata( $attachment_id, $upload_file['file'] );
+          wp_update_attachment_metadata( $attachment_id,  $attachment_data );
+          
+          /***Adding Category for media****/
 
-      if($mediaCat){
-        $attachmentCatObj =  get_category_by_slug($mediaCat);
-        if($attachmentCatObj){
-          $catId = $attachmentCatObj->term_id;
-        }
-        else{
-          $catId = wp_create_category($mediaCat);
-        }  
-        
-        wp_set_post_categories($attachment_id,array($catId));
-      }
+          if($mediaCat){
+            $attachmentCatObj =  get_category_by_slug($mediaCat);
+            if($attachmentCatObj){
+              $catId = $attachmentCatObj->term_id;
+            }
+            else{
+              $catId = wp_create_category($mediaCat);
+            }  
+            
+            wp_set_post_categories($attachment_id,array($catId));
+          }
 
-      /***Adding Tags for media****/
-      
-      if($mediaTag){
-        $tagId = term_exists($mediaTag,"post_tag");
-        if($tagId){
-          wp_set_post_tags($attachment_id,array($mediaTag));
-        }
-        else{
-          $termObj = wp_insert_term($mediaTag,"post_tag");
-          if($termObj){
-            wp_set_post_tags($attachment_id,array($mediaTag));
+          /***Adding Tags for media****/
+          
+          if($mediaTag){
+            $tagId = term_exists($mediaTag,"post_tag");
+            if($tagId){
+              wp_set_post_tags($attachment_id,array($mediaTag));
+            }
+            else{
+              $termObj = wp_insert_term($mediaTag,"post_tag");
+              if($termObj){
+                wp_set_post_tags($attachment_id,array($mediaTag));
+              }
+            }
           }
         }
       }
-           
-      return $attachment_id;
-
+    } 
+    if($attachment_id){
+      $attachmentUrl = wp_get_attachment_url($attachment_id);
+      if(!$attachmentUrl)$attachmentUrl = "";
+      return array('file' => $file,'date'=>$date,'mediacat'=>$mediaCat,'mediatag'=>$mediaTag,'newUrl'=>$attachmentUrl);
     }
-  }
+    else{
+       return array('file' => $file,'date'=>$date,'mediacat'=>$mediaCat,'mediatag'=>$mediaTag,'newUrl'=>"404 url not found");
+    }
 }
 
 
@@ -1617,19 +1632,42 @@ function insertNewMedia($file,$date,$mediaCat,$mediaTag){
       $csvImportFile = $_FILES['file']['tmp_name'];
       $csvAsArray = array_map('str_getcsv', file($csvImportFile));
       array_shift($csvAsArray);
-      $output = array();
-      print_r($csvAsArray);
+      $outputCsv = array();
       foreach ($csvAsArray as $key => $csvVal) {
           $mediaUrl = $csvVal[0];
           $mediaCat = $csvVal[1];  
           $mediaDate = $csvVal[2];  
-          $mediaTags = $csvVal[4];  
+          $mediaTags = $csvVal[3];  
             
-          $attachmentId = insertNewMedia($mediaUrl,$mediaDate,$mediaCat,$mediaTags);
-         
+          $outputCsv[]= insertNewMedia($mediaUrl,$mediaDate,$mediaCat,$mediaTags);
       }
+      wp_send_json($outputCsv);
+      die();
+      //convert_to_csv($outputCsv,'report.csv', ',');
+      //print_r($outputCsv);
 
   }
+
+
+function convert_to_csv($input_array, $output_file_name, $delimiter)
+{
+    /** open raw memory as file, no need for temp files, be careful not to run out of memory thought */
+    $f = fopen('php://memory', 'w');
+    /** loop through array  */
+    foreach ($input_array as $line) {
+        /** default php csv handler **/
+        fputcsv($f, $line, $delimiter);
+    }
+    /** rewrind the "file" with the csv lines **/
+    fseek($f, 0);
+    /** modify header to be downloadable csv file **/
+    header('Content-Type: text/html; charset=UTF-8');
+    //header('Content-Type: application/csv');
+    header('Content-Disposition: attachement; filename="' . $output_file_name . '";');
+    /** Send file to browser for download */
+    fpassthru($f);
+}
+
 
 function oese_search_where($where){
     global $wpdb;
