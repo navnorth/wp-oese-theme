@@ -1,5 +1,6 @@
 jQuery(document).ready(function ($) {
-   $('#csv_media_upload').click(function() {
+   $('#csv_media_upload').click(function(event) {
+   event.preventDefault();
    $(".results_table").hide();
    $(".page_count").text();
    $('#page_result > tbody > tr > td').parent('tr').empty();
@@ -21,16 +22,13 @@ jQuery(document).ready(function ($) {
                   enctype: 'multipart/form-data',
                   processData: false,
                   success:function(data) {
-                    console.log(data);
                     $(".ajaxload").hide();
-                    
-                    // if(data){  
-                    //   $(".results_table").show();
-                    //   $(".page_count").text(data.length+" pages has been created");
-                    //   data.forEach(function(value) {
-                    //     $("#page_result").append("<tr><td>"+value.page_title+"</td><td><a href="+value.edit_link+">Edit</a></td></tr>")
-                    //   });
-                    // }  
+                    if(data){
+                      $(".outputcsv").html('<a href="#" class="download_updated">Download CSV</a>')
+                      $('body').on('click', 'a.download_updated', function() {
+                          downloadCSV('media-output.csv',data);
+                      });              
+                    }
                   },
                   error: function(errorThrown){
                       console.log(errorThrown);
@@ -38,6 +36,12 @@ jQuery(document).ready(function ($) {
               });
       }
     
+    });
+
+    $("#fileToUpload").change(function(){
+        var filePath = $(this).val();
+        var filename = filePath.substr(filePath.lastIndexOf('\\') + 1);
+        $(".c_file_name").text(filename);
     });
 
 });
@@ -72,17 +76,16 @@ function convertArrayOfObjectsToCSV(args) {
         });
 
         return result;
-    }
+}
 
-  function downloadCSV(args) {
+  function downloadCSV(file,actdata) {
         var data, filename, link;
-
         var csv = convertArrayOfObjectsToCSV({
-            data: stockData
+            data: actdata
         });
         if (csv == null) return;
 
-        filename = args.filename || 'export.csv';
+        filename = file|| 'export.csv';
 
         if (!csv.match(/^data:text\/csv/i)) {
             csv = 'data:text/csv;charset=utf-8,' + csv;

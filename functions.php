@@ -1498,14 +1498,25 @@ function csvImportMediaForm(){
             <div class="csv-media-import">
                 <h2>WP Media Importer</h2>
                   <div class="form-section">
-                    <div class="error_message"></div>  
-                    <form name="wp_importer" class="importer"  method="post" enctype="multipart/form-data">
-                      <input type="file" accept=".csv" name="fileToUpload" id="fileToUpload">
-                      <input type="button" id="csv_media_upload" value="Upload Csv" name="submit">
-                       <img style="display: none;" class="ajaxload" width="65" src="'.$ajaxload.'">
-                    </form>
-                   
-                    <a class="csv_file" href="'.$samplecsvfile.'">Download sample csv</a>  
+                    <div class="container">
+                      <div class="error_message"></div>  
+                      <form name="wp_importer" class="importer"  method="post" enctype="multipart/form-data">
+                      <div class="cfile">
+                       Choose File
+                        <input type="file" accept=".csv" name="fileToUpload" id="fileToUpload">
+                      </div>  
+                      <div class="cfile-upload">
+                        <input type="submit" class="button button-primary button-large" id="csv_media_upload" value="Upload Csv" name="submit">
+                      </div>  
+                      </form>
+                    </div>
+                    <div class="c_file_name"></div>
+                     <img style="display: none;" class="ajaxload" width="65" src="'.$ajaxload.'">
+                    <div class=csv-sec>
+                      <div class="samplecsv"><a class="csv_file" href="'.$samplecsvfile.'">Sample Csv</a>
+                      </div>
+                      <div class="outputcsv"></div>  
+                    </div>
                   </div>   
                   <div class="results_table" style="display: none;">
                     <p class="page_count"></p>
@@ -1560,6 +1571,9 @@ function insertNewMedia($file,$date,$mediaCat,$mediaTag){
   $data = getUrlContents($file);
   $attachment_id = "";
   if($data){
+      if(!$date){
+        $mediaDate = date("Y-m-d H:i:s");
+      }  
       $mediaDate = date("Y-m-d H:i:s ",strtotime($date));
       $wp_upload_dir = wp_upload_dir();
       $upload_file = wp_upload_bits($filename, null,$data);
@@ -1616,10 +1630,10 @@ function insertNewMedia($file,$date,$mediaCat,$mediaTag){
     if($attachment_id){
       $attachmentUrl = wp_get_attachment_url($attachment_id);
       if(!$attachmentUrl)$attachmentUrl = "";
-      return array('file' => $file,'date'=>$date,'mediacat'=>$mediaCat,'mediatag'=>$mediaTag,'newUrl'=>$attachmentUrl);
+      return array('Url' => $file,'Date'=>$date,'Category'=>$mediaCat,'Tag'=>$mediaTag,'New Url'=>$attachmentUrl);
     }
     else{
-       return array('file' => $file,'date'=>$date,'mediacat'=>$mediaCat,'mediatag'=>$mediaTag,'newUrl'=>"404 url not found");
+       return array('Url' => $file,'Date'=>$date,'Category'=>$mediaCat,'Tag'=>$mediaTag,'New Url'=>"404 url not found");
     }
 }
 
@@ -1643,31 +1657,7 @@ function insertNewMedia($file,$date,$mediaCat,$mediaTag){
       }
       wp_send_json($outputCsv);
       die();
-      //convert_to_csv($outputCsv,'report.csv', ',');
-      //print_r($outputCsv);
-
   }
-
-
-function convert_to_csv($input_array, $output_file_name, $delimiter)
-{
-    /** open raw memory as file, no need for temp files, be careful not to run out of memory thought */
-    $f = fopen('php://memory', 'w');
-    /** loop through array  */
-    foreach ($input_array as $line) {
-        /** default php csv handler **/
-        fputcsv($f, $line, $delimiter);
-    }
-    /** rewrind the "file" with the csv lines **/
-    fseek($f, 0);
-    /** modify header to be downloadable csv file **/
-    header('Content-Type: text/html; charset=UTF-8');
-    //header('Content-Type: application/csv');
-    header('Content-Disposition: attachement; filename="' . $output_file_name . '";');
-    /** Send file to browser for download */
-    fpassthru($f);
-}
-
 
 function oese_search_where($where){
     global $wpdb;
