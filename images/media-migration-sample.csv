@@ -1,5 +1,5 @@
 URL,Category,Date,tags
-https://www.fujifilmusa.com/products/digital_cameras/x/fujifilm_x_s1/sample_images/img/index/ff_x_s1_002.JPG,test-cat2,2015-03-12,profile
-https://www.sonyrumors.co/wp-content/uploads/2018/02/sony-a7iii-sample-image-4.jpg,School Improvement,2014-11-18,profile
-https://www.sonyrumors.co/wp-content/uploads/2018/02/sony-a7iii-saimage-4.jpg,School Improvement,2014-11-18,profile
-https://www.antennahouse.com/XSLsample/pdf/sample-link_1.pdf,mypdf,2014-11-18,profile
+https://www.fujifilmusa.com/products/digital_cameras/x/fujifilm_x_s1/sample_images/img/index/ff_x_s1_002.JPG,test-cat2 | school-improvement ,2015-03-12,profile | testtag
+https://www.sonyrumors.co/wp-content/uploads/2018/02/sony-a7iii-sample-image-4.jpg,School-improvement | schoolim,2014-11-18,profile
+https://www.sonyrumors.co/wp-content/uploads/2018/02/sony-a7iii-saimage-4.jpg,School-improvement,2014-11-18,profile | testtag2 | testtag
+https://www.antennahouse.com/XSLsample/pdf/sample-link_1.pdf,mypdf | mypdf2| myschool,2014-11-18,profile | profile2 | profile4

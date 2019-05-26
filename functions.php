@@ -1621,7 +1621,7 @@ function insertNewMedia($file,$date,$mediaCat,$mediaTag){
             $mediaTagArray = explode("|",$mediaTag);
               foreach ($mediaTagArray as $key => $tagSlug) {
                 $tagSlug = str_replace(' ', '', $tagSlug);
-          $tagIdObj = term_exists($tagSlug,"post_tag");
+                  $tagIdObj = term_exists($tagSlug,"post_tag");
                   if($tagIdObj['term_id']){
                     wp_set_post_tags($attachment_id,array($tagSlug),true);
                   }
@@ -1634,8 +1634,11 @@ function insertNewMedia($file,$date,$mediaCat,$mediaTag){
               }    
           }
         }
-      }
+      }  
     } 
+
+    /**Creating the output csv Array**/
+
     if($attachment_id){
       $attachmentUrl = wp_get_attachment_url($attachment_id);
       if(!$attachmentUrl)$attachmentUrl = "";
