@@ -22,6 +22,7 @@ jQuery(document).ready(function ($) {
                   enctype: 'multipart/form-data',
                   processData: false,
                   success:function(data) {
+                    console.log(data)
                     $(".ajaxload").hide();
                     if(data){
                       $(".outputcsv").html('<a href="#" class="download_updated">Download CSV</a>')
@@ -54,7 +55,7 @@ function convertArrayOfObjectsToCSV(args) {
         if (data == null || !data.length) {
             return null;
         }
-
+        console.log(args);
         columnDelimiter = args.columnDelimiter || ',';
         lineDelimiter = args.lineDelimiter || '\n';
 

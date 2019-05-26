@@ -1599,30 +1599,39 @@ function insertNewMedia($file,$date,$mediaCat,$mediaTag){
           /***Adding Category for media****/
 
           if($mediaCat){
-            $attachmentCatObj =  get_category_by_slug($mediaCat);
-            if($attachmentCatObj){
-              $catId = $attachmentCatObj->term_id;
-            }
-            else{
-              $catId = wp_create_category($mediaCat);
-            }  
-            
-            wp_set_post_categories($attachment_id,array($catId));
+              $mediaCatArray = explode("|",$mediaCat);
+              //print_r($mediaCatArray);
+              foreach ($mediaCatArray as $key => $catSlug) {
+                  $catSlug = str_replace(' ', '', $catSlug);
+                  $attachmentCatObj =  get_category_by_slug($catSlug);
+                  if($attachmentCatObj){
+                    $catId = $attachmentCatObj->term_id;
+                  }
+                  else{
+                    $catId = wp_create_category($catSlug);
+                  } 
+                  wp_set_post_categories($attachment_id,array($catId),true);
+              }
+              
           }
 
           /***Adding Tags for media****/
           
           if($mediaTag){
-            $tagId = term_exists($mediaTag,"post_tag");
-            if($tagId){
-              wp_set_post_tags($attachment_id,array($mediaTag));
-            }
-            else{
-              $termObj = wp_insert_term($mediaTag,"post_tag");
-              if($termObj){
-                wp_set_post_tags($attachment_id,array($mediaTag));
-              }
-            }
+            $mediaTagArray = explode("|",$mediaTag);
+              foreach ($mediaTagArray as $key => $tagSlug) {
+                $tagSlug = str_replace(' ', '', $tagSlug);
+          $tagIdObj = term_exists($tagSlug,"post_tag");
+                  if($tagIdObj['term_id']){
+                    wp_set_post_tags($attachment_id,array($tagSlug),true);
+                  }
+                  else{
+                    $termObj = wp_insert_term($tagSlug,"post_tag");
+                    if($termObj){
+                      wp_set_post_tags($attachment_id,array($tagSlug),true);
+                    }
+                  }
+              }    
           }
         }
       }
@@ -1655,8 +1664,8 @@ function insertNewMedia($file,$date,$mediaCat,$mediaTag){
             
           $outputCsv[]= insertNewMedia($mediaUrl,$mediaDate,$mediaCat,$mediaTags);
       }
-      wp_send_json($outputCsv);
-      die();
+     wp_send_json($outputCsv);
+     die();
   }
 
 function oese_search_where($where){
