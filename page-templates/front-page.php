@@ -27,7 +27,7 @@
                                 $cTitle =  get_sub_field('c_title');
                                 $cLink =  get_sub_field('link');
                                 $externaLink =  get_sub_field('c_external_link');
-                                $target = ($externaLink ? "_blank" : "");
+                                $target = ($externaLink ? "_blank" : "_self");
                         ?>
                         <li class="col-md-4 pl-0 pr-0 ml-0 mr-0 home-col-md-4">
                             <div class="custom-home-image-section">
