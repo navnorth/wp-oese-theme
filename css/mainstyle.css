@@ -1336,7 +1336,7 @@ a.oese-logo-home {
 }
 .oese-btn-danger{
     background: #981F33;
-    color: #fff;
+    color: #fff !important;
     font-size: 18px;
     padding: 4px 14px;
 }

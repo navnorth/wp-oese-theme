@@ -97,7 +97,7 @@
                             $tButtonLabel =  get_sub_field('button_label');
                             $tLink =  get_sub_field('link');
                             $externaLink =  get_sub_field('external_link');
-                            $target = ($externaLink ? "_blank" : "");
+                            $target = ($externaLink ? "_blank" : "_self");
                     ?>
                     <div class="col-md-4 home-col-md-4 pl-0 pr-0 ml-0 mr-0">
                         <div class="trending-now-section rounded">
@@ -111,8 +111,8 @@
                                 <p class="trending-image-details-description">
                                 <?php echo $tDescription; ?>
                                 </p>
-                                <a target="<?php echo $target; ?>" href="<?php echo $tLink; ?>">
-                                <button type="button" class="btn oese-btn-danger oese-btn-danger-small" title="Read More"><?php echo $tButtonLabel; ?></button>
+                                <a target="<?php echo $target; ?>" href="<?php echo $tLink; ?>" role="button" class="btn oese-btn-danger oese-btn-danger-small" title="Read More">
+                                <?php echo $tButtonLabel; ?>
                                 </a>
                             </div>
                         </div>
