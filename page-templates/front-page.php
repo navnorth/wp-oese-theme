@@ -50,7 +50,7 @@
                     </div>
                 </div>
             <?php endif; ?>
-        </div>
+        <!--</div>-->
 
 
         <!-- Div seperator-->
