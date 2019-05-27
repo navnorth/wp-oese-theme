@@ -52,7 +52,9 @@ if($footerNav) {
                                                     <?php echo $value['title']; ?>
                                                 </a>
                                             </li>
-                                       <?php  }
+                                       <?php  } ?>
+                                        </ul>
+                                        <?php
                                     }
                                 }
                                 if ($parentIndex==$parentItemCount){

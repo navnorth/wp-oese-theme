@@ -46,6 +46,7 @@
                             </div>
                         </li>
                         <?php endwhile; ?>
+                    </ul>
                     </div>
                 </div>
             <?php endif; ?>
