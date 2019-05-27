@@ -19,7 +19,7 @@ get_header();
                             $image = wp_get_attachment_image_src( get_post_thumbnail_id($page_id), 'single-post-thumbnail' );
 
                             echo "<div class='left-section-featured-image'>
-                                    <img src=".$image[0]."></div>";
+                                    <img src=".$image[0]." alt=".get_the_title($page_id)."></div>";
                         }
                     ?>
                     <!--Program Blocks START-->
