@@ -1542,12 +1542,13 @@ function csvImportMediaForm(){
   function getUrlContents ($url) {
     $array = get_headers($url);
     $string = $array[0];
-    if(strpos($string,"200")){
+    if(strpos($string,"200") || strpos($string,"301") || strpos($string,"302")){
       if (function_exists('curl_exec')){ 
           $conn = curl_init($url);
           curl_setopt($conn, CURLOPT_SSL_VERIFYPEER, true);
           curl_setopt($conn, CURLOPT_FRESH_CONNECT,  true);
           curl_setopt($conn, CURLOPT_RETURNTRANSFER, 1);
+          curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
           $url_get_contents_data = (curl_exec($conn));
           curl_close($conn);
       }elseif(function_exists('file_get_contents') && !$url_get_contents_data){
