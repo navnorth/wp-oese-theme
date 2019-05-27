@@ -1548,7 +1548,7 @@ function csvImportMediaForm(){
           curl_setopt($conn, CURLOPT_SSL_VERIFYPEER, true);
           curl_setopt($conn, CURLOPT_FRESH_CONNECT,  true);
           curl_setopt($conn, CURLOPT_RETURNTRANSFER, 1);
-          curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+          curl_setopt($conn, CURLOPT_FOLLOWLOCATION, true);
           $url_get_contents_data = (curl_exec($conn));
           curl_close($conn);
       }elseif(function_exists('file_get_contents') && !$url_get_contents_data){
