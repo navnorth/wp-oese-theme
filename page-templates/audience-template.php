@@ -19,7 +19,7 @@ $page_id = get_the_ID();
                         $image = wp_get_attachment_image_src( get_post_thumbnail_id($page_id), 'single-post-thumbnail' );
 
                         echo "<div class='left-section-featured-image'>
-                                <img src=".$image[0]."></div>";
+                                <img src=".$image[0]." alt=".get_the_title($page_id)."></div>";
                     }
 
                 ?>
@@ -62,7 +62,7 @@ $page_id = get_the_ID();
                        <a target="<?php echo $target; ?>" href="<?php echo $cLink; ?>">
                             <div class="custom-image-thumbnail">
                                 <div>
-                                    <img src="<?php echo $cImage; ?>" alt="" class="img-responsive img-thumbnail-square">
+                                    <img src="<?php echo $cImage; ?>" alt="<?php echo $cTitle; ?>" class="img-responsive img-thumbnail-square">
                                 </div>
                             </div>
                             <div class="custom-image-heading text-center">

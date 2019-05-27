@@ -1094,7 +1094,7 @@ register_nav_menu( 'sub-footer', __( 'Sub Footer', WP_OESE_THEME_SLUG ) );
             $resourceLink =  get_sub_field('resource_link');
             $externaLink =  get_sub_field('external_link');
             $target = ($externaLink ? "_blank" : "_self");
-            $output.= "<li><a ". $target." href=".$resourceLink.">".$resourceLabel."</a></li>";
+            $output.= "<li><a target='". $target."' href='".$resourceLink."'>".$resourceLabel."</a></li>";
           endwhile;
         $output.=  "</ul>";
         $output.="</div>";
@@ -1542,13 +1542,12 @@ function csvImportMediaForm(){
   function getUrlContents ($url) {
     $array = get_headers($url);
     $string = $array[0];
-    if(strpos($string,"200") || strpos($string,"301") || strpos($string,"302")){
+    if(strpos($string,"200")){
       if (function_exists('curl_exec')){ 
           $conn = curl_init($url);
           curl_setopt($conn, CURLOPT_SSL_VERIFYPEER, true);
           curl_setopt($conn, CURLOPT_FRESH_CONNECT,  true);
           curl_setopt($conn, CURLOPT_RETURNTRANSFER, 1);
-          curl_setopt($conn, CURLOPT_FOLLOWLOCATION, true);
           $url_get_contents_data = (curl_exec($conn));
           curl_close($conn);
       }elseif(function_exists('file_get_contents') && !$url_get_contents_data){
