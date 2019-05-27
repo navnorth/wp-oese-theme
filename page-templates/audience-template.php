@@ -54,7 +54,7 @@ $page_id = get_the_ID();
                         $cTitle =  get_sub_field('c_title');
                         $cLink =  get_sub_field('link');
                         $externaLink =  get_sub_field('c_external_link');
-                        $target = ($externaLink ? "_blank" : "");
+                        $target = ($externaLink ? "_blank" : "_self");
                 ?>
             <div class="col-xl-4 col-lg-4 col-md-6 custom-col-md-4-padding custom-col-md-4-margin custom-grid-mobile-margin-top">
                 <div class="custom-image-main-section">
@@ -99,7 +99,12 @@ $page_id = get_the_ID();
                 </div>
 
                 <div class="full-search-field">
-                     <?php get_search_form() ?>
+                     <?php
+                     // Call Custom Search Form
+                     add_filter('get_search_form', 'oese_content_search_form');
+                     get_search_form();
+                     remove_filter('get_search_form', 'oese_content_search_form');
+                     ?>
                 </div>
             </div>
         </div>

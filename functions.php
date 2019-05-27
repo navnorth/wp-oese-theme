@@ -1731,3 +1731,18 @@ add_filter( 'wpcf7_form_elements', function( $form ) {
   $form = str_replace( 'Your Subject Here', $page_name, $form );
   return $form;
 } );
+
+function return_get_template_part($slug, $name=null) {
+
+  ob_start();
+  get_template_part($slug, $name);    
+  $content = ob_get_contents();
+  ob_end_clean();
+
+  return $content;
+}
+
+function oese_content_search_form($form){
+  $form = return_get_template_part('content', 'searchform');
+  return $form;
+}
