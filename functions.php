@@ -1749,7 +1749,7 @@ function oese_content_search_form($form){
 
 // PDF Embed Code using Google Viewer
 function oese_pdf_embed_code($url){
-  $final_url = "http://docs.google.com/viewer?url=".$url."&embedded=true";
+  $final_url = "https://docs.google.com/viewer?url=".$url."&embedded=true";
   $embed_code = '<iframe class="oer-pdf-viewer" width="100%" src="'.$final_url.'"></iframe>';
   return $embed_code;
 }
