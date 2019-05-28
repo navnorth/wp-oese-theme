@@ -12,7 +12,7 @@ get_header();
 
 if (get_field('select_file')){
     $file = get_field('select_file');
-    $file_detail = oese_file_type_from_url($file,'fa-6x');
+    $file_detail = oese_file_type_from_url($file,'fa-10x');
 }
 ?>
     <!--Publication Template Top Section START-->
@@ -27,7 +27,7 @@ if (get_field('select_file')){
                             <img src=".$image[0]." alt=".get_the_title($page_id)."></div>";
                 } else {
                     if ($file) {
-                        echo "<div class='left-section-featured-image'><span>".$file_detail['icon']."</span></div>";
+                        echo "<div class='left-section-featured-image'><span class='publication-no-featured-image'>".$file_detail['icon']."</span></div>";
                     }
                 }
                 $download_button = get_field('show_download_button');

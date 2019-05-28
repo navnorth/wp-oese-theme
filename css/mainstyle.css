@@ -1608,7 +1608,16 @@ h2.trending-now-heading {
 /*Program Information Block END*/
 
 /** Publication Template Styles **/
-.publication-embed { width:100%; min-height:500px; }
+.publication-embed { width:100%; min-height:500px; margin-top:50px; }
+.publication-no-featured-image {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+.publication-buttons .btn { background:#243a50; color:#ffffff !important; text-decoration:none; padding:8px 30px; }
+.publication-buttons .btn:hover,.publication-buttons .btn:focus { background:#1F5C99; text-decoration:underline; }
 /** End of Publication Template Styles **/
 
 /*Office Page Css START*/
