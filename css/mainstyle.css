@@ -256,7 +256,7 @@ ul.tour_dates li {
 .main-menu {  background: #1F5C99; background-image: url("../images/overlay-diamonds.png"); background-repeat: repeat-x; width: 100%; float: left;padding: 4px 0; }
 .main-menu li { position: relative}
 .main-menu li a, .responsiv-menu li a{ text-decoration: none;}
-.main-menu li a:hover, .responsiv-menu li a:hover{ text-decoration: underline;}
+.main-menu li a:hover, .responsiv-menu li a:hover, .main-menu li a:focus, .responsiv-menu li a:focus{ text-decoration: underline;}
 .sub-menu { background: #294179; float: left; left: 0; width: 250px; position: absolute; z-index: 999; display: none; top: 39px; border-top: 1px solid #fff }
 .sub-menu li { display: block; width: 100%; padding-left: 15px; border-top: 1px solid #ccc;}
 .sub-menu li:first-child { border-top:none;}
@@ -1013,7 +1013,7 @@ h2{
     font-weight: 700;
     color: #1F5C99;
 }
-a{
+a {
     text-decoration: underline;
     font-size: 16px;
     color: #333333;
@@ -1255,14 +1255,14 @@ a{
     color: #fff;
     font-size: 14px;
 }
-.footer-sub-menu .sub-menu-links li a:hover{
+.footer-sub-menu .sub-menu-links li a:hover, .footer-sub-menu .sub-menu-links li a:focus{
     text-decoration: underline;
 }
 .footer-main-section .footer-title a{
     text-decoration: none ;
     color: #fff;
 }
-.footer-main-section .footer-title a:hover {
+.footer-main-section .footer-title a:hover, .footer-main-section .footer-title a:focus {
     text-decoration: underline;
 }
 .bottom-footer-section{
@@ -1283,7 +1283,7 @@ a{
 }
 .footer-bottom-right-links ul { margin-bottom:0; }
 .footer-bottom-right-links li { display:inline-block; }
-.footer-bottom-right-links a:hover {
+.footer-bottom-right-links a:hover, .footer-bottom-right-links a:focus {
     text-decoration: underline;
 }
 .address {
@@ -1314,7 +1314,7 @@ a.oese-logo-home {
     border: 1px solid #004285;
     margin: 10px 0;
 }
-.oese-btn-toggle:hover {
+.oese-btn-toggle:hover, .oese-btn-toggle:focus {
     background-color: #004285;
     color: #fff;
     text-decoration: underline;
@@ -1344,7 +1344,7 @@ a.oese-logo-home {
     font-size: 14px;
     padding: 5px 10px;
 }
-.oese-btn-danger:hover{
+.oese-btn-danger:hover, .oese-btn-danger:focus{
     background: #5D111E;
     color: #fff;
     text-decoration: underline;
@@ -1358,7 +1358,7 @@ a.oese-logo-home {
     font-size: 24px;
     padding: .375rem 1.5rem;
 }
-.oese-blue-btn:hover{
+.oese-blue-btn:hover, .oese-blue-btn:focus {
     background: #fff;
     color: #1F5C99;
     text-decoration: underline;
@@ -1375,7 +1375,7 @@ a.oese-logo-home {
     font-weight: 700;
     color: #1F5C99 !important;
 }
-.program-offices-section h2 a:hover {
+.program-offices-section h2 a:hover, .program-offices-section h2 a:focus {
     font-size: 24px;
     font-weight: 700;
     color: #000 !important;
@@ -1467,7 +1467,7 @@ a.oese-logo-home {
     line-height: 32px !important;
     text-decoration: none;
 }
-.office-grid-list-details a:hover {
+.office-grid-list-details a:hover, .office-grid-list-details a:focus {
     text-decoration: underline;
 }
 .office-grid-section{
@@ -1482,7 +1482,7 @@ a.oese-logo-home {
 .half-tile-link a, .full-tile-link a {
     text-decoration: none;
 }
-.half-tile-link a:hover, .full-tile-link a:hover {
+.half-tile-link a:hover, .full-tile-link a:hover, .half-tile-link a:focus, .full-tile-link a:focus {
     text-decoration: underline;
     color: #fff;
 }
@@ -1654,7 +1654,7 @@ h2.trending-now-heading {
     line-height: 32px !important;
     text-decoration: none;
 }
-.payments-details-list a:hover {
+.payments-details-list a:hover, .payments-details-list a:focus {
     text-decoration: underline;
 }
 ul.tile-links-wrapper { padding-left:0;margin-left:0; }
@@ -2070,7 +2070,7 @@ ul.tile-links-wrapper li { list-style-type:none; }
         line-height: 32px !important;
         text-decoration: none;
     }
-    .office-grid-list-details a:hover {
+    .office-grid-list-details a:hover, .office-grid-list-details a:focus {
         text-decoration: underline;
         color: #fff;
     }
@@ -2085,7 +2085,7 @@ ul.tile-links-wrapper li { list-style-type:none; }
         margin-left: 20px !important;
         font-size: 14px;
     }
-    .footer-bottom-right-links a:hover {
+    .footer-bottom-right-links a:hover, .footer-bottom-right-links a:focus {
         text-decoration: underline;
     }
     .custom-grid-mobile-margin-top:nth-child(2),
