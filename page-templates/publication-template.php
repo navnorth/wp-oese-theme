@@ -37,12 +37,12 @@ if (get_field('select_file')){
                 <div class="row publication-buttons">
                     <?php if ($download_button): ?>
                     <div class="col-md-7">
-                        <a href="<?php echo $download_link; ?>" target="_blank" class="btn"><i class="fas fa-download"></i> <span>DOWNLOAD</span></a>
+                        <a href="<?php echo $download_link; ?>" target="_blank" class="btn" onclick="oese_trackEvent('Publication','click','Download','<?php echo $download_link; ?>')><i class="fas fa-download"></i> <span>DOWNLOAD</span></a>
                     </div>
                     <?php endif; ?>
                     <?php if ($share_button): ?>
                     <div class="col-md-5">
-                        <a href="#" class="btn"><i class="fas fa-share-alt"></i> <span>SHARE</span></a>
+                        <a href="#" class="btn" onclick="oese_trackEvent('Publication','click','Share','<?php echo $post->post_title; ?>')"><i class="fas fa-share-alt"></i> <span>SHARE</span></a>
                     </div>
                     <?php endif; ?>
                 </div>
