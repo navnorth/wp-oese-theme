@@ -1586,6 +1586,7 @@ h2.trending-now-heading {
     width: 100%;
     line-height: 22px;
 }
+.program-block-inner-section.table { overflow:hidden; border-radius:0; }
 .program-block-title{
     font-size: 14px !important;
     color: #4f4f4f !important;
@@ -1601,6 +1602,9 @@ h2.trending-now-heading {
     line-height: 24px;
     word-break: break-word;
 }
+.program-block-inner-section.table tr.program-list-detail { margin-top:0; width:100%; margin-left:0; margin-right:0; padding:.75rem; }
+.program-block-inner-section.table tr.program-list-detail td.col-md-5 { float:none; width: 45%;}
+.program-block-inner-section.table tr.program-list-detail td.col-md-7 { float:none; width: 55%; }
 /*Program Information Block END*/
 
 /*Office Page Css START*/
@@ -1692,6 +1696,7 @@ ul.tile-links-wrapper li { list-style-type:none; }
 .search-results .search-summary.col-md-9 { float:right; }
 .search-results article { overflow:hidden; }
 /** End of Search Result Styles **/
+.hidden { display:none; }
 @media (min-width: 1200px) {
     .container{
         max-width: 1200px;

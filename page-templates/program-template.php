@@ -24,23 +24,28 @@ get_header();
                     ?>
                     <!--Program Blocks START-->
                     <?php  if( have_rows('program_info') ): ?>
-                        <div class="program-block-section">
-                            <div class="gray-background-color program-block-inner-section">
+                        <div class="program-block-section table-responsive">
+                            <table class="gray-background-color program-block-inner-section table">
+                                <caption class="hidden">Program Information</caption>
+                                <tr class="hidden">
+                                    <td scope="col"><?php _e("Program Title", WP_OESE_THEME_SLUG); ?></td>
+                                    <td scope="col"><?php _e("Program Description", WP_OESE_THEME_SLUG); ?></td>
+                                </tr>
                                 <?php
                                     while ( have_rows('program_info') ) : the_row();
                                       $programLabel =  get_sub_field('program_title');
                                       $programDescription =  get_sub_field('program_description');
                                 ?>
-                                <div class="row program-list-detail">
-                                    <div class="col-md-5">
+                                <tr class="row program-list-detail">
+                                    <td class="col-md-5">
                                         <label class="program-block-title"><?php echo $programLabel;?></label>
-                                    </div>
-                                    <div class="col-md-7">
+                                    </td>
+                                    <td class="col-md-7">
                                         <p class="program-block-description"><?php echo $programDescription;?></p>
-                                    </div>
-                                </div>
+                                    </td>
+                                </tr>
                              <?php endwhile; ?>
-                            </div>
+                            </table>
                         </div>
                     <?php endif; ?>
                     <!--Program Blocks END-->
