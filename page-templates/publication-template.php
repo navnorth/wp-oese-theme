@@ -59,13 +59,15 @@ if (get_field('select_file')){
                 <?php endwhile; ?>
             </div>
         </div>
+        <?php
+        if ($file && $file_detail['title']=="PDF"){ ?>
         <div class="row publication-embed">
-            <?php
-            if ($file && $file_detail['title']=="PDF"){
-                $embed_code = oese_pdf_embed_code($file);
-                echo $embed_code;
-            }
-            ?>
+            <?php 
+            $embed_code = oese_pdf_embed_code($file);
+            echo $embed_code; ?>
         </div>
+        <?php
+        }
+        ?>
     </div>
 <?php get_footer(); ?>
