@@ -1607,6 +1607,10 @@ h2.trending-now-heading {
 .program-block-inner-section.table tr.program-list-detail td.col-md-7 { float:none; width: 55%; }
 /*Program Information Block END*/
 
+/** Publication Template Styles **/
+.publication-embed { width:100%; min-height:500px; }
+/** End of Publication Template Styles **/
+
 /*Office Page Css START*/
 .sub-nav-icons i{
     margin-right: 10px;

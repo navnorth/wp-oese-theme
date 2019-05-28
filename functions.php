@@ -1746,3 +1746,44 @@ function oese_content_search_form($form){
   $form = return_get_template_part('content', 'searchform');
   return $form;
 }
+
+// PDF Embed Code using Google Viewer
+function oese_pdf_embed_code($url){
+  $final_url = "http://docs.google.com/viewer?url=".$url."&embedded=true";
+  $embed_code = '<iframe class="oer-pdf-viewer" width="100%" src="'.$final_url.'"></iframe>';
+  return $embed_code;
+}
+
+
+function oese_file_type_from_url($url, $class = 'fa-1x') {
+  if(empty($url)) {
+    return false;
+  }
+
+  $response = array();
+  $oese_urls = explode('.', $url);
+  $file_type = strtolower(end($oese_urls));
+  if(in_array($file_type, ['jpg', 'jpeg', 'gif', 'png'])) {
+    $response['title'] = 'Image';
+    $response['icon'] = '<i class="far fa-file-image '.$class.'"></i>';
+  } elseif($file_type == 'pdf') {
+    $response['title'] = 'PDF';
+    $response['icon'] = '<i class="far fa-file-pdf '.$class.'"></i>';
+  } elseif(in_array($file_type, ['txt'])) {
+    $response['title'] = 'Plain Text';
+    $response['icon'] = '<i class="far fa-file-alt '.$class.'"></i>';
+  } elseif(in_array($file_type, ['7z', 'zip', 'rar'])) {
+    $response['title'] = 'Archive';
+    $response['icon'] = '<i class="far fa-file-archive '.$class.'"></i>';
+  } elseif(in_array($file_type, ['docx', 'doc'])) {
+    $response['title'] = 'Microsoft Document';
+    $response['icon'] = '<i class="far fa-file-word '.$class.'"></i>';
+  } elseif(in_array($file_type, ['xls'])) {
+    $response['title'] = 'Microsoft Excel';
+    $response['icon'] = '<i class="far fa-file-excel '.$class.'"></i>';
+  } elseif(in_array($file_type, ['ppt'])) {
+    $response['title'] = 'Microsoft Powerpoint';
+    $response['icon'] = '<i class="far fa-file-powerpoint '.$class.'"></i>';
+  }
+  return $response;
+}

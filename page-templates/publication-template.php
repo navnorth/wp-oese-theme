@@ -6,7 +6,14 @@
 global $post;
 
 $page_id = get_the_ID();
+$file = null;
+$file_detail = null;
 get_header();
+
+if (get_field('select_file')){
+    $file = get_field('select_file');
+    $file_detail = oese_file_type_from_url($file,'fa-6x');
+}
 ?>
     <!--Publication Template Top Section START-->
     <div id="content" class="row custom-common-padding office-template">
@@ -18,6 +25,10 @@ get_header();
 
                     echo "<div class='left-section-featured-image'>
                             <img src=".$image[0]." alt=".get_the_title($page_id)."></div>";
+                } else {
+                    if ($file) {
+                        echo "<div class='left-section-featured-image'><span>".$file_detail['icon']."</span></div>";
+                    }
                 }
                 $download_button = get_field('show_download_button');
                 $share_button = get_field('show_share_button');
@@ -49,7 +60,12 @@ get_header();
             </div>
         </div>
         <div class="row publication-embed">
-            
+            <?php
+            if ($file && $file_detail['title']=="PDF"){
+                $embed_code = oese_pdf_embed_code($file);
+                echo $embed_code;
+            }
+            ?>
         </div>
     </div>
 <?php get_footer(); ?>
