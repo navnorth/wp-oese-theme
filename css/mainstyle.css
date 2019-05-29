@@ -1625,10 +1625,10 @@ h2.trending-now-heading {
     word-break: break-word;
 }
 .program-block-inner-section.table tr.program-list-detail { margin-top:0; width:100%; margin-left:0; margin-right:0; padding:.2rem .5rem; background-color:#f1f1f1 !important; }
-.program-block-inner-section.table tr.program-list-detail:nth-child(2) { padding-top:7px;}
+.program-block-inner-section.table tr.program-list-detail:nth-child(2) { padding-top:10px;}
 .program-block-inner-section.table tr.program-list-detail td.col-md-5 { float:none; max-width: 38%; border-top:none; padding:0 5px !important; }
 .program-block-inner-section.table tr.program-list-detail td.col-md-7 { float:none; max-width: 62%; border-top:none; padding:0 5px !important; }
-.program-block-inner-section.table tr.program-list-detail:last-child { padding-bottom:7px; }
+.program-block-inner-section.table tr.program-list-detail:last-child { padding-bottom:10px; }
 /*Program Information Block END*/
 
 /** Publication Template Styles **/
