@@ -17,7 +17,10 @@ color palette:
 
 @font-face{font-family:'Helvetica Neue';
 	src:url(../fonts/helvetica_neue/helveticaneue.ttf)format('truetype');}
-
+a:focus {
+    color: #0056b3;
+    text-decoration: underline;
+}
 .screen-reader-text {
     border: 0;
     clip: rect(1px, 1px, 1px, 1px);
