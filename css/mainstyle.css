@@ -440,7 +440,7 @@ ul.tour_dates li {
     font-size: 14px;
 }
 .secondary-navigation-menu.sidebar-links .secondary-navigation-menu-list li:hover,
-.secondary-navigation-menu.sidebar-links .secondary-navigation-menu-list li:focus{
+.secondary-navigation-menu.sidebar-links .secondary-navigation-menu-list li a:focus{
     cursor: pointer;
     background: #f1f1f1;
 }
@@ -1099,7 +1099,7 @@ a {
     background: #243C54;
 }
 .secondary-navigation-menu-list li:hover a,
-.secondary-navigation-menu-list li:focus a{
+.secondary-navigation-menu-list li a:focus{
     text-decoration: underline;
 }
 .secondary-navigation-menu.contact-box .secondary-navigation-menu-list li:hover,
