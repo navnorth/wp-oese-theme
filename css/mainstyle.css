@@ -1213,7 +1213,7 @@ a {
     position: relative;
 }
 .custom-image-main-section:hover .custom-image-heading,
-.custom-image-main-section:focus .custom-image-heading{
+.custom-image-main-section a:focus .custom-image-heading{
     text-decoration: underline;
     background: #002649;
     color: #fff;
@@ -1439,7 +1439,7 @@ a.oese-logo-home {
     text-transform: uppercase;
 }
 .custom-home-image-section:hover .custom-home-image-heading,
-.custom-home-image-section:focus .custom-home-image-heading{
+.custom-home-image-section a:focus .custom-home-image-heading{
     text-decoration: underline;
     background: #002649;
     color: #fff;
