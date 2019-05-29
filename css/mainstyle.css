@@ -1732,6 +1732,21 @@ ul.tile-links-wrapper li { list-style-type:none; }
 .search-results .archive_image.col-md-3 { float:left; }
 .search-results .search-summary.col-md-9 { float:right; }
 .search-results article { overflow:hidden; }
+.search-label {
+    margin-bottom: 0;
+    width: 1px;
+    height: 1px;
+    text-indent: -9999px;
+}
+.search-button-label {
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+    padding: 0;
+    border: 0;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
 /** End of Search Result Styles **/
 .hidden { display:none; }
 @media (min-width: 1200px) {
