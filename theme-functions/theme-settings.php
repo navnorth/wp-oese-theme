@@ -16,11 +16,13 @@ if (!current_user_can('edit_theme_options')) {
         <div class="row">
             <fieldset>
                 <legend><h3><?php _e('Modal', WP_OESE_THEME_SLUG); ?></h3></legend>
-		<?php
-		    do_settings_fields("theme_settings_page", "wp_oese_theme_settings");
-		    submit_button();
-		?>
+		<?php do_settings_fields("theme_settings_page", "wp_oese_theme_settings"); ?>
             </fieldset>
+	    <fieldset>
+		<legend><h3><?php _e('Google Analytics', WP_OESE_THEME_SLUG); ?></h3></legend>
+		<?php do_settings_fields("theme_settings_page", "wp_oese_ga_settings"); ?>
+	    </fieldset>
+	    <?php submit_button(); ?>
         </div>
     </form>
 </div>

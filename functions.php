@@ -1412,10 +1412,33 @@ function wp_oese_theme_settings_page() {
     )
   );
 
+   //Create GA Settings Section
+  add_settings_section(
+    'wp_oese_ga_settings',
+    __('GA Settings', WP_OESE_THEME_SLUG),
+    'wp_oese_theme_settings_callback',
+    $page
+  );
+  
+  //Add GA Property ID Settings field
+  add_settings_field(
+    'wp_oese_theme_ga_propertyid',
+    '',
+    'wp_oese_theme_settings_field',
+    $page,
+    'wp_oese_ga_settings',
+    array(
+      'uid' => 'wp_oese_theme_ga_propertyid',
+      'type' => 'textbox',
+      'name' =>  __('Property ID: ', WP_OESE_THEME_SLUG)
+    )
+  );
+  
   register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_heading' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_content' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_enable_redirect' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_contact_page' );
+  register_setting( 'theme_settings_page' , 'wp_oese_theme_ga_propertyid' );
 }
 add_action( 'admin_init' , 'wp_oese_theme_settings_page' );
 
