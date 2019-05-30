@@ -1749,6 +1749,7 @@ ul.tile-links-wrapper li { list-style-type:none; }
 }
 /** End of Search Result Styles **/
 /** Publication Shortcode Styles **/
+.publication-shortcode-block { background:#f1f1f1; }
 .publication-shortcode-thumbnail {
     padding: 35px;
     text-align: center;

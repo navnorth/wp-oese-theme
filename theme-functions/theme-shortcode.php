@@ -903,10 +903,9 @@ function oese_publication_func($attribute){
 	
 	$return = '<div class="publication-shortcode-block">';
 	if ($pub_details){
-		var_dump($pub_details);
 		$type = oese_file_type_from_url($src, 'fa-3x');
 		if (isset($type['icon']))
-		$return .= '<div class="col-md-2 publication-shortcode-thumbnail">';
+		$return .= '<div class="col-md-3 publication-shortcode-thumbnail">';
 		$return .= '<a href="'.$src.'" target="_blank">'.$type['icon'].'</a>';
 		$return .= '</div>';
 		$return .= '<div class="col-md-9 publication-shortcode-details">';
