@@ -131,21 +131,23 @@ if($action == "show_popup")
 							</div>
 						</div>
 						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="audience_link">
-						<div class="oert_snglimgtiny" style="height:70px; vertical-align:middle;">
-							<button class="btn custom-button" style="margin-top:30px;">button</button>
-						</div>
-						<div class="oert_snglttltiny">
-							Audience Link
-						</div>
-					</div>
-						<!--<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="oet_story">
-							<div class="oert_snglimgtiny">
-								<img src="'.get_stylesheet_directory_uri().'/tinymce_button/images/featured_area.png">
+							<div class="oert_snglimgtiny" style="height:70px; vertical-align:middle;">
+								<button class="btn custom-button" style="margin-top:30px;">button</button>
 							</div>
 							<div class="oert_snglttltiny">
-								Story Embed
+								Audience Link
 							</div>
-						</div>-->
+						</div>
+						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="oese_publication">
+							<div class="oert_snglimgtiny">
+								<img src="'.get_stylesheet_directory_uri().'/tinymce_button/images/callout-box.png">
+							</div>
+							<div class="oert_snglttltiny">
+								Publication
+							</div>
+						</div>
+					</div>
+					<div class="oet_sngltinyrow">
 						<div class="submit">
 							<input type="button" id="oet-tinymce-submit" onclick="placeoetshortcode();" class="button-primary" value="Insert Shortcode" name="submit" />
 						</div>
@@ -229,6 +231,9 @@ if($action == "show_popup")
 					   break;
 					case "audience_link":
 						var shortcode = "[audience_link url=\'\']Audience name goes here[/audience_link]";
+						break;
+				   case "oese_publication":
+						var shortcode = "[oese_publication src=\'\']";
 						break;
 				   default:
 				   	   var shortcode = "";
