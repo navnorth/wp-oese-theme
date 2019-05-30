@@ -35,7 +35,7 @@
                                     <a target="<?php echo $target; ?>" href="<?php echo $cLink ?>">
                                         <div class="custom-image-thumbnail">
                                             <div>
-                                                <img src="<?php echo $cImage ;?>" class="img-responsive img-thumbnail-square">
+                                                <img src="<?php echo $cImage ;?>" alt="<?php echo $cTitle; ?>" class="img-responsive img-thumbnail-square">
                                             </div>
                                         </div>
                                         <div class="custom-home-image-heading text-center">
@@ -50,7 +50,7 @@
                     </div>
                 </div>
             <?php endif; ?>
-        </div>
+        <!--</div>-->
 
 
         <!-- Div seperator-->

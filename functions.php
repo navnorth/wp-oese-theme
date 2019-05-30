@@ -1094,7 +1094,7 @@ register_nav_menu( 'sub-footer', __( 'Sub Footer', WP_OESE_THEME_SLUG ) );
             $resourceLink =  get_sub_field('resource_link');
             $externaLink =  get_sub_field('external_link');
             $target = ($externaLink ? "_blank" : "_self");
-            $output.= "<li><a ". $target." href=".$resourceLink.">".$resourceLabel."</a></li>";
+            $output.= "<li><a target='". $target."' href='".$resourceLink."'>".$resourceLabel."</a></li>";
           endwhile;
         $output.=  "</ul>";
         $output.="</div>";
@@ -1412,10 +1412,33 @@ function wp_oese_theme_settings_page() {
     )
   );
 
+   //Create GA Settings Section
+  add_settings_section(
+    'wp_oese_ga_settings',
+    __('GA Settings', WP_OESE_THEME_SLUG),
+    'wp_oese_theme_settings_callback',
+    $page
+  );
+  
+  //Add GA Property ID Settings field
+  add_settings_field(
+    'wp_oese_theme_ga_propertyid',
+    '',
+    'wp_oese_theme_settings_field',
+    $page,
+    'wp_oese_ga_settings',
+    array(
+      'uid' => 'wp_oese_theme_ga_propertyid',
+      'type' => 'textbox',
+      'name' =>  __('Property ID: ', WP_OESE_THEME_SLUG)
+    )
+  );
+  
   register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_heading' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_content' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_enable_redirect' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_contact_page' );
+  register_setting( 'theme_settings_page' , 'wp_oese_theme_ga_propertyid' );
 }
 add_action( 'admin_init' , 'wp_oese_theme_settings_page' );
 
@@ -1542,13 +1565,12 @@ function csvImportMediaForm(){
   function getUrlContents ($url) {
     $array = get_headers($url);
     $string = $array[0];
-    if(strpos($string,"200") || strpos($string,"301") || strpos($string,"302")){
+    if(strpos($string,"200")){
       if (function_exists('curl_exec')){ 
           $conn = curl_init($url);
           curl_setopt($conn, CURLOPT_SSL_VERIFYPEER, true);
           curl_setopt($conn, CURLOPT_FRESH_CONNECT,  true);
           curl_setopt($conn, CURLOPT_RETURNTRANSFER, 1);
-          curl_setopt($conn, CURLOPT_FOLLOWLOCATION, true);
           $url_get_contents_data = (curl_exec($conn));
           curl_close($conn);
       }elseif(function_exists('file_get_contents') && !$url_get_contents_data){
@@ -1745,3 +1767,85 @@ add_filter( 'wpcf7_form_elements', function( $form ) {
   $form = str_replace( 'Your Subject Here', $page_name, $form );
   return $form;
 } );
+
+function return_get_template_part($slug, $name=null) {
+
+  ob_start();
+  get_template_part($slug, $name);    
+  $content = ob_get_contents();
+  ob_end_clean();
+
+  return $content;
+}
+
+function oese_content_search_form($form){
+  $form = return_get_template_part('content', 'searchform');
+  return $form;
+}
+
+// PDF Embed Code using Google Viewer
+function oese_pdf_embed_code($url){
+  $final_url = "https://docs.google.com/viewer?url=".$url."&embedded=true";
+  $embed_code = '<iframe class="oer-pdf-viewer" width="100%" src="'.$final_url.'"></iframe>';
+  return $embed_code;
+}
+
+
+function oese_file_type_from_url($url, $class = 'fa-1x') {
+  if(empty($url)) {
+    return false;
+  }
+
+  $response = array();
+  $oese_urls = explode('.', $url);
+  $file_type = strtolower(end($oese_urls));
+  if(in_array($file_type, ['jpg', 'jpeg', 'gif', 'png'])) {
+    $response['title'] = 'Image';
+    $response['icon'] = '<i class="far fa-file-image '.$class.'"></i>';
+  } elseif($file_type == 'pdf') {
+    $response['title'] = 'PDF';
+    $response['icon'] = '<i class="far fa-file-pdf '.$class.'"></i>';
+  } elseif(in_array($file_type, ['txt'])) {
+    $response['title'] = 'Plain Text';
+    $response['icon'] = '<i class="far fa-file-alt '.$class.'"></i>';
+  } elseif(in_array($file_type, ['7z', 'zip', 'rar'])) {
+    $response['title'] = 'Archive';
+    $response['icon'] = '<i class="far fa-file-archive '.$class.'"></i>';
+  } elseif(in_array($file_type, ['docx', 'doc'])) {
+    $response['title'] = 'Microsoft Document';
+    $response['icon'] = '<i class="far fa-file-word '.$class.'"></i>';
+  } elseif(in_array($file_type, ['xls'])) {
+    $response['title'] = 'Microsoft Excel';
+    $response['icon'] = '<i class="far fa-file-excel '.$class.'"></i>';
+  } elseif(in_array($file_type, ['ppt'])) {
+    $response['title'] = 'Microsoft Powerpoint';
+    $response['icon'] = '<i class="far fa-file-powerpoint '.$class.'"></i>';
+  }
+  return $response;
+}
+
+function oese_ga_script() {
+  $script = "";
+  $ga_id = get_option('wp_oese_theme_ga_propertyid');
+  if ($ga_id){
+    $script .= "<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+    ga('create', '".$ga_id."', 'auto');
+    ga('send', 'pageview');
+    </script>";
+  }
+  return $script;
+}
+
+// Get attachment ID by url
+function oese_file_id_by_url($url) {
+	global $wpdb;
+        
+	$file = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $url ));
+        
+        return $file[0]; 
+}

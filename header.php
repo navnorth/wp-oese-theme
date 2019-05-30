@@ -7,7 +7,8 @@
 <html <?php language_attributes(); ?>>
 <head>
     <!-- force IE to disable compatibility mode on IE9+, due to ed.gov intranet... this must be first in HEAD -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge;IE=11;IE=10;IE=9"/>
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge;IE=11;IE=10;IE=9" />-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <meta charset="<?php bloginfo('charset'); ?>"/>
     <meta name="viewport" content="width=device-width"/>
@@ -17,6 +18,7 @@
     <link rel="profile" href="http://gmpg.org/xfn/11"/>
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>"/>
     <?php wp_head(); ?>
+    <?php echo oese_ga_script(); ?>
 </head>
 
 <!--[if IE 7]>
@@ -48,24 +50,22 @@
                          alt="Office of Elementary and Secondary Education" class="svg-replace" id="header_logo"/>
                 </a>
             </div>
-
             <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-12 offset-xl-2 offset-lg-2 offset-md-1 d-sm-inline-block d-block d-md-block d-lg-block d-xl-block">
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-6 col-6 topbar-search-section">
                         <div class="form-group has-feedback gray_bg">
-
                             <form id="searchform" class="searchform" action="<?php echo site_url(); ?>" method="get"
                                   role="search">
                                 <div class="input-group to-focus">
+                                    <label class="search-label" for="inputSuccess2">Search:</label>
                                     <input type="text" class="form-control top-search-input" id="inputSuccess2" placeholder="Search" name="s"/>
                                     <div class="input-group-append">
                                         <button class="btn btn-secondary custom-search-btn" type="button" onClick="jQuery(this).closest('form').submit()">
-                                            <i class="fas fa-search"></i>
+                                            <i class="fas fa-search"></i><span class="search-button-label">Search</span>
                                         </button>
                                     </div>
                                 </div>
                             </form>
-
                         </div>
                     </div>
                 </div>
