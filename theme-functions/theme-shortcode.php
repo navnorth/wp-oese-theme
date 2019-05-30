@@ -881,5 +881,37 @@ function audience_link_func($attribute, $content = null) {
 
 	return $return;
  }
+ 
+ /**
+  * Publication Shortcode
+  * Shortcode Example : [oese_publication src=""]
+  */
+add_shortcode( 'oese_publication' , 'oese_publication_func' );
+function oese_publication_func($attribute){
+	$pub_id = 0;
 
+	if (is_array($attribute))
+		extract($attribute);
+
+	if ($src)
+		$pub_id = oese_file_id_by_url($src);	
+	
+	// Get File Details
+	if ($pub_id>0){
+		$pub_details = wp_prepare_attachment_for_js($pub_id);
+	}
+	
+	$return = '<div class="publication-shortcode-block">';
+	if ($pub_details){
+		$type = oese_file_type_from_url($src, 'fa-3x');
+		if (isset($type['icon']))
+		$return .= '<div class="col-md-2 publication-shortcode-thumbnail">';
+		$return .= '<a href="'.$src.'" target="_blank">'.$type['icon'].'</a>';
+		$return .= '</div>';
+		$return .= '<div class="col-md-9 publication-shortcode-details">';
+		$return .= '</div>';
+	}
+	$return .= '</div>';
+	return $return;
+}
 ?>

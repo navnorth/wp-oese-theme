@@ -1748,6 +1748,13 @@ ul.tile-links-wrapper li { list-style-type:none; }
     overflow: hidden;
 }
 /** End of Search Result Styles **/
+/** Publication Shortcode Styles **/
+.publication-shortcode-thumbnail {
+    padding: 25px;
+    text-align: center;
+    background: rgba(0,0,0,0.5);
+}
+/** End of Publication Shortcode Styles **/
 .hidden { display:none; }
 @media (min-width: 1200px) {
     .container{

@@ -1827,3 +1827,12 @@ function oese_ga_script() {
   }
   return $script;
 }
+
+// Get attachment ID by url
+function oese_file_id_by_url($url) {
+	global $wpdb;
+        
+	$file = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $url ));
+        
+        return $file[0]; 
+}
