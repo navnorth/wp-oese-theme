@@ -1750,10 +1750,26 @@ ul.tile-links-wrapper li { list-style-type:none; }
 /** End of Search Result Styles **/
 /** Publication Shortcode Styles **/
 .publication-shortcode-thumbnail {
-    padding: 25px;
+    padding: 35px;
     text-align: center;
     background: rgba(0,0,0,0.5);
+    float:left;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
+.publication-shortcode-details {
+    background: #f1f1f1;
+    padding:15px 25px;
+    float:left;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.publication-shortcode-details h4 a { font-weight:bold; text-decoration:none; }
+.publication-shortcode-details h4 a:hover, .publication-shortcode-details h4 a:focus { text-decoration:underline; }
+.publication-shortcode-button-row { text-align:right; }
+.publication-shortcode-button { background:#1f5c99; color:#ffffff; text-transform:uppercase; text-decoration:none; }
+.publication-shortcode-button:hover,
+.publication-shortcode-button:focus{ color:#ffffff !important; text-decoration:underline;  }
 /** End of Publication Shortcode Styles **/
 .hidden { display:none; }
 @media (min-width: 1200px) {
