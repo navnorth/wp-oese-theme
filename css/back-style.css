@@ -86,3 +86,5 @@
 #wp-oese-theme-settings fieldset .form-group,
 #wp-oese-theme-settings fieldset .wp-editor-wrap{ margin-bottom:15px; }
 #wp-oese-theme-settings fieldset label.inline { display:inline; }
+.attachment-compat .compat-attachment-fields .compat-field-category { max-height:350px; overflow:scroll; }
+.attachment-compat .compat-attachment-fields .compat-field-post_tag { max-height:250px; overflow:scroll; }
