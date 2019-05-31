@@ -36,13 +36,14 @@ if (get_field('select_file')){
                 ?>
                 <div class="row publication-buttons">
                     <?php if ($download_button): ?>
-                    <div class="col-md-7">
+                    <div class="col-md-7 oese-pubdownload-section">
                         <a href="<?php echo $download_link; ?>" target="_blank" class="btn" onclick="oese_trackEvent('Publication','click','Download','<?php echo $download_link; ?>')><i class="fas fa-download"></i> <span>DOWNLOAD</span></a>
                     </div>
                     <?php endif; ?>
                     <?php if ($share_button): ?>
-                    <div class="col-md-5">
-                        <a href="#" class="btn" onclick="oese_trackEvent('Publication','click','Share','<?php echo $post->post_title; ?>')"><i class="fas fa-share-alt"></i> <span>SHARE</span></a>
+                    <div class="col-md-5 oese-pubshare-section">
+                        <a href="#" class="btn" data-toggle="collapse"  data-target="#ssba-share-buttons" onclick="oese_trackEvent('Publication','click','Share','<?php echo $post->post_title; ?>')"  aria-expanded="false" aria-controls="ssba-share-buttons"><i class="fas fa-share-alt"></i> <span>SHARE</span></a>
+                        <?php get_template_part('ssba'); ?>
                     </div>
                     <?php endif; ?>
                 </div>
