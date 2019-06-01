@@ -1771,6 +1771,14 @@ ul.tile-links-wrapper li { list-style-type:none; }
 .publication-shortcode-button { background:#1f5c99; color:#ffffff; text-transform:uppercase; text-decoration:none; }
 .publication-shortcode-button:hover,
 .publication-shortcode-button:focus{ color:#ffffff !important; text-decoration:underline;  }
+.publication-buttons { position:relative; }
+#ssba-share-buttons {
+    position: absolute;
+    margin-top: 10px;
+    width: 100%;
+}
+#ssba-share-buttons img { width:32px; height:32px; }
+#ssba-share-buttons  a { text-decoration:none; }
 /** End of Publication Shortcode Styles **/
 .hidden { display:none; }
 @media (min-width: 1200px) {
