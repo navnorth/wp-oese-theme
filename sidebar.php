@@ -10,10 +10,10 @@
  */
 ?>
 
-	<?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
+	<?php //if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
 		<div class="col-md-4">
 			<div id="secondary" class="widget-area" role="complementary">
 				<?php getSidebarLinks(); ?>
 			</div><!-- #secondary -->
 		</div>
-	<?php endif; ?>
+	<?php //endif; ?>
