@@ -12,8 +12,8 @@
  */
 
 get_header();
-$col_class = "col-md-8";
-if (is_active_sidebar('sidebar-1'))
+$col_class = "col-md-12";
+if( have_rows('sidebar_links') )
     $col_class = "col-md-8";
 ?>
 
