@@ -20,7 +20,7 @@ get_header();
                             $img_alt = get_post_meta(get_post_thumbnail_id($page_id), '_wp_attachment_image_alt', true);
                             
                             echo "<div class='left-section-featured-image'>
-                                    <img src=".$image[0]." alt=".$img_alt."></div>";
+                                    <img src='".$image[0]."' alt='".$img_alt."'></div>";
                         }
                     ?>
                     <!--Program Blocks START-->
