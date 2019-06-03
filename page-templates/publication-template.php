@@ -22,9 +22,10 @@ if (get_field('select_file')){
                 <?php
                 if ( has_post_thumbnail() ) {
                     $image = wp_get_attachment_image_src( get_post_thumbnail_id($page_id), 'single-post-thumbnail' );
-
+                    $img_alt = get_post_meta(get_post_thumbnail_id($page_id), '_wp_attachment_image_alt', true);
+                    
                     echo "<div class='left-section-featured-image'>
-                            <img src=".$image[0]." alt=".get_the_title($page_id)."></div>";
+                            <img src=".$image[0]." alt=".$img_alt."></div>";
                 } else {
                     if ($file) {
                         echo "<div class='left-section-featured-image'><span class='publication-no-featured-image'>".$file_detail['icon']."</span></div>";
