@@ -1847,5 +1847,6 @@ function oese_file_id_by_url($url) {
         
 	$file = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $url ));
         
-        return $file[0]; 
+        if ($file)
+          return $file[0]; 
 }

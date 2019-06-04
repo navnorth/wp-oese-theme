@@ -2,6 +2,7 @@
 /**
  * Template Name: Program Template
  */
+include_once( get_stylesheet_directory()."/classes/oese_mobile_detect.php" );
 
 global $post;
 
@@ -61,7 +62,23 @@ get_header();
                     ?>
                 </div>
             </div>
-            <div class="col-md-4">
+            <?php
+            $detect = new oese_mobile_detect();
+            if ($detect->isMobile()){
+            ?>
+            <div class="col-sm-12 program-sidebar">
+                <?php echo contactInformationBlock() ?>
+
+                <div class="spacer" style="height:20px;"></div>
+
+                <?php get_template_part( 'content', 'resources' ); ?>
+
+                <?php echo getSidebarLinks(); ?>
+            </div>
+            <?php
+            } else {
+            ?>
+            <div class="col-md-4 program-sidebar">
                 <?php echo contactInformationBlock() ?>
 
                 <div class="spacer" style="height:20px;"></div>
@@ -71,6 +88,7 @@ get_header();
                 <?php echo getSidebarLinks(); ?>
                 
             </div>
+            <?php } ?>
         </div>
         <!--Program Landing Template Top Section END-->
 

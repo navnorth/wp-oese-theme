@@ -2001,6 +2001,32 @@ ul.tile-links-wrapper li { list-style-type:none; }
     .navi_bg:hover, .navi_bg:focus { background:none; }
     .navi_bg { border-top:none;margin-top: -10px; margin-right: -10px; }
     .hdr { position:relative;}
+    .program-block-inner-section.table tr.program-list-detail { margin-bottom:20px; }
+    .program-block-inner-section.table tr.program-list-detail .col-md-5 { max-width:100% !important; }
+    .program-block-inner-section.table tr.program-list-detail .col-md-7 { max-width:100% !important; }
+    .page-template-program-template #content.custom-common-padding { flex-wrap:wrap-reverse; }
+    .program-sidebar { position:relative; float:none; }
+    .secondary-navigation-menu.contact-box {
+	position: absolute;
+	width: 100%;
+	top: 0;
+    }
+    .secondary-navigation-menu.contact-box .secondary-navigation-menu-header {
+	width: 50%;
+	float: left;
+    }
+    .secondary-navigation-menu.sidebar-links {
+	position: absolute;
+	width: 100%;
+	top: 0;
+	right: 0;
+	margin: 10px 0;
+    }
+    .secondary-navigation-menu.sidebar-links .secondary-navigation-menu-header {
+	width: 50%;
+	float: right;
+	padding: 0.9375rem 1.2rem;
+    }
 }
 @media (max-width: 550px){
     .slideshow_container, .slideshow_container .slideshow_content { height:235px !important; }
