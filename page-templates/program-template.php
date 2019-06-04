@@ -67,13 +67,33 @@ get_header();
             if ($detect->isMobile()){
             ?>
             <div class="col-sm-12 program-sidebar">
-                <?php echo contactInformationBlock() ?>
-
-                <div class="spacer" style="height:20px;"></div>
-
-                <?php get_template_part( 'content', 'resources' ); ?>
-
-                <?php echo getSidebarLinks(); ?>
+                <ul class="nav nav-tabs" id="mobileSidebarTab" role="tablist">
+                    <?php
+                    $contactTitle = get_field("ci_title");
+                    if ($contactTitle):
+                    ?>
+                    <li class="nav-item">
+                        <a class="nav-link active" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="true"><?php echo $contactTitle; ?></a>
+                    </li>
+                    <?php
+                    endif;
+                    $sidebar_title = get_field('sidebar_box_title');
+                    if ($sidebar_title):
+                    ?>
+                    <li class="nav-item">
+                        <a class="nav-link" id="menu-tab" data-toggle="tab" href="#menu" role="tab" aria-controls="menu" aria-selected="false"><?php echo $sidebar_title; ?></a>
+                    </li>
+                    <?php endif; ?>
+                </ul>
+                <div class="tab-content" id="mobileSidebarTabContent">
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                        <?php echo contactInformationBlock() ?>
+                    </div>
+                    <div class="tab-pane fade" id="menu" role="tabpanel" aria-labelledby="menu-tab">
+                        <?php get_template_part( 'content', 'resources' ); ?>
+                        <?php echo getSidebarLinks(); ?>
+                    </div>
+                </div>
             </div>
             <?php
             } else {
