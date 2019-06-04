@@ -1081,10 +1081,13 @@ register_nav_menu( 'sub-footer', __( 'Sub Footer', WP_OESE_THEME_SLUG ) );
 /**
 * Getting Populars post from Pages OESE Theme
 */
-  function getSidebarLinks(){
+  function getSidebarLinks($showHeader=true){
 
     if( have_rows('sidebar_links') ):
-      $output = "<div class='secondary-navigation-menu sidebar-links'><div class='secondary-navigation-menu-header'><h2>". get_field('sidebar_box_title')."</h2></div>";
+      $output = "<div class='secondary-navigation-menu sidebar-links'>";
+      
+      if ($showHeader==true)
+        $output .= "<div class='secondary-navigation-menu-header'><h2>". get_field('sidebar_box_title')."</h2></div>";
       // check if the repeater field has rows of data
 
         $output.=  "<ul class='secondary-navigation-menu-list'>";
@@ -1197,7 +1200,7 @@ function oeseBreadcrumb() {
 }
 
 
-function contactInformationBlock(){
+function contactInformationBlock($showHeader=true){
   global $post;
   
   $contactTitle = get_field("ci_title");
@@ -1224,11 +1227,14 @@ function contactInformationBlock(){
 
   $output = "";
   if(!empty($contactAddress) || (!empty($contactPhone)) || (!empty($contactFax)) || (!empty($contactEmailLink))){
-      $output = '<div class="secondary-navigation-menu contact-box">
-                        <div class="secondary-navigation-menu-header">
+      $output = '<div class="secondary-navigation-menu contact-box">';
+      
+      if ($showHeader==true){
+          $output .=   '<div class="secondary-navigation-menu-header">
                             <h2>'.$contactTitle.'</h2>
-                        </div>
-                        <ul class="secondary-navigation-menu-list">';
+                        </div>';
+      }
+      $output .=  '<ul class="secondary-navigation-menu-list">';
 
      if(!empty($contactAddress)){
        $output.=  '<li>'.$contactAddress.'</li>';

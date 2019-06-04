@@ -87,11 +87,11 @@ get_header();
                 </ul>
                 <div class="tab-content" id="mobileSidebarTabContent">
                     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                        <?php echo contactInformationBlock() ?>
+                        <?php echo contactInformationBlock(false) ?>
                     </div>
                     <div class="tab-pane fade" id="menu" role="tabpanel" aria-labelledby="menu-tab">
                         <?php get_template_part( 'content', 'resources' ); ?>
-                        <?php echo getSidebarLinks(); ?>
+                        <?php echo getSidebarLinks(false); ?>
                     </div>
                 </div>
             </div>
