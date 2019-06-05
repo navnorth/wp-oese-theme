@@ -2019,7 +2019,7 @@ ul.tile-links-wrapper li { list-style-type:none; }
     .program-sidebar { position:relative; float:none; margin-bottom:30px; padding-left: 0px; padding-right: 0px; }
     #mobileSidebarTab.nav-tabs { border-bottom:none; background: #004285; }
     #mobileSidebarTab.nav-tabs .nav-item { width:50%; }
-    #mobileSidebarTab.nav-tabs .nav-item.show .nav-link, #mobileSidebarTab.nav-tabs .nav-link.active,
+    #mobileSidebarTab.nav-tabs .nav-item.show .nav-link,
     #mobileSidebarTab.nav-tabs .nav-item .nav-link {
 	color:#ffffff !important;
 	text-decoration:none;
@@ -2040,18 +2040,18 @@ ul.tile-links-wrapper li { list-style-type:none; }
 	position:absolute;
 	right:3%;
     }
+    #mobileSidebarTab.nav-tabs .nav-item:first-child { 	border-right: 1px solid #a2c4e7; }
     #mobileSidebarTab.nav-tabs .nav-item:first-child .nav-link.active {
-	background-color: #004285 !important;
+	background-color: #1f5c99 !important;
 	border-radius: 0;
 	border: none;
-	border-right: 1px solid #a2c4e7;
     }
     #mobileSidebarTab.nav-tabs .nav-item:last-child .nav-link.active {
-	background-color: #004285 !important;
+	background-color: #1f5c99 !important;
 	border-radius: 0;
 	border: none;
-	border-left: 1px solid #a2c4e7;
     }
+    #mobileSidebarTab.nav-tabs .nav-link.active { background: #1f5c99; color: #ffffff !important; }
     #mobileSidebarTabContent .tab-pane .secondary-navigation-menu { margin:0; }
     #mobileSidebarTabContent .tab-pane .secondary-navigation-menu .secondary-navigation-menu-list {
 	background-image:none;
