@@ -1647,8 +1647,9 @@ h2.trending-now-heading {
     justify-items: center;
     align-items: center;
 }
+.publication-buttons { margin-bottom: 15px; }
 .publication-buttons .btn { background:#243a50; color:#ffffff !important; text-decoration:none; padding:8px 30px; }
-.publication-buttons .btn i { margin-right: 10px;}
+.publication-buttons .btn i { margin-right: 10px; }
 .publication-buttons .btn:hover,.publication-buttons .btn:focus { background:#1F5C99; text-decoration:underline; }
 /** End of Publication Template Styles **/
 
@@ -1904,6 +1905,16 @@ ul.tile-links-wrapper li { list-style-type:none; }
         font-size: 18px;
     }
     .breadcrumbs-section { display:none; }
+    .publication-buttons .btn { padding: 8px 20px; }
+    .publication-buttons .btn i { margin-right: 0; }
+    .publication-buttons .btn span { display: none; }
+    .oese-pubdownload-section, .oese-pubshare-section {
+        width: 50%;
+        margin-bottom: 50px;
+    }
+    #ssba-share-buttons {
+        margin-left: -40px;
+    }
 }
 @media (max-width: 767px) {
     .secondary-navigation-menu.sidebar-links {
@@ -1917,6 +1928,10 @@ ul.tile-links-wrapper li { list-style-type:none; }
     .topbar-search-section {
         margin-top: 35px;
     }
+    .publication-details .page_header {
+        margin-top: 10px;
+    }
+    
 }
 @media (max-width: 750px){
     .hdr .col-xs-offset-2  {margin-left: 16.66666667% !important;}
