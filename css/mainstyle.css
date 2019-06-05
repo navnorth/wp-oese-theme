@@ -17,6 +17,13 @@ color palette:
 
 @font-face{font-family:'Helvetica Neue';
 	src:url(../fonts/helvetica_neue/helveticaneue.ttf)format('truetype');}
+@font-face {
+  font-family: 'FontAwesome';
+  font-style: normal;
+  font-weight: 900;
+  font-display: auto;
+  src: url("fontawesome/webfonts/fa-solid-900.eot");
+  src: url("fontawesome/webfonts/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("fontawesome/webfonts/fa-solid-900.woff2") format("woff2"), url("fontawesome/webfonts/fa-solid-900.woff") format("woff"), url("fontawesome/webfonts/fa-solid-900.ttf") format("truetype"), url("fontawesome/webfonts/fa-solid-900.svg#fontawesome") format("svg"); }
 a:focus {
     color: #0056b3;
     text-decoration: underline;
@@ -2010,8 +2017,25 @@ ul.tile-links-wrapper li { list-style-type:none; }
     #mobileSidebarTab.nav-tabs { border-bottom:none; background: #004285; }
     #mobileSidebarTab.nav-tabs .nav-item { width:50%; }
     #mobileSidebarTab.nav-tabs .nav-item.show .nav-link, #mobileSidebarTab.nav-tabs .nav-link.active,
-     #mobileSidebarTab.nav-tabs .nav-item .nav-link {
+    #mobileSidebarTab.nav-tabs .nav-item .nav-link {
 	color:#ffffff !important;
+	text-decoration:none;
+	position:relative;
+	padding: .5rem;
+    }
+    #mobileSidebarTab.nav-tabs .nav-item .nav-link:after{
+	content: '\f078';
+	font-family: FontAwesome;
+	font-size: 20px;
+	position:absolute;
+	right:3%;
+    }
+    #mobileSidebarTab.nav-tabs .nav-item .nav-link.active:after{
+	content: '\f077';
+	font-family: FontAwesome;
+	font-size: 20px;
+	position:absolute;
+	right:3%;
     }
     #mobileSidebarTab.nav-tabs .nav-item:first-child .nav-link.active {
 	background-color: #004285 !important;
