@@ -73,7 +73,7 @@ get_header();
                     if ($contactTitle):
                     ?>
                     <li class="nav-item">
-                        <a class="nav-link active" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="true"><?php echo $contactTitle; ?></a>
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="true"><?php echo $contactTitle; ?></a>
                     </li>
                     <?php
                     endif;
