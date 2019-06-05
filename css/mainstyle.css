@@ -1641,6 +1641,7 @@ h2.trending-now-heading {
     align-items: center;
 }
 .publication-buttons .btn { background:#243a50; color:#ffffff !important; text-decoration:none; padding:8px 30px; }
+.publication-buttons .btn i { margin-right: 10px;}
 .publication-buttons .btn:hover,.publication-buttons .btn:focus { background:#1F5C99; text-decoration:underline; }
 /** End of Publication Template Styles **/
 
@@ -1774,11 +1775,13 @@ ul.tile-links-wrapper li { list-style-type:none; }
 .publication-buttons { position:relative; }
 #ssba-share-buttons {
     position: absolute;
-    margin-top: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     width: 100%;
 }
-#ssba-share-buttons img { width:32px; height:32px; }
-#ssba-share-buttons  a { text-decoration:none; }
+#ssba-share-buttons img { width:32px; height:32px; transition: transform .2s ease-in; }
+#ssba-share-buttons img:hover { transform: scale(1.1); }
+#ssba-share-buttons  a { text-decoration:none; margin: 0 5px; }
 /** End of Publication Shortcode Styles **/
 .hidden { display:none; }
 @media (min-width: 1200px) {
