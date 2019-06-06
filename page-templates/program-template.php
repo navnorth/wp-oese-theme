@@ -88,10 +88,16 @@ get_header();
                 <div class="tab-content" id="mobileSidebarTabContent">
                     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                         <?php echo contactInformationBlock(false) ?>
+                        <div class="tab-close-row"><a class="tab-close-button" href="javascript:void(0)" role="button"><i class="fas fa-times"></i> CLOSE</a></div>
                     </div>
                     <div class="tab-pane fade" id="menu" role="tabpanel" aria-labelledby="menu-tab">
+                        <div class="col-sm-6">
                         <?php get_template_part( 'content', 'resources' ); ?>
+                        </div>
+                        <div class="col-sm-6">
                         <?php echo getSidebarLinks(false); ?>
+                        </div>
+                        <div class="col-sm-12 tab-close-row"><a class="tab-close-button"  href="javascript:void(0)" role="button"><i class="fas fa-times"></i> CLOSE</a></div>
                     </div>
                 </div>
             </div>
