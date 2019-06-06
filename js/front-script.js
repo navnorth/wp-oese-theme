@@ -125,6 +125,15 @@ jQuery( document ).ready(function() {
         console.log('Replaced SVG images with PNG');
     }
     
+    
+    jQuery('.tab-close-button').on("click", function(){
+	curtab = jQuery(this).closest('.tab-pane');
+	curtabid = curtab.attr('id');
+	curtab.toggleClass('active');
+	jQuery('#mobileSidebarTab a[href="#' + curtabid +'"]').toggleClass('active');
+	
+    });
+    
 });
 
 // Event Tracker Function
