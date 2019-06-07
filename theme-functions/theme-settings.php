@@ -22,6 +22,10 @@ if (!current_user_can('edit_theme_options')) {
                 <legend><h3><?php _e('Modal', WP_OESE_THEME_SLUG); ?></h3></legend>
 		<?php do_settings_fields("theme_settings_page", "wp_oese_theme_settings"); ?>
             </fieldset>
+	    <fieldset>
+                <legend><h3><?php _e('PDF Embed', WP_OESE_THEME_SLUG); ?></h3></legend>
+		<?php do_settings_fields("theme_settings_page", "wp_oese_pdf_settings"); ?>
+            </fieldset>
 	    <?php submit_button(); ?>
         </div>
     </form>

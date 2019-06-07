@@ -77,8 +77,10 @@ if (has_tag(array("archive","archived"),$post)){
         <?php
         if ($file && $file_detail['title']=="PDF"){ ?>
         <div class="row publication-embed">
-            <?php 
-            $embed_code = oese_pdf_embed_code($file);
+            <?php
+            $viewer = get_option('wp_oese_theme_pdf_viewer');
+            $viewer = ($viewer=="2")?"pdfjs":"google";
+            $embed_code = oese_pdf_embed_code($file, $viewer);
             echo $embed_code; ?>
         </div>
         <?php

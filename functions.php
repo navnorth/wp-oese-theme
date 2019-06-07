@@ -1418,7 +1418,7 @@ function wp_oese_theme_settings_page() {
     )
   );
 
-   //Create GA Settings Section
+  //Create GA Settings Section
   add_settings_section(
     'wp_oese_ga_settings',
     __('GA Settings', WP_OESE_THEME_SLUG),
@@ -1440,11 +1440,39 @@ function wp_oese_theme_settings_page() {
     )
   );
   
+  //Create PDF Embed Settings Section
+  add_settings_section(
+    'wp_oese_pdf_settings',
+    __('PDF Embed Settings', WP_OESE_THEME_SLUG),
+    'wp_oese_theme_settings_callback',
+    $page
+  );
+  
+  //Add PDF Viewer field
+  add_settings_field(
+    'wp_oese_theme_pdf_viewer',
+    '',
+    'wp_oese_theme_settings_field',
+    $page,
+    'wp_oese_pdf_settings',
+    array(
+      'uid' => 'wp_oese_theme_pdf_viewer',
+      'type' => 'selectbox',
+      'name' =>  __('Select PDF Viewer: ', WP_OESE_THEME_SLUG),
+      'options' =>  array(
+        "1" => "Google Viewer",
+        "2" => "Mozilla PDFJS"
+        ),
+      'default' => '1'
+    )
+  );
+  
   register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_heading' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_content' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_enable_redirect' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_contact_page' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_ga_propertyid' );
+  register_setting( 'theme_settings_page' , 'wp_oese_theme_pdf_viewer' );
 }
 add_action( 'admin_init' , 'wp_oese_theme_settings_page' );
 
@@ -1477,6 +1505,29 @@ function wp_oese_theme_settings_field($arguments){
       <input name="'.$arguments['uid'].'" id="'.$arguments['uid'].'" type="'.$arguments['type'].'" value="1" '.checked(1,$value,false).' />
       <label class="inline" for="'.$arguments['uid'].'"><strong>'.$arguments['name'].'</strong></label>
     </div></div>';
+  } elseif ($arguments['type']=="selectbox"){
+    if (isset($arguments['name']))
+      $title = $arguments['name'];
+      echo '<label for="'.$arguments['uid'].'"><strong>'.$title.'</strong></label>';
+      echo '<select name="'.$arguments['uid'].'" id="'.$arguments['uid'].'">';
+
+      if (isset($arguments['options']))
+        $options = $arguments['options'];
+
+      foreach($options as $key=>$desc){
+        $selected = "";
+        if ($value===false){
+          if ($key==$arguments['default'])
+            $selected = " selected";
+        } else {
+          if ($key==$value)
+            $selected = " selected";
+        }
+        $disabled = "";
+        echo '<option value="'.$key.'"'.$selected.''.$disabled.'>'.$desc.'</option>';
+      }
+
+      echo '<select>';
   }
 }
 
@@ -1790,9 +1841,14 @@ function oese_content_search_form($form){
 }
 
 // PDF Embed Code using Google Viewer
-function oese_pdf_embed_code($url){
-  $final_url = "https://docs.google.com/viewer?url=".$url."&embedded=true";
-  $embed_code = '<iframe class="oer-pdf-viewer" width="100%" src="'.$final_url.'"></iframe>';
+function oese_pdf_embed_code($url, $viewer="google"){
+  if ( $viewer=="google" ){
+    $final_url = "https://docs.google.com/viewer?url=".$url."&embedded=true";
+    $embed_code = '<iframe class="oer-pdf-viewer" width="100%" src="'.$final_url.'"></iframe>';
+  } elseif( $viewer=="pdfjs" ){
+    $pdf_url = get_template_directory_uri()."/pdfjs/web/viewer.html?file=".urlencode($url);
+    $embed_code = '<iframe class="oer-pdf-viewer" width="100%" src="'.$pdf_url.'"></iframe>';
+  }
   return $embed_code;
 }
 
