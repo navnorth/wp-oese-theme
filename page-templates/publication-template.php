@@ -8,11 +8,19 @@ global $post;
 $page_id = get_the_ID();
 $file = null;
 $file_detail = null;
+$head_class = "";
+$is_archived = false;
+
 get_header();
 
 if (get_field('select_file')){
     $file = get_field('select_file');
     $file_detail = oese_file_type_from_url($file,'fa-10x');
+}
+
+if (has_tag(array("archive","archived"),$post)){
+    $is_archived = true;
+    $head_class = " archived-header";
 }
 ?>
     <!--Publication Template Top Section START-->
@@ -38,19 +46,24 @@ if (get_field('select_file')){
                 <div class="row publication-buttons">
                     <?php if ($download_button): ?>
                     <div class="col-md-7 oese-pubdownload-section">
-                        <a href="<?php echo $download_link; ?>" target="_blank" class="btn" onclick="oese_trackEvent('Publication','click','Download','<?php echo $download_link; ?>')"><i class="fas fa-download"></i><span>DOWNLOAD</span></a>
+                        <a href="<?php echo $download_link; ?>" target="_blank" class="btn" onclick="oese_trackEvent('Publication','click','Download','<?php echo $download_link; ?>')><i class="fas fa-download"></i> <span>DOWNLOAD</span></a>
                     </div>
                     <?php endif; ?>
                     <?php if ($share_button): ?>
                     <div class="col-md-5 oese-pubshare-section">
-                        <a href="#" class="btn" data-toggle="collapse"  data-target="#ssba-share-buttons" onclick="oese_trackEvent('Publication','click','Share','<?php echo $post->post_title; ?>')"  aria-expanded="false" aria-controls="ssba-share-buttons"><i class="fas fa-share-alt"></i><span>SHARE</span></a>
+                        <a href="#" class="btn" data-toggle="collapse"  data-target="#ssba-share-buttons" onclick="oese_trackEvent('Publication','click','Share','<?php echo $post->post_title; ?>')"  aria-expanded="false" aria-controls="ssba-share-buttons"><i class="fas fa-share-alt"></i> <span>SHARE</span></a>
                         <?php get_template_part('ssba'); ?>
                     </div>
                     <?php endif; ?>
                 </div>
             </div>
             <div class="col-md-7">
-                <h1 class="page_header"><?php echo $post->post_title; ?></h1>
+                <h1 class="page_header<?php echo $head_class; ?>"><?php echo $post->post_title; ?></h1>
+                <?php if ($is_archived): ?>
+                <div class="oese-archived-disclaimer">
+                        <?php _e('<span class="fa fa-archive"></span><strong>Archived Content:</strong> The following page has been archived but still has content that may be valuable to some people.', WP_OESE_THEME_SLUG); ?>
+                </div>
+                <?php endif; ?>
                 <?php if (get_field('sub-title')): ?>
                 <h2 class="publication_sub_title"><?php echo the_field('sub-title'); ?></h2>
                 <?php endif; ?>

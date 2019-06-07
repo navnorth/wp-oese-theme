@@ -1781,6 +1781,16 @@ ul.tile-links-wrapper li { list-style-type:none; }
 .publication-shortcode-button:hover,
 .publication-shortcode-button:focus{ color:#ffffff !important; text-decoration:underline;  }
 .publication-buttons { position:relative; }
+.oese-archived-disclaimer {
+    background: #436576;
+    display: inline-block;
+    padding: 5px 10px;
+    border: 2px solid #2A3E48;
+    color: #fff;
+    margin-bottom:20px;
+}
+.oese-archived-disclaimer span { margin-right:10px; }
+.h1-bottom-space.archived-header { margin-bottom:10px; }
 #ssba-share-buttons {
     position: absolute;
     margin-top: 15px;

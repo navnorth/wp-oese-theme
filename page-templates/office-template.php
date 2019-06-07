@@ -6,13 +6,25 @@
 get_header();
 global $post;
 $page_id = get_the_ID();
+$head_class = "";
+$is_archived = false;
+
+if (has_tag(array("archive","archived"),$post)){
+    $is_archived = true;
+    $head_class = " archived-header";
+}
 ?>
 
         <!--Office Template Top Section START-->
         <div id="content" class="row custom-common-padding office-template">
             <div class="col-md-8">
                 <div class="left-description-section">
-                    <h1 class="h1-bottom-space"><?php echo get_the_title(); ?></h1>
+                    <h1 class="h1-bottom-space<?php echo $head_class; ?>"><?php echo get_the_title(); ?></h1>
+                    <?php if ($is_archived): ?>
+                    <div class="oese-archived-disclaimer">
+                            <?php _e('<span class="fa fa-archive"></span><strong>Archived Content:</strong> The following page has been archived but still has content that may be valuable to some people.', WP_OESE_THEME_SLUG); ?>
+                    </div>
+                    <?php endif; ?>
                     <?php
                         if ( has_post_thumbnail() ) {
                             $image = wp_get_attachment_image_src( get_post_thumbnail_id($page_id), 'single-post-thumbnail' );
