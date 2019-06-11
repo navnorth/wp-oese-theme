@@ -47,7 +47,7 @@
            <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-9">
                 <a class="oese-logo-home" href="<?php echo site_url(); ?>" Title="Home">
                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.svg"
-                         alt="Office of Elementary and Secondary Education" class="svg-replace" id="header_logo"/>
+                         alt="<?php echo blog_info(); ?>" class="svg-replace" id="header_logo"/>
                 </a>
             </div>
             <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-12 offset-xl-2 offset-lg-2 offset-md-1 d-sm-inline-block d-block d-md-block d-lg-block d-xl-block">
