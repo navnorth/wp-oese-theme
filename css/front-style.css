@@ -208,3 +208,4 @@ ul.program_toc, .cntnbx_cntnr ul {
 :-moz-placeholder { /* Firefox 18- */
   color: #000000;
 }
+#oese-map { width: 600px; height:450px; max-width:100%; max-height:100%; }

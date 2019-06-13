@@ -944,10 +944,43 @@ function taxonomies_for_pages() {
 
  } // category_archives
 
- add_action( 'wp_footer' , 'add_footer_script' );
- function add_footer_script(){
-    // wp_enqueue_script('theme-bottom-script', get_stylesheet_directory_uri() . '/js/bottom-script.js' );
- }
+add_action( 'wp_footer' , 'add_footer_script' );
+function add_footer_script(){
+  // Add Google Map Script
+  echo '<script>
+    if (jQuery(\'.oese-map\').is(\':visible\')) {
+      var map;
+      function initMap() {
+        var addr = jQuery(\'.oese-map\');
+        var latitude = parseFloat(addr.attr(\'data-lat\'));
+        var longitude = parseFloat(addr.attr(\'data-long\'));
+        map = new google.maps.Map(document.getElementById(\'oese-map\'), {
+          center: {lat: latitude, lng: longitude},
+          zoom: 13,
+          mapTypeControl: false
+        });
+      }
+
+      var styles = {
+        default: null,
+        hide: [
+          {
+            featureType: \'poi.business\',
+            stylers: [{visibility: \'off\'}]
+          },
+          {
+            featureType: \'transit\',
+            elementType: \'labels.icon\',
+            stylers: [{visibility: \'off\'}]
+          }
+        ]
+      };
+    }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfh77HYejr7Dp8YY9assya-GOyGoYqjUo&callback=initMap">
+    </script>';
+}
 
 function related_posts_where( $where ) {
     return $where." AND post_type='post'";
