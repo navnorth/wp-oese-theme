@@ -946,6 +946,7 @@ function taxonomies_for_pages() {
 
 add_action( 'wp_footer' , 'add_footer_script' );
 function add_footer_script(){
+  $api_key = get_option("wp_oese_theme_map_apikey");
   // Add Google Map Script
   echo '<script>
     if (jQuery(\'.oese-map\').is(\':visible\')) {
@@ -978,7 +979,7 @@ function add_footer_script(){
     }
     </script>
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfh77HYejr7Dp8YY9assya-GOyGoYqjUo&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key='.$api_key.'&callback=initMap">
     </script>';
 }
 
@@ -1473,6 +1474,20 @@ function wp_oese_theme_settings_page() {
     )
   );
   
+  //Add Google Map API Key Settings field
+  add_settings_field(
+    'wp_oese_theme_map_apikey',
+    '',
+    'wp_oese_theme_settings_field',
+    $page,
+    'wp_oese_ga_settings',
+    array(
+      'uid' => 'wp_oese_theme_map_apikey',
+      'type' => 'textbox',
+      'name' =>  __('API Key: ', WP_OESE_THEME_SLUG)
+    )
+  );
+  
   //Create PDF Embed Settings Section
   add_settings_section(
     'wp_oese_pdf_settings',
@@ -1505,6 +1520,7 @@ function wp_oese_theme_settings_page() {
   register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_enable_redirect' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_contact_page' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_ga_propertyid' );
+  register_setting( 'theme_settings_page' , 'wp_oese_theme_map_apikey' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_pdf_viewer' );
 }
 add_action( 'admin_init' , 'wp_oese_theme_settings_page' );
