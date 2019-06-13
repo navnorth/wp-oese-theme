@@ -957,7 +957,7 @@ function add_footer_script(){
         var longitude = parseFloat(addr.attr(\'data-long\'));
         map = new google.maps.Map(document.getElementById(\'oese-map\'), {
           center: {lat: latitude, lng: longitude},
-          zoom: 13,
+          zoom: 17,
           mapTypeControl: false
         });
       }
