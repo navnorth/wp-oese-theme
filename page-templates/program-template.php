@@ -103,10 +103,7 @@ if (has_tag(array("archive","archived"),$post)){
                         <div class="tab-close-row"><a class="tab-close-button" href="javascript:void(0)" role="button"><i class="fas fa-times"></i> CLOSE</a></div>
                     </div>
                     <div class="tab-pane fade" id="menu" role="tabpanel" aria-labelledby="menu-tab">
-                        <div class="col-sm-6">
-                        <?php get_template_part( 'content', 'resources' ); ?>
-                        </div>
-                        <div class="col-sm-6">
+                        <div class="sidebar-menu">
                         <?php echo getSidebarLinks(false); ?>
                         </div>
                         <div class="col-sm-12 tab-close-row"><a class="tab-close-button"  href="javascript:void(0)" role="button"><i class="fas fa-times"></i> CLOSE</a></div>
