@@ -949,17 +949,18 @@ function add_footer_script(){
   $api_key = get_option("wp_oese_theme_map_apikey");
   // Add Google Map Script
   echo '<script>
-    if (jQuery(\'.oese-map\').is(\':visible\')) {
       var map;
       function initMap() {
-        var addr = jQuery(\'.oese-map\');
-        var latitude = parseFloat(addr.attr(\'data-lat\'));
-        var longitude = parseFloat(addr.attr(\'data-long\'));
-        map = new google.maps.Map(document.getElementById(\'oese-map\'), {
-          center: {lat: latitude, lng: longitude},
-          zoom: 17,
-          mapTypeControl: false
-        });
+        if (jQuery(\'.oese-map\').is(\':visible\')) {
+          var addr = jQuery(\'.oese-map\');
+          var latitude = parseFloat(addr.attr(\'data-lat\'));
+          var longitude = parseFloat(addr.attr(\'data-long\'));
+          map = new google.maps.Map(document.getElementById(\'oese-map\'), {
+            center: {lat: latitude, lng: longitude},
+            zoom: 17,
+            mapTypeControl: false
+          });
+        }
       }
 
       var styles = {
@@ -976,7 +977,6 @@ function add_footer_script(){
           }
         ]
       };
-    }
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key='.$api_key.'&callback=initMap">
