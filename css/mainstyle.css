@@ -811,8 +811,8 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 #content .table-responsive { display:flex; } /* for mirrored content styles, to keep Resources box from pushing down */
 /* -------- End of Table Styles ----------*/
 
-#breadcrumbs { 
-    margin:0 0 10px; 
+#breadcrumbs {
+    margin:0 0 10px;
     line-height:1em;
     font-size: 14px;
     color: #4b4e53;
@@ -1066,6 +1066,26 @@ a {
 .top-search-input{
     background: #F1F1F1 !important;
 }
+.top-search-input::-webkit-input-placeholder {
+    /* WebKit, Blink, Edge */
+    color: #4b4e53;
+}
+.top-search-input:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #4b4e53;
+    opacity: 1;
+}
+.top-search-input::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #4b4e53;
+    opacity: 1;
+}
+.top-search-input:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #4b4e53;
+}
+
+
 .top-search-input:focus{
     border-color: #ced4da !important;
     border: 1px solid #ced4da !important;
@@ -1946,7 +1966,7 @@ ul.tile-links-wrapper li { list-style-type:none; }
         margin-top: 10px;
     }
     .mobile-search-menu { display:block !important; }
-    
+
 }
 @media (max-width: 750px){
     .hdr .col-xs-offset-2  {margin-left: 16.66666667% !important;}
@@ -2116,7 +2136,7 @@ ul.tile-links-wrapper li { list-style-type:none; }
     .tab-close-button:hover, .tab-close-button:active, .tab-close-button:focus {
 	background:#fff;
 	color:#1F5C99;
-	text-decoration:none; 
+	text-decoration:none;
     }
     .tab-close-button .fa-times { margin-right:5px; }
 }
