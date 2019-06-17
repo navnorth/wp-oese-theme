@@ -2056,21 +2056,22 @@ ul.tile-links-wrapper li { list-style-type:none; }
 	position:relative;
 	padding: .5rem;
 	text-align:center;
-	padding-right:12%;
+	padding-right:18%;
+	font-weight:600;
     }
     #mobileSidebarTab.nav-tabs .nav-item .nav-link:after{
 	content: '\f078';
 	font-family: FontAwesome;
 	font-size: 20px;
 	position:absolute;
-	margin-left:2%;
+	margin-left:5%;
     }
     #mobileSidebarTab.nav-tabs .nav-item .nav-link.active:after{
 	content: '\f077';
 	font-family: FontAwesome;
 	font-size: 20px;
 	position:absolute;
-	margin-left:2%;
+	margin-left:5%;
     }
     #mobileSidebarTab.nav-tabs .nav-item:first-child { 	border-right: 1px solid #a2c4e7; }
     #mobileSidebarTab.nav-tabs .nav-item:first-child .nav-link.active {
