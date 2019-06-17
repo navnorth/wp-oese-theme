@@ -1961,3 +1961,8 @@ function oese_file_id_by_url($url) {
         if ($file)
           return $file[0]; 
 }
+
+add_action( 'wp_footer' , 'add_bottom_script', 100 );
+function add_bottom_script(){
+   echo "<script type='text/javascript' src='". get_stylesheet_directory_uri() . "/js/bottom-script.js'></script>";
+}
