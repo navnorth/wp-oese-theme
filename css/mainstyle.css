@@ -2078,11 +2078,13 @@ ul.tile-links-wrapper li { list-style-type:none; }
 	background-color: #1f5c99 !important;
 	border-radius: 0;
 	border: none;
+	padding-bottom:.65rem;
     }
     #mobileSidebarTab.nav-tabs .nav-item:last-child .nav-link.active {
 	background-color: #1f5c99 !important;
 	border-radius: 0;
 	border: none;
+	padding-bottom:.65rem;
     }
     #mobileSidebarTab.nav-tabs .nav-link.active { background: #1f5c99; color: #ffffff !important; }
     #mobileSidebarTabContent .tab-pane .secondary-navigation-menu { margin:0; }
@@ -2093,7 +2095,8 @@ ul.tile-links-wrapper li { list-style-type:none; }
     #mobileSidebarTabContent .tab-pane .secondary-navigation-menu .secondary-navigation-menu-list li a{
 	color:#fff !important;
     }
-    #mobileSidebarTabContent .secondary-navigation-menu-list { columns:2; -webkit-columns:2; -moz-columns:2; }
+    #mobileSidebarTabContent .sidebar-links .secondary-navigation-menu-list { columns:2; -webkit-columns:2; -moz-columns:2; }
+    #mobileSidebarTabContent .sidebar-links .secondary-navigation-menu-list li { display:inline-block; width:100%; padding:10px 15px; }
     #mobileSidebarTabContent .secondary-navigation-menu-list li a:hover,
     #mobileSidebarTabContent .secondary-navigation-menu-list li:hover{ background:#1F5C99; }
     #mobileSidebarTabContent .tab-pane { background:#1F5C99 !important; }
