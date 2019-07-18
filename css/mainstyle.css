@@ -1221,14 +1221,15 @@ a {
     min-height: 88px;
     transition: all ease-in-out .3s;
     box-sizing: border-box;
-    display: table;
+    display: flex;
     padding: 0 1.25rem;
+    align-items:center;
 }
 .custom-image-heading p{
     font-weight: 700;
     font-size: 24px !important;
     margin-bottom: 0;
-    display: table-cell;
+    display: block;
     vertical-align: middle;
     text-align: center;
     color: #fff;
