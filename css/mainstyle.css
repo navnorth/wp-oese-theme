@@ -1236,6 +1236,7 @@ a {
     line-height: 30px;
     text-transform: uppercase;
     transition: all .2s ease-in;
+    width:100%;
 }
 .custom-image-main-section{
     position: relative;
