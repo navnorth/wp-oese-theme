@@ -1451,19 +1451,21 @@ a.oese-logo-home {
     min-height: 68px;
     transition: all ease-in-out .3s;
     box-sizing: border-box;
-    display: table;
+    display: flex;
     padding: 0 1.25rem;
+    align-items:center;
 }
 .custom-home-image-section .custom-home-image-heading p{
     font-weight: 700;
     font-size: 22px !important;
     margin-bottom: 0;
-    display: table-cell;
+    display: block;
     vertical-align: middle;
     text-align: center;
     color: #fff;
     line-height: 30px;
     text-transform: uppercase;
+    width:100%;
 }
 .custom-home-image-section:hover .custom-home-image-heading,
 .custom-home-image-section a:focus .custom-home-image-heading{
