@@ -68,7 +68,32 @@
 
         <!--Tile Links Grid Section END-->
 
+         <!--Div seperator-->
+        <div class="row mr-0 ml-0">
+            <div class="col-md-12 pr-0 pl-0">
+                <div class="seperate-dark-blue-border"></div>
+            </div>
+        </div>
+        <!--Div seperator END-->
 
+         <!--Full width Search Section START-->
+        <div class="row custom-common-padding">
+            <div class="full-search-section m-auto text-center">
+                <div class="full-search-heading">
+                    <h1>What can we help you find?</h1>
+                </div>
+
+                <div class="full-search-field">
+                     <?php
+                     // Call Custom Search Form
+                     add_filter('get_search_form', 'oese_content_search_form');
+                     get_search_form();
+                     remove_filter('get_search_form', 'oese_content_search_form');
+                     ?>
+                </div>
+            </div>
+        </div>
+        <!--Full width Search Section END-->
 
         <!--Div seperator-->
         <div class="row mr-0 ml-0">
