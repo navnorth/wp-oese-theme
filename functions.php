@@ -1269,7 +1269,7 @@ function contactInformationBlock($showHeader=true){
         $output .= '<li>
                   <div class="sub-nav-icons">
                     <span><i class="far fa-address-card"></i></span>
-                    <p><a href="'.$contactEmailLink.'" onclick="oese_trackEvent(\'Contact\',\'click\',\''.$post->post_title.'\',\'Contact Form\');">Contact Form</a></p>
+                    <p><a href="'.$contactEmailLink.'" onclick="oese_trackEvent(\'Contact\',\'click\',\''.$post->post_title.'\',\'Contact Form\');">Contact Us</a></p>
                   </div>
                 </li>';
     }
