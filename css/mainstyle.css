@@ -1832,6 +1832,9 @@ ul.tile-links-wrapper li { list-style-type:none; }
 .results-by-facets div[id*="res"]:nth-child(even) { background-color:#efefef; }
 .results-by-facets hr { margin:0; border:none; }
 .results-by-facets .p_title a{ color:#2d8700; font-size:20px; font-weight:bold; }
+.cls_search form.search-frm { margin-left:25%; }
+.cls_search form.search-frm .search-field { width:90% !important; }
+.cls_results .wdm_resultContainer .wdm_list { margin-top:-40px; }
 @media (min-width: 1200px) {
     .container{
         max-width: 1200px;
