@@ -1827,6 +1827,10 @@ ul.tile-links-wrapper li { list-style-type:none; }
 /** End of Publication Shortcode Styles **/
 .hidden { display:none; }
 .mobile-search-menu { display:none !important; }
+.results-by-facets > div { overflow:hidden; }
+.results-by-facets > div:nth-child(odd) { background:transparent; }
+.results-by-facets > div:nth-child(even) { background-color:#efefef; }
+.results-by-facets .p_title a{ color:#2d8700; font-size:20px; font-weight:bold; }
 @media (min-width: 1200px) {
     .container{
         max-width: 1200px;
