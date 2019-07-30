@@ -14,8 +14,12 @@ get_header();
 
 $head_class = "";
 $is_archived = false;
+$archived_date = null;
 
-if (has_tag(array("archive","archived"),$post)){
+if (get_field('archived_date'))
+    $archived_date = get_field('archived_date');
+    
+if ($archived_date){
     $is_archived = true;
     $head_class = " archived-header";
 }
@@ -36,7 +40,7 @@ if (has_tag(array("archive","archived"),$post)){
             
             <?php if ($is_archived): ?>
             <div class="oese-archived-disclaimer">
-                    <?php _e('<span class="fa fa-archive"></span><strong>Archived Content:</strong> The following page has been archived but still has content that may be valuable to some people.', WP_OESE_THEME_SLUG); ?>
+                    <?php _e('<span class="fa fa-archive"></span><strong>Archived Content:</strong> The following page was archived on '.$archived_date.' but still has content that may be valuable to some people.', WP_OESE_THEME_SLUG); ?>
             </div>
             <?php endif; ?>
         
