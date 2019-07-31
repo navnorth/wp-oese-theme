@@ -6,6 +6,15 @@
 get_header();
 global $post;
 $page_id = get_the_ID();
+$archived_date = null;
+
+if (get_field('archive_date'))
+    $archived_date = get_field('archive_date');
+    
+if ($archived_date){
+    $is_archived = true;
+    $head_class = " archived-header";
+}
 ?>
 
 
@@ -14,6 +23,11 @@ $page_id = get_the_ID();
         <!--Families section START-->
         <div id="content" class="row custom-common-padding">
             <div class="col-md-8">
+                <?php if ($is_archived): ?>
+                    <div class="oese-archived-disclaimer">
+                            <?php _e('<span class="fa fa-archive"></span><strong>Archived Content:</strong> The following page was archived on '.$archived_date.' but still has content that may be valuable to some people.', WP_OESE_THEME_SLUG); ?>
+                    </div>
+                <?php endif; ?>
                 <?php
                     if ( has_post_thumbnail() ) {
                         $image = wp_get_attachment_image_src( get_post_thumbnail_id($page_id), 'single-post-thumbnail' );
