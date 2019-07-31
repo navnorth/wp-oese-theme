@@ -12,8 +12,8 @@ $head_class = "";
 $is_archived = false;
 $archived_date = null;
 
-if (get_field('archived_date'))
-    $archived_date = get_field('archived_date');
+if (get_field('archive_date'))
+    $archived_date = get_field('archive_date');
     
 if ($archived_date){
     $is_archived = true;

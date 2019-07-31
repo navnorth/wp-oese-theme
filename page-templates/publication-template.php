@@ -19,8 +19,8 @@ if (get_field('select_file')){
     $file_detail = oese_file_type_from_url($file,'fa-10x');
 }
 
-if (get_field('archived_date'))
-    $archived_date = get_field('archived_date');
+if (get_field('archive_date'))
+    $archived_date = get_field('archive_date');
     
 if ($archived_date){
     $is_archived = true;

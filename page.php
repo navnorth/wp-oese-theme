@@ -20,8 +20,8 @@ $archived_date = null;
 if( have_rows('sidebar_links') )
     $col_class = "col-md-8";
 
-if (get_field('archived_date'))
-    $archived_date = get_field('archived_date');
+if (get_field('archive_date'))
+    $archived_date = get_field('archive_date');
     
 if ($archived_date){
     $is_archived = true;
