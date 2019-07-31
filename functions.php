@@ -1642,7 +1642,7 @@ function csvImportMediaForm(){
   } 
 
 
-  function insertNewMedia($file,$date,$mediaCat,$mediaTag){
+  function insertNewMedia($file,$date,$mediaCat,$mediaTag, $mediaDescription, $mediaArchiveDate, $mediaPubID){
     if($file){  
       $filename = basename($file);
       $data = getUrlContents($file);
@@ -1661,7 +1661,7 @@ function csvImportMediaForm(){
             $attachment = array(
               'post_mime_type' => $wp_filetype['type'],
               'post_title' => preg_replace('/\.[^.]+$/', '', $filename),
-              'post_content' => '',
+              'post_content' => $mediaDescription,
               'guid' => $wp_upload_dir['url'] . '/' . $filename ,
               'post_status' => 'inherit',
               'post_date'=>$mediaDate,
@@ -1697,7 +1697,7 @@ function csvImportMediaForm(){
               /***Adding Tags for media****/
               
               if($mediaTag){
-                $mediaTagArray = explode("|",$mediaTag);
+                $mediaTagArray = explode(";",$mediaTag);
                   foreach ($mediaTagArray as $key => $tagSlug) {
                     $tagSlug = str_replace(' ', '', $tagSlug);
                       $tagIdObj = term_exists($tagSlug,"post_tag");
@@ -1712,7 +1712,16 @@ function csvImportMediaForm(){
                       }
                   }    
               }
-            }
+              
+              if ($mediaArchiveDate){
+                  if (function_exists('update_field'))
+                     update_field('archive_date', $mediaArchiveDate, $attachment_id);
+               }
+               if ($mediaPubID){
+                  if (function_exists('update_field'))
+                     update_field('publication_id', $mediaPubID, $attachment_id);
+               }
+            } 
           }  
         } 
 
@@ -1745,9 +1754,12 @@ function csvImportMediaForm(){
           $mediaUrl = $csvVal[0];
           $mediaCat = $csvVal[1];  
           $mediaDate = $csvVal[2];  
-          $mediaTags = $csvVal[3];  
+          $mediaTags = $csvVal[3];
+          $mediaDescription = $csvVal[4];
+          $mediaArchiveDate = $csvVal[5];
+          $mediaPublicationID = $csvVal[6];
             
-          $outputCsv[]= insertNewMedia($mediaUrl,$mediaDate,$mediaCat,$mediaTags);
+          $outputCsv[]= insertNewMedia($mediaUrl,$mediaDate,$mediaCat,$mediaTags, $mediaDescription, $mediaArchiveDate, $mediaPublicationID);
       }
      wp_send_json($outputCsv);
      die();
