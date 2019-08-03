@@ -1930,7 +1930,7 @@ use wpsolr\core\classes\WPSOLR_Events;
 add_action( 'after_setup_theme', function () {
   add_filter(WPSOLR_Events::WPSOLR_FILTER_POST_CUSTOM_FIELDS, 'update_search_facet');
 } );
-function update_search_facet($facets, $localization_options){
-  $facets = "<div id='test-block'>Test Block</div>";
-  return $facets;
+function update_search_facet($html, $facets, $localization_options){
+  $html = "<div id='test-block'>Test Block</div>";
+  return $html;
 }
