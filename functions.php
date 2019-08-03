@@ -1925,3 +1925,9 @@ add_action( 'wp_footer' , 'add_bottom_script', 100 );
 function add_bottom_script(){
    echo "<script type='text/javascript' src='". get_stylesheet_directory_uri() . "/js/bottom-script.js'></script>";
 }
+
+use wpsolr\core\classes\WPSOLR_Events;
+function update_search_facet($facets, $localization_options){
+  var_dump($facets);
+}
+add_filter(WPSOLR_Events::WPSOLR_FILTER_POST_CUSTOM_FIELDS, 'update_search_facet');
