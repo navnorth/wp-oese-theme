@@ -1928,6 +1928,7 @@ function add_bottom_script(){
 
 use wpsolr\core\classes\WPSOLR_Events;
 function update_search_facet($facets, $localization_options){
-  var_dump($facets);
+  $facets = "<div id='test-block'>Test Block</div>";
+  return $facets;
 }
 add_filter(WPSOLR_Events::WPSOLR_FILTER_POST_CUSTOM_FIELDS, 'update_search_facet');
