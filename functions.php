@@ -1934,8 +1934,25 @@ add_action( 'after_setup_theme', function () {
 
 function update_search_facet($html, $facets, $localization_options){
   $page_types = oese_get_page_types();
-  $facets[] = $page_types;
-  return $facets;
+  
+  if (!empty($page_types)){
+    $is_facet_selected = false;
+    /*$html .= sprintf( "<div><label class='wdm_label'>%s</label>
+                <input type='hidden' name='sel_fac_field' id='sel_fac_field' >
+                <div class='wdm_ul' id='wpsolr_section_facets'>
+                <div class='%s'><div class='select_opt' id='wpsolr_remove_facets' data-wpsolr-facet-data='%s'>%s</div></div>",
+                    'Page Type',
+                    'wpsolr_facet_checkbox' . ( $is_facet_selected ? ' checked' : '' ),
+                    wp_json_encode( [ 'type' => WPSOLR_Option::OPTION_FACET_FACETS_TYPE_FIELD ] ),
+                    $html_remove_item
+            )
+            . $html;
+
+    $html .= '</div></div>';*/
+    $html .= "<div><label class='wdm_label'>Page Template</label></div>";
+  }
+  
+  return $html;
 }
 
 function oese_get_page_types(){
