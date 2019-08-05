@@ -1935,7 +1935,9 @@ function update_search_facet($html, $facets, $localization_options){
   
   if ($page_types)
     $facets[] = $page_types;
-    
+  
+  var_dump($facets);
+  
   return $html;
 }
 
