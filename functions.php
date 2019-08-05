@@ -1927,6 +1927,7 @@ function add_bottom_script(){
 }
 
 use wpsolr\core\classes\WPSOLR_Events;
+use wpsolr\core\classes\extensions\localization\OptionLocalization;
 use wpsolr\core\classes\ui\layout\checkboxes\WPSOLR_UI_Layout_Check_Box;
 use wpsolr\core\classes\ui\WPSOLR_UI_Facets;
 add_action( 'after_setup_theme', function () {
@@ -1935,22 +1936,17 @@ add_action( 'after_setup_theme', function () {
 
 function update_search_facet($html, $facets, $localization_options){
   $page_types = oese_get_page_types();
+  $facets[] = $page_types;
   
-  if (!empty($page_types)){
-    $is_facet_selected = false;
-    /*$html .= sprintf( "<div><label class='wdm_label'>%s</label>
-                <input type='hidden' name='sel_fac_field' id='sel_fac_field' >
-                <div class='wdm_ul' id='wpsolr_section_facets'>
-                <div class='%s'><div class='select_opt' id='wpsolr_remove_facets' data-wpsolr-facet-data='%s'>%s</div></div>",
-                    'Page Type',
-                    'wpsolr_facet_checkbox' . ( $is_facet_selected ? ' checked' : '' ),
-                    wp_json_encode( [ 'type' => WPSOLR_Option::OPTION_FACET_FACETS_TYPE_FIELD ] ),
-                    $html_remove_item
-            )
-            . $html;
+  if (!empty($facets)){
+    $facets_template = OptionLocalization::get_term( $localization_options, 'facets_element' );
+    $facet_title     = OptionLocalization::get_term( $localization_options, 'facets_title' );
+    
+    foreach($facets as &$facet) {
+      // Get the layout object
+      $facet_layout_id = ( ! empty( $facet['facet_layout_id'] ) ) ? $facet['facet_layout_id'] : WPSOLR_UI_Layout_Check_Box::CHILD_LAYOUT_ID;
 
-    $html .= '</div></div>';*/
-    $html = "<div><label class='wdm_label'>Page Template</label></div>";
+    }
   }
   
   return $html;
