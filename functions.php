@@ -1997,6 +1997,14 @@ function update_search_facet($html, $facets, $localization_options){
           $facet_grid_class = ''; //'wpsolr_facet_columns wpsolr_facet_column_1';
           break;
       }
+      
+      $facet_grid_class .= ' wpsolr_facet_scroll';
+
+      $facet['facet_layout_class']      = $layout_object->get_css_class_name();
+      $facet['facet_layout_skin_class'] = $layout_object->get_css_skin_class_name( $facet['facet_layout_skin_id'] );
+
+      $layout_object->displayFacetHierarchy( $facet_class_uuid, $facet_template, $facet_grid_class, $html, $facet, ! empty( $facet['items'] ) ? $facet['items'] : [] );
+                                
     }
   }
   
