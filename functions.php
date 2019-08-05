@@ -1931,16 +1931,36 @@ add_action( 'after_setup_theme', function () {
   add_filter(WPSOLR_Events::WPSOLR_FILTER_FACETS_REPLACE_HTML, 'update_search_facet', 10, 3);
 } );
 function update_search_facet($html, $facets, $localization_options){
-  $page_type = oese_get_page_type();
-  echo "<display style='display:none'>";
-  var_dump($facets);
-  echo "</div>";
-  if ( ! empty( $facets ) ) {
-  }
+  $page_types = oese_get_page_type();
+  
+  if ($page_types)
+    $facets[] = $page_types;
+    
   return $html;
 }
 
 function oese_get_page_type(){
-  $html = "<div>Page Type block</div>";
-  return $html;
+  $facets = null;
+  $templates = get_page_templates();
+  foreach ( $templates as $template_name => $template_filename ) {
+    $facets[] = array(
+                "value" => $template_name,
+                "count" => 0,
+                "items" => array(),
+                "selected" => false,
+                "value_localized" => $template_name
+                );
+  }
+  return array(
+          "items" => $facets,
+          "id" => "page_type",
+          "name" => "Page Type",
+          "facet_type" => "facet_type_field",
+          "facet_layout_id" => "",
+          "facet_layout_skin_id" => "",
+          "facet_grid" => "",
+          "facet_size" => "",
+          "facet_layout_skin_js" => "",
+          "facet_placeholder" => ""
+        );
 }
