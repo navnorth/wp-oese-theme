@@ -1938,7 +1938,7 @@ function update_search_facet($html, $facets, $localization_options){
 
 function oese_get_page_types(){
   $facets = null;
-  $templates = get_page_templates();
+  $templates = wp_get_theme()->get_page_templates();
   foreach ( $templates as $template_name => $template_filename ) {
     $facets[] = array( "value" => $template_name, "count" => 0, "items" => null, "selected" => false, "value_localized" => $template_name );
   }
