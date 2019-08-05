@@ -2006,6 +2006,35 @@ function update_search_facet($html, $facets, $localization_options){
       $layout_object->displayFacetHierarchy( $facet_class_uuid, $facet_template, $facet_grid_class, $html, $facet, ! empty( $facet['items'] ) ? $facet['items'] : [] );
                                 
     }
+    
+    $is_facet_selected           = true;
+    $remove_item_localization    = OptionLocalization::get_term( $localization_options, 'facets_element_all_results' );
+    $is_generate_facet_permalink = apply_filters( WPSOLR_Events::WPSOLR_FILTER_IS_GENERATE_FACET_PERMALINK, false );
+    if ( $is_generate_facet_permalink ) {
+      // Link to the current page or to the permalinks home ?
+
+      $redirect_facets_home = apply_filters( WPSOLR_Events::WPSOLR_FILTER_FACET_PERMALINK_HOME, '' );
+      $html_remove_item     = sprintf( '<a class="wpsolr_permalink" href="%s" %s title="%s">%s</a>',
+        ! empty( $redirect_facets_home ) ? ( '/' . $redirect_facets_home ) : './', '',
+        $remove_item_localization, $remove_item_localization );
+
+    } else {
+
+      $html_remove_item = $remove_item_localization;
+    }
+
+    $html = sprintf( "<div><label class='wdm_label'>%s</label>
+              <input type='hidden' name='sel_fac_field' id='sel_fac_field' >
+              <div class='wdm_ul' id='wpsolr_section_facets'>
+              <div class='%s'><div class='select_opt' id='wpsolr_remove_facets' data-wpsolr-facet-data='%s'>%s</div></div>",
+                  OptionLocalization::get_term( $localization_options, 'facets_header' ),
+                  'wpsolr_facet_checkbox' . ( $is_facet_selected ? ' checked' : '' ),
+                  wp_json_encode( [ 'type' => WPSOLR_Option::OPTION_FACET_FACETS_TYPE_FIELD ] ),
+                  $html_remove_item
+          )
+          . $html;
+
+    $html .= '</div></div>';
   }
   
   return $html;
