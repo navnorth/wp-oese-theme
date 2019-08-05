@@ -1932,7 +1932,8 @@ add_action( 'after_setup_theme', function () {
 } );
 function update_search_facet($html, $facets, $localization_options){
   $page_type = oese_get_page_type();
-  $html .= $page_type;
+  $html = $html.$page_type;
+  
   return $html;
 }
 
