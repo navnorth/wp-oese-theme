@@ -2044,7 +2044,7 @@ function oese_get_page_types(){
   $facets = null;
   $templates = wp_get_theme()->get_page_templates();
   foreach ( $templates as $template_name => $template_filename ) {
-    $facets[] = array( "value" => $template_name, "count" => 0, "items" => null, "selected" => false, "value_localized" => $template_name );
+    $facets[] = array( "value" => $template_filename, "count" => 0, "items" => null, "selected" => false, "value_localized" => $template_filename );
   }
   
   return array(
