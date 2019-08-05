@@ -1928,6 +1928,7 @@ function add_bottom_script(){
 
 use wpsolr\core\classes\WPSOLR_Events;
 use wpsolr\core\classes\ui\layout\checkboxes\WPSOLR_UI_Layout_Check_Box;
+use wpsolr\core\classes\ui\WPSOLR_UI_Facets;
 add_action( 'after_setup_theme', function () {
   add_filter(WPSOLR_Events::WPSOLR_FILTER_FACETS_REPLACE_HTML, 'update_search_facet', 10, 3);
 } );
@@ -1949,7 +1950,7 @@ function update_search_facet($html, $facets, $localization_options){
             . $html;
 
     $html .= '</div></div>';*/
-    $html .= "<div><label class='wdm_label'>Page Template</label></div>";
+    $html = "<div><label class='wdm_label'>Page Template</label></div>";
   }
   
   return $html;
