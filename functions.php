@@ -1959,6 +1959,44 @@ function update_search_facet($html, $facets, $localization_options){
       $facet_class_uuid = $layout_object->get_class_uuid();
 
       $facet_layout_skin_id = $layout_object->get_skin_id( $facet );
+      
+      if ( ! empty( $facet_layout_id ) ) {
+        if ( 'wpsolr_no_skin' === $facet_layout_skin_id ) {
+          // This facet is not to be displayed
+          continue;
+        } else {
+          // Add layout javascript/css code and files
+          $html .= $layout_object->generate_skin_js( $facet, $facet_class_uuid );
+        }
+      }
+      
+      $html .= sprintf( '<div class="wpsolr_facet_title %s_%s">%s</div>', WPSOLR_UI_Layout_Abstract::CLASS_PREFIX, $facet['id'], sprintf( $facet_title, $facet['name'] ) );
+
+      // Use the current facet template, else use the general facets template.
+      $facet_template = ! empty( $facet['facet_template'] ) ? $facet['facet_template'] : $facets_template;
+
+      $facet_grid = ! empty( $facet['facet_grid'] ) ? $facet['facet_grid'] : '';
+      switch ( $facet_grid ) {
+        case WPSOLR_Option::OPTION_FACET_GRID_HORIZONTAL:
+          $facet_grid_class = 'wpsolr_facet_column_horizontal';
+          break;
+
+        case WPSOLR_Option::OPTION_FACET_GRID_1_COLUMN:
+          $facet_grid_class = 'wpsolr_facet_columns wpsolr_facet_column_1';
+          break;
+
+        case WPSOLR_Option::OPTION_FACET_GRID_2_COLUMNS:
+          $facet_grid_class = 'wpsolr_facet_columns wpsolr_facet_column_2';
+          break;
+
+        case WPSOLR_Option::OPTION_FACET_GRID_3_COLUMNS:
+          $facet_grid_class = 'wpsolr_facet_columns wpsolr_facet_column_3';
+          break;
+
+        default;
+          $facet_grid_class = ''; //'wpsolr_facet_columns wpsolr_facet_column_1';
+          break;
+      }
     }
   }
   
