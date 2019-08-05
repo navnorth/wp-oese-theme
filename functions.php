@@ -1931,6 +1931,12 @@ add_action( 'after_setup_theme', function () {
   add_filter(WPSOLR_Events::WPSOLR_FILTER_FACETS_REPLACE_HTML, 'update_search_facet', 10, 3);
 } );
 function update_search_facet($html, $facets, $localization_options){
-  $html = "<div id='test-block'>Test Block</div>";
+  $page_type = oese_get_page_type();
+  $html .= $page_type;
+  return $html;
+}
+
+function oese_get_page_type(){
+  $html = "<div>Page Type block</div>";
   return $html;
 }
