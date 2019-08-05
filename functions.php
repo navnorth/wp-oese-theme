@@ -1929,6 +1929,8 @@ function add_bottom_script(){
 use wpsolr\core\classes\WPSOLR_Events;
 use wpsolr\core\classes\extensions\localization\OptionLocalization;
 use wpsolr\core\classes\ui\layout\checkboxes\WPSOLR_UI_Layout_Check_Box;
+use wpsolr\core\classes\ui\layout\WPSOLR_UI_Layout_Abstract;
+use wpsolr\core\classes\utilities\WPSOLR_Option;
 use wpsolr\core\classes\ui\WPSOLR_UI_Facets;
 add_action( 'after_setup_theme', function () {
   add_filter(WPSOLR_Events::WPSOLR_FILTER_FACETS_REPLACE_HTML, 'update_search_facet', 10, 3);
@@ -1945,7 +1947,18 @@ function update_search_facet($html, $facets, $localization_options){
     foreach($facets as &$facet) {
       // Get the layout object
       $facet_layout_id = ( ! empty( $facet['facet_layout_id'] ) ) ? $facet['facet_layout_id'] : WPSOLR_UI_Layout_Check_Box::CHILD_LAYOUT_ID;
+      
+      $layout_object = apply_filters( WPSOLR_Events::WPSOLR_FILTER_LAYOUT_OBJECT, null, $facet_layout_id );
 
+      if ( is_null( $layout_object ) ) {
+        // Back to default layout
+        $layout_object = new WPSOLR_UI_Layout_Check_Box();
+      }
+      
+      // Unique uuid for each facet. used to inject specific css/js to each facet.
+      $facet_class_uuid = $layout_object->get_class_uuid();
+
+      $facet_layout_skin_id = $layout_object->get_skin_id( $facet );
     }
   }
   
