@@ -1931,12 +1931,12 @@ add_action( 'after_setup_theme', function () {
   add_filter(WPSOLR_Events::WPSOLR_FILTER_FACETS_REPLACE_HTML, 'update_search_facet', 10, 3);
 } );
 function update_search_facet($html, $facets, $localization_options){
-  //$page_types = oese_get_page_type();
-  
+  $page_types = oese_get_page_types();
+  var_dump($page_types);
   return $html;
 }
 
-function oese_get_page_type(){
+function oese_get_page_types(){
   $facets = null;
   $templates = get_page_templates();
   foreach ( $templates as $template_name => $template_filename ) {
