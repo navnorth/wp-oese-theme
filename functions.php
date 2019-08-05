@@ -1932,7 +1932,9 @@ add_action( 'after_setup_theme', function () {
 } );
 function update_search_facet($html, $facets, $localization_options){
   $page_type = oese_get_page_type();
+  echo "<display style='display:none'>";
   var_dump($facets);
+  echo "</div>";
   if ( ! empty( $facets ) ) {
   }
   return $html;
