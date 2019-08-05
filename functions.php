@@ -1927,6 +1927,7 @@ function add_bottom_script(){
 }
 
 use wpsolr\core\classes\WPSOLR_Events;
+use wpsolr\core\classes\ui\layout\checkboxes\WPSOLR_UI_Layout_Check_Box;
 add_action( 'after_setup_theme', function () {
   add_filter(WPSOLR_Events::WPSOLR_FILTER_FACETS_REPLACE_HTML, 'update_search_facet', 10, 3);
 } );
@@ -1936,13 +1937,11 @@ function update_search_facet($html, $facets, $localization_options){
   $facets[] = $page_types;
   if ( ! empty( $facets ) ) {
 
-    $facets_template = OptionLocalization::get_term( $localization_options, 'facets_element' );
-    $facet_title     = OptionLocalization::get_term( $localization_options, 'facets_title' );
-
     foreach ( $facets as &$facet ) {
 
             // Get the layout object
             $facet_layout_id = ( ! empty( $facet['facet_layout_id'] ) ) ? $facet['facet_layout_id'] : WPSOLR_UI_Layout_Check_Box::CHILD_LAYOUT_ID;
+            
             /** @var WPSOLR_UI_Layout_Abstract $layout_object */
             $layout_object = apply_filters( WPSOLR_Events::WPSOLR_FILTER_LAYOUT_OBJECT, null, $facet_layout_id );
             if ( is_null( $layout_object ) ) {
