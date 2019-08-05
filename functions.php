@@ -1933,11 +1933,6 @@ add_action( 'after_setup_theme', function () {
 function update_search_facet($html, $facets, $localization_options){
   $page_types = oese_get_page_type();
   
-  if ($page_types)
-    $facets[] = $page_types;
-  
-  var_dump($facets);
-  
   return $html;
 }
 
