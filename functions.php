@@ -1933,6 +1933,7 @@ add_action( 'after_setup_theme', function () {
 function update_search_facet($html, $facets, $localization_options){
   $page_types = oese_get_page_types();
   var_dump($page_types);
+  exit();
   return $html;
 }
 
@@ -1940,13 +1941,7 @@ function oese_get_page_types(){
   $facets = null;
   $templates = get_page_templates();
   foreach ( $templates as $template_name => $template_filename ) {
-    $facets[] = array(
-                "value" => $template_name,
-                "count" => 0,
-                "items" => array(),
-                "selected" => false,
-                "value_localized" => $template_name
-                );
+    $facets[] = array( "value" => $template_name, "count" => 0, "items" => null, "selected" => false, "value_localized" => $template_name );
   }
   /*return array(
           "items" => $facets,
