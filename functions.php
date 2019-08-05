@@ -1932,8 +1932,10 @@ add_action( 'after_setup_theme', function () {
 } );
 function update_search_facet($html, $facets, $localization_options){
   $page_type = oese_get_page_type();
-  var_dump($html);
-  return $facets;
+  var_dump($facets);
+  if ( ! empty( $facets ) ) {
+  }
+  return $html;
 }
 
 function oese_get_page_type(){
