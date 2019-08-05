@@ -1932,7 +1932,7 @@ add_action( 'after_setup_theme', function () {
 } );
 function update_search_facet($html, $facets, $localization_options){
   $page_types = oese_get_page_type();
-  
+  var_dump($page_types);
   return $html;
 }
 
@@ -1948,7 +1948,7 @@ function oese_get_page_type(){
                 "value_localized" => $template_name
                 );
   }
-  return array(
+  /*return array(
           "items" => $facets,
           "id" => "page_type",
           "name" => "Page Type",
@@ -1959,5 +1959,6 @@ function oese_get_page_type(){
           "facet_size" => "",
           "facet_layout_skin_js" => "",
           "facet_placeholder" => ""
-        );
+        );*/
+  return $facets;
 }
