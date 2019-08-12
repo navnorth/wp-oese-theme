@@ -1937,7 +1937,7 @@ use wpsolr\core\classes\ui\WPSOLR_Query;
 
 add_action( 'after_setup_theme', function () {
   add_filter(WPSOLR_Events::WPSOLR_FILTER_FACETS_REPLACE_HTML, 'update_search_facet', 10, 3);
-  add_action( WPSOLR_Events::WPSOLR_ACTION_POSTS_RESULTS, 'oese_search_action_posts_results', 10, 2 );
+  add_action( WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY, 'oese_action_solarium_query', 10, 1 );
 } );
 
 function update_search_facet($html, $facets, $localization_options){
@@ -2083,54 +2083,16 @@ function get_count_by_template($template_name) {
     return count($query->posts);
 }
 
-function oese_search_action_posts_results( $wpsolr_query, $results ) {
-  var_dump($wpsolr_query);
-  var_dump($results);
-  if ( empty( $wpsolr_query->posts ) || empty( $results ) ) {
-    // No results: nothing to do.
-    return;
-  }
+function oese_action_solarium_query( $parameters ) {
+  var_dump($parameters);
+  /* @var WPSOLR_Query $wpsolr_query */
+  //$wpsolr_query = $parameters[ WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY__PARAM_WPSOLR_QUERY ];
+  /* @var WPSOLR_AbstractSearchClient $search_engine_client */
+  //$search_engine_client = $parameters[ WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY__PARAM_SOLARIUM_CLIENT ];
 
-  // Name of the field added to the post containing a list of distances
-  $field_distance_name = WPSOLR_Regexp::remove_string_at_the_end( self::GEOLOCATION_DISTANCE_FIELD_PREFIX, '_' );
+  // post_type url parameter
+  /*if ( ! empty( $wpsolr_query->query['post_type'] ) ) {
 
-  foreach ( WPSOLR_Service_Container::getOption()->get_option_index_custom_fields( true ) as $custom_field_name ) {
-
-    if ( self::_SOLR_DYNAMIC_TYPE_LATITUDE_LONGITUDE === WpSolrSchema::get_custom_field_solr_type( $custom_field_name ) ) {
-      // Add geolocation fields to the fields
-
-      $distance_field_name = $this->get_distance_field_name( $custom_field_name );
-
-      foreach ( $results->get_results() as $document ) {
-
-        if ( $document->$distance_field_name ) {
-
-          foreach ( $wpsolr_query->posts as $post ) {
-
-            if ( $post->ID === (int) $document->PID ) {
-
-              if ( empty( $post->$field_distance_name ) ) {
-                $post->$field_distance_name = [];
-              }
-
-              $distance = is_array( $document->$distance_field_name ) ? $document->$distance_field_name[0] : $document->$distance_field_name;
-
-              array_push(
-                $post->$field_distance_name,
-                (object) [
-                  'field_name'      => $custom_field_name,
-                  'distance'        => number_format( $distance, 2, '.', ' ' ),
-                  // distance formatted
-                  'distance_number' => $distance,
-                  // distance not formatted
-                ]
-              );
-            }
-          }
-        }
-      }
-    }
-  }
-
-  return;
+          $search_engine_client->search_engine_client_add_filter_term( sprintf( 'WPSOLR_Plugin_YITH_WooCommerce_Ajax_Search_Free type:%s', $wpsolr_query->query['post_type'] ), WpSolrSchema::_FIELD_NAME_TYPE, false, $wpsolr_query->query['post_type'] );
+  }*/
 }
