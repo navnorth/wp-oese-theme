@@ -2089,13 +2089,14 @@ function oese_action_solarium_query( $parameters ) {
   /* @var WPSOLR_Query $wpsolr_query */
   $wpsolr_query = $parameters[ WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY__PARAM_WPSOLR_QUERY ];
   var_dump($wpsolr_query);
-  echo "</div>";
+  
   /* @var WPSOLR_AbstractSearchClient $search_engine_client */
-  //$search_engine_client = $parameters[ WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY__PARAM_SOLARIUM_CLIENT ];
-
+  $search_engine_client = $parameters[ WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY__PARAM_SOLARIUM_CLIENT ];
+  var_dump($search_engine_client);
+  echo "</div>";
+  
   // post_type url parameter
-  /*if ( ! empty( $wpsolr_query->query['post_type'] ) ) {
-
+  if ( ! empty( $wpsolr_query->query['post_type'] ) ) {
           $search_engine_client->search_engine_client_add_filter_term( sprintf( 'WPSOLR_Plugin_YITH_WooCommerce_Ajax_Search_Free type:%s', $wpsolr_query->query['post_type'] ), WpSolrSchema::_FIELD_NAME_TYPE, false, $wpsolr_query->query['post_type'] );
-  }*/
+  }
 }
