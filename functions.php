@@ -2083,10 +2083,9 @@ function get_count_by_template($template_name) {
     return count($query->posts);
 }
 
-function oese_search_action_posts_results( WPSOLR_Query $wpsolr_query, WPSOLR_AbstractResultsClient $results ) {
+function oese_search_action_posts_results( $wpsolr_query, $results ) {
   var_dump($wpsolr_query);
   var_dump($results);
-  exit();
   if ( empty( $wpsolr_query->posts ) || empty( $results ) ) {
     // No results: nothing to do.
     return;
