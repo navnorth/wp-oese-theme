@@ -1937,7 +1937,7 @@ use wpsolr\core\classes\ui\WPSOLR_Query;
 
 add_action( 'after_setup_theme', function () {
   add_filter(WPSOLR_Events::WPSOLR_FILTER_FACETS_REPLACE_HTML, 'update_search_facet', 10, 3);
-  add_action( WPSOLR_Events::WPSOLR_ACTION_POSTS_RESULTS, 'oese_search_action_posts_results', 10, 3 );
+  add_action( WPSOLR_Events::WPSOLR_ACTION_POSTS_RESULTS, 'oese_search_action_posts_results', 10, 2 );
 } );
 
 function update_search_facet($html, $facets, $localization_options){
@@ -2086,6 +2086,7 @@ function get_count_by_template($template_name) {
 function oese_search_action_posts_results( WPSOLR_Query $wpsolr_query, WPSOLR_AbstractResultsClient $results ) {
   var_dump($wpsolr_query);
   var_dump($results);
+  exit();
   if ( empty( $wpsolr_query->posts ) || empty( $results ) ) {
     // No results: nothing to do.
     return;
