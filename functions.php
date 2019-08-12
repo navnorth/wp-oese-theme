@@ -1932,8 +1932,10 @@ use wpsolr\core\classes\ui\layout\checkboxes\WPSOLR_UI_Layout_Check_Box;
 use wpsolr\core\classes\ui\layout\WPSOLR_UI_Layout_Abstract;
 use wpsolr\core\classes\utilities\WPSOLR_Option;
 use wpsolr\core\classes\ui\WPSOLR_UI_Facets;
+
 add_action( 'after_setup_theme', function () {
   add_filter(WPSOLR_Events::WPSOLR_FILTER_FACETS_REPLACE_HTML, 'update_search_facet', 10, 3);
+  add_filter( WPSOLR_Events::WPSOLR_FILTER_SQL_QUERY_STATEMENT, 'update_solr_sql_query_statement', 10, 3 );
 } );
 
 function update_search_facet($html, $facets, $localization_options){
@@ -2077,4 +2079,27 @@ function get_count_by_template($template_name) {
     $query = new WP_Query($args);
     
     return count($query->posts);
+}
+
+function update_solr_sql_query_statement( $sql_statements, $parameters ) {
+  global $wpdb;
+  var_dump($sql_statements);
+  // Get the index indexing language
+  $language = $this->get_solr_index_indexing_language( $parameters['index_indice'] );
+
+  if ( isset( $language ) ) {
+    global $sitepress;
+
+    // Ensure all WP functions are using the current index language, not the current admin language.
+    $sitepress->switch_lang( $language, true );
+
+    // Join statement
+    $sql_joint_statement = ' JOIN ';
+    $sql_joint_statement .= $wpdb->prefix . self::TABLE_ICL_TRANSLATIONS . ' AS ' . 'icl_translations';
+    $sql_joint_statement .= " ON posts.ID = icl_translations.element_id AND icl_translations.element_type = CONCAT('post_', posts.post_type) AND icl_translations.language_code = '%s' ";
+
+    $sql_statements['JOIN'] = sprintf( $sql_joint_statement, $language );
+  }
+
+  return $sql_statements;
 }
