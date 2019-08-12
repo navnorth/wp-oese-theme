@@ -2084,6 +2084,7 @@ function get_count_by_template($template_name) {
 function update_solr_sql_query_statement( $sql_statements, $parameters ) {
   global $wpdb;
   var_dump($sql_statements);
+  exit();
   // Get the index indexing language
   $language = $this->get_solr_index_indexing_language( $parameters['index_indice'] );
 
