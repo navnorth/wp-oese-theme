@@ -2084,12 +2084,20 @@ function get_count_by_template($template_name) {
 }
 
 function oese_action_solarium_query( $parameters ) {
+  $template_name = "page-templates/program-template.php";
   echo "<div style='display:none;'>";
   
   /* @var WPSOLR_Query $wpsolr_query */
   $wpsolr_query = $parameters[ WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY__PARAM_WPSOLR_QUERY ];
-  var_dump($wpsolr_query);
   
+  $wpsolr_query->meta_query = array(
+    array(
+    'key' => '_wp_page_template',
+    'value' => $template_name,
+    'compare' => '='
+    )
+  );
+  var_dump($wpsolr_query);
   /* @var WPSOLR_AbstractSearchClient $search_engine_client */
   $search_engine_client = $parameters[ WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY__PARAM_SOLARIUM_CLIENT ];
   echo "</div>";
