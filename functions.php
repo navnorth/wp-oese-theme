@@ -2097,9 +2097,10 @@ function oese_action_solarium_query( $parameters ) {
     'compare' => '='
     )
   );
-  var_dump($wpsolr_query);
+  
   /* @var WPSOLR_AbstractSearchClient $search_engine_client */
   $search_engine_client = $parameters[ WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY__PARAM_SOLARIUM_CLIENT ];
+  var_dump($search_engine_client);
   echo "</div>";
   
   // post_type url parameter
