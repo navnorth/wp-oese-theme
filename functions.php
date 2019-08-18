@@ -2107,6 +2107,12 @@ function oese_action_solarium_query( $parameters ) {
           $search_engine_client->search_engine_client_add_filter_term( sprintf( 'WPSOLR_Plugin_YITH_WooCommerce_Ajax_Search_Free type:%s', $wpsolr_query->query['post_type'] ), WpSolrSchema::_FIELD_NAME_TYPE, false, $wpsolr_query->query['post_type'] );
   }
   
-  $search_engine_client->search_engine_client_add_filter_term( sprintf( 'Page Type:%s', $template_name ), '_wp_page_template'.WpSolrSchema::_SOLR_DYNAMIC_TYPE_STRING, false, $template_name );
+  $search_engine_client->search_engine_client_add_filter( sprintf( 'Page Type:%s', $template_name ), array(
+    array(
+    'key' => '_wp_page_template',
+    'value' => $template_name,
+    'compare' => '='
+    )
+  ));
   
 }
