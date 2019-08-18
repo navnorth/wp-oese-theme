@@ -2053,7 +2053,7 @@ function oese_get_page_types(){
   
   return array(
           "items" => $facets,
-          "id" => "page_type",
+          "id" => "_wp_page_template",
           "name" => "Page Type",
           "facet_type" => "facet_type_field",
           "facet_layout_id" => "",
