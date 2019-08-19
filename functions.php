@@ -2085,6 +2085,8 @@ function get_count_by_template($template_name) {
 }
 
 function update_search_query( $wpsolr_query ){
+  $template_name = "page-templates/program-template.php";
+  
   $wpsolr_query->meta_query = array(
     array(
     'key' => '_wp_page_template',
@@ -2096,8 +2098,6 @@ function update_search_query( $wpsolr_query ){
 }
 
 function oese_action_solarium_query( $parameters ) {
-  $template_name = "page-templates/program-template.php";
-  
   /* @var WPSOLR_Query $wpsolr_query */
   $wpsolr_query = $parameters[ WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY__PARAM_WPSOLR_QUERY ];
   var_dump($wpsolr_query);
