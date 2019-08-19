@@ -416,7 +416,7 @@ function recommended_resources_func($attr, $content = null)
 			if(isset($text1) && !empty($text1) && isset($src1) && !empty($src1))
 			{
 				preg_match($regex, $src1, $matches);
-				if (is_array($matches))
+				if (is_array($matches) && count($matches)>1)
 					$src = "//www.youtube.com/embed/".$matches[1];
 				$return .= '<div class="col-md-4 col-sm-4 col-xs-4 pblctn_vdo_bg">';
 					$return .= '<iframe width="274" height="160" src="'. $src .'" allowfullscreen></iframe>';
