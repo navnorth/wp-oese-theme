@@ -1936,7 +1936,7 @@ use wpsolr\core\classes\ui\WPSOLR_UI_Facets;
 use wpsolr\core\classes\ui\WPSOLR_Query;
 
 add_action( 'after_setup_theme', function () {
-  add_filter(WPSOLR_Events::WPSOLR_FILTER_FACETS_REPLACE_HTML, 'update_search_facet', 10, 3);
+  //add_filter(WPSOLR_Events::WPSOLR_FILTER_FACETS_REPLACE_HTML, 'update_search_facet', 10, 3);
   //add_filter( WPSOLR_Events::WPSOLR_FILTER_UPDATE_WPSOLR_QUERY, 'update_search_query', 10, 1 );
   //add_filter( WPSOLR_Events::WPSOLR_FILTER_SOLARIUM_DOCUMENT_FOR_UPDATE, 'add_page_template_to_document_for_update', 10, 5 );
   add_action( WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY, 'oese_action_solarium_query', 10, 1 );
