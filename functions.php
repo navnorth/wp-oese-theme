@@ -2098,7 +2098,7 @@ function update_search_query( $wpsolr_query ){
 }
 
 // Add Page Template to Solr indexing
-function add_fields_to_document_for_update( array $document_for_update, $solr_indexing_options, $post, $attachment_body, WPSOLR_AbstractIndexClient $search_engine_client ) {
+function add_page_template_to_document_for_update( array $document_for_update, $solr_indexing_options, $post, $attachment_body, WPSOLR_AbstractIndexClient $search_engine_client ) {
   $value = get_post_meta($post, '_wp_page_template');
   
   $solr_dynamic_type = WpSolrSchema::_SOLR_DYNAMIC_TYPE_STRING; // Depends on the type selected on your field on screen 2.2
