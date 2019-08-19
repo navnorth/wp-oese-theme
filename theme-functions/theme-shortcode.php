@@ -455,7 +455,8 @@ function recommended_resources_func($attr, $content = null)
 			if(isset($text2) && !empty($text2) && isset($src2) && !empty($src2))
 			{
 				$return .= '<div class="col-md-4 col-sm-4 col-xs-4 pblctn_vdo_bg">';
-					$return .= '<a href="'.$link2.'" target="_blank"><img width="274" height="160" src="'. $src2 .'" alt="Resource"/></a>';
+					if (isset($link2))
+						$return .= '<a href="'.$link2.'" target="_blank"><img width="274" height="160" src="'. $src2 .'" alt="Resource"/></a>';
 					$return .= '<p>'. $text2 .'</p>';
 				$return .= '</div>';
 			}
@@ -480,7 +481,8 @@ function recommended_resources_func($attr, $content = null)
 			if(isset($text3) && !empty($text3) && isset($src3) && !empty($src3))
 			{
 				$return .= '<div class="col-md-4 col-sm-4 col-xs-4 pblctn_vdo_bg">';
-					$return .= '<a href="'.$link3.'" target="_blank"><img width="274" height="160" src="'. $src3 .'" alt="Resource"/></a>';
+					if (isset($link3))
+						$return .= '<a href="'.$link3.'" target="_blank"><img width="274" height="160" src="'. $src3 .'" alt="Resource"/></a>';
 					$return .= '<p>'. $text3 .'</p>';
 				$return .= '</div>';
 			}
@@ -536,7 +538,8 @@ function recommended_resources_func($attr, $content = null)
 			if(isset($text2) && !empty($text2) && isset($src2) && !empty($src2))
 			{
 				$return .= '<div class="col-md-6 col-sm-12 col-xs-12 pblctn_vdo_bg_fr_two">';
-					$return .= '<a href="'.$link2.'" target="_blank"><img width="274" height="160" src="'. $src2 .'" alt="Resource"/></a>';
+					if (isset($link2))
+						$return .= '<a href="'.$link2.'" target="_blank"><img width="274" height="160" src="'. $src2 .'" alt="Resource"/></a>';
 					$return .= '<p>'. $text2 .'</p>';
 				$return .= '</div>';
 			}
@@ -561,7 +564,8 @@ function recommended_resources_func($attr, $content = null)
 			if(isset($text3) && !empty($text3) && isset($src3) && !empty($src3))
 			{
 				$return .= '<div class="col-md-6 col-sm-12 col-xs-12 pblctn_vdo_bg_fr_two">';
-					$return .= '<a href="'.$link3.'" target="_blank"><img width="274" height="160" src="'. $src3 .'" alt="Resource"/></a>';
+					if (isset($link3))
+						$return .= '<a href="'.$link3.'" target="_blank"><img width="274" height="160" src="'. $src3 .'" alt="Resource"/></a>';
 					$return .= '<p>'. $text3 .'</p>';
 				$return .= '</div>';
 			}
