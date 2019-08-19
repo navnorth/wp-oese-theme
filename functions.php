@@ -1937,6 +1937,7 @@ use wpsolr\core\classes\ui\WPSOLR_Query;
 
 add_action( 'after_setup_theme', function () {
   add_filter(WPSOLR_Events::WPSOLR_FILTER_FACETS_REPLACE_HTML, 'update_search_facet', 10, 3);
+  add_filter( WPSOLR_Events::WPSOLR_FILTER_UPDATE_WPSOLR_QUERY, 'update_search_query', 10, 1 );
   add_action( WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY, 'oese_action_solarium_query', 10, 1 );
 } );
 
@@ -2083,12 +2084,7 @@ function get_count_by_template($template_name) {
     return count($query->posts);
 }
 
-function oese_action_solarium_query( $parameters ) {
-  $template_name = "page-templates/program-template.php";
-  
-  /* @var WPSOLR_Query $wpsolr_query */
-  $wpsolr_query = $parameters[ WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY__PARAM_WPSOLR_QUERY ];
-  
+function update_search_query( $wpsolr_query ){
   $wpsolr_query->meta_query = array(
     array(
     'key' => '_wp_page_template',
@@ -2096,8 +2092,15 @@ function oese_action_solarium_query( $parameters ) {
     'compare' => '='
     )
   );
+  return $wpsolr_query;
+}
+
+function oese_action_solarium_query( $parameters ) {
+  $template_name = "page-templates/program-template.php";
   
-  $parameters [WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY__PARAM_WPSOLR_QUERY] = $wpsolr_query;
+  /* @var WPSOLR_Query $wpsolr_query */
+  $wpsolr_query = $parameters[ WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY__PARAM_WPSOLR_QUERY ];
+  var_dump($wpsolr_query);
   
   /* @var WPSOLR_AbstractSearchClient $search_engine_client */
   $search_engine_client = $parameters[ WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY__PARAM_SOLARIUM_CLIENT ];
