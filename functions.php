@@ -1938,6 +1938,7 @@ use wpsolr\core\classes\ui\WPSOLR_Query;
 add_action( 'after_setup_theme', function () {
   add_filter(WPSOLR_Events::WPSOLR_FILTER_FACETS_REPLACE_HTML, 'update_search_facet', 10, 3);
   add_filter( WPSOLR_Events::WPSOLR_FILTER_UPDATE_WPSOLR_QUERY, 'update_search_query', 10, 1 );
+  add_filter( WPSOLR_Events::WPSOLR_FILTER_SOLARIUM_DOCUMENT_FOR_UPDATE, 'add_page_template_to_document_for_update', 10, 5 );
   add_action( WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY, 'oese_action_solarium_query', 10, 1 );
 } );
 
@@ -2084,6 +2085,7 @@ function get_count_by_template($template_name) {
     return count($query->posts);
 }
 
+// Update Search Query with Meta search
 function update_search_query( $wpsolr_query ){
   $template_name = "page-templates/program-template.php";
   
@@ -2095,6 +2097,16 @@ function update_search_query( $wpsolr_query ){
     )
   );
   return $wpsolr_query;
+}
+
+// Add Page Template to Solr indexing
+function add_fields_to_document_for_update( array $document_for_update, $solr_indexing_options, $post, $attachment_body, WPSOLR_AbstractIndexClient $search_engine_client ) {
+  $value = get_post_meta($post, '_wp_page_template');
+  
+  $solr_dynamic_type = WpSolrSchema::_SOLR_DYNAMIC_TYPE_STRING; // Depends on the type selected on your field on screen 2.2
+  $document_for_update[ '_wp_page_template' . $solr_dynamic_type] = $value;
+
+  return $document_for_update;
 }
 
 function oese_action_solarium_query( $parameters ) {
@@ -2109,7 +2121,5 @@ function oese_action_solarium_query( $parameters ) {
   if ( ! empty( $wpsolr_query->query['post_type'] ) ) {
           $search_engine_client->search_engine_client_add_filter_term( sprintf( 'WPSOLR_Plugin_YITH_WooCommerce_Ajax_Search_Free type:%s', $wpsolr_query->query['post_type'] ), WpSolrSchema::_FIELD_NAME_TYPE, false, $wpsolr_query->query['post_type'] );
   }
-  
-  //$search_engine_client->search_engine_client_add_filter_term( sprintf( 'Page Type:%s', $template_name ), '_wp_page_template_str', false, $template_name);
   
 }
