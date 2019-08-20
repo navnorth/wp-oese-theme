@@ -4,7 +4,7 @@
 $parentLink = null;
 $withChild = false;
 //$subpages = get_pages( array( 'child_of' => $post->ID, 'sort_column' => 'menu_order', 'sort_order' => 'asc' ) );
-$subpages = get_pages( array( 'child_of' => $post->ID, 'depth' => 1, 'sort_column' => 'menu_order', 'sort_order' => 'asc' ) );
+$subpages = get_pages( array( 'parent' => $post->ID, 'sort_column' => 'menu_order', 'sort_order' => 'asc' ) );
 if ($subpages)
 	$withChild = true;
 else {
@@ -50,7 +50,7 @@ else{
 						if ($parent_id>0) {
 							$parent_page = get_page($parent_id);
 							//Display Sub page links
-							$subpages = get_pages( array( 'child_of' => $parent_id, 'depth' => 1, 'sort_column' => 'menu_order', 'sort_order' => 'asc', 'parent' => $parent_id ) );
+							$subpages = get_pages( array( 'parent' => $parent_id, 'sort_column' => 'menu_order', 'sort_order' => 'asc', 'parent' => $parent_id ) );
 
 							foreach($subpages as $spage) {
 								if ($post->ID==$spage->ID){
