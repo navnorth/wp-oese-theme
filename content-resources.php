@@ -40,9 +40,11 @@ else{
 				<?php
 					if ($subpages) {
 						foreach($subpages as $spage) {
+							if (!is_page_archived($spage->ID)) {
 							?>
 							<li><a href="<?php echo get_page_link($spage->ID); ?>"><?php echo $spage->post_title; ?></a></li>
 							<?php
+							}
 						}
 					} else {
 						//Get Parent of Page
@@ -53,12 +55,14 @@ else{
 							$subpages = get_pages( array( 'parent' => $parent_id, 'sort_column' => 'menu_order', 'sort_order' => 'asc', 'parent' => $parent_id ) );
 
 							foreach($subpages as $spage) {
-								if ($post->ID==$spage->ID){
-									echo "<li class='current-page'>" . $spage->post_title . "</li>";
-								} else {
-								?>
-									<li><a href="<?php echo get_page_link($spage->ID); ?>"><?php echo $spage->post_title; ?></a></li>
-								<?php
+								if (!is_page_archived($spage->ID)) {
+									if ($post->ID==$spage->ID){
+										echo "<li class='current-page'>" . $spage->post_title . "</li>";
+									} else {
+									?>
+										<li><a href="<?php echo get_page_link($spage->ID); ?>"><?php echo $spage->post_title; ?></a></li>
+									<?php
+									}
 								}
 							}
 						}

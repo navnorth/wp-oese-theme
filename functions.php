@@ -2120,3 +2120,12 @@ function oese_action_solarium_query( $parameters ) {
   }
   
 }
+
+function is_page_archived($page_id){
+  $archived = false;
+
+  if (get_field('archive_date', $page_id))
+    $archived = true;
+  
+  return $archived;
+}
