@@ -27,7 +27,7 @@ if ($archived_date){
 
     <div id="content" class="row site-content" tabindex="-1">
 
-        <div class="col-md-12 col-sm-12 col-xs-12 padding_left padding_right">
+        <div class="col-md-12 col-sm-12 col-xs-12">
 
             <?php
                 if(isset($img_url) && !empty($img_url))
@@ -46,9 +46,11 @@ if ($archived_date){
         
             <?php while ( have_posts() ) : the_post(); ?>
                 <?php
-                    get_template_part( 'content', 'resources' );
                     get_template_part( 'content', 'page' );
                 ?>
+                <div class="col-md-4 mb-5 pl-0">  
+                    <?php get_template_part( 'content', 'resources' ); ?>
+                </div>
             <?php endwhile; ?>
          </div>
 
