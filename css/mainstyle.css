@@ -1851,7 +1851,7 @@ ul.tile-links-wrapper li { list-style-type:none; }
     padding: 10px;
     font-weight: bold;
 }
-.wpsolr_facet_checkbox.wpsolr_facet_skin_none.wpsolr_facet_scroll {
+ul[class*='wpsolr_facet_class_'].wpsolr_facet_checkbox.wpsolr_facet_skin_none.wpsolr_facet_scroll {
     background: #f2f2f2;
     padding: 15px;
     max-height: 300px;
