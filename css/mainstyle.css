@@ -1843,6 +1843,21 @@ ul.tile-links-wrapper li { list-style-type:none; }
 .cls_search form.search-frm { margin-left:25%; }
 .cls_search form.search-frm .search-field { width:90% !important; }
 .cls_results .wdm_resultContainer .wdm_list { margin-top:-40px; }
+
+/** Search Results Styles **/
+.wpsolr_facet_title {
+    background: #1f5c99;
+    color: #ffffff;
+    padding: 10px;
+    font-weight: bold;
+}
+.wpsolr_facet_checkbox.wpsolr_facet_skin_none.wpsolr_facet_scroll {
+    background: #f2f2f2;
+    padding: 15px;
+    max-height: 300px;
+    overflow: scroll;
+}
+/** End of Search Results Styles **/
 @media (min-width: 1200px) {
     .container{
         max-width: 1200px;
