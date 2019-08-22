@@ -1867,6 +1867,7 @@ ul[class*='wpsolr_facet_class_'].wpsolr_facet_checkbox.wpsolr_facet_skin_none.wp
     overflow-x: auto;
 }
 ul[class*='wpsolr_facet_class_'].wpsolr_facet_checkbox.wpsolr_facet_skin_none.wpsolr_facet_scroll li div.select_opt { background-position-y: 5px; }
+.wdm_label { display:none; }
 /** End of Search Results Styles **/
 @media (min-width: 1200px) {
     .container{
