@@ -6,7 +6,10 @@ global $message, $type;
 if (!current_user_can('edit_theme_options')) {
     wp_die( "You don't have permission to access this page!" );
 }
-
+if (isset($_GET['oii_update']) && $_GET['oii_update']=="true"){
+    // Update oii page with parent id 3613 and oii category
+    update_oii_page_parent(3613, "oii");
+} else {
 ?>
 <div class="wrap">
     <h1>Theme Options</h1>
@@ -34,3 +37,4 @@ if (!current_user_can('edit_theme_options')) {
 	<div class="admin-theme-info"><?php echo WP_OESE_THEME_NAME . " " . WP_OESE_THEME_VERSION .""; ?></div>
 	<div class="clear"></div>
 </div>
+<?php } ?>

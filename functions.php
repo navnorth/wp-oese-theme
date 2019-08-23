@@ -2129,3 +2129,40 @@ function is_page_archived($page_id){
   
   return $archived;
 }
+
+function replace_page_old_urls(){
+  global $wpdb;
+  
+  
+}
+
+function update_oii_page_parent($parent_id, $category_slug){
+  global $wpdb;
+  
+  // Select all pages with OII category and without parent page
+  $args = array(
+    'post_type'  => array('page', 'post'), //or a post type of your choosing
+    'posts_per_page' => 5, // select only 5 for initial testing
+    'category_name' => $category_slug,
+    'post_parent' => 0
+  );
+  
+  $query = new WP_Query($args);
+  $i = 1;
+  // Loop through oii pages and update parent id
+  foreach($query->posts as $post){
+    echo $i. '. ' .$post->ID;
+    $update_post = array('ID' => $post->ID,
+                         'post_parent' => $parent_id );
+    $updated_post_id = wp_update_post( $update_post, true );						  
+    if (is_wp_error($updated_post_id)) {
+            $errors = $updated_post_id->get_error_messages();
+            foreach ($errors as $error) {
+                    echo $error;
+            }
+    } else {
+      echo "Successfully updated ". $post->post_title ."<br/>";
+    }
+    $i++;
+  }
+}
