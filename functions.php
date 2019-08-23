@@ -2142,7 +2142,7 @@ function update_oii_page_parent($parent_id, $category_slug){
   // Select all pages with OII category and without parent page
   $args = array(
     'post_type'  => array('page', 'post'), //or a post type of your choosing
-    'posts_per_page' => 5, // select only 5 for initial testing
+    'posts_per_page' => -1, // select all oii pages
     'category_name' => $category_slug,
     'post_parent' => 0
   );
@@ -2151,7 +2151,7 @@ function update_oii_page_parent($parent_id, $category_slug){
   $i = 1;
   // Loop through oii pages and update parent id
   foreach($query->posts as $post){
-    echo $i. '. ' .$post->ID;
+    echo $i. '. ' .$post->ID . ' ';
     $update_post = array('ID' => $post->ID,
                          'post_parent' => $parent_id );
     $updated_post_id = wp_update_post( $update_post, true );						  
