@@ -2130,20 +2130,78 @@ function is_page_archived($page_id){
   return $archived;
 }
 
+// replace old urls with new WP Url
 function replace_page_old_urls(){
-  global $wpdb;
-  
-  // Select all pages with OII category and without parent page
+  // Select all pages with source URL
   $args = array(
-    'post_type'  => array('page', 'attachment'), //page and attachment
+    'post_type'  => array('page','attachment'), //page and attachment
     'posts_per_page' => -1, // select all pages
     'meta_key' => 'source_URL',
     'meta_value' => '',
-    'meta_compare' => '!='
+    'meta_compare' => '!=',
+    'post_status' => 'any'
   );
   
   $query = new WP_Query($args);
-  var_dump($query->posts);
+  $relative_urls = oese_migrate_relative_urls();
+  
+  $i=1;
+  foreach($query->posts as $post){
+    echo $i. '. ' .$post->ID . ' ';
+    $content = $post->post_content;
+    
+    foreach($relative_urls as $old_url => $new_url){
+      $content = str_replace('href="'.$old_url.'"', 'href="'.$new_url.'"', $content);
+    }
+    $update_post = array('ID' => $post->ID,
+                         'post_content' => $content );
+    $updated_post_id = wp_update_post( $update_post, true );						  
+    if (is_wp_error($updated_post_id)) {
+            $errors = $updated_post_id->get_error_messages();
+            foreach ($errors as $error) {
+                    echo $error;
+            }
+    } else {
+      echo "Successfully updated ". $post->post_title ."<br/>";
+    }
+    $i++;
+  }
+}
+
+// Get all pages with set source_URL
+function oese_migrate_relative_urls(){
+  $links = array();
+  
+  // Select all pages with source_URL
+  $args = array(
+    'post_type'  => array('page','attachment'), //page and attachment
+    'posts_per_page' => -1, // select all pages
+    'meta_key' => 'source_URL',
+    'meta_value' => '',
+    'meta_compare' => '!=',
+    'post_status' => 'any'
+  );
+  
+  $query = new WP_Query($args);
+  
+  foreach($query->posts as $post){
+    $old_url = get_source_url($post->ID);
+    if ($post->post_type=="page")
+      $new_url = get_the_permalink($post->ID);
+    else
+      $new_url = wp_get_attachment_url($post->ID);
+    if ($old_url !== "")
+      $links[$old_url] = $new_url;
+  }
+  
+  return $links;
+}
+
+function get_source_url($post_id){
+  $source = get_post_meta($post_id,'source_URL');
+  if (is_array($source))
+    return $source[0];
+  return $source;
 }
 
 function update_oii_page_parent($parent_id, $category_slug){
