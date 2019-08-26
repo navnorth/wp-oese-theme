@@ -2133,7 +2133,17 @@ function is_page_archived($page_id){
 function replace_page_old_urls(){
   global $wpdb;
   
+  // Select all pages with OII category and without parent page
+  $args = array(
+    'post_type'  => array('page', 'attachment'), //page and attachment
+    'posts_per_page' => -1, // select all pages
+    'meta_key' => 'source_URL',
+    'meta_value' => '',
+    'meta_compare' => '!='
+  );
   
+  $query = new WP_Query($args);
+  var_dump($query->posts);
 }
 
 function update_oii_page_parent($parent_id, $category_slug){
