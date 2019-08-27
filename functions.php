@@ -2149,7 +2149,7 @@ function replace_page_old_urls($post_id_from=0,$post_id_to=0){
   $i=1;
   foreach($query->posts as $post){
     //add filter to execute batch processing of replace
-    if (($post_id_from==0 && $post_id_to==0) || (($post->ID < $post_id_to) && ($post->ID > $post_id_from))){
+    if (($post_id_from==0 && $post_id_to==0) || (($post->ID <= $post_id_to) && ($post->ID >= $post_id_from))){
       
       // add counter check for source url post meta as WP_Query still returns other pages with space in source url
       $source_url = get_source_url($post->ID);
