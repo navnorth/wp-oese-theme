@@ -2153,7 +2153,7 @@ function replace_page_old_urls(){
     foreach($relative_urls as $old_url => $new_url){
       $content = str_replace('href="'.$old_url.'"', 'href="'.$new_url.'"', $content);
     }
-    $update_post = array('ID' => $post->ID,
+    /*$update_post = array('ID' => $post->ID,
                          'post_content' => $content );
     $updated_post_id = wp_update_post( $update_post, true );						  
     if (is_wp_error($updated_post_id)) {
@@ -2163,7 +2163,8 @@ function replace_page_old_urls(){
             }
     } else {
       echo "Successfully updated ". $post->post_title ."<br/>";
-    }
+    }*/
+    var_dump($content);
     $i++;
   }
 }
