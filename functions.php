@@ -2134,7 +2134,7 @@ function is_page_archived($page_id){
 function replace_page_old_urls(){
   // Select all pages with source URL
   $args = array(
-    'post_type'  => array('page','attachment'), //page and attachment
+    'post_type'  => array('page'), //page and attachment
     'posts_per_page' => -1, // select all pages
     'meta_key' => 'source_URL',
     'meta_value' => '',
@@ -2149,25 +2149,24 @@ function replace_page_old_urls(){
   foreach($query->posts as $post){
     echo $i. '. ' .$post->ID . ' ';
     $content = $post->post_content;
-    
-    foreach($relative_urls as $old_url => $new_url){
-      if (strpos($content, $old_url)){
-        var_dump($content);
-        var_dump($old_url);
+    if ($post->ID==13909){
+      foreach($relative_urls as $old_url => $new_url){
+        if (strpos($content, $old_url)){      
+          $content = str_replace('href="'.$old_url.'"', 'href="'.$new_url.'"', $content);
+        }
       }
-      $content = str_replace('href="'.$old_url.'"', 'href="'.$new_url.'"', $content);
+      $update_post = array('ID' => $post->ID,
+                           'post_content' => $content );
+      $updated_post_id = wp_update_post( $update_post, true );						  
+      if (is_wp_error($updated_post_id)) {
+        $errors = $updated_post_id->get_error_messages();
+        foreach ($errors as $error) {
+                echo $error;
+        }
+      } else {
+        echo "Successfully updated ". $post->post_title ."<br/>";
+      }
     }
-    /*$update_post = array('ID' => $post->ID,
-                         'post_content' => $content );
-    $updated_post_id = wp_update_post( $update_post, true );						  
-    if (is_wp_error($updated_post_id)) {
-            $errors = $updated_post_id->get_error_messages();
-            foreach ($errors as $error) {
-                    echo $error;
-            }
-    } else {
-      echo "Successfully updated ". $post->post_title ."<br/>";
-    }*/
     $i++;
   }
 }
@@ -2183,7 +2182,7 @@ function oese_migrate_relative_urls(){
     'meta_key' => 'source_URL',
     'meta_value' => '',
     'meta_compare' => '!=',
-    'post_status' => 'any'
+    'post_status' => array('publish','inherit')
   );
   
   $query = new WP_Query($args);
