@@ -2144,13 +2144,17 @@ function replace_page_old_urls(){
   
   $query = new WP_Query($args);
   $relative_urls = oese_migrate_relative_urls();
-  
+  var_dump($relative_urls);
   $i=1;
   foreach($query->posts as $post){
     echo $i. '. ' .$post->ID . ' ';
     $content = $post->post_content;
     
     foreach($relative_urls as $old_url => $new_url){
+      if (strpos($content, $old_url)){
+        var_dump($content);
+        var_dump($old_url);
+      }
       $content = str_replace('href="'.$old_url.'"', 'href="'.$new_url.'"', $content);
     }
     /*$update_post = array('ID' => $post->ID,
@@ -2164,7 +2168,6 @@ function replace_page_old_urls(){
     } else {
       echo "Successfully updated ". $post->post_title ."<br/>";
     }*/
-    var_dump($content);
     $i++;
   }
 }
