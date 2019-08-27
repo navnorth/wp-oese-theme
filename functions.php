@@ -2152,7 +2152,7 @@ function replace_page_old_urls(){
     if ($post->ID==13909){
       foreach($relative_urls as $old_url => $new_url){
         if (strpos($content, $old_url)){      
-          $content = str_replace('href="'.$old_url.'"', 'href="'.$new_url.'"', $content);
+          $content = preg_replace('/href="'.$old_url.'.*?/', 'href="'.$new_url.'', $content);
         }
       }
       $update_post = array('ID' => $post->ID,
