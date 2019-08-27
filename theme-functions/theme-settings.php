@@ -10,7 +10,10 @@ if (isset($_GET['oii_update']) && $_GET['oii_update']=="true"){
     // Update oii page with parent id 3613 and oii category
     update_oii_page_parent(3613, "oii");
 } elseif (isset($_GET['oii_migrate']) && $_GET['oii_migrate']=="true"){
-    replace_page_old_urls();
+    if (!isset($_GET['post_from']) && !isset($_GET['post_to']))
+	replace_page_old_urls();
+    else
+	replace_page_old_urls($_GET['post_from'],$_GET['post_to']);
 } else {
 ?>
 <div class="wrap">
