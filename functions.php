@@ -2139,7 +2139,7 @@ function replace_page_old_urls(){
     'meta_key' => 'source_URL',
     'meta_value' => '',
     'meta_compare' => '!=',
-    'post_status' => 'any'
+    'post_status' => array('publish','inherit')
   );
   
   $query = new WP_Query($args);
