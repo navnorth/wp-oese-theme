@@ -2150,25 +2150,34 @@ function replace_page_old_urls($post_id_from=0,$post_id_to=0){
   foreach($query->posts as $post){
     //add filter to execute batch processing of replace
     if (($post_id_from==0 && $post_id_to==0) || (($post->ID < $post_id_to) && ($post->ID > $post_id_from))){
-      echo $i. '. ' .$post->ID . ' ';
-      $content = $post->post_content;
-      foreach($relative_urls as $old_url => $new_url){
-        if (strpos($content, $old_url)){      
-          $content = str_replace('href="'.$old_url.'', 'href="'.$new_url.'', $content);
+      
+      // add counter check for source url post meta as WP_Query still returns other pages with space in source url
+      $source_url = get_source_url($post->ID);
+      if ($source_url !== ""){
+        echo $i. '. ' .$post->ID . ' ';
+        $content = $post->post_content;
+        foreach($relative_urls as $old_url => $new_url){
+          if (strpos($content, $old_url)){      
+            $content = str_replace('href="'.$old_url.'', 'href="'.$new_url.'', $content);
+          }
         }
-      }
-      $update_post = array('ID' => $post->ID,
-                           'post_content' => $content );
-      $updated_post_id = wp_update_post( $update_post, true );						  
-      if (is_wp_error($updated_post_id)) {
-        $errors = $updated_post_id->get_error_messages();
-        foreach ($errors as $error) {
-                echo $error;
+        
+        //update post content
+        $update_post = array('ID' => $post->ID,
+                             'post_content' => $content );
+        $updated_post_id = wp_update_post( $update_post, true );
+        
+        //check if error occurs during update
+        if (is_wp_error($updated_post_id)) {
+          $errors = $updated_post_id->get_error_messages();
+          foreach ($errors as $error) {
+                  echo $error;
+          }
+        } else {
+          echo "Successfully updated ". $post->post_title ."<br/>";
         }
-      } else {
-        echo "Successfully updated ". $post->post_title ."<br/>";
+        $i++;
       }
-      $i++;
     }
   }
 }
