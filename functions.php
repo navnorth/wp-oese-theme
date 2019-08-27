@@ -2144,29 +2144,29 @@ function replace_page_old_urls(){
   
   $query = new WP_Query($args);
   $relative_urls = oese_migrate_relative_urls();
-  var_dump($relative_urls);
+  
   $i=1;
   foreach($query->posts as $post){
     echo $i. '. ' .$post->ID . ' ';
     $content = $post->post_content;
-    if ($post->ID==13909 || $post->ID==13907){
-      foreach($relative_urls as $old_url => $new_url){
-        if (strpos($content, $old_url)){      
-          $content = str_replace('href="'.$old_url.'', 'href="'.$new_url.'', $content);
-        }
-      }
-      $update_post = array('ID' => $post->ID,
-                           'post_content' => $content );
-      $updated_post_id = wp_update_post( $update_post, true );						  
-      if (is_wp_error($updated_post_id)) {
-        $errors = $updated_post_id->get_error_messages();
-        foreach ($errors as $error) {
-                echo $error;
-        }
-      } else {
-        echo "Successfully updated ". $post->post_title ."<br/>";
+    
+    foreach($relative_urls as $old_url => $new_url){
+      if (strpos($content, $old_url)){      
+        $content = str_replace('href="'.$old_url.'', 'href="'.$new_url.'', $content);
       }
     }
+    $update_post = array('ID' => $post->ID,
+                         'post_content' => $content );
+    $updated_post_id = wp_update_post( $update_post, true );						  
+    if (is_wp_error($updated_post_id)) {
+      $errors = $updated_post_id->get_error_messages();
+      foreach ($errors as $error) {
+              echo $error;
+      }
+    } else {
+      echo "Successfully updated ". $post->post_title ."<br/>";
+    }
+      
     $i++;
   }
 }
