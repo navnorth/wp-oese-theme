@@ -2252,11 +2252,13 @@ function update_oii_page_parent($parent_id, $category_slug){
 add_action( "wp_footer" , "add_oese_inline_styles" );
 function add_oese_inline_styles(){
   ?>
+  <style type="text/css">
   .cls_search .ui-widget #searchsubmit {
     text-indent: -9999px;
     background-color: #1f5c99;
     border: none;
     background:url(<?php echo get_template_directory_uri()."images/magnifying-glass-24.png"; ?>) no-repeat  center center;
   }
+  </style>
   <?php
 }
