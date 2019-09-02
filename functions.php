@@ -2255,9 +2255,20 @@ function add_oese_inline_styles(){
   <style type="text/css">
   .cls_search .ui-widget #searchsubmit {
     text-indent: -9999px;
-    background-color: #1f5c99;
     border: none;
-    background:url(<?php echo get_template_directory_uri()."images/magnifying-glass-24.png"; ?>) no-repeat  center center;
+    background:#1f5c99 url(<?php echo get_template_directory_uri()."/images/magnifying-glass-24.png"; ?>) no-repeat center center;
+    height: 40px;
+    width: 40px !important;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  .cls_search .ui-widget #search_que {
+    background: #f2f2f2;
+    padding: 5px;
+    border: 2px solid #cdcdcd;
+    height: 40px !important;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
   }
   </style>
   <?php
