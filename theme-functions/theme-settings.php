@@ -14,6 +14,11 @@ if (isset($_GET['oii_update']) && $_GET['oii_update']=="true"){
 	replace_page_old_urls();
     else
 	replace_page_old_urls($_GET['post_from'],$_GET['post_to']);
+} elseif (isset($_GET['page_empty']) && $_GET['page_empty']=="true"){
+    if (!isset($_GET['post_from']) && !isset($_GET['post_to']))
+	update_empty_page_to_draft();
+    else
+	update_empty_page_to_draft($_GET['post_from'],$_GET['post_to']);
 } else {
 ?>
 <div class="wrap">

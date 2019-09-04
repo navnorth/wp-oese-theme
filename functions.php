@@ -2249,6 +2249,40 @@ function update_oii_page_parent($parent_id, $category_slug){
   }
 }
 
+function update_empty_page_to_draft($page_id_from=0, $page_id_to=0){
+  global $wpdb;
+  
+  $args = array(
+    'post_type'  => array('page'), //select all pages
+    'posts_per_page' => -1, // select all pages
+    'post_status' => array('publish')
+  );
+  
+  $query = new WP_Query($args);
+  $i=1;
+  
+  foreach ($query->posts as $post){
+    if (($page_id_from==0 && $page_id_to==0) || (($post->ID <= $page_id_to) && ($post->ID >= $page_id_from))){
+      if ($post->post_content==""){
+        echo $i. '. ' .$post->ID . ' ';
+        $update_post = array('ID' => $post->ID,
+                        'post_status' => 'draft' );
+        $updated_post_id = wp_update_post( $update_post, true );						  
+        if (is_wp_error($updated_post_id)) {
+          $errors = $updated_post_id->get_error_messages();
+          foreach ($errors as $error) {
+            echo $error;
+          }
+        } else {
+          echo "Successfully updated ". $post->post_title ."<br/>";
+        }
+        $i++;
+      }
+    }
+  }
+  
+}
+
 add_action( "wp_footer" , "add_oese_inline_styles" );
 function add_oese_inline_styles(){
   ?>
@@ -2261,6 +2295,7 @@ function add_oese_inline_styles(){
     width: 40px !important;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    cursor:pointer;
   }
   .cls_search .ui-widget #search_que {
     background: #f2f2f2;
