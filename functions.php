@@ -1612,7 +1612,7 @@ function csvImportMediaForm(){
 
   add_action('admin_menu', 'createCsvImportMenu' , 30);
   function createCsvImportMenu(){
-    add_options_page( 'Csv Media Import','Csv Media Import','manage_options','csv-media-import.php','csvImportMediaForm');
+    add_options_page( 'CSV Media Importer','CSV Media Importer','manage_options','csv-media-import.php','csvImportMediaForm');
   }
 
   function getUrlContents ($url) {
@@ -2183,6 +2183,14 @@ function replace_page_old_urls($post_id_from=0,$post_id_to=0){
         $i++;
       }
     }
+  }
+}
+
+// echo list of old urls to new WP Url for batch processing
+function echo_migration_urls($post_id_from=0,$post_id_to=0){
+  $relative_urls = oese_migrate_relative_urls();
+  foreach($relative_urls as $old_url => $new_url){
+      echo $old_url.', '.$new_url."\n";
   }
 }
 
