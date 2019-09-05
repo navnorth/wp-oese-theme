@@ -714,11 +714,11 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
 function theme_back_enqueue_script()
 {
     wp_enqueue_script( 'theme-back-script', get_stylesheet_directory_uri() . '/js/back-script.js' );
-    wp_enqueue_script('csv-media-script', get_stylesheet_directory_uri() . '/js/csv-media-import-script.js' ); 
-  
+    wp_enqueue_script('csv-media-script', get_stylesheet_directory_uri() . '/js/csv-media-import-script.js' );
+
     wp_enqueue_style( 'theme-back-style',get_stylesheet_directory_uri() . '/css/back-style.css' );
     wp_enqueue_style( 'tinymce_button_backend',get_stylesheet_directory_uri() . '/tinymce_button/shortcode_button.css' );
-    wp_enqueue_style('csv-media-styles', get_stylesheet_directory_uri() . '/css/csv-media-import-style.css' ); 
+    wp_enqueue_style('csv-media-styles', get_stylesheet_directory_uri() . '/css/csv-media-import-style.css' );
 }
 add_action( 'admin_enqueue_scripts', 'theme_back_enqueue_script' );
 
@@ -854,22 +854,22 @@ add_filter('wpseo_breadcrumb_single_link_info', 'truncate_breadcrumbs', 10, 2);
 function truncate_breadcrumbs($link, $id) {
 
   $crumb_length = strlen( $link['text'] );
- 
+
   // Allowed breadcrumb size.
   $crumb_size = 24;
- 
+
   // Shorten the title.
   $truncated = substr( $link['text'], 0, $crumb_size );
-    
+
   // Add an ellipsis if the title has been truncated.
   if ( $crumb_length > $crumb_size ) {
     $truncated .= '...';
   }
-  
+
   $link['text'] = $truncated;
- 
+
   return $link;
-    
+
 }
 
 /**
@@ -1081,7 +1081,7 @@ register_nav_menu( 'sub-footer', __( 'Sub Footer', WP_OESE_THEME_SLUG ) );
 
     if( have_rows('sidebar_links') ):
       $output = "<div class='secondary-navigation-menu sidebar-links'>";
-      
+
       if ($showHeader==true)
         $output .= "<div class='secondary-navigation-menu-header'><h2>". get_field('sidebar_box_title')."</h2></div>";
       // check if the repeater field has rows of data
@@ -1198,7 +1198,7 @@ function oeseBreadcrumb() {
 
 function contactInformationBlock($showHeader=true){
   global $post;
-  
+
   $contactTitle = get_field("ci_title");
   $contactAddress = get_field("ci_address");
   $contactPhone = get_field("ci_phone");
@@ -1207,7 +1207,7 @@ function contactInformationBlock($showHeader=true){
   $contactEmailOption = get_field("ci_email");
   $contactEmailAddress = get_field("ci_email_address");
   $contact_page = get_option('wp_oese_theme_contact_page');
-  
+
   // email link option - contact page or email address
   $contactEmailLink = "";
   if($contactEmailOption != 'disabled'){
@@ -1215,8 +1215,8 @@ function contactInformationBlock($showHeader=true){
       $contactEmailLink = 'mailto:'.$contactEmailAddress.'?subject=OESE Website Contact: '.sanitize_text_field($post->post_title);
     } elseif ($contactEmailOption == 'contact_form'){
       if ($contact_page){
-        $contactEmailLink = get_the_permalink($contact_page).'?contact_reference='.$post->ID;  
-      } else 
+        $contactEmailLink = get_the_permalink($contact_page).'?contact_reference='.$post->ID;
+      } else
         $contactEmailLink = '/contact-us/?contact_reference='.$post->ID;
     }
   }
@@ -1224,7 +1224,7 @@ function contactInformationBlock($showHeader=true){
   $output = "";
   if(!empty($contactAddress) || (!empty($contactPhone)) || (!empty($contactFax)) || (!empty($contactEmailLink))){
       $output = '<div class="secondary-navigation-menu contact-box">';
-      
+
       if ($showHeader==true){
           $output .=   '<div class="secondary-navigation-menu-header">
                             <h2>'.$contactTitle.'</h2>
@@ -1349,7 +1349,7 @@ function add_wp_oese_theme_settings_page(){
  **/
 function wp_oese_theme_settings_page() {
         $page = "theme_settings_page";
-    
+
   //Create Settings Section
   add_settings_section(
     'wp_oese_theme_settings',
@@ -1357,7 +1357,7 @@ function wp_oese_theme_settings_page() {
     'wp_oese_theme_settings_callback',
     $page
   );
-        
+
   //Add Settings field for Modal Heading
   add_settings_field(
     'wp_oese_theme_modal_heading',
@@ -1371,7 +1371,7 @@ function wp_oese_theme_settings_page() {
       'name' =>  __('Heading: ', WP_OESE_THEME_SLUG)
     )
   );
-        
+
   //Add Settings field for Modal Content
   add_settings_field(
     'wp_oese_theme_modal_content',
@@ -1385,7 +1385,7 @@ function wp_oese_theme_settings_page() {
       'name' =>  __('Content: ', WP_OESE_THEME_SLUG)
     )
   );
-        
+
   //Add Settings field to Enabled Redirect Modal
   add_settings_field(
     'wp_oese_theme_modal_enable_redirect',
@@ -1399,7 +1399,7 @@ function wp_oese_theme_settings_page() {
       'name' =>  __('Enable redirect modal', WP_OESE_THEME_SLUG)
     )
   );
-  
+
   //Add Settings field for Modal Heading
   add_settings_field(
     'wp_oese_theme_contact_page',
@@ -1421,7 +1421,7 @@ function wp_oese_theme_settings_page() {
     'wp_oese_theme_settings_callback',
     $page
   );
-  
+
   //Add GA Property ID Settings field
   add_settings_field(
     'wp_oese_theme_ga_propertyid',
@@ -1435,7 +1435,7 @@ function wp_oese_theme_settings_page() {
       'name' =>  __('Property ID: ', WP_OESE_THEME_SLUG)
     )
   );
-  
+
   //Create PDF Embed Settings Section
   add_settings_section(
     'wp_oese_pdf_settings',
@@ -1443,7 +1443,7 @@ function wp_oese_theme_settings_page() {
     'wp_oese_theme_settings_callback',
     $page
   );
-  
+
   //Add PDF Viewer field
   add_settings_field(
     'wp_oese_theme_pdf_viewer',
@@ -1462,7 +1462,7 @@ function wp_oese_theme_settings_page() {
       'default' => '1'
     )
   );
-  
+
   register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_heading' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_content' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_enable_redirect' );
@@ -1484,7 +1484,7 @@ function wp_oese_theme_settings_callback() {
  **/
 function wp_oese_theme_settings_field($arguments){
   $value = get_option($arguments['uid']);
-  
+
   if ($arguments['type']=="textbox") {
     echo '<div class="form-row"><div class="form-group">
       <label for="'.$arguments['uid'].'"><strong>'.$arguments['name'].'</strong></label>
@@ -1493,9 +1493,9 @@ function wp_oese_theme_settings_field($arguments){
   } elseif ($arguments['type']=="editor"){
     echo '<div class="form-row"><div class="form-group">
       <label for="'.$arguments['uid'].'"><strong>'.$arguments['name'].'</strong></label></div></div>';
-    
+
     echo wp_editor($value, $arguments['uid'],array('media_buttons'=>false));
-    
+
   } elseif ($arguments['type']=="checkbox"){
     echo '<div class="form-row"><div class="form-group">
       <input name="'.$arguments['uid'].'" id="'.$arguments['uid'].'" type="'.$arguments['type'].'" value="1" '.checked(1,$value,false).' />
@@ -1529,7 +1529,7 @@ function wp_oese_theme_settings_field($arguments){
 
 function wp_oese_theme_select_contact_field($arguments){
   $value = get_option($arguments['uid']);
-  
+
   // Get All Pages
   $args = array(
                 'numberposts' => -1,
@@ -1539,7 +1539,7 @@ function wp_oese_theme_select_contact_field($arguments){
                 'order' => 'ASC'
                 );
   $pages = get_posts($args);
-  
+
   echo '<div class="form-row"><div class="form-group">
       <label for="'.$arguments['uid'].'"><strong>'.$arguments['name'].'</strong></label>
       <select name="'.$arguments['uid'].'" id="'.$arguments['uid'].'">';
@@ -1560,7 +1560,7 @@ function wp_oese_theme_add_modal(){
       include( get_template_directory() . "/inc/modal/redirect_modal.php");
     }
   }
-  
+
 }
 add_action( 'wp_footer', 'wp_oese_theme_add_modal');
 
@@ -1575,15 +1575,15 @@ function csvImportMediaForm(){
                 <h2>WP Media Importer</h2>
                   <div class="form-section">
                     <div class="container">
-                      <div class="error_message"></div>  
+                      <div class="error_message"></div>
                       <form name="wp_importer" class="importer"  method="post" enctype="multipart/form-data">
                       <div class="cfile">
                        Choose File
                         <input type="file" accept=".csv" name="fileToUpload" id="fileToUpload">
-                      </div>  
+                      </div>
                       <div class="cfile-upload">
                         <input type="submit" class="button button-primary button-large" id="csv_media_upload" value="Upload Csv" name="submit">
-                      </div>  
+                      </div>
                       </form>
                     </div>
                     <div class="c_file_name"></div>
@@ -1591,9 +1591,9 @@ function csvImportMediaForm(){
                     <div class=csv-sec>
                       <div class="samplecsv"><a class="csv_file" href="'.$samplecsvfile.'">Sample Csv</a>
                       </div>
-                      <div class="outputcsv"></div>  
+                      <div class="outputcsv"></div>
                     </div>
-                  </div>   
+                  </div>
                   <div class="results_table" style="display: none;">
                     <p class="page_count"></p>
                     <table class="fixed_header" id="page_result">
@@ -1602,24 +1602,24 @@ function csvImportMediaForm(){
                           <th>Page Name</th>
                           <th>Action</th>
                         </tr>
-                       </thead>  
+                       </thead>
                     </table>
 
                   </div>
-               </div>       
+               </div>
             </div>';
 }
 
   add_action('admin_menu', 'createCsvImportMenu' , 30);
   function createCsvImportMenu(){
     add_options_page( 'Csv Media Import','Csv Media Import','manage_options','csv-media-import.php','csvImportMediaForm');
-  }    
+  }
 
   function getUrlContents ($url) {
     $array = get_headers($url);
     $string = $array[0];
     if(strpos($string,"200")){
-      if (function_exists('curl_exec')){ 
+      if (function_exists('curl_exec')){
           $conn = curl_init($url);
           curl_setopt($conn, CURLOPT_SSL_VERIFYPEER, true);
           curl_setopt($conn, CURLOPT_FRESH_CONNECT,  true);
@@ -1637,14 +1637,18 @@ function csvImportMediaForm(){
     }
     else{
       $url_get_contents_data = false;
-    }  
+    }
     return $url_get_contents_data;
-  } 
+  }
 
 
-  function insertNewMedia($file,$date,$mediaCat,$mediaTag, $mediaDescription, $mediaArchiveDate, $mediaPubID){
-    if($file){  
+  function insertNewMedia($file,$title,$date,$mediaCat,$mediaTag, $mediaDescription, $mediaArchiveDate, $mediaPubID){
+    if($file){
       $filename = basename($file);
+
+      if ($title=="")
+         $title = $filename;
+
       $data = getUrlContents($file);
       $attachment_id = "";
       if($data){
@@ -1653,14 +1657,14 @@ function csvImportMediaForm(){
             if(checkDateFormat($date)){
               $mediaDate = date("Y-m-d H:i:s",strtotime($date));
             }
-          }  
+          }
           $wp_upload_dir = wp_upload_dir();
           $upload_file = wp_upload_bits($filename, null,$data);
           if (!$upload_file['error']) {
             $wp_filetype = wp_check_filetype($filename, null );
             $attachment = array(
               'post_mime_type' => $wp_filetype['type'],
-              'post_title' => preg_replace('/\.[^.]+$/', '', $filename),
+              'post_title' => $title,
               'post_content' => $mediaDescription,
               'guid' => $wp_upload_dir['url'] . '/' . $filename ,
               'post_status' => 'inherit',
@@ -1674,11 +1678,11 @@ function csvImportMediaForm(){
               require_once( ABSPATH . 'wp-admin' . '/includes/media.php' );
               $attachment_data = wp_generate_attachment_metadata( $attachment_id, $upload_file['file'] );
               wp_update_attachment_metadata( $attachment_id,  $attachment_data );
-              
-              /***Adding Category for media****/
 
+              /***Adding Category for media****/
               if($mediaCat){
-                  $mediaCatArray = explode("|",$mediaCat);
+                  $mediaCatArray = explode(";",$mediaCat);
+                  $mediaCatArray = array_unique($mediaCatArray);
                   //print_r($mediaCatArray);
                   foreach ($mediaCatArray as $key => $catSlug) {
                       $catSlug = str_replace(' ', '', $catSlug);
@@ -1688,18 +1692,17 @@ function csvImportMediaForm(){
                       }
                       else{
                         $catId = wp_create_category($catSlug);
-                      } 
+                      }
                       wp_set_post_categories($attachment_id,array($catId),true);
                   }
-                  
+
               }
 
               /***Adding Tags for media****/
-              
               if($mediaTag){
                 $mediaTagArray = explode(";",$mediaTag);
+                $mediaTagArray = array_unique($mediaTagArray);
                   foreach ($mediaTagArray as $key => $tagSlug) {
-                    $tagSlug = str_replace(' ', '', $tagSlug);
                       $tagIdObj = term_exists($tagSlug,"post_tag");
                       if($tagIdObj['term_id']){
                         wp_set_post_tags($attachment_id,array($tagSlug),true);
@@ -1710,9 +1713,9 @@ function csvImportMediaForm(){
                           wp_set_post_tags($attachment_id,array($tagSlug),true);
                         }
                       }
-                  }    
+                  }
               }
-              
+
               if ($mediaArchiveDate){
                   if (function_exists('update_field'))
                      update_field('archive_date', $mediaArchiveDate, $attachment_id);
@@ -1721,9 +1724,9 @@ function csvImportMediaForm(){
                   if (function_exists('update_field'))
                      update_field('publication_id', $mediaPubID, $attachment_id);
                }
-            } 
-          }  
-        } 
+            }
+          }
+        }
 
         /**Creating the output csv Array**/
 
@@ -1738,7 +1741,7 @@ function csvImportMediaForm(){
     }
     else{
       return array('Url' => $file,'Date'=>$date,'Category'=>$mediaCat,'Tag'=>$mediaTag,'New Url'=>"404 url not found");
-    }    
+    }
   }
 
   add_action('wp_ajax_csvMediaImport','csvMediaImport');
@@ -1752,14 +1755,15 @@ function csvImportMediaForm(){
       $outputCsv = array();
       foreach ($csvAsArray as $key => $csvVal) {
           $mediaUrl = $csvVal[0];
-          $mediaCat = $csvVal[1];  
-          $mediaDate = $csvVal[2];  
-          $mediaTags = $csvVal[3];
-          $mediaDescription = $csvVal[4];
-          $mediaArchiveDate = $csvVal[5];
-          $mediaPublicationID = $csvVal[6];
-            
-          $outputCsv[]= insertNewMedia($mediaUrl,$mediaDate,$mediaCat,$mediaTags, $mediaDescription, $mediaArchiveDate, $mediaPublicationID);
+          $mediaTitle = $csvVal[1];
+          $mediaCat = $csvVal[2];
+          $mediaDate = $csvVal[3];
+          $mediaTags = $csvVal[4];
+          $mediaDescription = $csvVal[5];
+          $mediaArchiveDate = $csvVal[6];
+          $mediaPublicationID = $csvVal[7];
+
+          $outputCsv[]= insertNewMedia($mediaUrl,$mediaTitle,$mediaDate,$mediaCat,$mediaTags, $mediaDescription, $mediaArchiveDate, $mediaPublicationID);
       }
      wp_send_json($outputCsv);
      die();
@@ -1790,14 +1794,14 @@ add_filter( "posts_join" , "oese_search_join" );
 
 function oese_search_groupby($groupby){
     global $wpdb;
-  
+
     // we need to group on post ID
     $groupby_id = "{$wpdb->posts}.ID";
     if(!is_search() || strpos($groupby, $groupby_id) !== false) return $groupby;
-  
+
     // groupby was empty, use ours
     if(!strlen(trim($groupby))) return $groupby_id;
-  
+
     // wasn't empty, append ours
     return $groupby.", ".$groupby_id;
 }
@@ -1836,7 +1840,7 @@ add_filter( 'wpcf7_form_elements', function( $form ) {
 function return_get_template_part($slug, $name=null) {
 
   ob_start();
-  get_template_part($slug, $name);    
+  get_template_part($slug, $name);
   $content = ob_get_contents();
   ob_end_clean();
 
@@ -1903,7 +1907,7 @@ function oese_ga_script() {
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-    
+
     ga('create', '".$ga_id."', 'auto');
     ga('send', 'pageview');
     </script>";
@@ -1914,11 +1918,11 @@ function oese_ga_script() {
 // Get attachment ID by url
 function oese_file_id_by_url($url) {
 	global $wpdb;
-        
+
 	$file = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $url ));
-        
+
         if ($file)
-          return $file[0]; 
+          return $file[0];
 }
 
 add_action( 'wp_footer' , 'add_bottom_script', 100 );
@@ -1945,27 +1949,27 @@ add_action( 'after_setup_theme', function () {
 function update_search_facet($html, $facets, $localization_options){
   $page_types = oese_get_page_types();
   $facets[] = $page_types;
-  
+
   if (!empty($facets)){
     $facets_template = OptionLocalization::get_term( $localization_options, 'facets_element' );
     $facet_title     = OptionLocalization::get_term( $localization_options, 'facets_title' );
-    
+
     foreach($facets as &$facet) {
       // Get the layout object
       $facet_layout_id = ( ! empty( $facet['facet_layout_id'] ) ) ? $facet['facet_layout_id'] : WPSOLR_UI_Layout_Check_Box::CHILD_LAYOUT_ID;
-      
+
       $layout_object = apply_filters( WPSOLR_Events::WPSOLR_FILTER_LAYOUT_OBJECT, null, $facet_layout_id );
 
       if ( is_null( $layout_object ) ) {
         // Back to default layout
         $layout_object = new WPSOLR_UI_Layout_Check_Box();
       }
-      
+
       // Unique uuid for each facet. used to inject specific css/js to each facet.
       $facet_class_uuid = $layout_object->get_class_uuid();
 
       $facet_layout_skin_id = $layout_object->get_skin_id( $facet );
-      
+
       if ( ! empty( $facet_layout_id ) ) {
         if ( 'wpsolr_no_skin' === $facet_layout_skin_id ) {
           // This facet is not to be displayed
@@ -1975,7 +1979,7 @@ function update_search_facet($html, $facets, $localization_options){
           $html .= $layout_object->generate_skin_js( $facet, $facet_class_uuid );
         }
       }
-      
+
       $html .= sprintf( '<div class="wpsolr_facet_title %s_%s">%s</div>', WPSOLR_UI_Layout_Abstract::CLASS_PREFIX, $facet['id'], sprintf( $facet_title, $facet['name'] ) );
 
       // Use the current facet template, else use the general facets template.
@@ -2003,16 +2007,16 @@ function update_search_facet($html, $facets, $localization_options){
           $facet_grid_class = ''; //'wpsolr_facet_columns wpsolr_facet_column_1';
           break;
       }
-      
+
       $facet_grid_class .= ' wpsolr_facet_scroll';
 
       $facet['facet_layout_class']      = $layout_object->get_css_class_name();
       $facet['facet_layout_skin_class'] = $layout_object->get_css_skin_class_name( $facet['facet_layout_skin_id'] );
 
       $layout_object->displayFacetHierarchy( $facet_class_uuid, $facet_template, $facet_grid_class, $html, $facet, ! empty( $facet['items'] ) ? $facet['items'] : [] );
-                                
+
     }
-    
+
     $is_facet_selected           = true;
     $remove_item_localization    = OptionLocalization::get_term( $localization_options, 'facets_element_all_results' );
     $is_generate_facet_permalink = apply_filters( WPSOLR_Events::WPSOLR_FILTER_IS_GENERATE_FACET_PERMALINK, false );
@@ -2042,7 +2046,7 @@ function update_search_facet($html, $facets, $localization_options){
 
     $html .= '</div></div>';
   }
-  
+
   return $html;
 }
 
@@ -2052,7 +2056,7 @@ function oese_get_page_types(){
   foreach ( $templates as $template_name => $template_filename ) {
     $facets[] = array( "value" => $template_name, "count" => get_count_by_template($template_name), "items" => null, "selected" => false, "value_localized" => $template_name );
   }
-  
+
   return array(
           "items" => $facets,
           "id" => "_wp_page_template_str",
@@ -2081,7 +2085,7 @@ function get_count_by_template($template_name) {
     );
 
     $query = new WP_Query($args);
-    
+
     return count($query->posts);
 }
 
@@ -2100,7 +2104,7 @@ function update_search_query( $wpsolr_query ){
 // Add Page Template to Solr indexing
 function add_page_template_to_document_for_update( array $document_for_update, $solr_indexing_options, $post, $attachment_body, WPSOLR_AbstractIndexClient $search_engine_client ) {
   $value = get_post_meta($post, '_wp_page_template');
-  
+
   $solr_dynamic_type = WpSolrSchema::_SOLR_DYNAMIC_TYPE_STRING; // Depends on the type selected on your field on screen 2.2
   $document_for_update[ '_wp_page_template' . $solr_dynamic_type] = $value;
 
@@ -2110,15 +2114,15 @@ function add_page_template_to_document_for_update( array $document_for_update, $
 function oese_action_solarium_query( $parameters ) {
   /* @var WPSOLR_Query $wpsolr_query */
   $wpsolr_query = $parameters[ WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY__PARAM_WPSOLR_QUERY ];
-  
+
   /* @var WPSOLR_AbstractSearchClient $search_engine_client */
   $search_engine_client = $parameters[ WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY__PARAM_SOLARIUM_CLIENT ];
-  
+
   // post_type url parameter
   if ( ! empty( $wpsolr_query->query['post_type'] ) ) {
           $search_engine_client->search_engine_client_add_filter_term( sprintf( 'WPSOLR_Plugin_YITH_WooCommerce_Ajax_Search_Free type:%s', $wpsolr_query->query['post_type'] ), WpSolrSchema::_FIELD_NAME_TYPE, false, $wpsolr_query->query['post_type'] );
   }
-  
+
 }
 
 function is_page_archived($page_id){
@@ -2126,7 +2130,7 @@ function is_page_archived($page_id){
 
   if (get_field('archive_date', $page_id))
     $archived = true;
-  
+
   return $archived;
 }
 
@@ -2142,31 +2146,31 @@ function replace_page_old_urls($post_id_from=0,$post_id_to=0){
     'meta_compare' => '!=',
     'post_status' => array('publish','inherit')
   );
-  
+
   $query = new WP_Query($args);
   $relative_urls = oese_migrate_relative_urls();
-  
+
   $i=1;
   foreach($query->posts as $post){
     //add filter to execute batch processing of replace
     if (($post_id_from==0 && $post_id_to==0) || (($post->ID <= $post_id_to) && ($post->ID >= $post_id_from))){
-      
+
       // add counter check for source url post meta as WP_Query still returns other pages with space in source url
       $source_url = get_source_url($post->ID);
       if ($source_url !== ""){
         echo $i. '. ' .$post->ID . ' ';
         $content = $post->post_content;
         foreach($relative_urls as $old_url => $new_url){
-          if (strpos($content, $old_url)){      
+          if (strpos($content, $old_url)){
             $content = str_replace('href="'.$old_url.'', 'href="'.$new_url.'', $content);
           }
         }
-        
+
         //update post content
         $update_post = array('ID' => $post->ID,
                              'post_content' => $content );
         $updated_post_id = wp_update_post( $update_post, true );
-        
+
         //check if error occurs during update
         if (is_wp_error($updated_post_id)) {
           $errors = $updated_post_id->get_error_messages();
@@ -2185,7 +2189,7 @@ function replace_page_old_urls($post_id_from=0,$post_id_to=0){
 // Get all pages with set source_URL
 function oese_migrate_relative_urls(){
   $links = array();
-  
+
   // Select all pages with source_URL
   $args = array(
     'post_type'  => array('page','attachment'), //page and attachment
@@ -2195,9 +2199,9 @@ function oese_migrate_relative_urls(){
     'meta_compare' => '!=',
     'post_status' => array('publish','inherit')
   );
-  
+
   $query = new WP_Query($args);
-  
+
   foreach($query->posts as $post){
     $old_url = get_source_url($post->ID);
     if ($post->post_type=="page")
@@ -2207,7 +2211,7 @@ function oese_migrate_relative_urls(){
     if ($old_url !== "")
       $links[$old_url] = $new_url;
   }
-  
+
   return $links;
 }
 
@@ -2220,7 +2224,7 @@ function get_source_url($post_id){
 
 function update_oii_page_parent($parent_id, $category_slug){
   global $wpdb;
-  
+
   // Select all pages with OII category and without parent page
   $args = array(
     'post_type'  => array('page', 'post'), //or a post type of your choosing
@@ -2228,7 +2232,7 @@ function update_oii_page_parent($parent_id, $category_slug){
     'category_name' => $category_slug,
     'post_parent' => 0
   );
-  
+
   $query = new WP_Query($args);
   $i = 1;
   // Loop through oii pages and update parent id
@@ -2236,7 +2240,7 @@ function update_oii_page_parent($parent_id, $category_slug){
     echo $i. '. ' .$post->ID . ' ';
     $update_post = array('ID' => $post->ID,
                          'post_parent' => $parent_id );
-    $updated_post_id = wp_update_post( $update_post, true );						  
+    $updated_post_id = wp_update_post( $update_post, true );
     if (is_wp_error($updated_post_id)) {
             $errors = $updated_post_id->get_error_messages();
             foreach ($errors as $error) {
@@ -2251,23 +2255,23 @@ function update_oii_page_parent($parent_id, $category_slug){
 
 function update_empty_page_to_draft($page_id_from=0, $page_id_to=0){
   global $wpdb;
-  
+
   $args = array(
     'post_type'  => array('page'), //select all pages
     'posts_per_page' => -1, // select all pages
     'post_status' => array('publish')
   );
-  
+
   $query = new WP_Query($args);
   $i=1;
-  
+
   foreach ($query->posts as $post){
     if (($page_id_from==0 && $page_id_to==0) || (($post->ID <= $page_id_to) && ($post->ID >= $page_id_from))){
       if ($post->post_content==""){
         echo $i. '. ' .$post->ID . ' ';
         $update_post = array('ID' => $post->ID,
                         'post_status' => 'draft' );
-        $updated_post_id = wp_update_post( $update_post, true );						  
+        $updated_post_id = wp_update_post( $update_post, true );
         if (is_wp_error($updated_post_id)) {
           $errors = $updated_post_id->get_error_messages();
           foreach ($errors as $error) {
@@ -2280,7 +2284,7 @@ function update_empty_page_to_draft($page_id_from=0, $page_id_to=0){
       }
     }
   }
-  
+
 }
 
 add_action( "wp_footer" , "add_oese_inline_styles" );
