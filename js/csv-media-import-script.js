@@ -10,12 +10,12 @@ jQuery(document).ready(function ($) {
     else{
         $(".ajaxload").show();
         $(".error_message").text("");
-        var file_data = $('#fileToUpload').prop('files')[0];   
-        var form_data = new FormData();                  
+        var file_data = $('#fileToUpload').prop('files')[0];
+        var form_data = new FormData();
         form_data.append('file', file_data);
-        form_data.append('action', 'csvMediaImport');   
+        form_data.append('action', 'csvMediaImport');
         $.ajax({
-                  type : "POST", 
+                  type : "POST",
                   url: ajaxurl,
                   data:form_data,
                   contentType: false,
@@ -28,7 +28,7 @@ jQuery(document).ready(function ($) {
                       $(".outputcsv").html('<a href="#" class="download_updated">Download CSV</a>')
                       $('body').on('click', 'a.download_updated', function() {
                           downloadCSV('media-output.csv',data);
-                      });              
+                      });
                     }
                   },
                   error: function(errorThrown){
@@ -36,7 +36,7 @@ jQuery(document).ready(function ($) {
                   }
               });
       }
-    
+
     });
 
     $("#fileToUpload").change(function(){
@@ -70,7 +70,7 @@ function convertArrayOfObjectsToCSV(args) {
             keys.forEach(function(key) {
                 if (ctr > 0) result += columnDelimiter;
 
-                result += item[key];
+                result += '"'.item[key].'"';
                 ctr++;
             });
             result += lineDelimiter;
@@ -97,4 +97,4 @@ function convertArrayOfObjectsToCSV(args) {
         link.setAttribute('href', data);
         link.setAttribute('download', filename);
         link.click();
-    }   
+    }

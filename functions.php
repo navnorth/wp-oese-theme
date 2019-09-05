@@ -1729,18 +1729,17 @@ function csvImportMediaForm(){
         }
 
         /**Creating the output csv Array**/
-
         if($attachment_id){
           $attachmentUrl = wp_get_attachment_url($attachment_id);
           if(!$attachmentUrl)$attachmentUrl = "";
-          return array('Url' => $file,'Date'=>$date,'Category'=>$mediaCat,'Tag'=>$mediaTag,'New Url'=>$attachmentUrl);
+          return array('Success' => "TRUE", 'Url' => $file,'Date'=>$date,'Category'=>$mediaCat,'Tag'=>$mediaTag,'New Url'=>$attachmentUrl);
         }
         else{
-           return array('Url' => $file,'Date'=>$date,'Category'=>$mediaCat,'Tag'=>$mediaTag,'New Url'=>"404 url not found");
+           return array('Success' => "FAIL", 'Url' => $file,'Date'=>$date,'Category'=>$mediaCat,'Tag'=>$mediaTag,'New Url'=>"404 url not found");
         }
     }
     else{
-      return array('Url' => $file,'Date'=>$date,'Category'=>$mediaCat,'Tag'=>$mediaTag,'New Url'=>"404 url not found");
+      return array('Success' => "FAIL", 'Url' => $file,'Date'=>$date,'Category'=>$mediaCat,'Tag'=>$mediaTag,'New Url'=>"404 url not found");
     }
   }
 
