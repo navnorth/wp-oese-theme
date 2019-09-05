@@ -1716,14 +1716,15 @@ function csvImportMediaForm(){
                   }
               }
 
-              if ($mediaArchiveDate){
-                  if (function_exists('update_field'))
+              /** ACF Fields inserted **/
+              if (function_exists('update_field')) {
+                update_field('source_URL', $file, $attachment_id);
+                if ($mediaArchiveDate)
                      update_field('archive_date', $mediaArchiveDate, $attachment_id);
-               }
-               if ($mediaPubID){
-                  if (function_exists('update_field'))
+                if ($mediaPubID)
                      update_field('publication_id', $mediaPubID, $attachment_id);
-               }
+              }
+
             }
           }
         }
