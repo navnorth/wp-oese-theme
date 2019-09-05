@@ -70,7 +70,7 @@ function convertArrayOfObjectsToCSV(args) {
             keys.forEach(function(key) {
                 if (ctr > 0) result += columnDelimiter;
 
-                result += '"'.item[key].'"';
+                result += '"'+item[key]+'"';  // surrounded by quotes to escape commas
                 ctr++;
             });
             result += lineDelimiter;
