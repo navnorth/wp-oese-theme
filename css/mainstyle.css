@@ -1868,6 +1868,12 @@ ul[class*='wpsolr_facet_class_'].wpsolr_facet_checkbox.wpsolr_facet_skin_none.wp
 }
 ul[class*='wpsolr_facet_class_'].wpsolr_facet_checkbox.wpsolr_facet_skin_none.wpsolr_facet_scroll li div.select_opt { background-position-y: 5px; }
 .wdm_label { display:none; }
+.oese-solr-category-block { text-align:right; }
+.oese-solr-categories li {
+  list-style-type: none;
+  color: #981f33;
+  font-weight: bold;
+}
 /** End of Search Results Styles **/
 @media (min-width: 1200px) {
     .container{
