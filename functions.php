@@ -2137,38 +2137,15 @@ function oese_add_category_to_results( WPSOLR_Query $wpsolr_query, WPSOLR_Abstra
 function oese_append_category_to_results_html( $default_html, $user_id, $document, WPSOLR_Query $wpsolr_query ) {
 
   $result = '<div style="display:none">';
-  $result .= var_export($document->categories_str, true);
-  $result .= '</div>';
-  /*$template_text = WPSOLR_Service_Container::getOption()->get_option_geolocation_result_distance_label();
-
-  if ( ! empty( $template_text ) && $this->get_is_geolocation( $wpsolr_query ) ) {
-
-    foreach ( WPSOLR_Service_Container::getOption()->get_option_index_custom_fields( true ) as $custom_field_name ) {
-
-      if ( self::_SOLR_DYNAMIC_TYPE_LATITUDE_LONGITUDE === WpSolrSchema::get_custom_field_solr_type( $custom_field_name ) ) {
-              // Add geolocation fields to the fields
-
-              $distance_field_name = $this->get_distance_field_name( $custom_field_name );
-
-              if ( $document->$distance_field_name ) {
-
-                      $distance_field_name_translated = WPSOLR_Translate::translate_field_custom_field(
-                              WPSOLR_Option::TRANSLATION_DOMAIN_SORT_LABEL,
-                              $custom_field_name,
-                              WPSOLR_Service_Container::getOption()->get_option_geolocation_user_aggreement_label()
-                      );
-
-                      $distance = is_array( $document->$distance_field_name ) ? $document->$distance_field_name[0] : $document->$distance_field_name;
-
-                      $result .= sprintf( self::TEMPLATE_RESULTS_GEO_DISTANCE,
-                              self::WPSOLR_RESULTS_GEO_DISTANCE_CLASS,
-                              sprintf( $template_text, $distance_field_name_translated, number_format( $distance, 2, '.', ' ' )
-                              )
-                      );
-              }
-      }
+  $categories = $document->categories_str;
+  if (!empty($categories)){
+    $result .= '<ul class="oese-solr-categories">';
+    foreach($categories as $category){
+      $result .= '<li>'.$category.'</li>';
     }
-  }*/
+    $result .= '</ul>';
+  }
+  $result .= '</div>';
 
   // No default geolocation default sort, or not a geolocation search: use the general default sort.
   return $result;
