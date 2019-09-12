@@ -2134,20 +2134,24 @@ function oese_add_category_to_results( WPSOLR_Query $wpsolr_query, WPSOLR_Abstra
   echo "</div>";
 }
 
+// Append Category on search result item
 function oese_append_category_to_results_html( $default_html, $user_id, $document, WPSOLR_Query $wpsolr_query ) {
 
-  $result = '<div style="display:none">';
+  $result = '<div class="oese-solr-category-block">';
+  
   $categories = $document->categories_str;
+  
   if (!empty($categories)){
     $result .= '<ul class="oese-solr-categories">';
-    foreach($categories as $category){
-      $result .= '<li>'.$category.'</li>';
-    }
+    
+      foreach($categories as $category){
+        $result .= '<li>'.$category.'</li>';
+      }
+      
     $result .= '</ul>';
   }
   $result .= '</div>';
 
-  // No default geolocation default sort, or not a geolocation search: use the general default sort.
   return $result;
 }
 
