@@ -1944,6 +1944,7 @@ add_action( 'after_setup_theme', function () {
   //add_filter( WPSOLR_Events::WPSOLR_FILTER_UPDATE_WPSOLR_QUERY, 'update_search_query', 10, 1 );
   //add_filter( WPSOLR_Events::WPSOLR_FILTER_SOLARIUM_DOCUMENT_FOR_UPDATE, 'add_page_template_to_document_for_update', 10, 5 );
   add_action( WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY, 'oese_action_solarium_query', 10, 1 );
+  add_action( WPSOLR_Events::WPSOLR_ACTION_POSTS_RESULTS, 'oese_add_category_to_results', 10, 2 );
 } );
 
 function update_search_facet($html, $facets, $localization_options){
@@ -2123,6 +2124,13 @@ function oese_action_solarium_query( $parameters ) {
           $search_engine_client->search_engine_client_add_filter_term( sprintf( 'WPSOLR_Plugin_YITH_WooCommerce_Ajax_Search_Free type:%s', $wpsolr_query->query['post_type'] ), WpSolrSchema::_FIELD_NAME_TYPE, false, $wpsolr_query->query['post_type'] );
   }
 
+}
+
+function oese_add_category_to_results( WPSOLR_Query $wpsolr_query, WPSOLR_AbstractResultsClient $results ) {
+  echo "<div style='display:none;'>";
+  var_dump($wpsolr_query);
+  var_dump($results);
+  echo "</div>";
 }
 
 function is_page_archived($page_id){
