@@ -2136,10 +2136,8 @@ function oese_add_category_to_results( WPSOLR_Query $wpsolr_query, WPSOLR_Abstra
 
 function oese_append_category_to_results_html( $default_html, $user_id, $document, WPSOLR_Query $wpsolr_query ) {
 
-  $result = 'test';
-
   $result = '<div style="display:none">';
-  $result .= var_export($document, true);
+  $result .= var_export($document['fields'], true);
   $result .= '</div>';
   /*$template_text = WPSOLR_Service_Container::getOption()->get_option_geolocation_result_distance_label();
 
