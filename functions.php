@@ -2132,7 +2132,7 @@ function oese_add_category_to_results( WPSOLR_Query $wpsolr_query, WPSOLR_Abstra
 function oese_append_category_to_results_html( $default_html, $user_id, $document, WPSOLR_Query $wpsolr_query ) {
 
   $col_left = "";
-  $col_right = "";
+  $col_right = "col-md-12";
 
   $result = '<div class="oese-search-result">';
   $result .= '<div class="oese-search-result-top row">';
