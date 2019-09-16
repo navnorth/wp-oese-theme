@@ -1940,11 +1940,7 @@ use wpsolr\core\classes\ui\WPSOLR_UI_Facets;
 use wpsolr\core\classes\ui\WPSOLR_Query;
 
 add_action( 'after_setup_theme', function () {
-  //add_filter(WPSOLR_Events::WPSOLR_FILTER_FACETS_REPLACE_HTML, 'update_search_facet', 10, 3);
-  //add_filter( WPSOLR_Events::WPSOLR_FILTER_UPDATE_WPSOLR_QUERY, 'update_search_query', 10, 1 );
-  //add_filter( WPSOLR_Events::WPSOLR_FILTER_SOLARIUM_DOCUMENT_FOR_UPDATE, 'add_page_template_to_document_for_update', 10, 5 );
   add_action( WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY, 'oese_action_solarium_query', 10, 1 );
-  add_action( WPSOLR_Events::WPSOLR_ACTION_POSTS_RESULTS, 'oese_add_category_to_results', 10, 2 );
   add_action( WPSOLR_Events::WPSOLR_FILTER_SOLR_RESULTS_APPEND_CUSTOM_HTML, 'oese_append_category_to_results_html', 10, 4);
 } );
 
@@ -2129,37 +2125,37 @@ function oese_action_solarium_query( $parameters ) {
 
 function oese_add_category_to_results( WPSOLR_Query $wpsolr_query, WPSOLR_AbstractResultsClient $results ) {
   echo "<div style='display:none;'>";
-  var_dump($wpsolr_query);
-  var_dump($results);
   echo "</div>";
 }
 
-// Append Category on search result item
+// Append New Search Result Item Layout
 function oese_append_category_to_results_html( $default_html, $user_id, $document, WPSOLR_Query $wpsolr_query ) {
 
   $col_left = "";
   $col_right = "";
 
   $result = '<div class="oese-search-result">';
-  
   $result .= '<div class="oese-search-result-top">';
   
+  // Display page/post thumbnail
   $image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $document->id ) );
-  if ($image_url){
+  if (!empty($image_url)){
     $col_left = 'col-md-4';
     $col_right = 'col-md-8';
     
     $result .= '<div class="oese-search-result-left '.$col_left.'">';
-    $result .= "<img class='wdm_result_list_thumb' src='$image_url' />";
+    $result .= "<img class='wdm_result_list_thumb' src='".$image_url[0]."' />";
     $result .= '</div>';
   }
   
+  // Display title and display date
   $result .= '<div class="oese-search-result-right '.$col_right.'">';
   $url = get_permalink( $document->id );
   $result .= '<h4 class="p_title"><a href="'.$url.'">'.$document->title.'</a></h4>';
   $date = date( 'm/d/Y', strtotime( $document->displaydate ) );;
   $result .= '<h5>'.$date.'</h5>';
   
+  // Display Categories
   $result .= '<div class="oese-solr-category-block">';
   
   $categories = $document->categories_str;
@@ -2174,7 +2170,9 @@ function oese_append_category_to_results_html( $default_html, $user_id, $documen
   }
   $result .= '</div>';
   $result .= '</div>';
+  $result .= '</div>';
   
+  // Display Post Content/Excerpt
   $result .= '<div class="oese-search-result-item-content">';
   $post_to_show = get_post( $document->id );
   if ( isset( $post_to_show ) ) {
@@ -2200,9 +2198,7 @@ function oese_append_category_to_results_html( $default_html, $user_id, $documen
     $result .= $content;
   }
   $result .= '</div>';
-  
   $result .= '</div>';
-  
   $result .= '</div>';
   
   return $result;
