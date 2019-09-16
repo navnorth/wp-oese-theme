@@ -2165,13 +2165,12 @@ function oese_append_category_to_results_html( $default_html, $user_id, $documen
   $categories = $document->categories_str;
   
   if (!empty($categories)){
-    $result .= '<ul class="oese-solr-categories">';
+    $result .= '<div class="oese-solr-categories">';
     
-      foreach($categories as $category){
-        $result .= '<li>'.$category.'</li>';
-      }
+    $cat = implode(", ", $categories);
+    $result .= $cat;
       
-    $result .= '</ul>';
+    $result .= '</div>';
   }
   $result .= '</div>';
   $result .= '</div>';
