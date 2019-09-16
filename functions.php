@@ -2170,6 +2170,7 @@ function oese_append_category_to_results_html( $default_html, $user_id, $documen
   }
   $result .= '</div>';
   $result .= '</div>';
+  $result .= '</div>';
   
   // Display Post Content/Excerpt
   $result .= '<div class="oese-search-result-item-content">';
@@ -2197,7 +2198,7 @@ function oese_append_category_to_results_html( $default_html, $user_id, $documen
     $result .= $content;
   }
   $result .= '</div>';
-  $result .= '</div>';
+  
   $result .= '</div>';
   
   return $result;
