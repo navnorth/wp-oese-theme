@@ -2135,13 +2135,13 @@ function oese_append_category_to_results_html( $default_html, $user_id, $documen
   $col_right = "";
 
   $result = '<div class="oese-search-result">';
-  $result .= '<div class="oese-search-result-top">';
+  $result .= '<div class="oese-search-result-top row">';
   
   // Display page/post thumbnail
   $image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $document->id ) );
   if (!empty($image_url)){
-    $col_left = 'col-md-4';
-    $col_right = 'col-md-8';
+    $col_left = 'col-md-3';
+    $col_right = 'col-md-9';
     
     $result .= '<div class="oese-search-result-left '.$col_left.'">';
     $result .= "<img class='wdm_result_list_thumb' src='".$image_url[0]."' />";
