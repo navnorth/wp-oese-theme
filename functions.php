@@ -2137,7 +2137,17 @@ function oese_add_category_to_results( WPSOLR_Query $wpsolr_query, WPSOLR_Abstra
 // Append Category on search result item
 function oese_append_category_to_results_html( $default_html, $user_id, $document, WPSOLR_Query $wpsolr_query ) {
 
-  $result = '<div class="oese-solr-category-block">';
+  $result = '<div class="oese-search-result">';
+  
+  $result .= '<div class="oese-search-result-top">';
+  $result .= '<div class="oese-search-result-left col-md-4">';
+  $result .= '</div>';
+  $result .= '<div class="oese-search-result-right col-md-8">';
+  $result .= '<h4>'.$document->title.'</h4>';
+  $date = date( 'm/d/Y', strtotime( $document->displaydate ) );;
+  $result .= '<h5>'.$date.'</h5>';
+  
+  $result .= '<div class="oese-solr-category-block">';
   
   $categories = $document->categories_str;
   
@@ -2151,7 +2161,36 @@ function oese_append_category_to_results_html( $default_html, $user_id, $documen
     $result .= '</ul>';
   }
   $result .= '</div>';
+  $result .= '</div>';
+  
+  $result .= '<div class="oese-search-result-item-content">';
+  $post_to_show = get_post( $document->id );
+  if ( isset( $post_to_show ) ) {
+    // Excerpt first, or content.
+    $content = ( ! empty( $post_to_show->post_excerpt ) ) ? $post_to_show->post_excerpt : $post_to_show->post_content;
+    
+    global $post;
+    $post    = $post_to_show;
+    $content = do_shortcode( $content );
+    
+    $content = preg_replace( "~(?:\[/?)[^\]]+/?\]~s", '', $content );  # strip shortcodes, keep shortcode content;
 
+    // Strip HTML and PHP tags
+    $content = strip_tags( $content );
+    
+    // Format content text a little bit
+    $content = str_replace( '&nbsp;', '', $content );
+    $content = str_replace( '  ', ' ', $content );
+    $content = ucfirst( trim( $content ) );
+    $content .= '...';
+    $result .= $content;
+  }
+  $result .= '</div>';
+  
+  $result .= '</div>';
+  
+  $result .= '</div>';
+  
   return $result;
 }
 
