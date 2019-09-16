@@ -1874,6 +1874,7 @@ ul[class*='wpsolr_facet_class_'].wpsolr_facet_checkbox.wpsolr_facet_skin_none.wp
   color: #981f33;
   font-weight: bold;
 }
+.oese-search-result .oese-solr-categories { color: #981f33; font-weight: bold; }
 div[id*='res'] > .p_title,
 div[id*='res'] > .p_misc,
 div[id*='res'] > .p_content{ display:none; }
