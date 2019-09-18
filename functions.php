@@ -2136,60 +2136,60 @@ function oese_append_category_to_results_html( $default_html, $user_id, $documen
 
   $result = '<div class="oese-search-result">';
   $result .= '<div class="oese-search-result-top row">';
-  
+
   // Display page/post thumbnail
   $image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $document->id ) );
   if (!empty($image_url)){
     $col_left = 'col-md-3';
     $col_right = 'col-md-9';
-    
+
     $result .= '<div class="oese-search-result-left '.$col_left.'">';
     $result .= "<img class='wdm_result_list_thumb' src='".$image_url[0]."' />";
     $result .= '</div>';
   }
-  
+
   // Display title and display date
   $result .= '<div class="oese-search-result-right '.$col_right.'">';
   $url = get_permalink( $document->id );
   $result .= '<h4 class="p_title"><a href="'.$url.'">'.$document->title.'</a></h4>';
   $date = date( 'm/d/Y', strtotime( $document->displaydate ) );;
   $result .= '<h5>'.$date.'</h5>';
-  
+
   // Display Categories
   $result .= '<div class="oese-solr-category-block">';
-  
+
   $categories = $document->categories_str;
-  
+
   if (!empty($categories)){
     $result .= '<div class="oese-solr-categories">';
-    
+
     $cat = implode(", ", $categories);
     $result .= $cat;
-      
+
     $result .= '</div>';
   }
   $result .= '</div>';
   $result .= '</div>';
   $result .= '</div>';
-  
+
   // Display Post Content/Excerpt
   $result .= '<div class="oese-search-result-item-content">';
   $post_to_show = get_post( $document->id );
   if ( isset( $post_to_show ) ) {
     // Excerpt first, or content.
     $content = ( ! empty( $post_to_show->post_excerpt ) ) ? $post_to_show->post_excerpt : $post_to_show->post_content;
-    
+
     global $post;
     $post    = $post_to_show;
     $content = do_shortcode( $content );
-    
+
     $content = preg_replace( "~(?:\[/?)[^\]]+/?\]~s", '', $content );  # strip shortcodes, keep shortcode content;
 
     // Strip HTML and PHP tags
     $content = strip_tags( $content );
-    
+
     $content = substr( $content, 0, 125 );
-    
+
     // Format content text a little bit
     $content = str_replace( '&nbsp;', '', $content );
     $content = str_replace( '  ', ' ', $content );
@@ -2198,9 +2198,9 @@ function oese_append_category_to_results_html( $default_html, $user_id, $documen
     $result .= $content;
   }
   $result .= '</div>';
-  
+
   $result .= '</div>';
-  
+
   return $result;
 }
 
@@ -2266,10 +2266,11 @@ function replace_page_old_urls($post_id_from=0,$post_id_to=0){
 }
 
 // echo list of old urls to new WP Url for batch processing
-function echo_migration_urls($post_id_from=0,$post_id_to=0){
+function echo_migration_urls($indexes_only=false,$post_id_from=0,$post_id_to=0){
   $relative_urls = oese_migrate_relative_urls();
   foreach($relative_urls as $old_url => $new_url){
-      echo $old_url.', '.$new_url."\n";
+      if ( !$indexes_only || (substr($old_url, -10) == 'index.html') )
+          echo $old_url.', '.$new_url."\n";
   }
 }
 

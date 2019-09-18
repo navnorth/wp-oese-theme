@@ -26,6 +26,12 @@ if (isset($_GET['oii_update']) && $_GET['oii_update']=="true"){
     else
     echo_migration_urls($_GET['post_from'],$_GET['post_to']);
 
+} elseif (isset($_GET['redirect_urls']) && $_GET['redirect_urls']=="true"){
+    if (!isset($_GET['post_from']) && !isset($_GET['post_to']))
+        echo_migration_urls(true);
+    else
+        echo_migration_urls(true,$_GET['post_from'],$_GET['post_to']);
+
 } else {
 ?>
 <div class="wrap">
