@@ -8,9 +8,10 @@
  * @subpackage Twenty_Twelve
  * @since Twenty Twelve 1.0
  */
+global $post;
 ?>
 
-	<?php if( have_rows('sidebar_links') ) : ?>
+	<?php if( have_rows('sidebar_links', $post->ID) ) : ?>
 		<div class="col-md-4">
 			<div id="secondary" class="widget-area" role="complementary">
 				<?php getSidebarLinks(); ?>
