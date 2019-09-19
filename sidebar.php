@@ -9,7 +9,7 @@
  * @since Twenty Twelve 1.0
  */
 global $post;
-var_dump(is_search());
+var_dump(get_queried_object_id());
 ?>
 
 	<?php if( have_rows('sidebar_links', $post->ID) ) : ?>
