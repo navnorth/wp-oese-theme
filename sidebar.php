@@ -9,10 +9,10 @@
  * @since Twenty Twelve 1.0
  */
 global $post;
-var_dump(get_queried_object_id());
+$post_id = get_queried_object_id();
 ?>
 
-	<?php if( have_rows('sidebar_links', $post->ID) ) : ?>
+	<?php if( have_rows('sidebar_links', $post_id) ) : ?>
 		<div class="col-md-4">
 			<div id="secondary" class="widget-area" role="complementary">
 				<?php getSidebarLinks(); ?>
