@@ -9,6 +9,7 @@
  * @since Twenty Twelve 1.0
  */
 global $post;
+var_dump($post->ID);
 ?>
 
 	<?php if( have_rows('sidebar_links', $post->ID) ) : ?>
