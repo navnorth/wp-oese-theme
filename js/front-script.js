@@ -134,6 +134,12 @@ jQuery( document ).ready(function() {
 	
     });
     
+    /** move cursor to top on pagination click **/
+    jQuery(document).on("click", '.wdm_results .paginate_div li a.paginate', function(e){
+	var offset = jQuery('.results-by-facets').offset();
+	window.scrollTo(offset.top, offset.left);
+    });
+    
 });
 
 // Event Tracker Function
