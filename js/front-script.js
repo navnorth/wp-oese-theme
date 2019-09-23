@@ -138,7 +138,10 @@ jQuery( document ).ready(function() {
     jQuery(document).on("click", '.wdm_results .paginate_div li a.paginate', function(e){
 	var offset = jQuery('.results-by-facets').offset();
 	window.scrollTo(offset.top, offset.left);
-	displayNext10Results();
+    });
+    
+    jQuery(document).on("change", '.cls_search form .ui-widget input[id="paginate"]', function(e){
+	setTimeout(displayNext10Results(),1000);
     });
     
     displayNext10Results();
