@@ -138,17 +138,21 @@ jQuery( document ).ready(function() {
     jQuery(document).on("click", '.wdm_results .paginate_div li a.paginate', function(e){
 	var offset = jQuery('.results-by-facets').offset();
 	window.scrollTo(offset.top, offset.left);
+	displayNext10Results();
     });
     
-    /** Insert Next 10 results button on the fly **/
-    if (jQuery('.paginate_div').is(":visible")) {
-	var nextPage = jQuery('.cls_search form .ui-widget input[id="paginate"]').val();
-	var next10 = '<div id="solr-next-result"><a class="paginate" href="javascript:void(0)" id="' + nextPage + '">Next 10 Results</a></div>';
-	jQuery('.paginate_div').prepend(next10);
-    }
-    
+    displayNext10Results();
 });
 
+
+function displayNext10Results() {
+    /** Insert Next 10 results button on the fly **/
+    if (jQuery('.paginate_div .pagination-flickr').is(":visible")) {
+	var nextPage = jQuery('.cls_search form .ui-widget input[id="paginate"]').val();
+	var next10 = '<li><a class="paginate" href="javascript:void(0)" id="' + nextPage + '">Next 10 Results</a></li>';
+	jQuery('.paginate_div .pagination-flickr').append(next10);
+    }
+}
 // Event Tracker Function
 function oese_trackEvent(eventCategory, eventAction, eventLabel, eventValue = null) {
     eventLabel = eventLabel.toString();
