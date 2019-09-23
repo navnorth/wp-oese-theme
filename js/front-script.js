@@ -140,6 +140,13 @@ jQuery( document ).ready(function() {
 	window.scrollTo(offset.top, offset.left);
     });
     
+    /** Insert Next 10 results button on the fly **/
+    if (jQuery('.paginate_div').is(":visible")) {
+	var nextPage = jQuery('.cls_search form .ui-widget input[id="paginate"]').val();
+	var next10 = '<div id="solr-next-result"><a class="paginate" href="javascript:void(0)" id="' + nextPage + '">Next 10 Results</a></div>';
+	jQuery('.paginate_div').prepend(next10);
+    }
+    
 });
 
 // Event Tracker Function
