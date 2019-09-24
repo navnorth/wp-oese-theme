@@ -38,7 +38,7 @@ if( have_rows('sidebar_links') ){
 
         <!--Office Template Top Section START-->
         <div id="content" class="row custom-common-padding office-template">
-            <div class="col-md-8">
+            <div class="<?php echo $leftCol; ?>">
                 <div class="left-description-section">
                     <h1 class="h1-bottom-space<?php echo $head_class; ?>"><?php echo get_the_title(); ?></h1>
                     <?php if ($is_archived): ?>
@@ -61,7 +61,7 @@ if( have_rows('sidebar_links') ){
                    ?>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="<?php echo $rightCol; ?>">
                 <?php echo contactInformationBlock() ?>
                 <?php echo getSidebarLinks(); ?>
             </div>
