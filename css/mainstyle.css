@@ -1882,6 +1882,7 @@ div[id*='res'] .oese-search-result .p_title { display:block; }
 div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; font-weight:bold; line-height:1.25em; }
 .oese-search-result-item-content { margin-top:15px; }
 .loading_sugg { background-image:none !important; }
+.page-template-theme-template .site-content .padding_left.lft_sid_cntnr { padding-left:15px !important; }
 /** End of Search Results Styles **/
 @media (min-width: 1200px) {
     .container{
