@@ -11,6 +11,11 @@ get_header();
 $head_class = "";
 $is_archived = false;
 $archived_date = null;
+$leftCol = "col-md-12";
+$rightCol = "col-md-right";
+$contactAddress = get_field("ci_address");
+$contactPhone = get_field("ci_phone");
+$contactFax = get_field("ci_fax");
 
 if (get_field('archive_date'))
     $archived_date = get_field('archive_date');
@@ -18,6 +23,12 @@ if (get_field('archive_date'))
 if ($archived_date){
     $is_archived = true;
     $head_class = " archived-header";
+}
+
+$subpages = get_pages( array( 'parent' => $post->ID, 'sort_column' => 'menu_order', 'sort_order' => 'asc' ) );
+if ($subpages || (!empty($contactAddress)) || (!empty($contactPhone)) || (!empty($contactFax)) || (have_rows('sidebar_links'))){
+    $leftCol = "col-md-8";
+    $rightCol = "col-md-4";
 }
 ?>
 
