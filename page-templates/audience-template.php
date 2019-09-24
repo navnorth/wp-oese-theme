@@ -7,6 +7,8 @@ get_header();
 global $post;
 $page_id = get_the_ID();
 $archived_date = null;
+$leftCol = "col-md-12";
+$rightCol = "col-md-right";
 
 if (get_field('archive_date'))
     $archived_date = get_field('archive_date');
@@ -15,6 +17,11 @@ if ($archived_date){
     $is_archived = true;
     $head_class = " archived-header";
 }
+
+if( have_rows('sidebar_links') ){
+    $leftCol = "col-md-8";
+    $rightCol = "col-md-4";
+}
 ?>
 
 
@@ -22,7 +29,7 @@ if ($archived_date){
 
         <!--Families section START-->
         <div id="content" class="row custom-common-padding">
-            <div class="col-md-8">
+            <div class="<?php echo $leftCol; ?>">
                 <?php if ($is_archived): ?>
                     <div class="oese-archived-disclaimer">
                             <?php _e('<span class="fa fa-archive"></span><strong>Archived Content:</strong> The following page was archived on '.$archived_date.' but still has content that may be valuable to some people.', WP_OESE_THEME_SLUG); ?>
@@ -46,7 +53,7 @@ if ($archived_date){
                    ?>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="<?php echo $rightCol; ?>">
                 <?php echo getSidebarLinks(); ?>
             </div>
         </div>
