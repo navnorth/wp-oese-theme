@@ -23,11 +23,16 @@
                     <ul class="row">
                         <?php
                             while ( have_rows('categories') ) : the_row();
-                                $cImage =  get_sub_field('c_image');
-                                $cTitle =  get_sub_field('c_title');
-                                $cLink =  get_sub_field('link');
-                                $externaLink =  get_sub_field('c_external_link');
-                                $target = ($externaLink ? "_blank" : "_self");
+                                 $cImage =  get_sub_field('c_image');
+                                 $cTitle =  get_sub_field('c_title');
+                                 $cLink =  get_sub_field('link');
+                                 $externaLink =  get_sub_field('c_external_link');
+                                 $target = ($externaLink ? "_blank" : "_self");
+                                 if (empty($cImage))
+                                    $cImage = get_stylesheet_directory_uri()."/images/link-icon.png";
+                                 else {
+                                    $cImage = wp_get_attachment_image_url($cImage,"medium");
+                                 }
                         ?>
                         <li class="col-md-4 pl-0 pr-0 ml-0 mr-0 home-col-md-4">
                             <div class="custom-home-image-section">
@@ -116,13 +121,18 @@
                 <?php $i = 1; ?>
                     <?php
                         while ( have_rows('trending_now') ) : the_row();
-                            $tImage =  get_sub_field('image');
-                            $tTitle =  get_sub_field('title');
-                            $tDescription =  get_sub_field('description');
-                            $tButtonLabel =  get_sub_field('button_label');
-                            $tLink =  get_sub_field('link');
-                            $externaLink =  get_sub_field('external_link');
-                            $target = ($externaLink ? "_blank" : "_self");
+                              $tImage =  get_sub_field('image');
+                              $tTitle =  get_sub_field('title');
+                              $tDescription =  get_sub_field('description');
+                              $tButtonLabel =  get_sub_field('button_label');
+                              $tLink =  get_sub_field('link');
+                              $externaLink =  get_sub_field('external_link');
+                              $target = ($externaLink ? "_blank" : "_self");
+                              if (empty($tImage))
+                                    $tImage = get_stylesheet_directory_uri()."/images/news-icon.png";
+                              else {
+                                    $tImage = wp_get_attachment_image_url($tImage,"medium");
+                              }
                     ?>
                     <div class="col-md-4 home-col-md-4 pl-0 pr-0 ml-0 mr-0">
                         <div class="trending-now-section rounded">
