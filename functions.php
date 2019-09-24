@@ -1942,6 +1942,7 @@ use wpsolr\core\classes\ui\WPSOLR_Query;
 add_action( 'after_setup_theme', function () {
   add_action( WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY, 'oese_action_solarium_query', 10, 1 );
   add_action( WPSOLR_Events::WPSOLR_FILTER_SOLR_RESULTS_APPEND_CUSTOM_HTML, 'oese_append_category_to_results_html', 10, 4);
+  add_action( WPSOLR_Events::WPSOLR_FILTER_IS_REPLACE_BY_WPSOLR_QUERY, 'replace_search_with_WP_Solr', 10, 1 );
 } );
 
 function update_search_facet($html, $facets, $localization_options){
@@ -2204,6 +2205,13 @@ function oese_append_category_to_results_html( $default_html, $user_id, $documen
   return $result;
 }
 
+// Replace WP Search with WP Solr
+function replace_search_with_WP_Solr($result){
+  $result = is_solr_installed();
+  
+  return $result;
+}
+
 function is_page_archived($page_id){
   $archived = false;
 
@@ -2399,4 +2407,17 @@ function add_oese_inline_styles(){
   }
   </style>
   <?php
+}
+
+if (! function_exists('is_solr_installed')){
+    function is_solr_installed(){
+        $is_active = false;
+        $active_plugins_basenames = get_option( 'active_plugins' );
+        foreach ( $active_plugins_basenames as $plugin_basename ) {
+		if ( false !== strpos( $plugin_basename, '/wpsolr-pro.php' ) ) {
+                $is_active = true;
+            }
+        }
+        return $is_active;
+    }
 }
