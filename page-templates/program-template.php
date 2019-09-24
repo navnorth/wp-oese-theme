@@ -34,7 +34,7 @@ if ($subpages || (!empty($contactAddress)) || (!empty($contactPhone)) || (!empty
 
            <!--Program Landing Template Top Section START-->
         <div id="content" class="row custom-common-padding">
-            <div class="col-md-8">
+            <div class="<?php echo $leftCol; ?>">
                 <div class="left-description-section">
                     <h1 class="h1-bottom-space<?php echo $head_class; ?>"><?php echo get_the_title(); ?></h1>
                     <?php if ($is_archived): ?>
@@ -128,7 +128,7 @@ if ($subpages || (!empty($contactAddress)) || (!empty($contactPhone)) || (!empty
             <?php
             } else {
             ?>
-            <div class="col-md-4 program-sidebar">
+            <div class="<?php echo $rightCol; ?> program-sidebar">
                 <?php echo contactInformationBlock() ?>
 
                 <div class="spacer" style="height:20px;"></div>
