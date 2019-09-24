@@ -1894,6 +1894,12 @@ function oese_file_type_from_url($url, $class = 'fa-1x') {
   } elseif(in_array($file_type, ['ppt'])) {
     $response['title'] = 'Microsoft Powerpoint';
     $response['icon'] = '<i class="far fa-file-powerpoint '.$class.'"></i>';
+  } elseif(in_array($file_type, ['wav', 'mp3'])) {
+    $response['title'] = 'Audio';
+    $response['icon'] = '<i class="far fa-file-audio '.$class.'"></i>';
+  } elseif(in_array($file_type, ['mp4'])) {
+    $response['title'] = 'Video';
+    $response['icon'] = '<i class="far fa-file-video '.$class.'"></i>';
   }
   return $response;
 }
