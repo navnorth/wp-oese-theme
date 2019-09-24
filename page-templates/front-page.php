@@ -31,7 +31,6 @@
                                  if (empty($cImage))
                                     $cImage = get_stylesheet_directory_uri()."/images/link-icon.png";
                                  else {
-                                    echo $cImage;
                                     $cImage = wp_get_attachment_image_url($cImage,"medium");
                                  }
                         ?>
