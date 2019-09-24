@@ -14,11 +14,20 @@ $img_url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
 $img_alt = get_post_meta(get_post_thumbnail_id($post->ID), '_wp_attachment_image_alt', true);
 
 get_header();
+
+$contact_content = get_post_meta($post->ID,'_contact_box',true);
+$leftCol = "col-md-12 col-sm-12 col-xs-12";
+$rightCol = "col-md-right";
+
+if ((strlen($contact_content)>0) || (is_active_sidebar( 'thematic-template' ) ) ){
+    $leftCol = "col-md-9 col-sm-8 col-xs-12";
+    $rightCol = "col-md-3 col-sm-4 col-xs-12";
+}
 ?>
 
     <div id="content" class="row site-content" tabindex="-1">
 
-        <div class="col-md-9 col-sm-8 col-xs-12 padding_left lft_sid_cntnr">
+        <div class="<?php echo $leftCol; ?> padding_left lft_sid_cntnr">
 
             <?php
                 if(isset($img_url) && !empty($img_url))
@@ -36,7 +45,7 @@ get_header();
             <?php endwhile; ?>
          </div>
 
-        <div class="col-md-3 col-sm-4 col-xs-12 right_sid_mtr">
+        <div class="<?php echo $rightCol; ?> right_sid_mtr">
             <?php
                 dynamic_sidebar('thematic-template');
                 get_template_part( 'content', 'contact' );
