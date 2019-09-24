@@ -7,6 +7,9 @@
  */
 
 get_header();
+if (is_solr_installed()){
+	do_shortcode('[solr_search_shortcode]');
+} else {
 $results = array();
 ?>
 
@@ -150,4 +153,6 @@ $results = array();
 		</div>
 	</div><!-- .row -->
 
-<?php get_footer(); ?>
+<?php
+}
+get_footer(); ?>
