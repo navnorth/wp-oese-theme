@@ -153,6 +153,9 @@ function displayNext10Results() {
     /** Insert Next 10 results button on the fly **/
     if (jQuery('.paginate_div #pagination-flickr').is(":visible")) {
 	var nextPage = jQuery('.cls_search form .ui-widget input[id="paginate"]').val();
+	if (nextPage==0) {
+	    nextPage = 1;
+	}
 	nextPage = parseInt(nextPage) + 1;
 	var next10 = '<li><a class="paginate" href="javascript:void(0)" id="' + nextPage + '">Next 10 Results</a></li>';
 	jQuery('.paginate_div #pagination-flickr').append(next10);
