@@ -212,3 +212,5 @@ ul.program_toc, .cntnbx_cntnr ul {
   color: #000000;
 }
 #oese-map { width: 600px; height:450px; max-width:100%; max-height:100%; }
+.search-results .cls_search { margin-top:25px; }
+.search-results .cls_results { margin-bottom:25px; }
