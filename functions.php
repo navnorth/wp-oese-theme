@@ -1942,7 +1942,7 @@ use wpsolr\core\classes\ui\WPSOLR_Query;
 add_action( 'after_setup_theme', function () {
   add_action( WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY, 'oese_action_solarium_query', 10, 1 );
   add_action( WPSOLR_Events::WPSOLR_FILTER_SOLR_RESULTS_APPEND_CUSTOM_HTML, 'oese_append_category_to_results_html', 10, 4);
-  add_action( WPSOLR_Events::WPSOLR_FILTER_IS_REPLACE_BY_WPSOLR_QUERY, 'replace_search_with_WP_Solr', 10, 1 );
+  //add_action( WPSOLR_Events::WPSOLR_FILTER_IS_REPLACE_BY_WPSOLR_QUERY, 'replace_search_with_WP_Solr', 10, 1 );
 } );
 
 function update_search_facet($html, $facets, $localization_options){
