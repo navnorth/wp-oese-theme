@@ -9,6 +9,13 @@ $page_id = get_the_ID();
 $head_class = "";
 $is_archived = false;
 $archived_date = null;
+$leftCol = "col-md-12";
+$rightCol = "col-md-right";
+$contactTitle = get_field("ci_title");
+$contactAddress = get_field("ci_address");
+$contactPhone = get_field("ci_phone");
+$contactFax = get_field("ci_fax");
+$contactEmailOption = get_field("ci_email");
 
 if (get_field('archive_date'))
     $archived_date = get_field('archive_date');
@@ -16,6 +23,16 @@ if (get_field('archive_date'))
 if ($archived_date){
     $is_archived = true;
     $head_class = " archived-header";
+}
+
+if(!empty($contactAddress) || (!empty($contactPhone)) || (!empty($contactFax)) || (!empty($contactEmailOption))){
+    $leftCol = "col-md-8";
+    $rightCol = "col-md-4";
+}
+
+if( have_rows('sidebar_links') ){
+    $leftCol = "col-md-8";
+    $rightCol = "col-md-4";
 }
 ?>
 
