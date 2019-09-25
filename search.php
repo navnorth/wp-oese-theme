@@ -8,7 +8,16 @@
 
 get_header();
 if (is_solr_installed()){
-	do_shortcode('[solr_search_shortcode]');
+?>
+<div id="content" class="row site-content">
+	<div class="col-md-12">
+		<header class="page-header">
+			<h2 class="page-title"><?php printf( __( 'Search Results for: %s', 'twentytwelve' ), '<span>' . get_search_query() . '</span>' ); ?></h2>
+		</header>
+		<?php do_shortcode('[solr_search_shortcode]'); ?>
+	</div>
+</div>
+<?php
 } else {
 $results = array();
 ?>
