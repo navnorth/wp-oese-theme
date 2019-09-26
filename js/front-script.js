@@ -147,6 +147,12 @@ jQuery( document ).ready(function() {
     });
     
     displayNext10Results();
+    
+    /** Select State on Interactive Map Redirection **/
+    jQuery('#SelectState').on("change", function(e){
+	var url = jQuery(this).val();
+	window.location = url;
+    });
 });
 
 
