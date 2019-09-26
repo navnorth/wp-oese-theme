@@ -85,14 +85,14 @@ var simplemaps_usmap_mapdata = {
 			description: 'default',
 			color:'#0075EB',
 			hover_color: 'default',
-			url: '/admins/lead/account/performance/map/ak.html'
+			url: '/offices/office-of-formula-grants/title-i-achievement-focused-monitoring/alaska-states-monitored/'
 			},
 		"FL": {
 			name: 'Florida',
 			description: 'default',
 			color: '#2D8700',
 			hover_color: 'default',
-			url: '/admins/lead/account/performance/map/fl.html',
+			url: '/offices/office-of-formula-grants/title-i-achievement-focused-monitoring/florida-states-monitored/',
 			inactive: 'no'
 			},
 		"NH": {
@@ -121,7 +121,7 @@ var simplemaps_usmap_mapdata = {
 			description: 'default',
 			color:'#004285',
 			hover_color: 'default',
-			url: '/admins/lead/account/performance/map/ri.html'		
+			url: '/offices/office-of-formula-grants/title-i-achievement-focused-monitoring/rhode-island-states-monitored/'		
 			},
 		"NY": {
 			name: 'New York',
@@ -163,7 +163,7 @@ var simplemaps_usmap_mapdata = {
 			description: 'default',
 			color:'#0075EB',
 			hover_color: 'default',
-			url: '/admins/lead/account/performance/map/va.html'			
+			url: '/offices/office-of-formula-grants/title-i-achievement-focused-monitoring/virginia-states-monitored/'			
 			},
 		"WV": {
 			name: 'West Virginia',
@@ -198,7 +198,7 @@ var simplemaps_usmap_mapdata = {
 			description: 'default',
 			color: '#580085',
 			hover_color: 'default',
-			url: '/about/offices/list/oese/oss/frimap/ct.html'				
+			url: '/offices/office-of-formula-grants/title-i-achievement-focused-monitoring/connecticut-states-monitored/'				
 			},
 		"WI": {
 			name: 'Wisconsin',
@@ -254,7 +254,7 @@ var simplemaps_usmap_mapdata = {
 			description: 'default',
 			color:'#981F33',
 			hover_color: 'default',
-			url: '/admins/lead/account/performance/map/ga.html'			
+			url: '/offices/office-of-formula-grants/title-i-achievement-focused-monitoring/georgia-states-monitored/'			
 			},
 		"SC": {
 			name: 'South Carolina',
@@ -318,7 +318,7 @@ var simplemaps_usmap_mapdata = {
 			description: 'default',
 			color: '#6EC940',
 			hover_color: 'default',
-			url: '/admins/lead/account/performance/map/tx.html'			
+			url: '/offices/office-of-formula-grants/title-i-achievement-focused-monitoring/texas-states-monitored/'			
 			},
 		"NM": {
 			name: 'New Mexico',
@@ -388,7 +388,7 @@ var simplemaps_usmap_mapdata = {
 			description: 'default',
 			color:'#004285',
 			hover_color: 'default',
-			url: '/admins/lead/account/performance/map/az.html'
+			url: '/offices/office-of-formula-grants/title-i-achievement-focused-monitoring/arizona-states-monitored/'
 			},
 		"NV": {
 			name: 'Nevada',
@@ -409,21 +409,21 @@ var simplemaps_usmap_mapdata = {
 			description: 'default',
 			color:'#004285',
 			hover_color: 'default',
-			url: '/admins/lead/account/performance/map/wa.html'				
+			url: '/offices/office-of-formula-grants/title-i-achievement-focused-monitoring/washington-states-monitored/'				
 			},
 		"CA": {
 			name: 'California',
 			description: 'default',
 			color: '#580085',
 			hover_color: 'default',
-			url: '/admins/lead/account/performance/map/ca.html'					
+			url: '/offices/office-of-formula-grants/title-i-achievement-focused-monitoring/california-states-monitored/'					
 			},
 		"MI": {
 			name: 'Michigan',
 			description: 'default',
 			color:'#981F33',
 			hover_color: 'default',
-			url: '/admins/lead/account/performance/map/mi.html'				
+			url: '/offices/office-of-formula-grants/title-i-achievement-focused-monitoring/michigan-states-monitored/'				
 			},
 		"ID": {
 			name: 'Idaho',
