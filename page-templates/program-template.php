@@ -25,7 +25,7 @@ if ($archived_date){
     $head_class = " archived-header";
 }
 
-$subpages = get_pages( array( 'parent' => $post->ID, 'sort_column' => 'menu_order', 'sort_order' => 'asc' ) );
+$subpages = get_pages( array( 'parent' => $page_id, 'sort_column' => 'menu_order', 'sort_order' => 'asc' ) );
 if ($subpages || (!empty($contactAddress)) || (!empty($contactPhone)) || (!empty($contactFax)) || (have_rows('sidebar_links'))){
     $leftCol = "col-md-8";
     $rightCol = "col-md-4";
