@@ -25,8 +25,9 @@ if ($archived_date){
     $head_class = " archived-header";
 }
 
-$subpages = get_pages( array( 'parent' => $page_id, 'sort_column' => 'menu_order', 'sort_order' => 'asc' ) );
-if ($subpages || (!empty($contactAddress)) || (!empty($contactPhone)) || (!empty($contactFax)) || (have_rows('sidebar_links'))){
+$spages = get_pages( array( 'parent' => $page_id, 'sort_column' => 'menu_order', 'sort_order' => 'asc' ) );
+var_dump($spages);
+if ($spages || (!empty($contactAddress)) || (!empty($contactPhone)) || (!empty($contactFax)) || (have_rows('sidebar_links'))){
     $leftCol = "col-md-8";
     $rightCol = "col-md-4";
 }
