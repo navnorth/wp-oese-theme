@@ -27,6 +27,8 @@ if($footerNav) {
         }
     }
 }
+
+$show_address = get_option('wp_oese_theme_display_footer_address');
     ?>
             <div class="row">
                 <div class="col-md-12">
@@ -34,9 +36,13 @@ if($footerNav) {
                     <?php
                     $parentIndex = 1;
                     $parentItemCount = count($parentMenuItems);
+                    $col = 12;
+                    if ($parentItemCount>0)
+                            $col = floor(12/$parentItemCount);
+                    
                     foreach ($parentMenuItems as $key => $menuItems) {
                         ?>
-                        <div class="col-md-3">
+                        <div class="col-md-<?php echo $col; ?>">
                             <div class="footer-title">
                                 <p><a href="<?php echo $menuItems['url']; ?>"><?php echo $menuItems['title']; ?></a></p>
                             </div>
@@ -57,7 +63,7 @@ if($footerNav) {
                                         <?php
                                     }
                                 }
-                                if ($parentIndex==$parentItemCount){
+                                if (($parentIndex==$parentItemCount) && !empty($show_address)){
                                    ?>
                                    <div class="address">
                                         U.S. Department of Education

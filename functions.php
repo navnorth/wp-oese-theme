@@ -1466,6 +1466,28 @@ function wp_oese_theme_settings_page() {
       'default' => '1'
     )
   );
+  
+  //Create Footer Settings Section
+  add_settings_section(
+    'wp_oese_footer_settings',
+    __('Website Footer Settings', WP_OESE_THEME_SLUG),
+    'wp_oese_theme_settings_callback',
+    $page
+  );
+
+  //Add Display Address on Footer
+  add_settings_field(
+    'wp_oese_theme_display_footer_address',
+    '',
+    'wp_oese_theme_settings_field',
+    $page,
+    'wp_oese_footer_settings',
+    array(
+      'uid' => 'wp_oese_theme_display_footer_address',
+      'type' => 'checkbox',
+      'name' =>  __('Display Address in Footer', WP_OESE_THEME_SLUG)
+    )
+  );
 
   register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_heading' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_content' );
@@ -1473,6 +1495,7 @@ function wp_oese_theme_settings_page() {
   register_setting( 'theme_settings_page' , 'wp_oese_theme_contact_page' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_ga_propertyid' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_pdf_viewer' );
+  register_setting( 'theme_settings_page' , 'wp_oese_theme_display_footer_address' );
 }
 add_action( 'admin_init' , 'wp_oese_theme_settings_page' );
 
