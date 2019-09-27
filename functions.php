@@ -1288,7 +1288,11 @@ function getTileLinks(){
               $tileLinkUrl =  get_sub_field('tile_link_url');
               $externaLink =  get_sub_field('external_link');
               $tileLinkWidth =  get_sub_field('width');
-              if($tileLinkWidth == "half"){
+               if($tileLinkWidth == "third"){
+                $colSize = "col-md-4 office-custom-padding office-grid-section-custom-margin half-tile-link";
+                $outerDivClass = "office-grid-section";
+                $innerDivClass = "office-grid-list-details text-center";
+              } elseif($tileLinkWidth == "half"){
                 $colSize = "col-md-6 office-custom-padding office-grid-section-custom-margin half-tile-link";
                 $outerDivClass = "office-grid-section";
                 $innerDivClass = "office-grid-list-details text-center";
