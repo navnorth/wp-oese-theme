@@ -719,6 +719,12 @@ function theme_back_enqueue_script()
     wp_enqueue_style( 'theme-back-style',get_stylesheet_directory_uri() . '/css/back-style.css' );
     wp_enqueue_style( 'tinymce_button_backend',get_stylesheet_directory_uri() . '/tinymce_button/shortcode_button.css' );
     wp_enqueue_style('csv-media-styles', get_stylesheet_directory_uri() . '/css/csv-media-import-style.css' );
+    
+    // Add the color picker css file       
+    wp_enqueue_style( 'wp-color-picker' ); 
+         
+    // Include our custom jQuery file with WordPress Color Picker dependency
+    wp_enqueue_script( 'colorpicker-script', plugins_url( 'color-picker.js', __FILE__ ), array( 'wp-color-picker' ), false, true ); 
 }
 add_action( 'admin_enqueue_scripts', 'theme_back_enqueue_script' );
 
@@ -1081,9 +1087,14 @@ register_nav_menu( 'sub-footer', __( 'Sub Footer', WP_OESE_THEME_SLUG ) );
 
     if( have_rows('sidebar_links') ):
       $output = "<div class='secondary-navigation-menu sidebar-links'>";
+      $header_style = "";
+      $sidebar_header_color = get_field('sidebar_title_box_color');
+      
+      if (!empty($sidebar_header_color))
+        $header_style = " style='background-color:".$sidebar_header_color."'";
 
       if ($showHeader==true)
-        $output .= "<div class='secondary-navigation-menu-header'><h2>". get_field('sidebar_box_title')."</h2></div>";
+        $output .= "<div class='secondary-navigation-menu-header'".$header_style."><h2>". get_field('sidebar_box_title')."</h2></div>";
       // check if the repeater field has rows of data
 
         $output.=  "<ul class='secondary-navigation-menu-list'>";
