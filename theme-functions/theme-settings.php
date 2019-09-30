@@ -41,7 +41,7 @@ if (isset($_GET['oii_update']) && $_GET['oii_update']=="true"){
         <?php settings_fields("theme_settings_page"); ?>
         <div class="row">
 	    <fieldset>
-		<legend><h3><?php _e('Google Analytics', WP_OESE_THEME_SLUG); ?></h3></legend>
+		<legend><h3><?php _e('Analytics', WP_OESE_THEME_SLUG); ?></h3></legend>
 		<?php do_settings_fields("theme_settings_page", "wp_oese_ga_settings"); ?>
 	    </fieldset>
             <fieldset>

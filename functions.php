@@ -1439,6 +1439,20 @@ function wp_oese_theme_settings_page() {
       'name' =>  __('Property ID: ', WP_OESE_THEME_SLUG)
     )
   );
+  
+  //Add Display Address on Footer
+  add_settings_field(
+    'wp_oese_theme_include_crazy_egg_script',
+    '',
+    'wp_oese_theme_settings_field',
+    $page,
+    'wp_oese_ga_settings',
+    array(
+      'uid' => 'wp_oese_theme_include_crazy_egg_script',
+      'type' => 'checkbox',
+      'name' =>  __('Include Crazy Egg script', WP_OESE_THEME_SLUG)
+    )
+  );
 
   //Create PDF Embed Settings Section
   add_settings_section(
@@ -1494,6 +1508,7 @@ function wp_oese_theme_settings_page() {
   register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_enable_redirect' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_contact_page' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_ga_propertyid' );
+  register_setting( 'theme_settings_page' , 'wp_oese_theme_include_crazy_egg_script' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_pdf_viewer' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_display_footer_address' );
 }
@@ -1933,8 +1948,17 @@ function oese_file_type_from_url($url, $class = 'fa-1x') {
 
 function oese_ga_script() {
   $script = "";
+  
+  // Include GA
   $ga_id = get_option('wp_oese_theme_ga_propertyid');
+  $egg_script = get_option('wp_oese_theme_include_crazy_egg_script');
+  
   if ($ga_id){
+    // Include Crazy Egg Script
+    if ($egg_script){
+      $script .= "<script type='text/javascript' src='//s3.amazonaws.com/new.cetrk.com/pages/scripts/0009/9201.js'> </script>\r\n";
+    }
+    
     $script .= "<script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
