@@ -719,12 +719,6 @@ function theme_back_enqueue_script()
     wp_enqueue_style( 'theme-back-style',get_stylesheet_directory_uri() . '/css/back-style.css' );
     wp_enqueue_style( 'tinymce_button_backend',get_stylesheet_directory_uri() . '/tinymce_button/shortcode_button.css' );
     wp_enqueue_style('csv-media-styles', get_stylesheet_directory_uri() . '/css/csv-media-import-style.css' );
-    
-    // Add the color picker css file       
-    wp_enqueue_style( 'wp-color-picker' ); 
-         
-    // Include our custom jQuery file with WordPress Color Picker dependency
-    wp_enqueue_script( 'colorpicker-script', plugins_url( 'color-picker.js', __FILE__ ), array( 'wp-color-picker' ), false, true ); 
 }
 add_action( 'admin_enqueue_scripts', 'theme_back_enqueue_script' );
 
