@@ -1043,6 +1043,9 @@ a {
 .custom-common-padding{
     padding: 5% 3%;
 }
+.custom-common-padding.footer-main-section {
+    padding: 4% 2%;
+}
 .custom-search-btn{
     background: #F1F1F1 !important;
     border-left: unset !important;
@@ -1286,9 +1289,15 @@ a {
     background: #1F5C99;
     background-image: url("../images/overlay-diamonds.png");
     background-size: contain;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 .footer-title{
     margin-bottom: 10px;
+}
+.footer-menu-item-wrap {
+    min-width: 100px;
 }
 .footer-title p{
     color: #fff;
@@ -1932,6 +1941,7 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
     .page-template-program-template .lft_sid_cntnr,
     .page-template-theme-template .lft_sid_cntnr { padding-right: 15px !important; }
     #content .program_header_image img, #content .thematic_header_image img { width:100% !important; }
+    .footer-main-section { flex-direction: column; }
 }
 
 @media (max-width: 800px){
