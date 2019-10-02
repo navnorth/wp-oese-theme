@@ -701,11 +701,6 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
  */
  require_once( get_stylesheet_directory() . '/tinymce_button/shortcode_button.php' );
 
- /**
-  * Contact Metabox
-  **/
- require_once( get_stylesheet_directory() . '/metaboxes/contact-metabox.php' );
-
   /**
   * OII Menu Walker
   **/
@@ -1062,10 +1057,6 @@ function wp_list_categories_for_posts( $args = '' ) {
     } else {
       return $html;
     }
-}
-
-if (is_admin()) {
-    $contact_metabox = new Contact_Metabox();
 }
 
  /**
