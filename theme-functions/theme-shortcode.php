@@ -44,7 +44,7 @@ function oese_accordion_group_func($atts, $content = null)
 	}
 
 	$return = '';
-	$return .= '<div class="panel-group" id="'.$accordion_id.'" role="tablist" aria-multiselectable="true">';
+	$return .= '<div class="panel-group accordion" id="'.$accordion_id.'" role="tablist" aria-multiselectable="true">';
 			$content = str_replace( "<p>","", $content );
 			$content = str_replace( "</p>","", $content );
 			$return .= do_shortcode($content);
