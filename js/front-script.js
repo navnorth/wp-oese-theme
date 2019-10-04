@@ -14,8 +14,8 @@ jQuery( document ).ready(function() {
 		window.print();
 	});
 
-	var heght = jQuery("#lnk_btn_cntnr_center").height()
-	jQuery(".link_dwnlds").height(heght);
+    var heght = jQuery("#lnk_btn_cntnr_center").height();
+    jQuery(".link_dwnlds").height(heght);
 
 	var a_hght = jQuery(".link_dwnlds").children("div").children("a").height();
 	a_hght = parseInt(a_hght) + parseInt(30);
@@ -67,11 +67,11 @@ jQuery( document ).ready(function() {
 	     } else {
 		jQuery(this).parent().find('.sub-menu').toggle();
 		if (jQuery('.responsiv-menu .responsiv-menu_ul > li.menu-item-has-children > .mobile-parent-menu').hasClass('fa-sort-asc')){
-		    jQuery('.responsiv-menu .responsiv-menu_ul > li.menu-item-has-children > .mobile-parent-menu').removeClass('fa-sort-asc')
-		    jQuery('.responsiv-menu .responsiv-menu_ul > li.menu-item-has-children > .mobile-parent-menu').addClass('fa-sort-desc')
+		    jQuery('.responsiv-menu .responsiv-menu_ul > li.menu-item-has-children > .mobile-parent-menu').removeClass('fa-sort-asc');
+		    jQuery('.responsiv-menu .responsiv-menu_ul > li.menu-item-has-children > .mobile-parent-menu').addClass('fa-sort-desc');
 		} else {
-		    jQuery('.responsiv-menu .responsiv-menu_ul > li.menu-item-has-children > .mobile-parent-menu').removeClass('fa-sort-desc')
-		    jQuery('.responsiv-menu .responsiv-menu_ul > li.menu-item-has-children > .mobile-parent-menu').addClass('fa-sort-asc')
+		    jQuery('.responsiv-menu .responsiv-menu_ul > li.menu-item-has-children > .mobile-parent-menu').removeClass('fa-sort-desc');
+		    jQuery('.responsiv-menu .responsiv-menu_ul > li.menu-item-has-children > .mobile-parent-menu').addClass('fa-sort-asc');
 		}
 	     }
 	});
@@ -137,7 +137,7 @@ jQuery( document ).ready(function() {
     /** move cursor to top on pagination click **/
     jQuery(document).on("click", '.wdm_results .paginate_div li a.paginate', function(e){
 	e.preventDefault();
-	var offset = jQuery('.results-by-facets').offset();
+	var offset = jQuery('.wdm_results').offset();
 	window.scrollTo(offset.top, offset.left);
     });
     
