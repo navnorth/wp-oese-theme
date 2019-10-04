@@ -1187,10 +1187,11 @@ a {
     padding-right: 6%;
 }
 .left-section-featured-image{
-    margin-bottom: 30px;
+    /*margin-bottom: 30px;*/
 }
 .left-section-featured-image img{
     width:100%;
+    margin-bottom: 30px;
 }
 
 /*CSS for images START*/
@@ -1655,7 +1656,7 @@ h2.trending-now-heading {
 
 /*Program Information Block START*/
 .program-block-section{
-    margin-top: 50px;
+    /*margin-top: 50px;*/
     margin-bottom: 50px;
 }
 .program-list-detail{
