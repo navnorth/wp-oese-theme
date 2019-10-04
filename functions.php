@@ -2194,7 +2194,7 @@ function oese_append_category_to_results_html( $default_html, $user_id, $documen
     
     $result = '<div class="oese-search-result">';
     $result .= '<div class="oese-search-result-top row">';
-    print_r($document);
+    
     // Display page/post thumbnail
     $image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $document->id ) );
     if (!empty($image_url)){
@@ -2210,7 +2210,7 @@ function oese_append_category_to_results_html( $default_html, $user_id, $documen
     $result .= '<div class="oese-search-result-right '.$col_right.'">';
     $url = get_permalink( $document->id );
     $result .= '<h4 class="p_title"><a href="'.$url.'">'.$document->title.'</a></h4>';
-    $date = date( 'm/d/Y', strtotime( $document->displaydate ) );;
+    $date = date( 'm/d/Y', strtotime( $document->displaymodified ) );;
     $result .= '<h5>'.$date.'</h5>';
     
     // Display Categories
