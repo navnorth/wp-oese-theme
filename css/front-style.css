@@ -218,4 +218,4 @@ ul.program_toc, .cntnbx_cntnr ul {
 .paginate_div #pagination-flickr li a.paginate { display:none; }
 .paginate_div #pagination-flickr li a.paginate.show { display:block; }
 .paginate_div #pagination-flickr li a.paginate.show.prev { float:left; }
-.paginate_div #pagination-flickr li a.paginate.show.right { float:right; }
+.paginate_div #pagination-flickr li a.paginate.show.next { float:right; }
