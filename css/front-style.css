@@ -217,3 +217,5 @@ ul.program_toc, .cntnbx_cntnr ul {
 .trending-image-section { background:#ccc; }
 .paginate_div #pagination-flickr li a.paginate { display:none; }
 .paginate_div #pagination-flickr li a.paginate.show { display:block; }
+.paginate_div #pagination-flickr li a.paginate.show.prev { float:left; }
+.paginate_div #pagination-flickr li a.paginate.show.right { float:right; }

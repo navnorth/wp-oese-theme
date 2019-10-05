@@ -166,7 +166,7 @@ function displayNext10Results() {
         }
         
         nextPage = parseInt(nextPage) + 1;
-        var next10 = '<li><a class="paginate show" href="javascript:void(0)" id="' + nextPage + '">Next 10 Results</a></li>';
+        var next10 = '<li><a class="paginate show next" href="javascript:void(0)" id="' + nextPage + '">Next 10 Results</a></li>';
         jQuery('.paginate_div #pagination-flickr').append(next10);
     }
 }
@@ -179,7 +179,7 @@ function displayPrev10Results() {
             return;
         
         prevPage = parseInt(curPage) - 1;
-        var prev10 = '<li><a class="paginate show" href="javascript:void(0)" id="' + prevPage + '">Previous 10 Results</a></li>';
+        var prev10 = '<li><a class="paginate show prev" href="javascript:void(0)" id="' + prevPage + '">Previous 10 Results</a></li>';
         jQuery('.paginate_div #pagination-flickr').prepend(prev10);
     }
 }
