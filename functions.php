@@ -2218,6 +2218,16 @@ function oese_append_category_to_results_html( $default_html, $user_id, $documen
     
     $categories = $document->categories_str;
     
+    if (class_exists('WPSEO_Primary_Term')){
+        // Show Primary category by Yoast if it is enabled & set
+        $wpseo_primary_term = new WPSEO_Primary_Term( "category", $document->id );
+        $primary_term = get_term($wpseo_primary_term->get_primary_term());
+
+        if (!is_wp_error($primary_term)){
+            $categories[] = $primary_term;
+        }
+    }
+    
     if (!empty($categories)){
         $result .= '<div class="oese-solr-categories">';
         
