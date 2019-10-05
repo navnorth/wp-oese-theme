@@ -215,3 +215,5 @@ ul.program_toc, .cntnbx_cntnr ul {
 .search-results .cls_search { margin-top:25px; }
 .search-results .cls_results { margin-bottom:25px; }
 .trending-image-section { background:#ccc; }
+.paginate_div #pagination-flickr li a.paginate { display:none; }
+.paginate_div #pagination-flickr li a.paginate.show { display:block; }
