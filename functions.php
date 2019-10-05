@@ -2224,14 +2224,18 @@ function oese_append_category_to_results_html( $default_html, $user_id, $documen
         $primary_term = get_term($wpseo_primary_term->get_primary_term());
 
         if (!is_wp_error($primary_term)){
-            $categories[] = $primary_term->name;
+            $categories = $primary_term->name;
         }
     }
     
     if (!empty($categories)){
         $result .= '<div class="oese-solr-categories">';
         
-        $cat = implode(", ", $categories);
+        if (is_array($categories))
+            $cat = implode(", ", $categories);
+        else
+            $cat = $categories;
+            
         $result .= $cat;
         
         $result .= '</div>';
