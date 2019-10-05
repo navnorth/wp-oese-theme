@@ -136,38 +136,54 @@ jQuery( document ).ready(function() {
     
     /** move cursor to top on pagination click **/
     jQuery(document).on("click", '.wdm_results .paginate_div li a.paginate', function(e){
-	e.preventDefault();
-	var offset = jQuery('.wdm_results').offset();
-	window.scrollTo(offset.top, offset.left);
+        e.preventDefault();
+        var offset = jQuery('.wdm_results').offset();
+        window.scrollTo(offset.top, offset.left);
     });
     
     jQuery(document).ajaxComplete(function(event, request, settings){
-	console.log(settings);
-	setTimeout(displayNext10Results(),1000);
+        console.log(settings);
+        setTimeout(displayNext10Results(),1000);
+        setTimeout(displayPrev10Results(),1000);
     });
     
     displayNext10Results();
+    displayPrev10Results();
     
     /** Select State on Interactive Map Redirection **/
-    jQuery('#SelectState').on("change", function(e){
-	var url = jQuery(this).val();
-	window.location = url;
+    jQuery('#SelectState').on("change", function(){
+        var url = jQuery(this).val();
+        window.location = url;
     });
 });
-
 
 function displayNext10Results() {
     /** Insert Next 10 results button on the fly **/
     if (jQuery('.paginate_div #pagination-flickr').is(":visible")) {
-	var nextPage = jQuery('.cls_search form .ui-widget input[id="paginate"]').val();
-	if (nextPage==0) {
-	    nextPage = 1;
-	}
-	nextPage = parseInt(nextPage) + 1;
-	var next10 = '<li><a class="paginate" href="javascript:void(0)" id="' + nextPage + '">Next 10 Results</a></li>';
-	jQuery('.paginate_div #pagination-flickr').append(next10);
+        var nextPage = jQuery('.cls_search form .ui-widget input[id="paginate"]').val();
+        if (nextPage==0) {
+            nextPage = 1;
+        }
+        
+        nextPage = parseInt(nextPage) + 1;
+        var next10 = '<li><a class="paginate show" href="javascript:void(0)" id="' + nextPage + '">Next 10 Results</a></li>';
+        jQuery('.paginate_div #pagination-flickr').append(next10);
     }
 }
+
+function displayPrev10Results() {
+    /** Insert Prev 10 results button on the fly **/
+    if (jQuery('.paginate_div #pagination-flickr').is(":visible")) {
+        var curPage = jQuery('.cls_search form .ui-widget input[id="paginate"]').val();
+        if (curPage==0 || curPage==1)
+            return;
+        
+        prevPage = parseInt(curPage) - 1;
+        var prev10 = '<li><a class="paginate show" href="javascript:void(0)" id="' + prevPage + '">Previous 10 Results</a></li>';
+        jQuery('.paginate_div #pagination-flickr').prepend(prev10);
+    }
+}
+
 // Event Tracker Function
 function oese_trackEvent(eventCategory, eventAction, eventLabel, eventValue = null) {
     eventLabel = eventLabel.toString();
