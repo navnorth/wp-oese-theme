@@ -84,6 +84,13 @@ if ($archived_date){
             <?php
             $detect = new oese_mobile_detect();
             if ($detect->isMobile()){
+                $li_class = "";
+                $contact = get_field('ci_address');
+                $sidebar_links = have_rows('sidebar_links');
+                if ($contact && $sidebar_links)
+                    $li_class = " half";
+                elseif ($contact || $sidebar_links)
+                    $li_class = " full";
             ?>
             <div class="col-sm-12 program-sidebar">
                 <ul class="nav nav-tabs" id="mobileSidebarTab" role="tablist">
@@ -91,7 +98,7 @@ if ($archived_date){
                     $contactTitle = get_field("ci_title");
                     if ($contactTitle):
                     ?>
-                    <li class="nav-item">
+                    <li class="nav-item<?php echo $li_class; ?>">
                         <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="true"><?php echo $contactTitle; ?></a>
                     </li>
                     <?php
@@ -100,7 +107,7 @@ if ($archived_date){
                         $sidebar_title = get_field('sidebar_box_title');
                         if ($sidebar_title):
                         ?>
-                        <li class="nav-item">
+                        <li class="nav-item<?php echo $li_class; ?>">
                             <a class="nav-link" id="menu-tab" data-toggle="tab" href="#menu" role="tab" aria-controls="menu" aria-selected="false"><?php echo $sidebar_title; ?></a>
                         </li>
                         <?php endif;

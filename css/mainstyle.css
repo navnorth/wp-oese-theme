@@ -2155,6 +2155,7 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
     .program-sidebar { position:relative; float:none; margin-bottom:30px; padding-left: 0px; padding-right: 0px; }
     #mobileSidebarTab.nav-tabs { border-bottom:none; background: #004285; }
     #mobileSidebarTab.nav-tabs .nav-item { width:50%; }
+		#mobileSidebarTab.nav-tabs .nav-item.full { width:100% !important; }
     #mobileSidebarTab.nav-tabs .nav-item.show .nav-link,
     #mobileSidebarTab.nav-tabs .nav-item .nav-link {
 	color:#ffffff !important;
