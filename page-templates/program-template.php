@@ -91,45 +91,48 @@ if ($archived_date){
                     $li_class = " half";
                 elseif ($contact || $sidebar_links)
                     $li_class = " full";
-            ?>
-            <div class="col-sm-12 program-sidebar">
-                <ul class="nav nav-tabs" id="mobileSidebarTab" role="tablist">
-                    <?php
-                    $contactTitle = get_field("ci_title");
-                    if ($contactTitle):
-                    ?>
-                    <li class="nav-item<?php echo $li_class; ?>">
-                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="true"><?php echo $contactTitle; ?></a>
-                    </li>
-                    <?php
-                    endif;
-                    if( have_rows('sidebar_links') ):
-                        $sidebar_title = get_field('sidebar_box_title');
-                        if ($sidebar_title):
+                
+                if ($contact || $sidebar_links){
+                ?>
+                <div class="col-sm-12 program-sidebar">
+                    <ul class="nav nav-tabs" id="mobileSidebarTab" role="tablist">
+                        <?php
+                        $contactTitle = get_field("ci_title");
+                        if ($contactTitle):
                         ?>
                         <li class="nav-item<?php echo $li_class; ?>">
-                            <a class="nav-link" id="menu-tab" data-toggle="tab" href="#menu" role="tab" aria-controls="menu" aria-selected="false"><?php echo $sidebar_title; ?></a>
+                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="true"><?php echo $contactTitle; ?></a>
                         </li>
-                        <?php endif;
-                    endif;
-                    ?>
-                </ul>
-                <div class="tab-content" id="mobileSidebarTabContent">
-                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                        <?php echo contactInformationBlock(false) ?>
-                        <div class="tab-close-row"><a class="tab-close-button" href="javascript:void(0)" role="button"><i class="fas fa-times"></i> CLOSE</a></div>
-                    </div>
-                    <?php if( have_rows('sidebar_links') ): ?>
-                    <div class="tab-pane fade" id="menu" role="tabpanel" aria-labelledby="menu-tab">
-                        <div class="sidebar-menu">
-                        <?php echo getSidebarLinks(false); ?>
+                        <?php
+                        endif;
+                        if( have_rows('sidebar_links') ):
+                            $sidebar_title = get_field('sidebar_box_title');
+                            if ($sidebar_title):
+                            ?>
+                            <li class="nav-item<?php echo $li_class; ?>">
+                                <a class="nav-link" id="menu-tab" data-toggle="tab" href="#menu" role="tab" aria-controls="menu" aria-selected="false"><?php echo $sidebar_title; ?></a>
+                            </li>
+                            <?php endif;
+                        endif;
+                        ?>
+                    </ul>
+                    <div class="tab-content" id="mobileSidebarTabContent">
+                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                            <?php echo contactInformationBlock(false) ?>
+                            <div class="tab-close-row"><a class="tab-close-button" href="javascript:void(0)" role="button"><i class="fas fa-times"></i> CLOSE</a></div>
                         </div>
-                        <div class="col-sm-12 tab-close-row"><a class="tab-close-button"  href="javascript:void(0)" role="button"><i class="fas fa-times"></i> CLOSE</a></div>
+                        <?php if( have_rows('sidebar_links') ): ?>
+                        <div class="tab-pane fade" id="menu" role="tabpanel" aria-labelledby="menu-tab">
+                            <div class="sidebar-menu">
+                            <?php echo getSidebarLinks(false); ?>
+                            </div>
+                            <div class="col-sm-12 tab-close-row"><a class="tab-close-button"  href="javascript:void(0)" role="button"><i class="fas fa-times"></i> CLOSE</a></div>
+                        </div>
+                        <?php endif; ?>
                     </div>
-                    <?php endif; ?>
                 </div>
-            </div>
-            <?php
+                <?php
+                }
             } else {
             ?>
             <div class="<?php echo $rightCol; ?> program-sidebar">
