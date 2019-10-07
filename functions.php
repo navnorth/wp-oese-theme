@@ -1068,40 +1068,45 @@ register_nav_menu( 'sub-footer', __( 'Sub Footer', WP_OESE_THEME_SLUG ) );
 /**
 * Getting Populars post from Pages OESE Theme
 */
-  function getSidebarLinks($showHeader=true){
-
+function getSidebarLinks($showHeader=true){
+    
     if( have_rows('sidebar_links') ):
-      $output = "<div class='secondary-navigation-menu sidebar-links'>";
-      $header_style = "";
-      $body_style = "";
-      $sidebar_header_color = get_field('sidebar_title_box_color');
-      $sidebar_body_color = get_field('sidebar_box_body_color');
-      
-      if (!empty($sidebar_header_color))
+        $output = "<div class='secondary-navigation-menu sidebar-links'>";
+        $header_style = "";
+        $body_style = "";
+        $header_text_style = "";
+        $sidebar_header_color = get_field('sidebar_title_box_color');
+        $sidebar_body_color = get_field('sidebar_box_body_color');
+        $sidebar_header_text_color = get_field('sidebar_box_title_color');
+        
+    if (!empty($sidebar_header_color))
         $header_style = " style='background-color:".$sidebar_header_color."'";
-      
-      if (!empty($sidebar_body_color))
+    
+    if (!empty($sidebar_body_color))
         $body_style = " style='background-color:".$sidebar_body_color."'";
-
-      if ($showHeader==true)
-        $output .= "<div class='secondary-navigation-menu-header'".$header_style."><h2>". get_field('sidebar_box_title')."</h2></div>";
-      // check if the repeater field has rows of data
-
+    
+    if (!empty($sidebar_header_text_color))
+        $header_text_style = " style='color:".$sidebar_header_text_color."'";
+        
+    if ($showHeader==true)
+        $output .= "<div class='secondary-navigation-menu-header'".$header_style."><h2".$header_text_style.">". get_field('sidebar_box_title')."</h2></div>";
+        
+        // check if the repeater field has rows of data
         $output.=  "<ul class='secondary-navigation-menu-list'".$body_style.">";
+        
         // loop through the rows of data
-          while ( have_rows('sidebar_links') ) : the_row();
+        while ( have_rows('sidebar_links') ) : the_row();
             $resourceLabel =  get_sub_field('resource_label');
             $resourceLink =  get_sub_field('resource_link');
             $externaLink =  get_sub_field('external_link');
             $target = ($externaLink ? "_blank" : "_self");
             $output.= "<li><a target='". $target."' href='".$resourceLink."'>".$resourceLabel."</a></li>";
-          endwhile;
+        endwhile;
         $output.=  "</ul>";
         $output.="</div>";
         echo $output;
-      endif;
-
-   }
+    endif;
+}
 
 
 /**
