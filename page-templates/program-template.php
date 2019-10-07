@@ -96,25 +96,30 @@ if ($archived_date){
                     </li>
                     <?php
                     endif;
-                    $sidebar_title = get_field('sidebar_box_title');
-                    if ($sidebar_title):
+                    if( have_rows('sidebar_links') ):
+                        $sidebar_title = get_field('sidebar_box_title');
+                        if ($sidebar_title):
+                        ?>
+                        <li class="nav-item">
+                            <a class="nav-link" id="menu-tab" data-toggle="tab" href="#menu" role="tab" aria-controls="menu" aria-selected="false"><?php echo $sidebar_title; ?></a>
+                        </li>
+                        <?php endif;
+                    endif;
                     ?>
-                    <li class="nav-item">
-                        <a class="nav-link" id="menu-tab" data-toggle="tab" href="#menu" role="tab" aria-controls="menu" aria-selected="false"><?php echo $sidebar_title; ?></a>
-                    </li>
-                    <?php endif; ?>
                 </ul>
                 <div class="tab-content" id="mobileSidebarTabContent">
                     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                         <?php echo contactInformationBlock(false) ?>
                         <div class="tab-close-row"><a class="tab-close-button" href="javascript:void(0)" role="button"><i class="fas fa-times"></i> CLOSE</a></div>
                     </div>
+                    <?php if( have_rows('sidebar_links') ): ?>
                     <div class="tab-pane fade" id="menu" role="tabpanel" aria-labelledby="menu-tab">
                         <div class="sidebar-menu">
                         <?php echo getSidebarLinks(false); ?>
                         </div>
                         <div class="col-sm-12 tab-close-row"><a class="tab-close-button"  href="javascript:void(0)" role="button"><i class="fas fa-times"></i> CLOSE</a></div>
                     </div>
+                    <?php endif; ?>
                 </div>
             </div>
             <?php
