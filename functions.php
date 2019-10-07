@@ -2497,3 +2497,14 @@ if (! function_exists('is_solr_installed')){
         return $is_active;
     }
 }
+
+// add filter for other file types to to Media Library
+function oese_modify_post_mime_types( $post_mime_types ) {
+    // select the mime type (e.g. 'application/pdf') then define an array with the label values
+    $post_mime_types['application/pdf'] = array( __( 'PDFs' ), __( 'Manage PDFs' ), _n_noop( 'PDF <span class="count">(%s)</span>', 'PDFs <span class="count">(%s)</span>' ) );
+    $post_mime_types['application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msword'] = array('Word', 'Manage Word Docs', _n_noop('Word Doc <span class="count">(%s)</span>', 'Word Docs <span class="count">(%s)</span>'));
+    $post_mime_types['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/msexcel,application/excel,application/vnd.ms-excel,application/x-excel,application/x-msexcel'] = array('Excel', 'Manage Excel Files', _n_noop('Excel File <span class="count">(%s)</span>', 'Excel Files <span class="count">(%s)</span>'));
+    return $post_mime_types;
+}
+// Add Filter Hook
+add_filter( 'post_mime_types', 'oese_modify_post_mime_types' );
