@@ -1346,12 +1346,12 @@ function oeseListChildPages() {
  * Add Theme Settings Page
  **/
 function add_oese_theme_settings_menu(){
-    add_theme_page("Theme Settings", "Settings", "edit_theme_options", "theme_settings_page",  "add_wp_oese_theme_settings_page", 10);
+    add_theme_page("Theme Settings", "OESE Theme Settings", "edit_theme_options", "theme_settings_page",  "add_wp_oese_theme_settings_page", 10);
 }
 add_action( "admin_menu", "add_oese_theme_settings_menu" );
 
 function add_wp_oese_theme_settings_page(){
-  include( get_template_directory() . "/theme-functions/theme-settings.php");
+    include( get_template_directory() . "/theme-functions/theme-settings.php");
 }
 
 /**
