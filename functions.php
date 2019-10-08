@@ -1820,9 +1820,6 @@ function oese_search_where($where){
     if (in_array( $pagenow, array( 'upload.php', 'admin-ajax.php' ) ))
         return $where;
     
-    $scr = get_current_screen();
-    if ( $scr->base == 'upload' ) return $where;
-    
     if (is_search())
         $where .= "OR (t.name LIKE '%".get_search_query()."%' AND {$wpdb->posts}.post_status = 'publish')";
     return $where;
