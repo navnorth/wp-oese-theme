@@ -1587,7 +1587,7 @@ function wp_oese_theme_select_contact_field($arguments){
     echo '<span class="contact-edit-link"><a href="'.$post_link.'" target="_blank">'.$post->post_title.'</a></span>
             <a class="contact-edit" href="javascript:void(0);"><span class="dashicons dashicons-edit"></span></a>';
     echo '<select name="'.$arguments['uid'].'" id="'.$arguments['uid'].'">';
-    echo '<option value="">Select Contact Page</option>';
+    echo '<option value="">-- Please select contact page --</option>';
         foreach($pages as $page){
             echo '<option value="' . $page->ID . '" '.selected($page->ID,$value,true).'>'.$page->post_title.'</option>';
         }
