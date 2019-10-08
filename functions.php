@@ -1215,7 +1215,7 @@ function contactInformationBlock($showHeader=true){
       if ($contact_page){
         $contactEmailLink = get_the_permalink($contact_page).'?contact_reference='.$post->ID;
       } else
-        $contactEmailLink = '/contact-us/?contact_reference='.$post->ID;
+        $contactEmailLink = '';
     }
   }
 
@@ -1567,25 +1567,31 @@ function wp_oese_theme_settings_field($arguments){
 }
 
 function wp_oese_theme_select_contact_field($arguments){
-  $value = get_option($arguments['uid']);
-
-  // Get All Pages
-  $args = array(
+    $value = get_option($arguments['uid']);
+  
+    // Get All Pages
+    $args = array(
                 'numberposts' => -1,
                 'post_type' => 'page',
                 'post_status' => 'publish',
                 'orderby' => 'title',
                 'order' => 'ASC'
                 );
-  $pages = get_posts($args);
-
-  echo '<div class="form-row"><div class="form-group">
-      <label for="'.$arguments['uid'].'"><strong>'.$arguments['name'].'</strong></label>
-      <select name="'.$arguments['uid'].'" id="'.$arguments['uid'].'">';
-      foreach($pages as $page){
-        echo '<option value="' . $page->ID . '" '.selected($page->ID,$value,true).'>'.$page->post_title.'</option>';
-      }
-  echo '</select>
+    $pages = get_posts($args);
+    
+    $post = get_post($value);
+    $post_link = get_permalink($value);
+    
+    echo '<div class="form-row"><div class="form-group">
+        <label for="'.$arguments['uid'].'"><strong>'.$arguments['name'].'</strong></label>';
+    echo '<span class="contact-edit-link"><a href="'.$post_link.'" target="_blank">'.$post->post_title.'</a></span>
+            <a class="contact-edit" href="javascript:void(0);"><span class="dashicons dashicons-edit"></span></a>';
+    echo '<select name="'.$arguments['uid'].'" id="'.$arguments['uid'].'">';
+    echo '<option value="">Select Contact Page</option>';
+        foreach($pages as $page){
+            echo '<option value="' . $page->ID . '" '.selected($page->ID,$value,true).'>'.$page->post_title.'</option>';
+        }
+    echo '</select>
     </div></div>';
 }
 
