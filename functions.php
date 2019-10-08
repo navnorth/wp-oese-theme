@@ -12,7 +12,7 @@ define( "WP_OESE_THEME_SLUG", "wp_oese_theme" );
 
 // Set up the content width value based on the theme's design and stylesheet.
 if ( ! isset( $content_width ) ) {
-  $content_width = 625;
+    $content_width = 625;
 }
 
 /**
@@ -673,9 +673,6 @@ function twentytwelve_widget_tag_cloud_args( $args ) {
 }
 add_filter( 'widget_tag_cloud_args', 'twentytwelve_widget_tag_cloud_args' );
 
-
-
-
 /**
  * Register sidebars.
  */
@@ -705,8 +702,8 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
   * OII Menu Walker
   **/
  require_once( get_stylesheet_directory() . '/classes/oii-walker.php' );
-
-function theme_back_enqueue_script()
+ 
+ function theme_back_enqueue_script()
 {
     wp_enqueue_script( 'theme-back-script', get_stylesheet_directory_uri() . '/js/back-script.js' );
     wp_enqueue_script('csv-media-script', get_stylesheet_directory_uri() . '/js/csv-media-import-script.js' );
@@ -892,7 +889,6 @@ function modify_read_more_link() {
   return ' <a class="more-link" href="' . get_permalink() . '">Read More</a>';
 }
 
-
 /**
  * Initialize Categories and Tags for Pages
  **/
@@ -938,9 +934,8 @@ function taxonomies_for_pages() {
         $wp_query->set( 'post_type', 'any' );
 
  } // category_archives
-
-
-function related_posts_where( $where ) {
+ 
+ function related_posts_where( $where ) {
     return $where." AND post_type='post'";
 }
 
@@ -959,7 +954,7 @@ function wp_list_categories_for_posts( $args = '' ) {
       'echo' => 1, 'depth' => 0,
       'taxonomy' => 'category'
     );
-
+    
     $r = wp_parse_args( $args, $defaults );
 
     if ( !isset( $r['pad_counts'] ) && $r['show_count'] && $r['hierarchical'] )
@@ -1108,7 +1103,6 @@ function getSidebarLinks($showHeader=true){
     endif;
 }
 
-
 /**
 *Enabling the Category and Tags for the media attachment
 *
@@ -1118,60 +1112,59 @@ function addingCategoryToAttachment() {
 }
 add_action( 'init' , 'addingCategoryToAttachment' );
 
-
 function addingTagsToAttachment() {
     register_taxonomy_for_object_type( 'post_tag', 'attachment' );
 }
 add_action( 'init' , 'addingTagsToAttachment' );
 
 /*
-  Category Filter for Media List Page
+* Category Filter for Media List Page
 */
 
-
-add_action('pre_get_posts', 'mediaFilterByCategory');
+//add_action('pre_get_posts', 'mediaFilterByCategory');
 
 function mediaFilterByCategory( $q ) {
-if(is_admin()){
-
-  global $current_user, $pagenow;
-
-  if( !is_a( $current_user, 'WP_User') )
-  return;
-
-  $cat = filter_input(INPUT_GET, 'category_name', FILTER_SANITIZE_STRING );
-  if ( ! $q->is_main_query() || ! is_admin() || (int)$cat <= 0 || !in_array( $pagenow, array( 'upload.php', 'admin-ajax.php' ) ))
-  return;
-    $posts = get_posts( 'nopaging=1&category=' . $cat );
-    $pids = ( ! empty( $posts ) ) ? wp_list_pluck($posts, 'ID') : false;
-    if ( ! empty($pids) ) {
-      $pidstxt = implode($pids, ',');
-      global $wpdb;
-      $mids = $wpdb->get_col("SELECT ID FROM $wpdb->posts WHERE post_parent IN ($pidstxt)");
-      if ( ! empty($mids) ) {
-
-        $q->set( 'post__in', $mids );
-      } else {
-        $q->set( 'p', -1 );
-      }
+    if(is_admin()){
+        global $current_user, $pagenow;
+        
+        if( !is_a( $current_user, 'WP_User') )
+            return;
+    
+        $cat = filter_input(INPUT_GET, 'category_name', FILTER_SANITIZE_STRING );
+        
+        if ( ! $q->is_main_query() || ! is_admin() || (int)$cat <= 0 || !in_array( $pagenow, array( 'upload.php', 'admin-ajax.php' ) ))
+            return;
+        
+        $posts = get_posts( 'nopaging=1&category=' . $cat );
+        $pids = ( ! empty( $posts ) ) ? wp_list_pluck($posts, 'ID') : false;
+        
+        if ( ! empty($pids) ) {
+            $pidstxt = implode($pids, ',');
+            global $wpdb;
+            $mids = $wpdb->get_col("SELECT ID FROM $wpdb->posts WHERE post_parent IN ($pidstxt)");
+            if ( ! empty($mids) ) {
+                $q->set( 'post__in', $mids );
+            } else {
+                $q->set( 'p', -1 );
+            }
+        }
     }
-  }
 }
 
-add_action( 'restrict_manage_posts', 'mediaCategoryDropdown' );
+//add_action( 'restrict_manage_posts', 'mediaCategoryDropdown' );
 
 function mediaCategoryDropdown() {
-  $scr = get_current_screen();
-  if ( $scr->base !== 'upload' ) return;
-  $cat = filter_input(INPUT_GET, 'category_name', FILTER_SANITIZE_STRING );
-  $selected = (int)$cat > 0 ? $cat : '-1';
-  $args = array(
-      'show_option_none'   => 'All Post Categories',
-      'name'               => 'category_name',
-      'selected'           => $selected,
-      'value_field'       => 'slug'
-  );
-  wp_dropdown_categories( $args );
+    $scr = get_current_screen();
+    if ( $scr->base !== 'upload' ) return;
+    $cat = filter_input(INPUT_GET, 'category_name', FILTER_SANITIZE_STRING );
+    $selected = (int)$cat > 0 ? $cat : '-1';
+    $args = array(
+        'show_option_none'   => 'All Post Categories',
+        'name'               => 'category_name',
+        'selected'           => $selected,
+        'value_field'       => 'slug'
+    );
+    wp_dropdown_categories( $args );
 }
 
 function oeseBreadcrumb() {
@@ -1200,7 +1193,6 @@ function oeseBreadcrumb() {
 
   }
 }
-
 
 function contactInformationBlock($showHeader=true){
   global $post;
@@ -1323,7 +1315,6 @@ function getTileLinks(){
          echo $output;
     endif;
 }
-
 
 function oeseListChildPages() {
 
@@ -1662,8 +1653,8 @@ function csvImportMediaForm(){
   function createCsvImportMenu(){
     add_options_page( 'CSV Media Importer','CSV Media Importer','manage_options','csv-media-import.php','csvImportMediaForm');
   }
-
-  function getUrlContents ($url) {
+  
+    function getUrlContents ($url) {
     $array = get_headers($url);
     $string = $array[0];
     if(strpos($string,"200")){
@@ -1816,8 +1807,8 @@ function csvImportMediaForm(){
      wp_send_json($outputCsv);
      die();
   }
-
-function checkDateFormat($date){
+  
+  function checkDateFormat($date){
   $dt = DateTime::createFromFormat("Y-m-d", $date);
   return $dt !== false && !array_sum($dt::getLastErrors());
 }
@@ -1825,9 +1816,15 @@ function checkDateFormat($date){
 /**Csv import Media Library Ends***/
 
 function oese_search_where($where){
-    global $wpdb;
+    global $wpdb, $pagenow;
+    if (in_array( $pagenow, array( 'upload.php', 'admin-ajax.php' ) ))
+        return $where;
+    
+    $scr = get_current_screen();
+    if ( $scr->base == 'upload' ) return $where;
+    
     if (is_search())
-	$where .= "OR (t.name LIKE '%".get_search_query()."%' AND {$wpdb->posts}.post_status = 'publish')";
+        $where .= "OR (t.name LIKE '%".get_search_query()."%' AND {$wpdb->posts}.post_status = 'publish')";
     return $where;
 }
 add_filter( "posts_where" , "oese_search_where" );
@@ -1993,6 +1990,7 @@ function add_bottom_script(){
    echo "<script type='text/javascript' src='". get_stylesheet_directory_uri() . "/js/bottom-script.js'></script>";
 }
 
+
 use wpsolr\core\classes\WPSOLR_Events;
 use wpsolr\core\classes\extensions\localization\OptionLocalization;
 use wpsolr\core\classes\ui\layout\checkboxes\WPSOLR_UI_Layout_Check_Box;
@@ -2002,11 +2000,12 @@ use wpsolr\core\classes\utilities\WPSOLR_Option;
 use wpsolr\core\classes\ui\WPSOLR_UI_Facets;
 use wpsolr\core\classes\ui\WPSOLR_Query;
 
+
 add_action( 'after_setup_theme', function () {
-  add_action( WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY, 'oese_action_solarium_query', 10, 1 );
-  add_action( WPSOLR_Events::WPSOLR_FILTER_SOLR_RESULTS_APPEND_CUSTOM_HTML, 'oese_append_category_to_results_html', 10, 4);
-  //add_action( WPSOLR_Events::WPSOLR_FILTER_IS_REPLACE_BY_WPSOLR_QUERY, 'replace_search_with_WP_Solr', 10, 1 );
-} );
+    add_action( WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY, 'oese_action_solarium_query', 10, 1 );
+    add_action( WPSOLR_Events::WPSOLR_FILTER_SOLR_RESULTS_APPEND_CUSTOM_HTML, 'oese_append_category_to_results_html', 10, 4);
+    //add_action( WPSOLR_Events::WPSOLR_FILTER_IS_REPLACE_BY_WPSOLR_QUERY, 'replace_search_with_WP_Solr', 10, 1 );
+    } );
 
 function update_search_facet($html, $facets, $localization_options){
   $page_types = oese_get_page_types();
