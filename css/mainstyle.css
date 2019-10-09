@@ -1914,48 +1914,45 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
     }
 }
 @media (max-width: 1200px){
-    .soclize .socl_icns { margin: 0 0 0 2px; }
-    .tlkt_stp_vdo_cntnr .pblctn_vdo_bg { width: 32.8222% !important; }
-    .hdr .col-xs-offset-2 { margin-left: 15px !important }
-    .tlkt_rght_sid h3 { width: 72%; }
-    #home_content .wp-caption { width:712px !important; }
-    #home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:710px !important; }
-    .slideshow_container_style-light .slideshow_pagination { bottom:10px !important; }
+	.soclize .socl_icns { margin: 0 0 0 2px; }
+	.tlkt_stp_vdo_cntnr .pblctn_vdo_bg { width: 32.8222% !important; }
+	.hdr .col-xs-offset-2 { margin-left: 15px !important }
+	.tlkt_rght_sid h3 { width: 72%; }
+	#home_content .wp-caption { width:712px !important; }
+	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:710px !important; }
+	.slideshow_container_style-light .slideshow_pagination { bottom:10px !important; }
 }
-@media (max-width: 990px){
-    .right_sid_mtr { text-align: center}
-    .right_sid_mtr ul { width: 100%}
-    .tlkt_stp_vdo_cntnr .pblctn_vdo_bg {width: 32.7222% !important;}
-    .pblctn_scl_icns a:first-child { margin-left: 0}
-    .hdr .col-md-7 img { width: 100%}
-    .bnr_img img { width: 98%; margin-bottom: 15px}
-    .sprtn_brdr { display: none}
-    .rght_sid_mtr { padding-left: 0 !important}
-    .vdo_bg { margin-left: 0}
-    .navi_bg li a { padding: 8px 15px;}
-    .pblctn_vdo_bg { margin-top: 30px}
-    .lft_sid_mtr, .lft_sid_cntnr, acrdn_pnl_cntnr { padding-right: 0 !important}
-    .vdo_bg, .pblctn_vdo_bg  { width: 100% !important}
-
-    .right_sid_mtr .col-sm-6 {  width: 46.5%; margin-left: 5%}
-    .right_sid_mtr .col-sm-6:first-child { margin-left: 0}
-    .lft_sid_mtr { margin-bottom: 15px;}
-    .hdr .col-xs-offset-2 { margin-left: 0px !important; }
-    .panel-group { width: 100%}
-
-    .right_sid_mtr .pblctn_scl_icns { height: 110px; width: 275px !important; margin: 0 auto; float: none !important;}
-
-    .lft_sid_cntnr .rght_sid_mtr { padding-right: 15px !important}
-    .page-template-page-templatestoolkit-template-php .right_sid_mtr .col-sm-6 {margin: 35px 1.7% 0}
-    aside { float: left; width: 100%}
-    #home_content .wp-caption { width:750px !important; }
-    #home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:748px !important; }
-    .slideshow_container_style-light .slideshow_pagination { bottom:10px !important; }
-    .program_toc_box .col-xs-6 { width: 220px; }
-    .page-template-program-template .lft_sid_cntnr,
-    .page-template-theme-template .lft_sid_cntnr { padding-right: 15px !important; }
-    #content .program_header_image img, #content .thematic_header_image img { width:100% !important; }
-    .footer-main-section { flex-direction: column; }
+@media (max-width: 1024px){
+	.right_sid_mtr { text-align: center}
+	.right_sid_mtr ul { width: 100%}
+	.tlkt_stp_vdo_cntnr .pblctn_vdo_bg {width: 32.7222% !important;}
+	.pblctn_scl_icns a:first-child { margin-left: 0}
+	.hdr .col-md-7 img { width: 100%}
+	.bnr_img img { width: 98%; margin-bottom: 15px}
+	.sprtn_brdr { display: none}
+	.rght_sid_mtr { padding-left: 0 !important}
+	.vdo_bg { margin-left: 0}
+	.navi_bg li a { padding: 8px 15px; font-size:17px;}
+	.pblctn_vdo_bg { margin-top: 30px}
+	.lft_sid_mtr, .lft_sid_cntnr, acrdn_pnl_cntnr { padding-right: 0 !important}
+	.vdo_bg, .pblctn_vdo_bg  { width: 100% !important}
+	.right_sid_mtr .col-sm-6 {  width: 46.5%; margin-left: 5%}
+	.right_sid_mtr .col-sm-6:first-child { margin-left: 0}
+	.lft_sid_mtr { margin-bottom: 15px;}
+	.hdr .col-xs-offset-2 { margin-left: 0px !important; }
+	.panel-group { width: 100%}
+	.right_sid_mtr .pblctn_scl_icns { height: 110px; width: 275px !important; margin: 0 auto; float: none !important;}
+	.lft_sid_cntnr .rght_sid_mtr { padding-right: 15px !important}
+	.page-template-page-templatestoolkit-template-php .right_sid_mtr .col-sm-6 {margin: 35px 1.7% 0}
+	aside { float: left; width: 100%}
+	#home_content .wp-caption { width:750px !important; }
+	#home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:748px !important; }
+	.slideshow_container_style-light .slideshow_pagination { bottom:10px !important; }
+	.program_toc_box .col-xs-6 { width: 220px; }
+	.page-template-program-template .lft_sid_cntnr,
+	.page-template-theme-template .lft_sid_cntnr { padding-right: 15px !important; }
+	#content .program_header_image img, #content .thematic_header_image img { width:100% !important; }
+	.footer-main-section { flex-direction: column; }
 }
 
 @media (max-width: 800px){
