@@ -84,9 +84,6 @@ if ($archived_date){
             <?php
             $detect = new oese_mobile_detect();
             if ($detect->isMobile()){
-                get_template_part( 'content', 'resources' ); ?>
-                <div class="spacer" style="height:20px;"></div>
-            <?php
                 $li_class = "";
                 $contact = get_field('ci_address');
                 $sidebar_links = have_rows('sidebar_links');
@@ -133,6 +130,8 @@ if ($archived_date){
                         </div>
                         <?php endif; ?>
                     </div>
+                    <div class="spacer" style="height:20px;"></div>
+                    <?php get_template_part( 'content', 'resources' ); ?>
                 </div>
                 <?php
                 }
