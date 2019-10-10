@@ -10,4 +10,5 @@ jQuery( document ).ready(function() {
             jQuery('.contact-edit-link').hide();
         }
     });
+    jQuery('.oese-tabs').tabs();
 });

@@ -705,14 +705,15 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
  
  function theme_back_enqueue_script()
 {
+    wp_enqueue_script( 'jquery-ui-core' );
+	wp_enqueue_script( 'jquery-ui-widgets' );
+	wp_enqueue_script( 'jquery-ui-tabs' );
     wp_enqueue_script( 'theme-back-script', get_stylesheet_directory_uri() . '/js/back-script.js' );
     wp_enqueue_script('csv-media-script', get_stylesheet_directory_uri() . '/js/csv-media-import-script.js' );
 
     wp_enqueue_style( 'theme-back-style',get_stylesheet_directory_uri() . '/css/back-style.css' );
     wp_enqueue_style( 'tinymce_button_backend',get_stylesheet_directory_uri() . '/tinymce_button/shortcode_button.css' );
     wp_enqueue_style('csv-media-styles', get_stylesheet_directory_uri() . '/css/csv-media-import-style.css' );
-    //wp_enqueue_style( 'theme-bootstrap-style',get_stylesheet_directory_uri() . '/css/bootstrap.min.css' );
-    //wp_enqueue_script('bootstrap-script', get_stylesheet_directory_uri() . '/js/bootstrap.js' );
 }
 add_action( 'admin_enqueue_scripts', 'theme_back_enqueue_script' );
 
@@ -2512,3 +2513,37 @@ function oese_modify_post_mime_types( $post_mime_types ) {
 }
 // Add Filter Hook
 add_filter( 'post_mime_types', 'oese_modify_post_mime_types' );
+
+function embedded_phpinfo()
+{
+    ob_start();
+    phpinfo();
+    $phpinfo = ob_get_contents();
+    ob_end_clean();
+    $phpinfo = preg_replace('%^.*<body>(.*)</body>.*$%ms', '$1', $phpinfo);
+    echo "
+        <style type='text/css'>
+            #phpinfo {}
+            #phpinfo pre {margin: 0; font-family: monospace;}
+            #phpinfo a:link {color: #009; text-decoration: none; background-color: #fff;}
+            #phpinfo a:hover {text-decoration: underline;}
+            #phpinfo table {border-collapse: collapse; border: 0; width: 934px; box-shadow: 1px 2px 3px #ccc;}
+            #phpinfo .center {text-align: center;}
+            #phpinfo .center table {margin: 1em auto; text-align: left;}
+            #phpinfo .center th {text-align: center !important;}
+            #phpinfo td, th {border: 1px solid #666; font-size: 75%; vertical-align: baseline; padding: 4px 5px;}
+            #phpinfo h1 {font-size: 150%;}
+            #phpinfo h2 {font-size: 125%;}
+            #phpinfo .p {text-align: left;}
+            #phpinfo .e {background-color: #ccf; width: 300px; font-weight: bold;}
+            #phpinfo .h {background-color: #99c; font-weight: bold;}
+            #phpinfo .v {background-color: #ddd; max-width: 300px; overflow-x: auto; word-wrap: break-word;}
+            #phpinfo .v i {color: #999;}
+            #phpinfo img {float: right; border: 0;}
+            #phpinfo hr {width: 934px; background-color: #ccc; border: 0; height: 1px;}
+        </style>
+        <div id='phpinfo'>
+            $phpinfo
+        </div>
+        ";
+}
