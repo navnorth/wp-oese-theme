@@ -1997,7 +1997,7 @@ function add_bottom_script(){
 }
 
 
-use wpsolr\core\classes\WPSOLR_Events;
+/*use wpsolr\core\classes\WPSOLR_Events;
 use wpsolr\core\classes\extensions\localization\OptionLocalization;
 use wpsolr\core\classes\ui\layout\checkboxes\WPSOLR_UI_Layout_Check_Box;
 use wpsolr\core\classes\engines\WPSOLR_AbstractResultsClient;
@@ -2005,31 +2005,33 @@ use wpsolr\core\classes\ui\layout\WPSOLR_UI_Layout_Abstract;
 use wpsolr\core\classes\utilities\WPSOLR_Option;
 use wpsolr\core\classes\ui\WPSOLR_UI_Facets;
 use wpsolr\core\classes\ui\WPSOLR_Query;
+*/
 
 
 add_action( 'after_setup_theme', function () {
-    add_action( WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY, 'oese_action_solarium_query', 10, 1 );
-    add_action( WPSOLR_Events::WPSOLR_FILTER_SOLR_RESULTS_APPEND_CUSTOM_HTML, 'oese_append_category_to_results_html', 10, 4);
-    //add_action( WPSOLR_Events::WPSOLR_FILTER_IS_REPLACE_BY_WPSOLR_QUERY, 'replace_search_with_WP_Solr', 10, 1 );
-    } );
+    if (class_exists("wpsolr\\core\\classes\\WPSOLR_Events")) {
+        add_action( wpsolr\core\classes\WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY, 'oese_action_solarium_query', 10, 1 );
+        add_action( wpsolr\core\classes\WPSOLR_Events::WPSOLR_FILTER_SOLR_RESULTS_APPEND_CUSTOM_HTML, 'oese_append_category_to_results_html', 10, 4);
+    }
+} );
 
 function update_search_facet($html, $facets, $localization_options){
   $page_types = oese_get_page_types();
   $facets[] = $page_types;
 
   if (!empty($facets)){
-    $facets_template = OptionLocalization::get_term( $localization_options, 'facets_element' );
-    $facet_title     = OptionLocalization::get_term( $localization_options, 'facets_title' );
+    $facets_template = wpsolr\core\classes\extensions\localization\OptionLocalization::get_term( $localization_options, 'facets_element' );
+    $facet_title     = wpsolr\core\classes\extensions\localization\OptionLocalization::get_term( $localization_options, 'facets_title' );
 
     foreach($facets as &$facet) {
       // Get the layout object
-      $facet_layout_id = ( ! empty( $facet['facet_layout_id'] ) ) ? $facet['facet_layout_id'] : WPSOLR_UI_Layout_Check_Box::CHILD_LAYOUT_ID;
+      $facet_layout_id = ( ! empty( $facet['facet_layout_id'] ) ) ? $facet['facet_layout_id'] : wpsolr\core\classes\ui\layout\checkboxes\WPSOLR_UI_Layout_Check_Box::CHILD_LAYOUT_ID;
 
-      $layout_object = apply_filters( WPSOLR_Events::WPSOLR_FILTER_LAYOUT_OBJECT, null, $facet_layout_id );
+      $layout_object = apply_filters( wpsolr\core\classes\WPSOLR_Events::WPSOLR_FILTER_LAYOUT_OBJECT, null, $facet_layout_id );
 
       if ( is_null( $layout_object ) ) {
         // Back to default layout
-        $layout_object = new WPSOLR_UI_Layout_Check_Box();
+        $layout_object = new wpsolr\core\classes\ui\layout\checkboxes\WPSOLR_UI_Layout_Check_Box();
       }
 
       // Unique uuid for each facet. used to inject specific css/js to each facet.
@@ -2047,26 +2049,26 @@ function update_search_facet($html, $facets, $localization_options){
         }
       }
 
-      $html .= sprintf( '<div class="wpsolr_facet_title %s_%s">%s</div>', WPSOLR_UI_Layout_Abstract::CLASS_PREFIX, $facet['id'], sprintf( $facet_title, $facet['name'] ) );
+      $html .= sprintf( '<div class="wpsolr_facet_title %s_%s">%s</div>', wpsolr\core\classes\ui\layout\WPSOLR_UI_Layout_Abstract::CLASS_PREFIX, $facet['id'], sprintf( $facet_title, $facet['name'] ) );
 
       // Use the current facet template, else use the general facets template.
       $facet_template = ! empty( $facet['facet_template'] ) ? $facet['facet_template'] : $facets_template;
 
       $facet_grid = ! empty( $facet['facet_grid'] ) ? $facet['facet_grid'] : '';
       switch ( $facet_grid ) {
-        case WPSOLR_Option::OPTION_FACET_GRID_HORIZONTAL:
+        case wpsolr\core\classes\utilities\WPSOLR_Option::OPTION_FACET_GRID_HORIZONTAL:
           $facet_grid_class = 'wpsolr_facet_column_horizontal';
           break;
 
-        case WPSOLR_Option::OPTION_FACET_GRID_1_COLUMN:
+        case wpsolr\core\classes\utilities\WPSOLR_Option::OPTION_FACET_GRID_1_COLUMN:
           $facet_grid_class = 'wpsolr_facet_columns wpsolr_facet_column_1';
           break;
 
-        case WPSOLR_Option::OPTION_FACET_GRID_2_COLUMNS:
+        case wpsolr\core\classes\utilities\WPSOLR_Option::OPTION_FACET_GRID_2_COLUMNS:
           $facet_grid_class = 'wpsolr_facet_columns wpsolr_facet_column_2';
           break;
 
-        case WPSOLR_Option::OPTION_FACET_GRID_3_COLUMNS:
+        case wpsolr\core\classes\utilities\WPSOLR_Option::OPTION_FACET_GRID_3_COLUMNS:
           $facet_grid_class = 'wpsolr_facet_columns wpsolr_facet_column_3';
           break;
 
@@ -2085,12 +2087,12 @@ function update_search_facet($html, $facets, $localization_options){
     }
 
     $is_facet_selected           = true;
-    $remove_item_localization    = OptionLocalization::get_term( $localization_options, 'facets_element_all_results' );
-    $is_generate_facet_permalink = apply_filters( WPSOLR_Events::WPSOLR_FILTER_IS_GENERATE_FACET_PERMALINK, false );
+    $remove_item_localization    = wpsolr\core\classes\extensions\localization\OptionLocalization::get_term( $localization_options, 'facets_element_all_results' );
+    $is_generate_facet_permalink = apply_filters( wpsolr\core\classes\WPSOLR_Events::WPSOLR_FILTER_IS_GENERATE_FACET_PERMALINK, false );
     if ( $is_generate_facet_permalink ) {
       // Link to the current page or to the permalinks home ?
 
-      $redirect_facets_home = apply_filters( WPSOLR_Events::WPSOLR_FILTER_FACET_PERMALINK_HOME, '' );
+      $redirect_facets_home = apply_filters( wpsolr\core\classes\WPSOLR_Events::WPSOLR_FILTER_FACET_PERMALINK_HOME, '' );
       $html_remove_item     = sprintf( '<a class="wpsolr_permalink" href="%s" %s title="%s">%s</a>',
         ! empty( $redirect_facets_home ) ? ( '/' . $redirect_facets_home ) : './', '',
         $remove_item_localization, $remove_item_localization );
@@ -2104,9 +2106,9 @@ function update_search_facet($html, $facets, $localization_options){
               <input type='hidden' name='sel_fac_field' id='sel_fac_field' >
               <div class='wdm_ul' id='wpsolr_section_facets'>
               <div class='%s'><div class='select_opt' id='wpsolr_remove_facets' data-wpsolr-facet-data='%s'>%s</div></div>",
-                  OptionLocalization::get_term( $localization_options, 'facets_header' ),
+                  wpsolr\core\classes\extensions\localization\OptionLocalization::get_term( $localization_options, 'facets_header' ),
                   'wpsolr_facet_checkbox' . ( $is_facet_selected ? ' checked' : '' ),
-                  wp_json_encode( [ 'type' => WPSOLR_Option::OPTION_FACET_FACETS_TYPE_FIELD ] ),
+                  wp_json_encode( [ 'type' => wpsolr\core\classes\utilities\WPSOLR_Option::OPTION_FACET_FACETS_TYPE_FIELD ] ),
                   $html_remove_item
           )
           . $html;
@@ -2169,7 +2171,7 @@ function update_search_query( $wpsolr_query ){
 }
 
 // Add Page Template to Solr indexing
-function add_page_template_to_document_for_update( array $document_for_update, $solr_indexing_options, $post, $attachment_body, WPSOLR_AbstractIndexClient $search_engine_client ) {
+function add_page_template_to_document_for_update( array $document_for_update, $solr_indexing_options, $post, $attachment_body, wpsolr\core\classes\engines\WPSOLR_AbstractResultsClient $search_engine_client ) {
   $value = get_post_meta($post, '_wp_page_template');
 
   $solr_dynamic_type = WpSolrSchema::_SOLR_DYNAMIC_TYPE_STRING; // Depends on the type selected on your field on screen 2.2
@@ -2180,10 +2182,10 @@ function add_page_template_to_document_for_update( array $document_for_update, $
 
 function oese_action_solarium_query( $parameters ) {
   /* @var WPSOLR_Query $wpsolr_query */
-  $wpsolr_query = $parameters[ WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY__PARAM_WPSOLR_QUERY ];
+  $wpsolr_query = $parameters[ wpsolr\core\classes\WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY__PARAM_WPSOLR_QUERY ];
 
   /* @var WPSOLR_AbstractSearchClient $search_engine_client */
-  $search_engine_client = $parameters[ WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY__PARAM_SOLARIUM_CLIENT ];
+  $search_engine_client = $parameters[ wpsolr\core\classes\WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY__PARAM_SOLARIUM_CLIENT ];
 
   // post_type url parameter
   if ( ! empty( $wpsolr_query->query['post_type'] ) ) {
@@ -2192,13 +2194,13 @@ function oese_action_solarium_query( $parameters ) {
 
 }
 
-function oese_add_category_to_results( WPSOLR_Query $wpsolr_query, WPSOLR_AbstractResultsClient $results ) {
+function oese_add_category_to_results( wpsolr\core\classes\ui\WPSOLR_Query $wpsolr_query, wpsolr\core\classes\engines\WPSOLR_AbstractResultsClient $results ) {
   echo "<div style='display:none;'>";
   echo "</div>";
 }
 
 // Append New Search Result Item Layout
-function oese_append_category_to_results_html( $default_html, $user_id, $document, WPSOLR_Query $wpsolr_query ) {
+function oese_append_category_to_results_html( $default_html, $user_id, $document, wpsolr\core\classes\ui\WPSOLR_Query $wpsolr_query ) {
     $col_left = "";
     $col_right = "col-md-12";
     
