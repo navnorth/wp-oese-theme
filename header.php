@@ -2,6 +2,7 @@
 /**
  * The Header template for our theme
  */
+global $screen_width;
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -11,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <meta charset="<?php bloginfo('charset'); ?>"/>
-    <meta name="viewport" content="width=device-width"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title><?php wp_title('|', true, 'left'); ?></title>
     <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/images/favicon.ico"
           type="image/x-icon">
@@ -20,6 +21,25 @@
     <?php wp_head(); ?>
     <?php echo oese_ga_script(); ?>
     <?php $site_title = get_bloginfo(); ?>
+    
+    <script type="text/javascript">
+        function getWidth() {
+            if (self.innerWidth) {
+               return self.innerWidth;
+            }
+            else if (document.documentElement && document.documentElement.clientHeight){
+                return document.documentElement.clientWidth;
+            }
+            else if (document.body) {
+                return document.body.clientWidth;
+            }
+            return 0;
+        }
+        screenWidth = getWidth();
+    </script>
+    <?php
+     $screen_width = "<script>document.write(screenWidth);</script>";
+     ?>
 </head>
 
 <!--[if IE 7]>
@@ -32,7 +52,7 @@
 <body <?php body_class(); ?>>
 <!--<![endif]-->
 <a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'wp_nn_theme' ); ?></a>
-
+<input type="hidden" name="screenWidth" id="screenWidth" value="">
 <!-- Container -->
 <div class="container-fluid">
     <div class="container">
