@@ -17,6 +17,7 @@ $is_archived = false;
 $archived_date = null;
 $leftCol = "col-md-8";
 $rightCol = "col-md-4";
+$wChild = false;
 
 if (get_field('archive_date'))
     $archived_date = get_field('archive_date');
@@ -27,7 +28,14 @@ if ($archived_date){
 }
 
 $spages = get_pages( array( 'parent' => $post->ID, 'sort_column' => 'menu_order', 'sort_order' => 'asc' ) );
-if (empty($spages)){
+if (!empty($spages)){
+    $wChild = true;
+} else {
+	$parent_id = $post->post_parent;
+	if ($parent_id>0)
+		$wChild = true;
+}
+if (!$wChild){
     $leftCol = "col-md-12";
     $rightCol = "";
 }
