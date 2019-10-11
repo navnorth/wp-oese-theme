@@ -2,6 +2,7 @@
 /**
  * Template Name: Office Template
  */
+include_once( get_stylesheet_directory()."/classes/oese_mobile_detect.php" );
 
 get_header();
 global $post;
