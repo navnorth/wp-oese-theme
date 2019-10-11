@@ -39,7 +39,7 @@ if (isset($_GET['oii_update']) && $_GET['oii_update']=="true"){
     <div class="oese-tabs" data-role="tabs">
         <div data-role="navbar">
             <ul class="nav-tab-wrapper">
-                <li><a href="#mainSettings" class="ui-btn-active" data-href="mainSettings">Theme Settings</a></li>
+                <li><a href="#mainSettings" class="ui-btn-active" data-href="mainSettings">Main Settings</a></li>
                 <li><a href="#debug" data-href="debug">Debug</a></li>
             </ul>
         </div>
