@@ -74,8 +74,6 @@ if( have_rows('sidebar_links') ){
                 if ($contact || $sidebar_links){
                 ?>
                 <div class="col-sm-12 program-sidebar">
-                    <?php get_template_part( 'content', 'resources' ); ?>
-                    <div class="spacer" style="height:20px;"></div>
                     <ul class="nav nav-tabs" id="mobileSidebarTab" role="tablist">
                         <?php
                         $contactTitle = get_field("ci_title");
