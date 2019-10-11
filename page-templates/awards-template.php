@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Awards template, full-width - no sidebar
+ * Template Name: Awards template
  */
 
 
@@ -15,6 +15,8 @@ get_header();
 $head_class = "";
 $is_archived = false;
 $archived_date = null;
+$leftCol = "col-md-8";
+$rightCol = "col-md-4";
 
 if (get_field('archive_date'))
     $archived_date = get_field('archive_date');
@@ -23,11 +25,17 @@ if ($archived_date){
     $is_archived = true;
     $head_class = " archived-header";
 }
+
+$spages = get_pages( array( 'parent' => $post->ID, 'sort_column' => 'menu_order', 'sort_order' => 'asc' ) );
+if (empty($spages)){
+    $leftCol = "col-md-12";
+    $rightCol = "";
+}
 ?>
 
     <div id="content" class="row site-content" tabindex="-1">
 
-        <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="<?php echo $leftCol; ?> col-sm-12 col-xs-12">
 
             <?php
                 if(isset($img_url) && !empty($img_url))
@@ -48,12 +56,11 @@ if ($archived_date){
                 <?php
                     get_template_part( 'content', 'page' );
                 ?>
-                <div class="col-md-4 mb-5 pl-0">  
-                    <?php get_template_part( 'content', 'resources' ); ?>
-                </div>
             <?php endwhile; ?>
          </div>
-
+        <div class="<?php echo $rightCol; ?> mb-5 pl-0">  
+            <?php get_template_part( 'content', 'resources' ); ?>
+        </div>
     </div>
 
 <?php get_footer(); ?>
