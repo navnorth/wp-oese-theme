@@ -1448,6 +1448,9 @@ a.oese-logo-home {
     background-color: #1F5C99;
     color: #fff;
     font-size: 16px;
+    color: #fff !important;
+    font-size: 18px;
+    padding: 4px 14px;
 }
 .oese-btn-view-more:hover {
     text-decoration: underline;
@@ -1641,6 +1644,7 @@ a.oese-logo-home {
     margin-bottom: 30px;
     overflow: hidden;
     text-overflow: ellipsis;
+    height: 60px;
 }
 .trending-image-details-description {
     font-size: 14px;

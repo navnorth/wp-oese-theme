@@ -11,25 +11,35 @@ $is_archived = false;
 $archived_date = null;
 ?>
 
-    <!--Office Template Top Section START-->
+    <!--General Info Top Section START-->
     <div id="content" class="row custom-common-padding general-info-template">
         <div class="col-md-12">
+            <?php
+            while (have_posts()) : the_post(); get_template_part('content', 'page');
+            endwhile;
+            ?>
+
             <?php if( have_rows('general_information_section')): ?>
                 <?php while( have_rows('general_information_section')): the_row();
 
                     //vars
-                    $tileTitle = get_sub_field('title');
-                    $show_view_more = get_sub_field('include_view_more');
+                    $title = get_sub_field('title');
+                    $viewMoreSettings = get_sub_field('view_more_settings');
+                    $showViewMore = $viewMoreSettings['include_view_more'];
+                    $viewMoreURL = $viewMoreSettings['view_more_url'];
+                    $viewMoreCount = $viewMoreSettings['view_more_count'];
+                    $tileCount = count(get_sub_field('information_tiles'));
                     ?>
 
-                    <div class="general-info-section">
+                    <div class="general-info-section mb-5">
 
-                        <?php if($tileTitle): ?>
-                            <h2> <?php echo $tileTitle; ?> </h2>
+                        <?php if($title): ?>
+                            <h1 class="mb-5"> <?php echo $title; ?> </h1>
                         <?php endif; ?>
 
                         <?php if( have_rows('information_tiles')): ?>
                         <div class="row general-info-row">
+                            <?php $i = 1; ?>
                             <?php while( have_rows('information_tiles')): the_row();
 
                             //vars
@@ -37,7 +47,7 @@ $archived_date = null;
                             $description = get_sub_field('description');
                             $link = get_sub_field('link');
                             ?>
-
+                            <?php if($i > $viewMoreCount) { break; } ?>
                             <div class="col-md-4 home-col-md-4 pl-0 pr-0 ml-0 mr-0">
                                 <div class="general-info-section clearfix mb-5">
                                     <div class="general-info-details rounded">
@@ -53,13 +63,14 @@ $archived_date = null;
                                     </div>
                                 </div>
                             </div>
-
+                            <?php $i++; ?>
                             <?php endwhile; ?>
                         </div>
                         <?php endif; ?>
 
-                        <?php if($show_view_more): ?>
-                            <button class="btn oese-btn-view-more float-right">View More</button>
+                        <?php if($showViewMore && $tileCount > $viewMoreCount): ?>
+                            <a class="btn oese-btn-view-more float-right" href="<?php $viewMoreURL; ?>">View More</a>
+                            <div class="clearfix mb-4"></div>
                         <?php endif; ?>
 
                     </div>
@@ -69,25 +80,17 @@ $archived_date = null;
 
             <?php endif; ?>
 
-            <?php
-            while (have_posts()) : the_post(); get_template_part('content', 'page');
-            endwhile;
-            ?>
         </div>
     </div>
-    <!--Office Template Top Section END-->
+    <!--General Info Template Top Section END-->
 
 
-    <!--Div seperator-->
+    <!--Div separator-->
     <div class="row">
         <div class="col-md-12">
             <div class="seperate-dark-blue-border"></div>
         </div>
     </div>
-    <!--Div seperator END-->
-    <!--Office Template Grid Section START-->
-
-
-    <!--Office Template Grid Section END-->
+    <!--Div separator END-->
 
 <?php get_footer(); ?>
