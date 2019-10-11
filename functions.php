@@ -1089,6 +1089,8 @@ function getSidebarLinks($showHeader=true){
     if ($showHeader==true)
         $output .= "<div class='secondary-navigation-menu-header'".$header_style."><h2".$header_text_style.">". get_field('sidebar_box_title')."</h2></div>";
         
+        $count = count(get_field("sidebar_links"));
+        var_dump($count);
         // check if the repeater field has rows of data
         $output.=  "<ul class='secondary-navigation-menu-list'".$body_style.">";
         
