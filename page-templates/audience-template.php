@@ -28,7 +28,7 @@ if( have_rows('sidebar_links') ){
         <!--Audience Page Custom Design -- START-->
 
         <!--Families section START-->
-        <div id="content" class="row custom-common-padding">
+        <div id="content" class="row custom-common-padding audience-template">
             <div class="<?php echo $leftCol; ?>">
                 <?php if ($is_archived): ?>
                     <div class="oese-archived-disclaimer">
