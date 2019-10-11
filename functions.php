@@ -1088,6 +1088,10 @@ function getSidebarLinks($showHeader=true){
     
     if (!empty($sidebar_body_color))
         $body_style = " style='background-color:".$sidebar_body_color.";".$additional_body_style."'";
+    elseif (!empty($additional_body_style)){
+        $body_style = " style='".$additional_body_style."'";
+    }
+    
     
     if (!empty($sidebar_header_text_color))
         $header_text_style = " style='color:".$sidebar_header_text_color."'";
