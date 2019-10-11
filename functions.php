@@ -1072,6 +1072,7 @@ function getSidebarLinks($showHeader=true){
         $output = "<div class='secondary-navigation-menu sidebar-links'>";
         $header_style = "";
         $body_style = "";
+        $additional_body_style = "";
         $header_text_style = "";
         $sidebar_header_color = get_field('sidebar_title_box_color');
         $sidebar_body_color = get_field('sidebar_box_body_color');
@@ -1080,8 +1081,13 @@ function getSidebarLinks($showHeader=true){
     if (!empty($sidebar_header_color))
         $header_style = " style='background-color:".$sidebar_header_color."'";
     
+    $count = count(get_field("sidebar_links"));
+    if ($count==1){
+        $additional_body_style = "columns:1;-webkit-columns:1;-moz-columns:1;";
+    }
+    
     if (!empty($sidebar_body_color))
-        $body_style = " style='background-color:".$sidebar_body_color."'";
+        $body_style = " style='background-color:".$sidebar_body_color.";".$additional_body_style."'";
     
     if (!empty($sidebar_header_text_color))
         $header_text_style = " style='color:".$sidebar_header_text_color."'";
@@ -1089,8 +1095,6 @@ function getSidebarLinks($showHeader=true){
     if ($showHeader==true)
         $output .= "<div class='secondary-navigation-menu-header'".$header_style."><h2".$header_text_style.">". get_field('sidebar_box_title')."</h2></div>";
         
-        $count = count(get_field("sidebar_links"));
-        var_dump($count);
         // check if the repeater field has rows of data
         $output.=  "<ul class='secondary-navigation-menu-list'".$body_style.">";
         
