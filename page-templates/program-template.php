@@ -144,7 +144,10 @@ if ($archived_date){
 
                 <?php get_template_part( 'content', 'resources' ); ?>
 
-                <?php echo getSidebarLinks(); ?>
+                <?php
+                if (have_rows('sidebar_links'))
+                    getSidebarLinks();
+                ?>
                 
             </div>
             <?php } ?>

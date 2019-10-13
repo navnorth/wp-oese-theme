@@ -116,7 +116,10 @@ if( have_rows('sidebar_links') ){
             ?>
             <div class="<?php echo $rightCol; ?>">
                 <?php echo contactInformationBlock() ?>
-                <?php echo getSidebarLinks(); ?>
+                <?php
+                if (have_rows('sidebar_links'))
+                    getSidebarLinks();
+                ?>
             </div>
             <?php } ?>
         </div>

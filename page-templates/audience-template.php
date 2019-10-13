@@ -54,7 +54,10 @@ if( have_rows('sidebar_links') ){
                 </div>
             </div>
             <div class="<?php echo $rightCol; ?>">
-                <?php echo getSidebarLinks(); ?>
+                <?php
+                if (have_rows('sidebar_links'))
+                    getSidebarLinks();
+                ?>
             </div>
         </div>
         <!--Families section END-->

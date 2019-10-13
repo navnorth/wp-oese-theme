@@ -14,7 +14,10 @@ $post_id = get_queried_object_id();
 <?php if( have_rows('sidebar_links', $post_id) ) : ?>
     <div class="col-md-4">
         <div id="secondary" class="widget-area" role="complementary">
-            <?php getSidebarLinks(); ?>
+            <?php
+            if (have_rows('sidebar_links'))
+                getSidebarLinks();
+            ?>
         </div><!-- #secondary -->
     </div>
 <?php endif; ?>
