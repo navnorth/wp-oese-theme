@@ -2264,6 +2264,10 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
 @media (max-width: 550px){
     .slideshow_container, .slideshow_container .slideshow_content { height:235px !important; }
     .slideshow_container .slideshow_button.slideshow_previous, .slideshow_container .slideshow_button.slideshow_next { display: none !important; }
+    .welcome-description { margin-top: 55px; }
+}
+@media (max-width: 768px) and (max-height: 500px) {
+    .welcome-description { margin-top: 55px; }
 }
 @media (max-width: 500px){
     .tlkt_stp_vdo_cntnr .pblctn_vdo_bg, .tlkt_stp_vdo_cntnr .pblctn_vdo_bg:first-child {width: 100% !important;}
