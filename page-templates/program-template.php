@@ -10,6 +10,7 @@ $page_id = get_the_ID();
 get_header();
 
 $head_class = "";
+$extra_class = "";
 $is_archived = false;
 $archived_date = null;
 $leftCol = "col-md-8 col-sm-12";
@@ -23,10 +24,13 @@ if ($archived_date){
     $head_class = " archived-header";
 }
 
+$detect = new oese_mobile_detect();
+if ($detect->isMobile())
+    $extra_class = " template-mobile";
 ?>
 
            <!--Program Landing Template Top Section START-->
-        <div id="content" class="row custom-common-padding">
+        <div id="content" class="row custom-common-padding program-template<?php echo $extra_class; ?>">
             <div class="<?php echo $leftCol; ?>">
                 <div class="left-description-section">
                     <h1 class="h1-bottom-space<?php echo $head_class; ?>"><?php echo get_the_title(); ?></h1>
@@ -83,7 +87,6 @@ if ($archived_date){
                 </div>
             </div>
             <?php
-            $detect = new oese_mobile_detect();
             if ($detect->isMobile()){
                 $li_class = "";
                 $contact = get_field('ci_address');
