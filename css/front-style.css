@@ -223,10 +223,7 @@ ul.program_toc, .cntnbx_cntnr ul {
 .oese-side-nav-widget { display:inline-block; padding-left:0; background-color:#f1f1f1; }
 .oese-side-nav-widget li { list-style-type:none; }
 .oese-side-nav-widget li a { display:inline-block; padding-top:5px; padding-bottom:5px; }
-.oese-side-nav-widget li.current_page_item {
-  border-left: 6px solid #294179;
-  padding-left:15px;
-}
+.oese-side-nav-widget li.current_page_item { padding-left:15px; }
 .oese-side-nav-widget li.current_page_item > a { color:#294179; }
 .oese-side-nav-widget li { padding-left: 15px; padding-right:15px; }
 .oese-side-nav-widget li ul.children { padding-left:25px; margin-left:20px; }
