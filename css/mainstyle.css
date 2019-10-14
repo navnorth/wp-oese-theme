@@ -1996,6 +1996,82 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
     .slideshow_container, .slideshow_container .slideshow_content { height: 360px !important}
     .main-menu { display:none; }
     .navi_icn { display:block !important; }
+		.office-template, .audience-template, .awards-template {
+        flex-direction: column-reverse;
+    }
+		#mobileSidebarTab.nav-tabs { border-bottom:none; background: #004285; }
+    #mobileSidebarTab.nav-tabs .nav-item { width:50%; }
+		#mobileSidebarTab.nav-tabs .nav-item.full { width:100% !important; }
+    #mobileSidebarTab.nav-tabs .nav-item.show .nav-link,
+    #mobileSidebarTab.nav-tabs .nav-item .nav-link {
+	color:#ffffff !important;
+	text-decoration:none;
+	position:relative;
+	padding: .5rem;
+	text-align:center;
+	padding-right:18%;
+	font-weight:600;
+    }
+    #mobileSidebarTab.nav-tabs .nav-item .nav-link:after{
+	content: '\f078';
+	font-family: FontAwesome;
+	font-size: 20px;
+	position:absolute;
+	margin-left:5%;
+    }
+    #mobileSidebarTab.nav-tabs .nav-item .nav-link.active:after{
+	content: '\f077';
+	font-family: FontAwesome;
+	font-size: 20px;
+	position:absolute;
+	margin-left:5%;
+    }
+    #mobileSidebarTab.nav-tabs .nav-item:first-child { 	border-right: 1px solid #a2c4e7; }
+    #mobileSidebarTab.nav-tabs .nav-item:first-child .nav-link.active {
+	background-color: #1f5c99 !important;
+	border-radius: 0;
+	border: none;
+	padding-bottom:.65rem;
+    }
+    #mobileSidebarTab.nav-tabs .nav-item:last-child .nav-link.active {
+	background-color: #1f5c99 !important;
+	border-radius: 0;
+	border: none;
+	padding-bottom:.65rem;
+    }
+    #mobileSidebarTab.nav-tabs .nav-link.active { background: #1f5c99; color: #ffffff !important; }
+    #mobileSidebarTabContent .tab-pane .secondary-navigation-menu { margin:0; }
+    #mobileSidebarTabContent .tab-pane .secondary-navigation-menu .secondary-navigation-menu-list {
+	background-image:none;
+	background: #1F5C99 !important;
+    }
+    #mobileSidebarTabContent .tab-pane .secondary-navigation-menu .secondary-navigation-menu-list li a{
+	color:#fff !important;
+    }
+    #mobileSidebarTabContent .sidebar-links .secondary-navigation-menu-list { columns:2; -webkit-columns:2; -moz-columns:2; }
+    #mobileSidebarTabContent .sidebar-links .secondary-navigation-menu-list li { display:inline-block; width:100%; padding:10px 15px; }
+    #mobileSidebarTabContent .secondary-navigation-menu-list li a:hover,
+    #mobileSidebarTabContent .secondary-navigation-menu-list li:hover{ background:#1F5C99; }
+    #mobileSidebarTabContent .tab-pane { background:#1F5C99 !important; }
+    .tab-close-row {
+	text-align: right;
+	padding-bottom: 20px;
+    }
+    .tab-close-button {
+	color: #fff;
+	margin-right: 5%;
+	padding: 5px 10px;
+	border: 1px solid #ffffff;
+	font-weight: bold;
+	text-decoration: none;
+	display:inline-block;
+    }
+    .tab-close-button:hover, .tab-close-button:active, .tab-close-button:focus {
+	background:#fff;
+	color:#1F5C99;
+	text-decoration:none;
+    }
+    .tab-close-button .fa-times { margin-right:5px; }
 }
 
 @media (max-width: 768px){
@@ -2187,79 +2263,6 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
     .program-block-inner-section.table tr.program-list-detail .col-md-7 { max-width:100% !important; }
     .page-template-program-template #content.custom-common-padding { flex-wrap:wrap-reverse; padding:5% 0; }
     .program-sidebar { position:relative; float:none; margin-bottom:30px; padding-left: 0px; padding-right: 0px; }
-    #mobileSidebarTab.nav-tabs { border-bottom:none; background: #004285; }
-    #mobileSidebarTab.nav-tabs .nav-item { width:50%; }
-		#mobileSidebarTab.nav-tabs .nav-item.full { width:100% !important; }
-    #mobileSidebarTab.nav-tabs .nav-item.show .nav-link,
-    #mobileSidebarTab.nav-tabs .nav-item .nav-link {
-	color:#ffffff !important;
-	text-decoration:none;
-	position:relative;
-	padding: .5rem;
-	text-align:center;
-	padding-right:18%;
-	font-weight:600;
-    }
-    #mobileSidebarTab.nav-tabs .nav-item .nav-link:after{
-	content: '\f078';
-	font-family: FontAwesome;
-	font-size: 20px;
-	position:absolute;
-	margin-left:5%;
-    }
-    #mobileSidebarTab.nav-tabs .nav-item .nav-link.active:after{
-	content: '\f077';
-	font-family: FontAwesome;
-	font-size: 20px;
-	position:absolute;
-	margin-left:5%;
-    }
-    #mobileSidebarTab.nav-tabs .nav-item:first-child { 	border-right: 1px solid #a2c4e7; }
-    #mobileSidebarTab.nav-tabs .nav-item:first-child .nav-link.active {
-	background-color: #1f5c99 !important;
-	border-radius: 0;
-	border: none;
-	padding-bottom:.65rem;
-    }
-    #mobileSidebarTab.nav-tabs .nav-item:last-child .nav-link.active {
-	background-color: #1f5c99 !important;
-	border-radius: 0;
-	border: none;
-	padding-bottom:.65rem;
-    }
-    #mobileSidebarTab.nav-tabs .nav-link.active { background: #1f5c99; color: #ffffff !important; }
-    #mobileSidebarTabContent .tab-pane .secondary-navigation-menu { margin:0; }
-    #mobileSidebarTabContent .tab-pane .secondary-navigation-menu .secondary-navigation-menu-list {
-	background-image:none;
-	background: #1F5C99 !important;
-    }
-    #mobileSidebarTabContent .tab-pane .secondary-navigation-menu .secondary-navigation-menu-list li a{
-	color:#fff !important;
-    }
-    #mobileSidebarTabContent .sidebar-links .secondary-navigation-menu-list { columns:2; -webkit-columns:2; -moz-columns:2; }
-    #mobileSidebarTabContent .sidebar-links .secondary-navigation-menu-list li { display:inline-block; width:100%; padding:10px 15px; }
-    #mobileSidebarTabContent .secondary-navigation-menu-list li a:hover,
-    #mobileSidebarTabContent .secondary-navigation-menu-list li:hover{ background:#1F5C99; }
-    #mobileSidebarTabContent .tab-pane { background:#1F5C99 !important; }
-    .tab-close-row {
-	text-align: right;
-	padding-bottom: 20px;
-    }
-    .tab-close-button {
-	color: #fff;
-	margin-right: 5%;
-	padding: 5px 10px;
-	border: 1px solid #ffffff;
-	font-weight: bold;
-	text-decoration: none;
-	display:inline-block;
-    }
-    .tab-close-button:hover, .tab-close-button:active, .tab-close-button:focus {
-	background:#fff;
-	color:#1F5C99;
-	text-decoration:none;
-    }
-    .tab-close-button .fa-times { margin-right:5px; }
 }
 @media (max-width: 550px){
     .slideshow_container, .slideshow_container .slideshow_content { height:235px !important; }
