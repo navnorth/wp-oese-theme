@@ -9,6 +9,7 @@ global $post;
 
 $page_id = get_the_ID();
 $head_class = "";
+$extra_class = "";
 $is_archived = false;
 $archived_date = null;
 $leftCol = "col-md-12";
@@ -34,10 +35,13 @@ if( have_rows('sidebar_links') ){
     $leftCol = "col-md-8 col-sm-12";
     $rightCol = "col-md-4";
 }
+$detect = new oese_mobile_detect();
+if ($detect->isMobile())
+    $extra_class = " template-mobile";
 ?>
 
         <!--Office Template Top Section START-->
-        <div id="content" class="row custom-common-padding office-template">
+        <div id="content" class="row custom-common-padding office-template<?php echo $extra_class; ?>">
             <div class="<?php echo $leftCol; ?>">
                 <div class="left-description-section">
                     <h1 class="h1-bottom-space<?php echo $head_class; ?>"><?php echo get_the_title(); ?></h1>
@@ -62,7 +66,6 @@ if( have_rows('sidebar_links') ){
                 </div>
             </div>
             <?php
-            $detect = new oese_mobile_detect();
             if ($detect->isMobile()){
                 $li_class = "";
                 $contact = get_field('ci_address');

@@ -1990,6 +1990,9 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
 	.page-template-theme-template .lft_sid_cntnr { padding-right: 15px !important; }
 	#content .program_header_image img, #content .thematic_header_image img { width:100% !important; }
 	.footer-main-section { flex-direction: column; }
+	.program-template.template-mobile, .office-template.template-mobile, .audience-template.template-mobile, .awards-template.template-mobile {
+        flex-direction: column-reverse;
+    }
 	#mobileSidebarTab.nav-tabs { border-bottom:none; background: #004285; }
     #mobileSidebarTab.nav-tabs .nav-item { width:50%; }
 		#mobileSidebarTab.nav-tabs .nav-item.full { width:100% !important; }
