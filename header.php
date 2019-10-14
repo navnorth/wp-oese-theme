@@ -2,7 +2,6 @@
 /**
  * The Header template for our theme
  */
-global $screen_width;
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -21,25 +20,6 @@ global $screen_width;
     <?php wp_head(); ?>
     <?php echo oese_ga_script(); ?>
     <?php $site_title = get_bloginfo(); ?>
-    
-    <script type="text/javascript">
-        function getWidth() {
-            if (self.innerWidth) {
-               return self.innerWidth;
-            }
-            else if (document.documentElement && document.documentElement.clientHeight){
-                return document.documentElement.clientWidth;
-            }
-            else if (document.body) {
-                return document.body.clientWidth;
-            }
-            return 0;
-        }
-        screenWidth = getWidth();
-    </script>
-    <?php
-     $screen_width = "<script>document.write(screenWidth);</script>";
-     ?>
 </head>
 
 <!--[if IE 7]>
