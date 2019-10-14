@@ -8,6 +8,8 @@ get_header();
 global $post;
 global $screen_width;
 var_dump($screen_width);
+$screen_width = (int)$screen_width;
+var_dump($screen_width);
 $page_id = get_the_ID();
 $head_class = "";
 $is_archived = false;
