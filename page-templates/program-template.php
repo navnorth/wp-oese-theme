@@ -5,6 +5,7 @@
 include_once( get_stylesheet_directory()."/classes/oese_mobile_detect.php" );
 
 global $post;
+global $screen_width;
 
 $page_id = get_the_ID();
 get_header();
@@ -83,7 +84,7 @@ if ($archived_date){
             </div>
             <?php
             $detect = new oese_mobile_detect();
-            if ($detect->isMobile()){
+            if ($detect->isMobile() || $screen_width<=800){
                 $li_class = "";
                 $contact = get_field('ci_address');
                 $sidebar_links = have_rows('sidebar_links');
