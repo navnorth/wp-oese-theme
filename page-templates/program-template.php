@@ -8,6 +8,7 @@ global $post;
 
 $page_id = get_the_ID();
 get_header();
+
 $head_class = "";
 $is_archived = false;
 $archived_date = null;
@@ -83,6 +84,7 @@ if ($archived_date){
             </div>
             <?php
             $detect = new oese_mobile_detect();
+            var_dump($screen_width);
             if ($detect->isMobile()){
                 $li_class = "";
                 $contact = get_field('ci_address');
