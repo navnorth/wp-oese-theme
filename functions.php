@@ -2585,7 +2585,7 @@ if ( ! function_exists( 'oese_display_subpages' ) ) {
             
             $html = '<ul class="oese-side-nav oese-side-nav-widget">';
 
-            $children = wp_list_pages( 'title_li=&child_of=' . $post_id . '&echo=0' );
+            $children = wp_list_pages( 'title_li=&child_of=' . $post_id . '&depth=1&echo=0' );
 
             if ( $children ) {
                 $html .= $children;
