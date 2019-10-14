@@ -6,6 +6,7 @@ include_once( get_stylesheet_directory()."/classes/oese_mobile_detect.php" );
 
 get_header();
 global $post;
+global $screen_width;
 $page_id = get_the_ID();
 $head_class = "";
 $is_archived = false;
