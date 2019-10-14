@@ -2580,31 +2580,15 @@ if ( ! function_exists( 'oese_display_subpages' ) ) {
             'post_status' => 'publish'
         );
         $post_children = get_children( $args );
-
-        $post_ancestors = get_ancestors( $post_id, 'page', 'post_type' );
-        $post_parent    = reset( $post_ancestors );
         
-        if (($post_children || (count($post_ancestors)>1) && $post_parent)) {
+        if ($post_children) {
             
             $html = '<ul class="oese-side-nav oese-side-nav-widget">';
 
-            if (count($post_ancestors)<=1 && $post_children)
-                $parent = true;
-
             $html .= ( is_page( $post_parent ) || $parent ) ? '<li class="current_page_item">' : '<li>';
-
-            if (count($post_ancestors)>1){
-                $top_level = array_pop($post_ancestors);
-                $post_ancestors = array_reverse($post_ancestors);
-
-                $grand_ancestor = $post_ancestors[0];
-
-                $html    .= '<a href="' . get_permalink( $grand_ancestor ) . '" title="' . esc_html__( 'Back to Parent Page', 'Avada' ) . '">' . get_the_title( $grand_ancestor ) . '</a></li>';
-                $children .= wp_list_pages( 'title_li=&child_of=' . $grand_ancestor . '&echo=0' );
-            } else {
-                $html    .= '<a href="' . get_permalink( $post_id ) . '" title="' . esc_html__( 'Back to Parent Page', 'Avada' ) . '">' . get_the_title( $post_id ) . '</a></li>';
-                $children = wp_list_pages( 'title_li=&child_of=' . $post_id . '&echo=0' );
-            }
+           
+            $html    .= '<a href="' . get_permalink( $post_id ) . '" title="' . esc_html__( 'Back to Parent Page', 'Avada' ) . '">' . get_the_title( $post_id ) . '</a></li>';
+            $children = wp_list_pages( 'title_li=&child_of=' . $post_id . '&echo=0' );
 
             if ( $children ) {
                 $html .= $children;
