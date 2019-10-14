@@ -2585,9 +2585,6 @@ if ( ! function_exists( 'oese_display_subpages' ) ) {
             
             $html = '<ul class="oese-side-nav oese-side-nav-widget">';
 
-            $html .= ( is_page( $post_parent ) || $parent ) ? '<li class="current_page_item">' : '<li>';
-           
-            $html    .= '<a href="' . get_permalink( $post_id ) . '" title="' . esc_html__( 'Back to Parent Page', 'Avada' ) . '">' . get_the_title( $post_id ) . '</a></li>';
             $children = wp_list_pages( 'title_li=&child_of=' . $post_id . '&echo=0' );
 
             if ( $children ) {
