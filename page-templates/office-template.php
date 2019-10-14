@@ -63,8 +63,7 @@ if( have_rows('sidebar_links') ){
             </div>
             <?php
             $detect = new oese_mobile_detect();
-            var_dump($screen_width);
-            if ($detect->isMobile() && $screen_width<=800){
+            if ($detect->isMobile()){
                 $li_class = "";
                 $contact = get_field('ci_address');
                 $sidebar_links = have_rows('sidebar_links');
