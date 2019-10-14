@@ -11,7 +11,7 @@ get_header();
 $head_class = "";
 $is_archived = false;
 $archived_date = null;
-$leftCol = "col-md-8";
+$leftCol = "col-md-8 col-sm-12";
 $rightCol = "col-md-4";
 
 if (get_field('archive_date'))

@@ -25,12 +25,12 @@ if ($archived_date){
 }
 
 if(!empty($contactAddress) || (!empty($contactPhone)) || (!empty($contactFax))){
-    $leftCol = "col-md-8";
+    $leftCol = "col-md-8 col-sm-12";
     $rightCol = "col-md-4";
 }
 
 if( have_rows('sidebar_links') ){
-    $leftCol = "col-md-8";
+    $leftCol = "col-md-8 col-sm-12";
     $rightCol = "col-md-4";
 }
 ?>
