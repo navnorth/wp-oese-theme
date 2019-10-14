@@ -933,4 +933,33 @@ function oese_publication_func($attribute){
 	$return .= '</div>';
 	return $return;
 }
+
+/**
+ * SubPages
+ * Shortcode Example : [oese_sub_pages title='' id='']
+ */
+add_shortcode("oese_sub_pages", "oese_sub_pages_func");
+function oese_sub_pages_func($attr, $content = null) {
+
+    if (is_array($attr)) extract($attr);
+
+    $html = "<div class='oese-sub-pages'>";
+      
+    if (! empty($title)){
+        $html.= '<h4 class="widget-title">' . $title . '</h4>';
+    }
+      
+    if (! empty($id)){
+        $html .= oese_display_subpages($id);
+    } else {
+        $queried_object = get_queried_object();
+        if ($queried_object) {
+            $html .= oese_display_subpages($queried_object->ID);
+        }
+    }
+    
+    $html .= "</div>";
+    
+    return $html;
+}
 ?>

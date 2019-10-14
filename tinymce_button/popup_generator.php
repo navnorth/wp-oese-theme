@@ -148,6 +148,14 @@ if($action == "show_popup")
 						</div>
 					</div>
 					<div class="oet_sngltinyrow">
+                        <div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="oese_sub_pages">
+							<div class="oert_snglimgtiny">
+								<img src="'.get_stylesheet_directory_uri().'/tinymce_button/images/featured_content.png">
+							</div>
+							<div class="oert_snglttltiny">
+								Subpages
+							</div>
+						</div>
 						<div class="submit">
 							<input type="button" id="oet-tinymce-submit" onclick="placeoetshortcode();" class="button-primary" value="Insert Shortcode" name="submit" />
 						</div>
@@ -234,6 +242,9 @@ if($action == "show_popup")
 						break;
 				   case "oese_publication":
 						var shortcode = "[oese_publication src=\'\']";
+						break;
+                    case "oese_sub_pages":
+						var shortcode = "[oese_sub_pages title=\'\']";
 						break;
 				   default:
 				   	   var shortcode = "";
