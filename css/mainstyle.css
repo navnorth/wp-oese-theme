@@ -2055,7 +2055,7 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
 	padding-bottom: 20px;
     }
     .tab-close-button {
-	color: #fff;
+	color: #ffffff !important;
 	margin-right: 5%;
 	padding: 5px 10px;
 	border: 1px solid #ffffff;
