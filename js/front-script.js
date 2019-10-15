@@ -130,7 +130,6 @@ jQuery( document ).ready(function() {
         jQuery('.tab-close-button').removeAttr('target').removeClass('external_link');
         
         jQuery('.tab-close-button').on("click", function(e){
-            e.preventDefault();
             close_tab(this);
         });
     }
@@ -159,10 +158,10 @@ jQuery( document ).ready(function() {
 });
 
 function close_tab(close_button){
-    curtab = jQuery(close_button).closest('.tab-pane').hide();
+    curtab = jQuery(close_button).closest('.tab-pane.active').hide();
     curtabid = curtab.attr('id');
-    curtab.toggleClass('active');
-    jQuery('#mobileSidebarTab a[href="#' + curtabid +'"]').toggleClass('active');
+    curtab.removeClass('active');
+    jQuery('#mobileSidebarTab a[href="#' + curtabid +'"]').removeClass('active');
 }
 
 function displayNext10Results() {
