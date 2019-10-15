@@ -125,14 +125,31 @@ jQuery( document ).ready(function() {
         console.log('Replaced SVG images with PNG');
     }
     
+    /** Add Checking of IoS **/
+    var isIOS = (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true: false );
+    
+    if (isIOS === true){
+        var tempCss = $('a').css('-webkit-tap-highlight-color');
+        
+        $('body').css('cursor','pointer')
+                .css('-webkit-tap-highlight-color', 'rgba(0,0,0,0)');
+                
+        $('a').css('-webkit-tap-highlight-color', tempCss);
+    }
     
     if (jQuery('.tab-close-button').length){
         jQuery('.tab-close-button').removeAttr('target').removeClass('external_link');
         
-        jQuery(document).on("click touchstart", '.tab-close-button', function(e){
-            alert('clicked');
+        jQuery('.tab-close-button').on("touchstart click", function(e){
+            e.stopPropagation();
+            e.preventDefault();
             close_tab(this);
         });
+        
+        jQuery('.tab-close-button').on("touchend", function (){
+            jQuery(this).trigger("click");
+        });
+        
     }
     
     /** move cursor to top on pagination click **/
