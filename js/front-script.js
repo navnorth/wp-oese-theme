@@ -127,11 +127,11 @@ jQuery( document ).ready(function() {
     
     
     if (jQuery('.tab-close-button').length){
-        jQuery('.tab-close-button').removeAttr('target').removeClass('external-link');
+        jQuery('.tab-close-button').removeAttr('target').removeClass('external_link');
         
         jQuery('.tab-close-button').on("click", function(e){
             e.preventDefault();
-            curtab = jQuery(this).closest('.tab-pane');
+            curtab = jQuery(this).closest('.tab-pane').hide();
             curtabid = curtab.attr('id');
             curtab.toggleClass('active');
             jQuery('#mobileSidebarTab a[href="#' + curtabid +'"]').toggleClass('active');
