@@ -129,10 +129,10 @@ jQuery( document ).ready(function() {
     if (jQuery('.tab-close-button').length){
         jQuery('.tab-close-button').removeAttr('target').removeClass('external_link');
         
-        /*jQuery('.tab-close-button').on("click", function(e){
+        jQuery('.tab-close-button').on("click touchstart", function(e){
             e.preventDefault();
             close_tab(this);
-        });*/
+        });
     }
     
     /** move cursor to top on pagination click **/
