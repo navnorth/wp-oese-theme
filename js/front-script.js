@@ -145,6 +145,11 @@ jQuery( document ).ready(function() {
             e.preventDefault();
             close_tab(this);
         });
+        
+        jQuery('.tab-close-button').on("touchend", function (){
+            jQuery(this).trigger("click");
+        });
+        
     }
     
     /** move cursor to top on pagination click **/
