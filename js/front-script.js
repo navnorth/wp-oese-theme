@@ -158,7 +158,7 @@ jQuery( document ).ready(function() {
 });
 
 function close_tab(close_button){
-    curtab = jQuery(close_button).closest('.tab-pane.active').hide();
+    curtab = jQuery(close_button).closest('.tab-pane.active');
     curtabid = curtab.attr('id');
     curtab.removeClass('active');
     jQuery('#mobileSidebarTab a[href="#' + curtabid +'"]').removeClass('active');
