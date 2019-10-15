@@ -102,14 +102,14 @@ if ($detect->isMobile())
                     <div class="tab-content" id="mobileSidebarTabContent">
                         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                             <?php echo contactInformationBlock(false) ?>
-                            <div class="tab-close-row"><a class="tab-close-button" href="javascript:void(0)" role="button"><i class="fas fa-times"></i> CLOSE</a></div>
+                            <div class="tab-close-row"><button class="tab-close-button" data-role="button" role="button"><i class="fas fa-times"></i> CLOSE</button></div>
                         </div>
                         <?php if( have_rows('sidebar_links') ): ?>
                         <div class="tab-pane fade" id="menu" role="tabpanel" aria-labelledby="menu-tab">
                             <div class="sidebar-menu">
                             <?php echo getSidebarLinks(false); ?>
                             </div>
-                            <div class="col-sm-12 tab-close-row"><a class="tab-close-button"  href="javascript:void(0)" role="button"><i class="fas fa-times"></i> CLOSE</a></div>
+                            <div class="col-sm-12 tab-close-row"><button class="tab-close-button"  data-role="button" role="button"><i class="fas fa-times"></i> CLOSE</button></div>
                         </div>
                         <?php endif; ?>
                     </div>
