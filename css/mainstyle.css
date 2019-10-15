@@ -1611,6 +1611,10 @@ a.oese-logo-home {
 .general-info-row {
     margin-left: 0;
     margin-right: 0;
+    justify-content: space-between;
+}
+.general-info-row .home-col-md-4 {
+    margin-right: 0 !important;
 }
 .trending-image-section img{
     width: 100%;
@@ -1637,7 +1641,7 @@ a.oese-logo-home {
     -webkit-box-orient: vertical;
 }
 .general-info-details-title {
-    height: auto;
+    height: 53px;
 }
 .general-info-details-description {
     font-size: 14px;
@@ -1646,7 +1650,7 @@ a.oese-logo-home {
     margin-bottom: 30px;
     overflow: hidden;
     text-overflow: ellipsis;
-    height: 60px;
+    height: 80px;
 }
 .trending-image-details-description {
     font-size: 14px;
