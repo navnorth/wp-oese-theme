@@ -1616,6 +1616,7 @@ a.oese-logo-home {
 .general-info-row:after {
     content: '';
     flex: 0 0 27.55%;
+    display: flex;
 }
 .general-info-row .home-col-md-4 {
     margin-right: 0 !important;
