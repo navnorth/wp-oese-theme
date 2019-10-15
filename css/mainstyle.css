@@ -1613,6 +1613,10 @@ a.oese-logo-home {
     margin-right: 0;
     justify-content: space-between;
 }
+.general-info-row:after {
+    content: '';
+    flex: 0 0 27.55%;
+}
 .general-info-row .home-col-md-4 {
     margin-right: 0 !important;
 }
