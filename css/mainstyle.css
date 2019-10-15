@@ -2062,13 +2062,15 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
 	font-weight: bold;
 	text-decoration: none;
 	display:inline-block;
+	background:transparent;
+	cursor:pointer;	
     }
     .tab-close-button:hover, .tab-close-button:active, .tab-close-button:focus {
 	background:#fff;
 	color:#1F5C99;
 	text-decoration:none;
     }
-    .tab-close-button .fa-times { margin-right:5px; }
+  .tab-close-button .fa-times { margin-right:5px; }
 }
 
 @media (max-width: 800px){
