@@ -126,7 +126,7 @@ jQuery( document ).ready(function() {
     }
     
     
-    if (jQuery('.tab-close-button').is(':visible')){
+    if (jQuery('.tab-close-button').length){
         jQuery('.tab-close-button').removeAttr('target').removeClass('external-link');
         
         jQuery('.tab-close-button').on("click", function(e){
