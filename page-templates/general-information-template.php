@@ -24,10 +24,10 @@ $archived_date = null;
 
                     //vars
                     $title = get_sub_field('title');
-                    $viewMoreSettings = get_sub_field('view_more_settings');
-                    $showViewMore = $viewMoreSettings['include_view_more'];
-                    $viewMoreURL = $viewMoreSettings['view_more_url'];
-                    $viewMoreCount = $viewMoreSettings['view_more_count'];
+                    //$viewMoreSettings = get_sub_field('view_more_settings');
+                    $showViewMore = get_sub_field('include_view_more');
+                    $viewMoreURL = get_sub_field('view_more_url');
+                    $viewMoreCount = get_sub_field('view_more_count');
                     $tileCount = count(get_sub_field('information_tiles'));
                     ?>
 
@@ -68,8 +68,8 @@ $archived_date = null;
                         </div>
                         <?php endif; ?>
 
-                        <?php if($showViewMore && $tileCount > $viewMoreCount): ?>
-                            <a class="btn oese-btn-view-more float-right" href="<?php $viewMoreURL; ?>">View More</a>
+                        <?php if( $showViewMore && !empty($viewMoreURL) && ($tileCount > $viewMoreCount)): ?>
+                            <a class="btn oese-btn-view-more float-right" href="<?php echo $viewMoreURL; ?>">View More</a>
                             <div class="clearfix mb-4"></div>
                         <?php endif; ?>
 

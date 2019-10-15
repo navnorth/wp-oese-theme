@@ -7,7 +7,7 @@
  * filter hooks in WordPress to change core functionality.
  */
 define( "WP_OESE_THEME_NAME", "WP OESE Theme" );
-define( "WP_OESE_THEME_VERSION", "1.5.0" );
+define( "WP_OESE_THEME_VERSION", "1.6.1" );
 define( "WP_OESE_THEME_SLUG", "wp_oese_theme" );
 
 // Set up the content width value based on the theme's design and stylesheet.
@@ -702,7 +702,7 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
   * OII Menu Walker
   **/
  require_once( get_stylesheet_directory() . '/classes/oii-walker.php' );
- 
+
  function theme_back_enqueue_script()
 {
     wp_enqueue_script( 'jquery-ui-core' );
@@ -937,7 +937,7 @@ function taxonomies_for_pages() {
         $wp_query->set( 'post_type', 'any' );
 
  } // category_archives
- 
+
  function related_posts_where( $where ) {
     return $where." AND post_type='post'";
 }
@@ -957,7 +957,7 @@ function wp_list_categories_for_posts( $args = '' ) {
       'echo' => 1, 'depth' => 0,
       'taxonomy' => 'category'
     );
-    
+
     $r = wp_parse_args( $args, $defaults );
 
     if ( !isset( $r['pad_counts'] ) && $r['show_count'] && $r['hierarchical'] )
@@ -1067,7 +1067,7 @@ register_nav_menu( 'sub-footer', __( 'Sub Footer', WP_OESE_THEME_SLUG ) );
 * Getting Populars post from Pages OESE Theme
 */
 function getSidebarLinks($showHeader=true){
-    
+
     if( have_rows('sidebar_links') ):
         $output = "<div class='secondary-navigation-menu sidebar-links'>";
         $header_style = "";
@@ -1077,31 +1077,31 @@ function getSidebarLinks($showHeader=true){
         $sidebar_header_color = get_field('sidebar_title_box_color');
         $sidebar_body_color = get_field('sidebar_box_body_color');
         $sidebar_header_text_color = get_field('sidebar_box_title_color');
-        
+
     if (!empty($sidebar_header_color))
         $header_style = " style='background-color:".$sidebar_header_color."'";
-    
+
     $count = count(get_field("sidebar_links"));
     if ($count==1){
         $additional_body_style = "columns:1;-webkit-columns:1;-moz-columns:1;";
     }
-    
+
     if (!empty($sidebar_body_color))
         $body_style = " style='background-color:".$sidebar_body_color.";".$additional_body_style."'";
     elseif (!empty($additional_body_style)){
         $body_style = " style='".$additional_body_style."'";
     }
-    
-    
+
+
     if (!empty($sidebar_header_text_color))
         $header_text_style = " style='color:".$sidebar_header_text_color."'";
-        
+
     if ($showHeader==true)
         $output .= "<div class='secondary-navigation-menu-header'".$header_style."><h2".$header_text_style.">". get_field('sidebar_box_title')."</h2></div>";
-        
+
         // check if the repeater field has rows of data
         $output.=  "<ul class='secondary-navigation-menu-list'".$body_style.">";
-        
+
         // loop through the rows of data
         while ( have_rows('sidebar_links') ) : the_row();
             $resourceLabel =  get_sub_field('resource_label');
@@ -1139,18 +1139,18 @@ add_action( 'init' , 'addingTagsToAttachment' );
 function mediaFilterByCategory( $q ) {
     if(is_admin()){
         global $current_user, $pagenow;
-        
+
         if( !is_a( $current_user, 'WP_User') )
             return;
-    
+
         $cat = filter_input(INPUT_GET, 'category_name', FILTER_SANITIZE_STRING );
-        
+
         if ( ! $q->is_main_query() || ! is_admin() || (int)$cat <= 0 || !in_array( $pagenow, array( 'upload.php', 'admin-ajax.php' ) ))
             return;
-        
+
         $posts = get_posts( 'nopaging=1&category=' . $cat );
         $pids = ( ! empty( $posts ) ) ? wp_list_pluck($posts, 'ID') : false;
-        
+
         if ( ! empty($pids) ) {
             $pidstxt = implode($pids, ',');
             global $wpdb;
@@ -1449,7 +1449,7 @@ function wp_oese_theme_settings_page() {
       'name' =>  __('Property ID: ', WP_OESE_THEME_SLUG)
     )
   );
-  
+
   //Add Display Address on Footer
   add_settings_field(
     'wp_oese_theme_include_crazy_egg_script',
@@ -1490,7 +1490,7 @@ function wp_oese_theme_settings_page() {
       'default' => '1'
     )
   );
-  
+
   //Create Footer Settings Section
   add_settings_section(
     'wp_oese_footer_settings',
@@ -1581,7 +1581,7 @@ function wp_oese_theme_settings_field($arguments){
 
 function wp_oese_theme_select_contact_field($arguments){
     $value = get_option($arguments['uid']);
-  
+
     // Get All Pages
     $args = array(
                 'numberposts' => -1,
@@ -1591,10 +1591,10 @@ function wp_oese_theme_select_contact_field($arguments){
                 'order' => 'ASC'
                 );
     $pages = get_posts($args);
-    
+
     $post = get_post($value);
     $post_link = get_permalink($value);
-    
+
     echo '<div class="form-row"><div class="form-group">
         <label for="'.$arguments['uid'].'"><strong>'.$arguments['name'].'</strong></label>';
     echo '<span class="contact-edit-link"><a href="'.$post_link.'" target="_blank">'.$post->post_title.'</a></span>
@@ -1672,7 +1672,7 @@ function csvImportMediaForm(){
   function createCsvImportMenu(){
     add_options_page( 'CSV Media Importer','CSV Media Importer','manage_options','csv-media-import.php','csvImportMediaForm');
   }
-  
+
     function getUrlContents ($url) {
     $array = get_headers($url);
     $string = $array[0];
@@ -1826,7 +1826,7 @@ function csvImportMediaForm(){
      wp_send_json($outputCsv);
      die();
   }
-  
+
   function checkDateFormat($date){
   $dt = DateTime::createFromFormat("Y-m-d", $date);
   return $dt !== false && !array_sum($dt::getLastErrors());
@@ -1838,7 +1838,7 @@ function oese_search_where($where){
     global $wpdb, $pagenow;
     if (in_array( $pagenow, array( 'upload.php', 'admin-ajax.php' ) ))
         return $where;
-    
+
     if (is_search())
         $where .= "OR (t.name LIKE '%".get_search_query()."%' AND {$wpdb->posts}.post_status = 'publish')";
     return $where;
@@ -1967,17 +1967,17 @@ function oese_file_type_from_url($url, $class = 'fa-1x') {
 
 function oese_ga_script() {
   $script = "";
-  
+
   // Include GA
   $ga_id = get_option('wp_oese_theme_ga_propertyid');
   $egg_script = get_option('wp_oese_theme_include_crazy_egg_script');
-  
+
   if ($ga_id){
     // Include Crazy Egg Script
     if ($egg_script){
       $script .= "<script type='text/javascript' src='//s3.amazonaws.com/new.cetrk.com/pages/scripts/0009/9201.js'> </script>\r\n";
     }
-    
+
     $script .= "<script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -2213,33 +2213,33 @@ function oese_add_category_to_results( wpsolr\core\classes\ui\WPSOLR_Query $wpso
 function oese_append_category_to_results_html( $default_html, $user_id, $document, wpsolr\core\classes\ui\WPSOLR_Query $wpsolr_query ) {
     $col_left = "";
     $col_right = "col-md-12";
-    
+
     $result = '<div class="oese-search-result">';
     $result .= '<div class="oese-search-result-top row">';
-    
+
     // Display page/post thumbnail
     $image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $document->id ) );
     if (!empty($image_url)){
         $col_left = 'col-md-3';
         $col_right = 'col-md-9';
-        
+
         $result .= '<div class="oese-search-result-left '.$col_left.'">';
         $result .= "<img class='wdm_result_list_thumb' src='".$image_url[0]."' />";
         $result .= '</div>';
     }
-    
+
     // Display title and display date
     $result .= '<div class="oese-search-result-right '.$col_right.'">';
     $url = get_permalink( $document->id );
     $result .= '<h4 class="p_title"><a href="'.$url.'">'.$document->title.'</a></h4>';
     $date = date( 'm/d/Y', strtotime( $document->displaymodified ) );;
     $result .= '<h5>'.$date.'</h5>';
-    
+
     // Display Categories
     $result .= '<div class="oese-solr-category-block">';
-    
+
     $categories = $document->categories_str;
-    
+
     if (class_exists('WPSEO_Primary_Term')){
         // Show Primary category by Yoast if it is enabled & set
         $wpseo_primary_term = new WPSEO_Primary_Term( "category", $document->id );
@@ -2249,41 +2249,41 @@ function oese_append_category_to_results_html( $default_html, $user_id, $documen
             $categories = $primary_term->name;
         }
     }
-    
+
     if (!empty($categories)){
         $result .= '<div class="oese-solr-categories">';
-        
+
         if (is_array($categories))
             $cat = implode(", ", $categories);
         else
             $cat = $categories;
-            
+
         $result .= $cat;
-        
+
         $result .= '</div>';
     }
     $result .= '</div>';
     $result .= '</div>';
     $result .= '</div>';
-    
+
     // Display Post Content/Excerpt
     $result .= '<div class="oese-search-result-item-content">';
     $post_to_show = get_post( $document->id );
     if ( isset( $post_to_show ) ) {
         // Excerpt first, or content.
         $content = ( ! empty( $post_to_show->post_excerpt ) ) ? $post_to_show->post_excerpt : $post_to_show->post_content;
-        
+
         global $post;
         $post    = $post_to_show;
         $content = do_shortcode( $content );
-        
+
         $content = preg_replace( "~(?:\[/?)[^\]]+/?\]~s", '', $content );  # strip shortcodes, keep shortcode content;
-        
+
         // Strip HTML and PHP tags
         $content = strip_tags( $content );
-        
+
         $content = substr( $content, 0, 125 );
-        
+
         // Format content text a little bit
         $content = str_replace( '&nbsp;', '', $content );
         $content = str_replace( '  ', ' ', $content );
@@ -2292,16 +2292,16 @@ function oese_append_category_to_results_html( $default_html, $user_id, $documen
         $result .= $content;
     }
     $result .= '</div>';
-    
+
     $result .= '</div>';
-    
+
     return $result;
 }
 
 // Replace WP Search with WP Solr
 function replace_search_with_WP_Solr($result){
   $result = is_solr_installed();
-  
+
   return $result;
 }
 
@@ -2580,9 +2580,9 @@ if ( ! function_exists( 'oese_display_subpages' ) ) {
             'post_status' => 'publish'
         );
         $post_children = get_children( $args );
-        
+
         if ($post_children) {
-            
+
             $html = '<ul class="oese-side-nav oese-side-nav-widget">';
 
             $children = wp_list_pages( 'title_li=&child_of=' . $post_id . '&depth=1&echo=0' );

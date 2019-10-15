@@ -83,7 +83,7 @@
                             "label": "Description",
                             "name": "description",
                             "type": "textarea",
-                            "instructions": "",
+                            "instructions": "max 150 characters",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -117,9 +117,28 @@
                 },
                 {
                     "key": "field_5da0b72d54097",
-                    "label": "View More Settings",
-                    "name": "view_more_settings",
-                    "type": "group",
+                    "label": "Include View More",
+                    "name": "include_view_more",
+                    "type": "true_false",
+                    "instructions": "Whether to include View More button",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 1,
+                    "ui": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": ""
+                },
+                {
+                    "key": "field_5da54a3d31e58",
+                    "label": "View More URL",
+                    "name": "view_more_url",
+                    "type": "url",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -128,65 +147,29 @@
                         "class": "",
                         "id": ""
                     },
-                    "layout": "block",
-                    "sub_fields": [
-                        {
-                            "key": "field_5d9fb3cd575e5",
-                            "label": "Include View More",
-                            "name": "include_view_more",
-                            "type": "true_false",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "message": "Display 'View More' Button",
-                            "default_value": 0,
-                            "ui": 0,
-                            "ui_on_text": "",
-                            "ui_off_text": ""
-                        },
-                        {
-                            "key": "field_5da0b4b2790f8",
-                            "label": "View More URL",
-                            "name": "view_more_url",
-                            "type": "url",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "placeholder": ""
-                        },
-                        {
-                            "key": "field_5da0b75a54098",
-                            "label": "How many tiles to show before View More button?",
-                            "name": "view_more_count",
-                            "type": "number",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": 3,
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "min": "",
-                            "max": "",
-                            "step": 3
-                        }
-                    ]
+                    "default_value": "",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_5da54a6931e59",
+                    "label": "View More Count",
+                    "name": "view_more_count",
+                    "type": "number",
+                    "instructions": "How many tiles to show before View More button?",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": 3,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "min": "",
+                    "max": "",
+                    "step": 3
                 }
             ]
         }
@@ -213,5 +196,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1570816840
+    "modified": 1571114108
 }
