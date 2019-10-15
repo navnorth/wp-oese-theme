@@ -129,8 +129,9 @@ jQuery( document ).ready(function() {
     if (jQuery('.tab-close-button').length){
         jQuery('.tab-close-button').removeAttr('target').removeClass('external_link');
         
-        jQuery('.tab-close-button').on("click touchstart", function(e){
+        jQuery(document).on("click touchstart", '.tab-close-button', function(e){
             e.preventDefault();
+            alert('clicked');
             close_tab(this);
         });
     }
