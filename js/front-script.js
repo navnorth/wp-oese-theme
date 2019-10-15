@@ -130,6 +130,7 @@ jQuery( document ).ready(function() {
         jQuery('.tab-close-button').removeAttr('target').removeClass('external_link');
         
         jQuery('.tab-close-button').on("click", function(e){
+            e.preventDefault();
             close_tab(this);
         });
     }
