@@ -126,13 +126,17 @@ jQuery( document ).ready(function() {
     }
     
     
-    jQuery('.tab-close-button').on("click", function(){
-	curtab = jQuery(this).closest('.tab-pane');
-	curtabid = curtab.attr('id');
-	curtab.toggleClass('active');
-	jQuery('#mobileSidebarTab a[href="#' + curtabid +'"]').toggleClass('active');
-	
-    });
+    if (jQuery('.tab-close-button').is(':visible')){
+        jQuery('.tab-close-button').removeAttr('target').removeClass('external-link');
+        
+        jQuery('.tab-close-button').on("click", function(e){
+            e.preventDefault();
+            curtab = jQuery(this).closest('.tab-pane');
+            curtabid = curtab.attr('id');
+            curtab.toggleClass('active');
+            jQuery('#mobileSidebarTab a[href="#' + curtabid +'"]').toggleClass('active');
+        });
+    }
     
     /** move cursor to top on pagination click **/
     jQuery(document).on("click", '.wdm_results .paginate_div li a.paginate', function(e){
