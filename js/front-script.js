@@ -125,6 +125,17 @@ jQuery( document ).ready(function() {
         console.log('Replaced SVG images with PNG');
     }
     
+    /** Add Checking of IoS **/
+    var isIOS = (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true: false );
+    
+    if (isIOS === true){
+        var tempCss = $('a').css('-webkit-tap-highlight-color');
+        
+        $('body').css('cursor','pointer')
+                .css('-webkit-tap-highlight-color', 'rgba(0,0,0,0)');
+                
+        $('a').css('-webkit-tap-highlight-color', tempCss);
+    }
     
     if (jQuery('.tab-close-button').length){
         jQuery('.tab-close-button').removeAttr('target').removeClass('external_link');
