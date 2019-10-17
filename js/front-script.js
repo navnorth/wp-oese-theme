@@ -14,8 +14,8 @@ jQuery( document ).ready(function() {
 		window.print();
 	});
 
-	var heght = jQuery("#lnk_btn_cntnr_center").height()
-	jQuery(".link_dwnlds").height(heght);
+    var heght = jQuery("#lnk_btn_cntnr_center").height();
+    jQuery(".link_dwnlds").height(heght);
 
 	var a_hght = jQuery(".link_dwnlds").children("div").children("a").height();
 	a_hght = parseInt(a_hght) + parseInt(30);
@@ -67,11 +67,11 @@ jQuery( document ).ready(function() {
 	     } else {
 		jQuery(this).parent().find('.sub-menu').toggle();
 		if (jQuery('.responsiv-menu .responsiv-menu_ul > li.menu-item-has-children > .mobile-parent-menu').hasClass('fa-sort-asc')){
-		    jQuery('.responsiv-menu .responsiv-menu_ul > li.menu-item-has-children > .mobile-parent-menu').removeClass('fa-sort-asc')
-		    jQuery('.responsiv-menu .responsiv-menu_ul > li.menu-item-has-children > .mobile-parent-menu').addClass('fa-sort-desc')
+		    jQuery('.responsiv-menu .responsiv-menu_ul > li.menu-item-has-children > .mobile-parent-menu').removeClass('fa-sort-asc');
+		    jQuery('.responsiv-menu .responsiv-menu_ul > li.menu-item-has-children > .mobile-parent-menu').addClass('fa-sort-desc');
 		} else {
-		    jQuery('.responsiv-menu .responsiv-menu_ul > li.menu-item-has-children > .mobile-parent-menu').removeClass('fa-sort-desc')
-		    jQuery('.responsiv-menu .responsiv-menu_ul > li.menu-item-has-children > .mobile-parent-menu').addClass('fa-sort-asc')
+		    jQuery('.responsiv-menu .responsiv-menu_ul > li.menu-item-has-children > .mobile-parent-menu').removeClass('fa-sort-desc');
+		    jQuery('.responsiv-menu .responsiv-menu_ul > li.menu-item-has-children > .mobile-parent-menu').addClass('fa-sort-asc');
 		}
 	     }
 	});
@@ -125,49 +125,90 @@ jQuery( document ).ready(function() {
         console.log('Replaced SVG images with PNG');
     }
     
+    /** Add Checking of IoS **/
+    var isIOS = (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true: false );
     
-    jQuery('.tab-close-button').on("click", function(){
-	curtab = jQuery(this).closest('.tab-pane');
-	curtabid = curtab.attr('id');
-	curtab.toggleClass('active');
-	jQuery('#mobileSidebarTab a[href="#' + curtabid +'"]').toggleClass('active');
-	
-    });
+    if (isIOS === true){
+        var tempCss = $('a').css('-webkit-tap-highlight-color');
+        
+        $('body').css('cursor','pointer')
+                .css('-webkit-tap-highlight-color', 'rgba(0,0,0,0)');
+                
+        $('a').css('-webkit-tap-highlight-color', tempCss);
+    }
+    
+    if (jQuery('.tab-close-button').length){
+        jQuery('.tab-close-button').removeAttr('target').removeClass('external_link');
+        
+        jQuery('.tab-close-button').on("touchstart click", function(e){
+            e.stopPropagation();
+            e.preventDefault();
+            close_tab(this);
+        });
+        
+        jQuery('.tab-close-button').on("touchend", function (){
+            jQuery(this).trigger("click");
+        });
+        
+    }
     
     /** move cursor to top on pagination click **/
     jQuery(document).on("click", '.wdm_results .paginate_div li a.paginate', function(e){
-	e.preventDefault();
-	var offset = jQuery('.results-by-facets').offset();
-	window.scrollTo(offset.top, offset.left);
+        e.preventDefault();
+        var offset = jQuery('.wdm_results').offset();
+        window.scrollTo(offset.top, offset.left);
     });
     
     jQuery(document).ajaxComplete(function(event, request, settings){
-	console.log(settings);
-	setTimeout(displayNext10Results(),1000);
+        console.log(settings);
+        setTimeout(displayNext10Results(),1000);
+        setTimeout(displayPrev10Results(),1000);
     });
     
     displayNext10Results();
+    displayPrev10Results();
     
     /** Select State on Interactive Map Redirection **/
-    jQuery('#SelectState').on("change", function(e){
-	var url = jQuery(this).val();
-	window.location = url;
+    jQuery('#SelectState').on("change", function(){
+        var url = jQuery(this).val();
+        window.location = url;
     });
 });
 
+function close_tab(close_button){
+    curtab = jQuery(close_button).closest('.tab-pane.active');
+    curtabid = curtab.attr('id');
+    curtab.removeClass('active');
+    jQuery('#mobileSidebarTab a[href="#' + curtabid +'"]').removeClass('active');
+}
 
 function displayNext10Results() {
     /** Insert Next 10 results button on the fly **/
     if (jQuery('.paginate_div #pagination-flickr').is(":visible")) {
-	var nextPage = jQuery('.cls_search form .ui-widget input[id="paginate"]').val();
-	if (nextPage==0) {
-	    nextPage = 1;
-	}
-	nextPage = parseInt(nextPage) + 1;
-	var next10 = '<li><a class="paginate" href="javascript:void(0)" id="' + nextPage + '">Next 10 Results</a></li>';
-	jQuery('.paginate_div #pagination-flickr').append(next10);
+        var nextPage = jQuery('.cls_search form .ui-widget input[id="paginate"]').val();
+        if (nextPage==0) {
+            nextPage = 1;
+        }
+        
+        nextPage = parseInt(nextPage) + 1;
+        var next10 = '<li><a class="paginate show next" href="javascript:void(0)" id="' + nextPage + '">Next 10 Results</a></li>';
+        jQuery('.paginate_div #pagination-flickr').append(next10);
     }
 }
+
+function displayPrev10Results() {
+    /** Insert Prev 10 results button on the fly **/
+    if (jQuery('.paginate_div #pagination-flickr').is(":visible")) {
+        var curPage = jQuery('.cls_search form .ui-widget input[id="paginate"]').val();
+        if (curPage==0 || curPage==1)
+            return;
+        
+        prevPage = parseInt(curPage) - 1;
+        var prev10 = '<li><a class="paginate show prev" href="javascript:void(0)" id="' + prevPage + '">Previous 10 Results</a></li>';
+        jQuery('.paginate_div #pagination-flickr').prepend(prev10);
+    }
+}
+
 // Event Tracker Function
 function oese_trackEvent(eventCategory, eventAction, eventLabel, eventValue = null) {
     eventLabel = eventLabel.toString();

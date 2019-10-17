@@ -30,10 +30,10 @@ function disruptive_content_fun($attr, $content = null)
 
 /**
  * Accordion Group & Accordion
- * Shortcode Example : [oet_accordion_group][oet_accordion title="" accordion_series="one" expanded=""] your content goes here [/oet_accordion][/oet_accordion_group]
+ * Shortcode Example : [oese_accordion_group][oese_accordion title="" accordion_series="one" expanded=""] your content goes here [/oese_accordion][/oese_accordion_group]
  */
-add_shortcode('oet_accordion_group', 'oet_accordion_group_func');
-function oet_accordion_group_func($atts, $content = null)
+add_shortcode('oese_accordion_group', 'oese_accordion_group_func');
+function oese_accordion_group_func($atts, $content = null)
 {
 	$accordion_id = "accordion";
 
@@ -44,7 +44,7 @@ function oet_accordion_group_func($atts, $content = null)
 	}
 
 	$return = '';
-	$return .= '<div class="panel-group" id="'.$accordion_id.'" role="tablist" aria-multiselectable="true">';
+	$return .= '<div class="panel-group accordion" id="'.$accordion_id.'" role="tablist" aria-multiselectable="true">';
 			$content = str_replace( "<p>","", $content );
 			$content = str_replace( "</p>","", $content );
 			$return .= do_shortcode($content);
@@ -52,8 +52,8 @@ function oet_accordion_group_func($atts, $content = null)
 	return $return;
 }
 
-add_shortcode('oet_accordion', 'oet_accordion_func');
-function oet_accordion_func($atts, $content = null)
+add_shortcode('oese_accordion', 'oese_accordion_func');
+function oese_accordion_func($atts, $content = null)
 {
 $group_id = "accordion";
 
@@ -886,7 +886,7 @@ function parse_data_attributes( $data ) {
 /**
  * Audience Link
  * Shortcode Example : [audience_link href='Link goes here']Audience name goes here[/audience_link]
- */ 
+ */
 add_shortcode("audience_link", "audience_link_func");
 function audience_link_func($attribute, $content = null) {
 
@@ -897,7 +897,7 @@ function audience_link_func($attribute, $content = null) {
 
 	return $return;
  }
- 
+
  /**
   * Publication Shortcode
   * Shortcode Example : [oese_publication src=""]
@@ -910,13 +910,13 @@ function oese_publication_func($attribute){
 		extract($attribute);
 
 	if ($src)
-		$pub_id = oese_file_id_by_url($src);	
-	
+		$pub_id = oese_file_id_by_url($src);
+
 	// Get File Details
 	if ($pub_id>0){
 		$pub_details = wp_prepare_attachment_for_js($pub_id);
 	}
-	
+
 	$return = '<div class="publication-shortcode-block">';
 	if ($pub_details){
 		$type = oese_file_type_from_url($src, 'fa-3x');
@@ -932,5 +932,34 @@ function oese_publication_func($attribute){
 	}
 	$return .= '</div>';
 	return $return;
+}
+
+/**
+ * SubPages
+ * Shortcode Example : [oese_sub_pages title='' id='']
+ */
+add_shortcode("oese_sub_pages", "oese_sub_pages_func");
+function oese_sub_pages_func($attr, $content = null) {
+
+    if (is_array($attr)) extract($attr);
+
+    $html = "<div class='oese-sub-pages'>";
+      
+    if (! empty($title)){
+        $html.= '<h4 class="widget-title">' . $title . '</h4>';
+    }
+      
+    if (! empty($id)){
+        $html .= oese_display_subpages($id);
+    } else {
+        $queried_object = get_queried_object();
+        if ($queried_object) {
+            $html .= oese_display_subpages($queried_object->ID);
+        }
+    }
+    
+    $html .= "</div>";
+    
+    return $html;
 }
 ?>

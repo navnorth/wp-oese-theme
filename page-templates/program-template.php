@@ -8,10 +8,12 @@ global $post;
 
 $page_id = get_the_ID();
 get_header();
+
 $head_class = "";
+$extra_class = "";
 $is_archived = false;
 $archived_date = null;
-$leftCol = "col-md-8";
+$leftCol = "col-md-8 col-sm-12";
 $rightCol = "col-md-4";
 
 if (get_field('archive_date'))
@@ -22,10 +24,13 @@ if ($archived_date){
     $head_class = " archived-header";
 }
 
+$detect = new oese_mobile_detect();
+if ($detect->isMobile())
+    $extra_class = " template-mobile";
 ?>
 
            <!--Program Landing Template Top Section START-->
-        <div id="content" class="row custom-common-padding">
+        <div id="content" class="row custom-common-padding program-template<?php echo $extra_class; ?>">
             <div class="<?php echo $leftCol; ?>">
                 <div class="left-description-section">
                     <h1 class="h1-bottom-space<?php echo $head_class; ?>"><?php echo get_the_title(); ?></h1>
@@ -82,42 +87,58 @@ if ($archived_date){
                 </div>
             </div>
             <?php
-            $detect = new oese_mobile_detect();
             if ($detect->isMobile()){
-            ?>
-            <div class="col-sm-12 program-sidebar">
-                <ul class="nav nav-tabs" id="mobileSidebarTab" role="tablist">
-                    <?php
-                    $contactTitle = get_field("ci_title");
-                    if ($contactTitle):
-                    ?>
-                    <li class="nav-item">
-                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="true"><?php echo $contactTitle; ?></a>
-                    </li>
-                    <?php
-                    endif;
-                    $sidebar_title = get_field('sidebar_box_title');
-                    if ($sidebar_title):
-                    ?>
-                    <li class="nav-item">
-                        <a class="nav-link" id="menu-tab" data-toggle="tab" href="#menu" role="tab" aria-controls="menu" aria-selected="false"><?php echo $sidebar_title; ?></a>
-                    </li>
-                    <?php endif; ?>
-                </ul>
-                <div class="tab-content" id="mobileSidebarTabContent">
-                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                        <?php echo contactInformationBlock(false) ?>
-                        <div class="tab-close-row"><a class="tab-close-button" href="javascript:void(0)" role="button"><i class="fas fa-times"></i> CLOSE</a></div>
-                    </div>
-                    <div class="tab-pane fade" id="menu" role="tabpanel" aria-labelledby="menu-tab">
-                        <div class="sidebar-menu">
-                        <?php echo getSidebarLinks(false); ?>
+                $li_class = "";
+                $contact = get_field('ci_address');
+                $sidebar_links = have_rows('sidebar_links');
+                if ($contact && $sidebar_links)
+                    $li_class = " half";
+                elseif ($contact || $sidebar_links)
+                    $li_class = " full";
+                
+                if ($contact || $sidebar_links){
+                ?>
+                <div class="col-sm-12 program-sidebar">
+                    <?php get_template_part( 'content', 'resources' ); ?>
+                    <div class="spacer" style="height:20px;"></div>
+                    <ul class="nav nav-tabs" id="mobileSidebarTab" role="tablist">
+                        <?php
+                        $contactTitle = get_field("ci_title");
+                        if ($contactTitle):
+                        ?>
+                        <li class="nav-item<?php echo $li_class; ?>">
+                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="true"><?php echo $contactTitle; ?></a>
+                        </li>
+                        <?php
+                        endif;
+                        if( have_rows('sidebar_links') ):
+                            $sidebar_title = get_field('sidebar_box_title');
+                            if ($sidebar_title):
+                            ?>
+                            <li class="nav-item<?php echo $li_class; ?>">
+                                <a class="nav-link" id="menu-tab" data-toggle="tab" href="#menu" role="tab" aria-controls="menu" aria-selected="false"><?php echo $sidebar_title; ?></a>
+                            </li>
+                            <?php endif;
+                        endif;
+                        ?>
+                    </ul>
+                    <div class="tab-content" id="mobileSidebarTabContent">
+                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                            <?php echo contactInformationBlock(false) ?>
+                            <div class="tab-close-row"><a class="tab-close-button"  style="cursor:pointer"  href="javascript:;" data-role="button" role="button"><i class="fas fa-times"></i> CLOSE</a></div>
                         </div>
-                        <div class="col-sm-12 tab-close-row"><a class="tab-close-button"  href="javascript:void(0)" role="button"><i class="fas fa-times"></i> CLOSE</a></div>
+                        <?php if( have_rows('sidebar_links') ): ?>
+                        <div class="tab-pane fade" id="menu" role="tabpanel" aria-labelledby="menu-tab">
+                            <div class="sidebar-menu">
+                            <?php echo getSidebarLinks(false); ?>
+                            </div>
+                            <div class="col-sm-12 tab-close-row"><a class="tab-close-button"  style="cursor:pointer"  href="javascript:;" data-role="button" role="button"><i class="fas fa-times"></i> CLOSE</a></div>
+                        </div>
+                        <?php endif; ?>
                     </div>
                 </div>
-            </div>
-            <?php
+                <?php
+                }
             } else {
             ?>
             <div class="<?php echo $rightCol; ?> program-sidebar">
@@ -127,7 +148,10 @@ if ($archived_date){
 
                 <?php get_template_part( 'content', 'resources' ); ?>
 
-                <?php echo getSidebarLinks(); ?>
+                <?php
+                if (have_rows('sidebar_links'))
+                    getSidebarLinks();
+                ?>
                 
             </div>
             <?php } ?>

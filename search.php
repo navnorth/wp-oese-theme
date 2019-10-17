@@ -12,7 +12,7 @@ if (is_solr_installed()){
 <div id="content" class="row site-content">
 	<div class="col-md-12">
 		<header class="page-header">
-			<h2 class="page-title"><?php printf( __( 'Search Results for: %s', 'twentytwelve' ), '<span>' . get_search_query() . '</span>' ); ?></h2>
+			<h1 class="page-title h1-bottom-space"><?php printf( __( 'Search Results', 'twentytwelve' ) ); ?></h1>
 		</header>
 		<?php do_shortcode('[solr_search_shortcode]'); ?>
 	</div>

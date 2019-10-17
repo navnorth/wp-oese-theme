@@ -7,12 +7,12 @@
  * filter hooks in WordPress to change core functionality.
  */
 define( "WP_OESE_THEME_NAME", "WP OESE Theme" );
-define( "WP_OESE_THEME_VERSION", "1.5.0" );
+define( "WP_OESE_THEME_VERSION", "1.6.2" );
 define( "WP_OESE_THEME_SLUG", "wp_oese_theme" );
 
 // Set up the content width value based on the theme's design and stylesheet.
 if ( ! isset( $content_width ) ) {
-  $content_width = 625;
+    $content_width = 625;
 }
 
 /**
@@ -673,9 +673,6 @@ function twentytwelve_widget_tag_cloud_args( $args ) {
 }
 add_filter( 'widget_tag_cloud_args', 'twentytwelve_widget_tag_cloud_args' );
 
-
-
-
 /**
  * Register sidebars.
  */
@@ -701,18 +698,16 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
  */
  require_once( get_stylesheet_directory() . '/tinymce_button/shortcode_button.php' );
 
- /**
-  * Contact Metabox
-  **/
- require_once( get_stylesheet_directory() . '/metaboxes/contact-metabox.php' );
-
   /**
   * OII Menu Walker
   **/
  require_once( get_stylesheet_directory() . '/classes/oii-walker.php' );
 
-function theme_back_enqueue_script()
+ function theme_back_enqueue_script()
 {
+    wp_enqueue_script( 'jquery-ui-core' );
+	wp_enqueue_script( 'jquery-ui-widgets' );
+	wp_enqueue_script( 'jquery-ui-tabs' );
     wp_enqueue_script( 'theme-back-script', get_stylesheet_directory_uri() . '/js/back-script.js' );
     wp_enqueue_script('csv-media-script', get_stylesheet_directory_uri() . '/js/csv-media-import-script.js' );
 
@@ -897,7 +892,6 @@ function modify_read_more_link() {
   return ' <a class="more-link" href="' . get_permalink() . '">Read More</a>';
 }
 
-
 /**
  * Initialize Categories and Tags for Pages
  **/
@@ -944,8 +938,7 @@ function taxonomies_for_pages() {
 
  } // category_archives
 
-
-function related_posts_where( $where ) {
+ function related_posts_where( $where ) {
     return $where." AND post_type='post'";
 }
 
@@ -1064,10 +1057,6 @@ function wp_list_categories_for_posts( $args = '' ) {
     }
 }
 
-if (is_admin()) {
-    $contact_metabox = new Contact_Metabox();
-}
-
  /**
  * Register the footer Menu - removed in base twentytwelve theme
  */
@@ -1077,41 +1066,55 @@ register_nav_menu( 'sub-footer', __( 'Sub Footer', WP_OESE_THEME_SLUG ) );
 /**
 * Getting Populars post from Pages OESE Theme
 */
-  function getSidebarLinks($showHeader=true){
+function getSidebarLinks($showHeader=true){
 
     if( have_rows('sidebar_links') ):
-      $output = "<div class='secondary-navigation-menu sidebar-links'>";
-      $header_style = "";
-      $body_style = "";
-      $sidebar_header_color = get_field('sidebar_title_box_color');
-      $sidebar_body_color = get_field('sidebar_box_body_color');
-      
-      if (!empty($sidebar_header_color))
+        $output = "<div class='secondary-navigation-menu sidebar-links'>";
+        $header_style = "";
+        $body_style = "";
+        $additional_body_style = "";
+        $header_text_style = "";
+        $sidebar_header_color = get_field('sidebar_title_box_color');
+        $sidebar_body_color = get_field('sidebar_box_body_color');
+        $sidebar_header_text_color = get_field('sidebar_box_title_color');
+
+    if (!empty($sidebar_header_color))
         $header_style = " style='background-color:".$sidebar_header_color."'";
-      
-      if (!empty($sidebar_body_color))
-        $body_style = " style='background-color:".$sidebar_body_color."'";
 
-      if ($showHeader==true)
-        $output .= "<div class='secondary-navigation-menu-header'".$header_style."><h2>". get_field('sidebar_box_title')."</h2></div>";
-      // check if the repeater field has rows of data
+    $count = count(get_field("sidebar_links"));
+    if ($count==1){
+        $additional_body_style = "columns:1;-webkit-columns:1;-moz-columns:1;";
+    }
 
+    if (!empty($sidebar_body_color))
+        $body_style = " style='background-color:".$sidebar_body_color.";".$additional_body_style."'";
+    elseif (!empty($additional_body_style)){
+        $body_style = " style='".$additional_body_style."'";
+    }
+
+
+    if (!empty($sidebar_header_text_color))
+        $header_text_style = " style='color:".$sidebar_header_text_color."'";
+
+    if ($showHeader==true)
+        $output .= "<div class='secondary-navigation-menu-header'".$header_style."><h2".$header_text_style.">". get_field('sidebar_box_title')."</h2></div>";
+
+        // check if the repeater field has rows of data
         $output.=  "<ul class='secondary-navigation-menu-list'".$body_style.">";
+
         // loop through the rows of data
-          while ( have_rows('sidebar_links') ) : the_row();
+        while ( have_rows('sidebar_links') ) : the_row();
             $resourceLabel =  get_sub_field('resource_label');
             $resourceLink =  get_sub_field('resource_link');
             $externaLink =  get_sub_field('external_link');
             $target = ($externaLink ? "_blank" : "_self");
             $output.= "<li><a target='". $target."' href='".$resourceLink."'>".$resourceLabel."</a></li>";
-          endwhile;
+        endwhile;
         $output.=  "</ul>";
         $output.="</div>";
         echo $output;
-      endif;
-
-   }
-
+    endif;
+}
 
 /**
 *Enabling the Category and Tags for the media attachment
@@ -1122,60 +1125,59 @@ function addingCategoryToAttachment() {
 }
 add_action( 'init' , 'addingCategoryToAttachment' );
 
-
 function addingTagsToAttachment() {
     register_taxonomy_for_object_type( 'post_tag', 'attachment' );
 }
 add_action( 'init' , 'addingTagsToAttachment' );
 
 /*
-  Category Filter for Media List Page
+* Category Filter for Media List Page
 */
 
-
-add_action('pre_get_posts', 'mediaFilterByCategory');
+//add_action('pre_get_posts', 'mediaFilterByCategory');
 
 function mediaFilterByCategory( $q ) {
-if(is_admin()){
+    if(is_admin()){
+        global $current_user, $pagenow;
 
-  global $current_user, $pagenow;
+        if( !is_a( $current_user, 'WP_User') )
+            return;
 
-  if( !is_a( $current_user, 'WP_User') )
-  return;
+        $cat = filter_input(INPUT_GET, 'category_name', FILTER_SANITIZE_STRING );
 
-  $cat = filter_input(INPUT_GET, 'category_name', FILTER_SANITIZE_STRING );
-  if ( ! $q->is_main_query() || ! is_admin() || (int)$cat <= 0 || !in_array( $pagenow, array( 'upload.php', 'admin-ajax.php' ) ))
-  return;
-    $posts = get_posts( 'nopaging=1&category=' . $cat );
-    $pids = ( ! empty( $posts ) ) ? wp_list_pluck($posts, 'ID') : false;
-    if ( ! empty($pids) ) {
-      $pidstxt = implode($pids, ',');
-      global $wpdb;
-      $mids = $wpdb->get_col("SELECT ID FROM $wpdb->posts WHERE post_parent IN ($pidstxt)");
-      if ( ! empty($mids) ) {
+        if ( ! $q->is_main_query() || ! is_admin() || (int)$cat <= 0 || !in_array( $pagenow, array( 'upload.php', 'admin-ajax.php' ) ))
+            return;
 
-        $q->set( 'post__in', $mids );
-      } else {
-        $q->set( 'p', -1 );
-      }
+        $posts = get_posts( 'nopaging=1&category=' . $cat );
+        $pids = ( ! empty( $posts ) ) ? wp_list_pluck($posts, 'ID') : false;
+
+        if ( ! empty($pids) ) {
+            $pidstxt = implode($pids, ',');
+            global $wpdb;
+            $mids = $wpdb->get_col("SELECT ID FROM $wpdb->posts WHERE post_parent IN ($pidstxt)");
+            if ( ! empty($mids) ) {
+                $q->set( 'post__in', $mids );
+            } else {
+                $q->set( 'p', -1 );
+            }
+        }
     }
-  }
 }
 
-add_action( 'restrict_manage_posts', 'mediaCategoryDropdown' );
+//add_action( 'restrict_manage_posts', 'mediaCategoryDropdown' );
 
 function mediaCategoryDropdown() {
-  $scr = get_current_screen();
-  if ( $scr->base !== 'upload' ) return;
-  $cat = filter_input(INPUT_GET, 'category_name', FILTER_SANITIZE_STRING );
-  $selected = (int)$cat > 0 ? $cat : '-1';
-  $args = array(
-      'show_option_none'   => 'All Post Categories',
-      'name'               => 'category_name',
-      'selected'           => $selected,
-      'value_field'       => 'slug'
-  );
-  wp_dropdown_categories( $args );
+    $scr = get_current_screen();
+    if ( $scr->base !== 'upload' ) return;
+    $cat = filter_input(INPUT_GET, 'category_name', FILTER_SANITIZE_STRING );
+    $selected = (int)$cat > 0 ? $cat : '-1';
+    $args = array(
+        'show_option_none'   => 'All Post Categories',
+        'name'               => 'category_name',
+        'selected'           => $selected,
+        'value_field'       => 'slug'
+    );
+    wp_dropdown_categories( $args );
 }
 
 function oeseBreadcrumb() {
@@ -1205,7 +1207,6 @@ function oeseBreadcrumb() {
   }
 }
 
-
 function contactInformationBlock($showHeader=true){
   global $post;
 
@@ -1227,7 +1228,7 @@ function contactInformationBlock($showHeader=true){
       if ($contact_page){
         $contactEmailLink = get_the_permalink($contact_page).'?contact_reference='.$post->ID;
       } else
-        $contactEmailLink = '/contact-us/?contact_reference='.$post->ID;
+        $contactEmailLink = '';
     }
   }
 
@@ -1328,7 +1329,6 @@ function getTileLinks(){
     endif;
 }
 
-
 function oeseListChildPages() {
 
   global $post;
@@ -1350,12 +1350,12 @@ function oeseListChildPages() {
  * Add Theme Settings Page
  **/
 function add_oese_theme_settings_menu(){
-    add_theme_page("Theme Settings", "Settings", "edit_theme_options", "theme_settings_page",  "add_wp_oese_theme_settings_page", 10);
+    add_theme_page("Theme Settings", "OESE Theme Settings", "edit_theme_options", "theme_settings_page",  "add_wp_oese_theme_settings_page", 10);
 }
 add_action( "admin_menu", "add_oese_theme_settings_menu" );
 
 function add_wp_oese_theme_settings_page(){
-  include( get_template_directory() . "/theme-functions/theme-settings.php");
+    include( get_template_directory() . "/theme-functions/theme-settings.php");
 }
 
 /**
@@ -1449,7 +1449,7 @@ function wp_oese_theme_settings_page() {
       'name' =>  __('Property ID: ', WP_OESE_THEME_SLUG)
     )
   );
-  
+
   //Add Display Address on Footer
   add_settings_field(
     'wp_oese_theme_include_crazy_egg_script',
@@ -1490,7 +1490,7 @@ function wp_oese_theme_settings_page() {
       'default' => '1'
     )
   );
-  
+
   //Create Footer Settings Section
   add_settings_section(
     'wp_oese_footer_settings',
@@ -1580,25 +1580,31 @@ function wp_oese_theme_settings_field($arguments){
 }
 
 function wp_oese_theme_select_contact_field($arguments){
-  $value = get_option($arguments['uid']);
+    $value = get_option($arguments['uid']);
 
-  // Get All Pages
-  $args = array(
+    // Get All Pages
+    $args = array(
                 'numberposts' => -1,
                 'post_type' => 'page',
                 'post_status' => 'publish',
                 'orderby' => 'title',
                 'order' => 'ASC'
                 );
-  $pages = get_posts($args);
+    $pages = get_posts($args);
 
-  echo '<div class="form-row"><div class="form-group">
-      <label for="'.$arguments['uid'].'"><strong>'.$arguments['name'].'</strong></label>
-      <select name="'.$arguments['uid'].'" id="'.$arguments['uid'].'">';
-      foreach($pages as $page){
-        echo '<option value="' . $page->ID . '" '.selected($page->ID,$value,true).'>'.$page->post_title.'</option>';
-      }
-  echo '</select>
+    $post = get_post($value);
+    $post_link = get_permalink($value);
+
+    echo '<div class="form-row"><div class="form-group">
+        <label for="'.$arguments['uid'].'"><strong>'.$arguments['name'].'</strong></label>';
+    echo '<span class="contact-edit-link"><a href="'.$post_link.'" target="_blank">'.$post->post_title.'</a></span>
+            <a class="contact-edit" href="javascript:void(0);"><span class="dashicons dashicons-edit"></span></a>';
+    echo '<select name="'.$arguments['uid'].'" id="'.$arguments['uid'].'">';
+    echo '<option value="">-- Please select contact page --</option>';
+        foreach($pages as $page){
+            echo '<option value="' . $page->ID . '" '.selected($page->ID,$value,true).'>'.$page->post_title.'</option>';
+        }
+    echo '</select>
     </div></div>';
 }
 
@@ -1667,7 +1673,7 @@ function csvImportMediaForm(){
     add_options_page( 'CSV Media Importer','CSV Media Importer','manage_options','csv-media-import.php','csvImportMediaForm');
   }
 
-  function getUrlContents ($url) {
+    function getUrlContents ($url) {
     $array = get_headers($url);
     $string = $array[0];
     if(strpos($string,"200")){
@@ -1821,7 +1827,7 @@ function csvImportMediaForm(){
      die();
   }
 
-function checkDateFormat($date){
+  function checkDateFormat($date){
   $dt = DateTime::createFromFormat("Y-m-d", $date);
   return $dt !== false && !array_sum($dt::getLastErrors());
 }
@@ -1829,9 +1835,12 @@ function checkDateFormat($date){
 /**Csv import Media Library Ends***/
 
 function oese_search_where($where){
-    global $wpdb;
+    global $wpdb, $pagenow;
+    if (in_array( $pagenow, array( 'upload.php', 'admin-ajax.php' ) ))
+        return $where;
+
     if (is_search())
-	$where .= "OR (t.name LIKE '%".get_search_query()."%' AND {$wpdb->posts}.post_status = 'publish')";
+        $where .= "OR (t.name LIKE '%".get_search_query()."%' AND {$wpdb->posts}.post_status = 'publish')";
     return $where;
 }
 add_filter( "posts_where" , "oese_search_where" );
@@ -1958,17 +1967,17 @@ function oese_file_type_from_url($url, $class = 'fa-1x') {
 
 function oese_ga_script() {
   $script = "";
-  
+
   // Include GA
   $ga_id = get_option('wp_oese_theme_ga_propertyid');
   $egg_script = get_option('wp_oese_theme_include_crazy_egg_script');
-  
+
   if ($ga_id){
     // Include Crazy Egg Script
     if ($egg_script){
       $script .= "<script type='text/javascript' src='//s3.amazonaws.com/new.cetrk.com/pages/scripts/0009/9201.js'> </script>\r\n";
     }
-    
+
     $script .= "<script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -1997,7 +2006,8 @@ function add_bottom_script(){
    echo "<script type='text/javascript' src='". get_stylesheet_directory_uri() . "/js/bottom-script.js'></script>";
 }
 
-use wpsolr\core\classes\WPSOLR_Events;
+
+/*use wpsolr\core\classes\WPSOLR_Events;
 use wpsolr\core\classes\extensions\localization\OptionLocalization;
 use wpsolr\core\classes\ui\layout\checkboxes\WPSOLR_UI_Layout_Check_Box;
 use wpsolr\core\classes\engines\WPSOLR_AbstractResultsClient;
@@ -2005,11 +2015,14 @@ use wpsolr\core\classes\ui\layout\WPSOLR_UI_Layout_Abstract;
 use wpsolr\core\classes\utilities\WPSOLR_Option;
 use wpsolr\core\classes\ui\WPSOLR_UI_Facets;
 use wpsolr\core\classes\ui\WPSOLR_Query;
+*/
+
 
 add_action( 'after_setup_theme', function () {
-  add_action( WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY, 'oese_action_solarium_query', 10, 1 );
-  add_action( WPSOLR_Events::WPSOLR_FILTER_SOLR_RESULTS_APPEND_CUSTOM_HTML, 'oese_append_category_to_results_html', 10, 4);
-  //add_action( WPSOLR_Events::WPSOLR_FILTER_IS_REPLACE_BY_WPSOLR_QUERY, 'replace_search_with_WP_Solr', 10, 1 );
+    if (class_exists("wpsolr\\core\\classes\\WPSOLR_Events")) {
+        add_action( wpsolr\core\classes\WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY, 'oese_action_solarium_query', 10, 1 );
+        add_action( wpsolr\core\classes\WPSOLR_Events::WPSOLR_FILTER_SOLR_RESULTS_APPEND_CUSTOM_HTML, 'oese_append_category_to_results_html', 10, 4);
+    }
 } );
 
 function update_search_facet($html, $facets, $localization_options){
@@ -2017,18 +2030,18 @@ function update_search_facet($html, $facets, $localization_options){
   $facets[] = $page_types;
 
   if (!empty($facets)){
-    $facets_template = OptionLocalization::get_term( $localization_options, 'facets_element' );
-    $facet_title     = OptionLocalization::get_term( $localization_options, 'facets_title' );
+    $facets_template = wpsolr\core\classes\extensions\localization\OptionLocalization::get_term( $localization_options, 'facets_element' );
+    $facet_title     = wpsolr\core\classes\extensions\localization\OptionLocalization::get_term( $localization_options, 'facets_title' );
 
     foreach($facets as &$facet) {
       // Get the layout object
-      $facet_layout_id = ( ! empty( $facet['facet_layout_id'] ) ) ? $facet['facet_layout_id'] : WPSOLR_UI_Layout_Check_Box::CHILD_LAYOUT_ID;
+      $facet_layout_id = ( ! empty( $facet['facet_layout_id'] ) ) ? $facet['facet_layout_id'] : wpsolr\core\classes\ui\layout\checkboxes\WPSOLR_UI_Layout_Check_Box::CHILD_LAYOUT_ID;
 
-      $layout_object = apply_filters( WPSOLR_Events::WPSOLR_FILTER_LAYOUT_OBJECT, null, $facet_layout_id );
+      $layout_object = apply_filters( wpsolr\core\classes\WPSOLR_Events::WPSOLR_FILTER_LAYOUT_OBJECT, null, $facet_layout_id );
 
       if ( is_null( $layout_object ) ) {
         // Back to default layout
-        $layout_object = new WPSOLR_UI_Layout_Check_Box();
+        $layout_object = new wpsolr\core\classes\ui\layout\checkboxes\WPSOLR_UI_Layout_Check_Box();
       }
 
       // Unique uuid for each facet. used to inject specific css/js to each facet.
@@ -2046,26 +2059,26 @@ function update_search_facet($html, $facets, $localization_options){
         }
       }
 
-      $html .= sprintf( '<div class="wpsolr_facet_title %s_%s">%s</div>', WPSOLR_UI_Layout_Abstract::CLASS_PREFIX, $facet['id'], sprintf( $facet_title, $facet['name'] ) );
+      $html .= sprintf( '<div class="wpsolr_facet_title %s_%s">%s</div>', wpsolr\core\classes\ui\layout\WPSOLR_UI_Layout_Abstract::CLASS_PREFIX, $facet['id'], sprintf( $facet_title, $facet['name'] ) );
 
       // Use the current facet template, else use the general facets template.
       $facet_template = ! empty( $facet['facet_template'] ) ? $facet['facet_template'] : $facets_template;
 
       $facet_grid = ! empty( $facet['facet_grid'] ) ? $facet['facet_grid'] : '';
       switch ( $facet_grid ) {
-        case WPSOLR_Option::OPTION_FACET_GRID_HORIZONTAL:
+        case wpsolr\core\classes\utilities\WPSOLR_Option::OPTION_FACET_GRID_HORIZONTAL:
           $facet_grid_class = 'wpsolr_facet_column_horizontal';
           break;
 
-        case WPSOLR_Option::OPTION_FACET_GRID_1_COLUMN:
+        case wpsolr\core\classes\utilities\WPSOLR_Option::OPTION_FACET_GRID_1_COLUMN:
           $facet_grid_class = 'wpsolr_facet_columns wpsolr_facet_column_1';
           break;
 
-        case WPSOLR_Option::OPTION_FACET_GRID_2_COLUMNS:
+        case wpsolr\core\classes\utilities\WPSOLR_Option::OPTION_FACET_GRID_2_COLUMNS:
           $facet_grid_class = 'wpsolr_facet_columns wpsolr_facet_column_2';
           break;
 
-        case WPSOLR_Option::OPTION_FACET_GRID_3_COLUMNS:
+        case wpsolr\core\classes\utilities\WPSOLR_Option::OPTION_FACET_GRID_3_COLUMNS:
           $facet_grid_class = 'wpsolr_facet_columns wpsolr_facet_column_3';
           break;
 
@@ -2084,12 +2097,12 @@ function update_search_facet($html, $facets, $localization_options){
     }
 
     $is_facet_selected           = true;
-    $remove_item_localization    = OptionLocalization::get_term( $localization_options, 'facets_element_all_results' );
-    $is_generate_facet_permalink = apply_filters( WPSOLR_Events::WPSOLR_FILTER_IS_GENERATE_FACET_PERMALINK, false );
+    $remove_item_localization    = wpsolr\core\classes\extensions\localization\OptionLocalization::get_term( $localization_options, 'facets_element_all_results' );
+    $is_generate_facet_permalink = apply_filters( wpsolr\core\classes\WPSOLR_Events::WPSOLR_FILTER_IS_GENERATE_FACET_PERMALINK, false );
     if ( $is_generate_facet_permalink ) {
       // Link to the current page or to the permalinks home ?
 
-      $redirect_facets_home = apply_filters( WPSOLR_Events::WPSOLR_FILTER_FACET_PERMALINK_HOME, '' );
+      $redirect_facets_home = apply_filters( wpsolr\core\classes\WPSOLR_Events::WPSOLR_FILTER_FACET_PERMALINK_HOME, '' );
       $html_remove_item     = sprintf( '<a class="wpsolr_permalink" href="%s" %s title="%s">%s</a>',
         ! empty( $redirect_facets_home ) ? ( '/' . $redirect_facets_home ) : './', '',
         $remove_item_localization, $remove_item_localization );
@@ -2103,9 +2116,9 @@ function update_search_facet($html, $facets, $localization_options){
               <input type='hidden' name='sel_fac_field' id='sel_fac_field' >
               <div class='wdm_ul' id='wpsolr_section_facets'>
               <div class='%s'><div class='select_opt' id='wpsolr_remove_facets' data-wpsolr-facet-data='%s'>%s</div></div>",
-                  OptionLocalization::get_term( $localization_options, 'facets_header' ),
+                  wpsolr\core\classes\extensions\localization\OptionLocalization::get_term( $localization_options, 'facets_header' ),
                   'wpsolr_facet_checkbox' . ( $is_facet_selected ? ' checked' : '' ),
-                  wp_json_encode( [ 'type' => WPSOLR_Option::OPTION_FACET_FACETS_TYPE_FIELD ] ),
+                  wp_json_encode( [ 'type' => wpsolr\core\classes\utilities\WPSOLR_Option::OPTION_FACET_FACETS_TYPE_FIELD ] ),
                   $html_remove_item
           )
           . $html;
@@ -2168,7 +2181,7 @@ function update_search_query( $wpsolr_query ){
 }
 
 // Add Page Template to Solr indexing
-function add_page_template_to_document_for_update( array $document_for_update, $solr_indexing_options, $post, $attachment_body, WPSOLR_AbstractIndexClient $search_engine_client ) {
+function add_page_template_to_document_for_update( array $document_for_update, $solr_indexing_options, $post, $attachment_body, wpsolr\core\classes\engines\WPSOLR_AbstractResultsClient $search_engine_client ) {
   $value = get_post_meta($post, '_wp_page_template');
 
   $solr_dynamic_type = WpSolrSchema::_SOLR_DYNAMIC_TYPE_STRING; // Depends on the type selected on your field on screen 2.2
@@ -2179,10 +2192,10 @@ function add_page_template_to_document_for_update( array $document_for_update, $
 
 function oese_action_solarium_query( $parameters ) {
   /* @var WPSOLR_Query $wpsolr_query */
-  $wpsolr_query = $parameters[ WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY__PARAM_WPSOLR_QUERY ];
+  $wpsolr_query = $parameters[ wpsolr\core\classes\WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY__PARAM_WPSOLR_QUERY ];
 
   /* @var WPSOLR_AbstractSearchClient $search_engine_client */
-  $search_engine_client = $parameters[ WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY__PARAM_SOLARIUM_CLIENT ];
+  $search_engine_client = $parameters[ wpsolr\core\classes\WPSOLR_Events::WPSOLR_ACTION_SOLARIUM_QUERY__PARAM_SOLARIUM_CLIENT ];
 
   // post_type url parameter
   if ( ! empty( $wpsolr_query->query['post_type'] ) ) {
@@ -2191,91 +2204,104 @@ function oese_action_solarium_query( $parameters ) {
 
 }
 
-function oese_add_category_to_results( WPSOLR_Query $wpsolr_query, WPSOLR_AbstractResultsClient $results ) {
+function oese_add_category_to_results( wpsolr\core\classes\ui\WPSOLR_Query $wpsolr_query, wpsolr\core\classes\engines\WPSOLR_AbstractResultsClient $results ) {
   echo "<div style='display:none;'>";
   echo "</div>";
 }
 
 // Append New Search Result Item Layout
-function oese_append_category_to_results_html( $default_html, $user_id, $document, WPSOLR_Query $wpsolr_query ) {
+function oese_append_category_to_results_html( $default_html, $user_id, $document, wpsolr\core\classes\ui\WPSOLR_Query $wpsolr_query ) {
+    $col_left = "";
+    $col_right = "col-md-12";
 
-  $col_left = "";
-  $col_right = "col-md-12";
+    $result = '<div class="oese-search-result">';
+    $result .= '<div class="oese-search-result-top row">';
 
-  $result = '<div class="oese-search-result">';
-  $result .= '<div class="oese-search-result-top row">';
+    // Display page/post thumbnail
+    $image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $document->id ) );
+    if (!empty($image_url)){
+        $col_left = 'col-md-3';
+        $col_right = 'col-md-9';
 
-  // Display page/post thumbnail
-  $image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $document->id ) );
-  if (!empty($image_url)){
-    $col_left = 'col-md-3';
-    $col_right = 'col-md-9';
+        $result .= '<div class="oese-search-result-left '.$col_left.'">';
+        $result .= "<img class='wdm_result_list_thumb' src='".$image_url[0]."' />";
+        $result .= '</div>';
+    }
 
-    $result .= '<div class="oese-search-result-left '.$col_left.'">';
-    $result .= "<img class='wdm_result_list_thumb' src='".$image_url[0]."' />";
+    // Display title and display date
+    $result .= '<div class="oese-search-result-right '.$col_right.'">';
+    $url = get_permalink( $document->id );
+    $result .= '<h4 class="p_title"><a href="'.$url.'">'.$document->title.'</a></h4>';
+    $date = date( 'm/d/Y', strtotime( $document->displaymodified ) );;
+    $result .= '<h5>'.$date.'</h5>';
+
+    // Display Categories
+    $result .= '<div class="oese-solr-category-block">';
+
+    $categories = $document->categories_str;
+
+    if (class_exists('WPSEO_Primary_Term')){
+        // Show Primary category by Yoast if it is enabled & set
+        $wpseo_primary_term = new WPSEO_Primary_Term( "category", $document->id );
+        $primary_term = get_term($wpseo_primary_term->get_primary_term());
+
+        if (!is_wp_error($primary_term)){
+            $categories = $primary_term->name;
+        }
+    }
+
+    if (!empty($categories)){
+        $result .= '<div class="oese-solr-categories">';
+
+        if (is_array($categories))
+            $cat = implode(", ", $categories);
+        else
+            $cat = $categories;
+
+        $result .= $cat;
+
+        $result .= '</div>';
+    }
     $result .= '</div>';
-  }
+    $result .= '</div>';
+    $result .= '</div>';
 
-  // Display title and display date
-  $result .= '<div class="oese-search-result-right '.$col_right.'">';
-  $url = get_permalink( $document->id );
-  $result .= '<h4 class="p_title"><a href="'.$url.'">'.$document->title.'</a></h4>';
-  $date = date( 'm/d/Y', strtotime( $document->displaydate ) );;
-  $result .= '<h5>'.$date.'</h5>';
+    // Display Post Content/Excerpt
+    $result .= '<div class="oese-search-result-item-content">';
+    $post_to_show = get_post( $document->id );
+    if ( isset( $post_to_show ) ) {
+        // Excerpt first, or content.
+        $content = ( ! empty( $post_to_show->post_excerpt ) ) ? $post_to_show->post_excerpt : $post_to_show->post_content;
 
-  // Display Categories
-  $result .= '<div class="oese-solr-category-block">';
+        global $post;
+        $post    = $post_to_show;
+        $content = do_shortcode( $content );
 
-  $categories = $document->categories_str;
+        $content = preg_replace( "~(?:\[/?)[^\]]+/?\]~s", '', $content );  # strip shortcodes, keep shortcode content;
 
-  if (!empty($categories)){
-    $result .= '<div class="oese-solr-categories">';
+        // Strip HTML and PHP tags
+        $content = strip_tags( $content );
 
-    $cat = implode(", ", $categories);
-    $result .= $cat;
+        $content = substr( $content, 0, 125 );
+
+        // Format content text a little bit
+        $content = str_replace( '&nbsp;', '', $content );
+        $content = str_replace( '  ', ' ', $content );
+        $content = ucfirst( trim( $content ) );
+        $content .= '...';
+        $result .= $content;
+    }
+    $result .= '</div>';
 
     $result .= '</div>';
-  }
-  $result .= '</div>';
-  $result .= '</div>';
-  $result .= '</div>';
 
-  // Display Post Content/Excerpt
-  $result .= '<div class="oese-search-result-item-content">';
-  $post_to_show = get_post( $document->id );
-  if ( isset( $post_to_show ) ) {
-    // Excerpt first, or content.
-    $content = ( ! empty( $post_to_show->post_excerpt ) ) ? $post_to_show->post_excerpt : $post_to_show->post_content;
-
-    global $post;
-    $post    = $post_to_show;
-    $content = do_shortcode( $content );
-
-    $content = preg_replace( "~(?:\[/?)[^\]]+/?\]~s", '', $content );  # strip shortcodes, keep shortcode content;
-
-    // Strip HTML and PHP tags
-    $content = strip_tags( $content );
-
-    $content = substr( $content, 0, 125 );
-
-    // Format content text a little bit
-    $content = str_replace( '&nbsp;', '', $content );
-    $content = str_replace( '  ', ' ', $content );
-    $content = ucfirst( trim( $content ) );
-    $content .= '...';
-    $result .= $content;
-  }
-  $result .= '</div>';
-
-  $result .= '</div>';
-
-  return $result;
+    return $result;
 }
 
 // Replace WP Search with WP Solr
 function replace_search_with_WP_Solr($result){
   $result = is_solr_installed();
-  
+
   return $result;
 }
 
@@ -2487,4 +2513,87 @@ if (! function_exists('is_solr_installed')){
         }
         return $is_active;
     }
+}
+
+// add filter for other file types to to Media Library
+function oese_modify_post_mime_types( $post_mime_types ) {
+    // select the mime type (e.g. 'application/pdf') then define an array with the label values
+    $post_mime_types['application/pdf'] = array( __( 'PDFs' ), __( 'Manage PDFs' ), _n_noop( 'PDF <span class="count">(%s)</span>', 'PDFs <span class="count">(%s)</span>' ) );
+    $post_mime_types['application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msword'] = array('Word', 'Manage Word Docs', _n_noop('Word Doc <span class="count">(%s)</span>', 'Word Docs <span class="count">(%s)</span>'));
+    $post_mime_types['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/msexcel,application/excel,application/vnd.ms-excel,application/x-excel,application/x-msexcel'] = array('Excel', 'Manage Excel Files', _n_noop('Excel File <span class="count">(%s)</span>', 'Excel Files <span class="count">(%s)</span>'));
+    return $post_mime_types;
+}
+// Add Filter Hook
+add_filter( 'post_mime_types', 'oese_modify_post_mime_types' );
+
+function embedded_phpinfo()
+{
+    ob_start();
+    phpinfo();
+    $phpinfo = ob_get_contents();
+    ob_end_clean();
+    $phpinfo = preg_replace('%^.*<body>(.*)</body>.*$%ms', '$1', $phpinfo);
+    echo "
+        <style type='text/css'>
+            #phpinfo {}
+            #phpinfo pre {margin: 0; font-family: monospace;}
+            #phpinfo a:link {color: #009; text-decoration: none; background-color: #fff;}
+            #phpinfo a:hover {text-decoration: underline;}
+            #phpinfo table {border-collapse: collapse; border: 0; width: 934px; box-shadow: 1px 2px 3px #ccc;}
+            #phpinfo .center {text-align: center;}
+            #phpinfo .center table {margin: 1em auto; text-align: left;}
+            #phpinfo .center th {text-align: center !important;}
+            #phpinfo td, th {border: 1px solid #666; font-size: 75%; vertical-align: baseline; padding: 4px 5px;}
+            #phpinfo h1 {font-size: 150%;}
+            #phpinfo h2 {font-size: 125%;}
+            #phpinfo .p {text-align: left;}
+            #phpinfo .e {background-color: #ccf; width: 300px; font-weight: bold;}
+            #phpinfo .h {background-color: #99c; font-weight: bold;}
+            #phpinfo .v {background-color: #ddd; max-width: 300px; overflow-x: auto; word-wrap: break-word;}
+            #phpinfo .v i {color: #999;}
+            #phpinfo img {float: right; border: 0;}
+            #phpinfo hr {width: 934px; background-color: #ccc; border: 0; height: 1px;}
+        </style>
+        <div id='phpinfo'>
+            $phpinfo
+        </div>
+        ";
+}
+
+if ( ! function_exists( 'oese_display_subpages' ) ) {
+	/**
+	 * Displays side navigation.
+	 *
+	 * @param  int $post_id The post ID.
+	 * @return string
+	 */
+	function oese_display_subpages( $post_id ) {
+
+        $html = "";
+        $parent = false;
+        $children = "";
+
+        $args = array(
+            'post_parent' => $post_id,
+            'post_type'   => 'page',
+            'numberposts' => -1,
+            'post_status' => 'publish'
+        );
+        $post_children = get_children( $args );
+
+        if ($post_children) {
+
+            $html = '<ul class="oese-side-nav oese-side-nav-widget">';
+
+            $children = wp_list_pages( 'title_li=&child_of=' . $post_id . '&depth=1&echo=0' );
+
+            if ( $children ) {
+                $html .= $children;
+            }
+
+            $html .= '</ul>';
+        }
+
+        return $html;
+	}
 }
