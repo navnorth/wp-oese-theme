@@ -30,7 +30,7 @@ if ($archived_date){
 
 ?>
 
-        <div id="content" class="row custom-common-padding mr-0 ml-0">
+        <div id="content" class="row custom-common-padding mr-0 ml-0 default-template template-mobile">
 
             <div class="<?php echo $col_class; ?>">
     
