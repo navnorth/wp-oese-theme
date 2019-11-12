@@ -155,7 +155,7 @@ jQuery( document ).ready(function() {
     if(jQuery(window).width()<800){
         var temp = jQuery('.wdm_results .res_info');
         jQuery('.cls_results').before(temp);
-        temp.remove();
+        jQuery('.wdm_results .res_info').remove();
     }
     
     /** move cursor to top on pagination click **/
