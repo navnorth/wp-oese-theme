@@ -152,6 +152,12 @@ jQuery( document ).ready(function() {
         
     }
     
+    if(jQuery(window).width()<800){
+        var temp = jQuery('.wdm_results .res_info');
+        jQuery('.cls_results').before(temp);
+        temp.remove();
+    }
+    
     /** move cursor to top on pagination click **/
     jQuery(document).on("click", '.wdm_results .paginate_div li a.paginate', function(e){
         e.preventDefault();
