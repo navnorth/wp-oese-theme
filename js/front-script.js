@@ -156,6 +156,14 @@ jQuery( document ).ready(function() {
         var temp = jQuery('.wdm_results .res_info');
         jQuery('.cls_results').before(temp);
         jQuery('.wdm_results .res_info').remove();
+        
+        jQuery('div.wpsolr_facet_title').attr('data-toggle','collapse');
+        jQuer('.wpsolr_facet_checkbox.wpsolr_facet_categories').addClass("collapse");
+        jQuery('div.wpsolr_facet_title.wpsolr_facet_categories').attr('data-target','.wpsolr_facet_checkbox.wpsolr_facet_categories');
+        jQuery('div.wpsolr_facet_title.wpsolr_facet__wp_page_template_str').attr('data-target','.wpsolr_facet_checkbox.wpsolr_facet__wp_page_template_str');
+        jQuery('.wpsolr_facet_checkbox.wpsolr_facet_categories, .wpsolr_facet_checkbox.wpsolr_facet__wp_page_template_str').collapse({
+            toggle:false
+        });
     }
     
     /** move cursor to top on pagination click **/
