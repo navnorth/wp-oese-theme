@@ -13,6 +13,8 @@
  * @since 1.0
  */
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if theme's index.php file is accessed directly
+
 get_header(); ?>
 
 	<div id="primary" class="site-content">

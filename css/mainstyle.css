@@ -2083,14 +2083,19 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
 }
 
 @media (max-width: 800px){
-    .slideshow_container, .slideshow_container .slideshow_content { height: 360px !important}
-    .main-menu { display:none; }
-    .navi_icn { display:block !important; }
-		.office-template, .audience-template, .awards-template {
-        flex-direction: column-reverse;
-    }
+	.slideshow_container, .slideshow_container .slideshow_content { height: 360px !important}
+	.main-menu { display:none; }
+	.navi_icn { display:block !important; }
+	.office-template, .audience-template, .awards-template { flex-direction: column-reverse; }
+	.cls_search form.search-frm { margin-left:0; }
+	.cls_search .ui-widget #search_que { width:80% !important; }
+	.cls_results .wdm_resultContainer .wdm_list { width:100% !important; float:none !important; margin-top:0; }
+	.wdm_results { width:100% !important; border-left: none; float: none !important; padding-left: 0; }
+	.wpsolr_facet_checkbox { display:none; }
+	.wpsolr_facet_type { display:none; }
+	.results-by-facets > div { padding:0; }
 }
-
+	
 @media (max-width: 768px){
     .tlkt_stp_vdo_cntnr .pblctn_vdo_bg, .tlkt_stp_vdo_cntnr .pblctn_vdo_bg:first-child {width: 52% !important; float: none; margin: 0 0 15px}
     .soclize { margin-top: 0}
