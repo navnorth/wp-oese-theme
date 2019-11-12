@@ -2101,6 +2101,7 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
 	div.wpsolr_facet_title:after { font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f067"; position:absolute; right:5%; }
 	ul.wpsolr_facet_scroll li { line-height:1.25em; }
 	ul.wpsolr_facet_scroll li ul { margin-left:15px; }
+	.oese-search-result-left { display:none; }
 }
 	
 @media (max-width: 768px){
