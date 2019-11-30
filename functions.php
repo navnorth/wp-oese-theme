@@ -703,6 +703,12 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
   **/
  require_once( get_stylesheet_directory() . '/classes/oii-walker.php' );
 
+  /**
+  * Page Edit Modal Parent Attribute
+  **/
+ require_once( get_stylesheet_directory() . '/modules/modal-parent/modal_parent.php' );
+
+
  function theme_back_enqueue_script()
 {
     wp_enqueue_script( 'jquery-ui-core' );
