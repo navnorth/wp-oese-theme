@@ -137,10 +137,10 @@ jQuery( document ).ready(function() {
         $('a').css('-webkit-tap-highlight-color', tempCss);
     }
     
-    if (jQuery('.tab-close-button').length){
+    if (jQuery('.tab-close-button').length>0){
         jQuery('.tab-close-button').removeAttr('target').removeClass('external_link');
         
-        jQuery('.tab-close-button').on("click touchend", function(){
+        jQuery(body).on("click touchstart", '.tab-close-button', function(){
             alert('test');
         });
     }
