@@ -143,10 +143,8 @@ jQuery( document ).ready(function() {
         jQuery('.tab-close-button').removeAttr('target').removeClass('external_link');
         
         jQuery(document).on(touchEvent, '.tab-close-button', function(e){
-            console.log(e);
             e.preventDefault();
-            jQuery(this).text("Open");
-            alert('test');
+            close_tab(this);
         });
     }
     
