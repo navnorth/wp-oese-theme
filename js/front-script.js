@@ -140,11 +140,10 @@ jQuery( document ).ready(function() {
     }
     
     if (jQuery('.tab-close-button').length>0){
-        document.getElementById('sidebarLinkBtn').addEventListener(touchEvent, closeTab(this));
-        
         jQuery('.tab-close-button').removeAttr('target').removeClass('external_link');
         
         jQuery(body).on(touchEvent, '.tab-close-button', function(e){
+            console.log(e);
             e.preventDefault();
             jQuery(this).text("Open");
             alert('test');
