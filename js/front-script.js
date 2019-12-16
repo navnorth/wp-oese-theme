@@ -140,16 +140,9 @@ jQuery( document ).ready(function() {
     if (jQuery('.tab-close-button').length){
         jQuery('.tab-close-button').removeAttr('target').removeClass('external_link');
         
-        jQuery('.tab-close-button').on("touchstart click", function(e){
-            e.stopPropagation();
-            e.preventDefault();
-            close_tab(this);
+        jQuery('.tab-close-button').on("click touchend", function(){
+            alert('test');
         });
-        
-        jQuery('.tab-close-button').on("touchend", function (){
-            jQuery(this).trigger("click");
-        });
-        
     }
     
     if(jQuery(window).width()<800){
