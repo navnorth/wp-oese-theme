@@ -1,3 +1,5 @@
+let touchEvent = 'ontouchstart' in window ? 'touchstart': 'click';
+
 jQuery( document ).ready(function() {
     jQuery('#page_template').on('change', function() {
 	  //alert(this.value);
@@ -138,9 +140,11 @@ jQuery( document ).ready(function() {
     }
     
     if (jQuery('.tab-close-button').length>0){
+        document.getElementById('sidebarLinkBtn').addEventListener(touchEvent, closeTab(this));
+        
         jQuery('.tab-close-button').removeAttr('target').removeClass('external_link');
         
-        jQuery(body).on("click touchstart", '.tab-close-button', function(e){
+        jQuery(body).on(touchEvent, '.tab-close-button', function(e){
             e.preventDefault();
             jQuery(this).text("Open");
             alert('test');
