@@ -1,13 +1,5 @@
 let touchEvent = 'ontouchstart' in window ? 'touchstart': 'click';
 
-function close_tab(){
-    alert('close_button');
-    /*curtab = jQuery(close_button).closest('.tab-pane.active');
-    curtabid = curtab.attr('id');
-    curtab.removeClass('active');
-    jQuery('#mobileSidebarTab a[href="#' + curtabid +'"]').removeClass('active');*/
-}
-
 jQuery( document ).ready(function() {
     jQuery('#page_template').on('change', function() {
 	  //alert(this.value);
@@ -203,6 +195,13 @@ function displayNext10Results() {
         var next10 = '<li><a class="paginate show next" href="javascript:void(0)" id="' + nextPage + '">Next 10 Results</a></li>';
         jQuery('.paginate_div #pagination-flickr').append(next10);
     }
+}
+
+function close_tab(close_button){
+    curtab = jQuery(close_button).closest('.tab-pane.active');
+    curtabid = curtab.attr('id');
+    curtab.removeClass('active');
+    jQuery('#mobileSidebarTab a[href="#' + curtabid +'"]').removeClass('active');
 }
 
 function displayPrev10Results() {
