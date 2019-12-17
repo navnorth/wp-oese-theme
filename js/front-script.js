@@ -140,11 +140,8 @@ jQuery( document ).ready(function() {
     
     if (jQuery('.tab-close-button').length>0){
         jQuery('.tab-close-button').removeAttr('target').removeClass('external_link');
+        jQuery('.tab-close-button').css('cursor','pointer');
     }
-    jQuery('.tab-close-button').css('cursor','pointer');
-    jQuery(document).on(touchEvent, '.tab-close-button', function(){
-        close_tab(this);
-    });
     
     if(jQuery(window).width()<800){
         var temp = jQuery('.wdm_results .res_info');
@@ -195,13 +192,6 @@ function displayNext10Results() {
         var next10 = '<li><a class="paginate show next" href="javascript:void(0)" id="' + nextPage + '">Next 10 Results</a></li>';
         jQuery('.paginate_div #pagination-flickr').append(next10);
     }
-}
-
-function close_tab(close_button){
-    curtab = jQuery(close_button).closest('.tab-pane.active');
-    curtabid = curtab.attr('id');
-    curtab.removeClass('active');
-    jQuery('#mobileSidebarTab a[href="#' + curtabid +'"]').removeClass('active');
 }
 
 function displayPrev10Results() {
