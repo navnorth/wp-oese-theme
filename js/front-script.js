@@ -1,5 +1,13 @@
 let touchEvent = 'ontouchstart' in window ? 'touchstart': 'click';
 
+function close_tab(){
+    alert('close_button');
+    /*curtab = jQuery(close_button).closest('.tab-pane.active');
+    curtabid = curtab.attr('id');
+    curtab.removeClass('active');
+    jQuery('#mobileSidebarTab a[href="#' + curtabid +'"]').removeClass('active');*/
+}
+
 jQuery( document ).ready(function() {
     jQuery('#page_template').on('change', function() {
 	  //alert(this.value);
@@ -182,14 +190,6 @@ jQuery( document ).ready(function() {
         window.location = url;
     });
 });
-
-function close_tab(close_button){
-    alert(close_button);
-    curtab = jQuery(close_button).closest('.tab-pane.active');
-    curtabid = curtab.attr('id');
-    curtab.removeClass('active');
-    jQuery('#mobileSidebarTab a[href="#' + curtabid +'"]').removeClass('active');
-}
 
 function displayNext10Results() {
     /** Insert Next 10 results button on the fly **/
