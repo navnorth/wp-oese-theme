@@ -184,6 +184,7 @@ jQuery( document ).ready(function() {
 });
 
 function close_tab(close_button){
+    alert(close_button);
     curtab = jQuery(close_button).closest('.tab-pane.active');
     curtabid = curtab.attr('id');
     curtab.removeClass('active');
