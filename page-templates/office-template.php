@@ -109,7 +109,7 @@ if ($detect->isMobile())
                             <div class="sidebar-menu">
                             <?php echo getSidebarLinks(false); ?>
                             </div>
-                            <div class="col-sm-12 tab-close-row"><button class="tab-close-button" onclick="alert(jQuery);close_tab(this);" data-role="button" role="button"><i class="fas fa-times"></i> CLOSE</button></div>
+                            <div class="col-sm-12 tab-close-row"><button class="tab-close-button" onclick="close_tab(jQuery(this));" data-role="button" role="button"><i class="fas fa-times"></i> CLOSE</button></div>
                         </div>
                         <?php endif; ?>
                     </div>
