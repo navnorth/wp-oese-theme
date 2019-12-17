@@ -40,15 +40,14 @@ if ($detect->isMobile())
     $extra_class = " template-mobile";
 ?>
 <script type="text/javascript">
-    function close_function(){
-        alert('close_button');
-        /*curtab = jQuery(close_button).closest('.tab-pane.active');
+    function close_function(close_button){
+        curtab = jQuery(close_button).closest('.tab-pane.active');
         curtabid = curtab.attr('id');
         curtab.removeClass('active');
-        jQuery('#mobileSidebarTab a[href="#' + curtabid +'"]').removeClass('active');*/
+        jQuery('#mobileSidebarTab a[href="#' + curtabid +'"]').removeClass('active');
     }
 </script>
-        <!--Office Template Top Section START-->
+    <!--Office Template Top Section START-->
         <div id="content" class="row custom-common-padding office-template<?php echo $extra_class; ?>">
             <div class="<?php echo $leftCol; ?>">
                 <div class="left-description-section">
@@ -117,7 +116,7 @@ if ($detect->isMobile())
                             <div class="sidebar-menu">
                             <?php echo getSidebarLinks(false); ?>
                             </div>
-                            <div class="col-sm-12 tab-close-row"><button class="tab-close-button" onclick="close_function();" data-role="button" role="button"><i class="fas fa-times"></i> CLOSE</button></div>
+                            <div class="col-sm-12 tab-close-row"><button class="tab-close-button" onclick="close_function(this);" data-role="button" role="button"><i class="fas fa-times"></i> CLOSE</button></div>
                         </div>
                         <?php endif; ?>
                     </div>
