@@ -143,7 +143,6 @@ jQuery( document ).ready(function() {
     }
     jQuery('.tab-close-button').css('cursor','pointer');
     jQuery(document).on(touchEvent, '.tab-close-button', function(){
-        alert('tab close button');
         close_tab(this);
     });
     
