@@ -1,8 +1,23 @@
-@font-face {
+/**
+Prod Site font face declaration only
+Uncomment for production use
+**/
+/*@font-face {
   font-family: 'Glyphicons Halflings';
   src: url('//oese.ed.gov/wp-content/themes/wp-oese-theme-v1.6.3/fonts/glyphicons-halflings-regular.eot');
   src: url('//oese.ed.gov/wp-content/themes/wp-oese-theme-v1.6.3/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('//oese.ed.gov/wp-content/themes/wp-oese-theme-v1.6.3/fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('//oese.ed.gov/wp-content/themes/wp-oese-theme-v1.6.3/fonts/glyphicons-halflings-regular.woff') format('woff'), url('//oese.ed.gov/wp-content/themes/wp-oese-theme-v1.6.3/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('//oese.ed.gov/wp-content/themes/wp-oese-theme-v1.6.3/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}*/
+/** End of Prod Site font face declaration only **/
+/**
+ Test Site font face declaration only
+ Comment declaration if used in production
+**/
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('/wp-content/themes/wp-oese-theme/fonts/glyphicons-halflings-regular.eot');
+  src: url('/wp-content/themes/wp-oese-theme/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/wp-content/themes/wp-oese-theme/fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('/wp-content/themes/wp-oese-theme/fonts/glyphicons-halflings-regular.woff') format('woff'), url('/wp-content/themes/wp-oese-theme/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('/wp-content/themes/wp-oese-theme/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
+/** End of Test Site font face declaration only **/
 .glyphicon {
   position: relative;
   top: 1px;
