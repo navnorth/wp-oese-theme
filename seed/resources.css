@@ -177,7 +177,8 @@ a.text-purple {
     overflow:hidden;
 }
 #resourceFilters  p > label { font-weight:bold; font-size:1.15em; }
-#clearAllBtn { background:#294179 !important; }
+#clearAllBtn { background:#00539f; }
+#clearAllBtn { background:#027bea; }
 #detailModal .panel-heading {
     padding: 10px 15px !important;
     border-bottom: 1px solid #ddd;
