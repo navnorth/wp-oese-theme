@@ -168,7 +168,7 @@ a.text-purple {
     background: url(assets/pls_mns_white_img.png) 185px -33px no-repeat;
     padding: 6px 0;
     text-overflow: ellipsis; overflow: hidden; white-space: nowrap;
-    color:#ffffff;
+    color:#ffffff !important;
 }
 #resourceFilters .panel-title>a.collapsed { background: url(assets/pls_mns_white_img.png) 185px 3px no-repeat; padding-right:20px; }
 #resourceFilters .panel-heading {
