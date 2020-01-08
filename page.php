@@ -71,7 +71,7 @@ if ($detect->isMobile()) {
         border-left:1px solid #1f5c99;
     }
     ::-webkit-scrollbar-button:single-button{
-        background-color:#1f5c99;
+        background-color:#f2f2f2;
         display:block;
         border-style:solid;
         height:13px;
