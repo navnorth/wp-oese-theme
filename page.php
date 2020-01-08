@@ -53,41 +53,44 @@ if ($detect->isMobile()) {
     });
 </script>
 <style>
-    ::-webkit-scrollbar {
+    #res_facets ul ::-webkit-scrollbar {
         -webkit-appearance: none;
     }
-    ::-webkit-scrollbar:vertical {
+    #res_facets ul ::-webkit-scrollbar:vertical {
         width:16px;
     }
-    ::-webkit-scrollbar:horizontal {
+    #res_facets ul ::-webkit-scrollbar:horizontal {
         height:16px;
     }
-    ::-webkit-scrollbar-thumb {
+    #res_facets ul ::-webkit-scrollbar-thumb {
         background-color: #1f5c99;
+        border-top: 1px solid #f2f2f2;
+        border-bottom: 1px solid #f2f2f2;
     }
-    ::-webkit-scrollbar-track {
+    #res_facets ul ::-webkit-scrollbar-track {
         background-color:#f2f2f2;
         border-left:1px solid #1f5c99;
+        box-shadow: inset 0 0 1px #1f5c99;
     }
-    ::-webkit-scrollbar-button:single-button{
+    #res_facets ul ::-webkit-scrollbar-button:single-button{
         background-color:#f2f2f2;
         display:block;
         border-style:solid;
         height:13px;
         width:15px;
     }
-    ::-webkit-scrollbar-button:single-button:vertical:decrement {
+    #res_facets ul ::-webkit-scrollbar-button:single-button:vertical:decrement {
         border-width: 0 8px 8px 8px;
         border-color: transparent transparent #1f5c99 transparent;
     }
-    ::-webkit-scrollbar-button:single-button:vertical:decrement:hover {
+    #res_facets ul ::-webkit-scrollbar-button:single-button:vertical:decrement:hover {
         border-color: transparent transparent #555555 transparent;
     }
-    ::-webkit-scrollbar-button:single-button:vertical:increment {
+    #res_facets ul ::-webkit-scrollbar-button:single-button:vertical:increment {
         border-width: 8px 8px 0 8px;
         border-color: #1f5c99 transparent transparent transparent;
     }
-    ::-webkit-scrollbar-button:single-button:vertical:increment:hover {
+    #res_facets ul ::-webkit-scrollbar-button:single-button:vertical:increment:hover {
         border-color: #555555 transparent transparent transparent;
     }
 </style>
