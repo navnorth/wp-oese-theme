@@ -53,7 +53,7 @@ if ($detect->isMobile()) {
     });
 </script>
 <style>
-    ::-webkit-scrollbar {
+    /*::-webkit-scrollbar {
         -webkit-appearance: none;
     }
     ::-webkit-scrollbar:vertical {
@@ -68,7 +68,7 @@ if ($detect->isMobile()) {
     }
     ::-webkit-scrollbar-track {
         background-color:#f2f2f2;
-    }
+    }*/
 </style>
 <?php }
 }
