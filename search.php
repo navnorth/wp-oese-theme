@@ -14,7 +14,6 @@ if ($detect->isMobile()) {
 ?>
 <script type="text/javascript">
     jQuery(document).ready(function() {
-        alert(jQuery(document));
         if(jQuery(window).width()<800){
             var temp = jQuery('.wdm_results .res_info');
             jQuery('.cls_results').before(temp);

@@ -10,6 +10,7 @@
  * @package wp_oese_theme
  * @since 1.5.0
  */
+include_once( get_stylesheet_directory()."/classes/oese_mobile_detect.php" );
 
 get_header();
 $col_class = "col-md-12";
@@ -28,13 +29,34 @@ if ($archived_date){
     $is_archived = true;
     $head_class = " archived-header";
 }
-
-if (is_search()){
-    $search_class = " search-page-template";
+if (is_solr_installed()){
+$detect = new oese_mobile_detect();
+if ($detect->isMobile()) {
+?>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        if(jQuery(window).width()<800){
+            if (jQuery('.wdm_results').length) {
+                var temp = jQuery('.wdm_results .res_info');
+                jQuery('.cls_results').before(temp);
+                jQuery('.wdm_results .res_info').remove();
+                
+                jQuery('div.wpsolr_facet_title').attr('data-toggle','collapse');
+                jQuery('.wpsolr_facet_checkbox.wpsolr_facet_categories, .wpsolr_facet_checkbox.wpsolr_facet__wp_page_template_str').addClass("collapse");
+                jQuery('div.wpsolr_facet_title.wpsolr_facet_categories').attr('data-target','.wpsolr_facet_checkbox.wpsolr_facet_categories');
+                jQuery('div.wpsolr_facet_title.wpsolr_facet__wp_page_template_str').attr('data-target','.wpsolr_facet_checkbox.wpsolr_facet__wp_page_template_str');
+                jQuery('.wpsolr_facet_checkbox.wpsolr_facet_categories, .wpsolr_facet_checkbox.wpsolr_facet__wp_page_template_str').collapse({
+                    toggle:false
+                });
+            }
+        }
+    });
+</script>
+<?php }
 }
 ?>
 
-        <div id="content" class="row custom-common-padding mr-0 ml-0 default-template template-mobile<?php echo $search_class; ?>">
+        <div id="content" class="row custom-common-padding mr-0 ml-0 default-template template-mobile">
 
             <div class="<?php echo $col_class; ?>">
     
