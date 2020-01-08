@@ -5,10 +5,31 @@
  * @package wp_oese_theme
  * @since 1.5.0
  */
+include_once( get_stylesheet_directory()."/classes/oese_mobile_detect.php" );
 
 get_header();
 if (is_solr_installed()){
+$detect = new oese_mobile_detect();
+if ($detect->isMobile()) {
 ?>
+<script type="text/javascript">
+    jQuery( document ).ready(function() {
+        if(jQuery(window).width()<800){
+            var temp = jQuery('.wdm_results .res_info');
+            jQuery('.cls_results').before(temp);
+            jQuery('.wdm_results .res_info').remove();
+            
+            jQuery('div.wpsolr_facet_title').attr('data-toggle','collapse');
+            jQuery('.wpsolr_facet_checkbox.wpsolr_facet_categories, .wpsolr_facet_checkbox.wpsolr_facet__wp_page_template_str').addClass("collapse");
+            jQuery('div.wpsolr_facet_title.wpsolr_facet_categories').attr('data-target','.wpsolr_facet_checkbox.wpsolr_facet_categories');
+            jQuery('div.wpsolr_facet_title.wpsolr_facet__wp_page_template_str').attr('data-target','.wpsolr_facet_checkbox.wpsolr_facet__wp_page_template_str');
+            jQuery('.wpsolr_facet_checkbox.wpsolr_facet_categories, .wpsolr_facet_checkbox.wpsolr_facet__wp_page_template_str').collapse({
+                toggle:false
+            });
+        }
+    });
+</script>
+<?php } ?>
 <div id="content" class="row site-content">
 	<div class="col-md-12">
 		<header class="page-header">
