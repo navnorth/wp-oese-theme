@@ -53,7 +53,7 @@ if ($detect->isMobile()) {
     });
 </script>
 <style>
-    /*::-webkit-scrollbar {
+    ::-webkit-scrollbar {
         -webkit-appearance: none;
     }
     ::-webkit-scrollbar:vertical {
@@ -68,7 +68,29 @@ if ($detect->isMobile()) {
     }
     ::-webkit-scrollbar-track {
         background-color:#f2f2f2;
-    }*/
+        border-left:1px solid #1f5c99;
+    }
+    ::-webkit-scrollbar-button:single-button{
+        background-color:#1f5c99;
+        display:block;
+        border-style:solid;
+        height:13px;
+        width:15px;
+    }
+    ::-webkit-scrollbar-button:single-button:vertical:decrement {
+        border-width: 0 8px 8px 8px;
+        border-color: transparent transparent #1f5c99 transparent;
+    }
+    ::-webkit-scrollbar-button:single-button:vertical:decrement:hover {
+        border-color: transparent transparent #555555 transparent;
+    }
+    ::-webkit-scrollbar-button:single-button:vertical:increment {
+        border-width: 8px 8px 0 8px;
+        border-color: #1f5c99 transparent transparent transparent;
+    }
+    ::-webkit-scrollbar-button:single-button:vertical:increment:hover {
+        border-color: #555555 transparent transparent transparent;
+    }
 </style>
 <?php }
 }
