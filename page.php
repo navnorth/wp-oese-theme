@@ -16,6 +16,7 @@ $col_class = "col-md-12";
 $head_class = "";
 $is_archived = false;
 $archived_date = null;
+$search_class = "";
 
 if( have_rows('sidebar_links') )
     $col_class = "col-md-8";
@@ -28,9 +29,12 @@ if ($archived_date){
     $head_class = " archived-header";
 }
 
+if (is_search()){
+    $search_class = " search-page-template";
+}
 ?>
 
-        <div id="content" class="row custom-common-padding mr-0 ml-0 default-template template-mobile">
+        <div id="content" class="row custom-common-padding mr-0 ml-0 default-template template-mobile<?php echo $search_class; ?>">
 
             <div class="<?php echo $col_class; ?>">
     
