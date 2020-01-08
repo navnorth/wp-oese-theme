@@ -29,6 +29,26 @@ if ($detect->isMobile()) {
         }
     });
 </script>
+<style>
+    ::-webkit-scrollbar {
+        -webkit-appearance: none;
+    }
+    ::-webkit-scrollbar:vertical {
+        width:12px;
+    }
+    ::-webkit-scrollbar:horizontal {
+        height:12px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background-color: #1f5c99;
+        border-radius:10px;
+        border: 2px solid #f2f2f2;
+    }
+    ::-webkit-scrollbar-track {
+        border-radius:10px;
+        background-color:#f2f2f2;
+    }
+</style>
 <?php } ?>
 <div id="content" class="row site-content">
 	<div class="col-md-12">
