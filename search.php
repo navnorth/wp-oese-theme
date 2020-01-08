@@ -34,14 +34,13 @@ if ($detect->isMobile()) {
         -webkit-appearance: none;
     }
     ::-webkit-scrollbar:vertical {
-        width:15px;
+        width:16px;
     }
     ::-webkit-scrollbar:horizontal {
-        height:15px;
+        height:16px;
     }
     ::-webkit-scrollbar-thumb {
         background-color: #1f5c99;
-        border: 2px solid #f2f2f2;
     }
     ::-webkit-scrollbar-track {
         background-color:#f2f2f2;
