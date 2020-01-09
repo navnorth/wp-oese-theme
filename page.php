@@ -30,10 +30,6 @@ if ($archived_date){
     $head_class = " archived-header";
 }
 if (is_solr_installed()){ 
-    $search_class = " mobile-search-template";
-$detect = new oese_mobile_detect();
-if ($detect->isMobile()) {
-    $search_class = " IsMobile-search-template";
 ?>
 <script type="text/javascript">
     jQuery(document).ready(function() {
@@ -97,11 +93,11 @@ if ($detect->isMobile()) {
         border-color: #555555 transparent transparent transparent;
     }
 </style>
-<?php }
+<?php
 }
 ?>
 
-        <div id="content" class="row custom-common-padding mr-0 ml-0 default-template template-mobile<?php echo $search_class; ?>">
+        <div id="content" class="row custom-common-padding mr-0 ml-0 default-template template-mobile">
 
             <div class="<?php echo $col_class; ?>">
     
