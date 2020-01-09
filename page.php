@@ -33,6 +33,7 @@ if (is_solr_installed()){
     $search_class = " mobile-search-template";
 $detect = new oese_mobile_detect();
 if ($detect->isMobile()) {
+    $search_class = " IsMobile-search-template";
 ?>
 <script type="text/javascript">
     jQuery(document).ready(function() {
