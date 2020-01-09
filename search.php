@@ -5,7 +5,6 @@
  * @package wp_oese_theme
  * @since 1.5.0
  */
-include_once( get_stylesheet_directory()."/classes/oese_mobile_detect.php" );
 
 get_header();
 if (is_solr_installed()){
@@ -69,7 +68,6 @@ if (is_solr_installed()){
         border-color: #555555 transparent transparent transparent;
     }
 </style>
-<?php } ?>
 <div id="content" class="row site-content">
 	<div class="col-md-12">
 		<header class="page-header">
