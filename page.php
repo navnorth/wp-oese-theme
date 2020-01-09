@@ -33,7 +33,6 @@ if (is_solr_installed()){
 ?>
 <script type="text/javascript">
     jQuery(document).ready(function() {
-        alert(jQuery(window).width());
         if(jQuery(window).width()<800){
             if (jQuery('.wdm_results').length) {
                 var temp = jQuery('.wdm_results .res_info');

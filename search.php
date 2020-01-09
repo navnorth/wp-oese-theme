@@ -9,8 +9,6 @@ include_once( get_stylesheet_directory()."/classes/oese_mobile_detect.php" );
 
 get_header();
 if (is_solr_installed()){
-$detect = new oese_mobile_detect();
-if ($detect->isMobile()) {
 ?>
 <script type="text/javascript">
     jQuery(document).ready(function() {
