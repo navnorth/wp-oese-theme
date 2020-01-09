@@ -131,11 +131,11 @@ jQuery( document ).ready(function() {
     var isIOS = (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true: false );
     
     if (isIOS === true){
-        var tempCss = $('a').css('-webkit-tap-highlight-color');
+        var tempCss = jQuery('a').css('-webkit-tap-highlight-color');
         
-        $('body').css('-webkit-tap-highlight-color', 'rgba(0,0,0,0)');
+        jQuery('body').css('-webkit-tap-highlight-color', 'rgba(0,0,0,0)');
                 
-        $('a').css('-webkit-tap-highlight-color', tempCss);
+        jQuery('a').css('-webkit-tap-highlight-color', tempCss);
     }
     
     if (jQuery('.tab-close-button').length>0){
@@ -165,7 +165,6 @@ jQuery( document ).ready(function() {
     });
     
     jQuery(document).ajaxComplete(function(event, request, settings){
-        console.log(settings);
         setTimeout(displayNext10Results(),1000);
         setTimeout(displayPrev10Results(),1000);
     });
