@@ -1961,6 +1961,7 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
 .wpDataTablesWrapper div.dt-buttons { position: absolute; right:0; }
 .wpDataTablesFilter { border:1px solid #ddd; padding:25px; box-shadow: 0px 1px 6px rgba(0,0,0,0.5); }
 .wdt-select-filter .dropdown-toggle::after { border:none; }
+.usaHtml5MapStateInfo .contact-info { margin:50px 0; }
 /** End of Search Results Styles **/
 @media (min-width: 1200px) {
     .container{
