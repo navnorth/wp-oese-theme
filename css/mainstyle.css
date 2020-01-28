@@ -1955,6 +1955,9 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
 .oese-search-result-item-content { margin-top:15px; }
 .loading_sugg { background-image:none !important; }
 .page-template-theme-template .site-content .padding_left.lft_sid_cntnr { padding-left:15px !important; }
+.wpDataTable td { word-break: break-all; }
+.usaHtml5Mapright.htmlMapResponsive .usaHtml5MapContainer { width:75%; }
+.usaHtml5Mapright.htmlMapResponsive .usaHtml5MapStateInfo, .usaHtml5Mapright.htmlMapResponsive .usaHtml5MapStateInfo { width:21%;}
 /** End of Search Results Styles **/
 @media (min-width: 1200px) {
     .container{
