@@ -242,3 +242,6 @@ ul.program_toc, .cntnbx_cntnr ul {
     color:#ffffff;
     padding:10px 15px;
 }
+.wpdt-c .wpDataTables .dataTables_length .show {
+    display: inline-block !important;
+}

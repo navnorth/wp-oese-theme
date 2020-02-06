@@ -1,3 +1,5 @@
+let touchEvent = 'ontouchstart' in window ? 'touchstart': 'click';
+
 jQuery( document ).ready(function() {
     jQuery('#page_template').on('change', function() {
 	  //alert(this.value);
@@ -129,27 +131,30 @@ jQuery( document ).ready(function() {
     var isIOS = (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true: false );
     
     if (isIOS === true){
-        var tempCss = $('a').css('-webkit-tap-highlight-color');
+        var tempCss = jQuery('a').css('-webkit-tap-highlight-color');
         
-        $('body').css('cursor','pointer')
-                .css('-webkit-tap-highlight-color', 'rgba(0,0,0,0)');
+        jQuery('body').css('-webkit-tap-highlight-color', 'rgba(0,0,0,0)');
                 
-        $('a').css('-webkit-tap-highlight-color', tempCss);
+        jQuery('a').css('-webkit-tap-highlight-color', tempCss);
     }
     
-    if (jQuery('.tab-close-button').length){
+    if (jQuery('.tab-close-button').length>0){
         jQuery('.tab-close-button').removeAttr('target').removeClass('external_link');
+        jQuery('.tab-close-button').css('cursor','pointer');
+    }
+    
+    if(jQuery(window).width()<800){
+        var temp = jQuery('.wdm_results .res_info');
+        jQuery('.cls_results').before(temp);
+        jQuery('.wdm_results .res_info').remove();
         
-        jQuery('.tab-close-button').on("touchstart click", function(e){
-            e.stopPropagation();
-            e.preventDefault();
-            close_tab(this);
+        jQuery('div.wpsolr_facet_title').attr('data-toggle','collapse');
+        jQuery('.wpsolr_facet_checkbox.wpsolr_facet_categories, .wpsolr_facet_checkbox.wpsolr_facet__wp_page_template_str').addClass("collapse");
+        jQuery('div.wpsolr_facet_title.wpsolr_facet_categories').attr('data-target','.wpsolr_facet_checkbox.wpsolr_facet_categories');
+        jQuery('div.wpsolr_facet_title.wpsolr_facet__wp_page_template_str').attr('data-target','.wpsolr_facet_checkbox.wpsolr_facet__wp_page_template_str');
+        jQuery('.wpsolr_facet_checkbox.wpsolr_facet_categories, .wpsolr_facet_checkbox.wpsolr_facet__wp_page_template_str').collapse({
+            toggle:false
         });
-        
-        jQuery('.tab-close-button').on("touchend", function (){
-            jQuery(this).trigger("click");
-        });
-        
     }
     
     /** move cursor to top on pagination click **/
@@ -160,7 +165,6 @@ jQuery( document ).ready(function() {
     });
     
     jQuery(document).ajaxComplete(function(event, request, settings){
-        console.log(settings);
         setTimeout(displayNext10Results(),1000);
         setTimeout(displayPrev10Results(),1000);
     });
@@ -174,13 +178,6 @@ jQuery( document ).ready(function() {
         window.location = url;
     });
 });
-
-function close_tab(close_button){
-    curtab = jQuery(close_button).closest('.tab-pane.active');
-    curtabid = curtab.attr('id');
-    curtab.removeClass('active');
-    jQuery('#mobileSidebarTab a[href="#' + curtabid +'"]').removeClass('active');
-}
 
 function displayNext10Results() {
     /** Insert Next 10 results button on the fly **/

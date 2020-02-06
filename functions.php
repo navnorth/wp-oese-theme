@@ -7,7 +7,7 @@
  * filter hooks in WordPress to change core functionality.
  */
 define( "WP_OESE_THEME_NAME", "WP OESE Theme" );
-define( "WP_OESE_THEME_VERSION", "1.6.2" );
+define( "WP_OESE_THEME_VERSION", "1.6.3" );
 define( "WP_OESE_THEME_SLUG", "wp_oese_theme" );
 
 // Set up the content width value based on the theme's design and stylesheet.
@@ -732,8 +732,9 @@ function theme_front_enqueue_script()
   wp_enqueue_style( 'theme-main-style',get_stylesheet_directory_uri() . '/css/mainstyle.css' );
 
   wp_enqueue_script('jquery');
-  wp_enqueue_script('theme-front-script', get_stylesheet_directory_uri() . '/js/front-script.js' );
+  wp_enqueue_script('popper-script', get_stylesheet_directory_uri() . '/js/popper.min.js' );
   wp_enqueue_script('bootstrap-script', get_stylesheet_directory_uri() . '/js/bootstrap.js' );
+  wp_enqueue_script('theme-front-script', get_stylesheet_directory_uri() . '/js/front-script.js' );
   wp_enqueue_script('theme-back-script', get_stylesheet_directory_uri() . '/js/modernizr-custom.js' );
 }
 add_action( 'wp_enqueue_scripts', 'theme_front_enqueue_script' );
