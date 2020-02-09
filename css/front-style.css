@@ -245,3 +245,48 @@ ul.program_toc, .cntnbx_cntnr ul {
 .wpdt-c .wpDataTables .dataTables_length .show {
     display: inline-block !important;
 }
+
+/* ACCESSIBILITY SUPPLEMENTAL CSS */
+#table_1_wrapper.wpDataTablesWrapper #table_1 tr td.column-report a {
+  color: #294179;
+  display: block;
+  padding: 0px 5px;
+}
+#table_1_wrapper.wpDataTablesWrapper #table_1 tr td.column-report a  {
+  border: 1px solid transparent;
+}
+  div#table_1_paginate .paginate_button {
+  border: 1px solid transparent;
+}
+button.btn.dropdown-toggle:after {display: none !important;}
+  .wpDataTablesWrapper .paging_full_numbers {
+  height: 40px !important;
+}
+.wpDataTablesWrapper, div#oese-usahtml5map-wrapper {
+  padding: 10px;
+  border: 1px solid #ececec;
+}
+div#table_1_wrapper.wpDataTablesWrapper.focused, div#oese-usahtml5map-wrapper.focused {
+  border: 1px solid #90bafe;
+}
+div#oese-usahtml5map-wrapper:focus{
+    border: 1px solid #90bafe !important;
+}
+#table_1_wrapper.wpDataTablesWrapper .dataTables_length button.dropdown-toggle:focus{
+   border: 1px solid #90bafe !important;
+}
+div#table_1_paginate a.paginate_button:focus{
+  border: 1px solid #90bafe !important;
+}
+#table_1_wrapper.wpDataTables table.wpDataTable tr{
+  background-color:#ffffff !important;
+}
+#table_1_wrapper.wpDataTables table.wpDataTable tr th:focus {
+  opacity: .8 !important;
+}
+#table_1_wrapper.wpDataTablesWrapper #table_1 tr.odd td.column-report a:focus {
+  border: 1px solid #90bafe !important;
+}
+#table_1_wrapper.wpDataTablesWrapper #table_1 tr.even td.column-report a:focus {
+  border: 1px solid #3e5487 !important;
+}

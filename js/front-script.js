@@ -177,6 +177,67 @@ jQuery( document ).ready(function() {
         var url = jQuery(this).val();
         window.location = url;
     });
+    
+    
+    
+    //add aria-label to state selection dropdown
+    jQuery('#usa-html5-map-selector_0').attr('aria-label','US States Dropdown List');
+    jQuery('#usa-html5-map-selector_0').attr({
+    	'aria-label': 'US States Dropdown List',
+    	'title': 'US States Dropdown List'	
+    });
+    jQuery('#usa-html5-map-selector_0').wrap('<label for="US States">US States:&nbsp;</label>');
+
+    //ushtml5map Wrapper
+    jQuery('select#usa-html5-map-selector_0').focus(function(){
+    	jQuery('#oese-usahtml5map-wrapper').addClass('focused');
+    });
+    jQuery('select#usa-html5-map-selector_0').focusout(function(){
+    	jQuery('#oese-usahtml5map-wrapper').removeClass('focused');
+    });
+
+    //wpDataTable Number of entries dropdown
+    jQuery('#table_1_wrapper.wpDataTablesWrapper .dataTables_length button.dropdown-toggle').focus(function(){
+    	jQuery('#table_1_wrapper.wpDataTablesWrapper').addClass('focused');
+    });
+    jQuery('#table_1_wrapper.wpDataTablesWrapper .dataTables_length button.dropdown-toggle').focusout(function(){
+    	jQuery('#table_1_wrapper.wpDataTablesWrapper').removeClass('focused');
+    });
+
+    //wpDataTable Search Input
+    jQuery('#table_1_wrapper.wpDataTablesWrapper .dataTables_filter input[type="search"]').focus(function(){
+    	jQuery('#table_1_wrapper.wpDataTablesWrapper').addClass('focused');
+    });
+    jQuery('#table_1_wrapper.wpDataTablesWrapper .dataTables_filter input[type="search"]').focusout(function(){
+    	jQuery('#table_1_wrapper.wpDataTablesWrapper').removeClass('focused');
+    });
+
+    //wpDataTable Report Column
+    jQuery('#table_1_wrapper.wpDataTablesWrapper #table_1 tr td.column-report a').focus(function(){
+    	jQuery('#table_1_wrapper.wpDataTablesWrapper').addClass('focused');
+    });
+    jQuery('#table_1_wrapper.wpDataTablesWrapper #table_1 tr td.column-report a').focusout(function(){
+    	jQuery('#table_1_wrapper.wpDataTablesWrapper').removeClass('focused');
+    });
+
+    //wpDataTable Table header
+    jQuery('#table_1_wrapper.wpDataTables table.wpDataTable tr th').focus(function(){
+    	jQuery('#table_1_wrapper.wpDataTablesWrapper').addClass('focused');
+    });
+    jQuery('#table_1_wrapper.wpDataTables table.wpDataTable tr th').focusout(function(){
+    	jQuery('#table_1_wrapper.wpDataTablesWrapper').removeClass('focused');
+    });
+
+    //wpDataTable Pagination buttons
+    jQuery('div#table_1_paginate a.paginate_button').focus(function(){
+    	jQuery('#table_1_wrapper.wpDataTablesWrapper').addClass('focused');
+    });
+    jQuery('div#table_1_paginate a.paginate_button').focusout(function(){
+    	jQuery('#table_1_wrapper.wpDataTablesWrapper').removeClass('focused');
+    });
+    
+    
+    
 });
 
 function displayNext10Results() {
