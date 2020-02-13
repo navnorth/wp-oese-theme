@@ -114,7 +114,7 @@
 .rght_mtr a, .rght_mtr a:hover { color: #4b4e53 }
 
 .lft_sid_mtr { padding-left: 0 !important; margin-bottom: 30px; position: relative}
-.lft_sid_mtr img, .rght_sid_mtr img { float: left; margin: 0 25px 25px 0}
+.lft_sid_mtr img, .rght_sid_mtr img { float: left; margin: 0 25px 25px 0; width: 100%;}
 .lft_sid_mtr h4:first-child, .rght_sid_mtr h4:first-child { border-bottom: 1px solid #ccc; margin-bottom: 15px; padding-bottom: 5px; font-family:'Raleway-Light'; font-size: 15px}
 .lft_sid_mtr p, .rght_sid_mtr p {  margin: 0 0 10px}
 .date { font-family: 'Raleway-Bold' !important; font-size: 13px}
@@ -394,6 +394,9 @@ blockquote { border-left: none !important; font-size: auto !important; padding: 
 }
 .oese-sub-pages .oese-side-nav-widget {
     width: 100% !important;
+}
+.oese-sub-pages>ul>li::before {
+    content: unset !important;
 }
 
 
