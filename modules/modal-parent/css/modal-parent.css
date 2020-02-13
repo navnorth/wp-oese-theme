@@ -237,6 +237,7 @@ label.wp-nn-tag-p span.fa-check {
     left: 0px;
     top: 8px;
 	color: #ffffff;
+  font-family: "Font Awesome 5 Free" !important;
 }
 
 /***************/

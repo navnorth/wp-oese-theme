@@ -246,6 +246,18 @@ ul.program_toc, .cntnbx_cntnr ul {
     display: inline-block !important;
 }
 
+
+.oese-lastModified {
+  text-align:right;
+  margin: 20px 0px 0px 0px !important;
+}
+.oese-lastModified span {
+    padding: 20px 10px;
+    border-top: 1px solid #d1d1d1;
+    display: block;
+    font-size: 14px;
+}
+
 /* ACCESSIBILITY SUPPLEMENTAL CSS */
 #table_1_wrapper.wpDataTablesWrapper #table_1 tr td.column-report a {
   color: #294179;

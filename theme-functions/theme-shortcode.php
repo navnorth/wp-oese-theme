@@ -6,7 +6,13 @@
 add_shortcode("disruptive_content", "disruptive_content_fun" );
 function disruptive_content_fun($attr, $content = null)
 {
-	extract($attr);
+	if ( is_admin() ) {
+		$_arr = getShortcodeAttr($attr);	
+		foreach($_arr as $key => $value) $$key = $value;
+	}else{
+		extract($attr);
+	}
+	
 
 	if (strpos($button_color,"#")===false)
 		$button_color = "#".$button_color;
@@ -20,9 +26,14 @@ function disruptive_content_fun($attr, $content = null)
             	$return .= $main_text;
             $return .= '</p>';
         $return .= '</div>';
-        $return .= '<div class="col-md-4 col-sm-4 col-xs-4 text-right">';
-			$return .= '<div class="link_dwnlds"><div><a href="'. $button_url .'" class="btn_dwnld" style="background-color:'. $button_color.'" onclick="ga(\'send\', \'event\', \'download\', \''.$button_url.'\');" target="_blank">'. $button_text .'</a></div></div>';
+				
+				$return .= '<div class="link_dwnlds_wrapper" >';
+				$return .= '<div class="link_dwnlds"><div><a href="'. $button_url .'" class="btn_dwnld" style="background-color:'. $button_color.'" onclick="ga(\'send\', \'event\', \'download\', \''.$button_url.'\');" target="_blank">'. $button_text .'</a></div></div>';
         $return .= '</div>';
+				
+				//$return .= '<div class="col-md-4 col-sm-4 col-xs-4 text-right">';
+				//$return .= '<div class="link_dwnlds"><div><a href="'. $button_url .'" class="btn_dwnld" style="background-color:'. $button_color.'" onclick="ga(\'send\', \'event\', \'download\', \''.$button_url.'\');" target="_blank">'. $button_text .'</a></div></div>';
+        //$return .= '</div>';
     $return .= '</div>';
 
 	return $return;
@@ -57,7 +68,12 @@ function oese_accordion_func($atts, $content = null)
 {
 $group_id = "accordion";
 
-  extract($atts);
+	if ( is_admin() ) {
+		$_arr = getShortcodeAttr($atts);	
+		foreach($_arr as $key => $value) $$key = $value;	
+	}else{
+		extract($atts);
+	}
   $return = '';
 
   if(isset($accordion_series) && !empty($accordion_series))
@@ -104,9 +120,14 @@ $group_id = "accordion";
 add_shortcode('pull_quote', 'pull_quotethemefn');
 function pull_quotethemefn($atts, $content = null)
 {
-	$speaker = $atts['speaker'];
-	$additional_info = $atts['additional_info'];
-
+	if ( is_admin() ) {
+		$_arr = getShortcodeAttr($atts);	
+		foreach($_arr as $key => $value) $$key = $value;	
+	}else{
+		$speaker = $atts['speaker'];
+		$additional_info = $atts['additional_info'];
+	}
+	
 	$return = '';
 	$return .= '<div class="col-md-1 col-sm-1 col-xs-1">';
 		$return .= '<img src="'. get_stylesheet_directory_uri() .'/images/dbl_cod_img.png" alt="Quote"/>';
@@ -143,7 +164,12 @@ function pull_quotethemefn($atts, $content = null)
 add_shortcode("featured_item","featured_item_func");
 function featured_item_func($attr, $content = null)
 {
-	extract($attr);
+	if ( is_admin() ) {
+	 		$_arr = getShortcodeAttr($attr);	
+		 		foreach($_arr as $key => $value) $$key = $value;	
+		 	}else{
+		 		extract($attr);
+		 	}
 	$return = '';
 	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 rght_sid_mtr">';
 	if(isset($heading) && !empty($heading))
@@ -213,7 +239,12 @@ add_shortcode("featured_video","feature_video_func");
 function feature_video_func($attr, $content = null)
 {
 	global $post;
-	extract($attr);
+	if ( is_admin() ) {
+		$_arr = getShortcodeAttr($attr);	
+		foreach($_arr as $key => $value) $$key = $value;
+	}else{
+		extract($attr);
+	}
 
 	$return = '';
 	if(!isset($id) || empty($id))
@@ -400,7 +431,12 @@ function share_the_toolkit_func($atts, $content = null)
 add_shortcode("recommended_resources","recommended_resources_func");
 function recommended_resources_func($attr, $content = null)
 {
-	extract($attr);
+	if ( is_admin() ) {
+		$_arr = getShortcodeAttr($attr);	
+		foreach($_arr as $key => $value) $$key = $value;	
+	}else{
+		extract($attr);
+	}
 	$return = '';
 	$regex = "/^(?:http(?:s)?:\/\/)?(?:www\.)?(?:m\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:.*&)?v(?:i)?=|(?:embed|v|vi|user)\/))([^\?&\"'>]+)/";
 	if(isset($heading) && !empty($heading))
@@ -585,7 +621,12 @@ function recommended_resources_func($attr, $content = null)
 
  function featured_content_box_func($attr, $content = null)
  {
-	 extract($attr);
+	 if ( is_admin() ) {
+	 		$_arr = getShortcodeAttr($attr);	
+		 		foreach($_arr as $key => $value) $$key = $value;	
+		 	}else{
+		 		extract($attr);
+		 	}
 	 $return = '';
 		$return .= '<div class="pblctn_right_sid_mtr">';
 		$return .= '<div class="col-md-12 col-sm-6 col-xs-6">';
@@ -807,7 +848,18 @@ function parse_data_attributes( $data ) {
  add_shortcode("oet_callout", "oet_callout_func");
  function oet_callout_func($attribute, $content = null) {
 
-	if (is_array($attribute)) extract($attribute);
+
+	if (is_array($attribute)){
+ 		if ( is_admin() ) {
+ 			$_arr = getShortcodeAttr($attribute);	
+ 			foreach($_arr as $key => $value) $$key = $value;	
+ 		}else{
+ 			extract($attribute);;
+ 		}
+  }
+	
+	
+	
 	$class_attrs = array("pull-out-box");
 	$style =  "";
 
@@ -870,7 +922,14 @@ function parse_data_attributes( $data ) {
  add_shortcode("publication_intro", "publication_intro_func");
  function publication_intro_func($attribute, $content = null) {
 
-	if (is_array($attribute)) extract($attribute);
+	if (is_array($attribute)){
+ 		if ( is_admin() ) {
+ 			$_arr = getShortcodeAttr($attribute);	
+ 			foreach($_arr as $key => $value) $$key = $value;	
+ 		}else{
+ 			extract($attribute);;
+ 		}
+  }
 
 	$return = '<div class="intro">
 			<div class="intro-goal">
@@ -891,7 +950,14 @@ add_shortcode("audience_link", "audience_link_func");
 function audience_link_func($attribute, $content = null) {
 
 
-	if (is_array($attribute)) extract($attribute);
+	if (is_array($attribute)){
+ 		if ( is_admin() ) {
+ 			$_arr = getShortcodeAttr($attribute);	
+ 			foreach($_arr as $key => $value) $$key = $value;	
+ 		}else{
+ 			extract($attribute);;
+ 		}
+  }
 
 	$return = '<a class="audience-link" href="'.$url.'" alt="'.$content.'">'.$content.'</a>';
 
@@ -906,8 +972,14 @@ add_shortcode( 'oese_publication' , 'oese_publication_func' );
 function oese_publication_func($attribute){
 	$pub_id = 0;
 
-	if (is_array($attribute))
-		extract($attribute);
+	if (is_array($attribute)){
+ 		if ( is_admin() ) {
+ 			$_arr = getShortcodeAttr($attribute);	
+ 			foreach($_arr as $key => $value) $$key = $value;	
+ 		}else{
+ 			extract($attribute);;
+ 		}
+  }	
 
 	if ($src)
 		$pub_id = oese_file_id_by_url($src);
@@ -941,7 +1013,14 @@ function oese_publication_func($attribute){
 add_shortcode("oese_sub_pages", "oese_sub_pages_func");
 function oese_sub_pages_func($attr, $content = null) {
 
-    if (is_array($attr)) extract($attr);
+		if (is_array($attr)){
+	 		if ( is_admin() ) {
+	 			$_arr = getShortcodeAttr($attr);	
+	 			foreach($_arr as $key => $value) $$key = $value;	
+	 		}else{
+	 			extract($attr);;
+	 		}
+	  }	
 
     $html = "<div class='oese-sub-pages'>";
       
@@ -961,5 +1040,63 @@ function oese_sub_pages_func($attr, $content = null) {
     $html .= "</div>";
     
     return $html;
+}
+
+
+/**
+ * OET Featured Card
+ * Shortcode Example : [oet_featured_card title=\'\' button_text=\'Read More\' background_image=\'\' url=\'\']your content goes here[/oet_featured_card]
+ **/ 
+add_shortcode("oet_featured_card", "oet_featured_card_func");
+function oet_featured_card_func($attribute, $content = null){
+ $return = "";
+ 
+ if (is_array($attribute)){
+		if ( is_admin() ) {
+			$_arr = getShortcodeAttr($attribute);	
+			foreach($_arr as $key => $value) $$key = $value;	
+		}else{
+			extract($attribute);;
+		}
+ }
+ $default_bg = get_stylesheet_directory_uri().'/images/oet_featured_card_bg.png';
+ $bg = (!empty($background_image))? $background_image: $default_bg;
+ $_cont = (strlen($content)>210)? substr($content,0,130).' ...': $content;
+ $_button_link = (!empty($button_link))? $button_link: '#';
+ $return = '<div class="adminoverridewidth col-md-4 col-sm-6 col-xs-12">
+	 						<div class="oet-featured-card">
+	 							<div class="oet-featured-card-content-wrapper">
+			 						<div class="oet-featured-card-title">'.$title.'</div>
+									<div class="oet-featured-card-desc">'.$_cont.'</div>
+				 					<a href="'.$_button_link.'" class="oet-featured-card-btn">'.$button_text.'&nbsp;&nbsp;→</a>
+								</div>
+		 					</div>
+						</div>
+						<style>
+							.oet-featured-card::before {
+								background-image: linear-gradient(rgba(44, 67, 116, 0.85), rgba(44, 67, 116, 0.85)), url('.$bg.');
+							}
+						</style>';
+		
+
+ return $return;
+}
+
+function getShortcodeAttr($atts){
+	$_cnt = -1;
+	$_arr = array(); $_key = ''; $_val = '';
+	$_total = count($atts)-1;
+	foreach ($atts as $att){	
+		if (strpos($att, '=') !== false) {
+			if($_key != ''){ $_arr[$_key]=$_val;}
+			$_key = str_replace(array('\'', '"'), '', explode('=',$att)[0]);
+    	$_val = str_replace(array('\'', '"'), '', explode('=',$att)[1]);	
+		}else{
+			$_val .= ' '.str_replace(array('\'', '"'), '', $att);
+		}
+		$_cnt++;	
+		if($_cnt == $_total){$_arr[$_key]=$_val;}
+	}
+	return $_arr;
 }
 ?>

@@ -15,7 +15,9 @@ jQuery( document ).ready(function() {
 	jQuery(".fa-print").click(function(){
 		window.print();
 	});
-
+  
+  
+  /*
     var heght = jQuery("#lnk_btn_cntnr_center").height();
     jQuery(".link_dwnlds").height(heght);
 
@@ -24,7 +26,8 @@ jQuery( document ).ready(function() {
 	var a_margin = parseInt(heght) - parseInt(a_hght);
 	a_margin = a_margin/2;
 	jQuery(".link_dwnlds").children("div").children("a").css("margin-top", a_margin+"px");
-
+  */
+  
 	/** Keyboard Navigation using Keydown event **/
 	jQuery('.nav-menu > .menu-item > a').on('keydown',function(e){
 	    if (e.which==40) { /* Down Arrow Key */
