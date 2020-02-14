@@ -100,9 +100,3 @@ a.contact-eidt { text-decoration:underline; }
     border-color: #32373c;
 }
 .oese-tabs .nav-tab-wrapper .ui-tabs-active { outline:none; }
-table.media thead tr th, table.media thead tr td {
-    border-top: 1px solid #fff !important;
-    border-left: 0px solid #fff !important;
-    border-right: 0px solid #fff !important;
-    border-bottom: 1px solid #ececec !important;
-}
