@@ -30,11 +30,7 @@ if( have_rows('sidebar_links') ){
         <!--Families section START-->
         <div id="content" class="row custom-common-padding audience-template">
             <div class="<?php echo $leftCol; ?>">
-                <?php if ($is_archived): ?>
-                    <div class="oese-archived-disclaimer">
-                            <?php _e('<span class="fa fa-archive"></span><strong>Archived Content:</strong> The following page was archived on '.$archived_date.' but still has content that may be valuable to some people.', WP_OESE_THEME_SLUG); ?>
-                    </div>
-                <?php endif; ?>
+                
                 <?php
                     if ( has_post_thumbnail() ) {
                         $image = wp_get_attachment_image_src( get_post_thumbnail_id($page_id), 'single-post-thumbnail' );
@@ -47,6 +43,12 @@ if( have_rows('sidebar_links') ){
                 ?>
                 <div class="left-description-section">
                    <h1><?php echo get_the_title(); ?></h1>
+                   <?php if ($is_archived): ?>
+               		    <div class="oese-archived-disclaimer">
+               			      <?php //_e('<span class="fa fa-archive"></span><strong>Archived Content:</strong> The following page was archived on '.$archived_date.' but still has content that may be valuable to some people.', WP_OESE_THEME_SLUG); ?>
+               		        ARCHIVED INFORMATION  
+                   </div>
+               		<?php endif; ?>
                    <?php
                      while (have_posts()) : the_post(); get_template_part('content', 'page');
                      endwhile;

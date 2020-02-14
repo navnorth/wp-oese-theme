@@ -1936,12 +1936,11 @@ ul.tile-links-wrapper li { list-style-type:none; }
 .publication-shortcode-button:focus{ color:#ffffff !important; text-decoration:underline;  }
 .publication-buttons { position:relative; }
 .oese-archived-disclaimer {
-    background: #436576;
-    display: inline-block;
-    padding: 5px 10px;
-    border: 2px solid #2A3E48;
-    color: #fff;
-    margin-bottom:20px;
+		display: inline-block;
+		padding: 5px 0px;
+		color: #ff1414;
+		margin-bottom: 20px;
+		font-weight: 700;
 }
 .oese-archived-disclaimer span { margin-right:10px; }
 .h1-bottom-space.archived-header { margin-bottom:10px; }

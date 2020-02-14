@@ -54,7 +54,8 @@ if ($detect->isMobile())
                     <h1 class="h1-bottom-space<?php echo $head_class; ?>"><?php echo get_the_title(); ?></h1>
                     <?php if ($is_archived): ?>
                     <div class="oese-archived-disclaimer">
-                            <?php _e('<span class="fa fa-archive"></span><strong>Archived Content:</strong> The following page was archived on '.$archived_date.' but still has content that may be valuable to some people.', WP_OESE_THEME_SLUG); ?>
+                            <?php //_e('<span class="fa fa-archive"></span><strong>Archived Content:</strong> The following page was archived on '.$archived_date.' but still has content that may be valuable to some people.', WP_OESE_THEME_SLUG); ?>
+                            ARCHIVED INFORMATION
                     </div>
                     <?php endif; ?>
                     <?php
