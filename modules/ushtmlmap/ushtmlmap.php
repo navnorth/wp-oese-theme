@@ -12,7 +12,7 @@ add_shortcode('oese_ushtmlmap', 'oese_ushtml5map_func');
 function oese_ushtml5map_func($atts, $content = null){
   
 $browser = $_SERVER["HTTP_USER_AGENT"];
-  
+ob_start( );
 ?>
   <div id="oese-map-wrapper">
     <div class="oese-map-title">State-by-State Performance Reports</div>
@@ -207,6 +207,7 @@ $browser = $_SERVER["HTTP_USER_AGENT"];
     </map>
   </div>
 <?php
+return ob_get_clean( );
 }
 
 ?>
