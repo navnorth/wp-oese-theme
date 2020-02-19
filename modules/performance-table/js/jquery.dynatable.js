@@ -25,10 +25,10 @@
         sorts: Sorts,
         sortsHeaders: SortsHeaders,
         queries: Queries,
-        inputsSearch: InputsSearch,
         paginationPage: PaginationPage,
         paginationPerPage: PaginationPerPage,
-        paginationLinks: PaginationLinks
+        paginationLinks: PaginationLinks,
+        inputsSearch: InputsSearch
       },
       utility,
       build,
@@ -1453,7 +1453,7 @@
     };
 
     this.buildLink = function(page, label, linkClass, conditional, conditionalClass, pages) {
-      var link = '<a data-dynatable-page=' + page + ' class="' + linkClass,
+      var link = '<a tabindex="0" data-dynatable-page=' + page + ' class="' + linkClass,
           li = '<li';
 
       if (conditional) {
