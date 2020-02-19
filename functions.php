@@ -722,7 +722,7 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
  * Performance report
  **/
  //require_once( get_stylesheet_directory() . '/modules/performance-report/performance_report.php' ); 
- //require_once( get_stylesheet_directory() . '/modules/performance-table/oese-performance-table.php' ); 
+ require_once( get_stylesheet_directory() . '/modules/performance-table/oese-performance-table.php' ); 
 
 
  function theme_back_enqueue_script()
