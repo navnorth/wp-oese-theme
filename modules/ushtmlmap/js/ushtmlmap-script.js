@@ -13,6 +13,9 @@ jQuery(document).ready(function(e) {
 		  window.open("https://www2.ed.gov/admins/lead/account/performance/map/"+shrt+".html");
 	  }
   });
+	
+	
+	
 	jQuery(document).on('mousemove','area',function(e){
 		clearTimeout(removeTooltip);
 		jQuery('.oese-map-tooltip').remove();
@@ -60,9 +63,22 @@ jQuery(document).ready(function(e) {
     jQuery('img[usemap]').maphilight({ stroke: false, fillColor: 'ffffff', fillOpacity: .4 });   
   });
 	 
+	/*
 	jQuery(document).on('change','#oese-map-dropdown',function(){
 		shrt = jQuery('#oese-map-dropdown option:selected').val().toLowerCase()
 		window.open("https://www2.ed.gov/admins/lead/account/performance/map/"+shrt+".html");     
+	});
+	*/
+	
+	jQuery(document.body).on('change',"#oese-map-dropdown",function (e) {
+	   e.preventDefault ? e.preventDefault() : e.returnValue = false;
+	   var optVal= jQuery("#oese-map-dropdown option:selected").val();
+	   var area = jQuery('map[name="oese-usmap"] area[shrt="'+optVal.toUpperCase()+'"');
+	   var attr = area.attr('href');
+	   if (typeof attr !== typeof undefined && attr !== false) {
+	      var url = area.attr("href");
+				window.open(url);
+	   }
 	});
   
 });
