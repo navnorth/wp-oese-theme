@@ -1,4 +1,4 @@
-th {background: #006a72;}
+th {background: #294179;}
 th a color: #fff;}
 th a:hover {color: #fff;text-decoration: underline;}
 .dynatable-search {float: right;margin-bottom: 10px;}
@@ -58,7 +58,7 @@ span.dynatable-per-page-label {font-size: 16px; font-weight: 700;}
     float: right;
 }
 .dynatable-search input[type="search"]{
-  width: 130px;
+  width: 200px;
   background: #f1f1f1 !important;
   height: 40px;
   box-shadow: none
@@ -94,9 +94,18 @@ ul.dynatable-pagination-links li a {
     background-color: #f1f1f1;
 }
 
+@media (max-width: 768px){
+  .dynatable-per-page{width:35% !important;}
+  .dynatable-search{width:65% !important;}
+}
+
 @media (max-width: 576px){
-.dynatable-per-page, .dynatable-search {width:100% !important; float:left !important;text-align: left !important;}
-.dynatable-per-page {  position: relative;top: -60px;}
-.dynatable-search {position: relative;top: 40px;}
-.dynatable-search input[type="search"] {width:200px !important;}
+  .dynatable-per-page, .dynatable-search {width:100% !important; float:left !important;text-align: left !important;}
+  .dynatable-per-page {  position: relative;top: -60px;}
+  .dynatable-search {position: relative;top: 40px;}
+  .dynatable-search input[type="search"] {width:200px !important;}
+}
+
+@media (max-width: 356px){
+  .dynatable-search input[type="search"] {width:130px !important;}
 }

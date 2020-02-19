@@ -81,7 +81,8 @@
       paginationNext: '<img src="'+templateUrl+'/modules/performance-table/img/chevron-single-right.png" alt="previous page" />',
       paginationDoublePrev: '<img src="'+templateUrl+'/modules/performance-table/img/chevron-double-left.png" alt="previous page" />',
       paginationDoubleNext: '<img src="'+templateUrl+'/modules/performance-table/img/chevron-double-right.png" alt="previous page" />',
-      paginationGap: [1,1,1,1],
+      paginationGap: [1,2,2,1],
+      paginationBreaks: false,
       searchTarget: null,
       searchPlacement: 'before',
       searchText: 'Search: ',
@@ -1387,7 +1388,7 @@
             settings.dataset.page + settings.inputs.paginationGap[2],
             (pages + 1) - settings.inputs.paginationGap[3]
           ];
-          
+          console.log(breaks);
       pageLinks += '<li><span>' + settings.inputs.pageText + '</span></li>';
 
       for (var i = 1; i <= pages; i++) {
@@ -1399,6 +1400,7 @@
           var li = obj.paginationLinks.buildLink(i, i, pageLinkClass, page == i, activePageClass, pages),
               breakIndex,
               nextBreak;
+          
 
           // If i is not between one of the following
           // (1 + (settings.paginationGap[0]))
@@ -1409,18 +1411,22 @@
           nextBreak = breaks[breakIndex + 1];
           if (breakIndex > 0 && i !== 1 && nextBreak && nextBreak > (i + 1)) {
             var ellip = '<li><span class="dynatable-page-break">&hellip;</span></li>';
-            li = breakIndex < 2 ? ellip + li : li + ellip;
+            if(settings.inputs.paginationBreaks){
+              li = breakIndex < 2 ? ellip + li : li + ellip;
+            }
           }
 
           if (settings.inputs.paginationPrev && i === 1) {
             var prevLi = obj.paginationLinks.buildLink(page - 1, settings.inputs.paginationPrev, pageLinkClass + ' ' + settings.inputs.paginationPrevClass, page === 1, disabledPageClass);
             var firstLi = obj.paginationLinks.buildLink(1, settings.inputs.paginationDoublePrev, pageLinkClass + ' ' + settings.inputs.paginationPrevClass, page === 1, disabledPageClass);
-            li = firstLi + prevLi + li;
+            //li = firstLi + prevLi + li;
+            li = (page > (settings.inputs.paginationGap[1]+1))? firstLi + prevLi: firstLi + prevLi + li;
           }
           if (settings.inputs.paginationNext && i === pages) {
             var nextLi = obj.paginationLinks.buildLink(page + 1, settings.inputs.paginationNext, pageLinkClass + ' ' + settings.inputs.paginationNextClass, page === pages, disabledPageClass);
             var lastLi = obj.paginationLinks.buildLink(pages, settings.inputs.paginationDoubleNext, pageLinkClass + ' ' + settings.inputs.paginationNextClass, page === pages, disabledPageClass);
-            li += nextLi + lastLi;
+            //li += nextLi + lastLi;
+            li = (page < (pages - settings.inputs.paginationGap[2]))? nextLi + lastLi: li + nextLi + lastLi;
           }
 
           pageLinks += li;
@@ -1737,3 +1743,6 @@
   $.dynatable(dt);
 
 })(jQuery);
+
+
+
