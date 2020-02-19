@@ -94,7 +94,9 @@ ul.dynatable-pagination-links li a {
     text-align: right;
     padding: 0px !important;
     margin-top:5px !important;
+    margin-bottom: 0px !important;
     background-color: #f1f1f1;
+    
 }
 
 @media (max-width: 768px){
