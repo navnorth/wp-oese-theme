@@ -25,10 +25,10 @@
         sorts: Sorts,
         sortsHeaders: SortsHeaders,
         queries: Queries,
+        inputsSearch: InputsSearch,
         paginationPage: PaginationPage,
         paginationPerPage: PaginationPerPage,
-        paginationLinks: PaginationLinks,
-        inputsSearch: InputsSearch
+        paginationLinks: PaginationLinks
       },
       utility,
       build,
@@ -1327,7 +1327,7 @@
     };
 
     this.create = function() {
-      var $select = $('<select id="oese-dynatable-entries-select">', {
+      var $select = $('<select tabindex="0">', {
             id: 'dynatable-per-page-' + obj.element.id,
             'class': 'dynatable-per-page-select'
           });
@@ -1453,7 +1453,7 @@
     };
 
     this.buildLink = function(page, label, linkClass, conditional, conditionalClass, pages) {
-      var link = '<a tabindex="0" data-dynatable-page=' + page + ' class="' + linkClass,
+      var link = '<a data-dynatable-page=' + page + ' class="' + linkClass,
           li = '<li';
 
       if (conditional) {
