@@ -2,7 +2,6 @@
 function oese_perftable_enqueue_script(){
   wp_enqueue_script( 'oese-performance-table-script', get_template_directory_uri() . '/modules/performance-table/js/jquery.dynatable.js', array( 'jquery' ), '20200216', true );
   wp_enqueue_style( 'oese-jquery.dynatable.css',get_stylesheet_directory_uri() . '/modules/performance-table/css/jquery.dynatable.css' );
-  //wp_enqueue_style( 'oese-bootstrap.dynatable.css',get_stylesheet_directory_uri() . '/modules/performance-table/css/bootstrap.dynatable.css' );
 }
 add_action( 'wp_enqueue_scripts', 'oese_perftable_enqueue_script' );
 

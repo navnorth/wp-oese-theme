@@ -29,6 +29,7 @@ table.oese-dynatable tr th {
 th.dynatable-head>a {color: #fff;text-decoration: none;}
 table.oese-dynatable tbody tr:first-child {background: none !important;}
 table.oese-dynatable tbody tr td{color: #222222 !important;}
+table.oese-dynatable tr td>a {color: #294179 !important;text-decoration: none !important;}
 table.oese-dynatable tr td:nth-child(1), 
 table.oese-dynatable tr td:nth-child(3), 
 table.oese-dynatablee tr td:nth-child(4) {overflow: hidden;text-overflow: ellipsis;max-width: 40px;}
