@@ -1,5 +1,5 @@
 th {background: #294179;}
-th a color: #fff;}
+th a {color: #fff;}
 th a:hover {color: #fff;text-decoration: underline;}
 .dynatable-search {float: right;margin-bottom: 10px;}
 .dynatable-pagination-links {float: right;}
@@ -34,7 +34,8 @@ table.oese-dynatable tr td:nth-child(3),
 table.oese-dynatablee tr td:nth-child(4) {overflow: hidden;text-overflow: ellipsis;max-width: 40px;}
 
 .dynatable-per-page {
-    display: block; 
+    display: block;
+    float:left;
     box-sizing: border-box;
     width: 50%;
 }
@@ -49,6 +50,7 @@ table.oese-dynatablee tr td:nth-child(4) {overflow: hidden;text-overflow: ellips
 span.dynatable-per-page-label {font-size: 16px; font-weight: 700;}
 .dynatable-search {
     display: block;
+    float:left;
     box-sizing: border-box;
     width: 50%;
     text-align: right;
@@ -100,9 +102,11 @@ ul.dynatable-pagination-links li a {
 }
 
 @media (max-width: 576px){
-  .dynatable-per-page, .dynatable-search {width:100% !important; float:left !important;text-align: left !important;}
+  .dynatable-per-page, .dynatable-search {width:100% !important; float:left !important;text-align: left !important;margin-bottom: 10px !important;}
+  /*
   .dynatable-per-page {  position: relative;top: -60px;}
   .dynatable-search {position: relative;top: 40px;}
+  */
   .dynatable-search input[type="search"] {width:200px !important;}
 }
 
