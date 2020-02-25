@@ -182,6 +182,26 @@ jQuery( document ).ready(function() {
     });
     
     
+    //add aria-labels to pagination buttons
+    var addnavattrinterval;
+    var addnavattr = false;
+    setInterval(function(){  
+    if(jQuery('.wpDataTables table.wpDataTable').hasClass('overlayed') && !addnavattr){
+        addnavattr = true;
+        addnavattrinterval = setInterval(function(){
+          if(!jQuery('.wpDataTables table.wpDataTable').hasClass('overlayed') && addnavattr){
+            addnavaccsttr();
+          }
+          addnavattr = false;
+          clearInterval(addnavattrinterval);      
+        },800);
+      }
+    }, 50);
+
+    addnavaccsttr();
+      
+       
+    
     setTimeout(function() {
       //add aria-label to state selection dropdown
       jQuery('#usa-html5-map-selector_0').attr('aria-label','US States Dropdown List');
@@ -238,12 +258,24 @@ jQuery( document ).ready(function() {
       jQuery('div#table_1_paginate a.paginate_button').focusout(function(){
       	jQuery('#table_1_wrapper.wpDataTablesWrapper').removeClass('focused');
       });
-    }, 3000);
+    }, 2000);
     
     
     
     
 });
+
+function addnavaccsttr(){
+  jQuery('.paginate_button.first').attr({'data-value': 'Navigate to first page','aria-label': 'Navigate to first page','title': 'Navigate to first page'})
+  jQuery('.paginate_button.previous').attr({'data-value': 'Navigate to previous page','aria-label': 'Navigate to previous page','title': 'Navigate to previous page'})
+  jQuery('.paginate_button.next').attr({'data-value': 'Navigate to next page','aria-label': 'Navigate to next page','title': 'Navigate to next page'})
+  jQuery('.paginate_button.last').attr({'data-value': 'Navigate to last page','aria-label': 'Navigate to last page','title': 'Navigate to last page'})    
+  jQuery('.dataTables_paginate>span').children('a.paginate_button').each(function(e) {
+    var pageno = jQuery(this).text();
+    //console.log(pageno);
+    jQuery(this).attr({'data-value': 'Navigate to page '+pageno,'aria-label': 'Navigate to page '+pageno,'title': 'Navigate to page '+pageno,	});
+  });
+}
 
 function displayNext10Results() {
     /** Insert Next 10 results button on the fly **/
