@@ -9,6 +9,65 @@
 get_header();
 if (is_solr_installed()){
 ?>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        if(jQuery(window).width()<800){
+            var temp = jQuery('.wdm_results .res_info');
+            jQuery('.cls_results').before(temp);
+            jQuery('.wdm_results .res_info').remove();
+            
+            jQuery('div.wpsolr_facet_title').attr('data-toggle','collapse');
+            jQuery('.wpsolr_facet_checkbox.wpsolr_facet_categories, .wpsolr_facet_checkbox.wpsolr_facet__wp_page_template_str').addClass("collapse");
+            jQuery('div.wpsolr_facet_title.wpsolr_facet_categories').attr('data-target','.wpsolr_facet_checkbox.wpsolr_facet_categories');
+            jQuery('div.wpsolr_facet_title.wpsolr_facet__wp_page_template_str').attr('data-target','.wpsolr_facet_checkbox.wpsolr_facet__wp_page_template_str');
+            jQuery('.wpsolr_facet_checkbox.wpsolr_facet_categories, .wpsolr_facet_checkbox.wpsolr_facet__wp_page_template_str').collapse({
+                toggle:false
+            });
+        }
+    });
+</script>
+<style>
+    #res_facets ul::-webkit-scrollbar {
+        -webkit-appearance: none;
+    }
+    #res_facets ul::-webkit-scrollbar:vertical {
+        width:16px;
+    }
+    #res_facets ul::-webkit-scrollbar:horizontal {
+        height:16px;
+    }
+    #res_facets ul::-webkit-scrollbar-thumb {
+        background-color: #1f5c99;
+        border-top: 1px solid #f2f2f2;
+        border-bottom: 1px solid #f2f2f2;
+    }
+    #res_facets ul::-webkit-scrollbar-track {
+        background-color:#f2f2f2;
+        border-left:1px solid #1f5c99;
+        box-shadow: inset 0 0 1px #1f5c99;
+    }
+    #res_facets ul::-webkit-scrollbar-button:single-button{
+        background-color:#f2f2f2;
+        display:block;
+        border-style:solid;
+        height:13px;
+        width:15px;
+    }
+    #res_facets ul::-webkit-scrollbar-button:single-button:vertical:decrement {
+        border-width: 0 8px 8px 8px;
+        border-color: transparent transparent #1f5c99 transparent;
+    }
+    #res_facets ul::-webkit-scrollbar-button:single-button:vertical:decrement:hover {
+        border-color: transparent transparent #555555 transparent;
+    }
+    #res_facets ul::-webkit-scrollbar-button:single-button:vertical:increment {
+        border-width: 8px 8px 0 8px;
+        border-color: #1f5c99 transparent transparent transparent;
+    }
+    #res_facets ul::-webkit-scrollbar-button:single-button:vertical:increment:hover {
+        border-color: #555555 transparent transparent transparent;
+    }
+</style>
 <div id="content" class="row site-content">
 	<div class="col-md-12">
 		<header class="page-header">

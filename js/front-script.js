@@ -1,3 +1,5 @@
+let touchEvent = 'ontouchstart' in window ? 'touchstart': 'click';
+
 jQuery( document ).ready(function() {
     jQuery('#page_template').on('change', function() {
 	  //alert(this.value);
@@ -13,7 +15,9 @@ jQuery( document ).ready(function() {
 	jQuery(".fa-print").click(function(){
 		window.print();
 	});
-
+  
+  
+  /*
     var heght = jQuery("#lnk_btn_cntnr_center").height();
     jQuery(".link_dwnlds").height(heght);
 
@@ -22,7 +26,8 @@ jQuery( document ).ready(function() {
 	var a_margin = parseInt(heght) - parseInt(a_hght);
 	a_margin = a_margin/2;
 	jQuery(".link_dwnlds").children("div").children("a").css("margin-top", a_margin+"px");
-
+  */
+  
 	/** Keyboard Navigation using Keydown event **/
 	jQuery('.nav-menu > .menu-item > a').on('keydown',function(e){
 	    if (e.which==40) { /* Down Arrow Key */
@@ -129,27 +134,16 @@ jQuery( document ).ready(function() {
     var isIOS = (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true: false );
     
     if (isIOS === true){
-        var tempCss = $('a').css('-webkit-tap-highlight-color');
+        var tempCss = jQuery('a').css('-webkit-tap-highlight-color');
         
-        $('body').css('cursor','pointer')
-                .css('-webkit-tap-highlight-color', 'rgba(0,0,0,0)');
+        jQuery('body').css('-webkit-tap-highlight-color', 'rgba(0,0,0,0)');
                 
-        $('a').css('-webkit-tap-highlight-color', tempCss);
+        jQuery('a').css('-webkit-tap-highlight-color', tempCss);
     }
     
-    if (jQuery('.tab-close-button').length){
+    if (jQuery('.tab-close-button').length>0){
         jQuery('.tab-close-button').removeAttr('target').removeClass('external_link');
-        
-        jQuery('.tab-close-button').on("touchstart click", function(e){
-            e.stopPropagation();
-            e.preventDefault();
-            close_tab(this);
-        });
-        
-        jQuery('.tab-close-button').on("touchend", function (){
-            jQuery(this).trigger("click");
-        });
-        
+        jQuery('.tab-close-button').css('cursor','pointer');
     }
     
     if(jQuery(window).width()<800){
@@ -174,7 +168,6 @@ jQuery( document ).ready(function() {
     });
     
     jQuery(document).ajaxComplete(function(event, request, settings){
-        console.log(settings);
         setTimeout(displayNext10Results(),1000);
         setTimeout(displayPrev10Results(),1000);
     });
@@ -187,13 +180,101 @@ jQuery( document ).ready(function() {
         var url = jQuery(this).val();
         window.location = url;
     });
+    
+    
+    //add aria-labels to pagination buttons
+    var addnavattrinterval;
+    var addnavattr = false;
+    setInterval(function(){  
+    if(jQuery('.wpDataTables table.wpDataTable').hasClass('overlayed') && !addnavattr){
+        addnavattr = true;
+        addnavattrinterval = setInterval(function(){
+          if(!jQuery('.wpDataTables table.wpDataTable').hasClass('overlayed') && addnavattr){
+            addnavaccsttr();
+          }
+          addnavattr = false;
+          clearInterval(addnavattrinterval);      
+        },800);
+      }
+    }, 50);
+
+    addnavaccsttr();
+      
+       
+    
+    setTimeout(function() {
+      //add aria-label to state selection dropdown
+      jQuery('#usa-html5-map-selector_0').attr('aria-label','US States Dropdown List');
+      jQuery('#usa-html5-map-selector_0').attr({
+      	'aria-label': 'US States Dropdown List',
+      	'title': 'US States Dropdown List'	
+      });
+      jQuery('#usa-html5-map-selector_0').wrap('<label for="US States">US States:&nbsp;</label>');
+  
+      //ushtml5map Wrapper
+      jQuery('select#usa-html5-map-selector_0').focus(function(){
+      	jQuery('#oese-usahtml5map-wrapper').addClass('focused');
+      });
+      jQuery('select#usa-html5-map-selector_0').focusout(function(){
+      	jQuery('#oese-usahtml5map-wrapper').removeClass('focused');
+      });
+  
+      //wpDataTable Number of entries dropdown
+      jQuery('#table_1_wrapper.wpDataTablesWrapper .dataTables_length button.dropdown-toggle').focus(function(){
+      	jQuery('#table_1_wrapper.wpDataTablesWrapper').addClass('focused');
+      });
+      jQuery('#table_1_wrapper.wpDataTablesWrapper .dataTables_length button.dropdown-toggle').focusout(function(){
+      	jQuery('#table_1_wrapper.wpDataTablesWrapper').removeClass('focused');
+      });
+  
+      //wpDataTable Search Input
+      jQuery('#table_1_wrapper.wpDataTablesWrapper .dataTables_filter input[type="search"]').focus(function(){
+      	jQuery('#table_1_wrapper.wpDataTablesWrapper').addClass('focused');
+      });
+      jQuery('#table_1_wrapper.wpDataTablesWrapper .dataTables_filter input[type="search"]').focusout(function(){
+      	jQuery('#table_1_wrapper.wpDataTablesWrapper').removeClass('focused');
+      });
+  
+      //wpDataTable Report Column
+      jQuery('#table_1_wrapper.wpDataTablesWrapper #table_1 tr td.column-report a').focus(function(){
+      	jQuery('#table_1_wrapper.wpDataTablesWrapper').addClass('focused');
+      });
+      jQuery('#table_1_wrapper.wpDataTablesWrapper #table_1 tr td.column-report a').focusout(function(){
+      	jQuery('#table_1_wrapper.wpDataTablesWrapper').removeClass('focused');
+      });
+  
+      //wpDataTable Table header
+      jQuery('#table_1_wrapper.wpDataTables table.wpDataTable tr th').focus(function(){
+      	jQuery('#table_1_wrapper.wpDataTablesWrapper').addClass('focused');
+      });
+      jQuery('#table_1_wrapper.wpDataTables table.wpDataTable tr th').focusout(function(){
+      	jQuery('#table_1_wrapper.wpDataTablesWrapper').removeClass('focused');
+      });
+  
+      //wpDataTable Pagination buttons
+      jQuery('div#table_1_paginate a.paginate_button').focus(function(){
+      	jQuery('#table_1_wrapper.wpDataTablesWrapper').addClass('focused');
+      });
+      jQuery('div#table_1_paginate a.paginate_button').focusout(function(){
+      	jQuery('#table_1_wrapper.wpDataTablesWrapper').removeClass('focused');
+      });
+    }, 2000);
+    
+    
+    
+    
 });
 
-function close_tab(close_button){
-    curtab = jQuery(close_button).closest('.tab-pane.active');
-    curtabid = curtab.attr('id');
-    curtab.removeClass('active');
-    jQuery('#mobileSidebarTab a[href="#' + curtabid +'"]').removeClass('active');
+function addnavaccsttr(){
+  jQuery('.paginate_button.first').attr({'data-value': 'Navigate to first page','aria-label': 'Navigate to first page','title': 'Navigate to first page'})
+  jQuery('.paginate_button.previous').attr({'data-value': 'Navigate to previous page','aria-label': 'Navigate to previous page','title': 'Navigate to previous page'})
+  jQuery('.paginate_button.next').attr({'data-value': 'Navigate to next page','aria-label': 'Navigate to next page','title': 'Navigate to next page'})
+  jQuery('.paginate_button.last').attr({'data-value': 'Navigate to last page','aria-label': 'Navigate to last page','title': 'Navigate to last page'})    
+  jQuery('.dataTables_paginate>span').children('a.paginate_button').each(function(e) {
+    var pageno = jQuery(this).text();
+    //console.log(pageno);
+    jQuery(this).attr({'data-value': 'Navigate to page '+pageno,'aria-label': 'Navigate to page '+pageno,'title': 'Navigate to page '+pageno,	});
+  });
 }
 
 function displayNext10Results() {
