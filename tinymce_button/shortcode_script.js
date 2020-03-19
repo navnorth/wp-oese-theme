@@ -25,7 +25,7 @@ jQuery( document ).ready(function() {
                 tmp_html += '</div>';
             tmp_html += '</div>';
           jQuery('.oet-shrtcdv2_preview').html(tmp_html);
-          displayPreview(scode);
+          timeout = setTimeout(function() {displayPreview(scode);}, 500);
         }
       }, 1000);
     }

@@ -28,7 +28,7 @@ if($action == "show_popup")
 						$return .= '<li><div data="audience_link" class="oet-shrtcdv2_tab">Audience Link</div></li>';
 						$return .= '<li><div data="oese_publication" class="oet-shrtcdv2_tab">Publication</div></li>';
 						$return .= '<li><div data="oese_sub_pages" class="oet-shrtcdv2_tab">Subpages</div></li>';
-						
+						$return .= '<li><div data="oet_featured_card" class="oet-shrtcdv2_tab">Featured Card</div></li>';
 						
 				$return .= '</ul>';
 		$return .= '</div>';
