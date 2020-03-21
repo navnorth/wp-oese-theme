@@ -32,7 +32,7 @@ $show_address = get_option('wp_oese_theme_display_footer_address');
     ?>      
             <div class="row oese-date-modified-section">
               <div class="col-md-12 oese-lastModified pull-right">
-                  <span>Last Modified: 03/01/2018</span>
+                  <span>Last Modified: <?php echo the_modified_date('m/d/yy') ?></span>
               </div>
             </div>  
             <div class="row">
