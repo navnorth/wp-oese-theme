@@ -91,7 +91,9 @@
                               if (empty($tImage))
                                     $tImage = get_stylesheet_directory_uri()."/images/news-icon.png";
                               else {
-                                    $tImage = wp_get_attachment_image_url($tImage,"medium");
+                                if(filter_var($tImage, FILTER_VALIDATE_URL) === FALSE){
+                                	$tImage = wp_get_attachment_image_url($tImage,"medium");
+                                }
                               }
                     ?>
                     <div class="col-md-4 home-col-md-4 pl-0 pr-0 ml-0 mr-0">

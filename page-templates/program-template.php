@@ -167,11 +167,13 @@ if ($detect->isMobile())
         <!--Program Landing Template Top Section END-->
 
         <!--Div seperator-->
+        <?php /* ?>
         <div class="row mr-0 ml-0">
             <div class="col-md-12 pr-0 pl-0">
                 <div class="seperate-dark-blue-border"></div>
             </div>
         </div>
+        <?php */ ?>
         <!--Div seperator END-->
 
 

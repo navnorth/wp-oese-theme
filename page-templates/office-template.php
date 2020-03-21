@@ -138,11 +138,13 @@ if ($detect->isMobile())
         <!--Office Template Top Section END-->
         
         <!--Div seperator-->
+        <?php /* ?>
         <div class="row">
             <div class="col-md-12">
                 <div class="seperate-dark-blue-border"></div>
             </div>
         </div>
+        <?php */ ?>
         <!--Div seperator END-->
         
         <!--Office Template Grid Section START-->
