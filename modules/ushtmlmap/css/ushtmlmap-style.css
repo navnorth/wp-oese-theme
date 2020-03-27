@@ -1,0 +1,99 @@
+div#oese-map-wrapper {
+  float: left;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #dddddd;
+  padding: 10px !important;
+  margin-bottom: 30px;
+}
+.oese-map-title {
+    text-align: center;
+    padding: 5px;
+    background-color: #a6b9df;
+    margin-bottom: 10px;
+}
+.oese-map-content {
+  position: relative;
+  float: left;
+  width: 100%;
+}
+.oese-map-dropdown-wrapper {
+  position: relative;
+  float: left;
+  width: 100%;
+  text-align: center;
+	padding: 10px 0px;
+}
+select#oese-map-dropdown {
+  font-size: 16px;
+  padding: 4px;
+  border: 1px solid #a9a9a9;
+  font-family: arial;
+  width: 100%;
+  max-width: 140px;
+}
+.oese-map-dropdown-wrapper label {
+    font-size: 16px;
+    color: #333333;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 600;
+}
+.oese-map-content {position:relative;}
+.map[name="oese-usmap"] area {pointer-events: none;}
+.oese-map-content img {width:100%;}
+canvas#oese-map-canvas {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  min-width: 100%;
+  height: 100%;
+  min-height: 100%;
+}
+.oese-map-tooltip {
+	position: absolute;
+  background: white;
+  padding: 15px 10px;
+  z-index: 999;
+  background-color: #fff;
+  border: 2px solid #bbb;
+  border-radius: 10px;
+  opacity: .99;
+  width: 230px;
+  min-width: 230px;
+  height: 95px;
+  min-height: 95px;
+  border-collapse: separate;
+  margin-bottom: 0 !important;
+  line-height: 1.4;
+  vertical-align: top;
+  box-sizing: border-box;
+  table-layout: auto;
+}
+.oese-map-tooltip table {width:100%; height:60px; min-height:60px;}
+.oese-map-tooltip table tr td {
+  width: 100%;
+  text-align: center;
+}
+.oese-map-tooltip table tr:nth-child(1) td {
+  font-weight: 700;
+	padding:5px 0px;
+  font-family: arial;
+  font-size: 14px;
+	text-transform: uppercase;
+}
+.oese-map-tooltip table tr:nth-child(2) td {
+  font-weight: 400;
+	padding:5px 0px;
+  font-family: arial;
+  font-size: 12px;
+}
+.oese-map-dropdown-wrapper {
+	position: relative;
+	width: 100%;
+	height: auto;
+	margin: 0 auto;
+}
+map area {cursor: pointer;}
+

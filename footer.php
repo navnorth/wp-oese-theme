@@ -29,7 +29,12 @@ if($footerNav) {
 }
 
 $show_address = get_option('wp_oese_theme_display_footer_address');
-    ?>
+    ?>      
+            <div class="row oese-date-modified-section">
+              <div class="col-md-12 oese-lastModified pull-right">
+                  <span>Last Modified: <?php echo the_modified_date('m/d/Y') ?></span>
+              </div>
+            </div>  
             <div class="row">
                 <div class="col-md-12">
                     <div class="row custom-common-padding footer-main-section mr-0 ml-0">

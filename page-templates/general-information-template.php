@@ -86,11 +86,13 @@ $archived_date = null;
 
 
     <!--Div separator-->
+    <?php /* ?>
     <div class="row">
         <div class="col-md-12">
             <div class="seperate-dark-blue-border"></div>
         </div>
     </div>
+    <?php */ ?>
     <!--Div separator END-->
 
 <?php get_footer(); ?>

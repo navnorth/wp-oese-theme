@@ -7,7 +7,51 @@ extract($_REQUEST);
 if($action == "show_popup")
 {
 	$return = '';
-	$return .= '<div id="oet-shortcode-form"><div id="oet-table" class="form-table">
+	
+	$return .= '<div id="oet-shrtcdv2-form">';
+		$return .= '<div class="oet-shrtcdv2-left-column">';
+				$return .= '<ul>';
+						$return .= '<li><div data="accordian" class="oet-shrtcdv2_tab">Accordion</div></li>';
+						$return .= '<li><div data="banner" class="oet-shrtcdv2_tab">Disruptive Content</div></li>';
+						$return .= '<li><div data="button" class="oet-shrtcdv2_tab">Button</div></li>';
+						$return .= '<li><div data="featured_content" class="oet-shrtcdv2_tab">Featured Content</div></li>';
+						$return .= '<li><div data="featured_video" class="oet-shrtcdv2_tab">Featured Video</div></li>';
+						$return .= '<li><div data="left_column" class="oet-shrtcdv2_tab">Left Column</div></li>';
+						$return .= '<li><div data="pull_quotes" class="oet-shrtcdv2_tab">Pull Quotes</div></li>';
+						$return .= '<li><div data="right_column" class="oet-shrtcdv2_tab">Right Column</div></li>';
+						$return .= '<li><div data="recommended_resources" class="oet-shrtcdv2_tab">Recommended Resources</div></li>';
+						$return .= '<li><div data="featured_content_box" class="oet-shrtcdv2_tab">Featured Content Box</div></li>';
+						$return .= '<li><div data="bsgrid" class="oet-shrtcdv2_tab">Bootstrap Grid</div></li>';
+						$return .= '<li><div data="spacer" class="oet-shrtcdv2_tab">Spacer</div></li>';
+						$return .= '<li><div data="callout_box" class="oet-shrtcdv2_tab">Callout Box</div></li>';
+						$return .= '<li><div data="publication_intro" class="oet-shrtcdv2_tab">Publication Intro</div></li>';
+						$return .= '<li><div data="audience_link" class="oet-shrtcdv2_tab">Audience Link</div></li>';
+						$return .= '<li><div data="oese_publication" class="oet-shrtcdv2_tab">Publication</div></li>';
+						$return .= '<li><div data="oese_sub_pages" class="oet-shrtcdv2_tab">Subpages</div></li>';
+						$return .= '<li><div data="oet_featured_card" class="oet-shrtcdv2_tab">Featured Card</div></li>';
+						
+				$return .= '</ul>';
+		$return .= '</div>';
+		$return .= '<div class="oet-shrtcdv2-right-column">';
+			$return .= '<div class="oet-shrtcdv2-block">';
+				$return .= '<h2>SHORTCODE</h2>';
+				$return .= '<textarea class="oet-shrtcdv2_shortcode" rows="8" cols="50" disabled></textarea>';
+			$return .= '</div>';
+			
+			$return .= '<div class="oet-shrtcdv2-block">';
+				$return .= '<h2>PREVIEW</h2>';
+				$return .= '<div class="oet-shrtcdv2_preview"></div>';
+			$return .= '</div>';
+			
+			$return .= '<div class="oet-shrtcdv2-block">';
+				$return .= '<input type="button" id="oet-shrtcdv2-submit" onclick="oetInsertShortcode();" class="button-primary" value="Insert Shortcode" name="submit" />';
+			$return .= '</div>';
+			
+		$return .= '</div>';
+	$return .= '</div>';
+	
+	
+	$return .= '<div id="oet-shortcode-form" style="display:none;"><div id="oet-table" class="form-table">
 					<div class="oet_sngltinyrow">
 						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="accordian">
 							<div class="oert_snglimgtiny">
@@ -193,16 +237,16 @@ if($action == "show_popup")
 				switch (shortcode_type)
 				{
 				   case "accordian":
-					   var shortcode = "[oese_accordion_group id=\'accordion1\'][oese_accordion title=\'\' accordion_series=\'one\' expanded=\'\' group_id=\'accordion1\'] your content goes here [/oese_accordion][oese_accordion title=\'\' accordion_series=\'two\' expanded=\'\' group_id=\'accordion1\'] your content goes here [/oese_accordion][oese_accordion title=\'\' accordion_series=\'three\' expanded=\'\' group_id=\'accordion\'] your content goes here [/oese_accordion][/oese_accordion_group]";
+					   var shortcode = "[oese_accordion_group id=\'accordion1\'][oese_accordion title=\'Title Here\' accordion_series=\'one\' expanded=\'\' group_id=\'accordion1\'] your content goes here [/oese_accordion][oese_accordion title=\'Title Here\' accordion_series=\'two\' expanded=\'\' group_id=\'accordion1\'] your content goes here [/oese_accordion][oese_accordion title=\'Title Here\' accordion_series=\'three\' expanded=\'\' group_id=\'accordion\'] your content goes here [/oese_accordion][/oese_accordion_group]";
 					   break;
 				   case "banner":
-					   var shortcode = "[disruptive_content title=\'\' main_text=\'\' button_text=\'\' button_color=\'\' button_url=\'\']";
+					   var shortcode = "[disruptive_content title=\'Title Here\' main_text=\'Description Here\' button_text=\'Button Text\' button_color=\'\' button_url=\'\']";
 					   break;
 				   case "button":
 					   var shortcode = "[oet_button text=\'\' button_color=\'\' text_color=\'\' font_face=\'\' font_size=\'\' font_weight=\'\' url=\'\' new_window=\'yes/no\']";
 					   break;
 				   case "featured_content":
-					   var shortcode = "[featured_item heading=\'\' url=\'\' image=\'\' title=\'\' date=\'\' button=\'\' button_text=\'\' sharing=\'\']your content goes here[/featured_item]";
+					   var shortcode = "[featured_item heading=\'Heading Here\' url=\'\' image=\'\' title=\'Title Here\' date=\'\' button=\'\' button_text=\'\' sharing=\'\']your content goes here[/featured_item]";
 					   break;
 				   case "featured_video":
 					   var shortcode = "[featured_video heading=\'\' videoid=\'\' description=\'\' height=\'\']";
@@ -237,18 +281,21 @@ if($action == "show_popup")
 				    case "oet_story":
 					   var shortcode = "[oet_story id=\'\' width=6 alignment=\'\' callout_color=\'\' callout_type=\'\' title=\'\'][/oet_story]";
 					   break;
-					case "audience_link":
-						var shortcode = "[audience_link url=\'\']Audience name goes here[/audience_link]";
-						break;
-				   case "oese_publication":
-						var shortcode = "[oese_publication src=\'\']";
-						break;
-                    case "oese_sub_pages":
-						var shortcode = "[oese_sub_pages title=\'\']";
-						break;
-				   default:
-				   	   var shortcode = "";
-				   	   break
+					  case "audience_link":
+						 var shortcode = "[audience_link url=\'\']Audience name goes here[/audience_link]";
+						 break;
+				    case "oese_publication":
+						 var shortcode = "[oese_publication src=\'\']";
+						 break;
+						case "oese_sub_pages":
+						 var shortcode = "[oese_sub_pages title=\'\' id=\'\']";
+						 break;
+						case "oet_featured_card":
+	 					 var shortcode = "[oet_featured_card title=\'Title Here\' button_text=\'Read More\' button_link=\'\' background_image=\'\']your content goes here[/oet_featured_card]";
+					   break;
+				    default:
+				   	 var shortcode = "";
+				   	 break
 				}
 				return shortcode;
 			}
