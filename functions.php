@@ -7,7 +7,7 @@
  * filter hooks in WordPress to change core functionality.
  */
 define( "WP_OESE_THEME_NAME", "WP OESE Theme" );
-define( "WP_OESE_THEME_VERSION", "1.6.3" );
+define( "WP_OESE_THEME_VERSION", "1.7.2" );
 define( "WP_OESE_THEME_SLUG", "wp_oese_theme" );
 
 // Set up the content width value based on the theme's design and stylesheet.
@@ -702,7 +702,7 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
  * Theme Shortcode.
  */
   require_once( get_stylesheet_directory() . '/tinymce_button/shortcode-ajax.php' );
-  
+
   /**
   * OII Menu Walker
   **/
@@ -712,17 +712,17 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
   * Page Edit Modal Parent Attribute
   **/
  require_once( get_stylesheet_directory() . '/modules/modal-parent/modal_parent.php' );
- 
+
  /**
  * ushtmlmap
  **/
- require_once( get_stylesheet_directory() . '/modules/ushtmlmap/ushtmlmap.php' ); 
- 
+ require_once( get_stylesheet_directory() . '/modules/ushtmlmap/ushtmlmap.php' );
+
  /**
  * Performance report
  **/
- //require_once( get_stylesheet_directory() . '/modules/performance-report/performance_report.php' ); 
- require_once( get_stylesheet_directory() . '/modules/performance-table/oese-performance-table.php' ); 
+ //require_once( get_stylesheet_directory() . '/modules/performance-report/performance_report.php' );
+ require_once( get_stylesheet_directory() . '/modules/performance-table/oese-performance-table.php' );
 
 
  function theme_back_enqueue_script()
@@ -735,7 +735,7 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
     wp_enqueue_style( 'theme-back-style',get_stylesheet_directory_uri() . '/css/back-style.css' );
     wp_enqueue_style( 'tinymce_button_backend',get_stylesheet_directory_uri() . '/tinymce_button/shortcode_button.css' );
     wp_localize_script( 'theme-back-script', 'oet_ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
-    
+
     if(get_admin_page_title() == 'Edit Page'){
     //if(get_admin_page_title() != 'Media Library' && get_admin_page_title() != 'Manage Themes'){;
       wp_enqueue_style( 'theme-font-style',get_stylesheet_directory_uri() . '/css/fontawesome/css/all.min.css' );
@@ -746,7 +746,7 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
     wp_enqueue_style('csv-media-styles', get_stylesheet_directory_uri() . '/css/csv-media-import-style.css' );
     wp_enqueue_style( 'shortcode-style-backend',get_stylesheet_directory_uri() . '/tinymce_button/shortcode-style.css' );
     wp_enqueue_script('shortcode_script', get_stylesheet_directory_uri() . '/tinymce_button/shortcode_script.js' );
-    
+
 }
 add_action( 'admin_enqueue_scripts', 'theme_back_enqueue_script' );
 
