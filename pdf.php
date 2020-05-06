@@ -70,7 +70,7 @@ get_header(); ?>
   </style>
   
 	<div id="content" class="site-content">
-		<div class="col-md-12 col-sm-12 col-xs-12 padding_left lft_sid_cntnr">
+		<div class="col-md-12 col-sm-12 col-xs-12 padding_left padding_right lft_sid_cntnr">
 			<?php while ( have_posts() ) : the_post(); ?>  
         
         
