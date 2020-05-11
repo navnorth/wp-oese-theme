@@ -6,6 +6,7 @@
 add_shortcode("disruptive_content", "disruptive_content_fun" );
 function disruptive_content_fun($attr, $content = null)
 {
+	$button_color = "";
 	if ( is_admin() ) {
 		$_arr = getShortcodeAttr($attr);
 		foreach($_arr as $key => $value) $$key = $value;
