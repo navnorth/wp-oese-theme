@@ -2669,7 +2669,7 @@ function shapeSpace_custom_admin_notice() {
       $arr = explode($fnd,",");
       ?>
       <div class="oese-prohibitedpermalinktext notice notice-error /*is-dismissible*/" style="display:none;">
-      <p><?php _e('Please make sure the permalik doesn\'t begin with words such as <strong>admin, login and user</strong> as they are known to cause issues', 'shapeSpace'); ?></p>
+      <p><?php _e('Please make sure the permalink doesn\'t begin with words such as <strong>admin, login, and user</strong> as they are known to cause issues.', 'shapeSpace'); ?></p>
       </div>
       <script>
       jQuery(document).ready(function(){
