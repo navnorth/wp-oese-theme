@@ -100,3 +100,8 @@ a.contact-eidt { text-decoration:underline; }
     border-color: #32373c;
 }
 .oese-tabs .nav-tab-wrapper .ui-tabs-active { outline:none; }
+.oese-prohibitedpermalinktext {
+  background:rgba(220,50,50,.1) !important;
+  width:100%;
+  min-width:100%;
+}

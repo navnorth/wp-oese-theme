@@ -2631,3 +2631,59 @@ if ( ! function_exists( 'oese_display_subpages' ) ) {
         return $html;
 	}
 }
+
+
+
+
+add_action('admin_head', 'shapeSpace_custom_admin_notice');
+function shapeSpace_custom_admin_notice() { 
+  global $pagenow; global $post;
+  if (( $pagenow == 'post.php' ) || (get_post_type() == 'post')) {
+    $prohibited = array('admin','user','login');
+    if( strpos( wp_get_raw_referer(), 'post-new' ) > 0 ) { //new post
+      $title = $post->post_title; $titletemp = $title; $fnd = '';
+      foreach($prohibited as $word) {
+        $pos = strpos($titletemp, $word);
+        if ($pos !== false && $pos == 0){ //found at the beginning of the string
+            $titletemp = substr_replace($titletemp,'',$pos,strlen($word));
+            if($fnd ==''){ $fnd .= $word; }else{ $fnd .= ','.$word; }
+        }
+      }
+    }else{ //update post
+      $urlArray = get_permalink($post_id);      
+      $segments = explode('/', $urlArray);
+      $numSegments = count($segments); 
+      $permalinkLastSegment = $segments[$numSegments - 2];
+      $title = $permalinkLastSegment; $titletemp = $title; $fnd = '';
+      foreach($prohibited as $word) {
+        $pos = strpos($titletemp, $word);
+        if ($pos !== false && $pos == 0){ //found at the beginning of the string
+            $titletemp = substr_replace($titletemp,'',$pos,strlen($word));
+            if($fnd ==''){ $fnd .= $word; }else{ $fnd .= ','.$word; }
+        }
+      }
+    }
+    
+    if($fnd != ''){
+      $ps = strpos($fnd, ",");
+      $arr = explode($fnd,",");
+      ?>
+      <div class="oese-prohibitedpermalinktext notice notice-error /*is-dismissible*/" style="display:none;">
+      <p><?php _e('Permalink begins with word(s) that are known to cause issues. Please make sure the permalik doesn\'t begin with any of these words<strong>: admin, login, user</strong>', 'shapeSpace'); ?></p>
+      </div>
+      <script>
+      jQuery(document).ready(function(){
+        setTimeout(function(){
+          jQuery('.oese-prohibitedpermalinktext').show();
+        }, 100);
+      });
+      </script>
+      
+      
+      <?php
+      
+      
+    }
+  }
+  
+}
