@@ -105,3 +105,6 @@ a.contact-eidt { text-decoration:underline; }
   width:100%;
   min-width:100%;
 }
+input#secondary-save-post {
+    float: left;
+}
