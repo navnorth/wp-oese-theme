@@ -39,13 +39,6 @@ jQuery( document ).ready(function() {
     var keycode = (e.keyCode ? e.keyCode : e.which);
     if(keycode == '13'){
       e.preventDefault ? e.preventDefault() : e.returnValue = false;
-      jQuery('input[name="post_title"]').trigger('blur'); 
-      var checkExist = setInterval(function() {
-         if (jQuery('span#editable-post-name').length) {
-            clearInterval(checkExist);
-            interceptPublish('pub');
-         }
-      }, 100); // check every 100ms
     }
   })
   //Save Draft Button Click Event
