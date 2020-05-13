@@ -25,7 +25,7 @@ jQuery( document ).ready(function() {
     if(jQuery('#minor-publishing-actions #save-action #save-post').length){
       var btnText = jQuery('#minor-publishing-actions #save-action #save-post').attr('value');
       jQuery('#minor-publishing-actions #save-action #save-post').hide();
-      jQuery('<input type="submit" name="save" id="secondary-save-post" value="'+btnText+'2" class="button">').insertAfter(jQuery('#minor-publishing-actions #save-action #save-post'));
+      jQuery('<input type="submit" name="save" id="secondary-save-post" value="'+btnText+'" class="button">').insertAfter(jQuery('#minor-publishing-actions #save-action #save-post'));
     }
     //Publish Button
     if(jQuery("#publish").length){
