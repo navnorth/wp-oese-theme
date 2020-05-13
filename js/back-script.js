@@ -33,7 +33,6 @@ jQuery( document ).ready(function() {
     jQuery('input[name="post_title"]').trigger('blur');    
     var checkExist = setInterval(function() {
        if (jQuery('span#editable-post-name').length) {
-          console.log("Exists!");
           clearInterval(checkExist);
           interceptPublish();
        }
