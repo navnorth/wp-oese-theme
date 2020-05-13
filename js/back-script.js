@@ -11,7 +11,14 @@ jQuery( document ).ready(function() {
         }
     });
     jQuery('.oese-tabs').tabs();
+})
 
+
+
+/* ******************** */
+/* PERMALINK VALIDATION */
+/* ******************** */
+jQuery( document ).ready(function() {
   var posttype = getPostType();
   if(posttype != 'undefined' && (posttype == 'page' || posttype == 'post')){
     if(jQuery("#publish").length){
