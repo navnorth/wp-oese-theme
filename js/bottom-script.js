@@ -5,7 +5,9 @@ jQuery( document ).ready(function($) {
      $('.slideshow_container .slideshow_slide a').on("focusout",function(){
 	$(this).closest(".slideshow_container").trigger("mouseleave");
      });
-     $('.wpdt-c #table_1_wrapper #table_1[data-wpdatatable_id=8] tbody tr').on('click', function(e){
+     $('.wpdt-c #table_1_wrapper #table_1[data-wpdatatable_id="8"] tbody tr').on('click', function(e){
+          console.log(e);
+          console.log(this);
      	let schoolName = $(this).find('.column-schoolname').text();
      	let state = $(this).find('.column-state').text();
      	let district = $(this).find('.column-district').text();
@@ -13,6 +15,6 @@ jQuery( document ).ready(function($) {
      	target.find("#schoolName").text(schoolName)
      	target.find("#state").text(state)
      	target.find("#district").text(district)
-     	target.modal('toggle');
+     	target.modal('show');
      });
 });
