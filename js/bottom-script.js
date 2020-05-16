@@ -5,7 +5,7 @@ jQuery( document ).ready(function($) {
      $('.slideshow_container .slideshow_slide a').on("focusout",function(){
 	$(this).closest(".slideshow_container").trigger("mouseleave");
      });
-     $('.wpdt-c #table_1_wrapper #table_1[data-wpdatatable_id="8"] tbody tr').on('click', function(e){
+     $('#table_1[data-wpdatatable_id="8"] tbody tr td').on('click', function(e){
           console.log(e);
           console.log(this);
      	let schoolName = $(this).find('.column-schoolname').text();
