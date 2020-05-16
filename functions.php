@@ -2632,7 +2632,7 @@ if ( ! function_exists( 'oese_display_subpages' ) ) {
 	}
 }
 
-add_action( 'wp_footer' , 'oese_add_ppe_details_modal' );
+add_action( 'wp_footer' , 'oese_add_ppe_details_modal', 10 );
 function oese_add_ppe_details_modal(){
   include_once( get_template_directory_uri() . "/page-templates/modal/ppe_details_modal.php" );
 }
