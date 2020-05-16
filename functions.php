@@ -2534,6 +2534,7 @@ function add_oese_inline_styles(){
   }
   </style>
   <?php
+  include_once( get_template_directory_uri() . "/page-templates/modal/ppe_details_modal.php" );
 }
 
 if (! function_exists('is_solr_installed')){
@@ -2631,10 +2632,4 @@ if ( ! function_exists( 'oese_display_subpages' ) ) {
         return $html;
 	}
 }
-
-add_action( 'wp_footer' , 'oese_add_ppe_details_modal', 10 );
-function oese_add_ppe_details_modal(){
-  include_once( get_template_directory_uri() . "/page-templates/modal/ppe_details_modal.php" );
-}
-
 
