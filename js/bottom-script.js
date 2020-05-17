@@ -8,9 +8,10 @@ jQuery( document ).ready(function($) {
      $(document).on('click', '.wpdt-c .wpDataTablesWrapper table.wpDataTable[data-wpdatatable_id="8"] tr td', function(e){
           console.log(e);
           console.log(this);
-     	let schoolName = $(this).find('.column-schoolname').text();
-     	let state = $(this).find('.column-state').text();
-     	let district = $(this).find('.column-district').text();
+          let parent = $(this).parent();
+     	let schoolName = parent.find('.column-schoolname').text();
+     	let state = parent.find('.column-state').text();
+     	let district = parent.find('.column-district').text();
      	let target = $('#ppe-details-modal');
      	target.find("#schoolName").text(schoolName)
      	target.find("#state").text(state)

@@ -1,5 +1,5 @@
 <!--Dynamic module modal-->
-<div class="modal fade" id="ppe-details-modal" tabindex="-1" role="dialog" aria-labelledby="lpDynamicModalLabel">
+<div class="modal" id="ppe-details-modal" tabindex="-1" role="dialog" aria-labelledby="lpDynamicModalLabel">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">
