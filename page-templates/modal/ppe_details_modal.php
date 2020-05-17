@@ -7,34 +7,22 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
-                <div class="form-group">
-                    <div class="form-label">State:</div>
-                    <div class="form-value" id="state"></div>
-                </div>
-                <div class="form-group">
-                    <div class="form-label">District:</div>
-                    <div class="form-value" id="district"></div>
-                </div>
-                <div class="form-group">
-                    <div class="form-label">SIDN:</div>
-                    <div class="form-value" id="sidn"></div>
-                </div>
-                <div class="form-group">
-                    <div class="form-label">NCES No:</div>
-                    <div class="form-value" id="ncesno"></div>
-                </div>
-                <div class="form-group">
-                    <div class="form-label">Total State and Local PPE:</div>
-                    <div class="form-value" id="totalslppe"></div>
-                </div>
-                <div class="form-group">
-                    <div class="form-label">Total Federal PPE:</div>
-                    <div class="form-value" id="totalfppe"></div>
-                </div>
-                <div class="form-group">
-                    <div class="form-label">Total PPE:</div>
-                    <div class="form-value" id="totalppe"></div>
-                </div>
+                <dl class="row">
+                    <dt class="col-sm-3">State:</dt>
+                    <dd class="col-sm-9" id="state"></dd>
+                    <dt class="col-sm-3">District:</dt>
+                    <dd class="col-sm-9" id="district"></dd>
+                    <dt class="col-sm-3">SIDN:</dt>
+                    <dd class="col-sm-9" id="sidn"></dd>
+                    <dt class="col-sm-3">NCES No:</dt>
+                    <dd class="col-sm-9" id="ncesno"></dd>
+                    <dt class="col-sm-3">Total State and Local PPE:</dt>
+                    <dd class="col-sm-9" id="totalslppe"></dd>
+                    <dt class="col-sm-3">Total Federal PPE:</dt>
+                    <dd class="col-sm-9" id="totalfppe"></dd>
+                    <dt class="col-sm-3">Total PPE:</dt>
+                    <dd class="col-sm-9" id="totalppe"></dd>
+                </dl>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

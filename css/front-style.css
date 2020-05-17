@@ -302,3 +302,4 @@ div#table_1_paginate a.paginate_button:focus{
 #table_1_wrapper.wpDataTablesWrapper #table_1 tr.even td.column-report a:focus {
   border: 1px solid #3e5487 !important;
 }
+#ppe-details-modal { z-index: 99999; }
