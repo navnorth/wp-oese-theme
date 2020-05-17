@@ -9,13 +9,26 @@ jQuery( document ).ready(function($) {
           console.log(e);
           console.log(this);
           let parent = $(this).parent();
-     	let schoolName = parent.find('.column-schoolname').text();
-     	let state = parent.find('.column-state').text();
-     	let district = parent.find('.column-district').text();
-     	let target = $('#ppe-details-modal');
-     	target.find("#schoolName").text(schoolName)
-     	target.find("#state").text(state)
-     	target.find("#district").text(district)
+          let target = $('#ppe-details-modal');
+          let data = {
+               school: parent.find('.column-schoolname').text(),
+               state: parent.find('.column-state').text(),
+               district: parent.find('.column-district').text(),
+               isdn: parent.find('.column-stateschoolid').text(),
+               nces: parent.find('.column-ncesdistrictid').text(),
+               statelocalppe: parent.find('.column-formula_1').text(),
+               federalppe: parent.find('.column-formula_2').text(),
+               totalppe: parent.find('.column-formula_3').text()
+          };
+
+     	target.find("#schoolName").text(data.school);
+     	target.find("#state").text(data.state);
+     	target.find("#district").text(data.district);
+          target.find("#sidn").text(data.isdn);
+          target.find("#ncesno").text(data.isdn);
+          target.find("#totalslppe").text(data.statelocalppe);
+          target.find("#totalfppe").text(data.federalppe);
+          target.find("#totalppe").text(data.totalppe);
      	target.modal('show');
      });
 });
