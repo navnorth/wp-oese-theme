@@ -304,3 +304,4 @@ div#table_1_paginate a.paginate_button:focus{
 }
 #ppe-details-modal { z-index: 99999; }
 body.modal-open { overflow: visible; }
+.wpDataTable .hidden-column { display:none; }

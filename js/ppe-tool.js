@@ -5,6 +5,7 @@ jQuery( document ).ready(function($) {
           let target = $('#ppe-details-modal');
           let data = {
                school: parent.find('.column-schoolname').text(),
+               county: parent.find('.column-countyname').text(),
                state: parent.find('.column-state').text(),
                district: parent.find('.column-district').text(),
                isdn: parent.find('.column-stateschoolid').text(),
@@ -16,6 +17,7 @@ jQuery( document ).ready(function($) {
 
      	target.find("#schoolName").text(data.school);
      	target.find("#state").text(data.state);
+     	target.find("#county").text(data.county);
      	target.find("#district").text(data.district);
 		target.find("#sidn").text(data.isdn);
 		target.find("#ncesno").text(data.nces);
