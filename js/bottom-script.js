@@ -6,8 +6,7 @@ jQuery( document ).ready(function($) {
 	$(this).closest(".slideshow_container").trigger("mouseleave");
      });
      $(document).on('click', '.wpdt-c .wpDataTablesWrapper table.wpDataTable[data-wpdatatable_id="8"] tr td', function(e){
-          console.log(e);
-          console.log(this);
+          e.preventDefault();
           let parent = $(this).parent();
           let target = $('#ppe-details-modal');
           let data = {
