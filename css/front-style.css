@@ -303,3 +303,4 @@ div#table_1_paginate a.paginate_button:focus{
   border: 1px solid #3e5487 !important;
 }
 #ppe-details-modal { z-index: 99999; }
+body.modal-open { overflow: visible; }
