@@ -7,7 +7,7 @@ jQuery( document ).ready(function($) {
                school: parent.find('.column-schoolname').text(),
                state: parent.find('.column-state').text(),
                county: parent.find('.column-countyname').text(),
-               city: parent.find('.column-city').text();
+               city: parent.find('.column-city').text(),
                district: parent.find('.column-district').text(),
                zip: parent.find('.column-zip').text(),
                isdn: parent.find('.column-stateschoolid').text(),
