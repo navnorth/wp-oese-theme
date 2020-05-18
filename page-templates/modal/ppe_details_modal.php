@@ -13,7 +13,11 @@
                     <dt class="col-sm-5">County:</dt>
                     <dd class="col-sm-7" id="county"></dd>
                     <dt class="col-sm-5">District:</dt>
-                    <dd class="col-sm-7" id="district"></dd>
+                    <dd class="col-sm-7" id="county"></dd>
+                    <dt class="col-sm-5">City:</dt>
+                    <dd class="col-sm-7" id="city"></dd>
+                    <dt class="col-sm-5">Zip:</dt>
+                    <dd class="col-sm-7" id="zip"></dd>
                     <dt class="col-sm-5">SIDN:</dt>
                     <dd class="col-sm-7" id="sidn"></dd>
                     <dt class="col-sm-5">NCES No:</dt>
