@@ -24,7 +24,4 @@ jQuery( document ).ready(function($) {
 		target.find("#totalppe").text(data.totalppe);
      	target.modal('show');
      });
-	$('#ppe-details-modal').on('show.bs.modal', function (e) {
-        $('#ppe-details-modal').css('top', window.top.scrollY); //set modal position
-    });
 });
