@@ -25,7 +25,7 @@ jQuery( document ).ready(function($) {
      	target.find("#state").text(data.state);
      	target.find("#district").text(data.district);
           target.find("#sidn").text(data.isdn);
-          target.find("#ncesno").text(data.isdn);
+          target.find("#ncesno").text(data.nces);
           target.find("#totalslppe").text(data.statelocalppe);
           target.find("#totalfppe").text(data.federalppe);
           target.find("#totalppe").text(data.totalppe);
