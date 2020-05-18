@@ -28,6 +28,6 @@ jQuery( document ).ready(function($) {
 		target.find("#totalslppe").text(data.statelocalppe);
 		target.find("#totalfppe").text(data.federalppe);
 		target.find("#totalppe").text(data.totalppe);
-     	target.modal('show');
+     	target.modal('show').addClass('show');
      });
 });
