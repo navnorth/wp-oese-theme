@@ -306,13 +306,13 @@ div#table_1_paginate a.paginate_button:focus{
 #ppe-details-modal { z-index: 99999; }
 body.modal-open { overflow: visible; }
 .wpDataTable .hidden-column { display:none; }
-.wdt-md-modal .modal-dialog .modal-header { position:relative; border-bottom: 1px solid #cdcdcd; padding:13px 26px; }
+.wdt-md-modal .modal-dialog .modal-header { position:relative; border-bottom: 1px solid #cdcdcd; padding:15px 26px !important; }
 .wpdt-c .modal .modal-header button.close {
   position: absolute;
   right: 0;
-  margin-right: 5px !important;
+  margin-right: 10px !important;
   top: 0;
-  margin-top: 2px !important;
+  margin-top: 5px !important;
 }
 .wpdt-c .modal .modal-body { padding: 15px 26px !important; }
 .wpdt-c .modal .modal-body .wdt-details-dialog-fields-block .form-group .col-sm-3 {
