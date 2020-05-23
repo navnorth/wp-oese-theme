@@ -302,6 +302,27 @@ div#table_1_paginate a.paginate_button:focus{
 #table_1_wrapper.wpDataTablesWrapper #table_1 tr.even td.column-report a:focus {
   border: 1px solid #3e5487 !important;
 }
+/** PPE tool Modal styling **/
 #ppe-details-modal { z-index: 99999; }
 body.modal-open { overflow: visible; }
 .wpDataTable .hidden-column { display:none; }
+.wdt-md-modal .modal-dialog .modal-header { position:relative; }
+.wpdt-c .modal .modal-header button.close {
+  position: absolute;
+  right: 0;
+  margin-right: 15px;
+  top: 0;
+  margin-top: 15px;
+}
+.wpdt-c .modal .modal-body { padding: 15px 26px; }
+.wpdt-c .modal .modal-body .wdt-details-dialog-fields-block .form-group .col-sm-3 {
+  width:50%;
+  font-size:14px;
+  font-weight:bold;
+}
+.wpdt-c .modal .modal-body .wdt-details-dialog-fields-block .form-group  .col-sm-9 {
+  width:50%;
+  font-size:14px;
+}
+.wpdt-c .modal .modal-body .wdt-details-dialog-fields-block .form-group .detailColumn { font-size:14px; }
+.wpdt-c .modal .modal-body .wdt-details-dialog-fields-block .form-group { margin-bottom:15px; }
