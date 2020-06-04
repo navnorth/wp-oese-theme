@@ -1889,13 +1889,13 @@ ul.tile-links-wrapper li { list-style-type:none; }
 /*Program Landing Css END*/
 
 /** Modal Styles **/
-.modal-open {
+/*.modal-open {
     position: fixed;
     bottom: 0;
     top: 0;
     right: 0;
     left: 0;
-}
+}*/
 .oese-modal .modal-header {
     background: #1F5C99;
     background-image: url(../images/overlay-diamonds.png);
