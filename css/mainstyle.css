@@ -1697,8 +1697,16 @@ a.oese-logo-home {
 .general-info-row .home-col-md-4 {
     margin-right: 0 !important;
 }
+
+@media screen and (max-width: 768px){
+	.trending-image-section img {
+	    width: 100% !important;
+	    height: auto !important;
+	}
+}
+.trending-image-section {overflow: hidden !important;}
 .trending-image-section img{
-    width: 100%;
+    width: auto%;
     height: 200px;
 }
 .trending-image-details, .general-info-details{
