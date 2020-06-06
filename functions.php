@@ -3008,16 +3008,17 @@ function oet_display_acf_home_content(){
              </div>
              <?php
                   
-        elseif( get_row_layout() == 'oet_act_homepage_spacer' ):
-            ?><div class="row oet-tilelinks-spacer"></div><?php
-            
+        elseif( get_row_layout() == 'oet_act_homepage_spacer' ):        
+            $_sepacer_height = get_sub_field('oet_act_homepage_spacer_height');
+            ?><div class="row col-sm-12" style="height:<?php echo $_sepacer_height.'px' ?>;"></div><?php
+    
         elseif( get_row_layout() == 'oet_act_homepage_separator' ):
             ?>
               <div class="col-sm-12">
                 <div class="seperate-dark-blue-border"></div>
               </div>
             <?php
-            
+
         endif;
 
 
