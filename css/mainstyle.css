@@ -1256,6 +1256,7 @@ a {
 /*Secondary navigation menu css END*/
 
 .seperate-dark-blue-border{
+		width:100%;
     height: 12px;
     background: #004285;
 }
@@ -2810,3 +2811,20 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
     margin-bottom: 20px !important;
 		float:left;
 }
+
+
+/* ACF HOME PAGE */
+.oet_acf_homepage_trendingnow_block_wrapper{
+	width:100%; max-width:80%; margin:0px auto;
+}
+
+@media screen and (max-width: 576px){ 
+  .row {
+		margin-right: 0px !important;
+		margin-left: 0px !important;
+	}
+	.oet_acf_homepage_trendingnow_block_wrapper{
+		width:100%; max-width:95%; margin:0px auto;
+	}
+}
+

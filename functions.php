@@ -2636,3 +2636,392 @@ add_action( 'wp_footer' , 'add_ppe_details_modal' );
 function add_ppe_details_modal(){
   include_once( get_template_directory() . "/page-templates/modal/ppe_details_modal.php" );
 }
+
+function oet_display_acf_home_content(){
+  if( have_rows('oet_acf_homepage_row') ):
+    while ( have_rows('oet_acf_homepage_row') ) : the_row();
+
+        $columnlayouts = array();
+        if( get_row_layout() == '1_column_layout' ):
+            $columnlayouts[0] = get_sub_field('oet_acf_homepage_column_1');
+            foreach ($columnlayouts as $columnlayout) {  //Column FC
+              ?><div class="col-sm-12 oet_1column_layout"><?php
+              if(!empty($columnlayout)):
+                foreach ($columnlayout as $subfieldlayout) { //Subfields FC w/in Column FC
+                  if(!empty($subfieldlayout)):
+                    foreach ($subfieldlayout as $subfieldkey => $subfieldvalue) {  //subfields within Subfield FC
+                      if($subfieldkey !== 'acf_fc_layout'):
+                        echo $subfieldvalue.'<br>';
+                      endif;
+                    }
+                  endif;
+                }
+              endif;
+              ?></div><?php
+            }
+                
+        elseif( get_row_layout() == '2_column_layout' ):
+            $columnlayouts[0] = get_sub_field('oet_acf_homepage_column_1');
+            $columnlayouts[1] = get_sub_field('oet_acf_homepage_column_2');
+            ?><div class="row col-sm-12 oet_acf_homepage_2column_layout ovlp"><?php
+            foreach ($columnlayouts as $columnlayout) {  //Column FC
+              ?><div class="col-sm-12 col-md-6 col-lg-6 oet_2column_layout"><?php
+              if(!empty($columnlayout)):
+                foreach ($columnlayout as $subfieldlayout) { //Subfields FC w/in Column FC
+                  if(!empty($subfieldlayout)):
+                    foreach ($subfieldlayout as $subfieldkey => $subfieldvalue) {  //subfields within Subfield FC
+                      if($subfieldkey !== 'acf_fc_layout'):
+                        echo $subfieldvalue.'<br>';
+                      endif;
+                    }
+                  endif;
+                }
+              endif;
+              ?></div><?php
+            }?></div><?php
+        
+        elseif( get_row_layout() == '2_column_layout_slider' ):
+            $columnlayouts[0] = get_sub_field('oet_acf_homepage_column_1');
+            $columnlayouts[1] = get_sub_field('oet_acf_homepage_column_2');
+  
+            ?>
+            <div class="col-sm-12">
+              <div class="row col-sm-12 custom-common-padding">
+                <div class="col-sm-12 col-md-7 col-lg-7 oet_2column_layout"><?php        
+                  if(!empty($columnlayouts[0])):
+                    foreach ($columnlayouts[0] as $subfieldlayout) { //Subfields FC w/in Column FC
+                      if(!empty($subfieldlayout)):
+                        foreach ($subfieldlayout as $subfieldkey => $subfieldvalue) {  //subfields within Subfield FC
+                          if($subfieldkey !== 'acf_fc_layout'):
+                            echo $subfieldvalue.'<br>';
+                          endif;
+                        }
+                      endif;
+                    }
+                  endif;
+                ?>
+                </div>
+                <div class="col-sm-12 col-md-5 col-lg-5 oet_2column_layout"><?php        
+                  if(!empty($columnlayouts[1])):
+                    foreach ($columnlayouts[1] as $subfieldlayout) { //Subfields FC w/in Column FC
+                      if(!empty($subfieldlayout)):
+                        foreach ($subfieldlayout as $subfieldkey => $subfieldvalue) {  //subfields within Subfield FC
+                          if($subfieldkey !== 'acf_fc_layout'):
+                            echo $subfieldvalue.'<br>';
+                          endif;
+                        }
+                      endif;
+                    }
+                  endif;
+                ?>
+                </div>
+              </div>
+            </div>
+            <?php
+            
+            
+            
+        
+        elseif( get_row_layout() == '3_column_layout' ):
+
+            $columnlayouts[0] = get_sub_field('oet_acf_homepage_column_1');
+            $columnlayouts[1] = get_sub_field('oet_acf_homepage_column_2');
+            $columnlayouts[2] = get_sub_field('oet_acf_homepage_column_3');
+            ?>
+
+            <div class="col-sm-12 oet_3column_wrapper">
+                <div class="row ovlp"><?php
+                foreach ($columnlayouts as $columnlayout) {  //Column FC
+                  ?><div class="col-sm-12 col-md-4 col-lg-4 oet_trendingnow_layout"><?php
+                    if(!empty($columnlayout)):
+                      foreach ($columnlayout as $subfieldlayout) { //Subfields FC w/in Column FC
+                        if(!empty($subfieldlayout)):
+                          foreach ($subfieldlayout as $subfieldkey => $subfieldvalue) {  //subfields within Subfield FC
+                            if($subfieldkey !== 'acf_fc_layout'):
+                              ?><div class="oet-trending-image pad"><?php
+                              echo $subfieldvalue.'<br>';
+                              ?></div><?php
+                            endif;
+                          }
+                        endif;
+                      }
+                    endif;
+                  ?></div>
+                <?php } ?>
+              </div>
+            </div><?php
+
+        elseif( get_row_layout() == 'oet_act_homepage_trendingnow' ):
+            $sechead = get_sub_field('oet_acf_homepage_trendingnow_section_header');
+            $columnlayouts[0] = get_sub_field('oet_acf_homepage_column_1');
+            $columnlayouts[1] = get_sub_field('oet_acf_homepage_column_2');
+            $columnlayouts[2] = get_sub_field('oet_acf_homepage_column_3');
+            $columnlayouts[3] = get_sub_field('oet_acf_homepage_column_4');
+            $columnlayouts[4] = get_sub_field('oet_acf_homepage_column_5');
+            $columnlayouts[5] = get_sub_field('oet_acf_homepage_column_6');
+            
+
+            ?>
+            <div class="col-sm-12">
+              <div class="col-sm-12 custom-common-padding trending-now">
+              
+                <div class="col-sm-12 oet_3column_wrapper">
+                    <?php if($sechead !== '' && !empty($sechead)){ ?>
+        
+                      <div class="col-md-12">
+                          <div class="row text-center">
+                              <h2 class="h1-bottom-space trending-now-heading"><?php echo $sechead; ?></h2>
+                          </div>
+                      </div>
+                      
+                    <?php } ?>
+                    <div class="row ovlp"><?php
+                    foreach ($columnlayouts as $columnlayout) {  //Column FC
+                      ?><div class="col-sm-12 col-md-6 col-lg-4 mb-5 oet_trendingnow_layout"><?php
+                        if(!empty($columnlayout)):
+                        foreach ($columnlayout as $subfieldlayout) { //Subfields FC w/in Column FC
+                          if(!empty($subfieldlayout)):
+                          //print_r($subfieldlayout);
+                            $_img = (isset($subfieldlayout['oet_acf_homepage_trendingnow_image']['id']))? $subfieldlayout['oet_acf_homepage_trendingnow_image']['id']: $subfieldlayout['oet_acf_homepage_trendingnow_image'];
+                            $_img = wp_get_attachment_url( $_img);
+                            $_img_alt = $subfieldlayout['oet_acf_homepage_trendingnow_image_alt_text'];
+                            $_ico = $subfieldlayout['oet_acf_homepage_trendingnow_titleicon'];
+                            $_title_icon = ($subfieldlayout['oet_acf_homepage_trendingnow_titleicon'] != 'none')? '<i class="fa '.$_ico.'"></i>&nbsp;': '';
+                            $_title = $subfieldlayout['oet_acf_homepage_trendingnow_title'];
+                            $_tmp = $subfieldlayout['oet_acf_homepage_trendingnow_description'];
+                            $_desc = (strlen($_tmp)>210)? substr($_tmp,0,180).' ...': $_tmp;
+                            $_url = $subfieldlayout['oet_acf_homepage_trendingnow_link'];
+                            $_btntxt = $subfieldlayout['oet_acf_homepage_trendingnow_button_text'];
+                            ?>
+                                            
+                              <div class="oet_acf_homepage_trendingnow_block_wrapper">
+                                  <div class="trending-now-section rounded">
+                                      <div class="trending-image-section">
+                                          <img src="<?php echo $_img; ?>" alt="<?php echo $_img_alt ?>">
+                                      </div>
+                                      <div class="trending-image-details">
+                                          <h3 class="trending-image-details-title" title="<?php echo $_img_alt ?>"><?php echo $_title ?></h3>
+                                          <p class="trending-image-details-description"><?php echo $_desc; ?></p>
+                                          <a target="_self" href="" role="button" class="btn oese-btn-danger oese-btn-danger-small" title="Read More"><?php echo $_btntxt ?></a>
+                                      </div>
+                                  </div>
+                              </div>
+
+                            <?php
+                          endif;
+                        }
+                        endif;
+                      ?></div>
+                    <?php } ?>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <?php
+        
+        elseif( get_row_layout() == 'oet_act_homepage_categories' ):
+            $sechead = get_sub_field('oet_acf_homepage_category_section_header');
+            $columnlayouts[0] = get_sub_field('oet_acf_homepage_column_1');
+            $columnlayouts[1] = get_sub_field('oet_acf_homepage_column_2');
+            $columnlayouts[2] = get_sub_field('oet_acf_homepage_column_3');
+
+
+            ?>
+            <div class="col-sm-12">
+              <div class="col-sm-12 home-grid-section">
+              
+                <div class="col-sm-12 oet_3column_wrapper">
+                    <?php if($sechead !== '' && !empty($sechead)){ ?>
+        
+                      <div class="col-md-12">
+                          <div class="row text-center">
+                              <h2 class="h1-bottom-space trending-now-heading"><?php echo $sechead; ?></h2>
+                          </div>
+                      </div>
+                      
+                    <?php } ?>
+                    <div class="row ovlp"><?php
+                    foreach ($columnlayouts as $columnlayout) {  //Column FC
+                      ?><div class="col-sm-12 col-md-12 col-lg-4 mb-5 oet_category_layout"><?php
+                        if(!empty($columnlayout)):
+                        foreach ($columnlayout as $subfieldlayout) { //Subfields FC w/in Column FC
+                          if(!empty($subfieldlayout)):
+                          //print_r($subfieldlayout);
+                            $_img = (isset($subfieldlayout['oet_acf_homepage_category_image']['id']))? $subfieldlayout['oet_acf_homepage_category_image']['id']: $subfieldlayout['oet_acf_homepage_category_image'];
+                            $_img = wp_get_attachment_url( $_img);
+                            $_img_alt = $subfieldlayout['oet_acf_homepage_category_image_alt_text'];
+                            $_title = $subfieldlayout['oet_acf_homepage_category_title'];
+                            $_url = $subfieldlayout['oet_acf_homepage_category_link'];
+                            ?>
+                                            
+                              
+                              
+                              
+                              
+                              <div class="" style="width:100%; max-width:90%; margin:0px auto;">
+                                <div class="custom-home-image-section">
+                                  <div class="custom-image-media">
+                                      <a target="_self" href="<?php echo $_url ?>">
+                                          <div class="custom-image-thumbnail">
+                                              <div>
+                                                  <img src="<?php echo $_img ?>" alt="<?php echo $_img_alt ?>" class="img-responsive img-thumbnail-square">
+                                              </div>
+                                          </div>
+                                          <div class="custom-home-image-heading text-center">
+                                              <p><?php echo $_title ?></p>
+                                          </div>
+                                      </a>
+                                  </div>
+                              </div>
+                            </div>
+                              
+                              
+                              
+                              
+                              
+
+                            <?php
+                          endif;
+                        }
+                        endif;
+                      ?></div>
+                    <?php } ?>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <?php    
+        
+        
+        elseif( get_row_layout() == 'oet_act_homepage_titlelinks' ):
+
+            $tl_bg = get_sub_field('oet_acf_homepage_tilelinks_background');
+            $tl_hds = get_sub_field('oet_acf_homepage_tilelinks_sectionheader_layout');
+            $tl_lys[0] = get_sub_field('oet_act_homepage_tilelinks_quad1');
+            $tl_lys[1] = get_sub_field('oet_act_homepage_tilelinks_quad2');
+            $tl_lys[2] = get_sub_field('oet_act_homepage_tilelinks_quad3');
+            $tl_lys[3] = get_sub_field('oet_act_homepage_tilelinks_quad4');
+
+            $tl_bgimg_default = get_stylesheet_directory_uri().'/images/tile_links_default_background.png?default';
+            if(!empty($tl_bg)){
+              $tl_bgimg = (isset($tl_bg['oet_acf_homepage_titlelinks_background']['id']))? $tl_bg['oet_acf_homepage_titlelinks_background']['id']: $tl_bg;
+              $tl_bgimg = wp_get_attachment_url( $tl_bgimg);
+            }else{
+              $tl_bgimg = $tl_bgimg_default;
+            }
+
+            ?>
+
+
+            <div class="col-sm-12 oet_tilelinks_wrapper">
+              <!--<div class="oet_tilelinks_background_overlay"></div>-->
+              <div class="oet-tilelinks-content-wrapper">
+              <?php if($tl_hds !== '' && !empty($tl_hds)){
+                foreach ($tl_hds as $tl_hd) {
+                  if(!empty($tl_hd)):
+                    $tl_hdr_text = $tl_hd['oet_acf_homepage_tilelinks_sectionheader_text'];
+                    $tl_hdr_fontsize = $tl_hd['oet_acf_homepage_titelinks_sectionheader_fontsize'];
+                    $tl_hdr_fontcolor= $tl_hd['oet_acf_homepage_tilelinks_sectionheader_fontcolor'];
+                    $tl_hdr_fontweight = $tl_hd['oet_acf_homepage_tilelinks_sectionheader_fontweight'];
+
+                    if(!empty($tl_hdr_text)){
+                    ?>
+                    <div class="row"><h2 class="oet-tilelinks-section-title"><?php echo $tl_hdr_text; ?></h2></div>
+                    <?php
+                    }
+                endif;
+                ?>
+                <style>
+                .oet-tilelinks-section-title{
+                  font-size: <?php echo $tl_hdr_fontsize ?>px;
+                  color: <?php echo $tl_hdr_fontcolor ?>;
+                  font-family:'WorkSans-<?php echo $tl_hdr_fontweight ?>' !important;
+                }
+                </style>
+                <?php
+                }
+              }
+
+
+              if($tl_lys !== '' && !empty($tl_lys)):
+                ?><div class="row oet-tilelinks-button-section"><?php
+                foreach ($tl_lys as $tl_ly):
+
+                  $_titlelinks_layouts = get_sub_field('oet_act_homepage_tilelinks_quad1');
+                  $lt_btn_text = $tl_ly[0]['oet_act_homepage_tilelinks_buttontext'];
+                  $lt_btn_color = $tl_ly[0]['oet_act_homepage_tilelinks_buttoncolor'];
+                  $lt_btn_fontcolor = $tl_ly[0]['oet_act_homepage_tilelinks_buttonfontcolor'];
+                  $lt_btn_fontsize = $tl_ly[0]['oet_act_homepage_tilelinks_buttonfontsize'];
+                  $lt_btn_url = $tl_ly[0]['oet_act_homepage_tilelinks_url'];
+                  ?>
+                      <div class="col-sm-12 col-md-6 oet-tilelinks-button-block">
+                        <table border="0"><tr><td style="background-color:<?php echo $lt_btn_color ?> !important;" onclick="jQuery(this).children('a')[0].click();">
+                          <a href="<?php echo ($lt_btn_url!='')? $lt_btn_url: '#'; ?>" style="color:<?php echo $lt_btn_fontcolor ?>; font-size:<?php echo $lt_btn_fontsize ?>px"><?php echo $lt_btn_text ?></a>
+                        </td></tr></table>
+                      </div>
+                <?php
+                endforeach;
+                ?></div><?php
+              endif; ?>
+
+
+
+
+              </div>
+
+            <style>
+              .oet_tilelinks_wrapper::before {
+                background-image: linear-gradient(rgba(44, 67, 116, 0.85), rgba(44, 67, 116, 0.85)), url(<?php echo $tl_bgimg ?>);
+              }
+              
+            </style>
+            </div>
+            <?php
+            
+            
+            
+        elseif( get_row_layout() == 'oet_act_homepage_search' ):    
+            
+            $_searchtitle = get_sub_field('oet_act_homepage_search_title');
+    
+            ?>
+            <div class="row col-sm-12 custom-common-padding">
+              <div class="full-search-section m-auto text-center">
+                   <div class="full-search-heading">
+                       <h1><?php echo $_searchtitle ?></h1>
+                   </div>
+
+                   <div class="full-search-field">    
+                      <form id="searchformContent" class="searchform" action="https://oese-test.navigationnorth.com" method="get" role="search">
+                          <div class="input-group to-focus">
+                              <label class="search-label" for="inputSuccess2Content">Search:</label>
+                              <input type="text" class="form-control full-search-input" id="inputSuccess2Content" placeholder="Search" name="s">
+                              <div class="input-group-append">
+                                  <button class="btn btn-secondary custom-search-btn" type="button" onclick="jQuery(this).closest('form').submit()">
+                                  <i class="fas fa-search"></i><span class="search-button-label">Search</span>
+                                  </button>
+                              </div>
+                          </div>
+                      </form>
+                  </div>
+               </div>
+             </div>
+             <?php
+                  
+        elseif( get_row_layout() == 'oet_act_homepage_spacer' ):
+            ?><div class="row oet-tilelinks-spacer"></div><?php
+            
+        elseif( get_row_layout() == 'oet_act_homepage_separator' ):
+            ?>
+              <div class="col-sm-12">
+                <div class="seperate-dark-blue-border"></div>
+              </div>
+            <?php
+            
+        endif;
+
+
+    // End loop.
+    endwhile;
+  endif;
+}
