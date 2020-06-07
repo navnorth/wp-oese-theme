@@ -1721,7 +1721,7 @@ a.oese-logo-home {
 }
 .trending-image-section {overflow: hidden !important;}
 .trending-image-section img{
-    width: auto%;
+    width: 100%;
     height: 200px;
 }
 .trending-image-details, .general-info-details{
