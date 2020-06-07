@@ -2763,7 +2763,7 @@ function oet_display_acf_home_content(){
 
             ?>
             <div class="col-sm-12">
-              <div class="col-sm-12 custom-common-padding trending-now">
+              <div class="col-sm-12 custom-common-padding trending-now-acf">
               
                 <div class="col-sm-12 oet_3column_wrapper">
                     <?php if($sechead !== '' && !empty($sechead)){ ?>
@@ -2828,9 +2828,9 @@ function oet_display_acf_home_content(){
 
             ?>
             <div class="col-sm-12">
-              <div class="col-sm-12 home-grid-section">
+              <div class="col-sm-12 home-grid-section-acf">
               
-                <div class="col-sm-12 oet_3column_wrapper">
+                <div class="col-sm-12 oet_3column_wrapper oet_3column_wrapper_category">
                     <?php if($sechead !== '' && !empty($sechead)){ ?>
         
                       <div class="col-md-12">

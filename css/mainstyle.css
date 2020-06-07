@@ -1461,6 +1461,11 @@ a.oese-logo-home {
     padding-right: 5%;
     background-color: #f1f1f1;
 }
+.trending-now-acf {
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    background-color: #f1f1f1;
+}
 .oese-btn-readmore{
     margin-top: 20px;
     text-decoration: none;
@@ -1607,6 +1612,16 @@ a.oese-logo-home {
 .home-grid-section{
     padding-top: 9%;
     padding-bottom: 5%;
+}
+.home-grid-section-acf {
+    padding-top: 9%;
+    padding-bottom: 5%;
+    padding-left: !important;
+    padding-right: !important;;
+}
+.oet_3column_wrapper_category{
+	padding-left:0px !important;
+	padding-right:0px !important;
 }
 .home-grid-section ul { margin-left:0;padding-left:0; }
 .home-grid-section ul li { list-style-type:none; }
@@ -2823,7 +2838,7 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
 
 /* ACF HOME PAGE */
 .oet_acf_homepage_trendingnow_block_wrapper{
-	width:100%; max-width:80%; margin:0px auto;
+	width:100%; max-width:90%; margin:0px auto;
 }
 
 @media screen and (max-width: 576px){ 
@@ -2832,7 +2847,7 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
 		margin-left: 0px !important;
 	}
 	.oet_acf_homepage_trendingnow_block_wrapper{
-		width:100%; max-width:95%; margin:0px auto;
+		width:100%; max-width:100%; margin:0px auto;
 	}
 }
 
