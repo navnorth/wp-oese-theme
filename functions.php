@@ -3026,3 +3026,20 @@ function oet_display_acf_home_content(){
     endwhile;
   endif;
 }
+
+function your_function()  {
+  $d = is_front_page();
+  if(isset($_GET['post'])){
+      if(get_option("page_on_front") == $_GET['post']){
+        $_str = '';
+        $_str .= '<script>';
+        $_str .= 'jQuery(document).ready(function(){';
+            $_str .= 'jQuery("body").addClass("home");';
+        $_str .= '});';
+        $_str .= '</script>';
+        echo $_str;
+      }
+  }
+}
+
+add_action( 'admin_footer', 'your_function' );

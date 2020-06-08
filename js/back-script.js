@@ -41,27 +41,35 @@ jQuery( document ).ready(function() {
       e.preventDefault ? e.preventDefault() : e.returnValue = false;
     }
   })
-  //Save Draft Button Click Event
+  //Secondary Update Button Click Event
   jQuery(document).on('click','#secondary-save-post',function(e){
     e.preventDefault ? e.preventDefault() : e.returnValue = false;
-    jQuery('input[name="post_title"]').trigger('blur');    
-    var checkExist = setInterval(function() {
-       if (jQuery('span#editable-post-name').length) {
-          clearInterval(checkExist);
-          interceptPublish('dft');
-       }
-    }, 100); // check every 100ms      
+    if(!ispagehome){
+      jQuery('input[name="post_title"]').trigger('blur');    
+      var checkExist = setInterval(function() {
+         if (jQuery('span#editable-post-name').length) {
+            clearInterval(checkExist);
+            interceptPublish('dft');
+         }
+      }, 100); // check every 100ms
+    }else{
+      jQuery("#publish").click();
+    } 
   })
   //Publish Button Click Event
   jQuery(document).on('click','#secondary-publish',function(e){
     e.preventDefault ? e.preventDefault() : e.returnValue = false;
-    jQuery('input[name="post_title"]').trigger('blur');    
-    var checkExist = setInterval(function() {
-       if (jQuery('span#editable-post-name').length) {
-          clearInterval(checkExist);
-          interceptPublish('pub');
-       }
-    }, 100); // check every 100ms      
+    if(!ispagehome){
+      jQuery('input[name="post_title"]').trigger('blur');    
+      var checkExist = setInterval(function() {
+         if (jQuery('span#editable-post-name').length) {
+            clearInterval(checkExist);
+            interceptPublish('pub');
+         }
+      }, 100); // check every 100ms    
+    }else{
+      jQuery("#publish").click();
+    }   
   })
   //Notice Dismiss
   jQuery(document).on('click','.oese-permalink-validation-notice-dismiss',function(e){
@@ -117,3 +125,12 @@ function getPostType(){
 		});
   return ret;
 }
+
+function ispagehome(){
+  var ret = false;
+  if ( jQuery('body').hasClass('home')) {
+      ret = true;
+  }
+  return ret;
+}
+    
