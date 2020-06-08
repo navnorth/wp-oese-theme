@@ -894,7 +894,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 #content tr:nth-child(even) {background: #ddd}
 #content tr:nth-child(odd) {background: #fff}
 #content tr:first-child { background: #294179; }
-#content tr:first-child th, #content tr:first-child td, #content tr:first-child td a { color:#fff; }
+/*#content tr:first-child th, #content tr:first-child td, #content tr:first-child td a { color:#fff; }*/
 #content tr:first-child th[scope=col] { font-weight:800; vertical-align:bottom; }
 #content tr td, #content tr th { padding:5px }
 #content tr td[scope=row], #content tr th[scope=row] { font-weight:bold; }
@@ -1256,7 +1256,6 @@ a {
 /*Secondary navigation menu css END*/
 
 .seperate-dark-blue-border{
-		width:100%;
     height: 12px;
     background: #004285;
 }
@@ -1461,11 +1460,6 @@ a.oese-logo-home {
     padding-right: 5%;
     background-color: #f1f1f1;
 }
-.trending-now-acf {
-    padding-left: 2.5%;
-    padding-right: 2.5%;
-    background-color: #f1f1f1;
-}
 .oese-btn-readmore{
     margin-top: 20px;
     text-decoration: none;
@@ -1613,16 +1607,6 @@ a.oese-logo-home {
     padding-top: 9%;
     padding-bottom: 5%;
 }
-.home-grid-section-acf {
-    padding-top: 9%;
-    padding-bottom: 5%;
-    padding-left: !important;
-    padding-right: !important;;
-}
-.oet_3column_wrapper_category{
-	padding-left:0px !important;
-	padding-right:0px !important;
-}
 .home-grid-section ul { margin-left:0;padding-left:0; }
 .home-grid-section ul li { list-style-type:none; }
 .office-grid-list-details{
@@ -1712,14 +1696,6 @@ a.oese-logo-home {
 .general-info-row .home-col-md-4 {
     margin-right: 0 !important;
 }
-
-@media screen and (max-width: 768px){
-	.trending-image-section img {
-	    width: 100% !important;
-	    height: auto !important;
-	}
-}
-.trending-image-section {overflow: hidden !important;}
 .trending-image-section img{
     width: 100%;
     height: 200px;
@@ -2834,20 +2810,13 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
     margin-bottom: 20px !important;
 		float:left;
 }
-
-
-/* ACF HOME PAGE */
-.oet_acf_homepage_trendingnow_block_wrapper{
-	width:100%; max-width:90%; margin:0px auto;
-}
-
-@media screen and (max-width: 576px){ 
-  .row {
-		margin-right: 0px !important;
-		margin-left: 0px !important;
-	}
-	.oet_acf_homepage_trendingnow_block_wrapper{
-		width:100%; max-width:100%; margin:0px auto;
-	}
-}
-
+/* WPDataTables Styles */
+.wpDataTablesWrapper div.dt-buttons{ position:relative; } 
+.wpdt-c .wpDataTablesWrapper table.wpDataTable thead th, .wpDataTablesWrapper table.wpDataTable thead th{ background-color:#294179 !important; background-image:none !important;border-color:#294179 !important;color:#ffffff !important; } 
+.wpdt-c .wpDataTablesWrapper table.wpDataTable tr:first-child td,.wpDataTablesWrapper table.wpDataTable tr:first-child td { color:#000000 !important; } 
+.wpdt-c .wpDataTablesWrapper table.wpDataTable tr td { cursor:pointer; } 
+.detailColumn.column-reporturl{ overflow-wrap:break-word; } 
+.wpdt-c .wpDataTablesWrapper table.wpDataTable thead th.wdtheader.numdata{ text-align:right; }
+.usacustomHtml5MapSelector { text-align:center; }
+svg text.no-data { fill:#000000; }
+/* End of WPDataTables Styles */
