@@ -9,7 +9,7 @@
 get_header(); ?>
 <style>
 #Iframe-Master-CC-and-Rs {max-width: 2000px; max-height: 100%; overflow: hidden;}
-.responsive-wrapper {position: relative; height: 0; padding-bottom: 107%;}
+.responsive-wrapper {position: relative; height: 0; padding-bottom: 70%;}
 .responsive-wrapper iframe {position: absolute; top: 0;left: 0; width: 100%; height: 100%; margin: 0; padding: 0; border: none;}
 .responsive-wrapper-wxh-572x612 {padding-bottom: 107%;}
 .set-border {border: 5px inset #4f4f4f;}
@@ -96,7 +96,7 @@ header.oese-entry-header>p { display:block; font-size:16px !important; line-heig
           jQuery(window).resize(function(){
             clearTimeout(tout);
             tout = setTimeout(function(){
-              jQuery('.responsive-wrapper iframe').attr('src', "<?php echo wp_get_attachment_url($post->ID) ?>");
+              jQuery('.responsive-wrapper iframe').attr('src', "<?php echo wp_get_attachment_url($post->ID) ?>?#view=fitV");
             }, 500);  
           });
         });
