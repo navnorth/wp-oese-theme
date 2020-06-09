@@ -1460,6 +1460,21 @@ a.oese-logo-home {
     padding-right: 5%;
     background-color: #f1f1f1;
 }
+.trending-now-acf {
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    background-color: #f1f1f1;
+}
+.home-grid-section-acf {
+    padding-top: 9%;
+    padding-bottom: 5%;
+    padding-left: !important;
+    padding-right: !important;;
+}
+.oet_3column_wrapper_category{
+	padding-left:0px !important;
+	padding-right:0px !important;
+}
 .oese-btn-readmore{
     margin-top: 20px;
     text-decoration: none;
@@ -2822,3 +2837,21 @@ svg text.no-data { fill:#000000; stroke:#ffffff; stroke-width:0.1; stroke-opacit
 .usacustomHtml5MapContainer .fm-tooltip table.fm-tooltip-frame tr.fm-tooltip-frame td.fm-tooltip-comment p { font-size:12px; }
 .usacustomHtml5MapContainer .fm-tooltip .fm-tooltip-name { display:none !important; }
 /* End of WPDataTables Styles */
+
+/* ACF HOME PAGE */
+.oet_acf_homepage_trendingnow_block_wrapper{
+	width:100%; max-width:80%; margin:0px auto;
+	width:100%; max-width:90%; margin:0px auto;
+}
+
+@media screen and (max-width: 576px){ 
+	.oese-search-result .p_title a{ 
+		color:#2d8700; 
+		font-size:20px;
+		margin-left: 0px !important;
+	}
+	.oet_acf_homepage_trendingnow_block_wrapper{
+		width:100%; max-width:95%; margin:0px auto;
+		width:100%; max-width:100%; margin:0px auto;
+	}
+}
