@@ -3027,7 +3027,7 @@ function oet_display_acf_home_content(){
   endif;
 }
 
-function your_function()  {
+function oese_add_home_detector()  {
   $d = is_front_page();
   if(isset($_GET['post'])){
       if(get_option("page_on_front") == $_GET['post']){
@@ -3041,5 +3041,4 @@ function your_function()  {
       }
   }
 }
-
-add_action( 'admin_footer', 'your_function' );
+add_action( 'admin_footer', 'oese_add_home_detector' );
