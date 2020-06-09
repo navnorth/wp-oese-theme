@@ -2009,8 +2009,7 @@ function oese_ga_script() {
   if ($ga_id){
     // Include Crazy Egg Script
     if ($egg_script){
-      //$script .= "<script type='text/javascript' src='//s3.amazonaws.com/new.cetrk.com/pages/scripts/0009/9201.js'> </script>\r\n";
-      $script .= "<script type='text/javascript' src='//script.crazyegg.com/pages/scripts/0009/9201.js' async='async'></script>\r\n";
+      $script .= "<script type='text/javascript' src='//s3.amazonaws.com/new.cetrk.com/pages/scripts/0009/9201.js'> </script>\r\n";
     }
 
     $script .= "<script>
