@@ -28,5 +28,8 @@ jQuery( document ).ready(function($) {
                     $(this).find('td').first().trigger('click');
                }
           });
+          $('#wdt-md-modal').on('shown.bs.modal', function(){
+               $(this).focus();
+          });
      }
 });
