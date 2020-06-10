@@ -2729,7 +2729,7 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
         font-size: 18px !important;
         line-height: 22px !important;
     }
-
+		
 }
 
 /* OET Featured Shortcode */
@@ -2781,7 +2781,7 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
 	width: 100%;
 	max-height: 83px;
 	height: 100%;
-
+	
 	overflow: hidden;
 	-o-text-overflow: ellipsis;
 	text-overflow: ellipsis;
@@ -2833,9 +2833,9 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
 		float:left;
 }
 /* WPDataTables and US Map Styles */
-.wpDataTablesWrapper div.dt-buttons{ position:relative; }
-.wpdt-c .wpDataTablesWrapper table.wpDataTable tr td { cursor:pointer; }
-.detailColumn.column-reporturl{ overflow-wrap:break-word; }
+.wpDataTablesWrapper div.dt-buttons{ position:relative; } 
+.wpdt-c .wpDataTablesWrapper table.wpDataTable tr td { cursor:pointer; } 
+.detailColumn.column-reporturl{ overflow-wrap:break-word; } 
 .wpdt-c .wpDataTablesWrapper table.wpDataTable thead th.wdtheader.numdata{ text-align:right; }
 .usacustomHtml5MapSelector { text-align:center; }
 svg text.no-data { fill:#000000; stroke:#ffffff; stroke-width:0.1; stroke-opacity:1; }
@@ -2847,6 +2847,10 @@ svg text.no-data { fill:#000000; stroke:#ffffff; stroke-width:0.1; stroke-opacit
 .wpdt-c .wpDataTables.wpDataTablesWrapper .wpDataTableFilterBox .wpDataTableFilterSection button:focus { background:#234261; color:#ffffff; border:1px solid #cdcdcd !important; }
 .wpdt-c .wpDataTables.wpDataTablesWrapper .dt-buttons .dt-button:hover,
 .wpdt-c .wpDataTables.wpDataTablesWrapper .dt-buttons .dt-button:focus  { border: 1px solid #cdcdcd !important; color: #ffffff !important; background: #234261; opacity:1; }
+.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.odd:hover,
+.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.odd:focus,
+.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.even:hover,
+.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.even:focus{ border:2px solid #127eec;  }
 /* End of WPDataTables and US Map Styles */
 
 /* ACF HOME PAGE */
@@ -2855,9 +2859,9 @@ svg text.no-data { fill:#000000; stroke:#ffffff; stroke-width:0.1; stroke-opacit
 	width:100%; max-width:90%; margin:0px auto;
 }
 
-@media screen and (max-width: 576px){
-	.oese-search-result .p_title a{
-		color:#2d8700;
+@media screen and (max-width: 576px){ 
+	.oese-search-result .p_title a{ 
+		color:#2d8700; 
 		font-size:20px;
 		margin-left: 0px !important;
 	}

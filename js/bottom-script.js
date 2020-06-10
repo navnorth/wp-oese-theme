@@ -17,5 +17,16 @@ jQuery( document ).ready(function($) {
           $('.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.odd,.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.even').each(function(){
                $(this).attr('tabindex', '0');
           });
+          $(document).on('keyup', '.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.odd,.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.even', function(event){
+               if (event.defaultPrevented) {
+                    return;
+               }
+
+               var key = event.keyCode || event.which || event.key;
+
+               if (key===32 || key===13) {
+                    $(this).find('td').first().trigger('click');
+               }
+          });
      }
 });
