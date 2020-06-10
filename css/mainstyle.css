@@ -2844,9 +2844,9 @@ svg text.no-data { fill:#000000; stroke:#ffffff; stroke-width:0.1; stroke-opacit
 .usacustomHtml5MapContainer .fm-tooltip table.fm-tooltip-frame tr.fm-tooltip-frame td.fm-tooltip-comment p { font-size:12px; }
 .usacustomHtml5MapContainer .fm-tooltip .fm-tooltip-name { display:none !important; }
 .wpdt-c .wpDataTables.wpDataTablesWrapper .wpDataTableFilterBox .wpDataTableFilterSection button:hover,
-.wpdt-c .wpDataTables.wpDataTablesWrapper .wpDataTableFilterBox .wpDataTableFilterSection button:focus { background:#234261; color:#ffffff; outline:1px solid #cdcdcd !important; }
+.wpdt-c .wpDataTables.wpDataTablesWrapper .wpDataTableFilterBox .wpDataTableFilterSection button:focus { background:#234261; color:#ffffff; border:1px solid #cdcdcd !important; }
 .wpdt-c .wpDataTables.wpDataTablesWrapper .dt-buttons .dt-button:hover,
-.wpdt-c .wpDataTables.wpDataTablesWrapper .dt-buttons .dt-button:focus  { outline: 2px solid #cdcdcd !important; color: #ffffff !important; background: #234261; }
+.wpdt-c .wpDataTables.wpDataTablesWrapper .dt-buttons .dt-button:focus  { border: 1px solid #cdcdcd !important; color: #ffffff !important; background: #234261; opacity:1; }
 /* End of WPDataTables and US Map Styles */
 
 /* ACF HOME PAGE */
