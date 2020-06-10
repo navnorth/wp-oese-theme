@@ -11,4 +11,11 @@ jQuery( document ).ready(function($) {
      		$(this).attr('tabindex','0');
      	});
      }
+
+     /** Add Tab Index to WPDataTables row **/
+     if ($('.wpdt-c .wpDataTablesWrapper table.wpDataTable').length){
+          $('.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.odd,.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.even').each(function(){
+               $(this).attr('tabindex', '0');
+          });
+     }
 });
