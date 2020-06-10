@@ -334,7 +334,3 @@ body.modal-open { overflow: visible; }
 }
 .wpdt-c .modal .modal-body .wdt-details-dialog-fields-block .form-group .detailColumn { font-size:14px; }
 .wpdt-c .modal .modal-body .wdt-details-dialog-fields-block .form-group { margin-bottom:5px; }
-.wpdt-c .wpDataTables.wpDataTablesWrapper .wpDataTableFilterBox .wpDataTableFilterSection button:hover,
-.wpdt-c .wpDataTables.wpDataTablesWrapper .wpDataTableFilterBox .wpDataTableFilterSection button:focus { background:#234261; color:#ffffff; outline:1px solid #cdcdcd !important; }
-.wpdt-c .wpDataTables.wpDataTablesWrapper .wpDataTableFilterBox .wpDataTableFilterSection .dt-buttons .dt-button:hover,
-.wpdt-c .wpDataTables.wpDataTablesWrapper .wpDataTableFilterBox .wpDataTableFilterSection .dt-buttons .dt-button:focus  { outline: 2px solid #cdcdcd !important; color: #ffffff !important; background: #234261; }
