@@ -2053,7 +2053,7 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
 .usaHtml5Mapright.htmlMapResponsive .usaHtml5MapContainer { width:75%; }
 .usaHtml5Mapright.htmlMapResponsive .usaHtml5MapStateInfo, .usaHtml5Mapright.htmlMapResponsive .usaHtml5MapStateInfo { width:21%;}
 .wpDataTablesWrapper div.dt-buttons { position: absolute; right:0; }
-.wpDataTablesFilter { border:1px solid #ddd; padding:25px; box-shadow: 0px 1px 6px rgba(0,0,0,0.5); }
+.wpDataTablesFilter { border:1px solid #ddd; padding:8px; box-shadow: 0px 1px 6px rgba(0,0,0,0.5); }
 .wdt-select-filter .dropdown-toggle::after { border:none; }
 .usaHtml5MapStateInfo .contact-info { margin:50px 0; }
 /** End of Search Results Styles **/
@@ -2729,7 +2729,7 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
         font-size: 18px !important;
         line-height: 22px !important;
     }
-		
+
 }
 
 /* OET Featured Shortcode */
@@ -2781,7 +2781,7 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
 	width: 100%;
 	max-height: 83px;
 	height: 100%;
-	
+
 	overflow: hidden;
 	-o-text-overflow: ellipsis;
 	text-overflow: ellipsis;
@@ -2833,9 +2833,9 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
 		float:left;
 }
 /* WPDataTables and US Map Styles */
-.wpDataTablesWrapper div.dt-buttons{ position:relative; } 
-.wpdt-c .wpDataTablesWrapper table.wpDataTable tr td { cursor:pointer; } 
-.detailColumn.column-reporturl{ overflow-wrap:break-word; } 
+.wpDataTablesWrapper div.dt-buttons{ position:relative; }
+.wpdt-c .wpDataTablesWrapper table.wpDataTable tr td { cursor:pointer; }
+.detailColumn.column-reporturl{ overflow-wrap:break-word; }
 .wpdt-c .wpDataTablesWrapper table.wpDataTable thead th.wdtheader.numdata{ text-align:right; }
 .usacustomHtml5MapSelector { text-align:center; }
 svg text.no-data { fill:#000000; stroke:#ffffff; stroke-width:0.1; stroke-opacity:1; }
@@ -2855,9 +2855,9 @@ svg text.no-data { fill:#000000; stroke:#ffffff; stroke-width:0.1; stroke-opacit
 	width:100%; max-width:90%; margin:0px auto;
 }
 
-@media screen and (max-width: 576px){ 
-	.oese-search-result .p_title a{ 
-		color:#2d8700; 
+@media screen and (max-width: 576px){
+	.oese-search-result .p_title a{
+		color:#2d8700;
 		font-size:20px;
 		margin-left: 0px !important;
 	}
