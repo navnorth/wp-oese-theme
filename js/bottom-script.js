@@ -36,8 +36,8 @@ jQuery( document ).ready(function($) {
                curRow.removeClass('current');
           });
           $(document).on('keyup', '.wpdt-c .wpDataTablesWrapper .paginate_button', function(event){
-               var key = event.keyCode || event.which || event.key;
-               if (key===32 || key===13) {
+               var kCode = event.keyCode || event.which || event.key;
+               if (kCode===32 || kCode===13) {
                     setTimeout(addRowTabIndex(),100);
                }
           });
