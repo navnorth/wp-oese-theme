@@ -25,11 +25,17 @@ jQuery( document ).ready(function($) {
                var key = event.keyCode || event.which || event.key;
 
                if (key===32 || key===13) {
+                    $(this).addClass('current');
                     $(this).find('td').first().trigger('click');
                }
           });
           $('#wdt-md-modal').on('shown.bs.modal', function(){
                $(this).focus();
+          });
+          $('#wdt-md-modal').on('hidden.bs.modal', function(){
+               let curRow = $('.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.current');
+               curRow.focus();
+               curRow.removeClass('current');
           });
      }
 });
