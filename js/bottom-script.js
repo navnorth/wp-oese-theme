@@ -14,9 +14,7 @@ jQuery( document ).ready(function($) {
 
      /** Add Tab Index to WPDataTables row **/
      if ($('.wpdt-c .wpDataTablesWrapper table.wpDataTable').length){
-          $('.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.odd,.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.even').each(function(){
-               $(this).attr('tabindex', '0');
-          });
+          addRowTabIndex();
           $(document).on('keyup', '.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.odd,.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.even', function(event){
                if (event.defaultPrevented) {
                     return;
@@ -36,6 +34,16 @@ jQuery( document ).ready(function($) {
                let curRow = $('.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.current');
                curRow.focus();
                curRow.removeClass('current');
+          });
+          $('.wpdt-c .wpDataTablesWrapper .paginate_button').on('click', function(){
+               setTimeout(addRowTabIndex(),100);
+          });
+
+     }
+
+     function addRowTabIndex(){
+          $('.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.odd,.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.even').each(function(){
+               $(this).attr('tabindex', '0');
           });
      }
 });
