@@ -44,7 +44,7 @@ jQuery( document ).ready(function() {
   //Secondary Update Button Click Event
   jQuery(document).on('click','#secondary-save-post',function(e){
     e.preventDefault ? e.preventDefault() : e.returnValue = false;
-    if(!ispagehome){
+    if(!jQuery('body').hasClass('home')){
       jQuery('input[name="post_title"]').trigger('blur');    
       var checkExist = setInterval(function() {
          if (jQuery('span#editable-post-name').length) {
@@ -59,7 +59,7 @@ jQuery( document ).ready(function() {
   //Publish Button Click Event
   jQuery(document).on('click','#secondary-publish',function(e){
     e.preventDefault ? e.preventDefault() : e.returnValue = false;
-    if(!ispagehome){
+    if(!jQuery('body').hasClass('home')){
       jQuery('input[name="post_title"]').trigger('blur');    
       var checkExist = setInterval(function() {
          if (jQuery('span#editable-post-name').length) {
