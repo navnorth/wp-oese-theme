@@ -35,9 +35,11 @@ jQuery( document ).ready(function($) {
                curRow.focus();
                curRow.removeClass('current');
           });
-          $(document).on('click', '.wpdt-c .wpDataTablesWrapper .paginate_button', function(){
-               console.log('test');
-               addRowTabIndex();
+          $(document).on('keyup', '.wpdt-c .wpDataTablesWrapper .paginate_button', function(event){
+               var key = event.keyCode || event.which || event.key;
+               if (key===32 || key===13) {
+                    setTimeout(addRowTabIndex(),100);
+               }
           });
 
      }
