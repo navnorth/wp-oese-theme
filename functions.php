@@ -713,16 +713,6 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
   **/
  require_once( get_stylesheet_directory() . '/modules/modal-parent/modal_parent.php' );
  
- /**
- * ushtmlmap
- **/
- require_once( get_stylesheet_directory() . '/modules/ushtmlmap/ushtmlmap.php' ); 
- 
- /**
- * Performance report
- **/
- //require_once( get_stylesheet_directory() . '/modules/performance-report/performance_report.php' ); 
- require_once( get_stylesheet_directory() . '/modules/performance-table/oese-performance-table.php' ); 
 
 
  function theme_back_enqueue_script()
