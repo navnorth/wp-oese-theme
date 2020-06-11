@@ -712,7 +712,6 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
   * Page Edit Modal Parent Attribute
   **/
  require_once( get_stylesheet_directory() . '/modules/modal-parent/modal_parent.php' );
- 
 
 
  function theme_back_enqueue_script()
@@ -2620,11 +2619,6 @@ if ( ! function_exists( 'oese_display_subpages' ) ) {
 
         return $html;
 	}
-}
-
-add_action( 'wp_footer' , 'add_ppe_details_modal' );
-function add_ppe_details_modal(){
-  include_once( get_template_directory() . "/page-templates/modal/ppe_details_modal.php" );
 }
 
 function oet_display_acf_home_content(){

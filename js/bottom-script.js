@@ -14,9 +14,7 @@ jQuery( document ).ready(function($) {
 
      /** Add Tab Index to WPDataTables row **/
      if ($('.wpdt-c .wpDataTablesWrapper table.wpDataTable').length){
-          $('.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.odd,.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.even').each(function(){
-               $(this).attr('tabindex', '0');
-          });
+          addRowTabIndex();
           $(document).on('keyup', '.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.odd,.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.even', function(event){
                if (event.defaultPrevented) {
                     return;
@@ -25,11 +23,30 @@ jQuery( document ).ready(function($) {
                var key = event.keyCode || event.which || event.key;
 
                if (key===32 || key===13) {
+                    $(this).addClass('current');
                     $(this).find('td').first().trigger('click');
                }
           });
           $('#wdt-md-modal').on('shown.bs.modal', function(){
                $(this).focus();
+          });
+          $('#wdt-md-modal').on('hidden.bs.modal', function(){
+               let curRow = $('.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.current');
+               curRow.focus();
+               curRow.removeClass('current');
+          });
+          $(document).on('keyup', '.wpdt-c .wpDataTablesWrapper .paginate_button', function(event){
+               var kCode = event.keyCode || event.which || event.key;
+               if (kCode===32 || kCode===13) {
+                    setTimeout(addRowTabIndex(),100);
+               }
+          });
+
+     }
+
+     function addRowTabIndex(){
+          $('.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.odd,.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.even').each(function(){
+               $(this).attr('tabindex', '0');
           });
      }
 });
