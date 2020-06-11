@@ -35,8 +35,9 @@ jQuery( document ).ready(function($) {
                curRow.focus();
                curRow.removeClass('current');
           });
-          $('.wpdt-c .wpDataTablesWrapper .paginate_button').on('click', function(){
-               setTimeout(addRowTabIndex(),100);
+          $(document).on('click', '.wpdt-c .wpDataTablesWrapper .paginate_button', function(){
+               console.log('test');
+               addRowTabIndex();
           });
 
      }
