@@ -55,6 +55,16 @@ jQuery( document ).ready(function($) {
           }
      }
 
+     /* Add label to WPDataTables Filters */
+     if ($('.wpdt-c .wpDataTablesFilter .wpDataTableFilterBox').length){
+          $('.wpdt-c .wpDataTablesFilter .wpDataTableFilterBox .wpDataTableFilterSection').each(function(){
+               let lbl = $(this).find('label');
+               let id = $(this).find('div').attr('class');
+               let input = $(this).find('input').attr('id',id);
+               lbl.attr('for',id);
+          });
+     }
+
      function addRowTabIndex(){
           $('.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.odd,.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.even').each(function(){
                $(this).attr('tabindex', '0');
