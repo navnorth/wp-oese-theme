@@ -48,8 +48,10 @@ jQuery( document ).ready(function($) {
      var mapSelector = $('.usacustomHtml5MapSelector');
      if (mapSelector.length){
           if (mapSelector.find('select')){
-               let selId = mapSelector.find('select').attr('id');
-               mapSelector.prepend('<label for="' + selId  + '">State:</label>');
+               let sel = mapSelector.find('select');
+               let selId = sel.attr('id');
+               mapSelector.prepend('<label for="' + selId  + '">Select an area: </label>');
+               sel.find('option').first().text("");
           }
      }
 
