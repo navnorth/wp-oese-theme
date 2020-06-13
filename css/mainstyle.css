@@ -2848,10 +2848,10 @@ svg text.no-data { fill:#000000; stroke:#ffffff; stroke-width:0.1; stroke-opacit
 .wpdt-c .wpDataTables.wpDataTablesWrapper .wpDataTableFilterBox .wpDataTableFilterSection button:focus { background:#234261; color:#ffffff; border:1px solid #cdcdcd !important; }
 .wpdt-c .wpDataTables.wpDataTablesWrapper .dt-buttons .dt-button:hover,
 .wpdt-c .wpDataTables.wpDataTablesWrapper .dt-buttons .dt-button:focus  { border: 1px solid #cdcdcd !important; color: #ffffff !important; background: #234261; opacity:1; }
-.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.odd:hover,
+/*.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.odd:hover,
 .wpdt-c .wpDataTablesWrapper table.wpDataTable tr.odd:focus,
 .wpdt-c .wpDataTablesWrapper table.wpDataTable tr.even:hover,
-.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.even:focus{ border:1px solid #127eec;  }
+.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.even:focus{ border:1px solid #127eec;  }*/
 .wpdt-c .modal .modal-header button.close:hover,
 .wpdt-c .modal .modal-header button.close:focus { color:#127eec; border:1px solid #127eec;  } 
 /* End of WPDataTables and US Map Styles */
