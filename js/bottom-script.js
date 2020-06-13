@@ -44,6 +44,15 @@ jQuery( document ).ready(function($) {
 
      }
 
+     /* Add label to State box selection */
+     var mapSelector = $('.usacustomHtml5MapSelector');
+     if (mapSelector.length){
+          if (mapSelector.find('select')){
+               let selId = mapSelector.find('select').attr('id');
+               mapSelector.prepend('<label for="' + selId  + '">State:</label>');
+          }
+     }
+
      function addRowTabIndex(){
           $('.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.odd,.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.even').each(function(){
                $(this).attr('tabindex', '0');
