@@ -59,8 +59,8 @@ jQuery( document ).ready(function($) {
      if ($('.wpdt-c .wpDataTablesFilter .wpDataTableFilterBox').length){
           $('.wpdt-c .wpDataTablesFilter .wpDataTableFilterBox .wpDataTableFilterSection').each(function(){
                let lbl = $(this).find('label');
-               let id = $(this).find('div').attr('class');
-               id.replace(/-/g, '_');
+               var id = $(this).find('div').attr('class');
+               id = id.replace(/-/g, '_');
                let input = $(this).find('input').attr('id',id);
                lbl.attr('for',id);
           });
