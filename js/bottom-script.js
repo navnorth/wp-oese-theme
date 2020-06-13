@@ -60,6 +60,7 @@ jQuery( document ).ready(function($) {
           $('.wpdt-c .wpDataTablesFilter .wpDataTableFilterBox .wpDataTableFilterSection').each(function(){
                let lbl = $(this).find('label');
                let id = $(this).find('div').attr('class');
+               id.replace(/-/g, '_');
                let input = $(this).find('input').attr('id',id);
                lbl.attr('for',id);
           });
