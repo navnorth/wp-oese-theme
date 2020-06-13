@@ -9,7 +9,7 @@
 ?>
 
 <div class="row">
-    <div id="content" class="col-md-9 col-sm-12 col-xs-12 padding_left lft_sid_cntnr" tabindex="-1">
+    <div id="content" class="col-md-9 col-sm-12 col-xs-12 padding_left lft_sid_cntnr">
 
         <h1 class="entry-title"><?php the_title(); ?></h1>
     

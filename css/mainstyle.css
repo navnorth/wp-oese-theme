@@ -2056,6 +2056,7 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
 .wpDataTablesFilter { border:1px solid #ddd; padding:8px; box-shadow: 0px 1px 6px rgba(0,0,0,0.5); }
 .wdt-select-filter .dropdown-toggle::after { border:none; }
 .usaHtml5MapStateInfo .contact-info { margin:50px 0; }
+.usacustomHtml5MapSelector select { margin-left:5px; }
 /** End of Search Results Styles **/
 @media (min-width: 1200px) {
     .container{
