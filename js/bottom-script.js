@@ -14,7 +14,7 @@ jQuery( document ).ready(function($) {
 
      /** Add Tab Index to WPDataTables row **/
      if ($('.wpdt-c .wpDataTablesWrapper table.wpDataTable').length){
-          /*addRowTabIndex();*/
+          addRowTabIndex();
           $(document).on('keyup', '.wpdt-c .wpDataTablesWrapper table.wpDataTable tr td a.master_detail_column_btn', function(event){
                if (event.defaultPrevented) {
                     return;
@@ -70,7 +70,7 @@ jQuery( document ).ready(function($) {
      }
 
      function addRowTabIndex(){
-          $('.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.odd,.wpdt-c .wpDataTablesWrapper table.wpDataTable tr.even').each(function(){
+          $('.wpdt-c .wpDataTablesWrapper table.wpDataTable tr td a.master_detail_column_btn').each(function(){
                $(this).attr('tabindex', '0');
           });
      }
