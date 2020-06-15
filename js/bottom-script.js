@@ -27,12 +27,15 @@ jQuery( document ).ready(function($) {
                }
           });
           $('#wdt-md-modal').on('shown.bs.modal', function(){
-               $(this).prepend('<div tabindex="0"></div>');
+               if (!$(this).find('#modalintro').length)
+                    $(this).prepend('<div id="modalintro" tabindex="0"></div>');
                $(this).attr('aria-hidden', false);
                $(this).focus();
           });
           $('#wdt-md-modal').on('hidden.bs.modal', function(){
                $(this).attr('aria-hidden', true);
+               if ($(this).find('#modalintro').length)
+                    $(this).find('#modalintro').remove();
                let curBtn = $('.wpdt-c .wpDataTablesWrapper table.wpDataTable tr td a.master_detail_column_btn.current');
                curBtn.focus();
                curBtn.removeClass('current');
