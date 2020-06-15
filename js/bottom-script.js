@@ -29,7 +29,7 @@ jQuery( document ).ready(function($) {
           });
           $('#wdt-md-modal').on('shown.bs.modal', function(){
                if (!$(this).find('#modalintro').length)
-                    $(this).prepend('<div id="modalintro" tabindex="0"></div>');
+                    $(this).prepend('<div id="modalintro" tabindex="0"></div>').css('display','inline');
                $(this).attr('aria-hidden', false);
                $(this).focus();
           });
