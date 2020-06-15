@@ -31,7 +31,8 @@ jQuery( document ).ready(function($) {
                if (!$(this).find('#modalintro').length)
                     $(this).prepend('<div id="modalintro" tabindex="0"></div>');
                $(this).attr('aria-hidden', false);
-               $(this).focus();
+               $(this).find('.modal-body').attr('tabindex','-1');
+               $(this).find('#modalintro').focus();
           });
           $('#wdt-md-modal').on('hidden.bs.modal', function(){
                $(this).attr('aria-hidden', true);
