@@ -15,7 +15,7 @@ jQuery( document ).ready(function($) {
      /** Add Tab Index to WPDataTables row **/
      if ($('.wpdt-c .wpDataTablesWrapper table.wpDataTable').length){
           /*addRowTabIndex();*/
-          $(document).on('keyup', '.wpdt-c .wpDataTablesWrapper table.wpDataTable tr td button', function(event){
+          $(document).on('keyup', '.wpdt-c .wpDataTablesWrapper table.wpDataTable tr td a.master_detail_column_btn', function(event){
                if (event.defaultPrevented) {
                     return;
                }
@@ -27,12 +27,13 @@ jQuery( document ).ready(function($) {
                }
           });
           $('#wdt-md-modal').on('shown.bs.modal', function(){
+               $(this).prepend('<div tabindex="0"></div>');
                $(this).attr('aria-hidden', false);
                $(this).focus();
           });
           $('#wdt-md-modal').on('hidden.bs.modal', function(){
                $(this).attr('aria-hidden', true);
-               let curBtn = $('.wpdt-c .wpDataTablesWrapper table.wpDataTable tr td button.current');
+               let curBtn = $('.wpdt-c .wpDataTablesWrapper table.wpDataTable tr td a.master_detail_column_btn.current');
                curBtn.focus();
                curBtn.removeClass('current');
           });
