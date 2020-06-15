@@ -24,6 +24,7 @@ jQuery( document ).ready(function($) {
 
                if (key===32 || key===13) {
                     $(this).addClass('current');
+                    $(this).trigger("click");
                }
           });
           $('#wdt-md-modal').on('shown.bs.modal', function(){
