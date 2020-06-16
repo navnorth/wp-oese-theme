@@ -42,12 +42,12 @@ jQuery( document ).ready(function($) {
                curBtn.focus();
                curBtn.removeClass('current');
           });
-          /*$(document).on('keyup', '.wpdt-c .wpDataTablesWrapper .paginate_button', function(event){
+          $(document).on('keyup', '.wpdt-c .wpDataTablesWrapper .paginate_button', function(event){
                var kCode = event.keyCode || event.which || event.key;
                if (kCode===32 || kCode===13) {
                     setTimeout(addRowTabIndex(),100);
                }
-          });*/
+          });
 
      }
 
