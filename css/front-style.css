@@ -302,3 +302,35 @@ div#table_1_paginate a.paginate_button:focus{
 #table_1_wrapper.wpDataTablesWrapper #table_1 tr.even td.column-report a:focus {
   border: 1px solid #3e5487 !important;
 }
+/** PPE tool Modal styling **/
+#ppe-details-modal { z-index: 99999; }
+body.modal-open { overflow: visible; }
+.wpDataTable .hidden-column { display:none; }
+.wdt-md-modal .modal-dialog .modal-header { position:relative; border-bottom: 1px solid #cdcdcd; padding:15px 26px !important; }
+.wpdt-c .modal .modal-header button.close {
+  position: absolute;
+  right: 0;
+  margin-right: 10px !important;
+  top: 0;
+  margin-top: 5px !important;
+}
+.wpdt-c .modal .modal-body { padding: 15px 26px !important; }
+.wpdt-c .modal .modal-body .wdt-details-dialog-fields-block .form-group .col-sm-3 {
+  width: 45%;
+  font-size: 14px;
+  font-weight: bold;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 45% !important;
+  flex: 0 0 45% !important;
+  max-width: 45% !important;
+}
+.wpdt-c .modal .modal-body .wdt-details-dialog-fields-block .form-group  .col-sm-9 {
+  width: 55%;
+  font-size: 14px;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 55% !important;
+  flex: 0 0 55% !important;
+  max-width: 55% !important;
+}
+.wpdt-c .modal .modal-body .wdt-details-dialog-fields-block .form-group .detailColumn { font-size:14px; }
+.wpdt-c .modal .modal-body .wdt-details-dialog-fields-block .form-group { margin-bottom:5px; }

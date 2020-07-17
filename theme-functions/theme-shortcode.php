@@ -6,6 +6,11 @@
 add_shortcode("disruptive_content", "disruptive_content_fun" );
 function disruptive_content_fun($attr, $content = null)
 {
+	$button_color = "";
+	$ctitle = "";
+	$cmain_text = "";
+	$btn_url = "";
+	$btn_text = "";
 	if ( is_admin() ) {
 		$_arr = getShortcodeAttr($attr);
 		foreach($_arr as $key => $value) $$key = $value;
@@ -17,18 +22,30 @@ function disruptive_content_fun($attr, $content = null)
 	if (strpos($button_color,"#")===false)
 		$button_color = "#".$button_color;
 
+	if (isset($title)){
+		$ctitle = $title;
+	}
+	if (isset($main_text)){
+		$cmain_text = $main_text;
+	}
+	if (isset($button_url)){
+		$btn_url = $button_url;
+	}
+	if (isset($button_text)){
+		$btn_text = $button_text;
+	}
 	$return = '';
     $return .= '<div class="row bg_img_of_icns" id="lnk_btn_cntnr_center">';
         $return .= '<div class="col-md-8 col-sm-8 col-xs-8" >';
-            $return .= '<h3>'. $title .'</h3>';
+            $return .= '<h3>'. $ctitle .'</h3>';
             $return .= '<p>';
 				//$main_text = apply_filters('the_content', $main_text);
-            	$return .= $main_text;
+            	$return .= $cmain_text;
             $return .= '</p>';
         $return .= '</div>';
 
 				$return .= '<div class="link_dwnlds_wrapper" >';
-				$return .= '<div class="link_dwnlds"><div><a href="'. $button_url .'" class="btn_dwnld" style="background-color:'. $button_color.'" onclick="ga(\'send\', \'event\', \'download\', \''.$button_url.'\');" target="_blank">'. $button_text .'</a></div></div>';
+				$return .= '<div class="link_dwnlds"><div><a href="'. $btn_url .'" class="btn_dwnld" style="background-color:'. $button_color.'" onclick="ga(\'send\', \'event\', \'download\', \''.$btn_url.'\');" target="_blank">'. $btn_text .'</a></div></div>';
         $return .= '</div>';
 
 				//$return .= '<div class="col-md-4 col-sm-4 col-xs-4 text-right">';

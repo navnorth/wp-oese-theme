@@ -25,7 +25,7 @@ if ((strlen($contact_content)>0) || (is_active_sidebar( 'thematic-template' ) ) 
 }
 ?>
 
-    <div id="content" class="row site-content" tabindex="-1">
+    <div id="content" class="row site-content">
 
         <div class="<?php echo $leftCol; ?> padding_left lft_sid_cntnr">
 

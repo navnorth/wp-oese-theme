@@ -41,7 +41,7 @@ if (!$wChild){
 }
 ?>
 
-    <div id="content" class="row site-content awards-template" tabindex="-1">
+    <div id="content" class="row site-content awards-template">
         <div class="<?php echo $leftCol; ?> col-sm-12 col-xs-12">
 
             <?php

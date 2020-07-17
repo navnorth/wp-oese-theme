@@ -226,6 +226,9 @@ jQuery( document ).ready(function() {
       jQuery('#table_1_wrapper.wpDataTablesWrapper .dataTables_length button.dropdown-toggle').focusout(function(){
       	jQuery('#table_1_wrapper.wpDataTablesWrapper').removeClass('focused');
       });
+      jQuery('.dropdown-menu > li > a').focus(function(){
+        jQuery('.length_menu').addClass('open');
+      });
   
       //wpDataTable Search Input
       jQuery('#table_1_wrapper.wpDataTablesWrapper .dataTables_filter input[type="search"]').focus(function(){

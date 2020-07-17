@@ -29,7 +29,7 @@ if ($archived_date){
 }
 ?>
 
-<div id="content" class="row site-content" tabindex="-1">
+<div id="content" class="row site-content">
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
         <h1 class="page_header<?php echo $head_class; ?>"><?php echo $post->post_title; ?></h1>
