@@ -232,13 +232,13 @@ jQuery( document ).ready(function() {
 
       // WPDataTable Filter dropdowns
       jQuery('.wpDataTableFilterBox .wpDataTableFilterSection button.dropdown-toggle').focus(function(){
-        jQuery('.wpDataTableFilterBox .wpDataTableFilterSection').addClass('focused');
+        jQuery(this).closest('.wpDataTableFilterBox .wpDataTableFilterSection').addClass('focused');
       });
       jQuery('.wpDataTableFilterBox .wpDataTableFilterSection button.dropdown-toggle').focusout(function(){
-        jQuery('.wpDataTableFilterBox .wpDataTableFilterSection').removeClass('focused');
+        jQuery(this).closest('.wpDataTableFilterBox .wpDataTableFilterSection').removeClass('focused');
       });
       jQuery('.wpDataTableFilterBox .wpDataTableFilterSection .wdt-filter-control .dropdown-menu > li > a').focus(function(){
-        jQuery('.wpDataTableFilterBox .wpDataTableFilterSection .wdt-filter-control').addClass('open');
+        jQuery(this).closest('.wpDataTableFilterBox .wpDataTableFilterSection .wdt-filter-control').addClass('open');
       });
   
       //wpDataTable Search Input
