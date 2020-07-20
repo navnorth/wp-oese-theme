@@ -245,6 +245,7 @@ jQuery( document ).ready(function() {
         var itemHeight = 42;
         var listHeight = itemHeight*len;
         jQuery(this).css({ 'max-height':listHeight + 'px', 'height':listHeight + 'px' });
+        jQuery(this).find('ul.dropdown-menu').css('height':'auto');
       });
   
       //wpDataTable Search Input
