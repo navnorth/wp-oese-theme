@@ -240,12 +240,16 @@ jQuery( document ).ready(function() {
       jQuery('.wpDataTableFilterBox .wpDataTableFilterSection .wdt-filter-control .dropdown-menu > li > a').focus(function(){
         jQuery(this).closest('.wpDataTableFilterBox .wpDataTableFilterSection .wdt-filter-control').addClass('open');
       });
-      jQuery('.wpDataTableFilterBox .wpDataTableFilterSection .wdt-filter-control .dropdown-menu').each(function(){
-        var len = jQuery(this).find('ul.dropdown-menu li').length;
+      jQuery('.wpDataTableFilterBox .wpDataTableFilterSection').each(function(){
+        console.log(jQuery(this));
+        var target = jQuery(this).find('.wdt-filter-control div.dropdown-menu');
+        var dropmenu = jQuery(this).find('.wdt-filter-control div.dropdown-menu ul.dropdown-menu');
+        var len =  dropmenu.find('li').length;
+        console.log(len);
         var itemHeight = 42;
         var listHeight = itemHeight*len;
-        jQuery(this).css({ 'max-height':listHeight + 'px !important', 'height':listHeight + 'px !important' });
-        jQuery(this).find('ul.dropdown-menu').css('height','auto');
+        target.css({ 'max-height':listHeight + 'px !important', 'height':listHeight + 'px !important' });
+        dropmenu.css('height','auto');
       });
   
       //wpDataTable Search Input
