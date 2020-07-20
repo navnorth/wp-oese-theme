@@ -240,6 +240,12 @@ jQuery( document ).ready(function() {
       jQuery('.wpDataTableFilterBox .wpDataTableFilterSection .wdt-filter-control .dropdown-menu > li > a').focus(function(){
         jQuery(this).closest('.wpDataTableFilterBox .wpDataTableFilterSection .wdt-filter-control').addClass('open');
       });
+      jQuery('.wpDataTableFilterBox .wpDataTableFilterSection .wdt-filter-control .dropdown-menu').each(function(){
+        var len = jQuery(this).find('ul.dropdown-menu li').length;
+        var itemHeight = 42;
+        var listHeight = itemHeight*len;
+        jQuery(this).css({ 'max-height':listHeight + 'px', 'height':listHeight + 'px' });
+      });
   
       //wpDataTable Search Input
       jQuery('#table_1_wrapper.wpDataTablesWrapper .dataTables_filter input[type="search"]').focus(function(){
