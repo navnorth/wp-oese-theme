@@ -91,7 +91,7 @@ jQuery( document ).ready(function($) {
           var key = event.keyCode || event.which || event.key;
 
           if (key===32 || key===13) {
-               $(this).closest('.wdt-filter-control').find('.dropdown-menu').focus();
+               $(this).closest('.wdt-filter-control').find('.dropdown-menu li.selected a').focus();
           }
      });
 
