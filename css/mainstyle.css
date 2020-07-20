@@ -2856,6 +2856,7 @@ svg text.no-data { fill:#000000; stroke:#ffffff; stroke-width:0.1; stroke-opacit
 .wpdt-c .modal .modal-header button.close:focus { color:#127eec; border:1px solid #127eec;  } 
 .wpdt-c .wdt-md-modal #modalintro { display:inline; }
 .bootstrap-select.btn-group .dropdown-toggle .filter-option { color:#000000; }
+.wpDataTableFilterBox .wpDataTableFilterSection .wdt-filter-control .dropdown-menu { display:inline-block !important;  }
 /* End of WPDataTables and US Map Styles */
 
 /* ACF HOME PAGE */
