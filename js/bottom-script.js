@@ -94,6 +94,16 @@ jQuery( document ).ready(function($) {
                $(this).closest('.wdt-filter-control').find('.dropdown-menu li.selected a').focus();
           }
      });
+     $(document).on('keyup','.wpDataTableFilterBox .wpDataTableFilterSection .wdt-filter-control .dropdown-menu li a', function(event){
+          if (event.defaultPrevented) {
+               return;
+          }
+          var key = event.keyCode || event.which || event.key;
+
+          if (key===32 || key===13) {
+               $(this).trigger('click');
+          }
+     });
 
      function addRowTabIndex(){
           $('.wpdt-c .wpDataTablesWrapper table.wpDataTable tr td a.master_detail_column_btn').each(function(){
