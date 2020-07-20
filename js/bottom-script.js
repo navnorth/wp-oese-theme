@@ -84,6 +84,16 @@ jQuery( document ).ready(function($) {
      $('.wpDataTableFilterBox .wpDataTableFilterSection .wdt-filter-control .dropdown-menu > li > a').focus(function(){
         $(this).closest('.wdt-filter-control').addClass('show open');
      });
+     $document.on('keyup','.wpDataTableFilterBox .wpDataTableFilterSection button.dropdown-toggle', function(event){
+          if (event.defaultPrevented) {
+               return;
+          }
+          var key = event.keyCode || event.which || event.key;
+
+          if (key===32 || key===13) {
+               $(this).closest('.wdt-filter-control').find('.dropdown-menu').focus();
+          }
+     });
 
      function addRowTabIndex(){
           $('.wpdt-c .wpDataTablesWrapper table.wpDataTable tr td a.master_detail_column_btn').each(function(){
