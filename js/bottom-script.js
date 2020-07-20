@@ -74,6 +74,29 @@ jQuery( document ).ready(function($) {
           });
      }
 
+     // WPDataTable Filter dropdowns
+     $('.wpDataTableFilterBox .wpDataTableFilterSection button.dropdown-toggle').focus(function(){
+        $(this).closest('.wpDataTableFilterBox .wpDataTableFilterSection').addClass('focused');
+     });
+     $('.wpDataTableFilterBox .wpDataTableFilterSection button.dropdown-toggle').focusout(function(){
+        $(this).closest('.wpDataTableFilterBox .wpDataTableFilterSection').removeClass('focused');
+     });
+     $('.wpDataTableFilterBox .wpDataTableFilterSection .wdt-filter-control .dropdown-menu > li > a').focus(function(){
+        $(this).closest('.wpDataTableFilterBox .wpDataTableFilterSection .wdt-filter-control').addClass('open');
+     });
+     $('.wpDataTableFilterBox .wpDataTableFilterSection').each(function(){
+        var target = $(this).find('.wdt-filter-control div.dropdown-menu');
+        console.log(target);
+        var dropmenu = $(this).find('.wdt-filter-control div.dropdown-menu ul.dropdown-menu');
+        console.log(dropmenu);
+        var len =  dropmenu.find('li').length;
+        console.log(len);
+        var itemHeight = 42;
+        var listHeight = itemHeight*len;
+        target.css({ 'max-height':listHeight + 'px !important', 'height':listHeight + 'px !important' });
+        dropmenu.css('height','auto');
+     });
+
      function addRowTabIndex(){
           $('.wpdt-c .wpDataTablesWrapper table.wpDataTable tr td a.master_detail_column_btn').each(function(){
                $(this).attr('tabindex', '0');

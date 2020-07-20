@@ -229,28 +229,6 @@ jQuery( document ).ready(function() {
       jQuery('.dropdown-menu > li > a').focus(function(){
         jQuery('.length_menu').addClass('open');
       });
-
-      // WPDataTable Filter dropdowns
-      jQuery('.wpDataTableFilterBox .wpDataTableFilterSection button.dropdown-toggle').focus(function(){
-        jQuery(this).closest('.wpDataTableFilterBox .wpDataTableFilterSection').addClass('focused');
-      });
-      jQuery('.wpDataTableFilterBox .wpDataTableFilterSection button.dropdown-toggle').focusout(function(){
-        jQuery(this).closest('.wpDataTableFilterBox .wpDataTableFilterSection').removeClass('focused');
-      });
-      jQuery('.wpDataTableFilterBox .wpDataTableFilterSection .wdt-filter-control .dropdown-menu > li > a').focus(function(){
-        jQuery(this).closest('.wpDataTableFilterBox .wpDataTableFilterSection .wdt-filter-control').addClass('open');
-      });
-      jQuery('.wpDataTableFilterBox .wpDataTableFilterSection').each(function(){
-        console.log(jQuery(this));
-        var target = jQuery(this).find('.wdt-filter-control div.dropdown-menu');
-        var dropmenu = jQuery(this).find('.wdt-filter-control div.dropdown-menu ul.dropdown-menu');
-        var len =  dropmenu.find('li').length;
-        console.log(len);
-        var itemHeight = 42;
-        var listHeight = itemHeight*len;
-        target.css({ 'max-height':listHeight + 'px !important', 'height':listHeight + 'px !important' });
-        dropmenu.css('height','auto');
-      });
   
       //wpDataTable Search Input
       jQuery('#table_1_wrapper.wpDataTablesWrapper .dataTables_filter input[type="search"]').focus(function(){
