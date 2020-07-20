@@ -229,6 +229,17 @@ jQuery( document ).ready(function() {
       jQuery('.dropdown-menu > li > a').focus(function(){
         jQuery('.length_menu').addClass('open');
       });
+
+      // WPDataTable Filter dropdowns
+      jQuery('.wpDataTableFilterBox .wpDataTableFilterSection button.dropdown-toggle').focus(function(){
+        jQuery('.wpDataTableFilterBox .wpDataTableFilterSection').addClass('focused');
+      });
+      jQuery('.wpDataTableFilterBox .wpDataTableFilterSection button.dropdown-toggle').focusout(function(){
+        jQuery('.wpDataTableFilterBox .wpDataTableFilterSection').removeClass('focused');
+      });
+      jQuery('.wpDataTableFilterBox .wpDataTableFilterSection .wdt-filter-control .dropdown-menu > li > a').focus(function(){
+        jQuery('.wpDataTableFilterBox .wpDataTableFilterSection .wdt-filter-control').addClass('open');
+      });
   
       //wpDataTable Search Input
       jQuery('#table_1_wrapper.wpDataTablesWrapper .dataTables_filter input[type="search"]').focus(function(){
