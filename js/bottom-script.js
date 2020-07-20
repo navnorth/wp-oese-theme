@@ -82,17 +82,17 @@ jQuery( document ).ready(function($) {
         $(this).closest('.wpDataTableFilterSection').removeClass('focused');
      });
      $('.wpDataTableFilterBox .wpDataTableFilterSection .wdt-filter-control .dropdown-menu > li > a').focus(function(){
-        $(this).closest('.wdt-filter-control').addClass('show open');
+        $(this).closest('div.dropdown-menu').addClass('open');
      });
      $document.on('keyup','.wpDataTableFilterBox .wpDataTableFilterSection button.dropdown-toggle', function(event){
           if (event.defaultPrevented) {
                return;
           }
-          var key = event.keyCode || event.which || event.key;
+          /*var key = event.keyCode || event.which || event.key;
 
           if (key===32 || key===13) {
                $(this).closest('.wdt-filter-control').find('.dropdown-menu li.selected a').focus();
-          }
+          }*/
      });
 
      function addRowTabIndex(){
