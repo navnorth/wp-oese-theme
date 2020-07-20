@@ -82,7 +82,7 @@ jQuery( document ).ready(function($) {
         $(this).closest('.wpDataTableFilterSection').removeClass('focused');
      });
      $('.wpDataTableFilterBox .wpDataTableFilterSection .wdt-filter-control .dropdown-menu > li > a').focus(function(){
-        $(this).closest('.wdt-filter-control').addClass('open');
+        $(this).closest('.wdt-filter-control').addClass('show open');
      });
 
      function addRowTabIndex(){
