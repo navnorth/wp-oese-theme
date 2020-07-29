@@ -59,17 +59,70 @@ jQuery( document ).ready(function() {
   //Publish Button Click Event
   jQuery(document).on('click','#secondary-publish',function(e){
     e.preventDefault ? e.preventDefault() : e.returnValue = false;
-    if(!jQuery('body').hasClass('home')){
-      jQuery('input[name="post_title"]').trigger('blur');    
-      var checkExist = setInterval(function() {
-         if (jQuery('span#editable-post-name').length) {
-            clearInterval(checkExist);
-            interceptPublish('pub');
-         }
-      }, 100); // check every 100ms    
+    
+    var element = document.getElementById("oese-preview-draft-publish-warning");
+    if(typeof(element) != 'undefined' && element != null){
+      var r = confirm('WARNING: Publishing this preview will overwrite its original version.\r\n\r\nIf you only wish to save this revision for review, please cancel this prompt and click "Save Draft" button instead.');
+      if (r == true) {
+        if(!jQuery('body').hasClass('home')){
+          jQuery('input[name="post_title"]').trigger('blur');    
+          var checkExist = setInterval(function() {
+             if (jQuery('span#editable-post-name').length) {
+                clearInterval(checkExist);
+                interceptPublish('pub');
+             }
+          }, 100); // check every 100ms    
+        }else{
+          jQuery("#publish").click();
+        } 
+      }
     }else{
-      jQuery("#publish").click();
-    }   
+      if(!jQuery('body').hasClass('home')){
+        jQuery('input[name="post_title"]').trigger('blur');    
+        var checkExist = setInterval(function() {
+           if (jQuery('span#editable-post-name').length) {
+              clearInterval(checkExist);
+              interceptPublish('pub');
+           }
+        }, 100); // check every 100ms    
+      }else{
+        jQuery("#publish").click();
+      }
+    }
+    
+    
+    /*
+    var element = document.getElementById("oese-preview-url-input");
+    if(typeof(element) != 'undefined' && element != null){
+      var r = confirm("WARNING: Publishing this revision will overwrite its original.");
+      if (r == true) {    
+        if(!jQuery('body').hasClass('home')){
+          jQuery('input[name="post_title"]').trigger('blur');    
+          var checkExist = setInterval(function() {
+             if (jQuery('span#editable-post-name').length) {
+                clearInterval(checkExist);
+                interceptPublish('pub');
+             }
+          }, 100); // check every 100ms    
+        }else{
+          jQuery("#publish").click();
+        }  
+      }
+    }else{
+      if(!jQuery('body').hasClass('home')){
+        jQuery('input[name="post_title"]').trigger('blur');    
+        var checkExist = setInterval(function() {
+           if (jQuery('span#editable-post-name').length) {
+              clearInterval(checkExist);
+              interceptPublish('pub');
+           }
+        }, 100); // check every 100ms    
+      }else{
+        jQuery("#publish").click();
+      }  
+    }
+    */
+    
   })
   //Notice Dismiss
   jQuery(document).on('click','.oese-permalink-validation-notice-dismiss',function(e){
