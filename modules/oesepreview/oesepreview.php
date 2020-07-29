@@ -335,7 +335,7 @@ function post_button() {
       <div><?php echo $pst_type; ?></div>
       <div class="oese-preview-url-wrapper">
         <strong><em>Preview URL:</em></strong>
-        <input id="oese-preview-url-input" type="text" value="<?php echo 'http://oese.localhost.localdomain/?'.$_getparam.'='.$post->ID.'&preview=true&key='.get_post_meta($post->ID, '_post_oesepreview_pwd', true) ?>" />
+        <input id="oese-preview-url-input" type="text" value="<?php echo get_bloginfo('url').'?'.$_getparam.'='.$post->ID.'&preview=true&key='.get_post_meta($post->ID, '_post_oesepreview_pwd', true) ?>" />
         <div class="oese-preview-url-copy button" onclick="oesePreviewDraftCopyToClipboard()">Copy URL</div>
       </div>
     <?php } ?>
@@ -343,7 +343,7 @@ function post_button() {
     <div class="oese-preview-url-wrapper">
       
       <strong><em>Preview URL:</em></strong>
-      <input id="oese-preview-url-input" type="text" value="<?php echo 'http://oese.localhost.localdomain/?'.$_getparam.'='.$post->ID.'&preview=true&key='.get_post_meta($post->ID, '_post_oesepreview_pwd', true) ?>" />
+      <input id="oese-preview-url-input" type="text" value="<?php echo get_bloginfo('url').'?'.$_getparam.'='.$post->ID.'&preview=true&key='.get_post_meta($post->ID, '_post_oesepreview_pwd', true) ?>" />
       <div class="oese-preview-url-copy button" onclick="oesePreviewDraftCopyToClipboard()">Copy URL</div>
     </div>
     <div id="oese-preview-draft-publish-warning"><em><?php echo sprintf(__('<strong style="font-size:14px;color:red;">WARNING</strong>: Publishing this preview will overwrite %s.', 'oesepreview'), get_parent_editlink($parent, __('its original.', 'oesepreview')). '<br>Please use "Save Draft" if you only wish to save this preview for review')?></em></div>
