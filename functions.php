@@ -1473,7 +1473,7 @@ function wp_oese_theme_settings_page() {
     )
   );
 
-  //Add Display Address on Footer
+  //Enable crazy egg tracking script
   add_settings_field(
     'wp_oese_theme_include_crazy_egg_script',
     '',
@@ -1483,7 +1483,21 @@ function wp_oese_theme_settings_page() {
     array(
       'uid' => 'wp_oese_theme_include_crazy_egg_script',
       'type' => 'checkbox',
-      'name' =>  __('Include Crazy Egg script', WP_OESE_THEME_SLUG)
+      'name' =>  __('enable Crazy Egg tracking script', WP_OESE_THEME_SLUG)
+    )
+  );
+
+  //Crazy Egg Script Address
+  add_settings_field(
+    'wp_oese_theme_crazy_egg_script_address',
+    '',
+    'wp_oese_theme_settings_field',
+    $page,
+    'wp_oese_ga_settings',
+    array(
+      'uid' => 'wp_oese_theme_crazy_egg_script_address',
+      'type' => 'textbox',
+      'name' =>  __('Crazy Egg Script Address', WP_OESE_THEME_SLUG)
     )
   );
 
@@ -1542,6 +1556,7 @@ function wp_oese_theme_settings_page() {
   register_setting( 'theme_settings_page' , 'wp_oese_theme_contact_page' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_ga_propertyid' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_include_crazy_egg_script' );
+  register_setting( 'theme_settings_page' , 'wp_oese_theme_crazy_egg_script_address' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_pdf_viewer' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_display_footer_address' );
 }
@@ -1994,13 +2009,15 @@ function oese_ga_script() {
   // Include GA
   $ga_id = get_option('wp_oese_theme_ga_propertyid');
   $egg_script = get_option('wp_oese_theme_include_crazy_egg_script');
+  $egg_script_address = get_option('wp_oese_theme_crazy_egg_script_address');
 
+  // Include Crazy Egg Script
+  if ($egg_script && !empty($egg_script_address)){
+    $egg_script_address = preg_replace( "#^[^:/.]*[:/]+#i", "//", $egg_script_address );
+    //$script .= "<script type='text/javascript' src='//s3.amazonaws.com/new.cetrk.com/pages/scripts/0009/9201.js'> </script>\r\n";
+    $script .= "<script type='text/javascript' src='".$egg_script_address."' async='async'></script>";
+  }
   if ($ga_id){
-    // Include Crazy Egg Script
-    if ($egg_script){
-      $script .= "<script type='text/javascript' src='//s3.amazonaws.com/new.cetrk.com/pages/scripts/0009/9201.js'> </script>\r\n";
-    }
-
     $script .= "<script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

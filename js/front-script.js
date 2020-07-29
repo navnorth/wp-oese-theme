@@ -227,7 +227,7 @@ jQuery( document ).ready(function() {
       	jQuery('#table_1_wrapper.wpDataTablesWrapper').removeClass('focused');
       });
       jQuery('.dropdown-menu > li > a').focus(function(){
-        jQuery('.length_menu').addClass('open');
+        jQuery(this).closest('.length_menu').addClass('open');
       });
   
       //wpDataTable Search Input

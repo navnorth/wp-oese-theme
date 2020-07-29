@@ -1,7 +1,24 @@
 jQuery( document ).ready(function() {
     jQuery('#page_template').on('change', function() {
 	  //alert(this.value);
-	});
+	 });
+    // Enable Crazy Egg Script Checkbox change handler
+    jQuery('#wp_oese_theme_include_crazy_egg_script').on("change", function(){
+      jQuery('#wp-oese-theme-settings .settings-error').hide();
+      if (this.checked){
+        jQuery('#wp_oese_theme_crazy_egg_script_address').prop("disabled", false);
+      } else {
+        jQuery('#wp_oese_theme_crazy_egg_script_address').prop("disabled", true);
+      }
+    });
+    jQuery('#wp_oese_theme_crazy_egg_script_address').on('blur', function(e){
+      var errorDisplay = jQuery('#wp-oese-theme-settings').find(".settings-error");
+      if (jQuery('#wp_oese_theme_include_crazy_egg_script').is(":checked") && (!jQuery(this).val())) {
+        errorDisplay.show()
+        errorDisplay.removeClass('hidden').css("color","#ff0000");
+      }
+
+    });
     jQuery('.contact-edit').on("click", function(e){
         e.preventDefault();
         if (confirm('Are you sure that you want to change the global Contact page selection?')==true){
