@@ -38,7 +38,7 @@ function init() {
     }
     add_action('transition_post_status', __NAMESPACE__.'\\on_publish_post', 10, 3);
   }
-  add_action('admin_bar_menu', __NAMESPACE__.'\\admin_bar_item', 100);
+  /* add_action('admin_bar_menu', __NAMESPACE__.'\\admin_bar_item', 100); */
 }
 
 
@@ -201,7 +201,7 @@ function copy_post($post, $to=null, $parent_id=null, $status='draft') {
     'post_content' => $post->post_content,
     'post_excerpt' => $post->post_excerpt,
     'post_mime_type' => $post->post_mime_type,
-    'post_parent' => !$parent_id ? $post->post_parent : $parent_id,
+    //'post_parent' => !$parent_id ? $post->post_parent : $parent_id,
     'post_password' => $post->post_password,
     'post_status' => $post_status,
     'post_title' => $post->post_title,
@@ -326,11 +326,13 @@ function post_button() {
   if (!$parent): ?>
     <?php //echo get_post_status($post->ID); ?>
     <?php if(get_post_status($post->ID) == 'publish'){ ?>
-      <div style="text-align: right; margin-bottom: 10px;">
-        <a class="button"
-          href="<?php echo get_create_link($post) ?>"><?php echo get_create_button_text(); ?>
-        </a>
-      </div>
+      <?php if($post->post_type == 'post' || $post->post_type == 'page'){ ?>
+        <div style="text-align: right; margin-bottom: 10px;">
+          <a class="button"
+            href="<?php echo get_create_link($post) ?>"><?php echo get_create_button_text(); ?>
+          </a>
+        </div>
+      <?php } ?>
     <?php }elseif(get_post_status($post->ID) == 'draft' || get_post_status($post->ID) == 'pending'){ ?>
       <div><?php echo $pst_type; ?></div>
       <div class="oese-preview-url-wrapper">
@@ -365,7 +367,7 @@ function admin_actions($actions, $post) {
     }else{
       $lnk_txt = get_create_button_text();
     } 
-      
+    
     $actions['create_oesepreview'] = '<a href="'.get_create_link($post).'" title="'
       . esc_attr(__("Create a Revision", 'oesepreview'))
       . '">' . $lnk_txt . '</a>';
@@ -529,7 +531,9 @@ function get_create_button_text() {
   if(metadata_exists('post', $post->ID, '_post_oesepreview_id')){
     $_oesepreview_id = get_post_meta($post->ID, '_post_oesepreview_id', true);
     if( is_null(get_post($_oesepreview_id))){
-      $_btn = apply_filters('oesepreview_create_oesepreview_button_text', __('Create Preview', 'oesepreview'));
+      if($post->post_type == 'page'){
+        $_btn = apply_filters('oesepreview_create_oesepreview_button_text', __('Create Preview', 'oesepreview'));
+      }
     }else{
       $_btn = apply_filters('oesepreview_create_oesepreview_button_text', __('Edit Preview', 'oesepreview'));
     }
