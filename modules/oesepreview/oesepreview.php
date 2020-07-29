@@ -531,14 +531,16 @@ function get_create_button_text() {
   if(metadata_exists('post', $post->ID, '_post_oesepreview_id')){
     $_oesepreview_id = get_post_meta($post->ID, '_post_oesepreview_id', true);
     if( is_null(get_post($_oesepreview_id))){
-      if($post->post_type == 'page'){
+      if($post->post_type == 'page' || $post->post_type == 'post'){
         $_btn = apply_filters('oesepreview_create_oesepreview_button_text', __('Create Preview', 'oesepreview'));
       }
     }else{
       $_btn = apply_filters('oesepreview_create_oesepreview_button_text', __('Edit Preview', 'oesepreview'));
     }
   }else{
-    $_btn = apply_filters('oesepreview_create_oesepreview_button_text', __('Create Preview', 'oesepreview'));
+    if($post->post_type == 'page' || $post->post_type == 'post'){
+      $_btn = apply_filters('oesepreview_create_oesepreview_button_text', __('Create Preview', 'oesepreview'));
+    }
   }
   
   //return apply_filters('oesepreview_create_oesepreview_button_text', __('Revise', 'oesepreview'));
