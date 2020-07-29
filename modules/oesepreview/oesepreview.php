@@ -101,7 +101,7 @@ function create() {
 function transition_post_status_handler( $new_status, $old_status, $post ) {
   if($new_status == 'draft' || $new_status == 'pending'){
     //regenerate password if metadata does not exist or existing but empty.
-    if(metadata_exists('post', $post->ID, '_post_oesepreview_pwd') ||
+    if(!metadata_exists('post', $post->ID, '_post_oesepreview_pwd') ||
        empty( get_post_meta( $post->ID, '_post_oesepreview_pwd', true ))){
          update_post_meta($post->ID, '_post_oesepreview_pwd', uniqid());      // generate password
     }
