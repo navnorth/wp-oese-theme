@@ -334,3 +334,6 @@ body.modal-open { overflow: visible; }
 }
 .wpdt-c .modal .modal-body .wdt-details-dialog-fields-block .form-group .detailColumn { font-size:14px; }
 .wpdt-c .modal .modal-body .wdt-details-dialog-fields-block .form-group { margin-bottom:5px; }
+.wpDataTablesFilter .wpDataTableFilterSection:not(#wdt-clear-filters-button-block):not(#wdt-pf-search-filters-button-block){
+  width: 212px !important;
+}
