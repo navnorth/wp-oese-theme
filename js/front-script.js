@@ -325,3 +325,19 @@ function oese_trackEvent(eventCategory, eventAction, eventLabel, eventValue = nu
     }
     return 0;
 }
+
+
+
+/* -------------- */
+/* WDT-RESPONSIVE
+/* -------------- */
+
+var isTablePresent;
+jQuery(document).ready(function(){
+  isTablePresent = setTimeout(function(){
+    if(jQuery('table.wpDataTable').length){
+      clearTimeout(isTablePresent);
+      jQuery('table.wpDataTable').wrap('<div class="wdtResponsiveWrapper"></div>');
+    }
+  },100);
+});
