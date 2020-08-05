@@ -400,6 +400,11 @@ body.modal-open { overflow: visible; }
       -o-transform-origin: 0 0;
       -moz-transform-origin: 0 0;
   }  
+  
+  .wpDataTablesWrapper .paging_full_numbers {
+    height: auto !important;
+  }
+  
 }
 
 /* MORE DETAILS MODAL */
