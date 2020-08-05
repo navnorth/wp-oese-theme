@@ -383,6 +383,8 @@ body.modal-open { overflow: visible; }
   .wdtResponsiveWrapper {
     overflow-x: scroll;
     overflow-y: visible;
+    float: left;
+    width: 100%;
   }
   .wpDataTablesWrapper table.wpDataTable {
     width:1024px !important;
