@@ -379,7 +379,10 @@ body.modal-open { overflow: visible; }
 
 
 /*TABLE ITSELF*/
-@media screen and (max-width: 768px) {
+.button.btn.wdt-clear-filters-button {
+    background-color: #f1f1f1 !important;
+}
+@media screen and (max-width: 990px) {
   .wdtResponsiveWrapper {
     overflow-x: scroll;
     overflow-y: visible;
@@ -401,8 +404,7 @@ body.modal-open { overflow: visible; }
       -webkit-transform-origin: 0 0;
       -o-transform-origin: 0 0;
       -moz-transform-origin: 0 0;
-  }  
-  
+  }    
   .wpDataTablesWrapper .paging_full_numbers {
     height: auto !important;
   }
