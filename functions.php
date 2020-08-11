@@ -7,7 +7,7 @@
  * filter hooks in WordPress to change core functionality.
  */
 define( "WP_OESE_THEME_NAME", "WP OESE Theme" );
-define( "WP_OESE_THEME_VERSION", "1.8.0" );
+define( "WP_OESE_THEME_VERSION", "1.8.1" );
 define( "WP_OESE_THEME_SLUG", "wp_oese_theme" );
 
 // Set up the content width value based on the theme's design and stylesheet.
@@ -702,7 +702,7 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
  * Theme Shortcode.
  */
   require_once( get_stylesheet_directory() . '/tinymce_button/shortcode-ajax.php' );
-  
+
   /**
   * OII Menu Walker
   **/
@@ -724,7 +724,7 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
     wp_enqueue_style( 'theme-back-style',get_stylesheet_directory_uri() . '/css/back-style.css' );
     wp_enqueue_style( 'tinymce_button_backend',get_stylesheet_directory_uri() . '/tinymce_button/shortcode_button.css' );
     wp_localize_script( 'theme-back-script', 'oet_ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
-    
+
     if(get_admin_page_title() == 'Edit Page'){
     //if(get_admin_page_title() != 'Media Library' && get_admin_page_title() != 'Manage Themes'){;
       wp_enqueue_style( 'theme-font-style',get_stylesheet_directory_uri() . '/css/fontawesome/css/all.min.css' );
@@ -735,7 +735,7 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
     wp_enqueue_style('csv-media-styles', get_stylesheet_directory_uri() . '/css/csv-media-import-style.css' );
     wp_enqueue_style( 'shortcode-style-backend',get_stylesheet_directory_uri() . '/tinymce_button/shortcode-style.css' );
     wp_enqueue_script('shortcode_script', get_stylesheet_directory_uri() . '/tinymce_button/shortcode_script.js' );
-    
+
 }
 add_action( 'admin_enqueue_scripts', 'theme_back_enqueue_script' );
 
@@ -2660,7 +2660,7 @@ function oet_display_acf_home_content(){
               endif;
               ?></div><?php
             }
-                
+
         elseif( get_row_layout() == '2_column_layout' ):
             $columnlayouts[0] = get_sub_field('oet_acf_homepage_column_1');
             $columnlayouts[1] = get_sub_field('oet_acf_homepage_column_2');
@@ -2680,15 +2680,15 @@ function oet_display_acf_home_content(){
               endif;
               ?></div><?php
             }?></div><?php
-        
+
         elseif( get_row_layout() == '2_column_layout_slider' ):
             $columnlayouts[0] = get_sub_field('oet_acf_homepage_column_1');
             $columnlayouts[1] = get_sub_field('oet_acf_homepage_column_2');
-  
+
             ?>
             <div class="col-sm-12">
               <div class="row col-sm-12 custom-common-padding">
-                <div class="col-sm-12 col-md-7 col-lg-7 oet_2column_layout"><?php        
+                <div class="col-sm-12 col-md-7 col-lg-7 oet_2column_layout"><?php
                   if(!empty($columnlayouts[0])):
                     foreach ($columnlayouts[0] as $subfieldlayout) { //Subfields FC w/in Column FC
                       if(!empty($subfieldlayout)):
@@ -2702,7 +2702,7 @@ function oet_display_acf_home_content(){
                   endif;
                 ?>
                 </div>
-                <div class="col-sm-12 col-md-5 col-lg-5 oet_2column_layout"><?php        
+                <div class="col-sm-12 col-md-5 col-lg-5 oet_2column_layout"><?php
                   if(!empty($columnlayouts[1])):
                     foreach ($columnlayouts[1] as $subfieldlayout) { //Subfields FC w/in Column FC
                       if(!empty($subfieldlayout)):
@@ -2719,10 +2719,10 @@ function oet_display_acf_home_content(){
               </div>
             </div>
             <?php
-            
-            
-            
-        
+
+
+
+
         elseif( get_row_layout() == '3_column_layout' ):
 
             $columnlayouts[0] = get_sub_field('oet_acf_homepage_column_1');
@@ -2760,21 +2760,21 @@ function oet_display_acf_home_content(){
             $columnlayouts[3] = get_sub_field('oet_acf_homepage_column_4');
             $columnlayouts[4] = get_sub_field('oet_acf_homepage_column_5');
             $columnlayouts[5] = get_sub_field('oet_acf_homepage_column_6');
-            
+
 
             ?>
             <div class="col-sm-12">
               <div class="col-sm-12 custom-common-padding trending-now-acf">
-              
+
                 <div class="col-sm-12 oet_3column_wrapper">
                     <?php if($sechead !== '' && !empty($sechead)){ ?>
-        
+
                       <div class="col-md-12">
                           <div class="row text-center">
                               <h2 class="h1-bottom-space trending-now-heading"><?php echo $sechead; ?></h2>
                           </div>
                       </div>
-                      
+
                     <?php } ?>
                     <div class="row ovlp"><?php
                     foreach ($columnlayouts as $columnlayout) {  //Column FC
@@ -2799,7 +2799,7 @@ function oet_display_acf_home_content(){
                             else
                               $_target = "_self";
                             ?>
-                                            
+
                               <div class="oet_acf_homepage_trendingnow_block_wrapper">
                                   <div class="trending-now-section rounded">
                                       <div class="trending-image-section">
@@ -2824,7 +2824,7 @@ function oet_display_acf_home_content(){
               </div>
             </div>
             <?php
-        
+
         elseif( get_row_layout() == 'oet_act_homepage_categories' ):
             $sechead = get_sub_field('oet_acf_homepage_category_section_header');
             $columnlayouts[0] = get_sub_field('oet_acf_homepage_column_1');
@@ -2835,16 +2835,16 @@ function oet_display_acf_home_content(){
             ?>
             <div class="col-sm-12">
               <div class="col-sm-12 home-grid-section-acf">
-              
+
                 <div class="col-sm-12 oet_3column_wrapper oet_3column_wrapper_category">
                     <?php if($sechead !== '' && !empty($sechead)){ ?>
-        
+
                       <div class="col-md-12">
                           <div class="row text-center">
                               <h2 class="h1-bottom-space trending-now-heading"><?php echo $sechead; ?></h2>
                           </div>
                       </div>
-                      
+
                     <?php } ?>
                     <div class="row ovlp"><?php
                     foreach ($columnlayouts as $columnlayout) {  //Column FC
@@ -2859,11 +2859,11 @@ function oet_display_acf_home_content(){
                             $_title = $subfieldlayout['oet_acf_homepage_category_title'];
                             $_url = $subfieldlayout['oet_acf_homepage_category_link'];
                             ?>
-                                            
-                              
-                              
-                              
-                              
+
+
+
+
+
                               <div class="" style="width:100%; max-width:90%; margin:0px auto;">
                                 <div class="custom-home-image-section">
                                   <div class="custom-image-media">
@@ -2880,11 +2880,11 @@ function oet_display_acf_home_content(){
                                   </div>
                               </div>
                             </div>
-                              
-                              
-                              
-                              
-                              
+
+
+
+
+
 
                             <?php
                           endif;
@@ -2896,9 +2896,9 @@ function oet_display_acf_home_content(){
                 </div>
               </div>
             </div>
-            <?php    
-        
-        
+            <?php
+
+
         elseif( get_row_layout() == 'oet_act_homepage_titlelinks' ):
 
             $tl_bg = get_sub_field('oet_acf_homepage_tilelinks_background');
@@ -2979,17 +2979,17 @@ function oet_display_acf_home_content(){
               .oet_tilelinks_wrapper::before {
                 background-image: linear-gradient(rgba(44, 67, 116, 0.85), rgba(44, 67, 116, 0.85)), url(<?php echo $tl_bgimg ?>);
               }
-              
+
             </style>
             </div>
             <?php
-            
-            
-            
-        elseif( get_row_layout() == 'oet_act_homepage_search' ):    
-            
+
+
+
+        elseif( get_row_layout() == 'oet_act_homepage_search' ):
+
             $_searchtitle = get_sub_field('oet_act_homepage_search_title');
-    
+
             ?>
             <div class="row col-sm-12 custom-common-padding">
               <div class="full-search-section m-auto text-center">
@@ -2997,7 +2997,7 @@ function oet_display_acf_home_content(){
                        <h1><?php echo $_searchtitle ?></h1>
                    </div>
 
-                   <div class="full-search-field">    
+                   <div class="full-search-field">
                       <form id="searchformContent" class="searchform" action="https://oese-test.navigationnorth.com" method="get" role="search">
                           <div class="input-group to-focus">
                               <label class="search-label" for="inputSuccess2Content">Search:</label>
@@ -3013,11 +3013,11 @@ function oet_display_acf_home_content(){
                </div>
              </div>
              <?php
-                  
-        elseif( get_row_layout() == 'oet_act_homepage_spacer' ):        
+
+        elseif( get_row_layout() == 'oet_act_homepage_spacer' ):
             $_sepacer_height = get_sub_field('oet_act_homepage_spacer_height');
             ?><div class="row col-sm-12" style="height:<?php echo $_sepacer_height.'px' ?>;"></div><?php
-    
+
         elseif( get_row_layout() == 'oet_act_homepage_separator' ):
             ?>
               <div class="col-sm-12">
@@ -3067,7 +3067,7 @@ function set_query_to_draft( $posts, $query ) {
 
     if ( !$post_status_obj->name == 'draft' )
         return $posts;
-    
+
     if ( $_GET['key'] != $_pwd )
         return $posts;
 
