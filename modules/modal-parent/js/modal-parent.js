@@ -1,4 +1,4 @@
-$.noConflict();
+jQuery.noConflict();
 jQuery( document ).ready(function() {
 
     jQuery(document).on('click','.wp-nn-parentpage-select',function(e){
