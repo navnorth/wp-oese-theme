@@ -242,15 +242,13 @@ ul.program_toc, .cntnbx_cntnr ul {
     color:#ffffff;
     padding:10px 15px;
 }
-.wpdt-c .wpDataTables .dataTables_length .show {
-    display: inline-block !important;
-}
-
+.wpdt-c .wpDataTables .dataTables_length .show { display: inline-block !important;}
 
 .oese-lastModified {
   text-align:right;
   margin: 20px 0px 0px 0px !important;
 }
+.oese-date-modified-section { padding-top:10px; }
 .oese-lastModified span {
     padding: 20px 10px;
     border-top: 1px solid #d1d1d1;
@@ -336,8 +334,6 @@ body.modal-open { overflow: hidden; }
 .wpdt-c .modal .modal-body .wdt-details-dialog-fields-block .form-group { margin-bottom:5px; }
 .wpDataTableFilterBox .wpDataTableFilterSection div:first-child {margin-top:0px !important;}
 
-
-
 /* -------------- */
 /* WDT-RESPONSIVE
 /* -------------- */
@@ -416,7 +412,6 @@ body.modal-open { overflow: hidden; }
   .wpDataTablesWrapper .paging_full_numbers {
     height: auto !important;
   }
-  
 }
 
 /* MORE DETAILS MODAL */
@@ -426,5 +421,3 @@ body.modal-open { overflow: hidden; }
 .form-group div.col-sm-9{
    float:left !important;
 }
-
-
