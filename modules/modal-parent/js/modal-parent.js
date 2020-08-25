@@ -22,6 +22,9 @@ jQuery( document ).ready(function() {
 		rad.parent().addClass('checked');
 		jQuery('.wp-nn-parentpage-overlay').removeClass('fadeOut').addClass('fadeIn').css('display', 'block').css('visibility', 'visible');
 		jQuery('input[name="wp-nn-parentpage-criteria"]').val('');
+    setTimeout(function(){
+      jQuery('input[name="wp-nn-parentpage-criteria"]').focus();
+    }, 500);
 		jQuery('#wp-nn-parentpage-dynahide').remove();
 	});
 
