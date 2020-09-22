@@ -3061,8 +3061,7 @@ function wdt_loading_indicator() {
   if ( stripos($post->post_content, '[wpdatatable')){
     ?>    
     <script>
-    jQuery('.wpdt-c:first').append('<div class="wdtLoadingIndicator" style="display:none;"><table><tr><td><div class="wdt-dual-ring"></div></td></tr></table></div>');
-    jQuery('.wdtLoadingIndicator').show(500);
+    jQuery('.wpdt-c:first').append('<div class="wdtLoadingIndicator"><table><tr><td><div class="wdt-dual-ring"></div></td></tr></table></div>');
     var iswdtloaded;
     jQuery(document).ready(function(){
         iswdtloaded = setTimeout(function(){
