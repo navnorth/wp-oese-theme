@@ -341,22 +341,3 @@ jQuery(document).ready(function(){
     }
   },100);
 });
-
-
-/* -------------- */
-/* WDT LOADING INDICATOR
-/* -------------- */
-var iswdtloaded;
-jQuery(document).ready(function(){
-  if(jQuery('.wpdt-c').length){ /* run only if page has WDT */
-    jQuery('.wpdt-c:first').append('<div class="wdtLoadingIndicator"><table><tr><td><div class="wdt-dual-ring"></div></td></tr></table></div>');
-    //jQuery('body').append('<div class="wdtLoadingIndicator"><table><tr><td><div class="wdt-dual-ring"></div></td></tr></table></div>');
-    iswdtloaded = setTimeout(function(){
-      if(jQuery('table.wpDataTable').length){
-        clearTimeout(iswdtloaded);
-        jQuery('.wdtLoadingIndicator').hide(500);
-        console.log('DONE');
-      }
-    },100);
-  }
-});
