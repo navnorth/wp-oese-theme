@@ -3070,7 +3070,7 @@ function wdt_loading_indicator() {
             jQuery('.wdtLoadingIndicator').hide(500);
           }
         },100);
-    }
+    });
     </script>
     <?php
   }
