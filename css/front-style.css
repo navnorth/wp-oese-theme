@@ -583,7 +583,7 @@ button.wdt-clear-filters-button:before, button.wdt-clear-filters-widget-button:b
     position: relative;
 }
 .wdtLoadingIndicator {
-  position: absolute;
+  position: fixed;
   min-width: 100%;
   min-height:100%;
   left: 0px;
