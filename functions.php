@@ -3059,9 +3059,9 @@ include( get_template_directory() . "/modules/oesepreview/oesepreview.php");
 function wdt_loading_indicator() {
   global $post;
   if ( stripos($post->post_content, '[wpdatatable')){
-    ?>
-    <div class="wdtLoadingIndicator"><table><tr><td><div class="wdt-dual-ring"></div></td></tr></table></div>
+    ?>    
     <script>
+    jQuery('.wpdt-c').append('<div class="wdtLoadingIndicator"><table><tr><td><div class="wdt-dual-ring"></div></td></tr></table></div>');
     var iswdtloaded;
     jQuery(document).ready(function(){
         iswdtloaded = setTimeout(function(){
