@@ -3063,12 +3063,14 @@ function wdt_loading_indicator() {
     <div class="wdtLoadingIndicator"><table><tr><td><div class="wdt-dual-ring"></div></td></tr></table></div>
     <script>
     var iswdtloaded;
+    jQuery(document).ready(function(){
         iswdtloaded = setTimeout(function(){
           if(jQuery('table.wpDataTable').length){
             clearTimeout(iswdtloaded);
             jQuery('.wdtLoadingIndicator').hide(500);
           }
         },100);
+    }
     </script>
     <?php
   }
