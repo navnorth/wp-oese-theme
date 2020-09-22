@@ -3054,30 +3054,23 @@ add_action( 'admin_footer', 'oese_add_home_detector' );
 /* PREVIEW CAPABILITY */
 include( get_template_directory() . "/modules/oesepreview/oesepreview.php");
 
-/*
-add_filter( 'posts_results', 'set_query_to_draft', null, 2 );
-function set_query_to_draft( $posts, $query ) {
 
-    $_pwd = get_post_meta($_GET['page_id'], '_post_revision_pwd', true);
-
-    if ( sizeof( $posts ) != 1 )
-        return $posts;
-
-    $post_status_obj = get_post_status_object(get_post_status( $posts[0]));
-
-    if ( !$post_status_obj->name == 'draft' )
-        return $posts;
-
-    if ( $_GET['key'] != $_pwd )
-        return $posts;
-
-    $query->_draft_post = $posts;
-
-    add_filter( 'the_posts', 'show_draft_post', null, 2 );
+/* WDT LOADING INDICATOR */
+function wdt_loading_indicator() {
+  global $post;
+  if ( stripos($post->post_content, '[wpdatatable')){
+    ?>
+    <div class="wdtLoadingIndicator"><table><tr><td><div class="wdt-dual-ring"></div></td></tr></table></div>
+    <script>
+    var iswdtloaded;
+        iswdtloaded = setTimeout(function(){
+          if(jQuery('table.wpDataTable').length){
+            clearTimeout(iswdtloaded);
+            jQuery('.wdtLoadingIndicator').hide(500);
+          }
+        },100);
+    </script>
+    <?php
+  }
 }
-
-function show_draft_post( $posts, $query ) {
-    remove_filter( 'the_posts', 'show_draft_post', null, 2 );
-    return $query->_draft_post;
-}
-*/
+add_action( 'wp_footer', 'wdt_loading_indicator' );
