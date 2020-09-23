@@ -603,27 +603,33 @@ button.wdt-clear-filters-button:before, button.wdt-clear-filters-widget-button:b
     text-align: center;
     vertical-align: middle;
 }
+
+
+
+
+
 .wdt-dual-ring {
   display: inline-block;
+  position: relative;
   width: 80px;
   height: 80px;
 }
-.wdt-dual-ring:after {
-  content: " ";
+.wdt-dual-ring div {
+  box-sizing: border-box;
   display: block;
+  position: absolute;
   width: 64px;
   height: 64px;
   margin: 8px;
+  border: 3px solid #127eec;
   border-radius: 50%;
-  border: 6px solid #127eec;
-  border-color: #127eec transparent #127eec transparent;
-  animation: wdt-dual-ring 1.2s linear infinite;
+  animation: wdt-dual-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #127eec transparent transparent transparent;
 }
+.wdt-dual-ring div:nth-child(1) {animation-delay: -0.45s;}
+.wdt-dual-ring div:nth-child(2) {animation-delay: -0.3s;}
+.wdt-dual-ring div:nth-child(3) {animation-delay: -0.15s;}
 @keyframes wdt-dual-ring {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
 }
