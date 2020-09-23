@@ -579,7 +579,7 @@ button.wdt-clear-filters-button:before, button.wdt-clear-filters-widget-button:b
 
 
 /* WDT LOADING INDICATOR */
-.wpdt-c:first-of-type {
+.wpdt-c{
     position: relative;
 }
 .wdtLoadingIndicator {
