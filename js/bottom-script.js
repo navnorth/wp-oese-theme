@@ -57,7 +57,8 @@ jQuery( document ).ready(function($) {
           if (mapSelector.find('select')){
                let sel = mapSelector.find('select');
                let selId = sel.attr('id');
-               mapSelector.prepend('<label for="' + selId  + '">Select an area: </label>');
+               let label = sel.find('option').first().text();
+               mapSelector.prepend('<label for="' + selId  + '">' + label + '</label>');
                sel.find('option').first().text("");
           }
      }
