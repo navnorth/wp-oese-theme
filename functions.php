@@ -3052,37 +3052,3 @@ function oese_add_home_detector()  {
   }
 }
 add_action( 'admin_footer', 'oese_add_home_detector' );
-
-
-
-/* PREVIEW CAPABILITY */
-include( get_template_directory() . "/modules/oesepreview/oesepreview.php");
-
-
-/* WDT LOADING INDICATOR */
-function wdt_isset_check() {
-  global $post;
-  if ( stripos($post->post_content, '[wpdatatable')){
-    ?>    
-    <script>
-    var iswdtpresent;
-    iswdtpresent = setTimeout(function(){
-      if(jQuery('.wpDataTables.wpDataTablesFilter.wpDataTablesWrapper').length){
-        clearTimeout(iswdtpresent);
-        jQuery('.wpDataTables.wpDataTablesFilter.wpDataTablesWrapper').parent('.wpdt-c').append('<div class="wdtLoadingIndicator"><table><tr><td><div class="wdt-dual-ring"><div></div><div></div><div></div><div></div></div></td></tr></table></div>');
-      }
-    },10);    
-    var iswdtloaded;
-    jQuery(document).ready(function(){
-        iswdtloaded = setTimeout(function(){
-          if(jQuery('table.wpDataTable').length){
-            clearTimeout(iswdtloaded);
-            jQuery('.wdtLoadingIndicator').hide(500);
-          }
-        },100);
-    });
-    </script>
-    <?php
-  }
-}
-add_action( 'wp_head', 'wdt_isset_check' );
