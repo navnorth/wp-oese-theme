@@ -2,7 +2,7 @@
 * detect IE 11 below
 * returns version of IE or false, if browser is not Internet Explorer
 */
-window.wdt_broser_detect = function wdt_broser_detect() {
+window.wdt_browser_detect = function wdt_browser_detect() {
   var ua = window.navigator.userAgent;
   // Test Values
   // ua = 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)';  // IE 10
@@ -36,5 +36,6 @@ window.wdt_display_browser_message = function wdt_display_browser_message(){
   }
 }
 
-var version = wdt_broser_detect();
+var version = wdt_browser_detect();
+console.log(version);
 if (version !== false && version < 12) wdt_display_browser_message();
