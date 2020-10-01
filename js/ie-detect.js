@@ -31,11 +31,14 @@ window.wdt_browser_detect = function wdt_browser_detect() {
 
 window.wdt_display_browser_message = function wdt_display_browser_message(){
   var htm = '<div class="alert alert-warning alert-dismissible fade show"><strong>Warning!</strong> The dynamic table on this page may not display in your browser. We recommend using <a href="https://www.google.com/chrome/" target="_blank">Chrome</a>, <a href="https://www.microsoft.com/en-us/edge" target="_blank">Edge</a>, or <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank">Firefox<a>.<button type="button" class="close" data-dismiss="alert">&times;</button></div>';
+  console.log(jQuery('div.wpdt-c').first().length);
   if(jQuery('div.wpdt-c').first().length){
     jQuery(htm).insertBefore(jQuery('div.wpdt-c').first() );
   }
 }
 
-var version = wdt_browser_detect();
-console.log(version);
-if (version !== false && version < 12) wdt_display_browser_message();
+setTimeout(function(){
+  var version = wdt_browser_detect();
+  console.log(version);
+  if (version !== false && version < 12) wdt_display_browser_message();
+},100);
