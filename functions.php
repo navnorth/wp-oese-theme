@@ -3078,3 +3078,8 @@ add_filter('wp_check_filetype_and_ext', function($values, $file, $filename, $mim
 
 	return $values;
 }, PHP_INT_MAX, 4);
+
+/**
+ * Include Slider
+ */
+include( get_template_directory() . "/modules/oese-acf-slider/oese-acf-slider.php");
