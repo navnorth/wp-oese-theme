@@ -51,7 +51,9 @@
 
 /* Slider button */
 #oese-acf-slider .slider-button {
-    font-size: 1.6em;
+    font-size: 18px;
+		line-height:40px;
+		text-align:center;
     color: white;
     opacity: 0.7;
     display: block;
@@ -67,6 +69,7 @@
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
+		padding:0px;
 }
 
 #oese-acf-slider .slider-button:focus {outline: none;}
@@ -696,7 +699,8 @@ animation-fill-mode: both;
   width: 48px;
   height: 48px;
   top: 43%;
-  transform: translateX(-43%);
+	left:46%;
+  /*transform: translateX(-43%);*/
 }
 .oeseslider-ring div {
   box-sizing: border-box;

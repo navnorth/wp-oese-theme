@@ -19,6 +19,7 @@ function oese_acf_slider_func($attr, $content = null){
 		$_id = get_the_ID();
 		if(get_field('oese_acf_slider', $_id)):
   			$_slides  = get_field('oese_acf_slider', $_id);
+        $_slide_count = count($_slides);
         $_slider_autoplay = (get_field('oese_slider_autoplay', $_id))? 1: 0;
         $_slider_autoplay_interval = (get_field('oese_slider_autoplay_interval', $_id) * 1000);
         $_slider_animation = get_field('oese_slider_animation', $_id);
@@ -54,9 +55,14 @@ function oese_acf_slider_func($attr, $content = null){
             $_ret .= '<div class="oese-acf-slider-wrapper">';
       				$_ret .= '<ul class="slider-list">'.$_html.'</ul>';
             $_ret .= '</div>';
-            $_ret .= '<button class="oese-slider-sidenavs right slider-button arrow next" data-index="">&#10095;</button>';
-            $_ret .= '<button class="oese-slider-sidenavs left slider-button arrow previous" data-index="">&#10094;</button>';
-            $_ret .= '<ul class="bullet-list"></ul>';
+            
+            if($_slide_count > 1){
+              $_ret .= '<button class="oese-slider-sidenavs right slider-button arrow next" data-index="">&#10095;</button>';
+              $_ret .= '<button class="oese-slider-sidenavs left slider-button arrow previous" data-index="">&#10094;</button>';
+              $_ret .= '<ul class="bullet-list"></ul>';
+            }else{
+              $_slider_autoplay = 0;
+            }
           $_ret .= '</div>';
           $_ret .= '<div class="oese-acf-slider-preloader-wrapper">';
             $_ret .= '<div class="oeseslider-ring"><div></div><div></div><div></div><div></div></div>';
