@@ -702,6 +702,19 @@ animation-fill-mode: both;
 	left:46%;
   /*transform: translateX(-43%);*/
 }
+
+@media screen and (max-width: 991px) {
+	.oeseslider-ring {left:43% !important;}
+}
+
+@media screen and (max-width: 767px) {
+	.oeseslider-ring {left:45% !important;}
+}
+
+@media screen and (max-width: 550px) {
+	.oeseslider-ring {left:42% !important;}
+}
+
 .oeseslider-ring div {
   box-sizing: border-box;
   display: block;
