@@ -86,8 +86,10 @@ jQuery( document ).ready(function() {
     jQuery('a').each(function() {
 	var a = new RegExp('' + window.location.host + '|mailto' , 'i');
         if(!a.test(this.href)) {
-            jQuery(this).attr( 'target','_blank' );
-            jQuery(this).addClass( 'external_link' );
+            if(!jQuery(this).hasClass('no_target_change')){
+              jQuery(this).attr( 'target','_blank' );
+              jQuery(this).addClass( 'external_link' );
+            }
         }
     });
     

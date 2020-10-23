@@ -29,13 +29,14 @@ function oese_acf_slider_func($attr, $content = null){
   					$_image_url = $_slide['oese_acf_slider_image']['url'];
   					$_image_caption = trim($_slide['oese_acf_slider_caption']," ");
   					$_image_link = trim($_slide['oese_acf_slider_url']," ");
-            $_image_link_target = trim($_slide['oese_acf_slider_url_target']," ");
+            $_image_link_target = $_slide['oese_acf_slider_url_target'];
+
   					$_vis = ($_cnt > 0)? 'style="visibility:hidden;"': '';
                 $_html .= '<li class="slide" data-index="'.$_cnt.'">';
-                    $_html .= '<div class="slide-content">';   
+                    $_html .= '<div class="slide-content" '.$_image_link_target.'>';   
                         $_caption_html = ($_image_caption != '')?'<h3 class="slide-title">'.$_image_caption.'</h3>': '';  
                         if($_image_link != ''){                        
-                          $_html .= '<a href="'.$_image_link.'" target="'.$_image_link_target.'" class="external_link" tabindex="-1">';					                    
+                          $_html .= '<a href="'.$_image_link.'" target="'.$_image_link_target.'" class="no_target_change external_link" tabindex="-1">';					                    
                               $_html .= '<img src="'.$_image_url.'" style="width:100%" alt="">';   
                               $_html .= $_caption_html;             
                           $_html .= '</a>';                                         
