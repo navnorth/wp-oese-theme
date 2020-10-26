@@ -39,7 +39,7 @@ jQuery( document ).ready(function() {
           let cls2 = meditelm.hasClass('media-button-select');
           if(!cls1 && cls2){
             meditelm.addClass('button-primary');
-            meditelm.text('UPDATE!');
+            meditelm.text('Update');
             clearInterval(mediaEditorUpdateButtonTimer);
           }
         }, 500);
