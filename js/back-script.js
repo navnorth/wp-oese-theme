@@ -28,6 +28,26 @@ jQuery( document ).ready(function() {
         }
     });
     jQuery('.oese-tabs').tabs();
+    
+    //image-edit update button fix
+    jQuery(document).ready( function($){
+      let mediaEditorUpdateButtonTimer;
+      jQuery(document).on('click','.imgedit-submit input.imgedit-submit-btn',function(e){
+        mediaEditorUpdateButtonTimer = setInterval(function(){
+          let meditelm = jQuery('.media-frame-toolbar .media-toolbar .media-toolbar-primary button.media-button');
+          let cls1 = meditelm.hasClass('button-primary');
+          let cls2 = meditelm.hasClass('media-button-select');
+          if(!cls1 && cls2){
+            meditelm.addClass('button-primary');
+            meditelm.text('UPDATE!');
+            clearInterval(mediaEditorUpdateButtonTimer);
+          }
+        }, 500);
+      }),wp.media.view.Modal.prototype.on('close', function(data) {
+          clearInterval(mediaEditorUpdateButtonTimer);
+      });
+    });   
+    
 })
 
 
