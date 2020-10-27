@@ -576,3 +576,7 @@ button.wdt-clear-filters-button:before, button.wdt-clear-filters-widget-button:b
   transition: all .3s ease;
   display: inline-block;
 } .form-group p.col-sm-3 { line-height: 18px; padding-bottom: 6px; }
+
+/* disclaimer shortcode  */
+.panel-disclaimer{border:1px solid #ccc;border-radius:4px;margin:50px 20px 0px 20px;} 
+.panel-disclaimer p { margin:10px; color:#747777; font-size:12px; }

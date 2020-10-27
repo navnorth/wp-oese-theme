@@ -1098,6 +1098,28 @@ function oet_featured_card_func($attribute, $content = null){
  return $return;
 }
 
+/**
+ * Disclaimer
+ * Shortcode Example : [oese_sub_pages title='Warning:' text='Lorem ipsum dolow sit amet ...']
+ */
+add_shortcode("oese_disclaimer", "oese_disclaimer_func");
+function oese_disclaimer_func($attr, $content = null) {
+
+		if (is_array($attr)){
+	 		if ( is_admin() ) {
+	 			$_arr = getShortcodeAttr($attr);
+	 			foreach($_arr as $key => $value) $$key = $value;
+	 		}else{
+	 			extract($attr);;
+	 		}
+	  }
+		$def_txt = 'Content provides insights on education practices from the perspective of schools, parents, students, grantees, community members and other education stakeholders to promote the continuing discussion of educational innovation. Content and articles are not intended to reflect their importance, nor is it intended to be an endorsement by the Department or the Federal government of any views expressed, products or services offered, curriculum or pedagogy.';
+		$_title = (! empty(trim($title," ")))? $title: 'Disclaimer:';
+		$_text = (! empty(trim($text," ")))? $text: $def_txt;	
+		$html = '<div class="panel-disclaimer"><p><strong>'.$_title.' </strong>'.$_text.'</p></div>';
+    return $html;
+}
+
 function getShortcodeAttr($atts){
 	$_cnt = -1;
 	$_arr = array(); $_key = ''; $_val = '';
