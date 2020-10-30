@@ -578,7 +578,7 @@ input#oet-shrtcdv2-submit {float: right;}
 /*    Disclaimer Shortcde   */
 /* ************************ */
 .panel-disclaimer{border:1px solid #ccc;border-radius:4px;margin:50px 20px 0px 20px;} 
-.panel-disclaimer p { margin:10px; color:#747777; font-size:12px; }
+.panel-disclaimer p { margin:10px !important; color:#747777; font-size:12px; }
 
 /* ******************** */
 /*  ****** CUSTOM ***** */
