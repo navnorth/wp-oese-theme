@@ -29,6 +29,7 @@ if($action == "show_popup")
 						$return .= '<li><div data="oese_publication" class="oet-shrtcdv2_tab">Publication</div></li>';
 						$return .= '<li><div data="oese_sub_pages" class="oet-shrtcdv2_tab">Subpages</div></li>';
 						$return .= '<li><div data="oet_featured_card" class="oet-shrtcdv2_tab">Featured Card</div></li>';
+						$return .= '<li><div data="oese_disclaimer" class="oet-shrtcdv2_tab">Disclaimer</div></li>';
 						
 				$return .= '</ul>';
 		$return .= '</div>';
@@ -293,6 +294,9 @@ if($action == "show_popup")
 						case "oet_featured_card":
 	 					 var shortcode = "[oet_featured_card title=\'Title Here\' button_text=\'Read More\' button_link=\'\' background_image=\'\']your content goes here[/oet_featured_card]";
 					   break;
+					  case "oese_disclaimer":
+ 	 					 var shortcode = "[oese_disclaimer title=\'Disclaimer:\']Content provides insights on education practices from the perspective of schools, parents, students, grantees, community members and other education stakeholders to promote the continuing discussion of educational innovation. Content and articles are not intended to reflect their importance, nor is it intended to be an endorsement by the Department or the Federal government of any views expressed, products or services offered, curriculum or pedagogy.[/oese_disclaimer]";
+ 					   break;
 				    default:
 				   	 var shortcode = "";
 				   	 break
