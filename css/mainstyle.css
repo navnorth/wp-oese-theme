@@ -1835,6 +1835,7 @@ h2.trending-now-heading {
 .program-block-inner-section.table tr.program-list-detail td.col-md-5 { float:none; max-width: 38%; border-top:none; padding:0 5px !important; }
 .program-block-inner-section.table tr.program-list-detail td.col-md-7 { float:none; max-width: 62%; border-top:none; padding:0 5px !important; }
 .program-block-inner-section.table tr.program-list-detail:last-child { padding-bottom:10px; }
+.program-block-inner-section tr.program-list-detail td {display:block !important}
 /*Program Information Block END*/
 
 /** Publication Template Styles **/
