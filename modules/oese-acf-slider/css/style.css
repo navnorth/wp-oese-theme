@@ -155,6 +155,8 @@
 	display: table-cell;
   position: absolute;
   height:100%;
+	right: 0px;
+	left: 0px;
   overflow: hidden;
 	/*vertical-align: middle;*/
 }
