@@ -2836,7 +2836,6 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
 }
 /* WPDataTables and US Map Styles */
 .wpDataTablesWrapper div.dt-buttons{ position:relative; } 
-.wpdt-c .wpDataTablesWrapper table.wpDataTable tr td { cursor:pointer; } 
 .detail-column-break-word{ overflow-wrap:break-word; } 
 .wpdt-c .wpDataTablesWrapper table.wpDataTable thead th.wdtheader.numdata{ text-align:right; }
 .usacustomHtml5MapSelector { text-align:center; }
