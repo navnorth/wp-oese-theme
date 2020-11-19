@@ -53,7 +53,7 @@
             </div>
             <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-12 offset-xl-2 offset-lg-2 offset-md-1 d-sm-inline-block d-block d-md-block d-lg-block d-xl-block">
                 <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-6 col-6 topbar-search-section">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-6 topbar-search-section">
                         <div class="form-group has-feedback gray_bg">
                             <form id="searchform" class="searchform" action="<?php echo site_url(); ?>" method="get"
                                   role="search">

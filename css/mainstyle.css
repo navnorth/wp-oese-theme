@@ -2109,6 +2109,20 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
     }
 	.program-template.template-mobile .col-sm-12, .office-template.template-mobile .col-sm-12{
 		flex:0;
+	}	
+	@media (max-width: 1024px){
+		.template-mobile .col-md-8 {
+		    -webkit-box-flex: 0 !important;
+		    -ms-flex: unset !important;
+		    flex: unset !important;
+		    max-width: unset !important;
+		}
+		.template-mobile .col-md-4 {
+		    -webkit-box-flex: unset !important;
+		    -ms-flex: unset !important;
+		    flex: unset !important;
+		    max-width: unset !important;
+		}
 	}
 	#mobileSidebarTab.nav-tabs { border-bottom:none; background: #004285; }
     #mobileSidebarTab.nav-tabs .nav-item { width:50%; }
