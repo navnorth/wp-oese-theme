@@ -2189,16 +2189,19 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
 
 @media (max-width: 1024px){
 	.template-mobile .col-md-8 {
-			-webkit-box-flex: 0 !important;
-			-ms-flex: unset !important;
-			flex: unset !important;
-			max-width: unset !important;
+			-webkit-box-flex: none;
+			-ms-flex: none;
+			flex: none;
+			max-width: none;
 	}
 	.template-mobile .col-md-4 {
-			-webkit-box-flex: unset !important;
-			-ms-flex: unset !important;
-			flex: unset !important;
-			max-width: unset !important;
+			-webkit-box-flex: none;
+			-ms-flex: none;
+			flex: none;
+			max-width: none;
+	}
+	.secondary-navigation-menu.sidebar-links {
+    margin-bottom: 20px;
 	}
 }
 
