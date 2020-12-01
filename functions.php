@@ -1132,10 +1132,14 @@ function getSidebarLinks($showHeader=true){
         // loop through the rows of data
         while ( have_rows('sidebar_links') ) : the_row();
             $resourceLabel =  get_sub_field('resource_label');
-            $resourceLink =  get_sub_field('resource_link');
+            $resourceLink =  (get_sub_field('resource_link'))? get_sub_field('resource_link'): "";
             $externaLink =  get_sub_field('external_link');
             $target = ($externaLink ? "_blank" : "_self");
-            $output.= "<li><a target='". $target."' href='".$resourceLink."'>".$resourceLabel."</a></li>";
+            if(trim($resourceLink)!==""){
+              $output.= "<li><a target='". $target."' href='".$resourceLink."'>".$resourceLabel."</a></li>";
+            }else{
+              $output.= "<li class='unlinked'>".$resourceLabel."</li>";
+            }
         endwhile;
         $output.=  "</ul>";
         $output.="</div>";

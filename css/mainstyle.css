@@ -522,7 +522,8 @@ ul.tour_dates li {
 .secondary-navigation-menu.sidebar-links .secondary-navigation-menu-list li {
     line-height: 22px;
 }
-.secondary-navigation-menu.sidebar-links .secondary-navigation-menu-list li a{
+.secondary-navigation-menu.sidebar-links .secondary-navigation-menu-list li a,
+.secondary-navigation-menu.sidebar-links .secondary-navigation-menu-list li.unlinked{
     color: #243C54;
     font-size: 14px;
 }
