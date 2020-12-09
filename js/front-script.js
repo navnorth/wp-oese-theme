@@ -321,6 +321,7 @@ jQuery( document ).ready(function() {
                     var cnt = jQuery(this).attr('cnt');
                     if(typeof ytplayer[cnt] != 'undefined' && typeof ytplayer[cnt].playVideo == 'function'){
                       var modalid = jQuery(this).attr('data-tgt');
+                      jQuery(modalid).addClass('show');
                       jQuery(modalid).modal('show');
                       ytplayer[cnt].playVideo();
                       focuscontainer = setInterval(function() {

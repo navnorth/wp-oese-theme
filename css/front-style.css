@@ -699,7 +699,9 @@ iframe.oese-featured-video-shrtcd-ytvideo {
     height: 100%;
 }
 
-
+.oese-featured-video-shrtcd-overlay.show{
+  z-index:10000 !important;
+}
 .oese-featured-video-shrtcd-overlay .modal-dialog {
     pointer-events: unset !important;
 }
