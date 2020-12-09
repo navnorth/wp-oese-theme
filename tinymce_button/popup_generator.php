@@ -251,6 +251,7 @@ if($action == "show_popup")
 					   break;
 				   case "featured_video":
 					   var shortcode = "[featured_video heading=\'\' videoid=\'\' description=\'\' height=\'\']";
+						 shortcode = "[oese_featured_video heading=\'title\' videoid=\'GBT4f146h9U\' description=\'description\' height=\'300\']"
 					   break;
 				   case "left_column":
 					   var shortcode = "[home_left_column heading=\'yes/no\'] your content goes here [/home_left_column]";

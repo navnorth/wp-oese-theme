@@ -249,6 +249,79 @@ function featured_item_func($attr, $content = null)
 }
 
 /**
+ * OESE Featured Video
+ * Shortcode Example : [oese_featured_video heading='title' videoid='GBT4f146h9U' description='description' height='300']
+ * https://www.youtube.com/watch?v=vVjdhXAdKE0
+ */
+add_shortcode("oese_featured_video","oese_feature_video_func");
+function oese_feature_video_func($attr, $content = null){
+ static $count = 0;
+ $count++;
+
+ if ($count==1)
+	 $return .= '<script>var ytplayerapiurl = "'.get_stylesheet_directory_uri(). '/js/ytplayerapi.js"</script>';
+ 
+ if ( is_admin() ) {
+	 $_arr = getShortcodeAttr($attr);
+	 foreach($_arr as $key => $value) $$key = $value;
+ }else{
+	 extract($attr);
+ }
+ 
+ if(empty($height)){$height = 405;}
+ $apiurl = get_stylesheet_directory_uri()."/js/ytplayerapi.js";
+ $origin = get_site_url();
+ $id = "ytvideo".$count;
+ $return .= '<div class="col-md-12 col-sm-12 col-xs-12 rght_sid_mtr lft_sid_mtr">';
+	 if(isset($heading) && !empty($heading)){
+		 $iframe_title .= ": ".$heading;
+		 $return .= '<h4>'. $heading .'</h4>';
+	 }
+	 $return .= '<div class="col-md-12 col-sm-12 col-xs-12 vdo_bg">';	
+		 $return .= oese_generate_modal_video($videoid, $id, $iframe_title, $origin, $count, $height, $apiurl);
+		 if(isset($description) && !empty($description)){
+			 $return .= '<div class="oese-featured-video-description">'. $description .'</div>';
+		 }
+	 $return .= '</div>';
+ $return .= '</div>';
+ 
+ return $return;
+}
+
+function oese_generate_modal_video($vidid, $Id, $iframe_title, $origin, $count, $height, $apiurl){
+    $ret = ''; $imagesrc = '';
+    $imagesrc = 'https://img.youtube.com/vi/'.$vidid.'/mqdefault.jpg';  
+  
+    $ret .= '<a href="#" class="oese-video-link" data-toggle="modal" data-tgt="#oese-featured-video-shrtcd-overlay-'.$count.'" cnt="'.$count.'">';
+			$ret .= '<img src="'.$imagesrc.'" alt="Featured Video"/>';
+			$ret .= '<div class="oese-video-avatar-wrapper">';
+				$ret .= '<div class="oese-video-avatar-table">';
+		    	$ret .= '<div class="oese-video-avatar-cell">';
+						$ret .= '<span class="oese-youtube-play"></span>';
+		    	$ret .= '</div>';
+				$ret .= '</div>';
+			$ret .= '</div>';
+    $ret .= '</a>';
+  
+    $ret .= '<div class="modal fade oese-featured-video-shrtcd-overlay" id="oese-featured-video-shrtcd-overlay-'.$count.'" apiurl="'.$apiurl.'" cnt="'.$count.'" role="dialog" tabindex="-1">';
+			$ret .= '<div class="oese-video-modal modal-dialog modal-lg">';
+	    	$ret .= '<div class="oese-video-table">';
+					$ret .= '<div class="oese-video-cell">';
+		    		$ret .= '<div class="oese-video-content">';
+		    		$ret .= '<div class="oese-video-container">';
+							$ret .= '<div class="oese-featured-video-shrtcd-ytvideo" id="'.$Id.'" cnt="'.$count.'" frametitle="'.$iframe_title.'" vidid="'.$vidid.'" hght="'.$height.'" orgn="'.$origin.'"></div>';						
+					$ret .= '</div>';
+		    		$ret .= '</div>';
+					$ret .= '</div>';
+	      $ret .= '</div>';
+		  $ret .= '</div>';
+			$ret .= '<a href="#" class="oese-video-close" hst="1"><span class="dashicons dashicons-no-alt"></span></a>';
+    $ret .= '</div>';
+    
+    return $ret;
+}
+
+/**
  * Featured Video
  * Shortcode Example : [featured_video heading="" src="" description="" height=""]
  */

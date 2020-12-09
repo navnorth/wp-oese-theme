@@ -108,7 +108,7 @@ jQuery( document ).ready(function() {
     }
 
     //Wrap youtube video with video container
-    jQuery("iframe[src*='youtube.com']").wrap("<div class='video-container'></div>");
+    jQuery("iframe[src*='youtube.com']").wrap("<div class='oese-video-container'></div>");
 
     //Set the height of mega menu left to the height of the entire mega menu
     if (jQuery(".oii-mega-menu-left").length) {
@@ -266,6 +266,81 @@ jQuery( document ).ready(function() {
     }, 2000);
     
     
+    
+    
+    /* FEATURE VIDEO START */
+    jQuery(document).ready(function(){
+      
+      var tag = document.createElement('script');
+      tag.src = "https://www.youtube.com/player_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+      
+        var ytplayer = [];
+        var focuscontainer;
+        window.onYouTubePlayerAPIReady = function() {
+            setTimeout(function(){            
+                jQuery('.oese-featured-video-shrtcd-ytvideo').each(function(i, obj) {
+                  var cnt = jQuery(this).attr('cnt');
+                  var playid = jQuery(this).attr('id');
+                  var vidid = jQuery(this).attr('vidid');
+                  var hght = jQuery(this).attr('hght');
+                  var orgn = jQuery(this).attr('orgn');
+                  var frametitle = jQuery(this).attr('frametitle');
+                  ytplayer[cnt] = new YT.Player(playid, {
+                    height: hght,
+                    width: '766',  
+                    playerVars: { 
+                      autoplay: 0,
+                      enablejsapi: 1,
+                      origin: orgn,
+                      rel: 0
+                    },
+                    videoId: vidid,
+                    events: {
+                      'onStateChange': function(e) {
+                          if (e.data == 1) { //play
+                            ga('send','event','Featured Video: '+frametitle,'Play', vidid);
+                          }
+                          if (e.data == 2) { //paused
+                            ga('send','event','Featured Video: '+frametitle, 'Pause', vidid);
+                          }
+                          if (e.data == 0) { //ended
+                            ga('send', 'event','Featured Video: '+frametitle, 'Finished', vidid);
+                          }
+                        }
+                    }
+                    
+                  });
+                });      
+                jQuery(document).on('click','.oese-video-close', function(e){
+                  e.preventDefault ? e.preventDefault() : e.returnValue = false;
+                  jQuery('.oese-featured-video-shrtcd-overlay').modal('hide');
+                });
+                jQuery(document).on('click','.oese-video-link',function(e){
+                    var cnt = jQuery(this).attr('cnt');
+                    if(typeof ytplayer[cnt] != 'undefined' && typeof ytplayer[cnt].playVideo == 'function'){
+                      var modalid = jQuery(this).attr('data-tgt');
+                      jQuery(modalid).modal('show');
+                      ytplayer[cnt].playVideo();
+                      focuscontainer = setInterval(function() {
+                            jQuery('#oese-featured-video-shrtcd-overlay-'+cnt).focus();
+                      }, 500);
+                    }
+                });
+                jQuery(document).on('hide.bs.modal', '.oese-featured-video-shrtcd-overlay', function () {
+                    var cnt = jQuery(this).attr('cnt');
+                    ytplayer[cnt].pauseVideo();
+                    clearInterval(focuscontainer);
+                });
+                jQuery('.oese-featured-video-shrtcd-overlay').on('mouseup',function(e){
+                  e.preventDefault ? e.preventDefault() : e.returnValue = false;
+                  var txtClass = jQuery(e.target).attr("class");
+                  console.log(txtClass);
+                })          
+            }, 500);
+        }
+    });  
     
     
 });
