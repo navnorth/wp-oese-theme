@@ -527,6 +527,9 @@ ul.tour_dates li {
     color: #243C54;
     font-size: 14px;
 }
+.secondary-navigation-menu.sidebar-links .secondary-navigation-menu-list li.unlinked {
+    cursor: text !important;
+}
 .secondary-navigation-menu.sidebar-links .secondary-navigation-menu-list li:hover,
 .secondary-navigation-menu.sidebar-links .secondary-navigation-menu-list li a:focus{
     cursor: pointer;
