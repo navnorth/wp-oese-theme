@@ -713,7 +713,11 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
   **/
  require_once( get_stylesheet_directory() . '/modules/modal-parent/modal_parent.php' );
 
-
+ /**
+ * Shortcodes Blocks
+ **/
+ require_once( get_stylesheet_directory() . '/modules/shortcodesblock/shortcodesblock.php' );
+ 
  function theme_back_enqueue_script()
 {
     wp_enqueue_script( 'jquery-ui-core' );

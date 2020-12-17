@@ -1,0 +1,165 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+#oeseshortcodeblock_shortcode_editor {width:100% !important}
+
+.oese_shortcode_cgb_container {
+  display: inline-block;
+  width: 100%;
+}
+
+.oese_shortcode_cgb_container h1, 
+.oese_shortcode_cgb_container h2, 
+.oese_shortcode_cgb_container h3, 
+.oese_shortcode_cgb_container h4, 
+.oese_shortcode_cgb_container h5, 
+.oese_shortcode_cgb_container h6 {
+    margin-top: 0 !important;
+    margin-bottom: .5rem !important;
+}
+
+.oese_shortcode_cgb_container .bg_img_of_icns h3 {
+    color: #fff !important;
+    margin-top: 20px !important;
+    margin-bottom: 10px !important;
+    font-size: 24px !important;
+}
+.oese_shortcode_cgb_container .bg_img_of_icns p {
+    font-style: normal !important;
+    color: #fff !important;
+}
+
+
+.oese_shortcode_cgb_container p{font-family: sans-serif !important;}
+
+.oese_shortcode_cgb_container .bg_img_of_icns p {
+    font-style: normal !important;
+    color: #fff !important;
+}
+
+.oese_shortcode_cgb_container p {
+    font-weight: normal !important;
+    line-height: 28px !important;
+}
+.oese_shortcode_cgb_container p {
+    margin-top: 0 !important;
+    margin-bottom: 1rem !important;;
+}
+
+.oese_shortcode_cgb_container .fa, 
+.oese_shortcode_cgb_container .far, 
+.oese_shortcode_cgb_container .fas {
+    font-family: "Font Awesome 5 Free" !important;
+}
+
+.oese_shortcode_cgb_container .oet-featured-card {
+    position: relative;
+    background-size: cover !important;
+    margin: 5% 1% !important;
+    padding: 30px !important;
+    float: left;
+    z-index: 1;
+    width: 100%;
+    max-width: 335px !important;
+    height: 100%;
+    min-height: 425px !important;
+    max-height: 425px !important;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-width: 0px;
+    border-style: solid;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px;
+    overflow: hidden;
+}
+
+.oese_shortcode_cgb_container .oet-featured-card-title {
+    font-size: 24px;
+    line-height: 28px;
+    color: #ffffff !important;
+    font-family: "Raleway-Bold" !important;
+    margin-bottom: 22px;
+    margin-top: 10px !important;
+    width: 100%;
+    max-height: 83px;
+    height: 100%;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.oese_shortcode_cgb_container .oet-featured-card-btn {
+    position: absolute;
+    bottom: 38px;
+    Background-color: #e57200;
+    padding: 10px 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    font-family: "Raleway-Regular" !important;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    width: auto !important; 
+    min-width: 138px;
+    max-width: 275px;
+    display: block;
+    text-decoration: none;
+}
+
+.audience-link {
+    color: #fff !important;
+}
+
+.oese_shortcode_cgb_container .clearfix {
+    background-color: #f1f1f1;
+}
+
+.oese-video-avatar-wrapper {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+}
+.oese-video-avatar-table {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+.oese-video-avatar-cell {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+.oese-youtube-play:before,
+.oese-vimeo-play:before  {
+  font-family: 'FontAwesome';
+  content: "\f144";
+  font-size: 32px;
+  font-size: 3vw;
+  color:#ffffff;
+}
+.oese-video-avatar-cell:hover .oese-youtube-play:before {
+    color: #ff0000 !important;
+}
+a.oese-video-link {
+    display: block;
+    float: left;
+    width: 100%;
+    position: relative;
+}
+.oese-featured-video-description {
+    padding: 15px 2px !important;
+    float: left;
+    width: 100%;
+}
+.oese_shortcode_block p {
+    float: none !important;
+}
