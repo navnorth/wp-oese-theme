@@ -761,7 +761,7 @@ function recommended_resources_func($attr, $content = null)
 	if (isset($button_color) && !empty($button_color)) {
 		if (strpos($button_color,"#")===false)
 			$button_color = "#".$button_color;
-		$btnStyle .= "background-color:".$button_color.";";
+		$btnStyle .= "background-color:".$button_color." !important;";
 	}
 
 	//Button Text color
