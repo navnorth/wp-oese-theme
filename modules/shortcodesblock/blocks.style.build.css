@@ -6,6 +6,10 @@
 
 #oeseshortcodeblock_shortcode_editor {width:100% !important}
 
+.oese_shortcodes_block_control .components-base-control__label.padded {
+    margin-top: 10px;
+}
+
 .oese_shortcode_cgb_container {
   display: inline-block;
   width: 100%;
@@ -162,4 +166,12 @@ a.oese-video-link {
 }
 .oese_shortcode_block p {
     float: none !important;
+}
+
+.custom-button {
+    background-color: #e57200;
+    color: #fff;
+    font-family: 'Raleway-Bold';
+    font-size: 14px;
+    padding: 20px !important;
 }

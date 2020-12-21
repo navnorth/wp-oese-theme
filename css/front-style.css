@@ -423,7 +423,7 @@ body.modal-open { overflow: hidden; }
 }
 a.external_link button,
 #wdt-cd-modal tr td.wdtcomparerow span a button {
-  background-color: #284179 !important;
+  background-color: #284179;
   line-height: 1.75;
   border: 1px solid transparent;
   color: #fff !important;

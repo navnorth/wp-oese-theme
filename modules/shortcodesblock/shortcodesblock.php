@@ -178,38 +178,38 @@ function oeseshortcodeblock_options_query(){
 		$_ret[7]['name']  = 'Right Column';
 		$_ret[7]['value'] = '[home_right_column] your content goes here [/home_right_column]';
 		
-		$_ret[7]['name']  = 'Recommended Resources';
-		$_ret[7]['value'] = '[recommended_resources media_type1="" src1="" text1="" link1="" media_type2="" src2="" text2="" link2="" media_type3="" src3="" text3=""  link3=""]';
+		$_ret[8]['name']  = 'Recommended Resources';
+		$_ret[8]['value'] = '[recommended_resources media_type1="" src1="" text1="" link1="" media_type2="" src2="" text2="" link2="" media_type3="" src3="" text3=""  link3=""]';
 		
-		$_ret[8]['name']  = 'Featured Content Box';
-		$_ret[8]['value'] = '[featured_content_box title="" top_icon="" align=""]your content goes here[/featured_content_box]';
+		$_ret[9]['name']  = 'Featured Content Box';
+		$_ret[9]['value'] = '[featured_content_box title="" top_icon="" align=""]your content goes here[/featured_content_box]';
 		
-		$_ret[9]['name']  = 'Bootstrap Grid';
-		$_ret[9]['value'] = '[row][column md="4"] your 1st column content here[/column][column md="4"] your 2nd column content here[/column][column md="4"] your 3rd column content here[/column][/row]';
+		$_ret[10]['name']  = 'Bootstrap Grid';
+		$_ret[10]['value'] = '[row][column md="4"] your 1st column content here[/column][column md="4"] your 2nd column content here[/column][column md="4"] your 3rd column content here[/column][/row]';
 		
-		$_ret[10]['name']  = 'Spacer';
-		$_ret[10]['value'] = '[spacer height="16"]';
+		$_ret[11]['name']  = 'Spacer';
+		$_ret[11]['value'] = '[spacer height="16"]';
 		
-		$_ret[11]['name']  = 'Callout Box';
-		$_ret[11]['value'] = '[oet_callout type="" width="" color="" alignment=""]Your content goes here[/oet_callout]';
+		$_ret[12]['name']  = 'Callout Box';
+		$_ret[12]['value'] = '[oet_callout type="" width="" color="" alignment=""]Your content goes here[/oet_callout]';
 		
-		$_ret[12]['name']  = 'Publication Intro';
-		$_ret[12]['value'] = '[publication_intro title=""]Intro content goes here[/publication_intro]';
+		$_ret[13]['name']  = 'Publication Intro';
+		$_ret[13]['value'] = '[publication_intro title=""]Intro content goes here[/publication_intro]';
 		
-		$_ret[13]['name']  = 'Audience Link';
-		$_ret[13]['value'] = '[audience_link url=""]Audience name goes here[/audience_link]';
+		$_ret[14]['name']  = 'Audience Link';
+		$_ret[14]['value'] = '[audience_link url=""]Audience name goes here[/audience_link]';
 		
-		$_ret[14]['name']  = 'Publication';
-		$_ret[14]['value'] = '[oese_publication src=""]';
+		$_ret[15]['name']  = 'Publication';
+		$_ret[15]['value'] = '[oese_publication src=""]';
 		
-		$_ret[15]['name']  = 'Subpages';
-		$_ret[15]['value'] = '[oese_sub_pages title="" id=""]';
+		$_ret[16]['name']  = 'Subpages';
+		$_ret[16]['value'] = '[oese_sub_pages title="" id=""]';
 		
-		$_ret[16]['name']  = 'Featured Card';
-		$_ret[16]['value'] = '[oet_featured_card title="Title Here" button_text="Read More" button_link="" background_image=""]your content goes here[/oet_featured_card]';
+		$_ret[17]['name']  = 'Featured Card';
+		$_ret[17]['value'] = '[oet_featured_card title="Title Here" button_text="Read More" button_link="" background_image=""]your content goes here[/oet_featured_card]';
 		
-		$_ret[17]['name']  = 'Disclaimer';
-		$_ret[17]['value'] = '[oese_disclaimer title="Disclaimer:"]Content provides insights on education practices from the perspective of schools, parents, students, grantees, community members and other education stakeholders to promote the continuing discussion of educational innovation. Content and articles are not intended to reflect their importance, nor is it intended to be an endorsement by the Department or the Federal government of any views expressed, products or services offered, curriculum or pedagogy.[/oese_disclaimer]';
+		$_ret[18]['name']  = 'Disclaimer';
+		$_ret[18]['value'] = '[oese_disclaimer title="Disclaimer:"]Content provides insights on education practices from the perspective of schools, parents, students, grantees, community members and other education stakeholders to promote the continuing discussion of educational innovation. Content and articles are not intended to reflect their importance, nor is it intended to be an endorsement by the Department or the Federal government of any views expressed, products or services offered, curriculum or pedagogy.[/oese_disclaimer]';
 		
 	return $_ret;
 }

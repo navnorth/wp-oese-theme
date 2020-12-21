@@ -1,19 +1,19 @@
 ! function (e) {
-    function t(n) {
-        if (o[n]) return o[n].exports;
-        var l = o[n] = {
-            i: n,
+    function t(l) {
+        if (o[l]) return o[l].exports;
+        var n = o[l] = {
+            i: l,
             l: !1,
             exports: {}
         };
-        return e[n].call(l.exports, l, l.exports, t), l.l = !0, l.exports
+        return e[l].call(n.exports, n, n.exports, t), n.l = !0, n.exports
     }
     var o = {};
-    t.m = e, t.c = o, t.d = function (e, o, n) {
+    t.m = e, t.c = o, t.d = function (e, o, l) {
         t.o(e, o) || Object.defineProperty(e, o, {
             configurable: !1,
             enumerable: !0,
-            get: n
+            get: l
         })
     }, t.n = function (e) {
         var o = e && e.__esModule ? function () {
@@ -33,14 +33,17 @@
     o(1)
 }, function (e, t, o) {
     "use strict";
-    var n = o(2),
-        l = (o.n(n), o(3)),
-        __ = (o.n(l), wp.i18n.__),
+    var l = o(2),
+        n = (o.n(l), o(3)),
+        __ = (o.n(n), wp.i18n.__),
         c = wp.blocks.registerBlockType,
         r = wp.blockEditor.InspectorControls,
-        s = wp.components.PanelBody,
-        a = wp.components;
-    a.CheckboxControl, a.RadioControl, a.TextControl, a.ToggleControl, a.SelectControl, wp.data.withSelect;
+        s = wp.components,
+        a = s.BaseControl,
+        d = (s.Panel, s.PanelBody),
+        i = s.PanelRow,
+        p = wp.components;
+    p.CheckboxControl, p.RadioControl, p.TextControl, p.ToggleControl, p.SelectControl, wp.data.withSelect;
     c("cgb/block-oese-shortcodes-block", {
         title: __("OESE Shortcode Block"),
         icon: "shortcode",
@@ -63,45 +66,44 @@
                 type: "string"
             }
         },
-        example: function () {},
         edit: function (e) {
             function t(e) {
                 var t = e.target.options[e.target.selectedIndex].getAttribute("idx");
-                a({
+                s({
                     selectedShortode: e.target.value
-                }), console.log(d[t].value);
-                var o = d[t].value;
-                a({
+                }), console.log(p[t].value);
+                var o = p[t].value;
+                s({
                     selectedShortodeValue: o
-                }), n(o)
+                }), l(o)
             }
 
             function o(e) {
-                console.log(e.target.value), a({
+                console.log(e.target.value), s({
                     selectedShortodeValue: e.target.value
-                }), n(e.target.value)
+                }), l(e.target.value)
             }
 
-            function n(e) {
+            function l(e) {
                 wp.apiFetch({
                     url: "/wp-json/oeseshortcodeblock/v2/shortcodequery?shrtcd=" + e
                 }).then(function (e) {
-                    console.log(e), a({
+                    console.log(e), s({
                         selectedShortodeHtml: e
                     })
                 })
             }
 
-            function l(e) {
+            function n(e) {
                 if (void 0 !== c.selectedShortode) {
                     var t;
-                    for (t = 0; t < d.length; t++) d[t].name == c.selectedShortode && (a({
-                        selectedShortodeValue: d[t].value
-                    }), n(d[t].value))
+                    for (t = 0; t < p.length; t++) p[t].name == c.selectedShortode && (s({
+                        selectedShortodeValue: p[t].value
+                    }), l(p[t].value))
                 }
             }
             var c = e.attributes,
-                a = e.setAttributes;
+                s = e.setAttributes;
             if (wp.data.select("core/block-editor").getBlocks().map(function (e) {
                     if ("cgb/block-oese-shortcodes-block" == e.name) {
                         var t = "cb" + (new Date).getTime(),
@@ -113,15 +115,18 @@
                 }), wp.apiFetch({
                     url: "/wp-json/oeseshortcodeblock/v2/optionsquery?param=test"
                 }).then(function (e) {
-                    a({
+                    s({
                         oeseShortcodeOption: e
                     })
                 }), !c.oeseShortcodeOption) return "Loading OESE Shortcode Options...";
-            var d = [];
-            return d = c.oeseShortcodeOption, wp.element.createElement("div", null, wp.element.createElement(r, null, wp.element.createElement(s, {
-                title: __("oese Shortcodes settings"),
-                initialOpen: !0
-            }, wp.element.createElement("div", {
+            var p = [];
+            return p = c.oeseShortcodeOption, wp.element.createElement("div", null, wp.element.createElement(r, null, wp.element.createElement(a, {
+                className: "oese_shortcodes_block_control"
+            }, wp.element.createElement(d, {
+                title: __("OESE Shortcodes Settings"),
+                initialOpen: !0,
+                className: "components-base-control__label"
+            }, wp.element.createElement(i, null, wp.element.createElement("div", {
                 class: "lp_inspector_wrapper lp_inspector_Postperpage"
             }, wp.element.createElement("label", {
                 class: "components-base-control__label",
@@ -132,7 +137,7 @@
             }, wp.element.createElement("option", {
                 selected: !0,
                 value: ""
-            }, "Select Shortcode"), d.map(function (e, t) {
+            }, "Select Shortcode"), p.map(function (e, t) {
                 return e.name == c.selectedShortode ? wp.element.createElement("option", {
                     selected: !0,
                     idx: t,
@@ -142,7 +147,7 @@
                     value: e.name
                 }, e.name)
             })), wp.element.createElement("label", {
-                class: "components-base-control__label",
+                class: "components-base-control__label padded",
                 for: "oeseshortcodeblock_shortcode_editor"
             }, "Shortcode:"), wp.element.createElement("textarea", {
                 id: "oeseshortcodeblock_shortcode_editor",
@@ -154,10 +159,10 @@
             }), wp.element.createElement("input", {
                 class: "oeseshortcodeblock_shortcode_reset",
                 type: "button",
-                onClick: l,
+                onClick: n,
                 value: "Reset",
                 selshrt: c.selectedShortode
-            })))), wp.element.createElement("div", null, wp.element.createElement("div", {
+            })))))), wp.element.createElement("div", null, wp.element.createElement("div", {
                 className: "oese_shortcode_cgb_container",
                 dangerouslySetInnerHTML: {
                     __html: c.selectedShortodeHtml
