@@ -716,7 +716,8 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
  /**
  * Shortcodes Blocks
  **/
- //require_once( get_stylesheet_directory() . '/modules/shortcodesblock/shortcodesblock.php' );
+ $_vsn = (int)explode('.',get_bloginfo('version'))[0];
+ if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblock/shortcodesblock.php' );
  
  function theme_back_enqueue_script()
 {
