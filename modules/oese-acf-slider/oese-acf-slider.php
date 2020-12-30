@@ -4,7 +4,8 @@
  **/
 add_action( 'wp_enqueue_scripts', 'oese_acf_slider_enqueue',2 );
 function oese_acf_slider_enqueue() {
-  if(get_field('oese_acf_slider', $_id)):
+  global $post;
+  if(get_field('oese_acf_slider', $post->ID)):
     wp_enqueue_style( 'oese-acf-slider-style', get_template_directory_uri() . '/modules/oese-acf-slider/css/style.css', array(), null );
     wp_enqueue_script( 'oese-acf-slider-script', get_template_directory_uri() . '/modules/oese-acf-slider/js/script.js' , array('jquery') , null, true);
 	endif;
@@ -23,7 +24,7 @@ function oese_acf_slider_func($attr, $content = null){
         $_slider_autoplay = (get_field('oese_slider_autoplay', $_id))? 1: 0;
         $_slider_autoplay_interval = (get_field('oese_slider_autoplay_interval', $_id) * 1000);
         $_slider_animation = get_field('oese_slider_animation', $_id);
-  			$_cnt = 0;
+  			$_cnt = 0; $_htm = '';
   			foreach ($_slides as $key => $_slide):
           if(!empty($_slide['oese_acf_slider_image'])):
   					$_image_url = $_slide['oese_acf_slider_image']['url'];
@@ -51,6 +52,7 @@ function oese_acf_slider_func($attr, $content = null){
           endif;
   			endforeach;
         
+        $_ret = '';
         $_ret .= '<div id="oese-acf-slider">';
           $_ret .= '<div class="oese-acf-slider-content-wrapper" style="display:none;">';
             $_ret .= '<div class="oese-acf-slider-wrapper">';
