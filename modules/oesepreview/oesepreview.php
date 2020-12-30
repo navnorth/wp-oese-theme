@@ -611,9 +611,11 @@ function set_query_to_draft( $posts, $query ) {
     if ( !$post_status_obj->name == 'draft' )
         return $posts;
     
-    if ( $_GET['key'] != $_pwd )
+    if(isset($_GET['key'])){
+      if ( $_GET['key'] != $_pwd )
         return $posts;
-
+    }
+    
     $query->_draft_post = $posts;
 
     add_filter( 'the_posts', __NAMESPACE__.'\\show_draft_post', null, 2 );

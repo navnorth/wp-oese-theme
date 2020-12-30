@@ -4,7 +4,7 @@ class FeaturedContentWidgetDetails extends WP_Widget
      function __construct()
     {
          $widget_options = array('classname'=>'FeaturedContentWidgetDetails', 'description'=> 'Widget that will show Featured Content.');
-         $this->WP_Widget('FeaturedContentWidgetDetails','Featured Content', $widget_options);
+         parent::__construct('FeaturedContentWidgetDetails','Featured Content', $widget_options);
     }
     function update($newinstance,$oldinstance)
     {
