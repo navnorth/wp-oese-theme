@@ -24,7 +24,7 @@ function oese_acf_slider_func($attr, $content = null){
         $_slider_autoplay = (get_field('oese_slider_autoplay', $_id))? 1: 0;
         $_slider_autoplay_interval = (get_field('oese_slider_autoplay_interval', $_id) * 1000);
         $_slider_animation = get_field('oese_slider_animation', $_id);
-  			$_cnt = 0; $_htm = '';
+  			$_cnt = 0; $_html = '';
   			foreach ($_slides as $key => $_slide):
           if(!empty($_slide['oese_acf_slider_image'])):
   					$_image_url = $_slide['oese_acf_slider_image']['url'];
