@@ -5,10 +5,12 @@
 add_action( 'wp_enqueue_scripts', 'oese_acf_slider_enqueue',2 );
 function oese_acf_slider_enqueue() {
   global $post;
-  if(get_field('oese_acf_slider', $post->ID)):
-    wp_enqueue_style( 'oese-acf-slider-style', get_template_directory_uri() . '/modules/oese-acf-slider/css/style.css', array(), null );
-    wp_enqueue_script( 'oese-acf-slider-script', get_template_directory_uri() . '/modules/oese-acf-slider/js/script.js' , array('jquery') , null, true);
-	endif;
+  if(!is_404()):
+    if(get_field('oese_acf_slider', $post->ID)):
+      wp_enqueue_style( 'oese-acf-slider-style', get_template_directory_uri() . '/modules/oese-acf-slider/css/style.css', array(), null );
+      wp_enqueue_script( 'oese-acf-slider-script', get_template_directory_uri() . '/modules/oese-acf-slider/js/script.js' , array('jquery') , null, true);
+  	endif;
+  endif;
 }
 
 /**
