@@ -106,6 +106,7 @@ function transition_post_status_handler( $new_status, $old_status, $post ) {
          update_post_meta($post->ID, '_post_oesepreview_pwd', uniqid());      // generate password
     }
   }elseif($new_status == 'publish'){
+    $new_id = copy_post($post, null, $post->ID);
     delete_post_meta($new_id, '_post_oesepreview_pwd'); 
   }
 }
@@ -338,7 +339,6 @@ function post_button() {
         </div>
       <?php } ?>
     <?php }elseif(get_post_status($post->ID) == 'draft' || get_post_status($post->ID) == 'pending'){ ?>
-      <div><?php echo $pst_type; ?></div>
       <div class="oese-preview-url-wrapper">
         <strong><em>Preview URL:</em></strong>
         <input id="oese-preview-url-input" type="text" value="<?php echo get_bloginfo('url').'?'.$_getparam.'='.$post->ID.'&preview=true&key='.get_post_meta($post->ID, '_post_oesepreview_pwd', true) ?>" />
