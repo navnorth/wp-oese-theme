@@ -256,7 +256,7 @@ function featured_item_func($attr, $content = null)
 add_shortcode("oese_featured_video","oese_feature_video_func");
 function oese_feature_video_func($attr, $content = null){
  static $count = 0;
- $count++;
+ $count++; $return = '';
 
  if ($count==1)
 	 $return .= '<script>var ytplayerapiurl = "'.get_stylesheet_directory_uri(). '/js/ytplayerapi.js"</script>';
@@ -272,6 +272,7 @@ function oese_feature_video_func($attr, $content = null){
  $apiurl = get_stylesheet_directory_uri()."/js/ytplayerapi.js";
  $origin = get_site_url();
  $id = "ytvideo".$count;
+ $iframe_title = '';
  $return .= '<div class="col-md-12 col-sm-12 col-xs-12 rght_sid_mtr lft_sid_mtr">';
 	 if(isset($heading) && !empty($heading)){
 		 $iframe_title .= ": ".$heading;
