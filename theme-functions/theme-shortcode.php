@@ -1049,7 +1049,7 @@ function audience_link_func($attribute, $content = null) {
  			extract($attribute);;
  		}
   }
-
+	$return = '';
 	$return = '<a class="audience-link" href="'.$url.'" alt="'.$content.'">'.$content.'</a>';
 
 	return $return;
