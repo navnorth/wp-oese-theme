@@ -531,7 +531,7 @@ function get_create_link($post) {
 
 function get_create_button_text() {
   global $post;
-  
+  $_btn='';
   if(metadata_exists('post', $post->ID, '_post_oesepreview_id')){
     $_oesepreview_id = get_post_meta($post->ID, '_post_oesepreview_id', true);
     if( is_null(get_post($_oesepreview_id))){
