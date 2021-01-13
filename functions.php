@@ -3094,3 +3094,5 @@ add_filter('wp_check_filetype_and_ext', function($values, $file, $filename, $mim
 include( get_template_directory() . "/modules/oese-acf-slider/oese-acf-slider.php");
 /* PREVIEW CAPABILITY */
 include( get_template_directory() . "/modules/oesepreview/oesepreview.php");
+
+add_filter('use_block_editor_for_post', '__return_false', 10);
