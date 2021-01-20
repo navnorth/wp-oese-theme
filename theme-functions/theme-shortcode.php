@@ -64,13 +64,20 @@ add_shortcode('oese_accordion_group', 'oese_accordion_group_func');
 function oese_accordion_group_func($atts, $content = null)
 {
 	$accordion_id = "accordion";
-
-	if (!empty($atts)) {
-		extract($atts);
+	
+	if ( is_admin() ) {
+		$_arr = getShortcodeAttr($atts);
+ 		foreach($_arr as $key => $value) $$key = $value;
 		if ($id)
 			$accordion_id = $id;
-	}
-
+ 	}else{
+		if (!empty($atts)) {
+			extract($atts);
+			if ($id)
+				$accordion_id = $id;
+		}
+ 	}
+	
 	$single_expand = (isset($single_expand) && !empty($single_expand))? strtolower($single_expand): 'false';
 	$return = '';
 	$return .= '<div class="panel-group accordion" id="'.$accordion_id.'" role="tablist" aria-multiselectable="true">';
