@@ -238,7 +238,7 @@ if($action == "show_popup")
 				switch (shortcode_type)
 				{
 				   case "accordian":
-					   var shortcode = "[oese_accordion_group id=\'accordion1\'][oese_accordion title=\'Title Here\' accordion_series=\'one\' expanded=\'\' group_id=\'accordion1\'] your content goes here [/oese_accordion][oese_accordion title=\'Title Here\' accordion_series=\'two\' expanded=\'\' group_id=\'accordion1\'] your content goes here [/oese_accordion][oese_accordion title=\'Title Here\' accordion_series=\'three\' expanded=\'\' group_id=\'accordion\'] your content goes here [/oese_accordion][/oese_accordion_group]";
+					   var shortcode = "[oese_accordion_group id=\'accordion1\' single_expand=\'false\'][oese_accordion title=\'Title Here\' accordion_series=\'one\' expanded=\'\' group_id=\'accordion1\'] your content goes here [/oese_accordion][oese_accordion title=\'Title Here\' accordion_series=\'two\' expanded=\'\' group_id=\'accordion1\'] your content goes here [/oese_accordion][oese_accordion title=\'Title Here\' accordion_series=\'three\' expanded=\'\' group_id=\'accordion1\'] your content goes here [/oese_accordion][/oese_accordion_group]";
 					   break;
 				   case "banner":
 					   var shortcode = "[disruptive_content title=\'Title Here\' main_text=\'Description Here\' button_text=\'Button Text\' button_color=\'\' button_url=\'\']";

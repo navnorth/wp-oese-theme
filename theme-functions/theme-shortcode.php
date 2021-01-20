@@ -58,7 +58,7 @@ function disruptive_content_fun($attr, $content = null)
 
 /**
  * Accordion Group & Accordion
- * Shortcode Example : [oese_accordion_group][oese_accordion title="" accordion_series="one" expanded=""] your content goes here [/oese_accordion][/oese_accordion_group]
+ * Shortcode Example : [oese_accordion_group single_expand="true"][oese_accordion title="" accordion_series="one" expanded=""] your content goes here [/oese_accordion][/oese_accordion_group]
  */
 add_shortcode('oese_accordion_group', 'oese_accordion_group_func');
 function oese_accordion_group_func($atts, $content = null)
@@ -71,10 +71,12 @@ function oese_accordion_group_func($atts, $content = null)
 			$accordion_id = $id;
 	}
 
+	$single_expand = (isset($single_expand) && !empty($single_expand))? strtolower($single_expand): 'false';
 	$return = '';
 	$return .= '<div class="panel-group accordion" id="'.$accordion_id.'" role="tablist" aria-multiselectable="true">';
 			$content = str_replace( "<p>","", $content );
 			$content = str_replace( "</p>","", $content );
+			$content = str_replace("[oese_accordion","[oese_accordion single_expand='".$single_expand."'",$content);
 			$return .= do_shortcode($content);
 	$return .= '</div>';
 	return $return;
@@ -117,7 +119,8 @@ $group_id = "accordion";
 		 $return .= ' </h5>';
 		$return .= '</div>';
 
-		$return .= '<div id="collapse'. $group_id. $accordion_series .'" class="panel-collapse collapse '.$uptcls.'" role="tabpanel" aria-labelledby="heading'. $accordion_series .'">';
+		$_single_expand = ($single_expand=='true')? 'data-parent="#'.$group_id.'"' : '';	
+		$return .= '<div id="collapse'. $group_id. $accordion_series .'" '.$_single_expand.' class="panel-collapse collapse '.$uptcls.'" role="tabpanel" aria-labelledby="heading'. $accordion_series .'">';
 		  $return .= '<div class="panel-body">';
 			//$content = apply_filters('the_content', $content);
 			$return .= $content;
