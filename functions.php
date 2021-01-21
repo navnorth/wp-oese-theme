@@ -7,7 +7,7 @@
  * filter hooks in WordPress to change core functionality.
  */
 define( "WP_OESE_THEME_NAME", "WP OESE Theme" );
-define( "WP_OESE_THEME_VERSION", "1.8.1" );
+define( "WP_OESE_THEME_VERSION", "1.9.0" );
 define( "WP_OESE_THEME_SLUG", "wp_oese_theme" );
 
 // Set up the content width value based on the theme's design and stylesheet.
@@ -718,7 +718,7 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
  **/
  $_vsn = (int)explode('.',get_bloginfo('version'))[0];
  if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblock/shortcodesblock.php' );
- 
+
  function theme_back_enqueue_script()
 {
     wp_enqueue_script( 'jquery-ui-core' );
@@ -730,7 +730,7 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
     wp_enqueue_style( 'tinymce_button_backend',get_stylesheet_directory_uri() . '/tinymce_button/shortcode_button.css' );
     wp_localize_script( 'theme-back-script', 'oet_ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
     wp_enqueue_style( 'theme-font-style',get_stylesheet_directory_uri() . '/css/fontawesome/css/all.min.css' );
-    
+
     if(get_admin_page_title() == 'Edit Page' || get_admin_page_title() == 'Edit Post'){
     //if(get_admin_page_title() != 'Media Library' && get_admin_page_title() != 'Manage Themes'){;
       wp_enqueue_style( 'theme-bootstrap-style',get_stylesheet_directory_uri() . '/css/bootstrap.min.css' );
@@ -3067,7 +3067,7 @@ add_action( 'admin_footer', 'oese_add_home_detector' );
  */
 add_filter('wp_check_filetype_and_ext', function($values, $file, $filename, $mimes) {
 	if ( extension_loaded( 'fileinfo' ) ) {
-		// with the php-extension, a CSV file is issues type text/plain so we fix that back to 
+		// with the php-extension, a CSV file is issues type text/plain so we fix that back to
 		// text/csv by trusting the file extension.
 		$finfo     = finfo_open( FILEINFO_MIME_TYPE );
 		$real_mime = finfo_file( $finfo, $file );
