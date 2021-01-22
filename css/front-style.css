@@ -291,7 +291,7 @@ div#table_1_paginate a.paginate_button:focus{
   border: 1px solid #90bafe !important;
 }
 #table_1_wrapper.wpDataTables table.wpDataTable tr{
-  background-color:#ffffff !important;
+  /*background-color:#ffffff !important;*/
 }
 #table_1_wrapper.wpDataTables table.wpDataTable tr th:focus {
   opacity: .8 !important;
@@ -304,7 +304,7 @@ div#table_1_paginate a.paginate_button:focus{
 }
 /** PPE tool Modal styling **/
 #ppe-details-modal { z-index: 99999; }
-body.modal-open { overflow: visible; }
+/*body.modal-open { overflow: visible; }*/
 .wpDataTable .hidden-column { display:none; }
 .wdt-md-modal .modal-dialog .modal-header { position:relative; border-bottom: 1px solid #cdcdcd; padding:15px 26px !important; }
 .wpdt-c .modal .modal-header button.close {
@@ -334,3 +334,97 @@ body.modal-open { overflow: visible; }
 }
 .wpdt-c .modal .modal-body .wdt-details-dialog-fields-block .form-group .detailColumn { font-size:14px; }
 .wpdt-c .modal .modal-body .wdt-details-dialog-fields-block .form-group { margin-bottom:5px; }
+.wpDataTableFilterBox .wpDataTableFilterSection div:first-child {margin-top:0px !important;}
+
+
+
+/* -------------- */
+/* WDT-RESPONSIVE
+/* -------------- */
+
+/*Filters*/
+@media screen and (max-width: 3600px) {
+  .wpDataTablesFilter .wpDataTableFilterSection:not(#wdt-clear-filters-button-block):not(#wdt-pf-search-filters-button-block) { 
+    width: 19.8% !important;
+    margin: 0px !important;
+  }
+}
+@media screen and (max-width: 1199px) {
+  .wpDataTablesFilter .wpDataTableFilterSection:not(#wdt-clear-filters-button-block):not(#wdt-pf-search-filters-button-block) { 
+    min-height: 64px !important;
+    margin: 0px !important;
+    padding: 5px 15px !important;
+  }
+  .wpDataTablesFilter .wpDataTableFilterSection#wdt-clear-filters-button-block {
+      padding-top: 35px !important;
+  }
+}
+@media screen and (max-width: 991px) {
+  .wpDataTablesFilter .wpDataTableFilterSection:not(#wdt-clear-filters-button-block):not(#wdt-pf-search-filters-button-block) { 
+    width: 50% !important;
+  }
+  .wpDataTablesFilter .wpDataTableFilterSection#wdt-clear-filters-button-block {
+      padding-top: 15px !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .wpDataTablesFilter .wpDataTableFilterSection:not(#wdt-clear-filters-button-block):not(#wdt-pf-search-filters-button-block) { 
+    width: 100% !important;
+  }
+  .wpDataTablesFilter .wpDataTableFilterSection#wdt-clear-filters-button-block {
+      padding-top: 15px !important;
+  }
+  div#wdt-clear-filters-button-block {width:100% !important; text-align: right !important;}
+}
+
+
+/*TABLE ITSELF*/
+.button.btn.wdt-clear-filters-button {
+    background-color: #f1f1f1 !important;
+}
+.button.btn.wdt-clear-filters-button:focus {
+    color: #343434 !important;
+    border:1px solid #2196F3 !important;
+}
+.button.btn.wdt-clear-filters-button:hover {
+    background-color: #294179 !important;
+    color: #ffffff !important;
+}
+@media screen and (max-width: 990px) {
+  .wdtResponsiveWrapper {
+    overflow-x: scroll;
+    overflow-y: visible;
+    float: left;
+    width: 100%;
+  }
+  .wpDataTablesWrapper table.wpDataTable {
+    width:1024px !important;
+  }
+  .wpdt-c .wpDataTablesWrapper table.wpDataTable tbody tr td input[type="checkbox"] {
+      cursor: pointer !important;
+      transform: scale(1.5);
+      -ms-transform: scale(1.5);
+      -webkit-transform: scale(1.5);
+      -o-transform: scale(1.5);
+      -moz-transform: scale(1.5);
+      transform-origin: 0 0;
+      -ms-transform-origin: 0 0;
+      -webkit-transform-origin: 0 0;
+      -o-transform-origin: 0 0;
+      -moz-transform-origin: 0 0;
+  }    
+  .wpDataTablesWrapper .paging_full_numbers {
+    height: auto !important;
+  }
+  
+}
+
+/* MORE DETAILS MODAL */
+.form-group p {
+    float:left !important;
+}
+.form-group div.col-sm-9{
+   float:left !important;
+}
+
+

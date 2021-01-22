@@ -7,7 +7,7 @@
  * filter hooks in WordPress to change core functionality.
  */
 define( "WP_OESE_THEME_NAME", "WP OESE Theme" );
-define( "WP_OESE_THEME_VERSION", "1.8.0" );
+define( "WP_OESE_THEME_VERSION", "1.8.1" );
 define( "WP_OESE_THEME_SLUG", "wp_oese_theme" );
 
 // Set up the content width value based on the theme's design and stylesheet.
@@ -1474,7 +1474,7 @@ function wp_oese_theme_settings_page() {
     )
   );
 
-  //Add Display Address on Footer
+  //Enable crazy egg tracking script
   add_settings_field(
     'wp_oese_theme_include_crazy_egg_script',
     '',
@@ -1484,7 +1484,21 @@ function wp_oese_theme_settings_page() {
     array(
       'uid' => 'wp_oese_theme_include_crazy_egg_script',
       'type' => 'checkbox',
-      'name' =>  __('Include Crazy Egg script', WP_OESE_THEME_SLUG)
+      'name' =>  __('enable Crazy Egg tracking script', WP_OESE_THEME_SLUG)
+    )
+  );
+
+  //Crazy Egg Script Address
+  add_settings_field(
+    'wp_oese_theme_crazy_egg_script_address',
+    '',
+    'wp_oese_theme_settings_field',
+    $page,
+    'wp_oese_ga_settings',
+    array(
+      'uid' => 'wp_oese_theme_crazy_egg_script_address',
+      'type' => 'textbox',
+      'name' =>  __('Crazy Egg Script Address', WP_OESE_THEME_SLUG)
     )
   );
 
@@ -1543,6 +1557,7 @@ function wp_oese_theme_settings_page() {
   register_setting( 'theme_settings_page' , 'wp_oese_theme_contact_page' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_ga_propertyid' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_include_crazy_egg_script' );
+  register_setting( 'theme_settings_page' , 'wp_oese_theme_crazy_egg_script_address' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_pdf_viewer' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_display_footer_address' );
 }
@@ -1995,13 +2010,15 @@ function oese_ga_script() {
   // Include GA
   $ga_id = get_option('wp_oese_theme_ga_propertyid');
   $egg_script = get_option('wp_oese_theme_include_crazy_egg_script');
+  $egg_script_address = get_option('wp_oese_theme_crazy_egg_script_address');
 
+  // Include Crazy Egg Script
+  if ($egg_script && !empty($egg_script_address)){
+    $egg_script_address = preg_replace( "#^[^:/.]*[:/]+#i", "//", $egg_script_address );
+    //$script .= "<script type='text/javascript' src='//s3.amazonaws.com/new.cetrk.com/pages/scripts/0009/9201.js'> </script>\r\n";
+    $script .= "<script type='text/javascript' src='".$egg_script_address."' async='async'></script>";
+  }
   if ($ga_id){
-    // Include Crazy Egg Script
-    if ($egg_script){
-      $script .= "<script type='text/javascript' src='//s3.amazonaws.com/new.cetrk.com/pages/scripts/0009/9201.js'> </script>\r\n";
-    }
-
     $script .= "<script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -2777,6 +2794,11 @@ function oet_display_acf_home_content(){
                             $_desc = (strlen($_tmp)>210)? substr($_tmp,0,180).' ...': $_tmp;
                             $_url = $subfieldlayout['oet_acf_homepage_trendingnow_link'];
                             $_btntxt = $subfieldlayout['oet_acf_homepage_trendingnow_button_text'];
+                            $_target = $subfieldlayout['oet_acf_homepage_trendingnow_link_newtab'];
+                            if ($_target==true)
+                              $_target = "_blank";
+                            else
+                              $_target = "_self";
                             ?>
 
                               <div class="oet_acf_homepage_trendingnow_block_wrapper">
@@ -2787,7 +2809,7 @@ function oet_display_acf_home_content(){
                                       <div class="trending-image-details">
                                           <h3 class="trending-image-details-title" title="<?php echo $_img_alt ?>"><?php echo $_title ?></h3>
                                           <p class="trending-image-details-description"><?php echo $_desc; ?></p>
-                                          <a target="_self" href="" role="button" class="btn oese-btn-danger oese-btn-danger-small" title="Read More"><?php echo $_btntxt ?></a>
+                                          <a target="<?php echo $_target; ?>" href="<?php echo $_url; ?>" role="button" class="btn oese-btn-danger oese-btn-danger-small" title="Read More"><?php echo $_btntxt ?></a>
                                       </div>
                                   </div>
                               </div>
@@ -3027,3 +3049,36 @@ function oese_add_home_detector()  {
   }
 }
 add_action( 'admin_footer', 'oese_add_home_detector' );
+
+
+
+/* PREVIEW CAPABILITY */
+include( get_template_directory() . "/modules/oesepreview/oesepreview.php");
+
+/*
+add_filter( 'posts_results', 'set_query_to_draft', null, 2 );
+function set_query_to_draft( $posts, $query ) {
+
+    $_pwd = get_post_meta($_GET['page_id'], '_post_revision_pwd', true);
+
+    if ( sizeof( $posts ) != 1 )
+        return $posts;
+
+    $post_status_obj = get_post_status_object(get_post_status( $posts[0]));
+
+    if ( !$post_status_obj->name == 'draft' )
+        return $posts;
+
+    if ( $_GET['key'] != $_pwd )
+        return $posts;
+
+    $query->_draft_post = $posts;
+
+    add_filter( 'the_posts', 'show_draft_post', null, 2 );
+}
+
+function show_draft_post( $posts, $query ) {
+    remove_filter( 'the_posts', 'show_draft_post', null, 2 );
+    return $query->_draft_post;
+}
+*/

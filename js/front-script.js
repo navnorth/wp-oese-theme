@@ -227,7 +227,7 @@ jQuery( document ).ready(function() {
       	jQuery('#table_1_wrapper.wpDataTablesWrapper').removeClass('focused');
       });
       jQuery('.dropdown-menu > li > a').focus(function(){
-        jQuery('.length_menu').addClass('open');
+        jQuery(this).closest('.length_menu').addClass('open');
       });
   
       //wpDataTable Search Input
@@ -325,3 +325,19 @@ function oese_trackEvent(eventCategory, eventAction, eventLabel, eventValue = nu
     }
     return 0;
 }
+
+
+
+/* -------------- */
+/* WDT-RESPONSIVE
+/* -------------- */
+
+var isTablePresent;
+jQuery(document).ready(function(){
+  isTablePresent = setTimeout(function(){
+    if(jQuery('table.wpDataTable').length){
+      clearTimeout(isTablePresent);
+      jQuery('table.wpDataTable').wrap('<div class="wdtResponsiveWrapper"></div>');
+    }
+  },100);
+});
