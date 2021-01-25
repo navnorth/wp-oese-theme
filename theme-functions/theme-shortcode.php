@@ -112,7 +112,7 @@ $group_id = "accordion";
 			  if(isset($expanded) && !empty($expanded) && strtolower($expanded) == "true")
 			  {
 				  $class = "";
-				  $uptcls = "in";
+				  $uptcls = "show";
 			  }
 			  else
 			  {
