@@ -515,7 +515,10 @@ button.wdt-clear-filters-button:before, button.wdt-clear-filters-widget-button:b
 .wpdt-c .wpDataTablesWrapper table.wpDataTable {
     font-size:14px;
 }
- 
+.wpdt-c {
+    float: left;
+    width:100%;
+}
 /* pagination background color */
 .wpDataTablesWrapper .dataTables_paginate {
     background-color:#f1f1f1 !important;
