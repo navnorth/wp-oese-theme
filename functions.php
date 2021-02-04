@@ -3095,4 +3095,4 @@ include( get_template_directory() . "/modules/oese-acf-slider/oese-acf-slider.ph
 /* PREVIEW CAPABILITY */
 include( get_template_directory() . "/modules/oesepreview/oesepreview.php");
 
-add_filter('use_block_editor_for_post', '__return_false', 10);
+//add_filter('use_block_editor_for_post', '__return_false', 10);
