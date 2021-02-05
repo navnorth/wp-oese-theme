@@ -1,19 +1,19 @@
 ! function (e) {
-    function t(l) {
-        if (o[l]) return o[l].exports;
-        var n = o[l] = {
-            i: l,
+    function t(n) {
+        if (o[n]) return o[n].exports;
+        var l = o[n] = {
+            i: n,
             l: !1,
             exports: {}
         };
-        return e[l].call(n.exports, n, n.exports, t), n.l = !0, n.exports
+        return e[n].call(l.exports, l, l.exports, t), l.l = !0, l.exports
     }
     var o = {};
-    t.m = e, t.c = o, t.d = function (e, o, l) {
+    t.m = e, t.c = o, t.d = function (e, o, n) {
         t.o(e, o) || Object.defineProperty(e, o, {
             configurable: !1,
             enumerable: !0,
-            get: l
+            get: n
         })
     }, t.n = function (e) {
         var o = e && e.__esModule ? function () {
@@ -33,9 +33,9 @@
     o(1)
 }, function (e, t, o) {
     "use strict";
-    var l = o(2),
-        n = (o.n(l), o(3)),
-        __ = (o.n(n), wp.i18n.__),
+    var n = o(2),
+        l = (o.n(n), o(3)),
+        __ = (o.n(l), wp.i18n.__),
         c = wp.blocks.registerBlockType,
         r = wp.blockEditor.InspectorControls,
         s = wp.components,
@@ -71,35 +71,35 @@
                 var t = e.target.options[e.target.selectedIndex].getAttribute("idx");
                 s({
                     selectedShortode: e.target.value
-                }), console.log(p[t].value);
+                });
                 var o = p[t].value;
                 s({
                     selectedShortodeValue: o
-                }), l(o)
+                }), n(o)
             }
 
             function o(e) {
-                console.log(e.target.value), s({
+                s({
                     selectedShortodeValue: e.target.value
-                }), l(e.target.value)
+                }), n(e.target.value)
             }
 
-            function l(e) {
+            function n(e) {
                 wp.apiFetch({
                     url: "/wp-json/oeseshortcodeblock/v2/shortcodequery?shrtcd=" + e
                 }).then(function (e) {
-                    console.log(e), s({
+                    s({
                         selectedShortodeHtml: e
                     })
                 })
             }
 
-            function n(e) {
+            function l(e) {
                 if (void 0 !== c.selectedShortode) {
                     var t;
                     for (t = 0; t < p.length; t++) p[t].name == c.selectedShortode && (s({
                         selectedShortodeValue: p[t].value
-                    }), l(p[t].value))
+                    }), n(p[t].value))
                 }
             }
             var c = e.attributes,
@@ -112,7 +112,7 @@
                             blockid: t
                         })
                     }
-                }), wp.apiFetch({
+                }), c.oeseShortcodeOption || wp.apiFetch({
                     url: "/wp-json/oeseshortcodeblock/v2/optionsquery?param=test"
                 }).then(function (e) {
                     s({
@@ -159,7 +159,7 @@
             }), wp.element.createElement("input", {
                 class: "oeseshortcodeblock_shortcode_reset",
                 type: "button",
-                onClick: n,
+                onClick: l,
                 value: "Reset",
                 selshrt: c.selectedShortode
             })))))), wp.element.createElement("div", null, wp.element.createElement("div", {
