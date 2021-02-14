@@ -2,36 +2,56 @@
 function wp_nn_script_enqueue(){
 	wp_enqueue_style('wp-nn-parentpage-style.css', get_template_directory_uri() . '/modules/modal-parent/css/modal-parent.css', array() , null, 'all');
 	wp_enqueue_script('wp-nn-parentpage-script.js', get_template_directory_uri() . '/modules/modal-parent/js/modal-parent.js' , array('jquery') , null, true);
+	//wp_localize_script('wp-nn-parentpage-script.js', 'wp_nn_parentpage_ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 }
 add_action('admin_enqueue_scripts', 'wp_nn_script_enqueue');
 
+function wpnnAjaxParentPageUpdate(){
+	$_parent_id = $_POST['pid'];
+	$_child_id = $_POST['cid'];
+	wp_update_post(
+    array(
+        'ID' => $_child_id, 
+        'post_parent' => $_parent_id
+    )
+	);
+	echo 'received: '.$_parent_id. " & ".$_child_id;
+	die();
+}
+add_action( 'wp_ajax_wpnnAjaxParentPageUpdate', 'wpnnAjaxParentPageUpdate',0);
+add_action('wp_ajax_nopriv_wpnnAjaxParentPageUpdate', 'wpnnAjaxParentPageUpdate',0);
+
 function wp_nn_parentpage_add_metabox(){
-    remove_meta_box('pageparentdiv', 'page', 'side');
+	global $post;
+	if(!use_block_editor_for_post($post)){
+		remove_meta_box('pageparentdiv', 'page', 'side');
     add_meta_box('wp-nn-parent-page','Parent Attributes','wp_nn_parentpage_meta_box_content','page','side','core');
+	}    
 }
 add_action('add_meta_boxes', 'wp_nn_parentpage_add_metabox');
 
 function wp_nn_parentpage_meta_box_content($post_id){
 ?>
+	
 	<p class="post-attributes-label-wrapper"><label class="post-attributes-label" for="parent_id">Parent</label></p>
-	<div class="wp-nn-parentpage-display-wrapper">
-    		<div class="wp-nn-parentpage-display-block">
+	<div class="wp-nn-parentpage-display-wrapper" cid="<?php echo $post_id->ID ?>">    		
+				<div class="wp-nn-parentpage-display-block">
         <?php $_curval = $post_id->post_parent; ?>
         <?php $_display = '(no parent)'; ?>
         <?php if ($post_id->post_parent > 0){
 			$_ptitle = get_the_title($post_id->post_parent);
-            if ($_ptitle == '') $_ptitle = "#" . $post_id->post_parent . ' (no title)';
+	          if ($_ptitle == '') $_ptitle = "#" . $post_id->post_parent . ' (no title)';
 			$_display = $_ptitle;
 		}
-		?>
+		?>		
         <input name="wp-nn-parentpage-display" type="text" id="wp-nn-parentpage-display" value="<?php echo $_display ?>" readonly="readonly" />
 				<input name="parent_id" id="parent_id" type="hidden" value="<?php echo $_curval ?>" class="tagsdiv" />
         <input type="button" class="button  wp-nn-parentpage-display-change" value="Change">
         </div>
-    </div>
-
+		</div>
+  
 	<?php $current_template = get_post_meta($post_id->ID, '_wp_page_template', true); ?>
-    <p class="post-attributes-label-wrapper"><label class="post-attributes-label" for="parent_id">Template</label></p>
+		<p class="post-attributes-label-wrapper"><label class="post-attributes-label" for="parent_id">Template</label></p>
 		<select name="page_template" id="page_template">
 		<option value="default">Default Template</option>
 		<?php
@@ -44,7 +64,7 @@ function wp_nn_parentpage_meta_box_content($post_id){
         }
         ?>
 	</select>
-
+	
     <p class="post-attributes-label-wrapper"><label class="post-attributes-label" for="menu_order">Order</label></p>
     <input name="menu_order" type="text" size="4" id="menu_order" value="<?php echo $post_id->menu_order ?>">
     <p>Need help? Use the Help tab above the screen title.</p>
@@ -70,7 +90,7 @@ function loadchild($parentid, $_level, $_curval, $_mypage)
         if ($parentid == 0){ ?>
             <li>
             <label class="wp-nn-tag-p <?php echo $_state ?>" data-search-term="(no parent)">
-            <input name="wp-nn-parentpage-rad" title="(no parent)" type="radio" value="0" checked />(no parent)
+            <input class="wp-nn-parentpage-rad" name="wp-nn-parentpage-rad" title="(no parent)" type="radio" value="0" checked />(no parent)
 			<span class="fa fa-check"></span>
             </label>
             </li> <?php
@@ -90,7 +110,7 @@ function loadchild($parentid, $_level, $_curval, $_mypage)
             if ($page->post_title == '') $_ptitle = "#" . $page->ID . ' (no title)';
 
             echo '<label class="wp-nn-tag-p ' . $_state . '" data-search-term="' . strtolower($_ptitle) . '">';
-            echo '<input name="wp-nn-parentpage-rad" title="' . $_ptitle . '" type="radio" value="'.$page->ID.'"' . $_state . '/>' . $_ptitle;
+            echo '<input class="wp-nn-parentpage-rad '.$_state.'" name="wp-nn-parentpage-rad" title="' . $_ptitle . '" type="radio" value="'.$page->ID.'"' . $_state . '/>' . $_ptitle;
 			echo '<span class="fa fa-check"></span>';
             echo '</label>';
             loadchild($page->ID, (int)$_level + 1, $_curval, $_mypage);
@@ -120,8 +140,12 @@ function wp_nn_parentpage_modal()
                         </div>
                         <div class="wp-nn-parentpage-nav-wrapper">
                         	<input type="hidden" name="wp-nn-parentpage-prev-selected" value='<?php echo $post->post_parent; ?>'/>
-                        	<a href="#" class="wp-nn-parentpage-select">Select</a>
-                        </div>
+													<?php if(use_block_editor_for_post($post)){ ?>
+												  	<a href="#" class="wp-nn-parentpage-select-guten">Select</a>
+													<?php }else{ ?>
+                        		<a href="#" class="wp-nn-parentpage-select">Select</a>
+													<?php } ?>                  
+												</div>
                         <div class="wp-nn-parentpage-search-close">
                         	<span class="fa fa-times"></span>
                         </div>
@@ -133,4 +157,30 @@ function wp_nn_parentpage_modal()
     }
 }
 add_action('admin_footer', 'wp_nn_parentpage_modal');
+
+
+
+
+add_action('rest_api_init', function () {
+  register_rest_route( 'wpnnmodalparent/v2', 'updatequery', 
+    array(
+    'methods' => 'GET', 
+    'callback' => 'wpnnmodalparent_updatequery' 
+    )
+  );
+});
+
+function wpnnmodalparent_updatequery(){
+	$_parent_id = $_GET['pid'];
+	$_child_id = $_GET['cid'];
+	wp_update_post(
+    array(
+        'ID' => $_child_id, 
+        'post_parent' => $_parent_id
+    )
+	);
+	$_ret = 'received: '.$_parent_id. " & ".$_child_id;
+	return $_ret;
+}
+
 ?>

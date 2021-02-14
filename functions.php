@@ -711,8 +711,8 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
   /**
   * Page Edit Modal Parent Attribute
   **/
- //require_once( get_stylesheet_directory() . '/modules/modal-parent/modal_parent.php' );
-
+  require_once( get_stylesheet_directory() . '/modules/modal-parent/modal_parent.php' );
+ 
  /**
  * Shortcodes Blocks
  **/
@@ -3093,6 +3093,6 @@ add_filter('wp_check_filetype_and_ext', function($values, $file, $filename, $mim
  */
 include( get_template_directory() . "/modules/oese-acf-slider/oese-acf-slider.php");
 /* PREVIEW CAPABILITY */
-//include( get_template_directory() . "/modules/oesepreview/oesepreview.php");
+include( get_template_directory() . "/modules/oesepreview/oesepreviewguten.php");
 
 //add_filter('use_block_editor_for_post', '__return_false', 10);

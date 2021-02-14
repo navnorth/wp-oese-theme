@@ -1032,12 +1032,11 @@ function parse_data_attributes( $data ) {
  		}
   }
 
-	$return = '<div class="intro">
-			<div class="intro-goal">
-				<div class="title">'.$title.'</div>
-				'.$content.'
-		        </div>
-		</div>';
+	$return = '<div class="intro">';
+			$return .= '<div class="intro-goal">';
+				$return .= '<div class="title">'.$title.'</div>';
+				$return .= $content.'</div>';
+		$return .= '</div>';
 
 	return $return;
  }
@@ -1168,15 +1167,15 @@ function oet_featured_card_func($attribute, $content = null){
  $_cont_sm = (strlen($content)>110)? substr($content,0,110).' ...': $content;
  $_cont_xs = (strlen($content)>50)? substr($content,0,50).' ...': $content;
  $_button_link = (!empty($button_link))? $button_link: '#';
- $return = '<div class="adminoverridewidth col-xs-12 col-md-6 col-lg-4">
- 							<div class="oet-featured-card" style="background-image: linear-gradient(rgba(44, 67, 116, 0.85), rgba(44, 67, 116, 0.85)), url('.$bg.');">
-	 							<div class="oet-featured-card-content-wrapper">
-			 						<h3 class="oet-featured-card-title">'.$title.'</h3>
-									<div class="oet-featured-card-desc">'.$content.'</div>
-				 					<a href="'.$_button_link.'" class="oet-featured-card-btn">'.$button_text.'&nbsp;→</a>
-								</div>
-		 					</div>
-						</div>';
+ $return = '<div class="adminoverridewidth col-xs-12 col-md-6 col-lg-4">';
+ 		$return .= '<div class="oet-featured-card" style="background-image: linear-gradient(rgba(44, 67, 116, 0.85), rgba(44, 67, 116, 0.85)), url('.$bg.');">';
+	 	$return .= '<div class="oet-featured-card-content-wrapper">';
+			$return .= '<h3 class="oet-featured-card-title">'.$title.'</h3>';
+			$return .= '<div class="oet-featured-card-desc">'.$content.'</div>';
+			$return .= '<a href="'.$_button_link.'" class="oet-featured-card-btn">'.$button_text.'&nbsp;→</a>';
+		$return .= '</div>';
+	$return .= '</div>';
+ $return .= '</div>';
 		
 
  return $return;

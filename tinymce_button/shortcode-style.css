@@ -515,25 +515,25 @@ blockquote { border-left: none !important; font-size: auto !important; padding: 
 /* FROM FRONT-STYLE.CSS */
 /* ******************** */
 input#oet-shrtcdv2-submit {float: right;}
-.oet-shrtcdv2_preview .intro {
+.oese_shortcode_cgb_container .intro {
     position: relative;
     margin-bottom: 60px;
     font-family: 'Raleway-Semibold', sans-serif !important;
     background: #294179;
     width: 100%;
 }
-.oet-shrtcdv2_preview .intro .intro-goal {
+.oese_shortcode_cgb_container .intro .intro-goal {
     position: relative;
     color: white !important;
     padding: 60px;
     font-size: 18px;
 }
-.oet-shrtcdv2_preview .intro .intro-goal .title {
+.oese_shortcode_cgb_container .intro .intro-goal .title {
     font-size: 36px;
     margin-bottom: 20px;
 }
 /* Publication Intro Shortcode styles */
-.oet-shrtcdv2_preview .intro {
+.oese_shortcode_cgb_container .intro {
 		float:left;
 		width: 100%;
 }

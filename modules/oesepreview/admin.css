@@ -30,5 +30,28 @@ div#oese-preview-draft-publish-warning {
     -moz-border-radius: 5px;
     border-radius: 5px;
     background-color: #fff;
-    margin-bottom: 10px;
+    margin-top: 8px;
+}
+
+
+/* GUTENBERG */
+.oese-preview-url-wrapper.gutenberg{
+  float: none !important;
+  padding: 15px 0px 15px 0px !important;
+  border-top: 1px solid #e2e4e7 !important;
+  margin: 15px 0px 0px 0px !important;
+}
+.oese-preview-url-wrapper.gutenberg input#oese-preview-url-input {
+    float: none !important;
+    width: 160px;
+    margin: 0px 5px 0px 0px;
+}
+.oese-preview-url-wrapper.gutenberg .oese-preview-url-copy{
+    float: none !important;
+}
+.oese-preview-url-wrapper.gutenberg div#oese-preview-draft-publish-warning {
+    float: none !important;
+}
+.components-panel__row.wpnn-preview {
+    display: block !important;
 }

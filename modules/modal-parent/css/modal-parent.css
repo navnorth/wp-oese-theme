@@ -181,7 +181,8 @@ label.wp-nn-tag-p {
     background-color: rgba(0,0,0,.5);
 }
 
-a.wp-nn-parentpage-select {
+a.wp-nn-parentpage-select,
+a.wp-nn-parentpage-select-guten {
     display: block;
     float: left;
     border: 1px solid #e4e4e4;
@@ -193,7 +194,8 @@ a.wp-nn-parentpage-select {
     border-radius: 5px;
 }
 
-a.wp-nn-parentpage-select {
+a.wp-nn-parentpage-select,
+a.wp-nn-parentpage-select-guten {
     display: block;
     float: left;
     border: 1px solid #ccc;
@@ -206,7 +208,8 @@ a.wp-nn-parentpage-select {
     -moz-border-radius: 3px;
     border-radius: 3px;
 }
-a.wp-nn-parentpage-select:hover {
+a.wp-nn-parentpage-select:hover,
+a.wp-nn-parentpage-select-guten:hover{
 	background: #fafafa;
     border-color: #999;
     color: #23282d;
@@ -216,7 +219,7 @@ input#wp-nn-parentpage-display {
     height: 28px;
     margin: 0 4px 10px 0;
     background-color: #ffffff;
-    width: 180px;
+    width: 100%;
 }
 @media screen and (max-width: 782px){
 	input#wp-nn-parentpage-display {
@@ -244,6 +247,19 @@ label.wp-nn-tag-p span.fa-check {
 	color: #ffffff;
   font-family: "Font Awesome 5 Free" !important;
 }
+
+#wp-nn-parent-page .post-attributes-label-wrapper label.post-attributes-label {
+    margin-bottom: 0px;
+}
+
+#wp-nn-parent-page .post-attributes-label-wrapper {
+  margin: 15px 0px 5px 0px;
+}
+
+.editor-page-attributes__parent select.components-select-control__input {background: none !important; cursor:text !important;}
+.components-base-control.editor-page-attributes__parent {margin-bottom: 0px !important; /*display:none !important;*/}
+.components-base-control .components-base-control__field {margin-bottom: 0px !important;}
+#wp-nn-parentpage-display-wrapper {padding-top: 6px !important;}
 
 /***************/
 /* ANIMATE.CSS */

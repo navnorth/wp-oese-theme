@@ -735,6 +735,9 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
     font-size: 36px;
     margin-bottom: 20px;
 }
+.page .intro .intro-goal p{
+	color:#ffffff !important;
+}
 
 /* Audience link shortcode styles */
 .audience-link {
