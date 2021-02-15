@@ -251,22 +251,38 @@ var mutate_parent_value_element;
 var mutate_parent_selector_element;
 jQuery(window).bind("load", function() { 
   if(jQuery('.components-drop-zone__provider').length > 0){
-    mutate_parent_selector_element = document.querySelector('.edit-post-sidebar');
+    // Observer Open and Closing of the Workflow Column
+    mutate_parent_selector_element = document.querySelector('.edit-post-layout');
+    wpnnParentPagePublishToggleObserver.observe(mutate_parent_selector_element, {childList: true, subtree: false});
+    // Observer Expand and Collapse of the Page Attribute Panel    
     wpnnParentPageComponenetsPanelObserver.observe(document.querySelector('.edit-post-sidebar'), {childList: true, subtree: true});
   }
 });
+
+// Function to Observe Open and Closing of the Workflow Column
+var wpnnParentPagePublishToggleObserver = new MutationObserver(function(mutations) {
+  load_parent_modal_html();
+})
+
 
 var wpnnParentPageComponenetsPanelObserver = new MutationObserver(function(mutations) {
     if(jQuery('.editor-page-attributes__parent .components-select-control__input').length > 0){
       if(targetElemID ==''){
         targetElemID = jQuery('.editor-page-attributes__parent .components-select-control__input').attr('id');
         load_parent_modal_html();
+        
         jQuery(document).on('mousedown','#'+targetElemID ,function(e){
           e.preventDefault ? e.preventDefault() : e.returnValue = false;
         });
-        //mutate_parent_value_element = document.querySelector('#'+targetElemID);
-        //wpnnParentValueSyncObserver.observe(mutate_parent_value_element, {attributes: true, childList: true, characterData: true });
-        //wpnnParentPageComponenetsPanelObserver.disconnect();
+        
+        jQuery(document).on('click','.components-panel__body',function(){
+          setTimeout(function(){
+            if(jQuery('.editor-page-attributes__parent .components-select-control__input').length > 0){
+              console.log('EXPAND COLLAPSE!');
+              load_parent_modal_html();
+            }
+          }, 10);
+        })
       }else{
         wpnnParentPageComponenetsPanelObserver.disconnect();
         load_parent_modal_html();
