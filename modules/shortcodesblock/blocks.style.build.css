@@ -169,9 +169,58 @@ a.oese-video-link {
 }
 
 .custom-button {
-    background-color: #e57200;
+    background-color: #243C54;
     color: #fff;
     font-family: 'Raleway-Bold';
     font-size: 14px;
     padding: 20px !important;
+}
+
+/* OESE COLORS */
+.oese_shortcode_cgb_container .btn_dwnld{
+  background-color: #981F33 !important;
+}
+
+.oese_shortcode_cgb_container .hdng_mtr{
+  margin-bottom: 0px !important;
+}
+
+.oese_shortcode_cgb_container .hdng_mtr, 
+.oese_shortcode_cgb_container .hdng_mtr a{
+  color: #549944 !important;
+}
+
+.oese_shortcode_cgb_container .lft_sid_mtr h4:first-child, 
+.oese_shortcode_cgb_container .rght_sid_mtr h4:first-child {
+    color: #549944 !important;
+    font-weight: 900;
+}
+
+.oese_shortcode_cgb_container .accordion .panel-default{
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.oese_shortcode_cgb_container .accordion .panel-default .panel-heading h5.panel-title > a {
+    padding: 10px 0px !important;
+}
+
+.oese_shortcode_cgb_container .accordion .panel-default .panel-heading {
+    padding: 5px 15px 34px !important;
+}
+
+.oese_shortcode_cgb_container .accordion .panel-default .panel-collapse .panel-body {
+    border-top: 1px solid #cccccc;
+    padding-top: 13px !important;
+}
+
+.oese_shortcode_cgb_container .accordion .panel-default .panel-heading .panel-title > a{
+    font-family: 'Raleway-Semibold' !important;
+    font-size: 1.2em !important;
+    font-weight: 400 !important;
+}
+
+.oet-featured-card-btn {
+    background-color: #981F33 !important;
 }
