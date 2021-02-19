@@ -723,3 +723,26 @@ iframe.oese-featured-video-shrtcd-ytvideo {
 /* ---------------------------- */
 /* ---SHORTCODE BLOCK END   --- */
 /* ---------------------------- */
+
+/* ****************** */
+/* WDT FIXED TABLE HEADER */
+/* ****************** */
+
+.fixed_headers{
+  overflow-y: scroll !important;
+  height: 150px !important;
+}
+
+.fixed_headers th{
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1 !important;
+}
+
+@media (max-width: 990px) {
+  .wdtResponsiveWrapper{
+    max-height:600px;
+    overflow:auto;
+  }
+}

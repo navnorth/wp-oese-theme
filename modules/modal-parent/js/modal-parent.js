@@ -278,7 +278,6 @@ var wpnnParentPageComponenetsPanelObserver = new MutationObserver(function(mutat
         jQuery(document).on('click','.components-panel__body',function(){
           setTimeout(function(){
             if(jQuery('.editor-page-attributes__parent .components-select-control__input').length > 0){
-              console.log('EXPAND COLLAPSE!');
               load_parent_modal_html();
             }
           }, 10);
