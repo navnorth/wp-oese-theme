@@ -256,7 +256,7 @@ label.wp-nn-tag-p span.fa-check {
   margin: 15px 0px 5px 0px;
 }
 
-.editor-page-attributes__parent select.components-select-control__input {background: none !important; cursor:text !important;}
+.editor-page-attributes__parent select.components-select-control__input {display:none !important; background: none !important; cursor:text !important;}
 .components-base-control.editor-page-attributes__parent {margin-bottom: 0px !important; /*display:none !important;*/}
 .components-base-control .components-base-control__field {margin-bottom: 0px !important;}
 #wp-nn-parentpage-display-wrapper {padding-top: 6px !important;}
