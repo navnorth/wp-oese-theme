@@ -109,33 +109,35 @@ jQuery(window).bind("load", function() {
     // Observer Open and Closing of the Workflow Column
     mutate_parent_selector_element = document.querySelector('.edit-post-layout');  
     load_parent_modal_html();
-    
-    // Observer Expand and Collapse of the Page Attribute Panel    
-    wpnnParentPageComponenetsPanelObserver.observe(document.querySelector('.edit-post-sidebar'), {childList: true, subtree: true});
-    // Observer for Settings Sidebar Settings Button  
-    wpnnParentPageColumnsettingobserver.observe(document.querySelector('.edit-post-layout'), {childList: true, subtree: false});
-    
   }
+  
+  jQuery(document).on('click','.components-panel__body',function(){
+    setTimeout(function(){
+      if(jQuery('.components-base-control.editor-page-attributes__order').length > 0){
+        load_parent_modal_html();
+      }else{
+        jQuery('#wp-nn-parentpage-display-wrapper').remove();
+      }
+    }, 100);
+  })
+  
+  jQuery(document).on('click','.edit-post-header__settings .components-icon-button',function(){
+    setTimeout(function(){
+      if(jQuery('.components-base-control.editor-page-attributes__order').length > 0){
+        load_parent_modal_html();
+      }
+    }, 100);
+  })
+
+  jQuery(document).on('focus','.editor-post-title__input',function(){
+    setTimeout(function(){
+      if(jQuery('.components-base-control.editor-page-attributes__order').length > 0){
+        load_parent_modal_html();
+      }
+    }, 100);
+  })
+  
+  
 });
 
-var wpnnParentPageComponenetsPanelObserver = new MutationObserver(function(mutations) {
-    if(jQuery('.components-base-control.editor-page-attributes__order').length > 0){
-        jQuery(document).on('click','.components-panel__body',function(){
-          setTimeout(function(){
-            if(jQuery('.components-base-control.editor-page-attributes__order').length > 0){
-              load_parent_modal_html();
-            }else{
-              jQuery('#wp-nn-parentpage-display-wrapper').remove();
-            }
-          }, 100);
-        })
-        wpnnParentPageComponenetsPanelObserver.observe(document.querySelector('.edit-post-sidebar'), {childList: true, subtree: true});
-    }
-});
-
-var wpnnParentPageColumnsettingobserver = new MutationObserver(function(mutations) {
-    if(jQuery('.edit-post-sidebar .components-panel .edit-post-post-status').length > 0){ 
-      load_parent_modal_html();
-    }
-});
 
