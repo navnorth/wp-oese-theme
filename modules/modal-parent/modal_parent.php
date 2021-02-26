@@ -160,12 +160,19 @@ add_action('admin_footer', 'wp_nn_parentpage_modal');
 
 
 
-
+/** CUSTOM ROUTES **/
 add_action('rest_api_init', function () {
   register_rest_route( 'wpnnmodalparent/v2', 'updatequery', 
     array(
     'methods' => 'GET', 
     'callback' => 'wpnnmodalparent_updatequery' 
+    )
+  );
+	
+	register_rest_route( 'wpnnmodalparent/v2', 'getparentbyid', 
+    array(
+    'methods' => 'GET', 
+    'callback' => 'wpnnmodalparent_getparentbyid_func' 
     )
   );
 });
@@ -181,6 +188,10 @@ function wpnnmodalparent_updatequery(){
 	);
 	$_ret = 'received: '.$_parent_id. " & ".$_child_id;
 	return $_ret;
+}
+
+function wpnnmodalparent_getparentbyid_func(){
+	return get_the_title($_GET['pid']);
 }
 
 ?>

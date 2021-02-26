@@ -21,10 +21,11 @@ jQuery( document ).ready(function() {
 		var parentid = selone.val();
     wp.data.dispatch( 'core/editor' ).editPost({parent:parseInt(parentid)});
 
-    jQuery('.wp-nn-parentpage-display-block .components-select-control__input').val(wp.data.select( 'core/editor' ).getEditedPostAttribute('parent'));
+    jQuery('.wp-nn-parentpage-display-block .components-select-control__input').val(parentid);
 		jQuery('input[name="wp-nn-parentpage-prev-selected"]').val(vl);
 		jQuery('.wp-nn-parentpage-display-block #'+targetElemID).val(parentid);
     jQuery('.wp-nn-parentpage-display-block #'+targetElemID).attr('value',parentid);
+    jQuery('#wp-nn-parentpage-display').attr('value',parentname);
 		jQuery('#wp-nn-parentpage-display').val(parentname);
 		jQuery('.wp-nn-parentpage-overlay').css('visibility', 'hidden').removeClass('fadeIn').addClass('fadeOut');
     
@@ -182,26 +183,30 @@ jQuery(window).bind("load", function() {
 });
 
 function load_parent_modal_html(){
-  if (jQuery('.editor-page-attributes__parent .components-select-control__input').length > 0 &&jQuery('.wp-nn-parentpage-search-result').length > 0) {
-    clearInterval(wp_nn_loop_interval);
-    targetElemID = jQuery('.editor-page-attributes__parent .components-select-control__input').attr('id');
-    var ttl = jQuery('.wp-nn-parentpage-rad.checked').attr('title');
-    var vlu = jQuery('.wp-nn-parentpage-rad.checked').attr('value');
-    ttl = (ttl === undefined)? '(no parent)': ttl;
-    vlu = (vlu === undefined)? 0: vlu;
-    htm = '';
-
-          htm += '<div id="wp-nn-parentpage-display-wrapper" class="wp-nn-parentpage-display-wrapper" cid="'+jQuery('form.metabox-base-form #post_ID').attr('value')+'">';
-            htm += '<div class="wp-nn-parentpage-display-block">';
-              //htm += '<input name="wp-nn-parentpage-display" type="text" id="wp-nn-parentpage-display" value="'+ttl+'" readonly="readonly">';
-      				//htm += '<input id="'+targetElemID+'" type="hidden" class="components-select-control__input" value="'+vlu+'" class="tagsdiv">';
-              htm += '<input type="button" class="button  wp-nn-parentpage-display-change" value="Change">';
+  if (jQuery('.editor-page-attributes__parent .components-select-control__input').length > 0 && jQuery('.wp-nn-parentpage-search-result').length > 0) {
+    let cid = jQuery('.wp-nn-parentpage-display-wrapper').attr('cid');
+    var vlu = wp.data.select( 'core/editor' ).getCurrentPostAttribute('parent');
+    wp.apiFetch({ url: '/wp-json/wpnnmodalparent/v2/getparentbyid?pid='+vlu}).then(data =>{ 
+      clearInterval(wp_nn_loop_interval);
+      targetElemID = jQuery('.editor-page-attributes__parent .components-select-control__input').attr('id');
+      var ttl = data;
+      ttl = (ttl === undefined)? '(no parent)': ttl;
+      vlu = (vlu === undefined)? 0: vlu;
+      htm = '';
+            htm += '<div id="wp-nn-parentpage-display-wrapper" class="wp-nn-parentpage-display-wrapper" cid="'+jQuery('form.metabox-base-form #post_ID').attr('value')+'">';
+              htm += '<div class="wp-nn-parentpage-display-block">';
+                htm += '<input name="wp-nn-parentpage-display" type="text" id="wp-nn-parentpage-display" value="'+ttl+'" readonly="readonly">';
+        				htm += '<input id="'+targetElemID+'" type="hidden" class="components-select-control__input" value="'+vlu+'" class="tagsdiv">';
+                htm += '<input type="button" class="button  wp-nn-parentpage-display-change" value="Change">';
+              htm += '</div>';
             htm += '</div>';
-          htm += '</div>';
 
-    jQuery('#wp-nn-parentpage-display-wrapper').remove();
-    jQuery(htm).insertAfter(".components-base-control.editor-page-attributes__parent .components-select-control__input");
-    //jQuery('.editor-page-attributes__parent').hide();
+      jQuery('#wp-nn-parentpage-display-wrapper').remove();
+      jQuery(htm).insertAfter(".components-base-control.editor-page-attributes__parent .components-select-control__input");
+    })
+    
+      
+      //jQuery('.editor-page-attributes__parent').hide();
   }
 }
 
@@ -220,26 +225,28 @@ const { isSavingPost } = select( 'core/editor' );
 var wpnnSubscribeStatus = true; // Start in a checked state.
 subscribe( () => {
     if ( isSavingPost() ) {
+      console.log('Saving');
 		    wpnnSubscribeStatus = false;
     }else{
  		   if (!wpnnSubscribeStatus) {
+            console.log('AFTER SAVE');
             //wpnnParentModalAfterSaveFunc() // Perform your custom handling here.
             wpnnSubscribeStatus = true;
         }
     }
 });
 
+
 function wpnnParentModalAfterSaveFunc(){
-  
   //let new_parent = wp.data.select( 'core/editor' ).getEditedPostAttribute('parent');
   var selone = jQuery('input[name="wp-nn-parentpage-rad"]:checked');
   var parent_id = selone.val();
   var parentname = selone.attr('title');
   console.log(parent_id+' - '+parentname);
   setTimeout(function(){
-    jQuery('#wp-nn-parentpage-display').val(parentname);
+    jQuery('#wp-nn-parentpage-display').attr('value',parentname).val(parentname);
     jQuery('.wp-nn-parentpage-display-block #'+targetElemID).val(parent_id);
-  }, 3000);
+  }, 1000);
 }
 */
 
@@ -253,24 +260,30 @@ jQuery(window).bind("load", function() {
   if(jQuery('.components-drop-zone__provider').length > 0){
     // Observer Open and Closing of the Workflow Column
     mutate_parent_selector_element = document.querySelector('.edit-post-layout');
-    wpnnParentPagePublishToggleObserver.observe(mutate_parent_selector_element, {childList: true, subtree: false});
+    
+    load_parent_modal_html(); //wpnnParentPagePublishToggleObserver.observe(mutate_parent_selector_element, {childList: true, subtree: false});
+    
+    
     // Observer Expand and Collapse of the Page Attribute Panel    
     wpnnParentPageComponenetsPanelObserver.observe(document.querySelector('.edit-post-sidebar'), {childList: true, subtree: true});
+    // Observer for Settings Sidebar Settings Button  
+    wpnnParentPageColumnsettingobserver.observe(document.querySelector('.edit-post-layout'), {childList: true, subtree: false});
+    
   }
 });
 
 // Function to Observe Open and Closing of the Workflow Column
+/*
 var wpnnParentPagePublishToggleObserver = new MutationObserver(function(mutations) {
   load_parent_modal_html();
 })
-
+*/
 
 var wpnnParentPageComponenetsPanelObserver = new MutationObserver(function(mutations) {
     if(jQuery('.editor-page-attributes__parent .components-select-control__input').length > 0){
       if(targetElemID ==''){
         targetElemID = jQuery('.editor-page-attributes__parent .components-select-control__input').attr('id');
         load_parent_modal_html();
-        
         jQuery(document).on('mousedown','#'+targetElemID ,function(e){
           e.preventDefault ? e.preventDefault() : e.returnValue = false;
         });
@@ -283,10 +296,17 @@ var wpnnParentPageComponenetsPanelObserver = new MutationObserver(function(mutat
           }, 10);
         })
       }else{
-        wpnnParentPageComponenetsPanelObserver.disconnect();
-        load_parent_modal_html();
+        //wpnnParentPageComponenetsPanelObserver.disconnect();
+        //load_parent_modal_html();
         wpnnParentPageComponenetsPanelObserver.observe(document.querySelector('.edit-post-sidebar'), {childList: true, subtree: true});
+        
       }
+    }
+});
+
+var wpnnParentPageColumnsettingobserver = new MutationObserver(function(mutations) {
+    if(jQuery('.edit-post-sidebar .components-panel .edit-post-post-status').length > 0){ 
+      load_parent_modal_html();
     }
 });
 
