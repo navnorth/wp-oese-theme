@@ -74,8 +74,8 @@ function load_parent_modal_html(){
   if (jQuery('.components-base-control.editor-page-attributes__order').length > 0 && jQuery('.wp-nn-parentpage-search-result').length > 0) {
     let cid = jQuery('.wp-nn-parentpage-display-wrapper').attr('cid');
     var vlu = wp.data.select( 'core/editor' ).getEditedPostAttribute('parent');
+    clearInterval(wp_nn_loop_interval);
     wp.apiFetch({ url: '/wp-json/wpnnmodalparent/v2/getparentbyid?pid='+vlu}).then(data =>{     
-      clearInterval(wp_nn_loop_interval);
       targetElemID = wp.data.select( 'core/editor' ).getEditedPostAttribute('parent');
       var ttl = data;
       ttl = (ttl === undefined)? '(no parent)': ttl;
@@ -86,8 +86,7 @@ function load_parent_modal_html(){
                 htm += '<input name="wp-nn-parentpage-display" type="text" id="wp-nn-parentpage-display" value="'+ttl+'" readonly="readonly">';
                 htm += '<input type="button" class="button  wp-nn-parentpage-display-change" value="Change">';
               htm += '</div>';
-            htm += '</div>';
-          console.log('Still Here');
+            htm += '</div>';;
       jQuery('#wp-nn-parentpage-display-wrapper').remove();
       jQuery(htm).insertBefore(jQuery(".components-base-control.editor-page-attributes__order").closest('.components-panel__row'));
     })
