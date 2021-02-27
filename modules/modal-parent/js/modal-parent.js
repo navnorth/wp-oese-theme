@@ -55,7 +55,6 @@ jQuery( document ).ready(function() {
 	});
 
 	jQuery(document).on('input','input[name="wp-nn-parentpage-criteria"]', function(e) {
-		console.log('RUN');
 		var searchTerm = jQuery.trim(this.value).toLowerCase();
 		jQuery('#wp-nn-parentpage-dynahide').remove();
 		if(searchTerm > ''){
@@ -73,15 +72,17 @@ let wp_nn_loop_interval;
 function load_parent_modal_html(){
   if (jQuery('.components-base-control.editor-page-attributes__order').length > 0 && jQuery('.wp-nn-parentpage-search-result').length > 0) {
     let cid = jQuery('.wp-nn-parentpage-display-wrapper').attr('cid');
-    var vlu = wp.data.select( 'core/editor' ).getEditedPostAttribute('parent');
+    //var vlu = wp.data.select( 'core/editor' ).getEditedPostAttribute('parent');
+    var vlu = jQuery('.wp-nn-parentpage-rad:checked').attr('value');
     clearInterval(wp_nn_loop_interval);
-    wp.apiFetch({ url: '/wp-json/wpnnmodalparent/v2/getparentbyid?pid='+vlu}).then(data =>{     
+    //wp.apiFetch({ url: '/wp-json/wpnnmodalparent/v2/getparentbyid?pid='+vlu}).then(data =>{     
       targetElemID = wp.data.select( 'core/editor' ).getEditedPostAttribute('parent');
-      var ttl = data;
-      ttl = (ttl === undefined)? '(no parent)': ttl;
-      vlu = (vlu === undefined)? 0: vlu;
+      var ttl = jQuery('.wp-nn-parentpage-rad:checked').attr('title');;
+      ttl = (ttl === undefined || vlu == 0)? '(no parent)': ttl;
+      vlu = (vlu === undefined || vlu == 0)? 0: vlu;
       htm = '';
             htm += '<div id="wp-nn-parentpage-display-wrapper" class="wp-nn-parentpage-display-wrapper" cid="'+wp.data.select( 'core/editor' ).getCurrentPostId()+'">';
+              htm += '<label class="components-base-control__label" for="wp-nn-parentpage-display-wrapper">Parent:</label>';
               htm += '<div class="wp-nn-parentpage-display-block">';
                 htm += '<input name="wp-nn-parentpage-display" type="text" id="wp-nn-parentpage-display" value="'+ttl+'" readonly="readonly">';
                 htm += '<input type="button" class="button  wp-nn-parentpage-display-change" value="Change">';
@@ -89,7 +90,7 @@ function load_parent_modal_html(){
             htm += '</div>';;
       jQuery('#wp-nn-parentpage-display-wrapper').remove();
       jQuery(htm).insertBefore(jQuery(".components-base-control.editor-page-attributes__order").closest('.components-panel__row'));
-    })
+    //})
   }
 }
 
@@ -107,7 +108,7 @@ jQuery(window).bind("load", function() {
   if(jQuery('.components-drop-zone__provider').length > 0){
     // Observer Open and Closing of the Workflow Column
     mutate_parent_selector_element = document.querySelector('.edit-post-layout');  
-    load_parent_modal_html();
+    //load_parent_modal_html();
   }
   
   jQuery(document).on('click','.components-panel__body',function(){

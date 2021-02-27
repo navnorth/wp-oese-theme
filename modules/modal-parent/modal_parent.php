@@ -120,8 +120,8 @@ function loadchild($parentid, $_level, $_curval, $_mypage)
     echo '</ul>';
 }
 
-function wp_nn_parentpage_modal()
-{
+function wp_nn_parentpage_modal(){
+	global $post;
     $screen = get_current_screen();
     if ($screen->id == 'page'){
 	?>
@@ -153,6 +153,33 @@ function wp_nn_parentpage_modal()
 				</div>
 			</div>
 		</div>
+		
+		<script>
+			let wp_nn_initial_loop_interval;
+			function initial_load_parent_modal_html(){
+				if (jQuery('.components-base-control.editor-page-attributes__order').length > 0 && jQuery('.wp-nn-parentpage-search-result').length > 0) {
+			    clearInterval(wp_nn_initial_loop_interval);
+					let cid = <?php echo $post->ID ?>;
+			    var vlu = <?php echo $post->post_parent; ?>;
+			      var ttl = "<?php echo get_the_title($post->post_parent) ?>";
+			      ttl = (ttl === undefined || vlu == 0)? '(no parent)': ttl;
+			      vlu = (vlu === undefined || vlu == 0)? 0: vlu;
+			      htm = '';
+	            htm += '<div id="wp-nn-parentpage-display-wrapper" class="wp-nn-parentpage-display-wrapper" cid="'+cid+'">';
+							  htm += '<label class="components-base-control__label" for="wp-nn-parentpage-display-wrapper">Parent:</label>';
+	              htm += '<div class="wp-nn-parentpage-display-block">';
+	                htm += '<input name="wp-nn-parentpage-display" type="text" id="wp-nn-parentpage-display" value="'+ttl+'" readonly="readonly">';
+	                htm += '<input type="button" class="button  wp-nn-parentpage-display-change" value="Change">';
+	              htm += '</div>';
+	            htm += '</div>';
+			      jQuery('#wp-nn-parentpage-display-wrapper').remove();
+			      jQuery(htm).insertBefore(jQuery(".components-base-control.editor-page-attributes__order").closest('.components-panel__row'));	    
+			  }
+			}		
+			wp_nn_initial_loop_interval = setInterval(initial_load_parent_modal_html, 100);
+			
+		</script>
+		
         <?php
     }
 }
