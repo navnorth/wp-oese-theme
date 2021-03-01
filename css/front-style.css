@@ -733,11 +733,11 @@ iframe.oese-featured-video-shrtcd-ytvideo {
   height: 150px !important;
 }
 
-.fixed_headers th{
+.fixed_headers th {
   position: -webkit-sticky !important;
   position: sticky !important;
-  top: 0 !important;
-  z-index: 1 !important;
+  top: 63px !important;
+  z-index: 9 !important;
 }
 
 @media (max-width: 990px) {
@@ -745,4 +745,24 @@ iframe.oese-featured-video-shrtcd-ytvideo {
     max-height:600px;
     overflow:auto;
   }
+}
+
+.wpnn_wpdt_action_wrapper {
+    position: sticky;
+    top: 0px;
+    z-index: 9;
+    display: block;
+    float: left;
+    width: 100%;
+    background-color: #fff;
+    padding-top: 10px;
+}
+
+.dataTables_compare_button_wrapper {
+    min-width: 181px !important;
+}
+
+@media screen and (max-width: 990px) {
+.fixed_headers th { top: 0px !important; }
+.wpnn_wpdt_action_wrapper { position: unset !important; }
 }

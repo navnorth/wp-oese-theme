@@ -416,6 +416,18 @@ jQuery(document).ready(function(){
     if(jQuery('table.wpDataTable').length){
       clearTimeout(isTablePresent);
       jQuery('table.wpDataTable').wrap('<div class="wdtResponsiveWrapper"></div>');
+      
+      /* -------------- */
+      /* FROZEN HEADER START
+      /* -------------- */
+      jQuery('.wpDataTablesWrapper .dataTables_length').addClass('wpnn_wpdt_action_item');
+      jQuery('.wpDataTablesWrapper .dataTables_filter').addClass('wpnn_wpdt_action_item');
+      jQuery('.wpDataTablesWrapper .dataTables_compare_message').addClass('wpnn_wpdt_action_item');
+      jQuery('.wpnn_wpdt_action_item').wrapAll('<div class="wpnn_wpdt_action_wrapper" />');
+      /* -------------- */
+      /* FROZEN HEADER END
+      /* -------------- */
+      
     }
   },100);
 });
