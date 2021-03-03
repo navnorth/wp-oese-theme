@@ -750,7 +750,7 @@ iframe.oese-featured-video-shrtcd-ytvideo {
 .wpnn_wpdt_action_wrapper {
     position: sticky;
     top: 0px;
-    z-index: 9;
+    z-index: 11;
     display: block;
     float: left;
     width: 100%;
