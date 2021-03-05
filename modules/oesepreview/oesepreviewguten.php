@@ -10,7 +10,7 @@ define('OESEPREVIEW_PRESERVE_DATE',true);
 define('OESEPREVIEW_PRESERVE_AUTHOR',true);
 
 add_action('init', __NAMESPACE__.'\\init');
-
+global $post;
 function init() {
   
   //Filters and actions for admins who can edit the post
@@ -789,7 +789,7 @@ function wpnnPostButtonGuten() {
 
 add_action('wp_ajax_wpnnPostButtonGuten', 'OESE_Preview\wpnnPostButtonGuten');
 add_action('wp_ajax_nopriv_wpnnPostButtonGuten', 'OESE_Preview\wpnnPostButtonGuten');
-$_parent_post_id = get_oesepreview_of($post);
+//$_parent_post_id = get_oesepreview_of($post);
 
 
 function wpnnTransitionHandlerGuten() {

@@ -202,7 +202,21 @@ add_action('rest_api_init', function () {
     'callback' => 'wpnnmodalparent_getparentbyid_func' 
     )
   );
+	
+	
+	register_rest_route( 'wp/v2', 'pages', 
+    array(
+    'methods' => 'GET', 
+    'callback' => 'wpnnmodalparent_pagesbypass_func' 
+    )
+  );
+	
+	
 });
+
+function wpnnmodalparent_pagesbypass_func(){
+	return '';
+}
 
 function wpnnmodalparent_updatequery(){
 	$_parent_id = $_GET['pid'];
