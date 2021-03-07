@@ -431,3 +431,34 @@ jQuery(document).ready(function(){
     }
   },100);
 });
+
+/* ----------------------- */
+/* FIXED WPDT TABLE HEADER */
+/* ----------------------- */
+
+jQuery( window ).scroll(function(){
+  wpdt_freeze_header_func();
+});
+
+jQuery(window).resize(function(){
+  wpdt_freeze_header_func();
+});
+
+function wpdt_freeze_header_func(){
+  var wpdt_adminbar_height = 10;
+  var admin_plus = 0;
+  if( jQuery('#wpadminbar').length > 0 ){
+    jQuery('.wdtResponsiveWrapper').addClass('admin');
+    admin_plus = 10;
+    wpdt_adminbar_height = jQuery('#wpadminbar').outerHeight() + 10;
+  }else{
+    jQuery('.wdtResponsiveWrapper').removeClass('admin');
+  }
+  
+  jQuery('.wpnn_wpdt_action_wrapper').css("padding-top", wpdt_adminbar_height+'px');
+  var wpdt_table_top = jQuery('.wpDataTablesWrapper').offset().top;
+  var elm = jQuery('.wpDataTablesWrapper>div.dt-buttons');
+  var wpdt_buttons_section_height = parseInt(elm.outerHeight()) + parseInt(elm.css('marginBottom'));
+  var wpdt_tblhdr_above_elements = jQuery(window).scrollTop() - (wpdt_table_top + (wpdt_buttons_section_height + 12));
+	jQuery('.wdtResponsiveWrapper table thead tr th').css({'top' : wpdt_tblhdr_above_elements + 'px'});  
+}
