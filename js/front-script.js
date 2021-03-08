@@ -410,12 +410,9 @@ function oese_trackEvent(eventCategory, eventAction, eventLabel, eventValue = nu
 /* WDT-RESPONSIVE
 /* -------------- */
 
-var isTablePresent;
 jQuery(document).ready(function(){
-  
-  
   var wpdtTimerArray = [];
-  jQuery('.wpdt-c.cstm').each(function(i, obj) {
+  jQuery('.wpDataTablesWrapper').each(function(i, obj) {
     wpdtTimerArray[i] = setTimeout(function(){
       if(jQuery(obj).find('table.wpDataTable').length){
         clearTimeout(wpdtTimerArray[i]);
