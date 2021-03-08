@@ -411,11 +411,16 @@ function oese_trackEvent(eventCategory, eventAction, eventLabel, eventValue = nu
 /* -------------- */
 
 jQuery(document).ready(function(){
-  var wpdtTimerArray = [];
-  jQuery('.wpDataTablesWrapper').each(function(i, obj) {
-    wpdtTimerArray[i] = setTimeout(function(){
+  var wpdtTimerArray = []; 
+  var wpdtInstanceCntr = -1;
+  jQuery('.wpdt-c').each(function(i, obj) {
+    if(jQuery(obj).find('.wpDataTablesWrapper').length > 0){
+      wpdtInstanceCntr++;
+      console.log('AYUN#'+wpdtInstanceCntr);
+    }
+    wpdtTimerArray[wpdtInstanceCntr] = setTimeout(function(){
       if(jQuery(obj).find('table.wpDataTable').length){
-        clearTimeout(wpdtTimerArray[i]);
+        clearTimeout(wpdtTimerArray[wpdtInstanceCntr]);
         var wpdtMainWrapper = jQuery(obj);
         wpdtMainWrapper.find('table.wpDataTable').wrap('<div class="wdtResponsiveWrapper"></div>');
         
@@ -423,9 +428,9 @@ jQuery(document).ready(function(){
         wpdtMainWrapper.find('.wpDataTablesWrapper .dataTables_filter').addClass('wpnn_wpdt_action_item');
         wpdtMainWrapper.find('.wpDataTablesWrapper .dataTables_compare_message').addClass('wpnn_wpdt_action_item');
         
-        wpdtMainWrapper.find('.wpnn_wpdt_action_item').wrapAll('<div class="wpnn_wpdt_action_wrapper table'+i+'" />');
+        wpdtMainWrapper.find('.wpnn_wpdt_action_item').wrapAll('<div class="wpnn_wpdt_action_wrapper table'+wpdtInstanceCntr+'" />');
         
-        jQuery(obj).attr('id','wpdt_main_wrapper_'+i);
+        jQuery(obj).attr('id','wpdt_main_wrapper_'+wpdtInstanceCntr);
         
         jQuery( window ).scroll(function(){
           wpdt_freeze_header_func(jQuery(obj));
