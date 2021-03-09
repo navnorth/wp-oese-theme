@@ -430,6 +430,7 @@ jQuery(document).ready(function(){
         
         wpdtMainWrapper.find('.wpnn_wpdt_action_item').wrapAll('<div class="wpnn_wpdt_action_wrapper table'+wpdtInstanceCntr+'" />');
         
+        jQuery(obj).addClass('wpdt_main_wrapper');
         jQuery(obj).attr('id','wpdt_main_wrapper_'+wpdtInstanceCntr);
         
         jQuery( window ).scroll(function(){
