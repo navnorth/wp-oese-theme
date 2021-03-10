@@ -26,8 +26,9 @@
 
       	function create_bullets() {
                 	var li;
-      		jQuery('.slide').each(function(i,x) {
-          	li = jQuery('<li><button class="bullet slider-button" data-index="'+i+'"></button></li>');
+      		jQuery('.slide').each(function(i,obj) {
+            var slide_title = jQuery(obj).find('.slide-content >a >h3').text();
+          	li = jQuery('<li><button class="bullet slider-button" role = "button" aria-label="go to slide number '+(i+1)+': '+slide_title+'" data-index="'+i+'"></button></li>');
           	$bullets_container.append(li);
       		});
       	}
@@ -193,5 +194,31 @@
 	      return this;
 
   	};  
+    
+    //ACF SLIDER ACCESSIBILITY
+    jQuery(document).on('focus','#oese-acf-slider .slider-button', function(){
+          jQuery('#oese-acf-slider').addClass('focused');
+    })
+    jQuery(document).on('blur','#oese-acf-slider .slider-button', function(){
+          jQuery('#oese-acf-slider').removeClass('focused');
+    })
+    
+    // TOP SEARCH INPUT ACCESSIBILITY
+    jQuery(document).on('focus','#searchform .top-search-input', function(){
+          jQuery('form#searchform').addClass('focused');
+    })
+    jQuery(document).on('blur','#searchform .top-search-input', function(){
+          jQuery('form#searchform').removeClass('focused');
+    })
+    
+    // TOP SEARCH BUTTON ACCESSIBILITY
+    jQuery(document).on('focus','#searchform .custom-search-btn', function(){
+          jQuery('form#searchform').addClass('focused');
+    })
+    jQuery(document).on('blur','#searchform .custom-search-btn', function(){
+          jQuery('form#searchform').removeClass('focused');
+    })
+    
+    
     
 })(jQuery);
