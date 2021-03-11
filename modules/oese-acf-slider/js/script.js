@@ -63,7 +63,7 @@
             jQuery('.bullet:first').attr('aria-label','Slide 1 current slide button');
         }
 
-        function next_slide(idx) {      
+        function next_slide(idx) {
             prevslide = indice;
             if (typeof(idx) === 'object' || typeof(idx) === 'undefined'){   
               indice = ((jQuery('.slide').length-1) == indice)? 0: ++indice;
@@ -74,6 +74,18 @@
             show_slide(indice,'nxt');
             var oese_acf_slider_liveregion_title = jQuery('.oese-acf-slider-wrapper ul.slider-list li[data-index="'+indice+'"]').find('h3.slide-title').text();
             jQuery('.oese-acf-slider-accessibility-liveregion').html(oese_acf_slider_liveregion_title);
+            progress = 0;
+        }
+        
+        function next_slide_auto(idx) {
+            prevslide = indice;
+            if (typeof(idx) === 'object' || typeof(idx) === 'undefined'){   
+              indice = ((jQuery('.slide').length-1) == indice)? 0: ++indice;
+            }else{
+              indice = idx;
+            }
+            left_animate(indice);
+            show_slide(indice,'nxt');
             progress = 0;
         }
 
@@ -145,7 +157,7 @@
               
               if(progress > autoplay_interval){
                 progress = 0;
-                next_slide();
+                next_slide_auto();
               }else{
                 progress = (!gbl_pause)? progress + 50: progress; 
               }
