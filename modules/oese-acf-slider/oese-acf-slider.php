@@ -58,6 +58,7 @@ function oese_acf_slider_func($attr, $content = null){
         $_ret .= '<div id="oese-acf-slider">';
           $_ret .= '<div class="oese-acf-slider-content-wrapper" style="display:none;">';
             $_ret .= '<div class="oese-acf-slider-wrapper">';
+              $_ret .= '<div aria-live="polite" aria-atomic="true" class="oese-acf-slider-accessibility-liveregion visuallyhidden"></div>';
       				$_ret .= '<ul class="slider-list">'.$_html.'</ul>';
             $_ret .= '</div>';
             

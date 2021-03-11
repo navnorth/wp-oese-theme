@@ -63,7 +63,7 @@
             jQuery('.bullet:first').attr('aria-label','Slide 1 current slide button');
         }
 
-        function next_slide(idx) {
+        function next_slide(idx) {      
             prevslide = indice;
             if (typeof(idx) === 'object' || typeof(idx) === 'undefined'){   
               indice = ((jQuery('.slide').length-1) == indice)? 0: ++indice;
@@ -72,18 +72,22 @@
             }
             left_animate(indice);
             show_slide(indice,'nxt');
+            var oese_acf_slider_liveregion_title = jQuery('.oese-acf-slider-wrapper ul.slider-list li[data-index="'+indice+'"]').find('h3.slide-title').text();
+            jQuery('.oese-acf-slider-accessibility-liveregion').html(oese_acf_slider_liveregion_title);
             progress = 0;
         }
 
-        function previous_slide(idx) {            
+        function previous_slide(idx) {
             prevslide = indice;
             if (typeof(idx) === 'object'){       
       		    indice = ($('.slide').length + indice - 1) % $('.slide').length;
             }else{
               indice = idx;
-            }         
+            }
             right_animate(indice);
             show_slide(indice,'prv');
+            var oese_acf_slider_liveregion_title = jQuery('.oese-acf-slider-wrapper ul.slider-list li[data-index="'+indice+'"]').find('h3.slide-title').text();
+            jQuery('.oese-acf-slider-accessibility-liveregion').html(oese_acf_slider_liveregion_title);
             progress = 0;
         }
 
@@ -221,6 +225,11 @@
           jQuery('form#searchform').removeClass('focused');
     })
     
+    jQuery(document).on('click','.oese-acf-slider-content-wrapper ul.bullet-list li button.bullet',function(){
+      var oese_acf_slider_liveregion_idx = jQuery(this).attr('data-index');
+      var oese_acf_slider_liveregion_title = jQuery('.oese-acf-slider-wrapper ul.slider-list li[data-index="'+oese_acf_slider_liveregion_idx+'"]').find('h3.slide-title').text();
+      jQuery('.oese-acf-slider-accessibility-liveregion').html(oese_acf_slider_liveregion_title);
+    });
     
     
 })(jQuery);

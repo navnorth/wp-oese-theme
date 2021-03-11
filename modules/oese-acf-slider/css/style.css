@@ -13,7 +13,7 @@
 	height: 400px;
 	margin: 0 auto;
 	position: relative;
-  border: 1px solid #ffffff;
+  border: 2px solid #ffffff;
   display: table;
 	padding:5px;
 }
@@ -749,3 +749,4 @@ animation-fill-mode: both;
 
 
 form#searchform.focused {border: 2px solid #333333 !important;}
+.oese-acf-slider-accessibility-liveregion {display: none;}
