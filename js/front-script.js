@@ -463,7 +463,7 @@ function wpdt_freeze_header_func(obj){
     var compare_message_elm = wpdt_target_table_wrapper.find('.dataTables_compare_message');
     compare_message_height = (compare_message_elm.outerHeight() + parseInt(compare_message_elm.css('marginBottom'))) - 18;
   }else{
-    compare_message_height = compare_message_height; 
+    compare_message_height = compare_message_height + 10; 
   }
   
   var wpdt_table_top = wpdt_target_table_wrapper.offset().top;
