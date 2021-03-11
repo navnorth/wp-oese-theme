@@ -448,7 +448,7 @@ jQuery(document).ready(function(){
 /* ----------------------- */
 
 function wpdt_freeze_header_func(obj){
-  var wpdt_target_table_wrapper = obj.find('.wpnn_wpdt_action_wrapper').closest('.wpDataTablesWrapper');
+  var wpdt_target_table_wrapper = obj.find('.wdtResponsiveWrapper').closest('.wpDataTablesWrapper');
   var wpdt_sticky_padding = 10;
   if( jQuery('#wpadminbar').length > 0 ){
     obj.find('.wdtResponsiveWrapper').addClass('admin');
@@ -458,14 +458,19 @@ function wpdt_freeze_header_func(obj){
     obj.find('.wdtResponsiveWrapper').removeClass('admin');
   }
   
-  var compare_message_elm = wpdt_target_table_wrapper.find('.dataTables_compare_message');
-  var compare_message_height = compare_message_elm.outerHeight() + parseInt(compare_message_elm.css('marginBottom'))
+  var compare_message_height = 0;
+  if(wpdt_target_table_wrapper.find('.dataTables_compare_message').length > 0){
+    var compare_message_elm = wpdt_target_table_wrapper.find('.dataTables_compare_message');
+    compare_message_height = (compare_message_elm.outerHeight() + parseInt(compare_message_elm.css('marginBottom'))) - 18;
+  }else{
+    compare_message_height = compare_message_height; 
+  }
   
   var wpdt_table_top = wpdt_target_table_wrapper.offset().top;
   var elm = wpdt_target_table_wrapper.find('div.dt-buttons'); /*jQuery('.wpDataTablesWrapper>div.dt-buttons');*/
   var wpdt_buttons_section_height = parseInt(elm.outerHeight()) + parseInt(elm.css('marginBottom'));
   var wpdt_message_height = 0;
-  var wpdt_tblhdr_above_elements = jQuery(window).scrollTop() - (wpdt_table_top + (wpdt_buttons_section_height + compare_message_height - 18));
+  var wpdt_tblhdr_above_elements = jQuery(window).scrollTop() - (wpdt_table_top + (wpdt_buttons_section_height + compare_message_height));
   
   if(wpdt_tblhdr_above_elements > 0){
     obj.find('.wpnn_wpdt_action_wrapper').css("padding-top", wpdt_sticky_padding+'px');
