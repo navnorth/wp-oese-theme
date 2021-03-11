@@ -215,9 +215,11 @@
     
     //ACF SLIDER ACCESSIBILITY
     jQuery(document).on('focus','#oese-acf-slider .slider-button', function(){
+          gbl_pause = true;
           jQuery('#oese-acf-slider').addClass('focused');
     })
     jQuery(document).on('blur','#oese-acf-slider .slider-button', function(){
+          gbl_pause = false;
           jQuery('#oese-acf-slider').removeClass('focused');
     })
     
@@ -240,8 +242,7 @@
     jQuery(document).on('click','.oese-acf-slider-content-wrapper ul.bullet-list li button.bullet',function(){
       var oese_acf_slider_liveregion_idx = jQuery(this).attr('data-index');
       var oese_acf_slider_liveregion_title = jQuery('.oese-acf-slider-wrapper ul.slider-list li[data-index="'+oese_acf_slider_liveregion_idx+'"]').find('h3.slide-title').text();
-      jQuery('.oese-acf-slider-accessibility-liveregion').html('slide '+oese_acf_slider_liveregion_idx+' button: '+oese_acf_slider_liveregion_title);
+      jQuery('.oese-acf-slider-accessibility-liveregion').html('slide '+(parseInt(oese_acf_slider_liveregion_idx) + 1) +' button: '+oese_acf_slider_liveregion_title);
     });
-    
     
 })(jQuery);
