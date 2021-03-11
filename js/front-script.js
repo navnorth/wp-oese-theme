@@ -412,6 +412,7 @@ function oese_trackEvent(eventCategory, eventAction, eventLabel, eventValue = nu
 
 jQuery(document).ready(function(){
   var wpdtTimerArray = []; 
+  var wpdtAccssArray = []; 
   var wpdtInstanceCntr = 0;
   jQuery('.wpdt-c').each(function(i, obj) {
     wpdtTimerArray[wpdtInstanceCntr] = setTimeout(function(){
@@ -436,9 +437,31 @@ jQuery(document).ready(function(){
         jQuery(window).resize(function(){
           wpdt_freeze_header_func(wpdtMainWrapper);
         });
+        
+
+          
+        //ACCESSIBILITY
+        // aria-label for dropdown boxes in the filter section
+        
+        if(jQuery(obj).find('.wpDataTableFilterBox').length){
+          jQuery(obj).find('.wpDataTableFilterSection').find('button.dropdown-toggle').each(function(index,obj){
+            console.log('111');
+              var button_lbl = jQuery(obj).closest('.wpDataTableFilterSection').find('label').text();
+              jQuery(obj).attr('aria-label',button_lbl);
+          });
+          
+          jQuery(obj).find('.wpDataTableFilterSection').find('select.wdt-select-filter').each(function(index,obj){
+              var select_lbl = jQuery(obj).closest('.wpDataTableFilterSection').find('label').text();
+              jQuery(obj).attr('aria-label',select_lbl);
+          });
+        }
+        
+        
+        
         wpdtInstanceCntr++;
       }
     },100);
+
   });
   
 });
