@@ -452,7 +452,8 @@ function wpdt_freeze_header_func(obj){
   var wpdt_sticky_padding = 10;
   if( jQuery('#wpadminbar').length > 0 ){
     obj.find('.wdtResponsiveWrapper').addClass('admin');
-    wpdt_sticky_padding = parseInt(jQuery('html').css('marginTop')) + 10;
+    //wpdt_sticky_padding = parseInt(jQuery('html').css('marginTop')) + 10;
+    wpdt_sticky_padding = parseInt(jQuery('#wpadminbar').outerHeight()) + 10;
   }else{
     obj.find('.wdtResponsiveWrapper').removeClass('admin');
   }
