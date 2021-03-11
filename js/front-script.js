@@ -447,7 +447,8 @@ jQuery(document).ready(function(){
           jQuery(obj).find('.wpDataTableFilterSection').find('button.dropdown-toggle').each(function(index,obj){
             console.log('111');
               var button_lbl = jQuery(obj).closest('.wpDataTableFilterSection').find('label').text();
-              jQuery(obj).attr('aria-label',button_lbl);
+              jQuery(obj).attr('aria-label',button_lbl + ' select');
+              jQuery(obj).attr('role','select');
           });
           
           jQuery(obj).find('.wpDataTableFilterSection').find('select.wdt-select-filter').each(function(index,obj){
