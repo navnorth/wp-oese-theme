@@ -62,8 +62,8 @@ function oese_acf_slider_func($attr, $content = null){
             $_ret .= '</div>';
             
             if($_slide_count > 1){
-              $_ret .= '<button class="oese-slider-sidenavs left slider-button arrow previous" role = "button" aria-label="Home Page Slider: previous slide button" data-index="0">&#10094;</button>';
-              $_ret .= '<button class="oese-slider-sidenavs right slider-button arrow next" role = "button" aria-label="Home Page Slider: next slide button" data-index="0">&#10095;</button>';      
+              $_ret .= '<button class="oese-slider-sidenavs left slider-button arrow previous" role = "button" aria-label="Home Page Slider: previous slide" data-index="0">&#10094;</button>';
+              $_ret .= '<button class="oese-slider-sidenavs right slider-button arrow next" role = "button" aria-label="Home Page Slider: next slide" data-index="0">&#10095;</button>';      
               $_ret .= '<ul class="bullet-list"></ul>';
             }else{
               $_slider_autoplay = 0;

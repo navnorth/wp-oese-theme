@@ -28,7 +28,7 @@
                 	var li;
       		jQuery('.slide').each(function(i,obj) {
             var slide_title = jQuery(obj).find('.slide-content >a >h3').text();
-          	li = jQuery('<li><button class="bullet slider-button" role = "button" aria-label="go to slide number '+(i+1)+': '+slide_title+'" data-index="'+i+'"></button></li>');
+          	li = jQuery('<li><button class="bullet slider-button" role = "button" aria-label="Slide '+(i+1)+': button" data-index="'+i+'"></button></li>');
           	$bullets_container.append(li);
       		});
       	}
@@ -57,9 +57,10 @@
         }
 
         function show_first_slide() {
-            $('.slide').hide();
-            $('.slide:first').show();
-            $('.bullet:first').addClass('active');
+            jQuery('.slide').hide();
+            jQuery('.slide:first').show();
+            jQuery('.bullet:first').addClass('active');
+            jQuery('.bullet:first').attr('aria-label','Slide 1 current slide button');
         }
 
         function next_slide(idx) {
@@ -87,14 +88,15 @@
         }
 
         function show_slide(indice,typ) { // Show or hide a slide
-            remove_activeClass( $('.bullet') );
-            $('.slide').each(function() {
-                let $this = $(this);
+            remove_activeClass( $('.bullet') );    
+            jQuery('.slide').each(function(i, obj) {
+                let $this = jQuery(this);
                 if ( $this.data('index') == indice ) {
                     $('.bullet[data-index="'+indice+'"').addClass('active');
+                    $('.bullet[data-index="'+indice+'"').attr('aria-label','Slide '+ (parseInt($this.data('index')) + 1) +' current slide button');
                     $this.show();
                 }else {
-
+                    $('.bullet[data-index="'+$this.data('index')+'"').attr('aria-label','Slide '+ (parseInt($this.data('index')) + 1) +' button');
                 }
             });
         }
