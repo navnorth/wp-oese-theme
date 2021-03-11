@@ -776,3 +776,7 @@ iframe.oese-featured-video-shrtcd-ytvideo {
 .wpnn_wpdt_action_wrapper { position: unset !important; }
 */
 }
+
+@media screen and (max-width: 633px) {
+  .wpDataTablesWrapper div.dt-buttons {float:left !important;}
+}
