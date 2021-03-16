@@ -30,6 +30,15 @@ function oese_acf_slider_func($attr, $content = null){
   			foreach ($_slides as $key => $_slide):
           if(!empty($_slide['oese_acf_slider_image'])):
   					$_image_url = $_slide['oese_acf_slider_image']['url'];
+            if(!empty($_slide['oese_acf_slider_image_alt'])){
+              $_image_alt = $_slide['oese_acf_slider_image_alt'];
+            }else{
+              if(trim($_slide['oese_acf_slider_image']['alt']," ") != ""){
+                  $_image_alt = $_slide['oese_acf_slider_image']['alt'];
+              }else{
+                  $_image_alt = 'slide image '.($_cnt + 1);
+              }
+            }          
   					$_image_caption = trim($_slide['oese_acf_slider_caption']," ");
   					$_image_link = trim($_slide['oese_acf_slider_url']," ");
             $_image_link_target = $_slide['oese_acf_slider_url_target'];
@@ -40,7 +49,7 @@ function oese_acf_slider_func($attr, $content = null){
                         $_caption_html = ($_image_caption != '')?'<h3 class="slide-title">'.$_image_caption.'</h3>': '';  
                         if($_image_link != ''){                        
                           $_html .= '<a href="'.$_image_link.'" target="'.$_image_link_target.'" class="no_target_change external_link" tabindex="-1">';					                    
-                              $_html .= '<img src="'.$_image_url.'" style="width:100%" alt="">';   
+                              $_html .= '<img src="'.$_image_url.'" style="width:100%" alt="'.$_image_alt.'">';   
                               $_html .= $_caption_html;             
                           $_html .= '</a>';                                         
                         }else{
@@ -57,7 +66,7 @@ function oese_acf_slider_func($attr, $content = null){
         $_ret = '';
         $_ret .= '<div id="oese-acf-slider">';
           $_ret .= '<div class="oese-acf-slider-content-wrapper" style="display:none;">';
-            $_ret .= '<div class="oese-acf-slider-wrapper">';
+            $_ret .= '<div class="oese-acf-slider-wrapper" tabindex="0">';
               $_ret .= '<div aria-live="polite" aria-atomic="true" class="oese-acf-slider-accessibility-liveregion visuallyhidden"></div>';
       				$_ret .= '<ul class="slider-list">'.$_html.'</ul>';
             $_ret .= '</div>';

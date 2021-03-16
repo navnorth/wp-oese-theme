@@ -750,3 +750,8 @@ animation-fill-mode: both;
 
 form#searchform.focused {border: 2px solid #333333 !important;}
 .oese-acf-slider-accessibility-liveregion {height:0px !important; overflow:hidden !important;}
+/*
+.oese-acf-slider-wrapper:focus {
+    outline: 2px solid #333333 !important;
+}
+*/

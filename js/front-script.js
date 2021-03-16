@@ -445,10 +445,12 @@ jQuery(document).ready(function(){
         
         if(jQuery(obj).find('.wpDataTableFilterBox').length){
           jQuery(obj).find('.wpDataTableFilterSection').find('button.dropdown-toggle').each(function(index,obj){
-            console.log('111');
               var button_lbl = jQuery(obj).closest('.wpDataTableFilterSection').find('label').text();
-              jQuery(obj).attr('aria-label',button_lbl + ' select');
-              jQuery(obj).attr('role','select');
+              jQuery(obj).attr('aria-label',button_lbl);
+              jQuery(obj).attr('role','combobox');
+              var dtidx = jQuery(obj).siblings('.wdt-select-filter');
+              jQuery(obj).siblings('.wdt-select-filter').attr('id','combobox'+dtidx.attr('data-index'));
+              jQuery(obj).attr('aria-owns','combobox'+dtidx.attr('data-index'));
           });
           
           jQuery(obj).find('.wpDataTableFilterSection').find('select.wdt-select-filter').each(function(index,obj){
@@ -459,6 +461,31 @@ jQuery(document).ready(function(){
         
         
         
+        jQuery.each(wpDataTables, function(index, item) {
+          var cur_wpdt_instance = wpdtMainWrapper.find('table.wpDataTable').attr('id');
+          if(cur_wpdt_instance == index){
+            var wpdt_obj = jQuery('#'+cur_wpdt_instance);
+            var pgnt_obj = jQuery('#'+cur_wpdt_instance+'_paginate');
+
+            console.log('changing');
+            pgnt_obj.find('a.paginate_button.disabled').attr('tabindex','-1');
+            wpdt_obj.find('tr td a.external_link').attr('tabindex','0');
+            wpdt_obj.find('tr td a.external_link button').attr('tabindex','-1');
+
+            item.addOnDrawCallback( function(wpdt_gbl_instance_cntr){
+              console.log('WOW');
+              setTimeout(function(){
+                pgnt_obj.find('a.paginate_button').attr('tabindex','0');
+                pgnt_obj.find('a.paginate_button.disabled').attr('tabindex','-1');
+                
+                wpdt_obj.find('tr td.column-masterdetail a.master_detail_column_btn').attr('tabindex','0');
+                wpdt_obj.find('tr td a.external_link').attr('tabindex','0');
+                wpdt_obj.find('tr td a.external_link button').attr('tabindex','-1');
+              },500);
+            })
+          }
+        });
+
         wpdtInstanceCntr++;
       }
     },100);
