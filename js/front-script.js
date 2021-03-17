@@ -447,9 +447,10 @@ jQuery(document).ready(function(){
           jQuery(obj).find('.wpDataTableFilterSection').find('button.dropdown-toggle').each(function(index,obj){
               var button_lbl = jQuery(obj).closest('.wpDataTableFilterSection').find('label').text();
               jQuery(obj).attr('aria-label',button_lbl);
+              jQuery(obj).siblings('.wdt-filter-control').attr('aria-label',button_lbl);
               jQuery(obj).attr('role','combobox');
-              var dtidx = jQuery(obj).siblings('.wdt-select-filter');
-              jQuery(obj).siblings('.wdt-select-filter').attr('id','combobox'+dtidx.attr('data-index'));
+              var dtidx = jQuery(obj).siblings('.wdt-filter-control');
+              jQuery(obj).siblings('.wdt-filter-control').attr('id','combobox'+dtidx.attr('data-index'));
               jQuery(obj).attr('aria-owns','combobox'+dtidx.attr('data-index'));
           });
           
