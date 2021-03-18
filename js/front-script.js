@@ -231,6 +231,31 @@ jQuery( document ).ready(function() {
       jQuery('.dropdown-menu > li > a').focus(function(){
         jQuery(this).closest('.length_menu').addClass('open');
       });
+      
+      jQuery(document).on('keydown','.wpDataTableFilterSection .wdt-select-filter .dropdown-toggle',function(e){
+        var keyCode = (e.keyCode ? e.keyCode : e.which);
+        if(keyCode == 13){
+          setTimeout(function(){
+            if (jQuery(e.target).closest('.wdt-select-filter').hasClass('show')) {
+                jQuery(e.target).closest('.wdt-select-filter').addClass('open');
+            }
+          }, 1000);
+        }
+      });
+      
+      jQuery(document).on('keydown','.wpDataTableFilterSection .wdt-multiselect-filter .dropdown-toggle',function(e){
+        var keyCode = (e.keyCode ? e.keyCode : e.which);
+        if(keyCode == 13){
+          setTimeout(function(){
+            if (jQuery(e.target).closest('.wdt-multiselect-filter').hasClass('show')) {
+                jQuery(e.target).parent('.wdt-multiselect-filter').addClass('open');
+            }
+          }, 1000);
+        }
+      });
+      
+      
+        
   
       //wpDataTable Search Input
       jQuery('#table_1_wrapper.wpDataTablesWrapper .dataTables_filter input[type="search"]').focus(function(){
@@ -337,7 +362,6 @@ jQuery( document ).ready(function() {
                 jQuery('.oese-featured-video-shrtcd-overlay').on('mouseup',function(e){
                   e.preventDefault ? e.preventDefault() : e.returnValue = false;
                   var txtClass = jQuery(e.target).attr("class");
-                  console.log(txtClass);
                 })          
             }, 500);
         }
@@ -353,7 +377,6 @@ function addnavaccsttr(){
   jQuery('.paginate_button.last').attr({'data-value': 'Navigate to last page','aria-label': 'Navigate to last page','title': 'Navigate to last page'})    
   jQuery('.dataTables_paginate>span').children('a.paginate_button').each(function(e) {
     var pageno = jQuery(this).text();
-    //console.log(pageno);
     jQuery(this).attr({'data-value': 'Navigate to page '+pageno,'aria-label': 'Navigate to page '+pageno,'title': 'Navigate to page '+pageno,	});
   });
 }
@@ -413,10 +436,12 @@ function oese_trackEvent(eventCategory, eventAction, eventLabel, eventValue = nu
 jQuery(document).ready(function(){
   var wpdtTimerArray = []; 
   var wpdtAccssArray = []; 
-  var wpdtInstanceCntr = 0;
+  var wpdtInstanceCntr = 0; 
+  var wpdtLiveAdded = 0;
   jQuery('.wpdt-c').each(function(i, obj) {
     wpdtTimerArray[wpdtInstanceCntr] = setTimeout(function(){
       if(jQuery(obj).find('table.wpDataTable').length){
+        wpdtExists = 1;
         clearTimeout(wpdtTimerArray[wpdtInstanceCntr]);
         var wpdtMainWrapper = jQuery(obj);
         wpdtMainWrapper.find('table.wpDataTable').wrap('<div class="wdtResponsiveWrapper"></div>');
@@ -438,6 +463,39 @@ jQuery(document).ready(function(){
           wpdt_freeze_header_func(wpdtMainWrapper);
         });
         
+        if(wpdtLiveAdded == 0){
+          jQuery('body').prepend('<div aria-live="polite" aria-atomic="true" class="wpdt-accessibility-liveregion visuallyhidden"></div>');
+          jQuery(document).on('focus','.wdt-select-filter ul.dropdown-menu li a',function(){
+              var wpdt_cbx_label = jQuery(this).closest('.wpDataTableFilterSection').find('label').text();
+              var wpdt_opt_text = jQuery(this).find('span.text').text();
+              if(jQuery(this).attr('aria-selected') == "true"){
+                if(wpdt_opt_text.trim() > ''){
+                  jQuery('.wpdt-accessibility-liveregion').text(wpdt_opt_text+' selected');
+                }else{
+                  jQuery('.wpdt-accessibility-liveregion').text('Please select from the list below');
+                }
+              }else{
+                if(wpdt_opt_text.trim() != ''){
+                  jQuery('.wpdt-accessibility-liveregion').text(wpdt_opt_text);
+                }else{
+                  jQuery('.wpdt-accessibility-liveregion').text('Empty Choice');
+                }
+              }
+          });
+          
+          jQuery(document).on('focus','.wdt-multiselect-filter ul.dropdown-menu li a',function(){
+              var wpdt_cbx_label = jQuery(this).closest('.wpDataTableFilterSection').find('label').text();
+              var wpdt_opt_text = jQuery(this).find('span.text').text();
+              if(jQuery(this).attr('aria-selected') == "true"){
+                jQuery('.wpdt-accessibility-liveregion').text(wpdt_opt_text+' selected press enter to remove from list');
+              }else{
+                  jQuery('.wpdt-accessibility-liveregion').text(wpdt_opt_text+' press enter to add to list');
+              }
+              
+          });
+          
+        }
+        wpdtLiveAdded = 1;
 
           
         //ACCESSIBILITY
@@ -449,9 +507,10 @@ jQuery(document).ready(function(){
               jQuery(obj).attr('aria-label',button_lbl);
               jQuery(obj).siblings('.wdt-filter-control').attr('aria-label',button_lbl);
               jQuery(obj).attr('role','combobox');
-              var dtidx = jQuery(obj).siblings('.wdt-filter-control');
-              jQuery(obj).siblings('.wdt-filter-control').attr('id','combobox'+dtidx.attr('data-index'));
-              jQuery(obj).attr('aria-owns','combobox'+dtidx.attr('data-index'));
+              var wpdt_instance_id = parseInt(jQuery(obj).closest('.wpdt_main_wrapper').attr('id').replace('wpdt_main_wrapper_',''));
+              var dtidx = '_'+wpdt_instance_id+'_'+jQuery(obj).siblings('.wdt-filter-control').attr('data-index');
+              jQuery(obj).siblings('.wdt-filter-control').attr('id','combobox'+dtidx);
+              jQuery(obj).attr('aria-owns','combobox'+dtidx);
           });
           
           jQuery(obj).find('.wpDataTableFilterSection').find('select.wdt-select-filter').each(function(index,obj){
@@ -468,13 +527,12 @@ jQuery(document).ready(function(){
             var wpdt_obj = jQuery('#'+cur_wpdt_instance);
             var pgnt_obj = jQuery('#'+cur_wpdt_instance+'_paginate');
 
-            console.log('changing');
             pgnt_obj.find('a.paginate_button.disabled').attr('tabindex','-1');
             wpdt_obj.find('tr td a.external_link').attr('tabindex','0');
             wpdt_obj.find('tr td a.external_link button').attr('tabindex','-1');
 
             item.addOnDrawCallback( function(wpdt_gbl_instance_cntr){
-              console.log('WOW');
+
               setTimeout(function(){
                 pgnt_obj.find('a.paginate_button').attr('tabindex','0');
                 pgnt_obj.find('a.paginate_button.disabled').attr('tabindex','-1');
