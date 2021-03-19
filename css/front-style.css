@@ -452,7 +452,7 @@ button.wdt-clear-filters-button:before, button.wdt-clear-filters-widget-button:b
 .bootstrap-select.btn-group .dropdown-toggle .filter-option { color:#0000000; }
 .wpDataTableFilterBox .wpDataTableFilterSection .wdt-filter-control .dropdown-menu{ max-height:482px !important; height:482px !important; }
 .wpDataTableFilterBox .wpDataTableFilterSection .column-category .wdt-filter-control .dropdown-menu{ height:auto !important;  }
-
+.wpDataTable .column-masterdetail:after {display:none !important;}
 
 /* table font color */
 .wpdt-c .wpDataTablesWrapper table.wpDataTable thead th,

@@ -130,7 +130,7 @@ input#secondary-save-post {float: left;}
   transition: all .3s ease;
   display: inline-block;
 }
-
+.wpDataTable th.column-masterdetail:after {display:none !important;}
 #wdt-md-modal .detailColumn a button,
 #wdt-cd-modal tr td.wdtcomparerow span a button {
     background-color: #284179 !important;
