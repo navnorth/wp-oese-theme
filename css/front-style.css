@@ -333,6 +333,7 @@ body.modal-open { overflow: hidden; }
 .wpdt-c .modal .modal-body .wdt-details-dialog-fields-block .form-group .detailColumn { font-size:14px; }
 .wpdt-c .modal .modal-body .wdt-details-dialog-fields-block .form-group { margin-bottom:5px; }
 .wpDataTableFilterBox .wpDataTableFilterSection div:first-child {margin-top:0px !important;}
+.wpdt-accessibility-liveregion {min-height:0px !important;height: 0px !important;overflow: hidden !important;}
 
 /* -------------- */
 /* WDT-RESPONSIVE
@@ -452,7 +453,7 @@ button.wdt-clear-filters-button:before, button.wdt-clear-filters-widget-button:b
 .bootstrap-select.btn-group .dropdown-toggle .filter-option { color:#0000000; }
 .wpDataTableFilterBox .wpDataTableFilterSection .wdt-filter-control .dropdown-menu{ max-height:482px !important; height:482px !important; }
 .wpDataTableFilterBox .wpDataTableFilterSection .column-category .wdt-filter-control .dropdown-menu{ height:auto !important;  }
-.wpDataTable .column-masterdetail:after {display:none !important;}
+.wpDataTable th.column-masterdetail:after {display:none !important;}
 
 /* table font color */
 .wpdt-c .wpDataTablesWrapper table.wpDataTable thead th,
