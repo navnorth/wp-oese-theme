@@ -530,7 +530,10 @@ jQuery(document).ready(function(){
             pgnt_obj.find('a.paginate_button.disabled').attr('tabindex','-1');
             wpdt_obj.find('tr td a.external_link').attr('tabindex','0');
             wpdt_obj.find('tr td a.external_link button').attr('tabindex','-1');
-
+            
+            pgnt_obj.find('.paginate_button').remove('span');
+            pgnt_obj.find('.paginate_button.current').append('<span>Current Page</span>');
+            
             item.addOnDrawCallback( function(wpdt_gbl_instance_cntr){
 
               setTimeout(function(){
@@ -540,6 +543,10 @@ jQuery(document).ready(function(){
                 wpdt_obj.find('tr td.column-masterdetail a.master_detail_column_btn').attr('tabindex','0');
                 wpdt_obj.find('tr td a.external_link').attr('tabindex','0');
                 wpdt_obj.find('tr td a.external_link button').attr('tabindex','-1');
+                
+                pgnt_obj.find('.paginate_button').remove('span');
+                pgnt_obj.find('.paginate_button.current').append('<span>Current Page</span>');
+                
               },500);
             })
           }
