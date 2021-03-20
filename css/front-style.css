@@ -334,6 +334,14 @@ body.modal-open { overflow: hidden; }
 .wpdt-c .modal .modal-body .wdt-details-dialog-fields-block .form-group { margin-bottom:5px; }
 .wpDataTableFilterBox .wpDataTableFilterSection div:first-child {margin-top:0px !important;}
 .wpdt-accessibility-liveregion {min-height:0px !important;height: 0px !important;overflow: hidden !important;}
+.dataTables_paginate a.paginate_button.current >span {
+    display: block;
+    max-height: 0px !important;
+    overflow: hidden !important;
+    height: 0px !important;
+    max-width: 0px !important;
+    width: 0px !important;
+}
 
 /* -------------- */
 /* WDT-RESPONSIVE

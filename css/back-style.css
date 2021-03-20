@@ -131,6 +131,14 @@ input#secondary-save-post {float: left;}
   display: inline-block;
 }
 .wpDataTable th.column-masterdetail:after {display:none !important;}
+.dataTables_paginate a.paginate_button.current >span {
+    display: block;
+    max-height: 0px !important;
+    overflow: hidden !important;
+    height: 0px !important;
+    max-width: 0px !important;
+    width: 0px !important;
+}
 #wdt-md-modal .detailColumn a button,
 #wdt-cd-modal tr td.wdtcomparerow span a button {
     background-color: #284179 !important;
