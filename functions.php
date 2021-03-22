@@ -7,7 +7,7 @@
  * filter hooks in WordPress to change core functionality.
  */
 define( "WP_OESE_THEME_NAME", "WP OESE Theme" );
-define( "WP_OESE_THEME_VERSION", "1.9.0" );
+define( "WP_OESE_THEME_VERSION", "1.9.1" );
 define( "WP_OESE_THEME_SLUG", "wp_oese_theme" );
 
 // Set up the content width value based on the theme's design and stylesheet.
@@ -712,7 +712,7 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
   * Page Edit Modal Parent Attribute
   **/
   require_once( get_stylesheet_directory() . '/modules/modal-parent/modal_parent.php' );
- 
+
  /**
  * Shortcodes Blocks
  **/
