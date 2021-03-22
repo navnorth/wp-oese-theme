@@ -342,12 +342,24 @@ body.modal-open { overflow: hidden; }
     max-width: 0px !important;
     width: 0px !important;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 575px) {
   #wdt-md-modal {padding-right:0px !important;}
   #wdt-md-modal .modal-dialog {width:100% !important;}
   #wdt-md-modal .modal .modal-body {padding: 15px 15px !important;}
   #wdt-md-modal .modal-dialog {margin: 0px !important;}
   #wdt-md-modal .detailColumn a {text-overflow: ellipsis;display: block;overflow: hidden !important;}
+  #wdt-md-modal .modal-dialog {
+    margin: 0px !important;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+  }
+  #wdt-md-modal .modal-content {height: 100% !important;}
+}
+#wdt-md-modal .detailColumn {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
 }
 
 /* -------------- */
