@@ -342,6 +342,11 @@ body.modal-open { overflow: hidden; }
     max-width: 0px !important;
     width: 0px !important;
 }
+@media screen and (max-width: 768px) {
+  #wdt-md-modal .modal-dialog {width:100% !important;}
+  #wdt-md-modal .modal .modal-body {padding: 15px 15px !important;}
+  #wdt-md-modal .modal-dialog {margin: 0px !important;}
+}
 
 /* -------------- */
 /* WDT-RESPONSIVE
