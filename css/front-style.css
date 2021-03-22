@@ -343,9 +343,11 @@ body.modal-open { overflow: hidden; }
     width: 0px !important;
 }
 @media screen and (max-width: 768px) {
+  #wdt-md-modal {padding-right:0px !important;}
   #wdt-md-modal .modal-dialog {width:100% !important;}
   #wdt-md-modal .modal .modal-body {padding: 15px 15px !important;}
   #wdt-md-modal .modal-dialog {margin: 0px !important;}
+  #wdt-md-modal .detailColumn a {text-overflow: ellipsis;display: block;overflow: hidden !important;}
 }
 
 /* -------------- */
