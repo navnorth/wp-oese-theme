@@ -506,7 +506,7 @@ jQuery(document).ready(function(){
               var button_lbl = jQuery(obj).closest('.wpDataTableFilterSection').find('label').text();
               jQuery(obj).attr('aria-label',button_lbl);
               jQuery(obj).siblings('.wdt-filter-control').attr('aria-label',button_lbl);
-              jQuery(obj).attr('role','combobox');
+              jQuery(obj).removeAttr('role');
               var wpdt_instance_id = parseInt(jQuery(obj).closest('.wpdt_main_wrapper').attr('id').replace('wpdt_main_wrapper_',''));
               var dtidx = '_'+wpdt_instance_id+'_'+jQuery(obj).siblings('.wdt-filter-control').attr('data-index');
               jQuery(obj).siblings('.wdt-filter-control').attr('id','combobox'+dtidx);
