@@ -3092,7 +3092,14 @@ add_filter('wp_check_filetype_and_ext', function($values, $file, $filename, $mim
  * Include Slider
  */
 include( get_template_directory() . "/modules/oese-acf-slider/oese-acf-slider.php");
-/* PREVIEW CAPABILITY */
-include( get_template_directory() . "/modules/oesepreview/oesepreviewguten.php");
 
-//add_filter('use_block_editor_for_post', '__return_false', 10);
+/* ENABLE GUTENBERG EDITOR */
+$_is_gutenberg = 'false';  // use "true" to activate gutenberg editor
+
+/* PREVIEW CAPABILITY */
+add_filter('use_block_editor_for_post', '__return_'.$_is_gutenberg, 10);
+if ( $_is_gutenberg == 'true') { // Use this in Gutenberg
+    include( get_template_directory() . "/modules/oesepreview/oesepreviewguten.php");
+}else{ // Use this on classic
+    include( get_template_directory() . "/modules/oesepreview/oesepreview.php");
+}
