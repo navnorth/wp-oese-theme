@@ -7,7 +7,7 @@
  * filter hooks in WordPress to change core functionality.
  */
 define( "WP_OESE_THEME_NAME", "WP OESE Theme" );
-define( "WP_OESE_THEME_VERSION", "1.9.1" );
+define( "WP_OESE_THEME_VERSION", "1.9.2" );
 define( "WP_OESE_THEME_SLUG", "wp_oese_theme" );
 
 // Set up the content width value based on the theme's design and stylesheet.
@@ -195,6 +195,24 @@ function twentytwelve_scripts_styles() {
   $wp_styles->add_data( 'twentytwelve-ie', 'conditional', 'lt IE 9' );
 }
 add_action( 'wp_enqueue_scripts', 'twentytwelve_scripts_styles' );
+
+
+function insert_admin_google_fonts(){
+    echo '<link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">';
+}
+add_action( 'admin_head', 'insert_admin_google_fonts' );
+
+function insert_front_google_fonts(){
+    echo '<link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">';
+}
+add_action( 'wp_head', 'insert_front_google_fonts' );
+
 
 /**
  * Enqueue styles for the block-based editor.
@@ -3094,7 +3112,7 @@ add_filter('wp_check_filetype_and_ext', function($values, $file, $filename, $mim
 include( get_template_directory() . "/modules/oese-acf-slider/oese-acf-slider.php");
 
 /* ENABLE GUTENBERG EDITOR */
-$_is_gutenberg = 'false';  // use "true" to activate gutenberg editor
+$_is_gutenberg = 'true';  // use "true" to activate gutenberg editor
 
 /* PREVIEW CAPABILITY */
 add_filter('use_block_editor_for_post', '__return_'.$_is_gutenberg, 10);
