@@ -36,7 +36,7 @@ function init() {
     if (!is_cron()) {
       add_action('acf/save_post', __NAMESPACE__.'\\acf_on_publish_post', 130, 1);
     }
-    add_action('transition_post_status', __NAMESPACE__.'\\on_publish_post', 10, 3);
+    //add_action('transition_post_status', __NAMESPACE__.'\\on_publish_post', 10, 3);
   }
   /* add_action('admin_bar_menu', __NAMESPACE__.'\\admin_bar_item', 100); */
 }
@@ -99,15 +99,19 @@ function create() {
 
 
 function transition_post_status_handler( $new_status, $old_status, $post ) {
-  if($new_status == 'draft' || $new_status == 'pending'){
-    //regenerate password if metadata does not exist or existing but empty.
-    if(!metadata_exists('post', $post->ID, '_post_oesepreview_pwd') ||
-       empty( get_post_meta( $post->ID, '_post_oesepreview_pwd', true ))){
-         update_post_meta($post->ID, '_post_oesepreview_pwd', uniqid());      // generate password
+  //echo '<script>console.log('.$new_status.');</script>';
+  if($old_status !== $new_status){
+    if($new_status == 'draft' || $new_status == 'pending'){
+      //regenerate password if metadata does not exist or existing but empty.
+      if(!metadata_exists('post', $post->ID, '_post_oesepreview_pwd') ||
+         empty( get_post_meta( $post->ID, '_post_oesepreview_pwd', true ))){
+           update_post_meta($post->ID, '_post_oesepreview_pwd', uniqid());      // generate password
+      }
+    }elseif($new_status == 'publish'){
+      on_publish_post($new_status, $old_status, $post);
+      //$new_id = copy_post($post, null, $post->ID);
+      //delete_post_meta($new_id, '_post_oesepreview_pwd'); 
     }
-  }elseif($new_status == 'publish'){
-    $new_id = copy_post($post, null, $post->ID);
-    delete_post_meta($new_id, '_post_oesepreview_pwd'); 
   }
 }
 add_action( 'transition_post_status', __NAMESPACE__.'\\transition_post_status_handler', 10, 3);
