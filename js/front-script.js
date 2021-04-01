@@ -500,6 +500,16 @@ jQuery(document).ready(function(){
           
         //ACCESSIBILITY
         // aria-label for dropdown boxes in the filter section
+        var listboxobserver = new MutationObserver(function(mutations) {
+          for (let mutation of mutations) {
+             if (mutation.type === 'childList') {
+               jQuery(mutation.target).find('li').attr('role','presentation');
+             }
+             if (mutation.type === 'attributes') {
+               jQuery(mutation.target).siblings('.bs-searchbox').find('input').attr('aria-expanded',jQuery(mutation.target).attr('aria-expanded'));
+             }
+          }
+        });
         
         if(jQuery(obj).find('.wpDataTableFilterBox').length){
           jQuery(obj).find('.wpDataTableFilterSection').find('button.dropdown-toggle').each(function(index,obj){
@@ -510,7 +520,10 @@ jQuery(document).ready(function(){
               var wpdt_instance_id = parseInt(jQuery(obj).closest('.wpdt_main_wrapper').attr('id').replace('wpdt_main_wrapper_',''));
               var dtidx = '_'+wpdt_instance_id+'_'+jQuery(obj).siblings('.wdt-filter-control').attr('data-index');
               jQuery(obj).siblings('.wdt-filter-control').attr('id','combobox'+dtidx);
-              jQuery(obj).attr('aria-owns','combobox'+dtidx);
+              jQuery(obj).attr('aria-owns','combobox'+dtidx);            
+              jQuery(obj).siblings('.dropdown-menu').removeAttr('role').find('.bs-searchbox').find('input').attr('role','combobox').attr('aria-owns','listbox'+dtidx).attr('aria-expanded','false');
+              jQuery(obj).siblings('.dropdown-menu').find('ul.dropdown-menu').attr('id','listbox'+dtidx).attr('aria-label', button_lbl.replace(':',''));            
+              listboxobserver.observe(document.querySelector('#listbox'+dtidx), {childList: true,attributes: true});            
           });
           
           jQuery(obj).find('.wpDataTableFilterSection').find('select.wdt-select-filter').each(function(index,obj){
