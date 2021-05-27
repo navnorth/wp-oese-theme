@@ -15,7 +15,7 @@ function oesePreviewDraftCopyToClipboard(element) {
 jQuery(window).bind("load", function() {  
   
   // POST STATUS CHANGE OBSERVER
-  if(wp.data.select( 'core/editor' ) != null){ //gutenberg editor detected
+  if(wpoesePreviewGlobal['oeseIsGutenbergActive'] == 'true'){ //Gutenberg Editor is in use
     var screen_type = (wp.data === undefined)?'none': wp.data.select('core/editor').getCurrentPostAttribute('type');
     if(screen_type == 'page' || screen_type == 'post'){
       
@@ -34,12 +34,15 @@ jQuery(window).bind("load", function() {
             oldPostStatus = newPostStatus;
         }
       });
+      
+      // Post Status Info Panel Drop/Undrop observer.
+      var mutate_target_element = document.querySelector('.edit-post-layout');
+      columnsettingobserver.observe(mutate_target_element, {childList: true, subtree: false});
+      
     }
   
     
-    // Post Status Info Panel Drop/Undrop observer.
-    var mutate_target_element = document.querySelector('.edit-post-layout');
-    columnsettingobserver.observe(mutate_target_element, {childList: true, subtree: false});
+    
   
   }
   
@@ -67,6 +70,16 @@ jQuery(document).on('focus','.editor-post-title__input',function(){
   setTimeout(function(){
     wpnnSetButton(); 
   }, 100);
+})
+
+// Prevent accidental published
+jQuery(document).on('click','.oese-preview-publish-button',function(e){
+  e.preventDefault ? e.preventDefault() : e.returnValue = false;
+  var targeturl = jQuery(this).attr('href');
+  var oesePubConfirmAns = confirm('Publishing this preview will overwrite its original.\r\nIf you only want to save this preview, please use "Save Draft".\r\n\r\n Would you like to publish this preview?');
+  if (oesePubConfirmAns == true) {
+    window.location.href = targeturl;
+  }
 })
 
 // Set Preview HTML/Button/URL Function
@@ -97,7 +110,7 @@ function wpnnSetButton(callback, newstatus){
         if(wpnn_preview_isparent == 'false' && !jQuery('a.editor-post-publish-panel__toggle').length ){ //Preview Type of post only
           wp.data.dispatch( 'core/editor' ).lockPostSaving( 'requiredValueLock' );
           jQuery('.editor-post-publish-panel__toggle').hide();
-          v_btn = '<a href="'+wpnn_preview_theme_url+"/modules/oesepreview/oesepreview_ajax.php?action=wpnnTransitionHandlerGuten&old=draft&new=publish&pid="+pid+'" aria-disabled="false" aria-expanded="false" class="components-button editor-post-publish-panel__toggle is-button is-primary">Publish…</a>';
+          v_btn = '<a href="'+wpnn_preview_theme_url+"/modules/oesepreview/oesepreview_ajax.php?action=wpnnTransitionHandlerGuten&old=draft&new=publish&pid="+pid+'" aria-disabled="false" aria-expanded="false" class="components-button editor-post-publish-panel__toggle is-button is-primary oese-preview-publish-button">Publish…</a>';
           wpnn_preview_publish_button = v_btn;
           jQuery(wpnn_preview_publish_button).insertAfter(".editor-post-publish-panel__toggle");
         }else{

@@ -46,6 +46,7 @@ function wp_oese_preview_draft_enqueue(){
   wp_enqueue_script('wp-oese-preview-draft.js', get_template_directory_uri() . '/modules/oesepreview/admin.js' , array('jquery') , null, true);
   //wp_localize_script('wp-oese-preview-draft.js', 'wp_nn_preview_ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
   wp_localize_script('wp-oese-preview-draft.js', 'wp_nn_preview_ajax_object', array( 'ajaxurl' => get_template_directory_uri().'/modules/oesepreview/oesepreview_ajax.php'));
+  wp_localize_script('wp-oese-preview-draft.js','wpoesePreviewGlobal', ['oeseIsGutenbergActive' => $GLOBALS['oese_is_gutenberg_active']]);
 }
 add_action('admin_enqueue_scripts', __NAMESPACE__.'\\wp_oese_preview_draft_enqueue');
 

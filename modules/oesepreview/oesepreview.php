@@ -45,6 +45,7 @@ function init() {
 function wp_oese_preview_draft_enqueue(){
 	wp_enqueue_style('wp-oese-preview-draft.css', get_template_directory_uri() . '/modules/oesepreview/admin.css', array() , null, 'all');
   wp_enqueue_script('wp-oese-preview-draft.js', get_template_directory_uri() . '/modules/oesepreview/admin.js' , array('jquery') , null, true);
+  wp_localize_script('wp-oese-preview-draft.js','wpoesePreviewGlobal', ['oeseIsGutenbergActive' => $GLOBALS['oese_is_gutenberg_active']]);
 }
 add_action('admin_enqueue_scripts', __NAMESPACE__.'\\wp_oese_preview_draft_enqueue');
 
