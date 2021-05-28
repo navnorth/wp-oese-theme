@@ -813,3 +813,5 @@ iframe.oese-featured-video-shrtcd-ytvideo {
 @media screen and (max-width: 633px) {
   .wpDataTablesWrapper div.dt-buttons {float:left !important;}
 }
+
+.wpDataTablesPopover.editTools {z-index: 12 !important;}
