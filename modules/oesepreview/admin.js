@@ -65,6 +65,16 @@ jQuery(document).on('click','button[data-label="Document"].edit-post-sidebar__pa
   wpnnSetButton();  
 });
 
+// Sidbar Page Tab click
+jQuery(document).on('click','button[data-label="Page"].edit-post-sidebar__panel-tab',function(e){
+  wpnnSetButton();  
+});
+
+// Sidbar Post Tab click
+jQuery(document).on('click','button[data-label="Post"].edit-post-sidebar__panel-tab',function(e){
+  wpnnSetButton();  
+});
+
 // Detect focus on title block
 jQuery(document).on('focus','.editor-post-title__input',function(){
   setTimeout(function(){

@@ -711,7 +711,7 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
   /**
   * Page Edit Modal Parent Attribute
   **/
-  require_once( get_stylesheet_directory() . '/modules/modal-parent/modal_parent.php' );
+  //require_once( get_stylesheet_directory() . '/modules/modal-parent/modal_parent.php' );
 
  /**
  * Shortcodes Blocks
@@ -3097,7 +3097,7 @@ include( get_template_directory() . "/modules/oese-acf-slider/oese-acf-slider.ph
 $GLOBALS['oese_is_gutenberg_active'] = 'true';  // use "true" to activate gutenberg editor
 
 /* PREVIEW CAPABILITY */
-add_filter('use_block_editor_for_post', '__return_'.$GLOBALS['oese_is_gutenberg_active'], 10);
+//add_filter('use_block_editor_for_post', '__return_'.$GLOBALS['oese_is_gutenberg_active'], 10);
 if ( $GLOBALS['oese_is_gutenberg_active'] == 'true') { // Use this in Gutenberg
     include( get_template_directory() . "/modules/oesepreview/oesepreviewguten.php");
 }else{ // Use this on classic
