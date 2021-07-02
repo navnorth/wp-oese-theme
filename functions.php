@@ -718,6 +718,7 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
  **/
  $_vsn = (int)explode('.',get_bloginfo('version'))[0];
  if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblock/shortcodesblock.php' );
+ //if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/shortcodesblockv2.php' );
 
  function theme_back_enqueue_script()
 {
@@ -3103,3 +3104,20 @@ if ( $GLOBALS['oese_is_gutenberg_active'] == 'true') { // Use this in Gutenberg
 }else{ // Use this on classic
     include( get_template_directory() . "/modules/oesepreview/oesepreview.php");
 }
+
+/*
+* Add OER Block Category
+*/
+function oese_block_category( $categories ) {
+	$category_slugs = wp_list_pluck( $categories, 'slug' );
+	return in_array( 'oese-block-category', $category_slugs, true ) ? $categories : array_merge(
+        array(
+            array(
+				'slug' => 'oese-block-category',
+				'title' => __( 'OESE Blocks', 'oese-block-category' ),
+			),
+        ),
+        $categories
+    );
+}
+add_filter( 'block_categories', 'oese_block_category', 10, 2);
