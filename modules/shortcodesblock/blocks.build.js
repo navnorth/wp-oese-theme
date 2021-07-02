@@ -86,7 +86,7 @@
 
             function n(e) {
                 wp.apiFetch({
-                    url: "/wp-json/oeseshortcodeblock/v2/shortcodequery?shrtcd=" + e
+                    url: "/wp-json/oeseshortcodeblock/v2/shortcodequery?shrtcd=" + encodeURIComponent(e)
                 }).then(function (e) {
                     s({
                         selectedShortodeHtml: e
