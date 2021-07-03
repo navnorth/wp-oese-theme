@@ -60,6 +60,8 @@ function oese_accordion_block_cgb_block_assets() { // phpcs:ignore
 		[
 			'pluginDirPath' => plugin_dir_path( __DIR__ ),
 			'pluginDirUrl'  => plugin_dir_url( __DIR__ ),
+			'base_url' => get_home_url(),
+			//'preview_url' => OERCURR_CURRICULUM_URL.'includes/blocks/curriculum-block/blockpreview.jpg',
 			// Add more data here that you want to access from `cgbGlobal` object.
 		]
 	);

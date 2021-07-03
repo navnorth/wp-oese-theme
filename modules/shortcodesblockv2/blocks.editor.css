@@ -13,3 +13,8 @@
   max-width: 740px;
   padding: 2rem;
 }
+
+.oese-blk-accordion-header textarea {
+    width: 100%;
+    border: 0px !important;
+}
