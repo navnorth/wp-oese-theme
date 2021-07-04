@@ -44,7 +44,16 @@ function oese_accordion_block_cgb_block_assets() { // phpcs:ignore
 		null, // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.build.js' ), // Version: filemtime — Gets file modification time.
 		true // Enqueue the script in the footer.
 	);
-
+	
+	// Enqueue Frontend Script
+	wp_enqueue_script(
+    'oese_accordion_block-cgb-script-js',
+    get_template_directory_uri().'/modules/shortcodesblockv2/blocks.script.js',
+    [  'wp-blocks', 'wp-element', 'wp-components', 'wp-i18n', 'wp-editor' ],
+    null,
+		true
+  );
+	
 	// Register block editor styles for backend.
 	wp_register_style(
 		'oese_accordion_block-cgb-block-editor-css', // Handle.

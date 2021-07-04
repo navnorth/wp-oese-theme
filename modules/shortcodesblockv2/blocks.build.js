@@ -1,182 +1,335 @@
-/******/
-(function (modules) { // webpackBootstrap
-	/******/ // The module cache
-	/******/
-	var installedModules = {};
-	/******/
-	/******/ // The require function
-	/******/
-	function __webpack_require__(moduleId) {
-		/******/
-		/******/ // Check if module is in cache
-		/******/
-		if (installedModules[moduleId]) {
-			/******/
-			return installedModules[moduleId].exports;
-			/******/
-		}
-		/******/ // Create a new module (and put it into the cache)
-		/******/
-		var module = installedModules[moduleId] = {
-			/******/
-			i: moduleId,
-			/******/
-			l: false,
-			/******/
-			exports: {}
-			/******/
-		};
-		/******/
-		/******/ // Execute the module function
-		/******/
-		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-		/******/
-		/******/ // Flag the module as loaded
-		/******/
-		module.l = true;
-		/******/
-		/******/ // Return the exports of the module
-		/******/
-		return module.exports;
-		/******/
-	}
-	/******/
-	/******/
-	/******/ // expose the modules object (__webpack_modules__)
-	/******/
-	__webpack_require__.m = modules;
-	/******/
-	/******/ // expose the module cache
-	/******/
-	__webpack_require__.c = installedModules;
-	/******/
-	/******/ // define getter function for harmony exports
-	/******/
-	__webpack_require__.d = function (exports, name, getter) {
-		/******/
-		if (!__webpack_require__.o(exports, name)) {
-			/******/
-			Object.defineProperty(exports, name, {
-				/******/
-				configurable: false,
-				/******/
-				enumerable: true,
-				/******/
-				get: getter
-				/******/
-			});
-			/******/
-		}
-		/******/
-	};
-	/******/
-	/******/ // getDefaultExport function for compatibility with non-harmony modules
-	/******/
-	__webpack_require__.n = function (module) {
-		/******/
-		var getter = module && module.__esModule ?
-			/******/
-			function getDefault() {
-				return module['default'];
-			} :
-			/******/
-			function getModuleExports() {
-				return module;
-			};
-		/******/
-		__webpack_require__.d(getter, 'a', getter);
-		/******/
-		return getter;
-		/******/
-	};
-	/******/
-	/******/ // Object.prototype.hasOwnProperty.call
-	/******/
-	__webpack_require__.o = function (object, property) {
-		return Object.prototype.hasOwnProperty.call(object, property);
-	};
-	/******/
-	/******/ // __webpack_public_path__
-	/******/
-	__webpack_require__.p = "";
-	/******/
-	/******/ // Load entry module and return exports
-	/******/
-	return __webpack_require__(__webpack_require__.s = 0);
-	/******/
-})
-/************************************************************************/
-/******/
-([
-	/* 0 */
-	/*!***********************!*\
-	  !*** ./src/blocks.js ***!
-	  \***********************/
-	/*! no exports provided */
-	/*! all exports used */
-	/***/
-	(function (module, __webpack_exports__, __webpack_require__) {
+/**
+ * BLOCK: oese-accordion-block
+ *
+ * Registering a basic block with Gutenberg.
+ * Simple block, renders and saves the same content without any interactivity.
+ */
+//  Import CSS.
+const { __ } = wp.i18n; // Import __() from wp.i18n
 
-		"use strict";
-		eval("Object.defineProperty(__webpack_exports__, \"__esModule\", { value: true });\n/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__block_block_js__ = __webpack_require__(/*! ./block/block.js */ 1);\n/**\n * Gutenberg Blocks\n *\n * All blocks related JavaScript files should be imported here.\n * You can create a new block folder in this dir and include code\n * for that block here as well.\n *\n * All blocks should be included here since this is the file that\n * Webpack is compiling as the input file.\n */\n\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMC5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy8uL3NyYy9ibG9ja3MuanM/N2I1YiJdLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIEd1dGVuYmVyZyBCbG9ja3NcbiAqXG4gKiBBbGwgYmxvY2tzIHJlbGF0ZWQgSmF2YVNjcmlwdCBmaWxlcyBzaG91bGQgYmUgaW1wb3J0ZWQgaGVyZS5cbiAqIFlvdSBjYW4gY3JlYXRlIGEgbmV3IGJsb2NrIGZvbGRlciBpbiB0aGlzIGRpciBhbmQgaW5jbHVkZSBjb2RlXG4gKiBmb3IgdGhhdCBibG9jayBoZXJlIGFzIHdlbGwuXG4gKlxuICogQWxsIGJsb2NrcyBzaG91bGQgYmUgaW5jbHVkZWQgaGVyZSBzaW5jZSB0aGlzIGlzIHRoZSBmaWxlIHRoYXRcbiAqIFdlYnBhY2sgaXMgY29tcGlsaW5nIGFzIHRoZSBpbnB1dCBmaWxlLlxuICovXG5cbmltcG9ydCAnLi9ibG9jay9ibG9jay5qcyc7XG5cblxuLy8vLy8vLy8vLy8vLy8vLy8vXG4vLyBXRUJQQUNLIEZPT1RFUlxuLy8gLi9zcmMvYmxvY2tzLmpzXG4vLyBtb2R1bGUgaWQgPSAwXG4vLyBtb2R1bGUgY2h1bmtzID0gMCJdLCJtYXBwaW5ncyI6IkFBQUE7QUFBQTtBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7Iiwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///0\n");
+const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 
-		/***/
-	}),
-	/* 1 */
-	/*!****************************!*\
-	  !*** ./src/block/block.js ***!
-	  \****************************/
-	/*! no exports provided */
-	/***/
-	(function (module, __webpack_exports__, __webpack_require__) {
+const { InspectorControls, InnerBlocks, useBlockProps } = wp.blockEditor;
+const { PanelBody } = wp.components;
+const {
+  CheckboxControl,
+  RadioControl,
+  TextControl,
+  ToggleControl,
+  SelectControl
+} = wp.components;
+const { withSelect } = wp.data;
+/**
+ * Register: aa Gutenberg Block.
+ *
+ * Registers a new block provided a unique name and an object defining its
+ * behavior. Once registered, the block is made editor as an option to any
+ * editor interface where blocks are implemented.
+ *
+ * @link https://wordpress.org/gutenberg/handbook/block-api/
+ * @param  {string}   name     Block name.
+ * @param  {Object}   settings Block settings.
+ * @return {?WPBlock}          The block, if it has been successfully
+ *                             registered; otherwise `undefined`.
+ */
 
-		"use strict";
-		eval("/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__editor_scss__ = __webpack_require__(/*! ./editor.scss */ 2);\n/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__editor_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__editor_scss__);\n/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__style_scss__ = __webpack_require__(/*! ./style.scss */ 3);\n/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__style_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__style_scss__);\n/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__wordpress_block_editor__ = __webpack_require__(/*! @wordpress/block-editor */ 7);\n/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__wordpress_block_editor___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__wordpress_block_editor__);\n/**\n * BLOCK: oese-accordion-block\n *\n * Registering a basic block with Gutenberg.\n * Simple block, renders and saves the same content without any interactivity.\n */\n\n//  Import CSS.\n\n\n\n\nvar __ = wp.i18n.__; // Import __() from wp.i18n\n\nvar registerBlockType = wp.blocks.registerBlockType; // Import registerBlockType() from wp.blocks\n\nvar InspectorControls = wp.blockEditor.InspectorControls;\nvar PanelBody = wp.components.PanelBody;\nvar _wp$components = wp.components,\n    CheckboxControl = _wp$components.CheckboxControl,\n    RadioControl = _wp$components.RadioControl,\n    TextControl = _wp$components.TextControl,\n    ToggleControl = _wp$components.ToggleControl,\n    SelectControl = _wp$components.SelectControl;\nvar withSelect = wp.data.withSelect;\n\n/**\n * Register: aa Gutenberg Block.\n *\n * Registers a new block provided a unique name and an object defining its\n * behavior. Once registered, the block is made editor as an option to any\n * editor interface where blocks are implemented.\n *\n * @link https://wordpress.org/gutenberg/handbook/block-api/\n * @param  {string}   name     Block name.\n * @param  {Object}   settings Block settings.\n * @return {?WPBlock}          The block, if it has been successfully\n *                             registered; otherwise `undefined`.\n */\n\nregisterBlockType('cgb/oese-accordion-block', {\n  // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.\n  title: __('oese-accordion-block - CGB Block'), // Block title.\n  icon: 'shield', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.\n  category: 'oese-block-category', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.\n  keywords: [__('oese-accordion-block — CGB Block'), __('CGB Example'), __('create-guten-block')],\n\n  attributes: {\n    blockid: {\n      type: 'string'\n    },\n    accordioncount: {\n      type: 'integer',\n      default: 1\n    },\n    accordioninstance: {\n      type: 'array',\n      default: []\n    },\n    accordiontitle: {\n      type: 'array',\n      default: []\n    },\n    accordiontext: {\n      type: 'array',\n      default: ['Lorem ipsum dolor sit amet consec titur laboreum consumatum est patria a dorada in recuerdo a mi pueble.']\n    }\n  },\n\n  /**\n   * The edit function describes the structure of your block in the context of the editor.\n   * This represents what the editor will render when the block is used.\n   *\n   * The \"edit\" property must be a valid function.\n   *\n   * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/\n   *\n   * @param {Object} props Props.\n   * @returns {Mixed} JSX Component.\n   */\n  edit: function edit(props) {\n\n    var attributes = props.attributes;\n    var setAttributes = props.setAttributes;\n    //SET BLOCK INSTANCE IDS\n    var oeseblk_accordion_list = [];\n    var blocks = wp.data.select('core/block-editor').getBlocks();\n\n    blocks.map(function (val) {\n\n      if (val.name == 'cgb/oese-accordion-block') {\n\n        var uniq = 'cb' + new Date().getTime();\n        var cid = val.clientId;\n        var attr = wp.data.select('core/block-editor').getBlockAttributes(cid);\n        console.log('FOUND! -> ' + val.name + ' -> ' + val.clientId + ' -> ' + attr.blockid);\n        if (!attr.blockid) {\n          wp.data.dispatch('core/block-editor').updateBlockAttributes(cid, { blockid: uniq, postsPerPage: 5, sortBy: 'modified' });\n        }\n      } else if (val.name == 'core/group') {\n\n        val.innerBlocks.map(function (innval) {\n          if (innval.name == 'cgb/oese-accordion-block') {\n\n            var inuniq = 'cb' + new Date().getTime();\n            var incid = innval.clientId;\n            var inattr = wp.data.select('core/block-editor').getBlockAttributes(incid);\n            console.log('FOUND! -> ' + innval.name + ' -> ' + innval.clientId + ' -> ' + inattr.blockid);\n            if (!inattr.blockid) {\n              wp.data.dispatch('core/block-editor').updateBlockAttributes(incid, { blockid: inuniq, postsPerPage: 5, sortBy: 'modified' });\n            }\n          }\n        });\n      }\n    });\n\n    // RETURN MESSAGE WHILE CATEGORIES AND CURRICULUMS ARE NOT YET FULLY LOADED\n    /*if(!attributes.blockid && !attributes.postsPerPage && !attributes.sortBy){\n      let prevhtm = <img src={prvhtm} width=\"100%\"/>; \n    return prevhtm;\n    }*/\n\n    //if(!attributes.accordiontext){\n    //oeseblk_accordion_list[0] = 'HALLER';\n    //setAttributes({ accordiontext[0]:'oeseblk_accordion_list });\n    //return 'Loading, please wait...';\n    //}\n\n\n    console.log(attributes.accordioncount);\n    function updateaccordioncount(e) {\n      console.log(e.target.value);\n      setAttributes({\n        accordioncount: Number(e.target.value)\n      });\n    }\n\n    function accordiontextchange(e, idx) {\n      var oeseblk_accordion_inst = jQuery('.oeseblk-' + attributes.blockid).find('.oese-blk-accordion-header').length;\n      var oeseblk_accordion_text_array = [];\n      jQuery('.oeseblk-' + attributes.blockid).find('.oese-blk-accordion-header').each(function (i, obj) {\n        oeseblk_accordion_text_array[i] = jQuery(obj).find('textarea').val();;\n      });\n      //console.log(e.target.value + \" - \" + idx + \" - \" + oeseblk_accordion_inst);\n      console.log(oeseblk_accordion_text_array);\n      setAttributes({\n        accordiontext: oeseblk_accordion_text_array\n      });\n    }\n\n    /*\n    const MIN_TEXTAREA_HEIGHT = 32;\n    const textareaRef = React.useRef(null);\n    const [value, setValue] = React.useState(\"\");\n    const onChange = (event) => setValue(event.target.value);\n     React.useLayoutEffect(() => {\n      // Reset height - important to shrink on delete\n      textareaRef.current.style.height = \"inherit\";\n      // Set height\n      textareaRef.current.style.height = `${Math.max(\n        textareaRef.current.scrollHeight,\n        MIN_TEXTAREA_HEIGHT\n      )}px`;\n    }, [value]);\n    */\n\n    var arr = Array.apply(null, { length: 10 }).map(Number.call, Number);\n\n    // Creates a <p class='wp-block-cgb-block-oese-accordion-block'></p>.\n    return wp.element.createElement(\n      'div',\n      { className: props.className },\n      wp.element.createElement(\n        InspectorControls,\n        null,\n        wp.element.createElement(\n          PanelBody,\n          { title: __('Accordion Block settings'), initialOpen: true },\n          wp.element.createElement(\n            'div',\n            { 'class': 'oer_curriculum_inspector_wrapper oer_curriculum_inspector_Postperpage' },\n            wp.element.createElement(\n              'label',\n              { 'class': 'components-base-control__label', 'for': 'oer_curriculum_inspector_postperpage_select' },\n              'Instances:'\n            ),\n            wp.element.createElement(\n              'select',\n              { id: 'oer_curriculum_inspector_sortby_select', onChange: updateaccordioncount, value: attributes.accordioncount },\n              arr.map(function (item) {\n                if (attributes.accordioncount == item) {\n                  return wp.element.createElement(\n                    'option',\n                    { value: item, checked: true },\n                    item\n                  );\n                } else {\n                  return wp.element.createElement(\n                    'option',\n                    { value: item },\n                    item\n                  );\n                }\n              })\n            )\n          )\n        )\n      ),\n      wp.element.createElement(\n        'div',\n        { 'class': 'oeseblk-' + attributes.blockid },\n        wp.element.createElement(\n          'div',\n          { 'class': 'oese-blk-accordion', id: 'oese-blk-accordion-parent' },\n          wp.element.createElement(\n            'div',\n            { 'class': 'z-depth-0 bordered' },\n            wp.element.createElement(\n              'div',\n              { 'class': 'card-header', id: 'headingOne' },\n              wp.element.createElement(\n                'h5',\n                { 'class': 'mb-0' },\n                wp.element.createElement(\n                  'button',\n                  { 'class': 'btn btn-link', type: 'button', 'data-toggle': 'collapse', 'data-target': '#' + attributes.blockid + '-oeseCollapse1',\n                    'aria-expanded': 'true', 'aria-controls': 'oeseCollapse1' },\n                  'Collapsible Group Item #1'\n                )\n              )\n            ),\n            wp.element.createElement(\n              'div',\n              { id: attributes.blockid + '-oeseCollapse1', 'class': 'oese-blk-accordion-header collapse show', 'aria-labelledby': 'headingOne',\n                'data-parent': '#oese-blk-accordion-parent' },\n              wp.element.createElement(\n                'div',\n                { 'class': 'card-body' },\n                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__wordpress_block_editor__[\"InnerBlocks\"], {\n                  allowedBlocks: ['core/image', 'core/paragraph'],\n                  templateInsertUpdatesSelection: false\n                  //templateLock=\"all\"\n                })\n              )\n            )\n          )\n        )\n      )\n    ) //main wrapper\n    ;\n  },\n\n  /**\n   * The save function defines the way in which the different attributes should be combined\n   * into the final markup, which is then serialized by Gutenberg into post_content.\n   *\n   * The \"save\" property must be specified and must be a valid function.\n   *\n   * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/\n   *\n   * @param {Object} props Props.\n   * @returns {Mixed} JSX Frontend HTML.\n   */\n  save: function save(props) {\n\n    var attributes = props.attributes;\n    return wp.element.createElement(\n      'div',\n      { className: props.className },\n      wp.element.createElement(\n        'div',\n        { 'class': 'oeseblk-' + attributes.blockid },\n        wp.element.createElement(\n          'div',\n          { 'class': 'oese-blk-accordion', id: 'oese-blk-accordion-parent' },\n          wp.element.createElement(\n            'div',\n            { 'class': 'z-depth-0 bordered' },\n            wp.element.createElement(\n              'div',\n              { 'class': 'card-header', id: 'headingOne' },\n              wp.element.createElement(\n                'h5',\n                { 'class': 'mb-0' },\n                wp.element.createElement(\n                  'button',\n                  { 'class': 'btn btn-link', type: 'button', 'data-toggle': 'collapse', 'data-target': '#' + attributes.blockid + '-oeseCollapse1',\n                    'aria-expanded': 'true', 'aria-controls': 'oeseCollapse1' },\n                  'Collapsible Group Item #1'\n                )\n              )\n            ),\n            wp.element.createElement(\n              'div',\n              { id: attributes.blockid + '-oeseCollapse1', 'class': 'oese-blk-accordion-header collapse show', 'aria-labelledby': 'headingOne',\n                'data-parent': '#oese-blk-accordion-parent' },\n              wp.element.createElement(\n                'div',\n                { 'class': 'card-body' },\n                wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__wordpress_block_editor__[\"InnerBlocks\"].Content, null)\n              )\n            )\n          )\n        )\n      )\n    );\n  }\n\n});//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMS5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy8uL3NyYy9ibG9jay9ibG9jay5qcz85MjFkIl0sInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogQkxPQ0s6IG9lc2UtYWNjb3JkaW9uLWJsb2NrXG4gKlxuICogUmVnaXN0ZXJpbmcgYSBiYXNpYyBibG9jayB3aXRoIEd1dGVuYmVyZy5cbiAqIFNpbXBsZSBibG9jaywgcmVuZGVycyBhbmQgc2F2ZXMgdGhlIHNhbWUgY29udGVudCB3aXRob3V0IGFueSBpbnRlcmFjdGl2aXR5LlxuICovXG5cbi8vICBJbXBvcnQgQ1NTLlxuaW1wb3J0ICcuL2VkaXRvci5zY3NzJztcbmltcG9ydCAnLi9zdHlsZS5zY3NzJztcbmltcG9ydCB7IElubmVyQmxvY2tzLCB1c2VCbG9ja1Byb3BzIH0gZnJvbSAnQHdvcmRwcmVzcy9ibG9jay1lZGl0b3InO1xuXG52YXIgX18gPSB3cC5pMThuLl9fOyAvLyBJbXBvcnQgX18oKSBmcm9tIHdwLmkxOG5cblxudmFyIHJlZ2lzdGVyQmxvY2tUeXBlID0gd3AuYmxvY2tzLnJlZ2lzdGVyQmxvY2tUeXBlOyAvLyBJbXBvcnQgcmVnaXN0ZXJCbG9ja1R5cGUoKSBmcm9tIHdwLmJsb2Nrc1xuXG52YXIgSW5zcGVjdG9yQ29udHJvbHMgPSB3cC5ibG9ja0VkaXRvci5JbnNwZWN0b3JDb250cm9scztcbnZhciBQYW5lbEJvZHkgPSB3cC5jb21wb25lbnRzLlBhbmVsQm9keTtcbnZhciBfd3AkY29tcG9uZW50cyA9IHdwLmNvbXBvbmVudHMsXG4gICAgQ2hlY2tib3hDb250cm9sID0gX3dwJGNvbXBvbmVudHMuQ2hlY2tib3hDb250cm9sLFxuICAgIFJhZGlvQ29udHJvbCA9IF93cCRjb21wb25lbnRzLlJhZGlvQ29udHJvbCxcbiAgICBUZXh0Q29udHJvbCA9IF93cCRjb21wb25lbnRzLlRleHRDb250cm9sLFxuICAgIFRvZ2dsZUNvbnRyb2wgPSBfd3AkY29tcG9uZW50cy5Ub2dnbGVDb250cm9sLFxuICAgIFNlbGVjdENvbnRyb2wgPSBfd3AkY29tcG9uZW50cy5TZWxlY3RDb250cm9sO1xudmFyIHdpdGhTZWxlY3QgPSB3cC5kYXRhLndpdGhTZWxlY3Q7XG5cbi8qKlxuICogUmVnaXN0ZXI6IGFhIEd1dGVuYmVyZyBCbG9jay5cbiAqXG4gKiBSZWdpc3RlcnMgYSBuZXcgYmxvY2sgcHJvdmlkZWQgYSB1bmlxdWUgbmFtZSBhbmQgYW4gb2JqZWN0IGRlZmluaW5nIGl0c1xuICogYmVoYXZpb3IuIE9uY2UgcmVnaXN0ZXJlZCwgdGhlIGJsb2NrIGlzIG1hZGUgZWRpdG9yIGFzIGFuIG9wdGlvbiB0byBhbnlcbiAqIGVkaXRvciBpbnRlcmZhY2Ugd2hlcmUgYmxvY2tzIGFyZSBpbXBsZW1lbnRlZC5cbiAqXG4gKiBAbGluayBodHRwczovL3dvcmRwcmVzcy5vcmcvZ3V0ZW5iZXJnL2hhbmRib29rL2Jsb2NrLWFwaS9cbiAqIEBwYXJhbSAge3N0cmluZ30gICBuYW1lICAgICBCbG9jayBuYW1lLlxuICogQHBhcmFtICB7T2JqZWN0fSAgIHNldHRpbmdzIEJsb2NrIHNldHRpbmdzLlxuICogQHJldHVybiB7P1dQQmxvY2t9ICAgICAgICAgIFRoZSBibG9jaywgaWYgaXQgaGFzIGJlZW4gc3VjY2Vzc2Z1bGx5XG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcmVnaXN0ZXJlZDsgb3RoZXJ3aXNlIGB1bmRlZmluZWRgLlxuICovXG5cbnJlZ2lzdGVyQmxvY2tUeXBlKCdjZ2Ivb2VzZS1hY2NvcmRpb24tYmxvY2snLCB7XG4gIC8vIEJsb2NrIG5hbWUuIEJsb2NrIG5hbWVzIG11c3QgYmUgc3RyaW5nIHRoYXQgY29udGFpbnMgYSBuYW1lc3BhY2UgcHJlZml4LiBFeGFtcGxlOiBteS1wbHVnaW4vbXktY3VzdG9tLWJsb2NrLlxuICB0aXRsZTogX18oJ29lc2UtYWNjb3JkaW9uLWJsb2NrIC0gQ0dCIEJsb2NrJyksIC8vIEJsb2NrIHRpdGxlLlxuICBpY29uOiAnc2hpZWxkJywgLy8gQmxvY2sgaWNvbiBmcm9tIERhc2hpY29ucyDihpIgaHR0cHM6Ly9kZXZlbG9wZXIud29yZHByZXNzLm9yZy9yZXNvdXJjZS9kYXNoaWNvbnMvLlxuICBjYXRlZ29yeTogJ29lc2UtYmxvY2stY2F0ZWdvcnknLCAvLyBCbG9jayBjYXRlZ29yeSDigJQgR3JvdXAgYmxvY2tzIHRvZ2V0aGVyIGJhc2VkIG9uIGNvbW1vbiB0cmFpdHMgRS5nLiBjb21tb24sIGZvcm1hdHRpbmcsIGxheW91dCB3aWRnZXRzLCBlbWJlZC5cbiAga2V5d29yZHM6IFtfXygnb2VzZS1hY2NvcmRpb24tYmxvY2sg4oCUIENHQiBCbG9jaycpLCBfXygnQ0dCIEV4YW1wbGUnKSwgX18oJ2NyZWF0ZS1ndXRlbi1ibG9jaycpXSxcblxuICBhdHRyaWJ1dGVzOiB7XG4gICAgYmxvY2tpZDoge1xuICAgICAgdHlwZTogJ3N0cmluZydcbiAgICB9LFxuICAgIGFjY29yZGlvbmNvdW50OiB7XG4gICAgICB0eXBlOiAnaW50ZWdlcicsXG4gICAgICBkZWZhdWx0OiAxXG4gICAgfSxcbiAgICBhY2NvcmRpb25pbnN0YW5jZToge1xuICAgICAgdHlwZTogJ2FycmF5JyxcbiAgICAgIGRlZmF1bHQ6IFtdXG4gICAgfSxcbiAgICBhY2NvcmRpb250aXRsZToge1xuICAgICAgdHlwZTogJ2FycmF5JyxcbiAgICAgIGRlZmF1bHQ6IFtdXG4gICAgfSxcbiAgICBhY2NvcmRpb250ZXh0OiB7XG4gICAgICB0eXBlOiAnYXJyYXknLFxuICAgICAgZGVmYXVsdDogWydMb3JlbSBpcHN1bSBkb2xvciBzaXQgYW1ldCBjb25zZWMgdGl0dXIgbGFib3JldW0gY29uc3VtYXR1bSBlc3QgcGF0cmlhIGEgZG9yYWRhIGluIHJlY3VlcmRvIGEgbWkgcHVlYmxlLiddXG4gICAgfVxuICB9LFxuXG4gIC8qKlxuICAgKiBUaGUgZWRpdCBmdW5jdGlvbiBkZXNjcmliZXMgdGhlIHN0cnVjdHVyZSBvZiB5b3VyIGJsb2NrIGluIHRoZSBjb250ZXh0IG9mIHRoZSBlZGl0b3IuXG4gICAqIFRoaXMgcmVwcmVzZW50cyB3aGF0IHRoZSBlZGl0b3Igd2lsbCByZW5kZXIgd2hlbiB0aGUgYmxvY2sgaXMgdXNlZC5cbiAgICpcbiAgICogVGhlIFwiZWRpdFwiIHByb3BlcnR5IG11c3QgYmUgYSB2YWxpZCBmdW5jdGlvbi5cbiAgICpcbiAgICogQGxpbmsgaHR0cHM6Ly93b3JkcHJlc3Mub3JnL2d1dGVuYmVyZy9oYW5kYm9vay9ibG9jay1hcGkvYmxvY2stZWRpdC1zYXZlL1xuICAgKlxuICAgKiBAcGFyYW0ge09iamVjdH0gcHJvcHMgUHJvcHMuXG4gICAqIEByZXR1cm5zIHtNaXhlZH0gSlNYIENvbXBvbmVudC5cbiAgICovXG4gIGVkaXQ6IGZ1bmN0aW9uIGVkaXQocHJvcHMpIHtcblxuICAgIHZhciBhdHRyaWJ1dGVzID0gcHJvcHMuYXR0cmlidXRlcztcbiAgICB2YXIgc2V0QXR0cmlidXRlcyA9IHByb3BzLnNldEF0dHJpYnV0ZXM7XG4gICAgLy9TRVQgQkxPQ0sgSU5TVEFOQ0UgSURTXG4gICAgdmFyIG9lc2VibGtfYWNjb3JkaW9uX2xpc3QgPSBbXTtcbiAgICB2YXIgYmxvY2tzID0gd3AuZGF0YS5zZWxlY3QoJ2NvcmUvYmxvY2stZWRpdG9yJykuZ2V0QmxvY2tzKCk7XG5cbiAgICBibG9ja3MubWFwKGZ1bmN0aW9uICh2YWwpIHtcblxuICAgICAgaWYgKHZhbC5uYW1lID09ICdjZ2Ivb2VzZS1hY2NvcmRpb24tYmxvY2snKSB7XG5cbiAgICAgICAgdmFyIHVuaXEgPSAnY2InICsgbmV3IERhdGUoKS5nZXRUaW1lKCk7XG4gICAgICAgIHZhciBjaWQgPSB2YWwuY2xpZW50SWQ7XG4gICAgICAgIHZhciBhdHRyID0gd3AuZGF0YS5zZWxlY3QoJ2NvcmUvYmxvY2stZWRpdG9yJykuZ2V0QmxvY2tBdHRyaWJ1dGVzKGNpZCk7XG4gICAgICAgIGNvbnNvbGUubG9nKCdGT1VORCEgLT4gJyArIHZhbC5uYW1lICsgJyAtPiAnICsgdmFsLmNsaWVudElkICsgJyAtPiAnICsgYXR0ci5ibG9ja2lkKTtcbiAgICAgICAgaWYgKCFhdHRyLmJsb2NraWQpIHtcbiAgICAgICAgICB3cC5kYXRhLmRpc3BhdGNoKCdjb3JlL2Jsb2NrLWVkaXRvcicpLnVwZGF0ZUJsb2NrQXR0cmlidXRlcyhjaWQsIHsgYmxvY2tpZDogdW5pcSwgcG9zdHNQZXJQYWdlOiA1LCBzb3J0Qnk6ICdtb2RpZmllZCcgfSk7XG4gICAgICAgIH1cbiAgICAgIH0gZWxzZSBpZiAodmFsLm5hbWUgPT0gJ2NvcmUvZ3JvdXAnKSB7XG5cbiAgICAgICAgdmFsLmlubmVyQmxvY2tzLm1hcChmdW5jdGlvbiAoaW5udmFsKSB7XG4gICAgICAgICAgaWYgKGlubnZhbC5uYW1lID09ICdjZ2Ivb2VzZS1hY2NvcmRpb24tYmxvY2snKSB7XG5cbiAgICAgICAgICAgIHZhciBpbnVuaXEgPSAnY2InICsgbmV3IERhdGUoKS5nZXRUaW1lKCk7XG4gICAgICAgICAgICB2YXIgaW5jaWQgPSBpbm52YWwuY2xpZW50SWQ7XG4gICAgICAgICAgICB2YXIgaW5hdHRyID0gd3AuZGF0YS5zZWxlY3QoJ2NvcmUvYmxvY2stZWRpdG9yJykuZ2V0QmxvY2tBdHRyaWJ1dGVzKGluY2lkKTtcbiAgICAgICAgICAgIGNvbnNvbGUubG9nKCdGT1VORCEgLT4gJyArIGlubnZhbC5uYW1lICsgJyAtPiAnICsgaW5udmFsLmNsaWVudElkICsgJyAtPiAnICsgaW5hdHRyLmJsb2NraWQpO1xuICAgICAgICAgICAgaWYgKCFpbmF0dHIuYmxvY2tpZCkge1xuICAgICAgICAgICAgICB3cC5kYXRhLmRpc3BhdGNoKCdjb3JlL2Jsb2NrLWVkaXRvcicpLnVwZGF0ZUJsb2NrQXR0cmlidXRlcyhpbmNpZCwgeyBibG9ja2lkOiBpbnVuaXEsIHBvc3RzUGVyUGFnZTogNSwgc29ydEJ5OiAnbW9kaWZpZWQnIH0pO1xuICAgICAgICAgICAgfVxuICAgICAgICAgIH1cbiAgICAgICAgfSk7XG4gICAgICB9XG4gICAgfSk7XG5cbiAgICAvLyBSRVRVUk4gTUVTU0FHRSBXSElMRSBDQVRFR09SSUVTIEFORCBDVVJSSUNVTFVNUyBBUkUgTk9UIFlFVCBGVUxMWSBMT0FERURcbiAgICAvKmlmKCFhdHRyaWJ1dGVzLmJsb2NraWQgJiYgIWF0dHJpYnV0ZXMucG9zdHNQZXJQYWdlICYmICFhdHRyaWJ1dGVzLnNvcnRCeSl7XG4gICAgICBsZXQgcHJldmh0bSA9IDxpbWcgc3JjPXtwcnZodG19IHdpZHRoPVwiMTAwJVwiLz47IFxuICAgIHJldHVybiBwcmV2aHRtO1xuICAgIH0qL1xuXG4gICAgLy9pZighYXR0cmlidXRlcy5hY2NvcmRpb250ZXh0KXtcbiAgICAvL29lc2VibGtfYWNjb3JkaW9uX2xpc3RbMF0gPSAnSEFMTEVSJztcbiAgICAvL3NldEF0dHJpYnV0ZXMoeyBhY2NvcmRpb250ZXh0WzBdOidvZXNlYmxrX2FjY29yZGlvbl9saXN0IH0pO1xuICAgIC8vcmV0dXJuICdMb2FkaW5nLCBwbGVhc2Ugd2FpdC4uLic7XG4gICAgLy99XG5cblxuICAgIGNvbnNvbGUubG9nKGF0dHJpYnV0ZXMuYWNjb3JkaW9uY291bnQpO1xuICAgIGZ1bmN0aW9uIHVwZGF0ZWFjY29yZGlvbmNvdW50KGUpIHtcbiAgICAgIGNvbnNvbGUubG9nKGUudGFyZ2V0LnZhbHVlKTtcbiAgICAgIHNldEF0dHJpYnV0ZXMoe1xuICAgICAgICBhY2NvcmRpb25jb3VudDogTnVtYmVyKGUudGFyZ2V0LnZhbHVlKVxuICAgICAgfSk7XG4gICAgfVxuXG4gICAgZnVuY3Rpb24gYWNjb3JkaW9udGV4dGNoYW5nZShlLCBpZHgpIHtcbiAgICAgIHZhciBvZXNlYmxrX2FjY29yZGlvbl9pbnN0ID0galF1ZXJ5KCcub2VzZWJsay0nICsgYXR0cmlidXRlcy5ibG9ja2lkKS5maW5kKCcub2VzZS1ibGstYWNjb3JkaW9uLWhlYWRlcicpLmxlbmd0aDtcbiAgICAgIHZhciBvZXNlYmxrX2FjY29yZGlvbl90ZXh0X2FycmF5ID0gW107XG4gICAgICBqUXVlcnkoJy5vZXNlYmxrLScgKyBhdHRyaWJ1dGVzLmJsb2NraWQpLmZpbmQoJy5vZXNlLWJsay1hY2NvcmRpb24taGVhZGVyJykuZWFjaChmdW5jdGlvbiAoaSwgb2JqKSB7XG4gICAgICAgIG9lc2VibGtfYWNjb3JkaW9uX3RleHRfYXJyYXlbaV0gPSBqUXVlcnkob2JqKS5maW5kKCd0ZXh0YXJlYScpLnZhbCgpOztcbiAgICAgIH0pO1xuICAgICAgLy9jb25zb2xlLmxvZyhlLnRhcmdldC52YWx1ZSArIFwiIC0gXCIgKyBpZHggKyBcIiAtIFwiICsgb2VzZWJsa19hY2NvcmRpb25faW5zdCk7XG4gICAgICBjb25zb2xlLmxvZyhvZXNlYmxrX2FjY29yZGlvbl90ZXh0X2FycmF5KTtcbiAgICAgIHNldEF0dHJpYnV0ZXMoe1xuICAgICAgICBhY2NvcmRpb250ZXh0OiBvZXNlYmxrX2FjY29yZGlvbl90ZXh0X2FycmF5XG4gICAgICB9KTtcbiAgICB9XG5cbiAgICAvKlxuICAgIGNvbnN0IE1JTl9URVhUQVJFQV9IRUlHSFQgPSAzMjtcbiAgICBjb25zdCB0ZXh0YXJlYVJlZiA9IFJlYWN0LnVzZVJlZihudWxsKTtcbiAgICBjb25zdCBbdmFsdWUsIHNldFZhbHVlXSA9IFJlYWN0LnVzZVN0YXRlKFwiXCIpO1xuICAgIGNvbnN0IG9uQ2hhbmdlID0gKGV2ZW50KSA9PiBzZXRWYWx1ZShldmVudC50YXJnZXQudmFsdWUpO1xuICAgICBSZWFjdC51c2VMYXlvdXRFZmZlY3QoKCkgPT4ge1xuICAgICAgLy8gUmVzZXQgaGVpZ2h0IC0gaW1wb3J0YW50IHRvIHNocmluayBvbiBkZWxldGVcbiAgICAgIHRleHRhcmVhUmVmLmN1cnJlbnQuc3R5bGUuaGVpZ2h0ID0gXCJpbmhlcml0XCI7XG4gICAgICAvLyBTZXQgaGVpZ2h0XG4gICAgICB0ZXh0YXJlYVJlZi5jdXJyZW50LnN0eWxlLmhlaWdodCA9IGAke01hdGgubWF4KFxuICAgICAgICB0ZXh0YXJlYVJlZi5jdXJyZW50LnNjcm9sbEhlaWdodCxcbiAgICAgICAgTUlOX1RFWFRBUkVBX0hFSUdIVFxuICAgICAgKX1weGA7XG4gICAgfSwgW3ZhbHVlXSk7XG4gICAgKi9cblxuICAgIHZhciBhcnIgPSBBcnJheS5hcHBseShudWxsLCB7IGxlbmd0aDogMTAgfSkubWFwKE51bWJlci5jYWxsLCBOdW1iZXIpO1xuXG4gICAgLy8gQ3JlYXRlcyBhIDxwIGNsYXNzPSd3cC1ibG9jay1jZ2ItYmxvY2stb2VzZS1hY2NvcmRpb24tYmxvY2snPjwvcD4uXG4gICAgcmV0dXJuIHdwLmVsZW1lbnQuY3JlYXRlRWxlbWVudChcbiAgICAgICdkaXYnLFxuICAgICAgeyBjbGFzc05hbWU6IHByb3BzLmNsYXNzTmFtZSB9LFxuICAgICAgd3AuZWxlbWVudC5jcmVhdGVFbGVtZW50KFxuICAgICAgICBJbnNwZWN0b3JDb250cm9scyxcbiAgICAgICAgbnVsbCxcbiAgICAgICAgd3AuZWxlbWVudC5jcmVhdGVFbGVtZW50KFxuICAgICAgICAgIFBhbmVsQm9keSxcbiAgICAgICAgICB7IHRpdGxlOiBfXygnQWNjb3JkaW9uIEJsb2NrIHNldHRpbmdzJyksIGluaXRpYWxPcGVuOiB0cnVlIH0sXG4gICAgICAgICAgd3AuZWxlbWVudC5jcmVhdGVFbGVtZW50KFxuICAgICAgICAgICAgJ2RpdicsXG4gICAgICAgICAgICB7ICdjbGFzcyc6ICdvZXJfY3VycmljdWx1bV9pbnNwZWN0b3Jfd3JhcHBlciBvZXJfY3VycmljdWx1bV9pbnNwZWN0b3JfUG9zdHBlcnBhZ2UnIH0sXG4gICAgICAgICAgICB3cC5lbGVtZW50LmNyZWF0ZUVsZW1lbnQoXG4gICAgICAgICAgICAgICdsYWJlbCcsXG4gICAgICAgICAgICAgIHsgJ2NsYXNzJzogJ2NvbXBvbmVudHMtYmFzZS1jb250cm9sX19sYWJlbCcsICdmb3InOiAnb2VyX2N1cnJpY3VsdW1faW5zcGVjdG9yX3Bvc3RwZXJwYWdlX3NlbGVjdCcgfSxcbiAgICAgICAgICAgICAgJ0luc3RhbmNlczonXG4gICAgICAgICAgICApLFxuICAgICAgICAgICAgd3AuZWxlbWVudC5jcmVhdGVFbGVtZW50KFxuICAgICAgICAgICAgICAnc2VsZWN0JyxcbiAgICAgICAgICAgICAgeyBpZDogJ29lcl9jdXJyaWN1bHVtX2luc3BlY3Rvcl9zb3J0Ynlfc2VsZWN0Jywgb25DaGFuZ2U6IHVwZGF0ZWFjY29yZGlvbmNvdW50LCB2YWx1ZTogYXR0cmlidXRlcy5hY2NvcmRpb25jb3VudCB9LFxuICAgICAgICAgICAgICBhcnIubWFwKGZ1bmN0aW9uIChpdGVtKSB7XG4gICAgICAgICAgICAgICAgaWYgKGF0dHJpYnV0ZXMuYWNjb3JkaW9uY291bnQgPT0gaXRlbSkge1xuICAgICAgICAgICAgICAgICAgcmV0dXJuIHdwLmVsZW1lbnQuY3JlYXRlRWxlbWVudChcbiAgICAgICAgICAgICAgICAgICAgJ29wdGlvbicsXG4gICAgICAgICAgICAgICAgICAgIHsgdmFsdWU6IGl0ZW0sIGNoZWNrZWQ6IHRydWUgfSxcbiAgICAgICAgICAgICAgICAgICAgaXRlbVxuICAgICAgICAgICAgICAgICAgKTtcbiAgICAgICAgICAgICAgICB9IGVsc2Uge1xuICAgICAgICAgICAgICAgICAgcmV0dXJuIHdwLmVsZW1lbnQuY3JlYXRlRWxlbWVudChcbiAgICAgICAgICAgICAgICAgICAgJ29wdGlvbicsXG4gICAgICAgICAgICAgICAgICAgIHsgdmFsdWU6IGl0ZW0gfSxcbiAgICAgICAgICAgICAgICAgICAgaXRlbVxuICAgICAgICAgICAgICAgICAgKTtcbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgIH0pXG4gICAgICAgICAgICApXG4gICAgICAgICAgKVxuICAgICAgICApXG4gICAgICApLFxuICAgICAgd3AuZWxlbWVudC5jcmVhdGVFbGVtZW50KFxuICAgICAgICAnZGl2JyxcbiAgICAgICAgeyAnY2xhc3MnOiAnb2VzZWJsay0nICsgYXR0cmlidXRlcy5ibG9ja2lkIH0sXG4gICAgICAgIHdwLmVsZW1lbnQuY3JlYXRlRWxlbWVudChcbiAgICAgICAgICAnZGl2JyxcbiAgICAgICAgICB7ICdjbGFzcyc6ICdvZXNlLWJsay1hY2NvcmRpb24nLCBpZDogJ29lc2UtYmxrLWFjY29yZGlvbi1wYXJlbnQnIH0sXG4gICAgICAgICAgd3AuZWxlbWVudC5jcmVhdGVFbGVtZW50KFxuICAgICAgICAgICAgJ2RpdicsXG4gICAgICAgICAgICB7ICdjbGFzcyc6ICd6LWRlcHRoLTAgYm9yZGVyZWQnIH0sXG4gICAgICAgICAgICB3cC5lbGVtZW50LmNyZWF0ZUVsZW1lbnQoXG4gICAgICAgICAgICAgICdkaXYnLFxuICAgICAgICAgICAgICB7ICdjbGFzcyc6ICdjYXJkLWhlYWRlcicsIGlkOiAnaGVhZGluZ09uZScgfSxcbiAgICAgICAgICAgICAgd3AuZWxlbWVudC5jcmVhdGVFbGVtZW50KFxuICAgICAgICAgICAgICAgICdoNScsXG4gICAgICAgICAgICAgICAgeyAnY2xhc3MnOiAnbWItMCcgfSxcbiAgICAgICAgICAgICAgICB3cC5lbGVtZW50LmNyZWF0ZUVsZW1lbnQoXG4gICAgICAgICAgICAgICAgICAnYnV0dG9uJyxcbiAgICAgICAgICAgICAgICAgIHsgJ2NsYXNzJzogJ2J0biBidG4tbGluaycsIHR5cGU6ICdidXR0b24nLCAnZGF0YS10b2dnbGUnOiAnY29sbGFwc2UnLCAnZGF0YS10YXJnZXQnOiAnIycgKyBhdHRyaWJ1dGVzLmJsb2NraWQgKyAnLW9lc2VDb2xsYXBzZTEnLFxuICAgICAgICAgICAgICAgICAgICAnYXJpYS1leHBhbmRlZCc6ICd0cnVlJywgJ2FyaWEtY29udHJvbHMnOiAnb2VzZUNvbGxhcHNlMScgfSxcbiAgICAgICAgICAgICAgICAgICdDb2xsYXBzaWJsZSBHcm91cCBJdGVtICMxJ1xuICAgICAgICAgICAgICAgIClcbiAgICAgICAgICAgICAgKVxuICAgICAgICAgICAgKSxcbiAgICAgICAgICAgIHdwLmVsZW1lbnQuY3JlYXRlRWxlbWVudChcbiAgICAgICAgICAgICAgJ2RpdicsXG4gICAgICAgICAgICAgIHsgaWQ6IGF0dHJpYnV0ZXMuYmxvY2tpZCArICctb2VzZUNvbGxhcHNlMScsICdjbGFzcyc6ICdvZXNlLWJsay1hY2NvcmRpb24taGVhZGVyIGNvbGxhcHNlIHNob3cnLCAnYXJpYS1sYWJlbGxlZGJ5JzogJ2hlYWRpbmdPbmUnLFxuICAgICAgICAgICAgICAgICdkYXRhLXBhcmVudCc6ICcjb2VzZS1ibGstYWNjb3JkaW9uLXBhcmVudCcgfSxcbiAgICAgICAgICAgICAgd3AuZWxlbWVudC5jcmVhdGVFbGVtZW50KFxuICAgICAgICAgICAgICAgICdkaXYnLFxuICAgICAgICAgICAgICAgIHsgJ2NsYXNzJzogJ2NhcmQtYm9keScgfSxcbiAgICAgICAgICAgICAgICB3cC5lbGVtZW50LmNyZWF0ZUVsZW1lbnQoSW5uZXJCbG9ja3MsIHtcbiAgICAgICAgICAgICAgICAgIGFsbG93ZWRCbG9ja3M6IFsnY29yZS9pbWFnZScsICdjb3JlL3BhcmFncmFwaCddLFxuICAgICAgICAgICAgICAgICAgdGVtcGxhdGVJbnNlcnRVcGRhdGVzU2VsZWN0aW9uOiBmYWxzZVxuICAgICAgICAgICAgICAgICAgLy90ZW1wbGF0ZUxvY2s9XCJhbGxcIlxuICAgICAgICAgICAgICAgIH0pXG4gICAgICAgICAgICAgIClcbiAgICAgICAgICAgIClcbiAgICAgICAgICApXG4gICAgICAgIClcbiAgICAgIClcbiAgICApIC8vbWFpbiB3cmFwcGVyXG4gICAgO1xuICB9LFxuXG4gIC8qKlxuICAgKiBUaGUgc2F2ZSBmdW5jdGlvbiBkZWZpbmVzIHRoZSB3YXkgaW4gd2hpY2ggdGhlIGRpZmZlcmVudCBhdHRyaWJ1dGVzIHNob3VsZCBiZSBjb21iaW5lZFxuICAgKiBpbnRvIHRoZSBmaW5hbCBtYXJrdXAsIHdoaWNoIGlzIHRoZW4gc2VyaWFsaXplZCBieSBHdXRlbmJlcmcgaW50byBwb3N0X2NvbnRlbnQuXG4gICAqXG4gICAqIFRoZSBcInNhdmVcIiBwcm9wZXJ0eSBtdXN0IGJlIHNwZWNpZmllZCBhbmQgbXVzdCBiZSBhIHZhbGlkIGZ1bmN0aW9uLlxuICAgKlxuICAgKiBAbGluayBodHRwczovL3dvcmRwcmVzcy5vcmcvZ3V0ZW5iZXJnL2hhbmRib29rL2Jsb2NrLWFwaS9ibG9jay1lZGl0LXNhdmUvXG4gICAqXG4gICAqIEBwYXJhbSB7T2JqZWN0fSBwcm9wcyBQcm9wcy5cbiAgICogQHJldHVybnMge01peGVkfSBKU1ggRnJvbnRlbmQgSFRNTC5cbiAgICovXG4gIHNhdmU6IGZ1bmN0aW9uIHNhdmUocHJvcHMpIHtcblxuICAgIHZhciBhdHRyaWJ1dGVzID0gcHJvcHMuYXR0cmlidXRlcztcbiAgICByZXR1cm4gd3AuZWxlbWVudC5jcmVhdGVFbGVtZW50KFxuICAgICAgJ2RpdicsXG4gICAgICB7IGNsYXNzTmFtZTogcHJvcHMuY2xhc3NOYW1lIH0sXG4gICAgICB3cC5lbGVtZW50LmNyZWF0ZUVsZW1lbnQoXG4gICAgICAgICdkaXYnLFxuICAgICAgICB7ICdjbGFzcyc6ICdvZXNlYmxrLScgKyBhdHRyaWJ1dGVzLmJsb2NraWQgfSxcbiAgICAgICAgd3AuZWxlbWVudC5jcmVhdGVFbGVtZW50KFxuICAgICAgICAgICdkaXYnLFxuICAgICAgICAgIHsgJ2NsYXNzJzogJ29lc2UtYmxrLWFjY29yZGlvbicsIGlkOiAnb2VzZS1ibGstYWNjb3JkaW9uLXBhcmVudCcgfSxcbiAgICAgICAgICB3cC5lbGVtZW50LmNyZWF0ZUVsZW1lbnQoXG4gICAgICAgICAgICAnZGl2JyxcbiAgICAgICAgICAgIHsgJ2NsYXNzJzogJ3otZGVwdGgtMCBib3JkZXJlZCcgfSxcbiAgICAgICAgICAgIHdwLmVsZW1lbnQuY3JlYXRlRWxlbWVudChcbiAgICAgICAgICAgICAgJ2RpdicsXG4gICAgICAgICAgICAgIHsgJ2NsYXNzJzogJ2NhcmQtaGVhZGVyJywgaWQ6ICdoZWFkaW5nT25lJyB9LFxuICAgICAgICAgICAgICB3cC5lbGVtZW50LmNyZWF0ZUVsZW1lbnQoXG4gICAgICAgICAgICAgICAgJ2g1JyxcbiAgICAgICAgICAgICAgICB7ICdjbGFzcyc6ICdtYi0wJyB9LFxuICAgICAgICAgICAgICAgIHdwLmVsZW1lbnQuY3JlYXRlRWxlbWVudChcbiAgICAgICAgICAgICAgICAgICdidXR0b24nLFxuICAgICAgICAgICAgICAgICAgeyAnY2xhc3MnOiAnYnRuIGJ0bi1saW5rJywgdHlwZTogJ2J1dHRvbicsICdkYXRhLXRvZ2dsZSc6ICdjb2xsYXBzZScsICdkYXRhLXRhcmdldCc6ICcjJyArIGF0dHJpYnV0ZXMuYmxvY2tpZCArICctb2VzZUNvbGxhcHNlMScsXG4gICAgICAgICAgICAgICAgICAgICdhcmlhLWV4cGFuZGVkJzogJ3RydWUnLCAnYXJpYS1jb250cm9scyc6ICdvZXNlQ29sbGFwc2UxJyB9LFxuICAgICAgICAgICAgICAgICAgJ0NvbGxhcHNpYmxlIEdyb3VwIEl0ZW0gIzEnXG4gICAgICAgICAgICAgICAgKVxuICAgICAgICAgICAgICApXG4gICAgICAgICAgICApLFxuICAgICAgICAgICAgd3AuZWxlbWVudC5jcmVhdGVFbGVtZW50KFxuICAgICAgICAgICAgICAnZGl2JyxcbiAgICAgICAgICAgICAgeyBpZDogYXR0cmlidXRlcy5ibG9ja2lkICsgJy1vZXNlQ29sbGFwc2UxJywgJ2NsYXNzJzogJ29lc2UtYmxrLWFjY29yZGlvbi1oZWFkZXIgY29sbGFwc2Ugc2hvdycsICdhcmlhLWxhYmVsbGVkYnknOiAnaGVhZGluZ09uZScsXG4gICAgICAgICAgICAgICAgJ2RhdGEtcGFyZW50JzogJyNvZXNlLWJsay1hY2NvcmRpb24tcGFyZW50JyB9LFxuICAgICAgICAgICAgICB3cC5lbGVtZW50LmNyZWF0ZUVsZW1lbnQoXG4gICAgICAgICAgICAgICAgJ2RpdicsXG4gICAgICAgICAgICAgICAgeyAnY2xhc3MnOiAnY2FyZC1ib2R5JyB9LFxuICAgICAgICAgICAgICAgIHdwLmVsZW1lbnQuY3JlYXRlRWxlbWVudChJbm5lckJsb2Nrcy5Db250ZW50LCBudWxsKVxuICAgICAgICAgICAgICApXG4gICAgICAgICAgICApXG4gICAgICAgICAgKVxuICAgICAgICApXG4gICAgICApXG4gICAgKTtcbiAgfVxuXG59KTtcblxuXG4vLy8vLy8vLy8vLy8vLy8vLy9cbi8vIFdFQlBBQ0sgRk9PVEVSXG4vLyAuL3NyYy9ibG9jay9ibG9jay5qc1xuLy8gbW9kdWxlIGlkID0gMVxuLy8gbW9kdWxlIGNodW5rcyA9IDAiXSwibWFwcGluZ3MiOiJBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQSIsInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///1\n");
+registerBlockType("cgb/oese-accordion-block", {
+  // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
+  title: __("oese-accordion-block - CGB Block"),
+  // Block title.
+  icon: "shield",
+  // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
+  category: "oese-block-category",
+  // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
+  keywords: [
+    __("oese-accordion-block — CGB Block"),
+    __("CGB Example"),
+    __("create-guten-block")
+  ],
+  attributes: {
+    blockid: {
+      type: "string"
+    },
+    accordionexpanded: {
+      type: "boolean",
+      default: true
+    },
+    accordiontitle: {
+      type: "string"
+    }
+  },
 
-		/***/
-	}),
-	/* 2 */
-	/*!*******************************!*\
-	  !*** ./src/block/editor.scss ***!
-	  \*******************************/
-	/*! dynamic exports provided */
-	/***/
-	(function (module, exports) {
+  /**
+   * The edit function describes the structure of your block in the context of the editor.
+   * This represents what the editor will render when the block is used.
+   *
+   * The "edit" property must be a valid function.
+   *
+   * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
+   *
+   * @param {Object} props Props.
+   * @returns {Mixed} JSX Component.
+   */
+  edit: (props) => {
+    const attributes = props.attributes;
+    const setAttributes = props.setAttributes; //SET BLOCK INSTANCE IDS
 
-		eval("// removed by extract-text-webpack-plugin//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMi5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy8uL3NyYy9ibG9jay9lZGl0b3Iuc2Nzcz80OWQyIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIHJlbW92ZWQgYnkgZXh0cmFjdC10ZXh0LXdlYnBhY2stcGx1Z2luXG5cblxuLy8vLy8vLy8vLy8vLy8vLy8vXG4vLyBXRUJQQUNLIEZPT1RFUlxuLy8gLi9zcmMvYmxvY2svZWRpdG9yLnNjc3Ncbi8vIG1vZHVsZSBpZCA9IDJcbi8vIG1vZHVsZSBjaHVua3MgPSAwIl0sIm1hcHBpbmdzIjoiQUFBQSIsInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///2\n");
+    let oeseblk_accordion_list = [];
+    const blocks = wp.data.select("core/block-editor").getBlocks();
+    blocks.map((val) => {
+      if (val.name == "cgb/oese-accordion-block") {
+        var uniq = "cb" + new Date().getTime();
+        var cid = val.clientId;
+        var attr = wp.data.select("core/block-editor").getBlockAttributes(cid);
 
-		/***/
-	}),
-	/* 3 */
-	/*!******************************!*\
-	  !*** ./src/block/style.scss ***!
-	  \******************************/
-	/*! dynamic exports provided */
-	/***/
-	(function (module, exports) {
+        if (!attr.blockid) {
+          wp.data.dispatch("core/block-editor").updateBlockAttributes(cid, {
+            blockid: uniq,
+            postsPerPage: 5,
+            sortBy: "modified"
+          });
+        }
+      } else if (val.name == "core/group") {
+        val.innerBlocks.map((innval) => {
+          if (innval.name == "cgb/oese-accordion-block") {
+            var inuniq = "cb" + new Date().getTime();
+            var incid = innval.clientId;
+            var inattr = wp.data
+              .select("core/block-editor")
+              .getBlockAttributes(incid);
+            console.log(
+              "FOUND! -> " +
+                innval.name +
+                " -> " +
+                innval.clientId +
+                " -> " +
+                inattr.blockid
+            );
 
-		eval("// removed by extract-text-webpack-plugin//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMy5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy8uL3NyYy9ibG9jay9zdHlsZS5zY3NzPzgwZjMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gcmVtb3ZlZCBieSBleHRyYWN0LXRleHQtd2VicGFjay1wbHVnaW5cblxuXG4vLy8vLy8vLy8vLy8vLy8vLy9cbi8vIFdFQlBBQ0sgRk9PVEVSXG4vLyAuL3NyYy9ibG9jay9zdHlsZS5zY3NzXG4vLyBtb2R1bGUgaWQgPSAzXG4vLyBtb2R1bGUgY2h1bmtzID0gMCJdLCJtYXBwaW5ncyI6IkFBQUEiLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///3\n");
+            if (!inattr.blockid) {
+              wp.data
+                .dispatch("core/block-editor")
+                .updateBlockAttributes(incid, {
+                  blockid: inuniq,
+                  postsPerPage: 5,
+                  sortBy: "modified"
+                });
+            }
+          }
+        });
+      }
+    });
 
-		/***/
-	}),
-	/* 4 */
-	,
-	/* 5 */
-	,
-	/* 6 */
-	,
-	/* 7 */
-	/*!*********************************!*\
-	  !*** external "wp.blockEditor" ***!
-	  \*********************************/
-	/*! dynamic exports provided */
-	/*! exports used: InnerBlocks */
-	/***/
-	(function (module, exports) {
+    function accordiontitlechange(e) {
+      setAttributes({
+        accordiontitle: e.target.value
+      });
+    }
 
-		module.exports = wp.blockEditor;
+    const accordioncollapsetoggle = (e) => {
+      setAttributes({
+        accordionexpanded: e
+      });
+    };
 
-		/***/
-	})
-	/******/
-]);
+    let arr = Array.apply(null, {
+      length: 10
+    }).map(Number.call, Number); // Creates a <p class='wp-block-cgb-block-oese-accordion-block'></p>.
+
+    return /*#__PURE__*/ React.createElement(
+      "div",
+      {
+        className: props.className
+      },
+      /*#__PURE__*/ React.createElement(
+        InspectorControls,
+        null,
+        /*#__PURE__*/ React.createElement(
+          PanelBody,
+          {
+            title: __("Accordion Block settings"),
+            initialOpen: true
+          },
+          /*#__PURE__*/ React.createElement(
+            "div",
+            {
+              class:
+                "oer_curriculum_inspector_wrapper oer_curriculum_inspector_Postperpage"
+            },
+            /*#__PURE__*/ React.createElement(ToggleControl, {
+              label: __("Expanded"),
+              help: attributes.accordionexpanded
+                ? __("Accordion content will be shown initially", "five")
+                : __("Accordion content will be hidden initially", "five"),
+              checked: !!attributes.accordionexpanded,
+              onChange: (value) =>
+                accordioncollapsetoggle(
+                  attributes.accordionexpanded ? false : true
+                )
+            })
+          )
+        )
+      ),
+      /*#__PURE__*/ React.createElement(
+        "div",
+        {
+          class: "oeseblk-" + attributes.blockid
+        },
+        /*#__PURE__*/ React.createElement(
+          "div",
+          {
+            class: "oese-blk-accordion",
+            id: "oese-blk-accordion-parent"
+          },
+          /*#__PURE__*/ React.createElement(
+            "div",
+            {
+              class: "z-depth-0 bordered"
+            },
+            /*#__PURE__*/ React.createElement(
+              "div",
+              {
+                class: "card-header oese-blk-accordion-header",
+                id: "headingOne"
+              },
+              /*#__PURE__*/ React.createElement(
+                "h5",
+                {
+                  class: "mb-0 oese-blk-accordion-title"
+                },
+                /*#__PURE__*/ React.createElement(
+                  "a",
+                  {
+                    class: attributes.accordionexpanded
+                      ? "btn btn-primary oese-blk-accordion-button"
+                      : "btn btn-primary oese-blk-accordion-button collapsed",
+                    "data-toggle": "collapse",
+                    href: "#" + attributes.blockid + "-oeseCollapse1",
+                    role: "button",
+                    "aria-expanded": attributes.accordionexpanded,
+                    "aria-controls": "oeseCollapse1"
+                  },
+                  /*#__PURE__*/ React.createElement("input", {
+                    type: "text",
+                    onChange: accordiontitlechange,
+                    value: attributes.accordiontitle
+                  })
+                )
+              )
+            ),
+            /*#__PURE__*/ React.createElement(
+              "div",
+              {
+                id: attributes.blockid + "-oeseCollapse1",
+                class: attributes.accordionexpanded
+                  ? "oese-blk-accordion-content collapse show"
+                  : "oese-blk-accordion-content collapse",
+                "aria-labelledby": "headingOne",
+                "data-parent": "#oese-blk-accordion-parent",
+                tabindex: "0"
+              },
+              /*#__PURE__*/ React.createElement(
+                "div",
+                {
+                  class: "card-body"
+                },
+                /*#__PURE__*/ React.createElement(InnerBlocks, {
+                  allowedBlocks: ["core/image", "core/paragraph"],
+                  templateInsertUpdatesSelection: false
+                  /*templateLock="all"*/
+                })
+              )
+            )
+          )
+        )
+      )
+    ); //main wrapper
+  },
+
+  /**
+   * The save function defines the way in which the different attributes should be combined
+   * into the final markup, which is then serialized by Gutenberg into post_content.
+   *
+   * The "save" property must be specified and must be a valid function.
+   *
+   * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
+   *
+   * @param {Object} props Props.
+   * @returns {Mixed} JSX Frontend HTML                      
+                     .
+   */
+  save: (props) => {
+    const attributes = props.attributes;
+    return /*#__PURE__*/ React.createElement(
+      "div",
+      {
+        className: props.className
+      },
+      /*#__PURE__*/ React.createElement(
+        "div",
+        {
+          class: "oeseblk-" + attributes.blockid
+        },
+        /*#__PURE__*/ React.createElement(
+          "div",
+          {
+            class: "oese-blk-accordion",
+            id: "oese-blk-accordion-parent"
+          },
+          /*#__PURE__*/ React.createElement(
+            "div",
+            {
+              class: "z-depth-0 bordered"
+            },
+            /*#__PURE__*/ React.createElement(
+              "div",
+              {
+                class: "card-header oese-blk-accordion-header",
+                id: "headingOne"
+              },
+              /*#__PURE__*/ React.createElement(
+                "h5",
+                {
+                  class: "mb-0 oese-blk-accordion-title"
+                },
+                /*#__PURE__*/ React.createElement(
+                  "a",
+                  {
+                    class: attributes.accordionexpanded
+                      ? "btn btn-primary oese-blk-accordion-button"
+                      : "btn btn-primary oese-blk-accordion-button collapsed",
+                    "data-toggle": "collapse",
+                    href: "#" + attributes.blockid + "-oeseCollapse1",
+                    role: "button",
+                    "aria-expanded": attributes.accordionexpanded,
+                    "aria-controls": "oeseCollapse1",
+                    "aria-label": attributes.accordiontitle
+                  },
+                  attributes.accordiontitle
+                )
+              )
+            ),
+            /*#__PURE__*/ React.createElement(
+              "div",
+              {
+                id: attributes.blockid + "-oeseCollapse1",
+                class: attributes.accordionexpanded
+                  ? "oese-blk-accordion-content collapse show"
+                  : "oese-blk-accordion-content collapse",
+                "data-parent": "#oese-blk-accordion-parent",
+                tabindex: "0"
+              },
+              /*#__PURE__*/ React.createElement(
+                "div",
+                {
+                  class: "card-body"
+                },
+                /*#__PURE__*/ React.createElement(InnerBlocks.Content, null)
+              )
+            )
+          )
+        )
+      )
+    );
+  }
+});
