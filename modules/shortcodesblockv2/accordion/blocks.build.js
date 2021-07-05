@@ -19,8 +19,53 @@ const {
   SelectControl
 } = wp.components;
 const { withSelect } = wp.data;
+const accordionicon = wp.element.createElement(
+  "svg",
+  {
+    width: 24,
+    height: 24,
+    role: "img",
+    viewBox: "0 0 6.35 6.35"
+  },
+  wp.element.createElement(
+    "g",
+    {
+      transform: "translate(0 -290.65)",
+      fill: "none",
+      stroke: "#000",
+      "stroke-width": ".26458px"
+    },
+    wp.element.createElement("path", {
+      d: "m0.31955 290.93c-0.086366 1.52-0.13818 1.5373-0.086366 1.52 0.051819-0.0173 5.9419 9e-3 5.9419 9e-3l-0.017272-1.52z"
+    }),
+    wp.element.createElement("path", {
+      d: "m4.681 291.32 0.55274 0.6391 0.46637-0.63046"
+    }),
+    wp.element.createElement("path", {
+      d: "m4.0678 291.67-3.1783-0.0259"
+    }),
+    wp.element.createElement("path", {
+      d: "m0.29467 293.01c-0.086365 1.52-0.13818 1.5373-0.086365 1.52 0.051819-0.0173 5.9419 9e-3 5.9419 9e-3l-0.017272-1.52z"
+    }),
+    wp.element.createElement("path", {
+      d: "m4.6561 293.4 0.55274 0.6391 0.46637-0.63046"
+    }),
+    wp.element.createElement("path", {
+      d: "m4.0429 293.76-3.1783-0.0259"
+    }),
+    wp.element.createElement("path", {
+      d: "m0.30331 295.11c-0.086366 1.52-0.13818 1.5373-0.086366 1.52 0.051819-0.0173 5.9419 9e-3 5.9419 9e-3l-0.017272-1.52z"
+    }),
+    wp.element.createElement("path", {
+      d: "m4.6648 295.5 0.55274 0.6391 0.46637-0.63046"
+    }),
+    wp.element.createElement("path", {
+      d: "m4.0516 295.86-3.1783-0.0259"
+    })
+  )
+);
 /**
- * Register: aa Gutenberg Block.
+ * Register: a Gutenberg Block.
  *
  * Registers a new block provided a unique name and an object defining its
  * behavior. Once registered, the block is made editor as an option to any
@@ -35,9 +80,9 @@ const { withSelect } = wp.data;
 
 registerBlockType("cgb/oese-accordion-block", {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-  title: __("oese-accordion-block - CGB Block"),
+  title: __("Accordion Block"),
   // Block title.
-  icon: "shield",
+  icon: accordionicon,
   // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: "oese-block-category",
   // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
@@ -55,27 +100,25 @@ registerBlockType("cgb/oese-accordion-block", {
       default: true
     },
     accordiontitle: {
-      type: "string"
+      type: "string",
+      default: "Accordion Title"
     }
   },
-
-  /**
-   * The edit function describes the structure of your block in the context of the editor.
-   * This represents what the editor will render when the block is used.
-   *
-   * The "edit" property must be a valid function.
-   *
-   * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
-   *
-   * @param {Object} props Props.
-   * @returns {Mixed} JSX Component.
-   */
   edit: (props) => {
     const attributes = props.attributes;
-    const setAttributes = props.setAttributes; //SET BLOCK INSTANCE IDS
+    const setAttributes = props.setAttributes; //Set block instance ID
 
     let oeseblk_accordion_list = [];
     const blocks = wp.data.select("core/block-editor").getBlocks();
+    const CONTENT_TEMPLATE = [
+      [
+        "core/paragraph",
+        {
+          placeholder:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        }
+      ]
+    ];
     blocks.map((val) => {
       if (val.name == "cgb/oese-accordion-block") {
         var uniq = "cb" + new Date().getTime();
@@ -120,11 +163,11 @@ registerBlockType("cgb/oese-accordion-block", {
       }
     });
 
-    function accordiontitlechange(e) {
+    const accordiontitlechange = (e) => {
       setAttributes({
         accordiontitle: e.target.value
       });
-    }
+    };
 
     const accordioncollapsetoggle = (e) => {
       setAttributes({
@@ -189,7 +232,7 @@ registerBlockType("cgb/oese-accordion-block", {
             /*#__PURE__*/ React.createElement(
               "div",
               {
-                class: "card-header oese-blk-accordion-header",
+                class: "oese-blk-accordion-header",
                 id: "headingOne"
               },
               /*#__PURE__*/ React.createElement(
@@ -234,8 +277,9 @@ registerBlockType("cgb/oese-accordion-block", {
                   class: "card-body"
                 },
                 /*#__PURE__*/ React.createElement(InnerBlocks, {
-                  allowedBlocks: ["core/image", "core/paragraph"],
-                  templateInsertUpdatesSelection: false
+                  allowedBlocks: (["core/image"], ["core/paragraph"]),
+                  templateInsertUpdatesSelection: false,
+                  template: CONTENT_TEMPLATE
                   /*templateLock="all"*/
                 })
               )
@@ -243,21 +287,8 @@ registerBlockType("cgb/oese-accordion-block", {
           )
         )
       )
-    ); //main wrapper
+    );
   },
-
-  /**
-   * The save function defines the way in which the different attributes should be combined
-   * into the final markup, which is then serialized by Gutenberg into post_content.
-   *
-   * The "save" property must be specified and must be a valid function.
-   *
-   * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
-   *
-   * @param {Object} props Props.
-   * @returns {Mixed} JSX Frontend HTML                      
-                     .
-   */
   save: (props) => {
     const attributes = props.attributes;
     return /*#__PURE__*/ React.createElement(
@@ -284,7 +315,7 @@ registerBlockType("cgb/oese-accordion-block", {
             /*#__PURE__*/ React.createElement(
               "div",
               {
-                class: "card-header oese-blk-accordion-header",
+                class: "oese-blk-accordion-header",
                 id: "headingOne"
               },
               /*#__PURE__*/ React.createElement(
@@ -331,5 +362,6 @@ registerBlockType("cgb/oese-accordion-block", {
         )
       )
     );
-  }
+  },
+  example: {}
 });

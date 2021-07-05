@@ -31,7 +31,7 @@ function oese_accordion_block_cgb_block_assets() { // phpcs:ignore
 	// Register block styles for both frontend + backend.
 	wp_register_style(
 		'oese_accordion_block-cgb-style-css', // Handle.
-		get_template_directory_uri().'/modules/shortcodesblockv2/blocks.style.css', // Block style CSS.
+		get_template_directory_uri().'/modules/shortcodesblockv2/accordion/blocks.style.css', // Block style CSS.
 		is_admin() ? array( 'wp-editor' ) : null, // Dependency to include the CSS after it.
 		null // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.style.build.css' ) // Version: File modification time.
 	);
@@ -39,7 +39,7 @@ function oese_accordion_block_cgb_block_assets() { // phpcs:ignore
 	// Register block editor script for backend.
 	wp_register_script(
 		'oese_accordion_block-cgb-block-js', // Handle.
-		get_template_directory_uri().'/modules/shortcodesblockv2/blocks.build.js', // Block.build.js: We register the block here. Built with Webpack.
+		get_template_directory_uri().'/modules/shortcodesblockv2/accordion/blocks.build.js', // Block.build.js: We register the block here. Built with Webpack.
 		array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ), // Dependencies, defined above.
 		null, // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.build.js' ), // Version: filemtime — Gets file modification time.
 		true // Enqueue the script in the footer.
@@ -48,7 +48,7 @@ function oese_accordion_block_cgb_block_assets() { // phpcs:ignore
 	// Enqueue Frontend Script
 	wp_enqueue_script(
     'oese_accordion_block-cgb-script-js',
-    get_template_directory_uri().'/modules/shortcodesblockv2/blocks.script.js',
+    get_template_directory_uri().'/modules/shortcodesblockv2/accordion/blocks.script.js',
     [  'wp-blocks', 'wp-element', 'wp-components', 'wp-i18n', 'wp-editor' ],
     null,
 		true
@@ -57,7 +57,7 @@ function oese_accordion_block_cgb_block_assets() { // phpcs:ignore
 	// Register block editor styles for backend.
 	wp_register_style(
 		'oese_accordion_block-cgb-block-editor-css', // Handle.
-		get_template_directory_uri().'/modules/shortcodesblockv2/blocks.editor.css', // Block editor CSS.
+		get_template_directory_uri().'/modules/shortcodesblockv2/accordion/blocks.editor.css', // Block editor CSS.
 		array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
 		null // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.editor.build.css' ) // Version: File modification time.
 	);
