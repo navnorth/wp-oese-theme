@@ -32,6 +32,9 @@
   border-right: none !important;
   border-bottom: 1px solid #d4d4d4 !important;
   border-radius: 0 !important;
+  font-family: 'Raleway-Semibold' !important;
+  font-size: 1.2em !important;
+  font-weight: 400 !important;
 }
 .oese-blk-accordion-header a.oese-blk-accordion-button.collapsed{
   border-bottom: 0px !important;
