@@ -277,7 +277,7 @@ registerBlockType("cgb/oese-accordion-block", {
                   class: "card-body"
                 },
                 /*#__PURE__*/ React.createElement(InnerBlocks, {
-                  allowedBlocks: (["core/image"], ["core/paragraph"]),
+                  allowedBlocks: ["core/image", "core/paragraph"],
                   templateInsertUpdatesSelection: false,
                   template: CONTENT_TEMPLATE
                   /*templateLock="all"*/
