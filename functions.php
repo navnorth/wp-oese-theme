@@ -3121,3 +3121,25 @@ function oese_block_category( $categories ) {
     );
 }
 add_filter( 'block_categories', 'oese_block_category', 10, 2);
+
+
+/** Add Link to Media Button on Rich Text Editor Block **/
+add_action('enqueue_block_editor_assets', 'oese_block_editor_text_link_to_media');
+function oese_block_editor_text_link_to_media() {
+
+  // Load the compiled blocks into the editor.
+  wp_enqueue_script(
+    'link-to-media-button-js',
+    get_stylesheet_directory_uri().'/js/link-to-media.js',
+    array( 'wp-blocks', 'wp-element', 'wp-components', 'wp-editor' ),
+    '1.0',
+    true
+  );
+
+        // Load the compiled styles into the editor.
+  wp_enqueue_style(
+    'link-to-media-css',
+    get_stylesheet_directory_uri().'/css/link-to-media.css',
+    array( 'wp-edit-blocks' )
+  );
+}
