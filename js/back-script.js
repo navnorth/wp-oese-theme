@@ -223,4 +223,19 @@ function ispagehome(){
   }
   return ret;
 }
-    
+
+
+// WP dataTables
+jQuery(document).ready(function(){
+  jQuery('div.wpdt-c').each(function(i, obj) {
+    wpdtAdminTimer = setTimeout(function(){
+      if(jQuery(obj).find('table.wpDataTable').length){
+        clearTimeout(wpdtAdminTimer);
+        var wpdtMainWrapper = jQuery(obj);
+        wpdtMainWrapper.find('table.wpDataTable').wrap('<div class="wdtResponsiveWrapper"></div>');
+        jQuery(obj).addClass('wpdt_main_wrapper');
+        jQuery(obj).attr('id','wpdt_main_wrapper_'+0);
+      }
+    },100);
+  });
+});
