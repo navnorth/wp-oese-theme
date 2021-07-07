@@ -3136,7 +3136,7 @@ function oese_block_editor_text_link_to_media() {
     true
   );
 
-        // Load the compiled styles into the editor.
+  // Load the compiled styles into the editor.
   wp_enqueue_style(
     'link-to-media-css',
     get_stylesheet_directory_uri().'/css/link-to-media.css',
