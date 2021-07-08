@@ -3147,7 +3147,7 @@ function oese_block_editor_text_link_to_media() {
 /** Update TinyMCE Advance Font Sizes Selection **/
 if ( ! function_exists( 'oese_tiny_mce_font_sizes' ) ) {
   function oese_tiny_mce_font_sizes( $initArray ){
-    $initArray['fontsize_formats'] = "8pt 9pt 10pt 11pt 12pt 14pt 16pt 18pt 20pt 24pt 30pt 36pt 48pt 60pt 72pt 96pt";
+    $initArray['fontsize_formats'] = "8px 9px 10px 11px 12px 14px 16px 18px 20px 24px 28px 32px 36px 48px 60px 72px";
     return $initArray;
   }
 }
