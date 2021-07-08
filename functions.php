@@ -3143,3 +3143,12 @@ function oese_block_editor_text_link_to_media() {
     array( 'wp-edit-blocks' )
   );
 }
+
+/** Update TinyMCE Advance Font Sizes Selection **/
+if ( ! function_exists( 'oese_tiny_mce_font_sizes' ) ) {
+  function oese_tiny_mce_font_sizes( $initArray ){
+    $initArray['fontsize_formats'] = "8pt 9pt 10pt 11pt 12pt 14pt 16pt 18pt 20pt 24pt 30pt 36pt 48pt 60pt 72pt 96pt";
+    return $initArray;
+  }
+}
+add_filter( 'tiny_mce_before_init', 'oese_tiny_mce_font_sizes' );
