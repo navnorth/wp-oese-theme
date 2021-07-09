@@ -29,7 +29,7 @@ jQuery(window).bind("load", function() {
             }else if(oldPostStatus == 'pending' &&  newPostStatus == 'publish'){
             }else if(oldPostStatus == 'publish' &&  newPostStatus == 'draft'){
               wpnnSetButton(newPostStatus);
-              load_parent_modal_html();
+              /* load_parent_modal_html() */;
             }
             oldPostStatus = newPostStatus;
         }
