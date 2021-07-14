@@ -101,6 +101,18 @@ a.contact-eidt { text-decoration:underline; }
 }
 .oese-tabs .nav-tab-wrapper .ui-tabs-active { outline:none; }
 
+/* -------- Frontend Styles ----------*/
+.block-editor-writing-flow .wp-block-table tr:nth-child(even) {background: #ddd}
+.block-editor-writing-flow .wp-block-table tr:nth-child(odd) {background: #fff}
+.block-editor-writing-flow .wp-block-table tr:first-child th[scope=col] { font-weight:800; vertical-align:bottom; }
+.block-editor-writing-flow .wp-block-table tr td, #content tr th { padding:5px }
+.block-editor-writing-flow .wp-block-table tr td[scope=row], #content tr th[scope=row] { font-weight:bold; }
+.block-editor-writing-flow .wp-block-table .table-responsive { display:flex; } /* for mirrored content styles, to keep Resources box from pushing down */
+.block-editor-writing-flow .wp-block-table td {border: 0;border-top: 1px solid #ededed;padding: 6px 10px 6px 0;}
+.block-editor-writing-flow .editor-post-title .editor-post-title__input{font-size: 28px;font-weight: 700;color: #2D8700 !important;font-family: 'Merriweather', serif;}
+.block-editor-writing-flow p.block-editor-rich-text__editable {font-weight: normal;color: #4b4e53;line-height: 28px;}
+/* -------- End of Frontend Styles ----------*/
+
 /*PERMALINK VALIDATION START*/
 .oese-prohibitedpermalinktext {
   background:rgba(220,50,50,.1) !important;
