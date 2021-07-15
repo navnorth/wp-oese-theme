@@ -1328,10 +1328,10 @@ function contactInformationBlock($showHeader=true){
 
 }
 
-function getTileLinks(){
-   if( have_rows('tile_links') ):
+function getTileLinks($tile_row = 'tile_links'){
+   if( have_rows($tile_row) ):
       $output = "<ul class='row tile-links-wrapper custom-common-padding gray-background-color mr-0 ml-0'>";
-         while ( have_rows('tile_links') ) : the_row();
+         while ( have_rows($tile_row) ) : the_row();
               $tileLinkLabel =  get_sub_field('tile_link_title');
               $tileLinkUrl =  get_sub_field('tile_link_url');
               $externaLink =  get_sub_field('external_link');
@@ -3158,20 +3158,26 @@ function oese_acf_init_tile_links_block(){
   if (function_exists('acf_register_block')){
     // register a tile link block
     acf_register_block(array(
-      'name'        => 'tile-link',
-      'title'       => __('Tile Links'),
-      'description'   => __('A tile link block.'),
+      'name'            => 'tile-link',
+      'title'           => __('Tile Links'),
+      'description'     => __('A tile link block.'),
       'render_callback' => 'oese_tile_link_block_render_callback',
-      'category'      => 'formatting',
-      'icon'        => 'admin-comments',
-      'keywords'      => array( 'tile link' ),
+      'category'        => 'oese-block-category',
+      'icon'            => 'admin-links',
+      'keywords'        => array( 'tile link', 'link' ),
+      'mode'            => 'preview'
     ));
   }
+  add_action( 'admin_enqueue_scripts', 'oese_load_tile_link_style' );
 }
 add_action( 'acf/init', 'oese_acf_init_tile_links_block' );
 
+function oese_load_tile_link_style(){
+  wp_enqueue_style( 'tile-link-style',get_stylesheet_directory_uri() . '/css/block/tile-link.css' ); 
+}
+
 function oese_tile_link_block_render_callback( $block ){
-  $slug = $block['name'];
+  $slug = str_replace('acf/', '', $block['name']);
   
   // include a template part from within the "template-parts/block" folder
   if( file_exists( get_theme_file_path("/template-parts/block/content-{$slug}.php") ) ) {
