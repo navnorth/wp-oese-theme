@@ -3152,3 +3152,29 @@ if ( ! function_exists( 'oese_tiny_mce_font_sizes' ) ) {
   }
 }
 add_filter( 'tiny_mce_before_init', 'oese_tiny_mce_font_sizes' );
+
+/** Tile Links Block using ACF Blocks **/
+function oese_acf_init_tile_links_block(){
+  if (function_exists('acf_register_block')){
+    // register a tile link block
+    acf_register_block(array(
+      'name'        => 'tile-link',
+      'title'       => __('Tile Links'),
+      'description'   => __('A tile link block.'),
+      'render_callback' => 'oese_tile_link_block_render_callback',
+      'category'      => 'formatting',
+      'icon'        => 'admin-comments',
+      'keywords'      => array( 'tile link' ),
+    ));
+  }
+}
+add_action( 'acf/init', 'oese_acf_init_tile_links_block' );
+
+function oese_tile_link_block_render_callback( $block ){
+  $slug = $block['name'];
+  
+  // include a template part from within the "template-parts/block" folder
+  if( file_exists( get_theme_file_path("/template-parts/block/content-{$slug}.php") ) ) {
+    include( get_theme_file_path("/template-parts/block/content-{$slug}.php") );
+  }
+}
