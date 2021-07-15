@@ -1328,10 +1328,10 @@ function contactInformationBlock($showHeader=true){
 
 }
 
-function getTileLinks($tile_row = 'tile_links'){
-   if( have_rows($tile_row) ):
+function getTileLinks(){
+   if( have_rows('tile_links') ):
       $output = "<ul class='row tile-links-wrapper custom-common-padding gray-background-color mr-0 ml-0'>";
-         while ( have_rows($tile_row) ) : the_row();
+         while ( have_rows('tile_links') ) : the_row();
               $tileLinkLabel =  get_sub_field('tile_link_title');
               $tileLinkUrl =  get_sub_field('tile_link_url');
               $externaLink =  get_sub_field('external_link');
@@ -3165,16 +3165,24 @@ function oese_acf_init_tile_links_block(){
       'category'        => 'oese-block-category',
       'icon'            => 'admin-links',
       'keywords'        => array( 'tile link', 'link' ),
-      'mode'            => 'preview'
+      'enqueue_style'   => get_stylesheet_directory_uri() . '/css/block/tile-link.css',
+      'example'  => array(
+        'attributes' => array(
+            'mode' => 'preview',
+            'data' => array(
+              'tile_links' => array(
+                'tile_link_title'   => "Lorem Ipsum",
+                'tile_link_url'     => "https://example.com",
+                'external_link'     => "True",
+                'width'             => "full"
+              )
+            )
+        )
+      )
     ));
   }
-  add_action( 'admin_enqueue_scripts', 'oese_load_tile_link_style' );
 }
 add_action( 'acf/init', 'oese_acf_init_tile_links_block' );
-
-function oese_load_tile_link_style(){
-  wp_enqueue_style( 'tile-link-style',get_stylesheet_directory_uri() . '/css/block/tile-link.css' ); 
-}
 
 function oese_tile_link_block_render_callback( $block ){
   $slug = str_replace('acf/', '', $block['name']);

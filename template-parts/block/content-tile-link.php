@@ -5,6 +5,6 @@
  * This is the template that displays the Tile link block.
  */
 
-getTileLinks('block_tile_links');
+getTileLinks();
 
 ?>
