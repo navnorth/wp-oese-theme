@@ -481,6 +481,8 @@ button.wdt-clear-filters-button:before, button.wdt-clear-filters-widget-button:b
 .wpDataTableFilterBox .wpDataTableFilterSection .wdt-filter-control .dropdown-menu{ max-height:482px !important; height:482px !important; }
 .wpDataTableFilterBox .wpDataTableFilterSection .column-category .wdt-filter-control .dropdown-menu{ height:auto !important;  }
 .wpDataTable th.column-masterdetail:after {display:none !important;}
+.wpdt-c .dropdown-menu > li > a:focus {background-color: unset;}
+.dropdown-toggle.bs-placeholder span.filter-option {display: none !important;}
 
 /* table font color */
 .wpdt-c .wpDataTablesWrapper table.wpDataTable thead th,

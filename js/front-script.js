@@ -467,7 +467,7 @@ jQuery(document).ready(function(){
           jQuery('body').prepend('<div aria-live="polite" aria-atomic="true" class="wpdt-accessibility-liveregion visuallyhidden"></div>');
           jQuery(document).on('focus','.wdt-select-filter ul.dropdown-menu li a',function(){
               var wpdt_cbx_label = jQuery(this).closest('.wpDataTableFilterSection').find('label').text();
-              var wpdt_opt_text = jQuery(this).find('span.text').text();
+              var wpdt_opt_text = jQuery(this).closest('ul.dropdown-menu').find('li.active span.text').text();
               if(jQuery(this).attr('aria-selected') == "true"){
                 if(wpdt_opt_text.trim() > ''){
                   jQuery('.wpdt-accessibility-liveregion').text(wpdt_opt_text+' selected');
