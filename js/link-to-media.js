@@ -23,12 +23,12 @@
                         media_url = attachment.url;
                         props.onChange( 
                             /** Set Format to Link to Media and set url attribute **/
-                            wp.richText.toggleFormat(props.value, {
+                            wp.richText.applyFormat(props.value, {
                                 type: 'oese/link-to-media',
                                 attributes : {
                                     url: media_url
                                 }
-                            }) 
+                            }, props.value.start, props.value.end)
                         );
                     }).open();
                 },
