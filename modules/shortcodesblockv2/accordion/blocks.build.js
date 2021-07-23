@@ -87,9 +87,8 @@ registerBlockType("cgb/oese-accordion-block", {
   category: "oese-block-category",
   // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
   keywords: [
-    __("oese-accordion-block — CGB Block"),
-    __("CGB Example"),
-    __("create-guten-block")
+    __("oese-accordion-block"),
+    __("accordion")
   ],
   attributes: {
     blockid: {
@@ -114,12 +113,13 @@ registerBlockType("cgb/oese-accordion-block", {
       [
         "core/paragraph",
         {
-          placeholder:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          placeholder: "Your accordion content here."
         }
       ]
     ];
     blocks.map((val) => {
+      console.log(val);
+
       if (val.name == "cgb/oese-accordion-block") {
         var uniq = "cb" + new Date().getTime();
         var cid = val.clientId;
@@ -132,36 +132,34 @@ registerBlockType("cgb/oese-accordion-block", {
             sortBy: "modified"
           });
         }
-      } else if (val.name == "core/group") {
-        val.innerBlocks.map((innval) => {
-          if (innval.name == "cgb/oese-accordion-block") {
-            var inuniq = "cb" + new Date().getTime();
-            var incid = innval.clientId;
-            var inattr = wp.data
-              .select("core/block-editor")
-              .getBlockAttributes(incid);
-            console.log(
-              "FOUND! -> " +
-                innval.name +
-                " -> " +
-                innval.clientId +
-                " -> " +
-                inattr.blockid
-            );
-
-            if (!inattr.blockid) {
-              wp.data
-                .dispatch("core/block-editor")
-                .updateBlockAttributes(incid, {
-                  blockid: inuniq,
-                  postsPerPage: 5,
-                  sortBy: "modified"
-                });
-            }
-          }
-        });
+      } else if (val.name == "core/group" || val.name == "core/columns") {
+        getInnerBlocks(val.innerBlocks);
       }
     });
+
+    function getInnerBlocks(innerblock) {
+      innerblock.map((blk) => {
+        if (blk.name == "cgb/oese-accordion-block") {
+          var inuniq = "cb" + new Date().getTime();
+          var incid = blk.clientId;
+          var inattr = wp.data
+            .select("core/block-editor")
+            .getBlockAttributes(incid); //console.log('FOUND! -> '+blk.name+' -> '+blk.clientId+' -> '+inattr.blockid);
+
+          if (!inattr.blockid) {
+            wp.data.dispatch("core/block-editor").updateBlockAttributes(incid, {
+              blockid: inuniq,
+              postsPerPage: 5,
+              sortBy: "modified"
+            });
+          }
+        }
+
+        if (blk.innerBlocks.length > 0) {
+          getInnerBlocks(blk.innerBlocks);
+        }
+      });
+    }
 
     const accordiontitlechange = (e) => {
       setAttributes({
@@ -222,7 +220,7 @@ registerBlockType("cgb/oese-accordion-block", {
           "div",
           {
             class: "oese-blk-accordion",
-            id: "oese-blk-accordion-parent"
+            id: "oese-blk-accordion-parent-" + attributes.blockid
           },
           /*#__PURE__*/ React.createElement(
             "div",
@@ -268,7 +266,6 @@ registerBlockType("cgb/oese-accordion-block", {
                   ? "oese-blk-accordion-content collapse show"
                   : "oese-blk-accordion-content collapse",
                 "aria-labelledby": "headingOne",
-                "data-parent": "#oese-blk-accordion-parent",
                 tabindex: "0"
               },
               /*#__PURE__*/ React.createElement(
@@ -305,7 +302,7 @@ registerBlockType("cgb/oese-accordion-block", {
           "div",
           {
             class: "oese-blk-accordion",
-            id: "oese-blk-accordion-parent"
+            id: "oese-blk-accordion-parent-" + attributes.blockid
           },
           /*#__PURE__*/ React.createElement(
             "div",
@@ -347,7 +344,6 @@ registerBlockType("cgb/oese-accordion-block", {
                 class: attributes.accordionexpanded
                   ? "oese-blk-accordion-content collapse show"
                   : "oese-blk-accordion-content collapse",
-                "data-parent": "#oese-blk-accordion-parent",
                 tabindex: "0"
               },
               /*#__PURE__*/ React.createElement(
