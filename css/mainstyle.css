@@ -520,11 +520,16 @@ ul.tour_dates li {
 }
 .secondary-navigation-menu.sidebar-links .secondary-navigation-menu-list li {
     line-height: 22px;
+		padding:0px;
 }
 .secondary-navigation-menu.sidebar-links .secondary-navigation-menu-list li a,
 .secondary-navigation-menu.sidebar-links .secondary-navigation-menu-list li.unlinked{
     color: #243C54;
     font-size: 14px;
+}
+.secondary-navigation-menu.sidebar-links .secondary-navigation-menu-list li a{
+	display:block;
+	padding:10px 20px !important;
 }
 .secondary-navigation-menu.sidebar-links .secondary-navigation-menu-list li.unlinked {
     cursor: text !important;
@@ -1227,10 +1232,23 @@ a {
     line-height: 24px;
     transition: all .1s ease-in;
 }
+.secondary-navigation-menu-list.childpages li,
+.secondary-navigation-menu-list.childpages li{
+	padding:0px;
+	cursor:unset;
+}
+.secondary-navigation-menu-list.childpages li a{
+	display:block;
+	padding: 10px 20px;
+}
+.secondary-navigation-menu-list.childpages li.current-page {
+    padding: 10px 20px;
+    cursor: unset;
+}
 .secondary-navigation-menu-list li:hover,
 .secondary-navigation-menu-list li:focus{
-    cursor: pointer;
     background: #243C54;
+		background: rgb(8 24 41 / 50%);
 }
 .secondary-navigation-menu-list li:hover a,
 .secondary-navigation-menu-list li a:focus{
