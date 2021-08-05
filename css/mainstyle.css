@@ -2233,7 +2233,7 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
 	.slideshow_container, .slideshow_container .slideshow_content { height: 360px !important}
 	.main-menu { display:none; }
 	.navi_icn { display:block !important; }
-	.office-template, .audience-template, .awards-template { flex-direction: column-reverse; }
+	/*.office-template, .audience-template, .awards-template { flex-direction: column-reverse; }*/
 	.cls_search form.search-frm { margin-left:0; }
 	.cls_search .ui-widget #search_que { width:80% !important; }
 	.cls_results .wdm_resultContainer .wdm_list { width:100% !important; float:none !important; margin-top:0; }
@@ -2347,9 +2347,7 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
     #home_content .wp-caption { width:701px !important; }
     #home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:699px !important; }
     .slideshow_container_style-light .slideshow_pagination { bottom:10px !important; }
-    .office-template, .audience-template, .awards-template {
-        flex-direction: column-reverse;
-    }
+    /*.office-template, .audience-template, .awards-template { flex-direction: column-reverse; }*/
     .secondary-navigation-menu.sidebar-links {
         margin-bottom: 20px;
     }
@@ -2438,8 +2436,8 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
     .program-block-inner-section.table tr.program-list-detail { margin-bottom:20px; }
     .program-block-inner-section.table tr.program-list-detail .col-md-5 { max-width:100% !important; }
     .program-block-inner-section.table tr.program-list-detail .col-md-7 { max-width:100% !important; }
-    .page-template-program-template #content.custom-common-padding { flex-wrap:wrap-reverse; padding:5% 0; }
-    .program-sidebar { position:relative; float:none; margin-bottom:30px; padding-left: 0px; padding-right: 0px; }
+    /*.page-template-program-template #content.custom-common-padding { flex-wrap:wrap-reverse; padding:5% 0; }*/
+	.program-sidebar { position:relative; float:none; margin-bottom:30px; /*padding-left: 0px; padding-right: 0px;*/ }
 }
 @media (max-width: 550px){
     .slideshow_container, .slideshow_container .slideshow_content { height:235px !important; }
@@ -2692,6 +2690,12 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
     p{
         line-height: 18px !important;
     }
+		
+		.wp-block-pullquote p{
+				font-size: 1.4em !important;
+    		line-height: 1 !important;
+		}
+		
     .footer-title p{
         font-size: 18px !important;
     }
