@@ -68,6 +68,22 @@ Description: Used to style blocks in the editor.
 	font-size: 12px;
 }
 
+.block-editor-writing-flow h1, 
+.block-editor-writing-flow h2, 
+.block-editor-writing-flow h3, 
+.block-editor-writing-flow h4, 
+.block-editor-writing-flow h5, 
+.block-editor-writing-flow h6 {font-family: 'Merriweather', serif; margin-bottom: .5rem !important; margin-top: 0 !important; line-height: 1.2 !important;}
+.block-editor-writing-flow h1 {font-size: 28px !important; font-weight: 700 !important;  color: #2D8700 !important;}
+.block-editor-writing-flow h2 {font-size: 24px !important; font-weight: 700 !important;  color: #1F5C99 !important;}
+.block-editor-writing-flow h3 {font-size: 24px !important; line-height: 26px !important; color: #294179 !important;}
+.block-editor-writing-flow h4 {font-size: 18px !important; line-height: 20px !important; font-weight: 500 !important; color: #2d8700 !important;}
+.block-editor-writing-flow h5 {font-size: 14px !important; line-height: 15px !important; font-weight: 500 !important; color: #4b4e53 !important;}
+.block-editor-writing-flow h6 {font-size: 12px !important; line-height: 13px !important; font-weight: 500 !important; color: #4b4e53 !important;}
+
+/* Title Input */
+.block-editor-writing-flow .editor-post-title .editor-post-title__input{font-size: 28px;font-weight: 700;color: #2D8700 !important;font-family: 'Merriweather', serif;}
+
 /*--------------------------------------------------------------
 2.0 General Block Styles
 --------------------------------------------------------------*/
@@ -96,12 +112,71 @@ Description: Used to style blocks in the editor.
 	padding-right: 0;
 }
 
+.block-editor-writing-flow ul li,
+.block-editor-writing-flow ol li {color:#333333 !important;font-size: 16px !important; color: #333333 !important;}
+
 /* Quote styles */
 
 .wp-block-freeform.block-library-rich-text__tinymce blockquote {
 	border: 0;
 	font-style: italic;
 	padding: 24px;
+}
+
+/* Blockquote */
+
+.block-editor-writing-flow .wp-block-quote:not(.is-large):not(.is-style-large) {
+    border: 0;
+    padding: 24px;
+    padding: 1.714285714rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+.block-editor-writing-flow blockquote{
+    border-left: none !important;
+    font-size: 18px !important;
+    line-height: 25px !important;
+    font-family: inherit !important;
+    padding: 1.714285714rem !important; 
+}
+
+.block-editor-writing-flow .wp-block-quote p{
+    font-size: 18px !important;
+    font-weight: normal !important;
+    color: #4b4e53 !important;
+    line-height: 28px !important;
+    font-style: normal !important;
+}
+
+.block-editor-writing-flow .wp-block-quote.is-large p, .wp-block-quote.is-style-large p {
+    font-size: 20px !important;
+    font-style: italic !important;
+    line-height: 1.6 !important;
+}
+
+.block-editor-writing-flow .wp-block-quote .wp-block-quote__citation{
+    color: #4b4e53 !important;
+    font-size: inherit !important;
+    font-style: italic !important;
+}
+
+.block-editor-writing-flow .wp-block-quote.is-large .wp-block-quote__citation, .wp-block-quote.is-style-large .wp-block-quote__citation{
+    font-size: 20px !important;font-size: 20px !important;
+}
+
+/*Pullquote */
+.block-editor-writing-flow .wp-block-pullquote { margin-left: auto !important; margin-right: auto !important;}
+.block-editor-writing-flow .wp-block-pullquote p {
+    font-size: 1.75em;
+    line-height: 1.6;
+		font-weight: normal;
+    color: #4b4e53;
+}
+.block-editor-writing-flow .wp-block-pullquote__citation, .wp-block-pullquote cite, .wp-block-pullquote footer {
+    font-size: 14px;
+    text-transform: none;
+		color: #4b4e53;
+		font-style: normal;
 }
 
 /* Table styles */
@@ -124,6 +199,14 @@ Description: Used to style blocks in the editor.
 .rtl .wp-block-freeform.block-library-rich-text__tinymce td {
 	text-align: right;
 }
+
+.block-editor-writing-flow .wp-block-table tr:nth-child(even) {background: #ddd}
+.block-editor-writing-flow .wp-block-table tr:nth-child(odd) {background: #fff}
+.block-editor-writing-flow .wp-block-table tr:first-child th[scope=col] { font-weight:800; vertical-align:bottom; }
+.block-editor-writing-flow .wp-block-table tr td, #content tr th { padding:5px }
+.block-editor-writing-flow .wp-block-table tr td[scope=row], #content tr th[scope=row] { font-weight:bold; }
+.block-editor-writing-flow .wp-block-table .table-responsive { display:flex; } /* for mirrored content styles, to keep Resources box from pushing down */
+.block-editor-writing-flow .wp-block-table td {border: 0;border-top: 1px solid #ededed;padding: 6px 10px 6px 0;}
 
 /* Code styles */
 
@@ -169,6 +252,13 @@ Description: Used to style blocks in the editor.
 p.has-drop-cap:not(:focus)::first-letter {
 	font-size: 5em;
 	margin-top: 0.1em;
+}
+
+.block-editor-writing-flow p.block-editor-rich-text__editable {
+	font-weight: normal;
+	color: #4b4e53;
+	line-height: 28px;
+  font-family: "Helvetica Neue",Arial,sans-serif !important;
 }
 
 /* Image */
