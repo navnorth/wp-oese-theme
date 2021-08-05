@@ -2964,5 +2964,5 @@ svg text.no-data { fill:#000000; stroke:#ffffff; stroke-width:0.1; stroke-opacit
     font-weight: 400 !important;
 }
 /** OESE SHortcode Colors End **/
-h3 a { font-size:inherit; }
-blockquote.wp-block-quote a { font-size:inherit; }
+h3 a { font-size:inherit; color:inherit; }
+blockquote.wp-block-quote a { font-size:inherit; color:inherit; }
