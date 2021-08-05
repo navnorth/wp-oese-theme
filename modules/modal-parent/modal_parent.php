@@ -203,14 +203,14 @@ add_action('rest_api_init', function () {
     )
   );
 	
-	
+	/*
 	register_rest_route( 'wp/v2', 'pages', 
     array(
     'methods' => 'GET', 
     'callback' => 'wpnnmodalparent_pagesbypass_func' 
     )
   );
-	
+	*/
 	
 });
 

@@ -118,8 +118,7 @@ registerBlockType("cgb/oese-accordion-block", {
       ]
     ];
     blocks.map((val) => {
-      console.log(val);
-
+  
       if (val.name == "cgb/oese-accordion-block") {
         var uniq = "cb" + new Date().getTime();
         var cid = val.clientId;
@@ -144,7 +143,7 @@ registerBlockType("cgb/oese-accordion-block", {
           var incid = blk.clientId;
           var inattr = wp.data
             .select("core/block-editor")
-            .getBlockAttributes(incid); //console.log('FOUND! -> '+blk.name+' -> '+blk.clientId+' -> '+inattr.blockid);
+            .getBlockAttributes(incid); 
 
           if (!inattr.blockid) {
             wp.data.dispatch("core/block-editor").updateBlockAttributes(incid, {

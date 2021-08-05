@@ -711,7 +711,7 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
   /**
   * Page Edit Modal Parent Attribute
   **/
-  //require_once( get_stylesheet_directory() . '/modules/modal-parent/modal_parent.php' );
+  require_once( get_stylesheet_directory() . '/modules/modal-parent/modal_parent.php' );
 
  /**
  * Shortcodes Blocks
