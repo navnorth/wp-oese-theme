@@ -4,7 +4,6 @@
  * Registering a basic block with Gutenberg.
  * Simple block, renders and saves the same content without any interactivity.
  */
-//  Import CSS.
 const { __ } = wp.i18n; // Import __() from wp.i18n
 
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
@@ -86,11 +85,7 @@ registerBlockType("cgb/oese-accordion-block", {
   // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: "oese-block-category",
   // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
-  keywords: [
-    __("oese-accordion-block — CGB Block"),
-    __("CGB Example"),
-    __("create-guten-block")
-  ],
+  keywords: [__("oese-accordion-block"), __("accordion")],
   attributes: {
     blockid: {
       type: "string"
@@ -100,8 +95,7 @@ registerBlockType("cgb/oese-accordion-block", {
       default: true
     },
     accordiontitle: {
-      type: "string",
-      default: "Accordion Title"
+      type: "string"
     }
   },
   edit: (props) => {
@@ -132,22 +126,19 @@ registerBlockType("cgb/oese-accordion-block", {
             sortBy: "modified"
           });
         }
-      } else if (val.name == "core/group") {
-        val.innerBlocks.map((innval) => {
-          if (innval.name == "cgb/oese-accordion-block") {
-            var inuniq = "cb" + new Date().getTime();
-            var incid = innval.clientId;
-            var inattr = wp.data
-              .select("core/block-editor")
-              .getBlockAttributes(incid);
-            console.log(
-              "FOUND! -> " +
-                innval.name +
-                " -> " +
-                innval.clientId +
-                " -> " +
-                inattr.blockid
-            );
+      } else if (val.name == "core/group" || val.name == "core/columns") {
+        getInnerBlocks(val.innerBlocks);
+      }
+    });
+
+    function getInnerBlocks(innerblock) {
+      innerblock.map((blk) => {
+        if (blk.name == "cgb/oese-accordion-block") {
+          var inuniq = "cb" + new Date().getTime();
+          var incid = blk.clientId;
+          var inattr = wp.data
+            .select("core/block-editor")
+            .getBlockAttributes(incid);
 
             if (!inattr.blockid) {
               wp.data
@@ -179,27 +170,27 @@ registerBlockType("cgb/oese-accordion-block", {
       length: 10
     }).map(Number.call, Number); // Creates a <p class='wp-block-cgb-block-oese-accordion-block'></p>.
 
-    return /*#__PURE__*/ React.createElement(
+    return React.createElement(
       "div",
       {
         className: props.className
       },
-      /*#__PURE__*/ React.createElement(
+      React.createElement(
         InspectorControls,
         null,
-        /*#__PURE__*/ React.createElement(
+        React.createElement(
           PanelBody,
           {
             title: __("Accordion Block settings"),
             initialOpen: true
           },
-          /*#__PURE__*/ React.createElement(
+          React.createElement(
             "div",
             {
               class:
                 "oer_curriculum_inspector_wrapper oer_curriculum_inspector_Postperpage"
             },
-            /*#__PURE__*/ React.createElement(ToggleControl, {
+            React.createElement(ToggleControl, {
               label: __("Expanded"),
               help: attributes.accordionexpanded
                 ? __("Accordion content will be shown initially", "five")
@@ -213,34 +204,34 @@ registerBlockType("cgb/oese-accordion-block", {
           )
         )
       ),
-      /*#__PURE__*/ React.createElement(
+      React.createElement(
         "div",
         {
           class: "oeseblk-" + attributes.blockid
         },
-        /*#__PURE__*/ React.createElement(
+        React.createElement(
           "div",
           {
             class: "oese-blk-accordion",
             id: "oese-blk-accordion-parent"
           },
-          /*#__PURE__*/ React.createElement(
+          React.createElement(
             "div",
             {
               class: "z-depth-0 bordered"
             },
-            /*#__PURE__*/ React.createElement(
+            React.createElement(
               "div",
               {
                 class: "oese-blk-accordion-header",
                 id: "headingOne"
               },
-              /*#__PURE__*/ React.createElement(
+              React.createElement(
                 "h5",
                 {
                   class: "mb-0 oese-blk-accordion-title"
                 },
-                /*#__PURE__*/ React.createElement(
+                React.createElement(
                   "a",
                   {
                     class: attributes.accordionexpanded
@@ -252,15 +243,16 @@ registerBlockType("cgb/oese-accordion-block", {
                     "aria-expanded": attributes.accordionexpanded,
                     "aria-controls": "oeseCollapse1"
                   },
-                  /*#__PURE__*/ React.createElement("input", {
+                  React.createElement("input", {
                     type: "text",
                     onChange: accordiontitlechange,
+                    placeholder: "Accordion Title",
                     value: attributes.accordiontitle
                   })
                 )
               )
             ),
-            /*#__PURE__*/ React.createElement(
+            React.createElement(
               "div",
               {
                 id: attributes.blockid + "-oeseCollapse1",
@@ -271,13 +263,13 @@ registerBlockType("cgb/oese-accordion-block", {
                 "data-parent": "#oese-blk-accordion-parent",
                 tabindex: "0"
               },
-              /*#__PURE__*/ React.createElement(
+              React.createElement(
                 "div",
                 {
                   class: "card-body"
                 },
-                /*#__PURE__*/ React.createElement(InnerBlocks, {
-                  allowedBlocks: (["core/image"], ["core/paragraph"]),
+                React.createElement(InnerBlocks, {
+                  allowedBlocks: ["core/image", "core/paragraph"],
                   templateInsertUpdatesSelection: false,
                   template: CONTENT_TEMPLATE
                   /*templateLock="all"*/
@@ -291,39 +283,39 @@ registerBlockType("cgb/oese-accordion-block", {
   },
   save: (props) => {
     const attributes = props.attributes;
-    return /*#__PURE__*/ React.createElement(
+    return React.createElement(
       "div",
       {
         className: props.className
       },
-      /*#__PURE__*/ React.createElement(
+      React.createElement(
         "div",
         {
           class: "oeseblk-" + attributes.blockid
         },
-        /*#__PURE__*/ React.createElement(
+        React.createElement(
           "div",
           {
             class: "oese-blk-accordion",
             id: "oese-blk-accordion-parent"
           },
-          /*#__PURE__*/ React.createElement(
+          React.createElement(
             "div",
             {
               class: "z-depth-0 bordered"
             },
-            /*#__PURE__*/ React.createElement(
+            React.createElement(
               "div",
               {
                 class: "oese-blk-accordion-header",
                 id: "headingOne"
               },
-              /*#__PURE__*/ React.createElement(
+              React.createElement(
                 "h5",
                 {
                   class: "mb-0 oese-blk-accordion-title"
                 },
-                /*#__PURE__*/ React.createElement(
+                React.createElement(
                   "a",
                   {
                     class: attributes.accordionexpanded
@@ -340,7 +332,7 @@ registerBlockType("cgb/oese-accordion-block", {
                 )
               )
             ),
-            /*#__PURE__*/ React.createElement(
+            React.createElement(
               "div",
               {
                 id: attributes.blockid + "-oeseCollapse1",
@@ -350,12 +342,12 @@ registerBlockType("cgb/oese-accordion-block", {
                 "data-parent": "#oese-blk-accordion-parent",
                 tabindex: "0"
               },
-              /*#__PURE__*/ React.createElement(
+              React.createElement(
                 "div",
                 {
                   class: "card-body"
                 },
-                /*#__PURE__*/ React.createElement(InnerBlocks.Content, null)
+                React.createElement(InnerBlocks.Content, null)
               )
             )
           )
