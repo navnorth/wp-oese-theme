@@ -4,7 +4,6 @@
  * Registering a basic block with Gutenberg.
  * Simple block, renders and saves the same content without any interactivity.
  */
-//  Import CSS.
 const { __ } = wp.i18n; // Import __() from wp.i18n
 
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
@@ -86,10 +85,7 @@ registerBlockType("cgb/oese-accordion-block", {
   // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: "oese-block-category",
   // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
-  keywords: [
-    __("oese-accordion-block"),
-    __("accordion")
-  ],
+  keywords: [__("oese-accordion-block"), __("accordion")],
   attributes: {
     blockid: {
       type: "string"
@@ -99,8 +95,7 @@ registerBlockType("cgb/oese-accordion-block", {
       default: true
     },
     accordiontitle: {
-      type: "string",
-      default: "Accordion Title"
+      type: "string"
     }
   },
   edit: (props) => {
@@ -176,27 +171,27 @@ registerBlockType("cgb/oese-accordion-block", {
       length: 10
     }).map(Number.call, Number); // Creates a <p class='wp-block-cgb-block-oese-accordion-block'></p>.
 
-    return /*#__PURE__*/ React.createElement(
+    return React.createElement(
       "div",
       {
         className: props.className
       },
-      /*#__PURE__*/ React.createElement(
+      React.createElement(
         InspectorControls,
         null,
-        /*#__PURE__*/ React.createElement(
+        React.createElement(
           PanelBody,
           {
             title: __("Accordion Block settings"),
             initialOpen: true
           },
-          /*#__PURE__*/ React.createElement(
+          React.createElement(
             "div",
             {
               class:
                 "oer_curriculum_inspector_wrapper oer_curriculum_inspector_Postperpage"
             },
-            /*#__PURE__*/ React.createElement(ToggleControl, {
+            React.createElement(ToggleControl, {
               label: __("Expanded"),
               help: attributes.accordionexpanded
                 ? __("Accordion content will be shown initially", "five")
@@ -210,34 +205,34 @@ registerBlockType("cgb/oese-accordion-block", {
           )
         )
       ),
-      /*#__PURE__*/ React.createElement(
+      React.createElement(
         "div",
         {
           class: "oeseblk-" + attributes.blockid
         },
-        /*#__PURE__*/ React.createElement(
+        React.createElement(
           "div",
           {
             class: "oese-blk-accordion",
             id: "oese-blk-accordion-parent-" + attributes.blockid
           },
-          /*#__PURE__*/ React.createElement(
+          React.createElement(
             "div",
             {
               class: "z-depth-0 bordered"
             },
-            /*#__PURE__*/ React.createElement(
+            React.createElement(
               "div",
               {
                 class: "oese-blk-accordion-header",
                 id: "headingOne"
               },
-              /*#__PURE__*/ React.createElement(
+              React.createElement(
                 "h5",
                 {
                   class: "mb-0 oese-blk-accordion-title"
                 },
-                /*#__PURE__*/ React.createElement(
+                React.createElement(
                   "a",
                   {
                     class: attributes.accordionexpanded
@@ -249,15 +244,16 @@ registerBlockType("cgb/oese-accordion-block", {
                     "aria-expanded": attributes.accordionexpanded,
                     "aria-controls": "oeseCollapse1"
                   },
-                  /*#__PURE__*/ React.createElement("input", {
+                  React.createElement("input", {
                     type: "text",
                     onChange: accordiontitlechange,
+                    placeholder: "Accordion Title",
                     value: attributes.accordiontitle
                   })
                 )
               )
             ),
-            /*#__PURE__*/ React.createElement(
+            React.createElement(
               "div",
               {
                 id: attributes.blockid + "-oeseCollapse1",
@@ -267,12 +263,12 @@ registerBlockType("cgb/oese-accordion-block", {
                 "aria-labelledby": "headingOne",
                 tabindex: "0"
               },
-              /*#__PURE__*/ React.createElement(
+              React.createElement(
                 "div",
                 {
                   class: "card-body"
                 },
-                /*#__PURE__*/ React.createElement(InnerBlocks, {
+                React.createElement(InnerBlocks, {
                   allowedBlocks: ["core/image", "core/paragraph"],
                   templateInsertUpdatesSelection: false,
                   template: CONTENT_TEMPLATE
@@ -287,39 +283,39 @@ registerBlockType("cgb/oese-accordion-block", {
   },
   save: (props) => {
     const attributes = props.attributes;
-    return /*#__PURE__*/ React.createElement(
+    return React.createElement(
       "div",
       {
         className: props.className
       },
-      /*#__PURE__*/ React.createElement(
+      React.createElement(
         "div",
         {
           class: "oeseblk-" + attributes.blockid
         },
-        /*#__PURE__*/ React.createElement(
+        React.createElement(
           "div",
           {
             class: "oese-blk-accordion",
             id: "oese-blk-accordion-parent-" + attributes.blockid
           },
-          /*#__PURE__*/ React.createElement(
+          React.createElement(
             "div",
             {
               class: "z-depth-0 bordered"
             },
-            /*#__PURE__*/ React.createElement(
+            React.createElement(
               "div",
               {
                 class: "oese-blk-accordion-header",
                 id: "headingOne"
               },
-              /*#__PURE__*/ React.createElement(
+              React.createElement(
                 "h5",
                 {
                   class: "mb-0 oese-blk-accordion-title"
                 },
-                /*#__PURE__*/ React.createElement(
+                React.createElement(
                   "a",
                   {
                     class: attributes.accordionexpanded
@@ -336,7 +332,7 @@ registerBlockType("cgb/oese-accordion-block", {
                 )
               )
             ),
-            /*#__PURE__*/ React.createElement(
+            React.createElement(
               "div",
               {
                 id: attributes.blockid + "-oeseCollapse1",
@@ -345,12 +341,12 @@ registerBlockType("cgb/oese-accordion-block", {
                   : "oese-blk-accordion-content collapse",
                 tabindex: "0"
               },
-              /*#__PURE__*/ React.createElement(
+              React.createElement(
                 "div",
                 {
                   class: "card-body"
                 },
-                /*#__PURE__*/ React.createElement(InnerBlocks.Content, null)
+                React.createElement(InnerBlocks.Content, null)
               )
             )
           )
