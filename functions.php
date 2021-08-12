@@ -3007,7 +3007,7 @@ function oet_display_acf_home_content(){
             $_searchtitle = get_sub_field('oet_act_homepage_search_title');
 
             ?>
-            <div class="row col-sm-12 custom-common-padding">
+            <div class="col-sm-12 custom-common-padding">
               <div class="full-search-section m-auto text-center">
                    <div class="full-search-heading">
                        <h1><?php echo $_searchtitle ?></h1>

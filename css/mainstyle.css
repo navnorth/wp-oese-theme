@@ -1044,6 +1044,10 @@ svg {
 /*New styles*/
 
 /* CONTACT FORM STYLES */
+span.wpcf7-form-control-wrap {
+    display: block;
+    margin-top: 5px;
+}
 .wpcf7-form-control-wrap input, .wpcf7-form-control-wrap textarea {
     width: 100%;
     padding: 10px 15px;
@@ -2127,7 +2131,7 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
 	.page-template-program-template .lft_sid_cntnr,
 	.page-template-theme-template .lft_sid_cntnr { padding-right: 15px !important; }
 	#content .program_header_image img, #content .thematic_header_image img { width:100% !important; }
-	.footer-main-section { flex-direction: column; }
+	
 	.program-template.template-mobile, .office-template.template-mobile, .audience-template.template-mobile, .awards-template.template-mobile, .default-template.template-mobile {
         flex-direction: column;
     }
@@ -2553,6 +2557,7 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
 	.custom-grid-mobile-margin-top:nth-child(3){ margin-top: 52px !important; }
 	.custom-image-main-section .custom-image-heading { padding: 0 1rem; }
 	.custom-image-main-section .custom-image-heading p { font-size: 18px !important; }
+	.footer-main-section { flex-direction: column; }
 }
 @media (max-width: 767.98px){
     #searchform.searchform a {right: 15px;}
@@ -2699,6 +2704,9 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
     .navi_icn .fa-bars,.navi_icn .fa-times{font-size: 22px !important;}
     .responsive-menu-section .mobile-nav-icons.navi_icn .fa-times{top: 0 !important;}
     .mobile-nav-bar{position: relative;top: -43px; margin-bottom: 10px;}
+		.oese-search-content-wrapper {
+		    padding-top: 20px !important;
+		}
     .office-grid-section .office-grid-list-details p {
         font-size: 18px !important;
         line-height: 24px !important;
@@ -2739,6 +2747,10 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
     .footer-title {
         margin-top: 25px;
     }
+		.full-search-section .full-search-heading h1 {
+		    margin: 0px 0px 5% 0px !important;
+		    padding: 0px !important;
+		}
 }
 @media(min-width: 768px) and (max-width: 992px){
     .trending-image-details .trending-image-details-title {
