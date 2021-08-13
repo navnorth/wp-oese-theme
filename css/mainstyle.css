@@ -13,8 +13,6 @@ color palette:
 	Tassel green:       #6ec940
 */
 
-@import url('https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i');
-
 @font-face{font-family:'Helvetica Neue';
 	src:url(../fonts/helvetica_neue/helveticaneue.ttf)format('truetype');}
 @font-face {
@@ -24,29 +22,7 @@ color palette:
   font-display: auto;
   src: url("fontawesome/webfonts/fa-solid-900.eot");
   src: url("fontawesome/webfonts/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("fontawesome/webfonts/fa-solid-900.woff2") format("woff2"), url("fontawesome/webfonts/fa-solid-900.woff") format("woff"), url("fontawesome/webfonts/fa-solid-900.ttf") format("truetype"), url("fontawesome/webfonts/fa-solid-900.svg#fontawesome") format("svg"); }
-@font-face{font-family:'Raleway-Bold';
-	src:url(../fonts/Raleway-Bold.eot);
-	src:url(../fonts/Raleway-Bold.eot?#iefix) format('embedded-opentype'),
-		url(../fonts/Raleway-Bold.ttf) format('truetype'),
-		url(../fonts/Raleway-Bold.svg#glyphicons_halflingsregular) format('svg')}
 
-@font-face{font-family:'Raleway-SemiBold';
-	src:url(../fonts/Raleway-SemiBold.eot);
-	src:url(../fonts/Raleway-SemiBold.eot?#iefix) format('embedded-opentype'),
-		url(../fonts/Raleway-SemiBold.ttf) format('truetype'),
-		url(../fonts/Raleway-SemiBold.svg#glyphicons_halflingsregular) format('svg')}
-
-@font-face{font-family:'Raleway-Regular';
-	src:url(../fonts/Raleway-Regular.eot);
-	src:url(../fonts/Raleway-Regular.eot?#iefix) format('embedded-opentype'),
-		url(../fonts/Raleway-Regular.ttf) format('truetype'),
-		url(../fonts/Raleway-Regular.svg#glyphicons_halflingsregular) format('svg')}
-
-@font-face{font-family:'Raleway-Light';
-	src:url(../fonts/Raleway-Light.eot);
-	src:url(../fonts/Raleway-Light.eot?#iefix) format('embedded-opentype'),
-		url(../fonts/Raleway-Light.ttf) format('truetype'),
-		url(../fonts/Raleway-Light.svg#glyphicons_halflingsregular) format('svg')}
 a:focus {
     color: #0056b3;
     text-decoration: underline;
@@ -217,7 +193,7 @@ iframe { border: 0; max-width:100%;}
     border-radius: 3px;
     cursor: pointer;
     float: left;
-    font-family: 'Raleway-Regular';
+    font-family: 'Raleway', sans-serif; font-weight: 400;
 }
 .btn_dwnld:hover, .btn_dwnld:focus { opacity: .9; color:#fff;}
 .link_dwnlds a, .link_dwnlds a:hover, .link_dwnlds a:focus { color: #fff; text-decoration: none}
@@ -298,7 +274,7 @@ ul.tour_dates li {
     border-bottom: 1px solid #ccc;
     margin-bottom: 15px;
     padding-bottom: 5px;
-    font-family: 'Raleway-Light';
+    font-family: 'Raleway', sans-serif; font-weight: 300;
     font-size: 18px;
 }
 
@@ -330,7 +306,7 @@ ul.tour_dates li {
 	.bg_img_of_icns a { margin-top: 0px !important;}
 	.bg_img_of_icns .link_dwnlds { height:auto !important;}
 }
-.bg_img_of_icns a {font-family: 'Raleway-Light'; font-style: normal }
+.bg_img_of_icns a {font-family: 'Raleway', sans-serif; font-weight: 300; font-style: normal }
 
 
 .right_sid_mtr ul { float: left; padding-left: 0; list-style: none; }
@@ -567,7 +543,7 @@ p { font-weight:normal; color:#4b4e53; line-height: 28px;}
 .custom-button {
     background-color: #243C54;
     color: #fff;
-    font-family: 'Raleway-Bold';
+    font-family: 'Raleway', sans-serif; font-weight: 700;
     font-size: 14px;
     padding: 20px !important;
 }
@@ -852,7 +828,7 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
     color:#f5f5f5 !important;
     padding: 8px 12px !important;
     line-height: 37px;
-    font-family: 'Merriweather', -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-family: 'Merriweather',serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
     font-weight: 600;
 }
 .slideshow_container .slideshow_pagination .slideshow_pagination_center {
@@ -1031,7 +1007,7 @@ svg {
 .panel-default>.panel-heading { background: none !important;}
 .panel-default>.panel-heading+.panel-collapse>.panel-body { line-height: 23px}
 .panel-heading { padding: 5px 15px 46px !important}
-.panel-title>a { color: #294179 !important; font-family: 'Raleway-Bold'; float: left; width: 100%; background: url(../images/pls_mns_img.png) right -29px no-repeat; padding: 17px 0; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; padding-right: 50px}
+.panel-title>a { color: #294179 !important; font-family: 'Raleway', sans-serif !important; font-weight: 700 !important; float: left; width: 100%; background: url(../images/pls_mns_img.png) right -29px no-repeat; padding: 17px 0; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; padding-right: 50px}
 .panel-title>a:focus { outline: none}
 .panel-title>a.collapsed { background: url(../images/pls_mns_img.png) right 9px no-repeat }
 .panel-group .panel+.panel { margin-top: 10px !important}
@@ -1664,8 +1640,7 @@ a.oese-logo-home {
     height:100%;
 }
 .office-grid-list-details p, .payments-details-list p{
-    font-family: 'Merriweather', sans-serif !important;
-    font-weight: 500;
+    font-family: 'Merriweather', sans-serif !important; font-weight: 400;
     font-size: 30px !important;
     margin-bottom: 0;
     display: table-cell;
@@ -1675,8 +1650,7 @@ a.oese-logo-home {
     line-height: 32px !important;
 }
 .office-grid-list-details a {
-    font-family: 'Merriweather', sans-serif !important;
-    font-weight: 500;
+    font-family: 'Merriweather', sans-serif !important; font-weight: 400;
     font-size: 26px !important;
     margin-bottom: 0;
     text-align: center;
@@ -1923,8 +1897,7 @@ h2.trending-now-heading {
     margin-bottom: 0;
 }
 .payments-details-list a{
-    font-family: 'Merriweather', sans-serif !important;
-    font-weight: 500;
+    font-family: 'Merriweather', sans-serif !important; font-weight: 400;
     font-size: 26px !important;
     margin-bottom: 0;
     text-align: center;
@@ -2647,8 +2620,7 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
         justify-content: center;
     }
     .office-grid-list-details a, .payments-details-list p{
-        font-family: 'Merriweather', sans-serif !important;
-        font-weight: 500;
+        font-family: 'Merriweather', sans-serif !important; font-weight: 400;
         font-size: 26px !important;
         margin-bottom: 0;
         text-align: center;
@@ -2832,7 +2804,7 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
 	font-size: 24px;
 	line-height: 28px;
 	color: #ffffff !important;
-	font-family: "Raleway-Bold" !important;
+	font-family: 'Raleway', sans-serif !important; font-weight: 700 !important;
 	margin-bottom: 22px;
 	margin-top: 10px !important;
 	width: 100%;
@@ -2849,7 +2821,7 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
 .oet-featured-card-desc {
   font-size: 16px;
   color: #fff;
-  font-family: "Raleway-Regular" !important;
+  font-family: 'Raleway', sans-serif !important; font-weight: 400 !important;
   margin-bottom: 26px;
 	width: 100%;
 	word-spacing: -1px;
@@ -2869,9 +2841,8 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
 	Background-color: #e57200;
 	padding: 10px 10px;
 	font-size: 18px;
-	font-weight: 700;
 	color: #fff;
-	font-family: "Raleway-Regular" !important;
+	font-family: 'Raleway', sans-serif !important; font-weight: 400 !important;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
@@ -2972,9 +2943,8 @@ svg text.no-data { fill:#000000; stroke:#ffffff; stroke-width:0.1; stroke-opacit
 }
 
 .oese_shortcode_block .accordion .panel-default .panel-heading .panel-title > a{
-    font-family: 'Raleway-Semibold' !important;
+    font-family: 'Raleway', sans-serif !important; font-weight: 600 !important;
     font-size: 1.2em !important;
-    font-weight: 400 !important;
 }
 /** OESE SHortcode Colors End **/
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-size:inherit; color:inherit; }

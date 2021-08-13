@@ -85,7 +85,7 @@
     font-size: 24px;
     line-height: 28px;
     color: #ffffff !important;
-    font-family: "Raleway-Bold" !important;
+    font-family: 'Raleway', sans-serif !important; font-weight: 700 !important;
     margin-bottom: 22px;
     margin-top: 10px !important;
     width: 100%;
@@ -105,9 +105,8 @@
     Background-color: #e57200;
     padding: 10px 10px;
     font-size: 18px;
-    font-weight: 700;
     color: #fff;
-    font-family: "Raleway-Regular" !important;
+    font-family: 'Raleway', sans-serif !important; font-weight: 400 !important;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
@@ -171,7 +170,7 @@ a.oese-video-link {
 .custom-button {
     background-color: #243C54;
     color: #fff;
-    font-family: 'Raleway-Bold';
+    font-family: 'Raleway', sans-serif; font-weight: 700;
     font-size: 14px;
     padding: 20px !important;
 }
@@ -216,9 +215,8 @@ a.oese-video-link {
 }
 
 .oese_shortcode_cgb_container .accordion .panel-default .panel-heading .panel-title > a{
-    font-family: 'Raleway-Semibold' !important;
+    font-family: 'Raleway', sans-serif !important; font-weight: 600 !important;
     font-size: 1.2em !important;
-    font-weight: 400 !important;
 }
 
 .oet-featured-card-btn {
