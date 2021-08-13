@@ -503,7 +503,8 @@ ul.tour_dates li {
     color: #243C54;
     font-size: 14px;
 }
-.secondary-navigation-menu.sidebar-links .secondary-navigation-menu-list li a{
+.secondary-navigation-menu.sidebar-links .secondary-navigation-menu-list li a,
+.secondary-navigation-menu.sidebar-links .secondary-navigation-menu-list li span{
 	display:block;
 	padding:10px 20px !important;
 }
@@ -2949,3 +2950,16 @@ svg text.no-data { fill:#000000; stroke:#ffffff; stroke-width:0.1; stroke-opacit
 /** OESE SHortcode Colors End **/
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-size:inherit; color:inherit; }
 blockquote.wp-block-quote a { font-size:inherit; color:inherit; }
+
+/* Footer Last modified */
+.oese-lastModified {
+	text-align:right;
+	margin: 20px 0px 0px 0px !important;
+}
+.oese-date-modified-section { padding-top:10px; }
+.oese-lastModified span {
+		padding: 20px 10px;
+		border-top: 1px solid #d1d1d1;
+		display: block;
+		font-size: 14px;
+}

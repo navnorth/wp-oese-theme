@@ -750,12 +750,12 @@ add_action( 'admin_enqueue_scripts', 'theme_back_enqueue_script' );
 function theme_front_enqueue_script()
 {
   global $post;
-  wp_enqueue_style( 'theme-front-style',get_stylesheet_directory_uri() . '/css/front-style.css', array('wdt-bootstrap'));
+  wp_enqueue_style( 'theme-front-style',get_stylesheet_directory_uri() . '/css/front-style.css';
   wp_enqueue_style( 'theme-bootstrap-style',get_stylesheet_directory_uri() . '/css/bootstrap.min.css' );
   wp_enqueue_style( 'theme-font-style',get_stylesheet_directory_uri() . '/css/fontawesome/css/all.min.css' );
 
   wp_enqueue_style( 'theme-main-style',get_stylesheet_directory_uri() . '/css/mainstyle.css' );
-
+  wp_enqueue_style( 'theme-wpdt-style',get_stylesheet_directory_uri() . '/css/wpdt.css', array('wdt-bootstrap'));
   wp_enqueue_script('jquery');
   if (is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'wpdatatable')){
     wp_enqueue_script('ie-detection-script', get_stylesheet_directory_uri().'/js/ie-detect.js');
@@ -1161,7 +1161,7 @@ function getSidebarLinks($showHeader=true){
             if(trim($resourceLink)!==""){
               $output.= "<li><a target='". $target."' href='".$resourceLink."'>".$resourceLabel."</a></li>";
             }else{
-              $output.= "<li class='unlinked'>".$resourceLabel."</li>";
+              $output.= "<li class='unlinked'><span>".$resourceLabel."</span></li>";
             }
         endwhile;
         $output.=  "</ul>";
