@@ -750,7 +750,7 @@ add_action( 'admin_enqueue_scripts', 'theme_back_enqueue_script' );
 function theme_front_enqueue_script()
 {
   global $post;
-  wp_enqueue_style( 'theme-front-style',get_stylesheet_directory_uri() . '/css/front-style.css';
+  wp_enqueue_style( 'theme-front-style',get_stylesheet_directory_uri() . '/css/front-style.css');
   wp_enqueue_style( 'theme-bootstrap-style',get_stylesheet_directory_uri() . '/css/bootstrap.min.css' );
   wp_enqueue_style( 'theme-font-style',get_stylesheet_directory_uri() . '/css/fontawesome/css/all.min.css' );
 
