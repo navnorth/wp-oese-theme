@@ -879,8 +879,13 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 /* -------- end FRONT PAGE --------- */
 
 /* -------- Table Styles ----------*/
-#content tr:nth-child(even) {background: #ddd}
-#content tr:nth-child(odd) {background: #fff}
+.wp-block-table.is-style-stripes {border-bottom: 0px !important;}
+.wp-block-table thead {border-bottom: 0px !important;}
+.wp-block-table tfoot {border-top: 2px solid #ddd !important;}
+/*#content tr:nth-child(even) {background: #ddd}*/
+/*#content tr:nth-child(odd) {background: #fff}*/
+.wp-block-table.is-style-stripes tbody tr:nth-child(even) {background-color:#fff !important;}
+.wp-block-table.is-style-stripes tbody tr:nth-child(odd) {background-color:#ddd !important;}
 /*#content tr:first-child { background: #294179; }
 #content tr:first-child th, #content tr:first-child td, #content tr:first-child td a { color:#fff; }*/
 #content tr:first-child th[scope=col] { font-weight:800; vertical-align:bottom; }

@@ -156,7 +156,7 @@ function pull_quotethemefn($atts, $content = null)
 	}
 
 	$return = '';
-	$return .= '<div class="col-md-1 col-sm-1 col-xs-1">';
+	$return .= '<div class="col-md-1 col-sm-1 col-xs-1 oese-blockquote">';
 		$return .= '<img src="'. get_stylesheet_directory_uri() .'/images/dbl_cod_img.png" alt="Quote"/>';
 	$return .= '</div>';
 
