@@ -269,7 +269,7 @@ function oese_feature_video_func($attr, $content = null){
  $count++; $return = '';
 
  if ($count==1)
-	 $return .= '<script>var ytplayerapiurl = "'.get_stylesheet_directory_uri(). '/js/ytplayerapi.js"</script>';
+	 //$return .= '<script>var ytplayerapiurl = "'.get_stylesheet_directory_uri(). '/js/ytplayerapi.js"</script>';
  
  if ( is_admin() ) {
 	 $_arr = getShortcodeAttr($attr);

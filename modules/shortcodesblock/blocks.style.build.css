@@ -246,12 +246,10 @@ a.oese-video-link {
     font-family: inherit !important;
     padding: 1.714285714rem !important;
 }
-
 .oese_shortcode_cgb_container .oese-blockquote img {
     max-width: none !important;
     width: 45px !important;
 }
-
 .oese_shortcode_cgb_container blockquote {
     font-weight: normal;
     color: #4b4e53;
@@ -263,4 +261,23 @@ a.oese-video-link {
 /* ************************* */
 .oese_shortcode_cgb_container .pblctn_box .socl_icns {
       line-height: 1.3em !important;
+}
+
+/* ************************* */
+/*       Featured Video      */
+/* ************************* */
+.oese-featured-video-shrtcd-overlay .oese-video-modal {
+    min-height: 100%;
+}
+.oese-featured-video-shrtcd-overlay .oese-video-table {
+    position: absolute;
+    display: table !important;
+    min-height: 100%;
+    height: 100%;
+    min-width: 100%;
+    width: 100%;
+}
+.oese-featured-video-shrtcd-overlay .oese-video-cell {
+    display: table-cell;
+    vertical-align: middle;
 }
