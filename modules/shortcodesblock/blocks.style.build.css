@@ -246,6 +246,21 @@ a.oese-video-link {
     font-family: inherit !important;
     padding: 1.714285714rem !important;
 }
+.oese_shortcode_block blockquote.blog_mtr,
+.oese_shortcode_cgb_container blockquote.blog_mtr {
+    padding-bottom:0px !important;
+    margin-bottom: 0px !important;
+    float: left !important;
+}
+.oese_shortcode_block blockquote.blog_mtr p,
+.oese_shortcode_cgb_container blockquote.blog_mtr p {
+    margin:0px !important;
+}
+.oese_shortcode_block blockquote.blog_athr,
+.oese_shortcode_cgb_container blockquote.blog_athr {
+    padding-top:20px !important;
+    float: left !important;
+}
 .oese_shortcode_cgb_container .oese-blockquote img {
     max-width: none !important;
     width: 45px !important;
