@@ -7,7 +7,7 @@
  * filter hooks in WordPress to change core functionality.
  */
 define( "WP_OESE_THEME_NAME", "WP OESE Theme" );
-define( "WP_OESE_THEME_VERSION", "1.9.3" );
+define( "WP_OESE_THEME_VERSION", "2.0.0" );
 define( "WP_OESE_THEME_SLUG", "wp_oese_theme" );
 
 // Set up the content width value based on the theme's design and stylesheet.
@@ -731,9 +731,9 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
     wp_enqueue_style( 'tinymce_button_backend',get_stylesheet_directory_uri() . '/tinymce_button/shortcode_button.css' );
     wp_localize_script( 'theme-back-script', 'oet_ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
     wp_enqueue_style( 'theme-font-style',get_stylesheet_directory_uri() . '/css/fontawesome/css/all.min.css' );
-    if(get_admin_page_title() == 'Edit Page' || 
-       get_admin_page_title() == 'Edit Post' || 
-       get_admin_page_title() == 'Add New Page' || 
+    if(get_admin_page_title() == 'Edit Page' ||
+       get_admin_page_title() == 'Edit Post' ||
+       get_admin_page_title() == 'Add New Page' ||
        get_admin_page_title() == 'Add New Post'){
     //if(get_admin_page_title() != 'Media Library' && get_admin_page_title() != 'Manage Themes'){;
       wp_enqueue_style( 'theme-bootstrap-style',get_stylesheet_directory_uri() . '/css/bootstrap.min.css' );
@@ -3203,7 +3203,7 @@ add_action( 'acf/init', 'oese_acf_init_tile_links_block' );
 
 function oese_tile_link_block_render_callback( $block ){
   $slug = str_replace('acf/', '', $block['name']);
-  
+
   // include a template part from within the "template-parts/block" folder
   if( file_exists( get_theme_file_path("/template-parts/block/content-{$slug}.php") ) ) {
     include( get_theme_file_path("/template-parts/block/content-{$slug}.php") );
