@@ -800,6 +800,7 @@ function federated_analytics_tracking_code(){
 }
 add_action('wp_head', 'federated_analytics_tracking_code');
 
+/* Frontend loaded Google fonts*/
 function load_frontend_google_fonts() {
     ?>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -809,6 +810,7 @@ function load_frontend_google_fonts() {
 }
 add_action( 'wp_head', 'load_frontend_google_fonts' );
 
+/* Admin loaded Google fonts*/
 function load_admin_google_fonts() {
     ?>
     <link rel="preconnect" href="https://fonts.googleapis.com">
