@@ -77,9 +77,9 @@ Description: Used to style blocks in the editor.
 .block-editor-writing-flow h1 {font-size: 28px !important; font-weight: 700 !important;  color: #2D8700 !important;}
 .block-editor-writing-flow h2 {font-size: 24px !important; font-weight: 700 !important;  color: #1F5C99 !important;}
 .block-editor-writing-flow h3 {font-size: 24px !important; line-height: 26px !important; color: #294179 !important;}
-.block-editor-writing-flow h4 {font-size: 18px !important; line-height: 20px !important; font-weight: 500 !important; color: #2d8700 !important;}
-.block-editor-writing-flow h5 {font-size: 14px !important; line-height: 15px !important; font-weight: 500 !important; color: #4b4e53 !important;}
-.block-editor-writing-flow h6 {font-size: 12px !important; line-height: 13px !important; font-weight: 500 !important; color: #4b4e53 !important;}
+.block-editor-writing-flow h4 {font-size: 18px !important; line-height: 20px !important; font-weight: 400 !important; color: #2d8700 !important;}
+.block-editor-writing-flow h5 {font-size: 14px !important; line-height: 15px !important; font-weight: 400 !important; color: #4b4e53 !important;}
+.block-editor-writing-flow h6 {font-size: 12px !important; line-height: 13px !important; font-weight: 400 !important; color: #4b4e53 !important;}
 
 /* Title Input */
 .block-editor-writing-flow .editor-post-title .editor-post-title__input{font-size: 28px;font-weight: 700;color: #2D8700 !important;font-family: 'Merriweather', serif; padding:0px !important;}
@@ -100,6 +100,12 @@ Description: Used to style blocks in the editor.
 .editor-block-list__block a,
 .wp-block-freeform.block-library-rich-text__tinymce a {
 	color: #21759b;
+}
+.block-editor-writing-flow a {
+    text-decoration: underline;
+    font-size: 16px;
+    color: #333333;
+		cursor: pointer;
 }
 
 /* List styles */
@@ -212,7 +218,7 @@ Description: Used to style blocks in the editor.
 
 /* Table In General */
 .block-editor-writing-flow .wp-block-table thead {border-bottom: 0px !important;}
-.block-editor-writing-flow .wp-block-table thead th {border: 0px !important;}
+.block-editor-writing-flow .wp-block-table thead th {border: 0px !important; text-transform: uppercase;}
 .block-editor-writing-flow .wp-block-table tbody tr:last-child td{border-bottom: 0px !important;}
 .block-editor-writing-flow .wp-block-table tfoot {border-top: 2px solid #ddd !important;}
 

@@ -7,7 +7,7 @@
  * filter hooks in WordPress to change core functionality.
  */
 define( "WP_OESE_THEME_NAME", "WP OESE Theme" );
-define( "WP_OESE_THEME_VERSION", "1.9.3" );
+define( "WP_OESE_THEME_VERSION", "2.0.0" );
 define( "WP_OESE_THEME_SLUG", "wp_oese_theme" );
 
 // Set up the content width value based on the theme's design and stylesheet.
@@ -717,7 +717,7 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
  * Shortcodes Blocks
  **/
  $_vsn = (int)explode('.',get_bloginfo('version'))[0];
- if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblock/shortcodesblock.php' );
+ //if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblock/shortcodesblock.php' );
  if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/accordion/init.php' );
 
  function theme_back_enqueue_script()
@@ -731,9 +731,9 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
     wp_enqueue_style( 'tinymce_button_backend',get_stylesheet_directory_uri() . '/tinymce_button/shortcode_button.css' );
     wp_localize_script( 'theme-back-script', 'oet_ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
     wp_enqueue_style( 'theme-font-style',get_stylesheet_directory_uri() . '/css/fontawesome/css/all.min.css' );
-    if(get_admin_page_title() == 'Edit Page' || 
-       get_admin_page_title() == 'Edit Post' || 
-       get_admin_page_title() == 'Add New Page' || 
+    if(get_admin_page_title() == 'Edit Page' ||
+       get_admin_page_title() == 'Edit Post' ||
+       get_admin_page_title() == 'Add New Page' ||
        get_admin_page_title() == 'Add New Post'){
     //if(get_admin_page_title() != 'Media Library' && get_admin_page_title() != 'Manage Themes'){;
       wp_enqueue_style( 'theme-bootstrap-style',get_stylesheet_directory_uri() . '/css/bootstrap.min.css' );
@@ -797,19 +797,25 @@ add_filter( 'script_loader_src', 'vc_remove_wp_ver_css_js', 9999 );
 // Fed Govt analytics script
 function federated_analytics_tracking_code(){
     echo '<script type="text/javascript" id="_fed_an_ua_tag" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=ED"></script>';
-    ?>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
-    <?php
 }
 add_action('wp_head', 'federated_analytics_tracking_code');
 
+/* Frontend loaded Google fonts*/
+function load_frontend_google_fonts() {
+    ?>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&family=Raleway:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <?php
+}
+add_action( 'wp_head', 'load_frontend_google_fonts' );
+
+/* Admin loaded Google fonts*/
 function load_admin_google_fonts() {
     ?>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&family=Raleway:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
     <?php
 }
 add_action( 'admin_head', 'load_admin_google_fonts' );
@@ -3203,7 +3209,7 @@ add_action( 'acf/init', 'oese_acf_init_tile_links_block' );
 
 function oese_tile_link_block_render_callback( $block ){
   $slug = str_replace('acf/', '', $block['name']);
-  
+
   // include a template part from within the "template-parts/block" folder
   if( file_exists( get_theme_file_path("/template-parts/block/content-{$slug}.php") ) ) {
     include( get_theme_file_path("/template-parts/block/content-{$slug}.php") );

@@ -163,8 +163,8 @@ a.oese-video-link {
     float: left;
     width: 100%;
 }
-.oese_shortcode_block {
-    display: flow-root;
+.oese_shortcode_block.flx {
+    display: flex;
 }
 .oese_shortcode_block p {
     float: none !important;
