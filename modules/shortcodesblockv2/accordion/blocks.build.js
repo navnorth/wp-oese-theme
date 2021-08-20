@@ -9,7 +9,7 @@ const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 
 const { InspectorControls, InnerBlocks, useBlockProps } = wp.blockEditor;
-const { PanelBody } = wp.components;
+const { BaseControl, Panel, PanelRow, PanelBody } = wp.components;
 const {
   CheckboxControl,
   RadioControl,
