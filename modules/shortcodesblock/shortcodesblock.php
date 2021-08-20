@@ -125,7 +125,12 @@ function oese_shortcodes_block_cgb_block_assets() { // phpcs:ignore
 function render_posts_block($attributes, $ajx=false){
 	 remove_filter( 'the_content', 'wpautop' );
    $shrtcd = $attributes['selectedShortodeValue'];
-	 $_ret = '<div class="oese_shortcode_block">'.do_shortcode(stripslashes($shrtcd)).'</div>';
+	 if($attributes['displayflex']){
+		 $_ret = '<div class="oese_shortcode_block flx">'.do_shortcode(stripslashes($shrtcd)).'</div>';
+	 }else{
+		 $_ret = '<div class="oese_shortcode_block">'.do_shortcode(stripslashes($shrtcd)).'</div>';
+	 }
+	 
 	 add_filter( 'the_content', 'wpautop' );
 	 return $_ret;
 	 
