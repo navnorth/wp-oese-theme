@@ -742,9 +742,10 @@ function recommended_resources_func($attr, $content = null)
 			$return .= '<span class="socl_icns fa-stack"><i class="fa fa-star "></i></span>';
 		}
 
-		$return .= '</div>';
-            $return .= '<P class="rght_sid_wdgt_hedng">'. $title .'</P>';
-            $return .= '<div class="cntnbx_cntnr" style="text-align:'. $align.'">'.$content.'</div>';
+				$return .= '</div>';
+					$return .= '<div class="cntnbx_cntnr" style="text-align:'. $align.'">';
+						$return .= '<p class="rght_sid_wdgt_hedng">'. $title .'</p>'.$content;
+					$return .= '</div>';
         $return .= '</div>';
 		$return .= '</div>';
 
