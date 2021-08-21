@@ -552,12 +552,15 @@ a, button {
     transition: all .2s ease-in;
 }
 
+.oese_shortcode_block .pull-right,
 .oese_shortcode_block.flx .pull-right {
     margin-left: auto;
 }
+.oese_shortcode_block .pull-left,
 .oese_shortcode_block.flx .pull-left {
     margin-right: auto;
 }
+
 .oese_shortcode_block.flx .pull-center {
 		margin-left: auto;
     margin-right: auto;
