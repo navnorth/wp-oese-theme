@@ -552,6 +552,18 @@ a, button {
     transition: all .2s ease-in;
 }
 
+.oese_shortcode_block.flx .pull-right {
+    margin-left: auto;
+}
+.oese_shortcode_block.flx .pull-left {
+    margin-right: auto;
+}
+.oese_shortcode_block.flx .pull-center {
+		margin-left: auto;
+    margin-right: auto;
+}
+
+
 /* -------- begin CALLOUT BOX ---------
 http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 */

@@ -88,6 +88,13 @@ Description: Used to style blocks in the editor.
 2.0 General Block Styles
 --------------------------------------------------------------*/
 
+.pull-right {float: right;}
+.pull-left {float: left;}
+.pull-center {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
 /* Main column width */
 
 .wp-block {
