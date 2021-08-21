@@ -258,6 +258,17 @@ blockquote { border-left: none !important; font-size: auto !important; padding: 
 .tlkt_rght_sid ul { float: left; width: 100%}
 
 
+.oese_shortcode_cgb_container.flx .pull-right {
+    margin-left: auto;
+}
+.oese_shortcode_cgb_container.flx .pull-left {
+    margin-right: auto;
+}
+.oese_shortcode_cgb_container.flx .pull-center {
+		margin-left: auto;
+    margin-right: auto;
+}
+
 /** Pull Out box styles **/
 .pull-out-box {position: relative;margin: 30px;width: auto; /* so margin matches others */}
 .pull-out-box.big-text {font-size: 1.4em;}
