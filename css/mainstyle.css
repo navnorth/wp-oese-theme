@@ -541,6 +541,7 @@ h5 { font-weight:500; font-size:14px !important; line-height:15px; color:#4b4e53
 h6 { font-weight:500; font-size:12px !important; line-height:13px; color:#4b4e53; }
 h1,h2,h4 { color: #2d8700; }
 p { font-weight:normal; color:#4b4e53; line-height: 28px;}
+.contact-oese-address .text-address p, .contact-oese-address p.text-address {color: #fff !important;}
 .custom-button {
     background-color: #243C54;
     color: #fff;

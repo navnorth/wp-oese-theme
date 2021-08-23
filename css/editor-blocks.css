@@ -583,3 +583,16 @@ p.has-drop-cap:not(:focus)::first-letter {
 	padding-left: 0;
 	padding-right: 0;
 }
+
+/* Contact Page */
+
+.contact-oese-address .text-address {
+    background-color: #243C54;
+    color: #fff !important;
+    border-radius: 2px;
+    padding: 20px 25px;
+    margin-bottom: 15px;
+}
+.contact-oese-address .text-address p {
+    color: #fff !important;
+}
