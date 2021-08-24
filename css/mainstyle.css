@@ -2718,6 +2718,7 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
     .navi_icn .fa-bars,.navi_icn .fa-times{font-size: 22px !important;}
     .responsive-menu-section .mobile-nav-icons.navi_icn .fa-times{top: 0 !important;}
     .mobile-nav-bar{position: relative;top: -43px; margin-bottom: 10px;}
+		body.error404 .mobile-nav-bar{position: relative;top: -43px; margin-bottom: 30px !important;}
 		.oese-search-content-wrapper {
 		    padding-top: 20px !important;
 		}
@@ -3007,21 +3008,25 @@ blockquote.wp-block-quote a { font-size:inherit; color:inherit; }
 
 
 /* Footer 404 positioning */
-html.fullheight {
-    height: 100%;
-}
-body.error404 {
-		height:100%;
-}
-body.error404 .container-fluid {
-		height:100%;
-}
-body.error404 .container-fluid .container {
-		height:100%; position:relative;
-}
-body.error404 .oese-footer-section {
-    position: absolute;
-    bottom: 0;
-    margin: 0px auto !important;
-    width: 100%;
+@media (max-width: 512px){
+	html.fullheight {
+	    height: 100%;
+	}
+	body.error404 {
+			height:100%;
+	}
+	body.error404 .container-fluid {
+			height:100%;
+	}
+	body.error404 .container-fluid .container {
+			height:100%; position:relative;
+	}
+	body.error404 .oese-footer-section {
+	    position: absolute;
+	    bottom: 0;
+			right: 0;
+			left: 0;
+	    margin: 0px auto !important;
+	    width: 100%;
+	}
 }
