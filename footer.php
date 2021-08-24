@@ -29,7 +29,8 @@ if($footerNav) {
 }
 
 $show_address = get_option('wp_oese_theme_display_footer_address');
-    ?>      
+    ?>     
+          <div class="oese-footer-section">
             <div class="row oese-date-modified-section">
               <div class="col-md-12 oese-lastModified pull-right">
                   <span>Last Modified: <?php echo the_modified_date('m/d/Y') ?></span>
@@ -105,6 +106,7 @@ $show_address = get_option('wp_oese_theme_display_footer_address');
                     </div>
                 </div>
             </div>
+          </div>
         </div>
     </div>
 <?php wp_footer(); ?>

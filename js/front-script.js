@@ -610,3 +610,13 @@ function wpdt_freeze_header_func(obj){
   
 	obj.find('.wdtResponsiveWrapper table thead tr th').css({'top' : wpdt_tblhdr_above_elements + 'px'});  
 }
+
+
+/* -------------------------------- */
+/* Footer fixed positioning on 404  */
+/* -------------------------------- */
+jQuery( document ).ready(function() {
+  if(jQuery("body").hasClass("error404")){
+      jQuery("html").addClass('fullheight');
+  }
+});
