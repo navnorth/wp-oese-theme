@@ -2133,9 +2133,11 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
 	.page-template-theme-template .lft_sid_cntnr { padding-right: 15px !important; }
 	#content .program_header_image img, #content .thematic_header_image img { width:100% !important; }
 	
+	/*
 	.program-template.template-mobile, .office-template.template-mobile, .audience-template.template-mobile, .awards-template.template-mobile, .default-template.template-mobile {
         flex-direction: column;
     }
+	*/
 	.program-template.template-mobile .col-sm-12, .office-template.template-mobile .col-sm-12{
 		flex:0;
 	}	
@@ -2218,6 +2220,7 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
 }
 
 @media (max-width: 1024px){
+	/*
 	.template-mobile .col-md-8 {
 			-webkit-box-flex: none;
 			-ms-flex: none;
@@ -2230,16 +2233,18 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
 			flex: none;
 			max-width: none;
 	}
+	*/
 	.secondary-navigation-menu.sidebar-links {
     margin-bottom: 20px;
 	}
+	
 }
 
 @media (max-width: 800px){
 	.slideshow_container, .slideshow_container .slideshow_content { height: 360px !important}
 	.main-menu { display:none; }
 	.navi_icn { display:block !important; }
-.office-template, .audience-template, .awards-template { /*flex-direction: column-reverse;*/ }
+  /*.office-template, .audience-template, .awards-template { flex-direction: column-reverse; }*/
 	.cls_search form.search-frm { margin-left:0; }
 	.cls_search .ui-widget #search_que { width:80% !important; }
 	.cls_results .wdm_resultContainer .wdm_list { width:100% !important; float:none !important; margin-top:0; }
@@ -2353,9 +2358,7 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
     #home_content .wp-caption { width:701px !important; }
     #home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:699px !important; }
     .slideshow_container_style-light .slideshow_pagination { bottom:10px !important; }
-    .office-template, .audience-template, .awards-template {
-        /*flex-direction: column-reverse;*/
-    }
+    /*.office-template, .audience-template, .awards-template {flex-direction: column-reverse;}*/
     .secondary-navigation-menu.sidebar-links {
         margin-bottom: 20px;
     }
