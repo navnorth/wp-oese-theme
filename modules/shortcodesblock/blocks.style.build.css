@@ -244,13 +244,12 @@ a.oese-video-link {
     font-size: 18px !important;
     line-height: 25px !important;
     font-family: inherit !important;
-    padding: 1.7em 1.7em 1.7em 2.2em !important;
+    padding: 1.7em 1.3em 1.7em 2.2em !important;
 }
 .oese_shortcode_block blockquote.blog_mtr,
 .oese_shortcode_cgb_container blockquote.blog_mtr {
     padding-top:0px !important;
     padding-bottom:0px !important;
-    padding-right:0px !important;
     margin-bottom: 0px !important;
 }
 
@@ -352,6 +351,10 @@ a.oese-video-link {
   .oese_shortcode_block .fa,
   .oese_shortcode_cgb_container .fa {
       font-size: 24px;
+  }
+  .oese_shortcode_block blockquote,
+  .oese_shortcode_cgb_container blockquote {
+      padding: 1.7em 1.7em 1.7em 2.2em !important;
   }
 }
 
