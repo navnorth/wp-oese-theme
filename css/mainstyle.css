@@ -3006,6 +3006,69 @@ blockquote.wp-block-quote a { font-size:inherit; color:inherit; }
 		font-size: 14px;
 }
 
+/* **************************** */
+/*    WP-BLOCK QUOTE OVERRIDE   */
+/* **************************** */
+blockquote.wp-block-quote {padding:0px 15px !important;}
+blockquote.wp-block-quote p em {
+    font-family: 'Merriweather' !important;
+    font-style: italic;
+    font-size: 26px !important;
+    line-height: 34px !important;
+    color: #828282 !important;
+}
+blockquote.wp-block-quote p cite{
+    font-family: 'Helvetica Neue',sans-serif !important;
+    text-align: right;
+    font-size: 24px !important;
+    line-height: 32px !important;
+    color: #981F33 !important;
+    font-weight: 600;
+    font-style: normal;
+    display:block;
+    width:100%;
+}
+blockquote.wp-block-quote p{
+  padding: 0 1.7em 0 3.2em !important;
+}
+blockquote.wp-block-quote:before {
+    content: "\f10d";
+    font-family: 'fontawesome';
+    color: #1F5C99;
+    font-size: 32px;
+}
+
+
+blockquote.wp-block-quote.is-style-large p em {font-size: 30px !important;line-height: 38px !important;}
+blockquote.wp-block-quote.is-style-large p cite{font-size: 30px !important;line-height: 38px !important;}
+blockquote.wp-block-quote.is-style-large:before {font-size: 36px;}
+blockquote.wp-block-quote.is-style-large p{padding: 0 1.7em 0 2.8em !important;}
+
+@media screen and (max-width: 768px) {
+	blockquote.wp-block-quote p em {font-size: 20px !important;line-height: 28px !important;}
+	blockquote.wp-block-quote p cite{font-size: 20px !important;line-height: 28px !important;}
+	blockquote.wp-block-quote:before {font-size: 28px;}
+	blockquote.wp-block-quote p{padding: 0 1.7em 0 2.6em !important;}
+	
+	blockquote.wp-block-quote.is-style-large p em {font-size: 26px !important;line-height: 34px !important;}
+	blockquote.wp-block-quote.is-style-large p cite{font-size: 26px !important;line-height: 34px !important;}
+	blockquote.wp-block-quote.is-style-large:before {font-size: 32px;}
+	blockquote.wp-block-quote.is-style-large p{padding: 0 1.7em 0 2.2em !important;}
+}
+
+@media screen and (max-width: 599px) {
+	blockquote.wp-block-quote p em {font-size: 16px !important;line-height: 24px !important;}
+	blockquote.wp-block-quote p cite{font-size: 16px !important;line-height: 24px !important;}
+	blockquote.wp-block-quote:before {font-size: 24px;}
+	blockquote.wp-block-quote p{padding: 0 1.7em 0 2em !important;}
+	
+	blockquote.wp-block-quote.is-style-large p em {font-size: 22px !important;line-height: 30px !important;}
+	blockquote.wp-block-quote.is-style-large p cite{font-size: 22px !important;line-height: 30px !important;}
+	blockquote.wp-block-quote.is-style-large:before {font-size: 28px;}
+	blockquote.wp-block-quote.is-style-large p{padding: 0 1.7em 0 1.8em !important;}
+}
+
+
 
 /* Footer 404 positioning */
 @media (min-width: 768px){
