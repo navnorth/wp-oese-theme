@@ -325,6 +325,10 @@ a.oese-video-link {
   .oese_shortcode_cgb_container .fa {
       font-size: 28px;
   }
+  .oese_shortcode_block blockquote,
+  .oese_shortcode_cgb_container blockquote {
+      padding: 1.7em 1.7em 1.7em 2.2em !important;
+  }
 }
 
 @media screen and (max-width: 599px) {
