@@ -170,12 +170,15 @@ a.oese-video-link {
     float: none !important;
 }
 
-.custom-button {
+.oese_shortcode_cgb_container .custom-button,
+.oese_shortcode_block .custom-button {
     background-color: #243C54;
     color: #fff;
-    font-family: 'Raleway', sans-serif; font-weight: 700;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
     font-size: 14px;
     padding: 20px !important;
+
 }
 
 /* OESE COLORS */
@@ -190,6 +193,7 @@ a.oese-video-link {
 .oese_shortcode_cgb_container .hdng_mtr, 
 .oese_shortcode_cgb_container .hdng_mtr a{
   color: #549944 !important;
+  font-size: 18px !important;
 }
 
 .oese_shortcode_block h4 {font-family: 'Raleway', sans-serif !important;}
@@ -294,8 +298,8 @@ a.oese-video-link {
     font-weight: 600;
 }
 
-.oese_shortcode_block .fa,
-.oese_shortcode_cgb_container .fa {
+.oese_shortcode_block .oese_blockquote_wrapper .oese-blockquote .fa,
+.oese_shortcode_cgb_container .oese_blockquote_wrapper .oese-blockquote .fa {
     color: #1F5C99;
     font-size: 32px;
 }
