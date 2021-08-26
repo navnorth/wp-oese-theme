@@ -111,7 +111,7 @@ Description: Used to style blocks in the editor.
 	color: #21759b;
 }
 .block-editor-writing-flow a {
-    text-decoration: underline;
+    text-decoration: none;
     font-size: 16px;
     color: #333333;
 		cursor: pointer;
@@ -264,7 +264,7 @@ Description: Used to style blocks in the editor.
 [class^="wp-block-"] figcaption,
 [class^="wp-block-"] figcaption.editor-rich-text__tinymce.mce-content-body {
 	color: #757575;
-	font-size: 12px;
+	font-size: 13px;
 	line-height: 2;
 	font-style: italic;
 	text-align: left;

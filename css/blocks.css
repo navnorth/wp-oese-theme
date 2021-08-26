@@ -22,8 +22,6 @@ Description: Used to style blocks.
 
 [class^="wp-block-"] figcaption {
 	color: #757575;
-	font-size: 12px;
-	font-size: 0.857142857rem;
 	line-height: 2;
 	font-style: italic;
 	text-align: left;
