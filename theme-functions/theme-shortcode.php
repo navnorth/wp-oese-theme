@@ -156,30 +156,29 @@ function pull_quotethemefn($atts, $content = null)
 	}
 
 	$return = '';
-	$return .= '<div class="col-md-1 col-sm-1 col-xs-1 oese-blockquote">';
-		$return .= '<img src="'. get_stylesheet_directory_uri() .'/images/dbl_cod_img.png" alt="Quote"/>';
-	$return .= '</div>';
+	$return .= '<div class="oese_blockquote_wrapper">';
+		$return .= '<div class="col-md-1 col-sm-1 col-xs-1 oese-blockquote">';
+			//$return .= '<img src="'. get_stylesheet_directory_uri() .'/images/dbl_cod_img.png" alt="Quote"/>';
+			$return .= '<i class="fa fa-quote-left"></i>';
+		$return .= '</div>';
 
-	$return .= '<div class="col-md-11 col-sm-11 col-xs-11">';
-	if(isset($content) && !empty($content))
-	{
-		$return .= '<blockquote class="blog_mtr"><span></span>';
-			//$content = apply_filters('the_content', $content);
-			$return .= $content;
-		$return .= '</blockquote>';
-	}
-	if(isset($speaker) && !empty($speaker))
-	{
-		$return .= '<blockquote class="blog_athr">';
-			$return .= $speaker;
-		$return .= '</blockquote>';
-	}
-	if(isset($additional_info) && !empty($additional_info))
-	{
-		$return .= ' <p class="blog_date">';
-			$return .= $additional_info;
-		$return .= '</p>';
-	}
+		$return .= '<div class="col-md-12 col-sm-12 col-xs-12">';
+		if(isset($content) && !empty($content))
+		{
+			$return .= '<blockquote class="blog_mtr"><span></span>';
+				//$content = apply_filters('the_content', $content);
+				$return .= $content;
+			$return .= '</blockquote>';
+		}
+		if(isset($speaker) && !empty($speaker))
+		{
+			$return .= '<blockquote class="blog_athr">'.$speaker.'</blockquote>';
+		}
+		if(isset($additional_info) && !empty($additional_info))
+		{
+			$return .= ' <p class="blog_date">'.$additional_info.'</p>';
+		}
+		$return .= '</div>';
 	$return .= '</div>';
 	return $return;
 }

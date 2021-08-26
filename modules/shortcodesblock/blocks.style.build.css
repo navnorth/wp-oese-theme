@@ -248,20 +248,54 @@ a.oese-video-link {
     font-size: 18px !important;
     line-height: 25px !important;
     font-family: inherit !important;
-    padding: 1.714285714rem !important;
+    padding: 1.7em 1.2em 1.7em 2.2em !important;
 }
 .oese_shortcode_block blockquote.blog_mtr,
 .oese_shortcode_cgb_container blockquote.blog_mtr {
+    padding-top:0px !important;
     padding-bottom:0px !important;
     margin-bottom: 0px !important;
 }
-.oese_shortcode_block blockquote.blog_mtr p,
+
+
+.oese_shortcode_block blockquote.blog_mtr p, 
 .oese_shortcode_cgb_container blockquote.blog_mtr p {
-    margin:0px !important;
+    margin: 0px !important;
+    font-family: 'Merriweather' !important;
+    font-style: italic;
+    font-size: 26px !important;
+    line-height: 34px !important;
+    color:#828282;
 }
-.oese_shortcode_block blockquote.blog_athr,
+.oese_shortcode_block blockquote.blog_mtr,
+.oese_shortcode_cgb_container blockquote.blog_mtr {
+    font-family: 'Merriweather' !important;
+    font-style: italic;
+    font-size: 26px !important;
+    line-height: 34px !important;
+    color:#828282;
+}
+
+.oese_shortcode_block blockquote.blog_athr p,
+.oese_shortcode_cgb_container blockquote.blog_athr p {
+    margin:0px !important;
+    padding-top: 0px !important;
+    font-family: 'Helvetica Neue',sans-serif !important;
+    text-align: right;
+    font-size: 24px !important;
+    line-height: 32px !important;
+    color: #981F33;
+    font-weight: 600;
+}
+.oese_shortcode_block blockquote.blog_athr, 
 .oese_shortcode_cgb_container blockquote.blog_athr {
-    padding-top:20px !important;
+    padding-top: 30px !important;
+    font-family: 'Helvetica Neue',sans-serif !important;
+    text-align: right;
+    font-size: 24px !important;
+    line-height: 32px !important;
+    color: #981F33;
+    font-weight: 600;
 }
 
 .oese_shortcode_block .oese_blockquote_wrapper .oese-blockquote .fa,
@@ -342,6 +376,40 @@ a.oese-video-link {
     color: #4b4e53;
     line-height: 28px;
 }
+
+/* **************************** */
+/*    WP-BLOCK QUOTE OVERRIDE   */
+/* **************************** */
+/*
+blockquote.wp-block-quote p em {
+    font-family: 'Merriweather' !important;
+    font-style: italic;
+    font-size: 26px !important;
+    line-height: 34px !important;
+    color: #828282 !important;
+}
+blockquote.wp-block-quote p cite,
+.block-editor-writing-flow blockquote .wp-block-quote__citation {
+    font-family: 'Helvetica Neue',sans-serif !important;
+    text-align: right;
+    font-size: 24px !important;
+    line-height: 32px !important;
+    color: #981F33 !important;
+    font-weight: 600;
+    font-style: normal;
+    display:block;
+    width:100%;
+}
+blockquote.wp-block-quote p{
+  padding: 0 1.7em 0 2.6em !important;
+}
+blockquote.wp-block-quote:before {
+    content: "\f10d";
+    font-family: 'fontawesome';
+    color: #1F5C99;
+    font-size: 32px;
+}
+*/
 
 /* ************************* */
 /*    Featured Content Box   */

@@ -541,6 +541,7 @@ h5 { font-weight:500; font-size:14px !important; line-height:15px; color:#4b4e53
 h6 { font-weight:500; font-size:12px !important; line-height:13px; color:#4b4e53; }
 h1,h2,h4 { color: #2d8700; }
 p { font-weight:normal; color:#4b4e53; line-height: 28px;}
+.contact-oese-address .text-address p, .contact-oese-address p.text-address {color: #fff !important;}
 .custom-button {
     background-color: #243C54;
     color: #fff;
@@ -1087,7 +1088,7 @@ span.wpcf7-form-control-wrap {
     font-size: 14px;
 }
 .social-icons a{
-    background-color: #ccc;
+    background-color: #ccc;.custom-common-padding.default-template
     -webkit-border-radius:;
     -moz-border-radius:;
     border-radius:100%;
@@ -1413,7 +1414,7 @@ a {
     margin-bottom: 10px;
 }
 .footer-menu-item-wrap {
-    min-width: 100px;
+    min-width.custom-common-padding.default-template: 100px;
 }
 .footer-title p{
     color: #fff;
@@ -1734,10 +1735,17 @@ a.oese-logo-home {
 .general-info-row .home-col-md-4 {
     margin-right: 0 !important;
 }
+
 @media screen and (max-width: 768px){
 	.trending-image-section img {
 	    width: 100% !important;
 	    height: auto !important;
+	}
+	.custom-common-padding{
+	    padding: 5% 0;
+	}
+	.custom-common-padding.default-template{
+			margin: 0px -15px 15px !important;
 	}
 }
 .trending-image-section {overflow: hidden !important;}
@@ -1756,14 +1764,23 @@ a.oese-logo-home {
     font-weight: 600;
     font-size: 22px;
     color: #4f4f4f;
-    margin-bottom: 0 !important;
+    margin-bottom: 8 !important;
     line-height: 26px !important;
-    height: 75px;
+    height: 55px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+}
+@media screen and (max-width: 768px) {
+    .trending-image-details-title, .general-info-details-title {
+			height:auto !important;
+		}
+		.trending-image-details-description {
+			height:auto !important;
+			margin-bottom:8px !important;
+		}
 }
 .general-info-details-title {
     height: 53px;
@@ -1796,6 +1813,7 @@ a.oese-logo-home {
 h2.trending-now-heading {
     color: #2D8700 !important;
 }
+
 /*Home Page Design END*/
 .page-list-section{
     padding-left: 45px !important;
@@ -2126,9 +2144,11 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
 	.page-template-theme-template .lft_sid_cntnr { padding-right: 15px !important; }
 	#content .program_header_image img, #content .thematic_header_image img { width:100% !important; }
 	
+	/*
 	.program-template.template-mobile, .office-template.template-mobile, .audience-template.template-mobile, .awards-template.template-mobile, .default-template.template-mobile {
         flex-direction: column;
     }
+	*/
 	.program-template.template-mobile .col-sm-12, .office-template.template-mobile .col-sm-12{
 		flex:0;
 	}	
@@ -2211,6 +2231,7 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
 }
 
 @media (max-width: 1024px){
+	/*
 	.template-mobile .col-md-8 {
 			-webkit-box-flex: none;
 			-ms-flex: none;
@@ -2223,16 +2244,18 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
 			flex: none;
 			max-width: none;
 	}
+	*/
 	.secondary-navigation-menu.sidebar-links {
     margin-bottom: 20px;
 	}
+	
 }
 
 @media (max-width: 800px){
 	.slideshow_container, .slideshow_container .slideshow_content { height: 360px !important}
 	.main-menu { display:none; }
 	.navi_icn { display:block !important; }
-	.office-template, .audience-template, .awards-template { flex-direction: column-reverse; }
+  /*.office-template, .audience-template, .awards-template { flex-direction: column-reverse; }*/
 	.cls_search form.search-frm { margin-left:0; }
 	.cls_search .ui-widget #search_que { width:80% !important; }
 	.cls_results .wdm_resultContainer .wdm_list { width:100% !important; float:none !important; margin-top:0; }
@@ -2346,9 +2369,7 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
     #home_content .wp-caption { width:701px !important; }
     #home_content .wp-caption img, #content .program_header_image img, #content .thematic_header_image img { width:699px !important; }
     .slideshow_container_style-light .slideshow_pagination { bottom:10px !important; }
-    .office-template, .audience-template, .awards-template {
-        flex-direction: column-reverse;
-    }
+    /*.office-template, .audience-template, .awards-template {flex-direction: column-reverse;}*/
     .secondary-navigation-menu.sidebar-links {
         margin-bottom: 20px;
     }
@@ -2697,6 +2718,7 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
     .navi_icn .fa-bars,.navi_icn .fa-times{font-size: 22px !important;}
     .responsive-menu-section .mobile-nav-icons.navi_icn .fa-times{top: 0 !important;}
     .mobile-nav-bar{position: relative;top: -43px; margin-bottom: 10px;}
+		body.error404 .mobile-nav-bar{position: relative;top: -43px; margin-bottom: 30px !important;}
 		.oese-search-content-wrapper {
 		    padding-top: 20px !important;
 		}
@@ -2982,4 +3004,92 @@ blockquote.wp-block-quote a { font-size:inherit; color:inherit; }
 		border-top: 1px solid #d1d1d1;
 		display: block;
 		font-size: 14px;
+}
+
+/* **************************** */
+/*    WP-BLOCK QUOTE OVERRIDE   */
+/* **************************** */
+blockquote.wp-block-quote {padding:0px 15px !important;}
+blockquote.wp-block-quote p em {
+    font-family: 'Merriweather' !important;
+    font-style: italic;
+    font-size: 26px !important;
+    line-height: 34px !important;
+    color: #828282 !important;
+}
+blockquote.wp-block-quote p cite{
+    font-family: 'Helvetica Neue',sans-serif !important;
+    text-align: right;
+    font-size: 24px !important;
+    line-height: 32px !important;
+    color: #981F33 !important;
+    font-weight: 600;
+    font-style: normal;
+    display:block;
+    width:100%;
+}
+blockquote.wp-block-quote p{
+  padding: 0 1.7em 0 3.2em !important;
+}
+blockquote.wp-block-quote:before {
+    content: "\f10d";
+    font-family: 'fontawesome';
+    color: #1F5C99;
+    font-size: 32px;
+}
+
+
+blockquote.wp-block-quote.is-style-large p em {font-size: 30px !important;line-height: 38px !important;}
+blockquote.wp-block-quote.is-style-large p cite{font-size: 30px !important;line-height: 38px !important;}
+blockquote.wp-block-quote.is-style-large:before {font-size: 36px;}
+blockquote.wp-block-quote.is-style-large p{padding: 0 1.7em 0 2.8em !important;}
+
+@media screen and (max-width: 768px) {
+	blockquote.wp-block-quote p em {font-size: 20px !important;line-height: 28px !important;}
+	blockquote.wp-block-quote p cite{font-size: 20px !important;line-height: 28px !important;}
+	blockquote.wp-block-quote:before {font-size: 28px;}
+	blockquote.wp-block-quote p{padding: 0 1.7em 0 2.6em !important;}
+	
+	blockquote.wp-block-quote.is-style-large p em {font-size: 26px !important;line-height: 34px !important;}
+	blockquote.wp-block-quote.is-style-large p cite{font-size: 26px !important;line-height: 34px !important;}
+	blockquote.wp-block-quote.is-style-large:before {font-size: 32px;}
+	blockquote.wp-block-quote.is-style-large p{padding: 0 1.7em 0 2.2em !important;}
+}
+
+@media screen and (max-width: 599px) {
+	blockquote.wp-block-quote p em {font-size: 16px !important;line-height: 24px !important;}
+	blockquote.wp-block-quote p cite{font-size: 16px !important;line-height: 24px !important;}
+	blockquote.wp-block-quote:before {font-size: 24px;}
+	blockquote.wp-block-quote p{padding: 0 1.7em 0 2em !important;}
+	
+	blockquote.wp-block-quote.is-style-large p em {font-size: 22px !important;line-height: 30px !important;}
+	blockquote.wp-block-quote.is-style-large p cite{font-size: 22px !important;line-height: 30px !important;}
+	blockquote.wp-block-quote.is-style-large:before {font-size: 28px;}
+	blockquote.wp-block-quote.is-style-large p{padding: 0 1.7em 0 1.8em !important;}
+}
+
+
+
+/* Footer 404 positioning */
+@media (min-width: 768px){
+	html.fullheight {
+	    height: 100%;
+	}
+	body.error404 {
+			height:100%;
+	}
+	body.error404 .container-fluid {
+			height:100%;
+	}
+	body.error404 .container-fluid .container {
+			height:100%; position:relative;
+	}
+	body.error404 .oese-footer-section {
+	    position: absolute;
+	    bottom: 0;
+			right: 0;
+			left: 0;
+	    margin: 0px auto !important;
+	    width: 100%;
+	}
 }

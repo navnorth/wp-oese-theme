@@ -2708,7 +2708,7 @@ function oet_display_acf_home_content(){
                   if(!empty($subfieldlayout)):
                     foreach ($subfieldlayout as $subfieldkey => $subfieldvalue) {  //subfields within Subfield FC
                       if($subfieldkey !== 'acf_fc_layout'):
-                        echo $subfieldvalue.'<br>';
+                        echo $subfieldvalue;
                       endif;
                     }
                   endif;
@@ -2730,7 +2730,7 @@ function oet_display_acf_home_content(){
                       if(!empty($subfieldlayout)):
                         foreach ($subfieldlayout as $subfieldkey => $subfieldvalue) {  //subfields within Subfield FC
                           if($subfieldkey !== 'acf_fc_layout'):
-                            echo $subfieldvalue.'<br>';
+                            echo $subfieldvalue;
                           endif;
                         }
                       endif;
@@ -2744,7 +2744,7 @@ function oet_display_acf_home_content(){
                       if(!empty($subfieldlayout)):
                         foreach ($subfieldlayout as $subfieldkey => $subfieldvalue) {  //subfields within Subfield FC
                           if($subfieldkey !== 'acf_fc_layout'):
-                            echo $subfieldvalue.'<br>';
+                            echo $subfieldvalue;
                           endif;
                         }
                       endif;
