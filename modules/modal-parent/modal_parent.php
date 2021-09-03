@@ -89,7 +89,7 @@ function loadchild($parentid, $_level, $_curval, $_mypage)
         echo '<ul class="children level-' . $_level . '-children">';
         if ($parentid == 0){ ?>
             <li>
-            <label class="wp-nn-tag-p <?php echo $_state ?>" data-search-term="(no parent)">
+            <label class="wp-nn-tag-p" data-search-term="(no parent)">
             <input class="wp-nn-parentpage-rad" name="wp-nn-parentpage-rad" title="(no parent)" type="radio" value="0" checked />(no parent)
 			<span class="fa fa-check"></span>
             </label>
