@@ -667,7 +667,8 @@ add_action('rest_api_init', function () {
   register_rest_route( 'wpnnpreview/v2', 'elementquery', 
     array(
     'methods' => 'GET', 
-    'callback' => __NAMESPACE__ .'\\wpnnpreview_element_query' 
+    'callback' => __NAMESPACE__ .'\\wpnnpreview_element_query',
+    'permission_callback' => '__return_true'
     )
   );
 });
