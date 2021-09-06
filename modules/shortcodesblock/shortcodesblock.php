@@ -148,12 +148,14 @@ add_action( 'init', 'oese_shortcodes_block_cgb_block_assets' );
 add_action( 'rest_api_init', function () {
 		register_rest_route( 'oeseshortcodeblock/v2', 'optionsquery', array(
           'methods' => 'GET', 
-          'callback' => 'oeseshortcodeblock_options_query' 
+          'callback' => 'oeseshortcodeblock_options_query',
+					'permission_callback' => '__return_true'
     ) );
 		
 		register_rest_route( 'oeseshortcodeblock/v2', 'shortcodequery', array(
           'methods' => 'GET', 
-          'callback' => 'oeseshortcodeblock_shortcode_query' 
+          'callback' => 'oeseshortcodeblock_shortcode_query',
+					'permission_callback' => '__return_true'
     ) );
 });
 
