@@ -192,14 +192,16 @@ add_action('rest_api_init', function () {
   register_rest_route( 'wpnnmodalparent/v2', 'updatequery', 
     array(
     'methods' => 'GET', 
-    'callback' => 'wpnnmodalparent_updatequery' 
+    'callback' => 'wpnnmodalparent_updatequery',
+    'permission_callback' => '__return_true'
     )
   );
 	
 	register_rest_route( 'wpnnmodalparent/v2', 'getparentbyid', 
     array(
     'methods' => 'GET', 
-    'callback' => 'wpnnmodalparent_getparentbyid_func' 
+    'callback' => 'wpnnmodalparent_getparentbyid_func',
+    'permission_callback' => '__return_true'
     )
   );
 	
