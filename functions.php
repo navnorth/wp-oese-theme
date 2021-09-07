@@ -733,7 +733,8 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
     if(get_admin_page_title() == 'Edit Page' ||
        get_admin_page_title() == 'Edit Post' ||
        get_admin_page_title() == 'Add New Page' ||
-       get_admin_page_title() == 'Add New Post'){
+       get_admin_page_title() == 'Add New Post' || 
+       get_admin_page_title() == 'Edit Reusable Block'){
     //if(get_admin_page_title() != 'Media Library' && get_admin_page_title() != 'Manage Themes'){;
       wp_enqueue_style( 'theme-bootstrap-style',get_stylesheet_directory_uri() . '/css/bootstrap.min.css' );
       wp_enqueue_script('bootstrap-script', get_stylesheet_directory_uri() . '/js/bootstrap.js' );
