@@ -63,7 +63,7 @@
 
 
 .oese-blk-accordion-header .oese-blk-accordion-button:after {
-    content: "\f067";
+    content: "\f068";
     font-family: 'FontAwesome';
     color: #fff;
     font-size: 16px;
@@ -75,7 +75,7 @@
 }
 
 .oese-blk-accordion-header .oese-blk-accordion-button.collapsed:after {
-    content: "\f068";
+    content: "\f067";
 }
 
 .oese-blk-accordion-content:focus {
