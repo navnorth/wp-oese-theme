@@ -40,10 +40,24 @@ jQuery(window).bind("load", function() {
       columnsettingobserver.observe(mutate_target_element, {childList: true, subtree: false});
       
     }
-  
     
+    var oese_preview_observer_target = document.querySelectorAll(".edit-post-sidebar__panel-tab");
+    for (var i = 0; i < oese_preview_observer_target.length; i++) {
+      create_preview_observer(oese_preview_observer_target[i]);
+    }
+    function create_preview_observer(elementToObserve){
+      var create_preview_observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation){
+          var oese_active_panel = mutation.target.attributes.getNamedItem('data-label').value;
+          if(oese_active_panel == 'Page' && mutation.target.classList.contains('is-active')){ //page is active
+            setTimeout(function(){ wpnnSetButton() }, 100);
+          } //else block is active
+        })
+      });
+      create_preview_observer.observe(elementToObserve, {attributes: true, childList: false, characterData: false, subtree: false });
+    }
     
-  
+
   }
   
 });

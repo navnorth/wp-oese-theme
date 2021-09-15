@@ -73,11 +73,14 @@ function load_parent_modal_html(){
   if (jQuery('.components-base-control.editor-page-attributes__order').length > 0 && jQuery('.wp-nn-parentpage-search-result').length > 0) {
     let cid = jQuery('.wp-nn-parentpage-display-wrapper').attr('cid');
     //var vlu = wp.data.select( 'core/editor' ).getEditedPostAttribute('parent');
-    var vlu = jQuery('.wp-nn-parentpage-rad:checked').attr('value');
+    //var vlu = jQuery('.wp-nn-parentpage-rad:checked').attr('value');
+    var vlu = wp.data.select( 'core/editor' ).getEditedPostAttribute('parent');
     clearInterval(wp_nn_loop_interval);
     //wp.apiFetch({ url: '/wp-json/wpnnmodalparent/v2/getparentbyid?pid='+vlu}).then(data =>{     
       targetElemID = wp.data.select( 'core/editor' ).getEditedPostAttribute('parent');
-      var ttl = jQuery('.wp-nn-parentpage-rad:checked').attr('title');;
+      //var ttl = jQuery('.wp-nn-parentpage-rad:checked').attr('title');
+      var ttl = jQuery('.wp-nn-parentpage-search-result > ul li label.wp-nn-tag-p input[value="'+vlu+'"]').attr('title');
+      jQuery('.wp-nn-parentpage-search-result > ul li label.wp-nn-tag-p input[value="'+vlu+'"]').prop('checked', true);
       ttl = (ttl === undefined || vlu == 0)? '(no parent)': ttl;
       vlu = (vlu === undefined || vlu == 0)? 0: vlu;
       htm = '';
@@ -94,7 +97,7 @@ function load_parent_modal_html(){
   }
 }
 
-jQuery(document).on('click','button[data-label="Document"].edit-post-sidebar__panel-tab',function(e){
+jQuery(document).on('click','button[data-label="Page"].edit-post-sidebar__panel-tab',function(e){
   if(!jQuery('.wp-nn-parentpage-display-wrapper').length){
     wp_nn_loop_interval = setInterval(load_parent_modal_html, 100);
   }
@@ -136,6 +139,24 @@ jQuery(window).bind("load", function() {
       }
     }, 100);
   })
+  
+  
+  var oese_parentmodal_observer_target = document.querySelectorAll(".edit-post-sidebar__panel-tab");
+  for (var i = 0; i < oese_parentmodal_observer_target.length; i++) {
+    create_parentmodal_observer(oese_parentmodal_observer_target[i]);
+  }
+
+  function create_parentmodal_observer(elementToObserve){
+    var create_parentmodal_observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation){
+        var oese_active_panel = mutation.target.attributes.getNamedItem('data-label').value;
+        if(oese_active_panel == 'Page' && mutation.target.classList.contains('is-active')){ //page is active
+          setTimeout(function(){ load_parent_modal_html() }, 100);
+        } //else block is active
+      })
+    });
+    create_parentmodal_observer.observe(elementToObserve, {attributes: true, childList: false, characterData: false, subtree: false });
+  }
   
   
 });
