@@ -141,23 +141,24 @@ jQuery(window).bind("load", function() {
   })
   
   
-  var oese_parentmodal_observer_target = document.querySelectorAll(".edit-post-sidebar__panel-tab");
-  for (var i = 0; i < oese_parentmodal_observer_target.length; i++) {
-    create_parentmodal_observer(oese_parentmodal_observer_target[i]);
-  }
+  setTimeout(function(){
+    var oese_parentmodal_observer_target = document.querySelectorAll(".edit-post-sidebar__panel-tab");
+    for (var i = 0; i < oese_parentmodal_observer_target.length; i++) {
+      create_parentmodal_observer(oese_parentmodal_observer_target[i]);
+    }
 
-  function create_parentmodal_observer(elementToObserve){
-    var create_parentmodal_observer = new MutationObserver(function(mutations) {
-      mutations.forEach(function(mutation){
-        var oese_active_panel = mutation.target.attributes.getNamedItem('data-label').value;
-        if(oese_active_panel == 'Page' && mutation.target.classList.contains('is-active')){ //page is active
-          setTimeout(function(){ load_parent_modal_html() }, 100);
-        } //else block is active
-      })
-    });
-    create_parentmodal_observer.observe(elementToObserve, {attributes: true, childList: false, characterData: false, subtree: false });
-  }
-  
+    function create_parentmodal_observer(elementToObserve){
+      var create_parentmodal_observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation){
+          var oese_active_panel = mutation.target.attributes.getNamedItem('data-label').value;
+          if(oese_active_panel == 'Page' && mutation.target.classList.contains('is-active')){ //page is active
+            setTimeout(function(){ load_parent_modal_html() }, 100);
+          } //else block is active
+        })
+      });
+      create_parentmodal_observer.observe(elementToObserve, {attributes: true, childList: false, characterData: false, subtree: false });
+    }
+  }, 500);
   
 });
 
