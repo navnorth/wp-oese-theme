@@ -164,13 +164,11 @@ jQuery(document).on('click','.oese-preview-publish-button',function(e){
 
 // Set Preview HTML/Button/URL Function
 function wpnnSetButton(newstatus,callback){
-    console.log(newstatus);
   if (newstatus === undefined) {
       // newstatus was not passed
       //newstatus = '&new='+wp.data.select( 'core/editor' ).getEditedPostAttribute( 'status' );
       
       setTimeout(function(){
-          console.log('Came Here first');
           jQuery('.edit-post-post-status').append(jQuery(wpnn_preview_element_html));
       },100);
       return;
