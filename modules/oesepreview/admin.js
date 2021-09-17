@@ -16,28 +16,45 @@ jQuery(window).bind("load", function() {
   
   // POST STATUS CHANGE OBSERVER
   if(wpoesePreviewGlobal['oeseIsGutenbergActive'] == 'true'){ //Gutenberg Editor is in use
-
+    
       /* render preview button/warning section */
-      var screen_type = (wp.data === undefined)?'none': wp.data.select('core/editor').getCurrentPostAttribute('type');
-      if(screen_type == 'page' || screen_type == 'post'){
-        let { subscribe } = wp.data;
-        let oldPostStatus = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'status' );
-        wpnnSetButton(oldPostStatus);
-        const unssubscribe = subscribe( () => {
-          const newPostStatus = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'status' );
-          if ( oldPostStatus !== newPostStatus) {
-              if(oldPostStatus == 'draft' &&  newPostStatus == 'publish'){
-              }else if(oldPostStatus == 'pending' &&  newPostStatus == 'publish'){
-              }else if(oldPostStatus == 'publish' &&  newPostStatus == 'draft'){
-                wpnnSetButton(newPostStatus);
-              }
-              oldPostStatus = newPostStatus;
+      let previewintervalcntr = 0;
+      let previewinterval = setInterval(function(){
+        previewintervalcntr++;
+        if(jQuery('.editor-post-trash').length){
+          clearInterval(previewinterval);
+          oese_preview_init();
+        }else{
+          if(previewintervalcntr > 1800){
+            clearInterval(previewinterval);
           }
-        });
-        // Post Status Info Panel Drop/Undrop observer.
-        var mutate_target_element = document.querySelector('.edit-post-layout');
-        columnsettingobserver.observe(mutate_target_element, {childList: true, subtree: false});
+        }
+      }, 100);
+      
+      
+      function oese_preview_init(){
+        var screen_type = (wp.data === undefined)?'none': wp.data.select('core/editor').getCurrentPostAttribute('type');
+        if(screen_type == 'page' || screen_type == 'post'){
+          let { subscribe } = wp.data;
+          let oldPostStatus = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'status' );
+          wpnnSetButton(oldPostStatus);
+          const unssubscribe = subscribe( () => {
+            const newPostStatus = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'status' );
+            if ( oldPostStatus !== newPostStatus) {
+                if(oldPostStatus == 'draft' &&  newPostStatus == 'publish'){
+                }else if(oldPostStatus == 'pending' &&  newPostStatus == 'publish'){
+                }else if(oldPostStatus == 'publish' &&  newPostStatus == 'draft'){
+                  wpnnSetButton(newPostStatus);
+                }
+                oldPostStatus = newPostStatus;
+            }
+          });
+          // Post Status Info Panel Drop/Undrop observer.
+          var mutate_target_element = document.querySelector('.edit-post-layout');
+          columnsettingobserver.observe(mutate_target_element, {childList: true, subtree: false});
+        }
       }
+      
     
       /* create gutenberg settings tab switch observer */
       var oese_preview_observer_target = document.querySelectorAll(".edit-post-sidebar__panel-tab");
@@ -74,6 +91,7 @@ jQuery(window).bind("load", function() {
         });
         create_preview_sidebar_toggle_observer.observe(elementToObserve, {attributes: true, childList: true, characterData: false, subtree: false });
       }
+
 
   }
   
