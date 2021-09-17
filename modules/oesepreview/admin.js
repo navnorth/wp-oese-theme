@@ -57,6 +57,26 @@ jQuery(window).bind("load", function() {
         });
         create_preview_observer.observe(elementToObserve, {attributes: true, childList: false, characterData: false, subtree: false });
       }
+      
+      /* create gutenberg sidebar close/open observer */
+      var oese_preview_sidebar_toggle_observer_target = document.querySelectorAll(".interface-interface-skeleton__sidebar");
+      for (var i = 0; i < oese_preview_sidebar_toggle_observer_target.length; i++) {
+        create_preview_sidebar_toggle_observer_func(oese_preview_sidebar_toggle_observer_target[i]);
+      }
+      function create_preview_sidebar_toggle_observer_func(elementToObserve){
+        var create_preview_sidebar_toggle_observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation){
+            mutation.addedNodes.forEach(function(added_node) {
+        			if(added_node.classList.contains('edit-post-sidebar')) { //sidebar added
+        				setTimeout(function(){ wpnnSetButton() }, 100);
+        			}
+        		});
+    
+          })
+        });
+        create_preview_sidebar_toggle_observer.observe(elementToObserve, {attributes: true, childList: true, characterData: false, subtree: false });
+      }
+      
     }, 500);
     
 
