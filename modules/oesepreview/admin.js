@@ -16,8 +16,7 @@ jQuery(window).bind("load", function() {
   
   // POST STATUS CHANGE OBSERVER
   if(wpoesePreviewGlobal['oeseIsGutenbergActive'] == 'true'){ //Gutenberg Editor is in use
-    
-    setTimeout(function(){
+
       /* render preview button/warning section */
       var screen_type = (wp.data === undefined)?'none': wp.data.select('core/editor').getCurrentPostAttribute('type');
       if(screen_type == 'page' || screen_type == 'post'){
@@ -31,7 +30,6 @@ jQuery(window).bind("load", function() {
               }else if(oldPostStatus == 'pending' &&  newPostStatus == 'publish'){
               }else if(oldPostStatus == 'publish' &&  newPostStatus == 'draft'){
                 wpnnSetButton(newPostStatus);
-                /* load_parent_modal_html() */;
               }
               oldPostStatus = newPostStatus;
           }
@@ -51,7 +49,7 @@ jQuery(window).bind("load", function() {
           mutations.forEach(function(mutation){
             var oese_active_panel = mutation.target.attributes.getNamedItem('data-label').value;
             if(oese_active_panel == 'Page' && mutation.target.classList.contains('is-active')){ //page is active
-              setTimeout(function(){ wpnnSetButton() }, 500);
+              setTimeout(function(){ wpnnSetButton() }, 100);
             } //else block is active
           })
         });
@@ -68,7 +66,7 @@ jQuery(window).bind("load", function() {
           mutations.forEach(function(mutation){
             mutation.addedNodes.forEach(function(added_node) {
         			if(added_node.classList.contains('edit-post-sidebar')) { //sidebar added
-        				setTimeout(function(){ wpnnSetButton() }, 500);
+        				setTimeout(function(){ wpnnSetButton() }, 100);
         			}
         		});
     
@@ -76,9 +74,6 @@ jQuery(window).bind("load", function() {
         });
         create_preview_sidebar_toggle_observer.observe(elementToObserve, {attributes: true, childList: true, characterData: false, subtree: false });
       }
-      
-    }, 1000);
-    
 
   }
   
@@ -93,7 +88,11 @@ var columnsettingobserver = new MutationObserver(function(mutations) {
 
 // Status And Visibility Panel Drop/Undrop click
 jQuery(document).on('click','.edit-post-post-status .components-panel__body-title .components-panel__body-toggle',function(){
-  wpnnSetButton();
+  console.log(jQuery(this).closest('.edit-post-post-status').hasClass('is-opened'));
+  jQuery('.oese-preview-url-wrapper').remove();
+  if(!jQuery(this).closest('.edit-post-post-status').hasClass('is-opened')){
+    wpnnSetButton();
+  }
 })
 
 // Sidbar Document Tab click
@@ -164,7 +163,9 @@ function wpnnSetButton(callback, newstatus){
         }
         
         jQuery('.oese-preview-url-wrapper.gutenberg').remove();
-        jQuery(wpnn_preview_element_html).insertAfter(".components-panel__body.edit-post-post-status .editor-post-trash");
+        //jQuery(wpnn_preview_element_html).insertAfter(".components-panel__body.edit-post-post-status .editor-post-trash");
+        //jQuery(wpnn_preview_element_html).insertAfter(jQuery('.edit-post-post-schedule').next());
+        jQuery('.edit-post-post-status').append(jQuery(wpnn_preview_element_html));
         jQuery(".components-panel__body.edit-post-post-status .editor-post-trash").parent('.components-panel__row').addClass('wpnn-preview');
         typeof callback == 'function' && callback();      
     })
