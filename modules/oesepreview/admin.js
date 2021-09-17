@@ -51,7 +51,7 @@ jQuery(window).bind("load", function() {
           mutations.forEach(function(mutation){
             var oese_active_panel = mutation.target.attributes.getNamedItem('data-label').value;
             if(oese_active_panel == 'Page' && mutation.target.classList.contains('is-active')){ //page is active
-              setTimeout(function(){ wpnnSetButton() }, 100);
+              setTimeout(function(){ wpnnSetButton() }, 500);
             } //else block is active
           })
         });
@@ -68,7 +68,7 @@ jQuery(window).bind("load", function() {
           mutations.forEach(function(mutation){
             mutation.addedNodes.forEach(function(added_node) {
         			if(added_node.classList.contains('edit-post-sidebar')) { //sidebar added
-        				setTimeout(function(){ wpnnSetButton() }, 100);
+        				setTimeout(function(){ wpnnSetButton() }, 500);
         			}
         		});
     
