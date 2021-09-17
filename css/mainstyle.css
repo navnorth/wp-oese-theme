@@ -3044,6 +3044,14 @@ blockquote.wp-block-quote.is-style-large p cite{font-size: 30px !important;line-
 blockquote.wp-block-quote.is-style-large:before {font-size: 36px;}
 blockquote.wp-block-quote.is-style-large p{padding: 0 1.7em 0 2.8em !important;}
 
+/* ************************** */
+/*     Content Styles         */
+/* ************************** */
+#content p { line-height: 1.5rem;  }
+#content h2, #content h3, #content h4, #content h5, #content h6 { margin-top:2rem; }
+#content .sidebar-links h2, #content .contact-box h2 { margin-top:0; }
+#content .general-info-section h3 { margin-top:0; }
+
 @media screen and (max-width: 768px) {
 	blockquote.wp-block-quote p em {font-size: 20px !important;line-height: 28px !important;}
 	blockquote.wp-block-quote p cite{font-size: 20px !important;line-height: 28px !important;}
