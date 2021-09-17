@@ -178,7 +178,7 @@ jQuery(window).bind("load", function() {
       });
       create_preview_sidebar_toggle_observer.observe(elementToObserve, {attributes: true, childList: true, characterData: false, subtree: false });
     }
-  }, 500);
+  }, 1000);
   
 });
 
