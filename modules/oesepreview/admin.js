@@ -53,45 +53,62 @@ jQuery(window).bind("load", function() {
           var mutate_target_element = document.querySelector('.edit-post-layout');
           columnsettingobserver.observe(mutate_target_element, {childList: true, subtree: false});
         }
-      }
+      
       
     
-      /* create gutenberg settings tab switch observer */
-      var oese_preview_observer_target = document.querySelectorAll(".edit-post-sidebar__panel-tab");
-      for (var i = 0; i < oese_preview_observer_target.length; i++) {
-        create_preview_observer(oese_preview_observer_target[i]);
-      }
-      function create_preview_observer(elementToObserve){
-        var create_preview_observer = new MutationObserver(function(mutations) {
-          mutations.forEach(function(mutation){
-            var oese_active_panel = mutation.target.attributes.getNamedItem('data-label').value;
-            if(oese_active_panel == 'Page' && mutation.target.classList.contains('is-active')){ //page is active
-              setTimeout(function(){ wpnnSetButton() }, 100);
-            } //else block is active
-          })
-        });
-        create_preview_observer.observe(elementToObserve, {attributes: true, childList: false, characterData: false, subtree: false });
-      }
+        /* create gutenberg settings tab switch observer */
+        function oese_preview_setting_switch_observer(){
+          var oese_preview_observer_target = document.querySelectorAll(".edit-post-sidebar__panel-tab");
+          for (var i = 0; i < oese_preview_observer_target.length; i++) {
+            if(oese_preview_observer_target[i].classList.contains('is-active')){
+              create_preview_observer(oese_preview_observer_target[i]);
+            }
+          }
+          function create_preview_observer(elementToObserve){
+            var create_preview_observer = new MutationObserver(function(mutations) {
+              //mutations.forEach(function(mutation){
+                mutation = mutations[0];
+                var oese_active_panel = mutation.target.attributes.getNamedItem('data-label').value;
+                if((oese_active_panel == 'Page' || oese_active_panel == 'Post')){ //page/post is active
+                  if(jQuery('.edit-post-post-status').hasClass('is-opened')){
+                    if(!jQuery('.oese-preview-url-wrapper').length){
+                      setTimeout(function(){ wpnnSetButton() }, 100);
+                    }
+                  }
+                }
+              //})
+            });
+            create_preview_observer.observe(elementToObserve, {attributes: true, childList: false, characterData: false, subtree: false });
+          }
+        }
+        oese_preview_setting_switch_observer();
+        
+        /* create gutenberg sidebar close/open observer */
+        var oese_preview_sidebar_toggle_observer_target = document.querySelectorAll(".interface-interface-skeleton__sidebar");
+        for (var i = 0; i < oese_preview_sidebar_toggle_observer_target.length; i++) {
+          create_preview_sidebar_toggle_observer_func(oese_preview_sidebar_toggle_observer_target[i]);
+        }
+        function create_preview_sidebar_toggle_observer_func(elementToObserve){
+          var create_preview_sidebar_toggle_observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation){
+              mutation.addedNodes.forEach(function(added_node) {
+          			if(added_node.classList.contains('edit-post-sidebar')) { //sidebar added
+                  if(jQuery('.edit-post-post-status').hasClass('is-opened')){
+                    setTimeout(function(){ 
+                      wpnnSetButton() 
+                      oese_preview_setting_switch_observer();
+                    }, 100);
+                    
+                  }
+          			}
+          		});
       
-      /* create gutenberg sidebar close/open observer */
-      var oese_preview_sidebar_toggle_observer_target = document.querySelectorAll(".interface-interface-skeleton__sidebar");
-      for (var i = 0; i < oese_preview_sidebar_toggle_observer_target.length; i++) {
-        create_preview_sidebar_toggle_observer_func(oese_preview_sidebar_toggle_observer_target[i]);
-      }
-      function create_preview_sidebar_toggle_observer_func(elementToObserve){
-        var create_preview_sidebar_toggle_observer = new MutationObserver(function(mutations) {
-          mutations.forEach(function(mutation){
-            mutation.addedNodes.forEach(function(added_node) {
-        			if(added_node.classList.contains('edit-post-sidebar')) { //sidebar added
-        				setTimeout(function(){ wpnnSetButton() }, 100);
-        			}
-        		});
-    
-          })
-        });
-        create_preview_sidebar_toggle_observer.observe(elementToObserve, {attributes: true, childList: true, characterData: false, subtree: false });
-      }
-
+            })
+          });
+          create_preview_sidebar_toggle_observer.observe(elementToObserve, {attributes: true, childList: true, characterData: false, subtree: false });
+        }
+      
+      } /*oese_preview_init()*/
 
   }
   
@@ -106,8 +123,8 @@ var columnsettingobserver = new MutationObserver(function(mutations) {
 
 // Status And Visibility Panel Drop/Undrop click
 jQuery(document).on('click','.edit-post-post-status .components-panel__body-title .components-panel__body-toggle',function(){
-  console.log(jQuery(this).closest('.edit-post-post-status').hasClass('is-opened'));
   jQuery('.oese-preview-url-wrapper').remove();
+  jQuery('.oese-preview-tmp-preloader').remove();
   if(!jQuery(this).closest('.edit-post-post-status').hasClass('is-opened')){
     wpnnSetButton();
   }
@@ -115,17 +132,17 @@ jQuery(document).on('click','.edit-post-post-status .components-panel__body-titl
 
 // Sidbar Document Tab click
 jQuery(document).on('click','button[data-label="Document"].edit-post-sidebar__panel-tab',function(e){
-  wpnnSetButton();  
+  //wpnnSetButton();  
 });
 
 // Sidbar Page Tab click
 jQuery(document).on('click','button[data-label="Page"].edit-post-sidebar__panel-tab',function(e){
-  wpnnSetButton();  
+  //wpnnSetButton();  
 });
 
 // Sidbar Post Tab click
 jQuery(document).on('click','button[data-label="Post"].edit-post-sidebar__panel-tab',function(e){
-  wpnnSetButton();  
+  //wpnnSetButton();  
 });
 
 // Detect focus on title block
@@ -146,13 +163,28 @@ jQuery(document).on('click','.oese-preview-publish-button',function(e){
 })
 
 // Set Preview HTML/Button/URL Function
-function wpnnSetButton(callback, newstatus){
+function wpnnSetButton(newstatus,callback){
+    console.log(newstatus);
   if (newstatus === undefined) {
       // newstatus was not passed
-      newstatus = '&new='+wp.data.select( 'core/editor' ).getEditedPostAttribute( 'status' );;
+      //newstatus = '&new='+wp.data.select( 'core/editor' ).getEditedPostAttribute( 'status' );
+      
+      setTimeout(function(){
+          console.log('Came Here first');
+          jQuery('.edit-post-post-status').append(jQuery(wpnn_preview_element_html));
+      },100);
+      return;
+      
   }else{
      newstatus = '&new='+newstatus;
   }
+  
+  setTimeout(function(){
+    if(!jQuery('.oese-preview-tmp-preloader').length){
+      jQuery('.edit-post-post-status').append('<div class="oese-preview-tmp-preloader"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>');
+    }
+  }, 100);
+  
   if(wp.apiFetch !== undefined){
     let pid = jQuery('form.metabox-base-form #post_ID').attr('value');
     wp.apiFetch({ url: '/wp-json/wpnnpreview/v2/elementquery?pid='+pid+newstatus}).then(data =>{      
@@ -183,7 +215,12 @@ function wpnnSetButton(callback, newstatus){
         jQuery('.oese-preview-url-wrapper.gutenberg').remove();
         //jQuery(wpnn_preview_element_html).insertAfter(".components-panel__body.edit-post-post-status .editor-post-trash");
         //jQuery(wpnn_preview_element_html).insertAfter(jQuery('.edit-post-post-schedule').next());
-        jQuery('.edit-post-post-status').append(jQuery(wpnn_preview_element_html));
+        setTimeout(function(){
+            jQuery('.oese-preview-tmp-preloader').hide(500, function(){
+            //jQuery('.oese-preview-tmp-preloader').remove();
+            jQuery('.edit-post-post-status').append(jQuery(wpnn_preview_element_html));
+          });
+        },100);
         jQuery(".components-panel__body.edit-post-post-status .editor-post-trash").parent('.components-panel__row').addClass('wpnn-preview');
         typeof callback == 'function' && callback();      
     })
