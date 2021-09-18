@@ -55,7 +55,13 @@ jQuery(window).bind("load", function() {
         }
       
       
-    
+        oese_init_observers();
+        
+      
+      } /*oese_preview_init()*/
+      
+      
+      function oese_init_observers(){
         /* create gutenberg settings tab switch observer */
         function oese_preview_setting_switch_observer(){
           var oese_preview_observer_target = document.querySelectorAll(".edit-post-sidebar__panel-tab");
@@ -69,13 +75,13 @@ jQuery(window).bind("load", function() {
               //mutations.forEach(function(mutation){
                 mutation = mutations[0];
                 var oese_active_panel = mutation.target.attributes.getNamedItem('data-label').value;
-                if((oese_active_panel == 'Page' || oese_active_panel == 'Post')){ //page/post is active
+                //if((oese_active_panel == 'Page' || oese_active_panel == 'Post')){ //page/post is active
                   if(jQuery('.edit-post-post-status').hasClass('is-opened')){
                     if(!jQuery('.oese-preview-url-wrapper').length){
                       setTimeout(function(){ wpnnSetButton() }, 100);
                     }
                   }
-                }
+                //}
               //})
             });
             create_preview_observer.observe(elementToObserve, {attributes: true, childList: false, characterData: false, subtree: false });
@@ -95,10 +101,12 @@ jQuery(window).bind("load", function() {
           			if(added_node.classList.contains('edit-post-sidebar')) { //sidebar added
                   if(jQuery('.edit-post-post-status').hasClass('is-opened')){
                     setTimeout(function(){ 
-                      wpnnSetButton() 
+                      wpnnSetButton();
                       oese_preview_setting_switch_observer();
                     }, 100);
                     
+                  }else{
+                    oese_preview_setting_switch_observer();
                   }
           			}
           		});
@@ -107,8 +115,7 @@ jQuery(window).bind("load", function() {
           });
           create_preview_sidebar_toggle_observer.observe(elementToObserve, {attributes: true, childList: true, characterData: false, subtree: false });
         }
-      
-      } /*oese_preview_init()*/
+      }
 
   }
   
@@ -148,7 +155,7 @@ jQuery(document).on('click','button[data-label="Post"].edit-post-sidebar__panel-
 // Detect focus on title block
 jQuery(document).on('focus','.editor-post-title__input',function(){
   setTimeout(function(){
-    wpnnSetButton(); 
+    //wpnnSetButton(); 
   }, 100);
 })
 
