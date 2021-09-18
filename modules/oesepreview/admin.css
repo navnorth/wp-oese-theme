@@ -36,6 +36,7 @@ div#oese-preview-draft-publish-warning {
 
 /* GUTENBERG */
 .oese-preview-url-wrapper.gutenberg{
+  display:flex;
   float: none !important;
   padding: 15px 0px 15px 0px !important;
   border-top: 1px solid #e2e4e7 !important;

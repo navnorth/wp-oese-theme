@@ -711,7 +711,7 @@ function wpnnpreview_element_query(){
     }
   }else{ //Preview Type Of Post
     
-    $_htm .= '<div class="oese-preview-url-wrapper gutenberg" isparent="'.$_isparent.'">';
+    $_htm .= '<div class="components-panel__row oese-preview-url-wrapper gutenberg" isparent="'.$_isparent.'">';
       $_htm .= '<strong><em>Preview URL:</em></strong>';
       $_htm .= '<input id="oese-preview-url-input" type="text" value="'.get_bloginfo('url').'?'.$_getparam.'='.$post->ID.'&preview=true&key='.get_post_meta($post->ID, '_post_oesepreview_pwd', true).'" />';
       $_htm .= '<div class="oese-preview-url-copy button" onclick="oesePreviewDraftCopyToClipboard()">Copy URL</div>';
