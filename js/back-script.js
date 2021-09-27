@@ -168,6 +168,51 @@ jQuery( document ).ready(function() {
       jQuery('.oese-prohibitedpermalinktext.notice').remove();
     });    
   })
+
+  //Override fix for metabox expand/collapse
+  var oese_template_changed = false;
+  jQuery(document).on('change','.components-select-control__input', function() {
+      oese_template_changed = true;
+      console.log(oese_template_changed);
+  });
+  
+  
+  jQuery(document).on('mouseup','button.handlediv',function(e){
+    e.preventDefault();
+    e.preventDefault ? e.preventDefault() : e.returnValue = false;
+    console.log(jQuery(this).siblings('.handle-order-lower').length);
+    //if(jQuery(this).siblings('.handle-order-lower').length){
+    if(oese_template_changed && jQuery(this).siblings('.handle-order-lower').length){
+      var expand = jQuery(this).attr('aria-expanded');
+      var postbox = jQuery(this).closest('.postbox');
+      var closed = postbox.hasClass('closed');
+      console.log(expand+' - '+closed);
+      // manual condition instead of toggle as the latter doesn't work on test server
+      if (expand===true)
+        postbox.find('.inside').hide();
+      else if (expand===false)
+        postbox.find('.inside').show();
+      jQuery(this).attr('aria-expanded',(expand===true)?'false':'true');
+      jQuery(this).closest('.postbox').toggleClass('closed');
+    }
+  })
+  
+  /*
+  jQuery(document).on('click','button.handlediv',function(e){
+    e.preventDefault ? e.preventDefault() : e.returnValue = false;
+    var expand = jQuery(this).attr('aria-expanded');
+    var postbox = jQuery(this).closest('.postbox');
+    var closed = postbox.hasClass('closed');
+    
+    // manual condition instead of toggle as the latter doesn't work on test server
+    if (expand===true)
+      postbox.find('.inside').hide();
+    else if (expand===false)
+      postbox.find('.inside').show();
+    jQuery(this).attr('aria-expanded',(expand===true)?'false':'true');
+    jQuery(this).closest('.postbox').toggleClass('closed');
+  })
+  */
   
 })
 
