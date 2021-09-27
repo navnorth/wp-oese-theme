@@ -184,10 +184,6 @@ jQuery( document ).ready(function() {
 jQuery(window).bind("load", function() {  
   
   
-  jQuery('button.handlediv').off('click');
-  //jQuery('.toggle-indicator').off('click');
-  //jQuery('h2.hndle.ui-sortable-handle').off('click');
-  //jQuery('.postbox').off('click');
   
   jQuery(document).on('mouseup','button.handlediv',function(e){
 
@@ -209,24 +205,39 @@ jQuery(window).bind("load", function() {
   
   
   function oese_initiate_tempalte_switch_observer(){
-    var oese_template_change_observer_target = document.querySelectorAll(".edit-post-layout__metaboxes");
-    for (var i = 0; i < oese_template_change_observer_target.length; i++) {
-      console.log(oese_template_change_observer_target[i]);
-      oese_create_tempalte_switch_observer(oese_template_change_observer_target[i]);
-    }
+    setTimeout(function(){
+      oese_create_tempalte_switch_observer(document.querySelector(".edit-post-layout__metaboxes"));
+    }, 500);
   }
 
   var oese_template_change_observer_func = new MutationObserver(function(mutations) {
     jQuery('button.handlediv').off('click');
+    jQuery('.toggle-indicator').off('click');
+    jQuery('h2.hndle.ui-sortable-handle').off('click');
+    jQuery('.postbox').off('click');
   });
   
   function oese_create_tempalte_switch_observer(elementToObserve){
-    oese_template_change_observer_func.observe(elementToObserve, {attributes: true, childList: false, characterData: false, subtree: true });
+    oese_template_change_observer_func.observe(elementToObserve, {childList: true, subtree: true });
   }
-  oese_initiate_tempalte_switch_observer();
   
-
+  let TemplateSwitchIntervalCntr = 0;
+  let TemplateSwitchInterval = setInterval(function(){
+    TemplateSwitchIntervalCntr++;
+    if(jQuery('.edit-post-layout__metaboxes').length){
+      clearInterval(TemplateSwitchInterval);
+      oese_initiate_tempalte_switch_observer();
+      jQuery('.handle-order-lower').removeClass('hidden');
+      jQuery('.handle-order-higher').removeClass('hidden');
+    }else{
+      if(TemplateSwitchIntervalCntr > 1800){
+        clearInterval(TemplateSwitchInterval);
+      }
+    }
+  }, 100);
+  
 });
+
 
 var itvl;
 function interceptPublish(typ){
