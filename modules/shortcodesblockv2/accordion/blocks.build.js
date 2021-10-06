@@ -239,10 +239,10 @@ registerBlockType("cgb/oese-accordion-block", {
                       ? "btn btn-primary oese-blk-accordion-button"
                       : "btn btn-primary oese-blk-accordion-button collapsed",
                     "data-toggle": "collapse",
-                    href: "#" + attributes.blockid + "-oeseCollapse1",
+                    href: "#" + attributes.blockid + "-oeseCollapse",
                     role: "button",
                     "aria-expanded": attributes.accordionexpanded,
-                    "aria-controls": "oeseCollapse1"
+                    "aria-controls": attributes.blockid+"-oeseCollapse"
                   },
                   React.createElement("input", {
                     type: "text",
@@ -256,7 +256,7 @@ registerBlockType("cgb/oese-accordion-block", {
             React.createElement(
               "div",
               {
-                id: attributes.blockid + "-oeseCollapse1",
+                id: attributes.blockid + "-oeseCollapse",
                 class: attributes.accordionexpanded
                   ? "oese-blk-accordion-content collapse show"
                   : "oese-blk-accordion-content collapse",
@@ -322,10 +322,10 @@ registerBlockType("cgb/oese-accordion-block", {
                       ? "btn btn-primary oese-blk-accordion-button"
                       : "btn btn-primary oese-blk-accordion-button collapsed",
                     "data-toggle": "collapse",
-                    href: "#" + attributes.blockid + "-oeseCollapse1",
+                    href: "#" + attributes.blockid + "-oeseCollapse",
                     role: "button",
                     "aria-expanded": attributes.accordionexpanded,
-                    "aria-controls": "oeseCollapse1",
+                    "aria-controls": attributes.blockid+"-oeseCollapse",
                     "aria-label": attributes.accordiontitle
                   },
                   attributes.accordiontitle
@@ -335,7 +335,7 @@ registerBlockType("cgb/oese-accordion-block", {
             React.createElement(
               "div",
               {
-                id: attributes.blockid + "-oeseCollapse1",
+                id: attributes.blockid + "-oeseCollapse",
                 class: attributes.accordionexpanded
                   ? "oese-blk-accordion-content collapse show"
                   : "oese-blk-accordion-content collapse",
