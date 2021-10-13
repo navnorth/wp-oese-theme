@@ -1,3 +1,11 @@
+/*
+var edit_post_layout_metaboxes_timer = setInterval(function(){
+  if ( jQuery('.edit-post-layout__metaboxes').length > 0 ){
+    jQuery('.edit-post-layout__metaboxes').hide();
+    clearInterval(edit_post_layout_metaboxes_timer);
+  }
+}, 100);
+*/
 jQuery( document ).ready(function() {
     jQuery('#page_template').on('change', function() {
 	  //alert(this.value);
@@ -183,10 +191,10 @@ jQuery( document ).ready(function() {
 
 jQuery(window).bind("load", function() {  
   
+  oese_template_metaboxes_event_unbind_func();
   
-  
+  jQuery('.edit-post-layout__metaboxes').show();
   jQuery(document).on('mouseup','button.handlediv',function(e){
-
       var expand = jQuery(this).attr('aria-expanded');
       var postbox = jQuery(this).closest('.postbox');
       var closed = postbox.hasClass('closed');
@@ -200,10 +208,9 @@ jQuery(window).bind("load", function() {
         jQuery(this).attr('aria-expanded','true');
         jQuery(this).closest('.postbox').removeClass('closed');
       }
-    
   })
   
-  
+  //Reinstantiate unbind on template change
   function oese_initiate_tempalte_switch_observer(){
     setTimeout(function(){
       oese_create_tempalte_switch_observer(document.querySelector(".edit-post-layout__metaboxes"));
@@ -211,14 +218,18 @@ jQuery(window).bind("load", function() {
   }
 
   var oese_template_change_observer_func = new MutationObserver(function(mutations) {
-    jQuery('button.handlediv').off('click');
-    jQuery('.toggle-indicator').off('click');
-    jQuery('h2.hndle.ui-sortable-handle').off('click');
-    jQuery('.postbox').off('click');
+    oese_template_metaboxes_event_unbind_func();
   });
   
   function oese_create_tempalte_switch_observer(elementToObserve){
     oese_template_change_observer_func.observe(elementToObserve, {childList: true, subtree: true });
+  }
+  
+  function oese_template_metaboxes_event_unbind_func(){
+    jQuery('button.handlediv').off('click');
+    jQuery('.toggle-indicator').off('click');
+    jQuery('h2.hndle.ui-sortable-handle').off('click');
+    //jQuery('.postbox').off('click');
   }
   
   let TemplateSwitchIntervalCntr = 0;
