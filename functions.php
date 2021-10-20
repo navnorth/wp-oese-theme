@@ -7,7 +7,7 @@
  * filter hooks in WordPress to change core functionality.
  */
 define( "WP_OESE_THEME_NAME", "WP OESE Theme" );
-define( "WP_OESE_THEME_VERSION", "2.0.0" );
+define( "WP_OESE_THEME_VERSION", "2.0.1" );
 define( "WP_OESE_THEME_SLUG", "wp_oese_theme" );
 
 // Set up the content width value based on the theme's design and stylesheet.
@@ -733,7 +733,7 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
     if(get_admin_page_title() == 'Edit Page' ||
        get_admin_page_title() == 'Edit Post' ||
        get_admin_page_title() == 'Add New Page' ||
-       get_admin_page_title() == 'Add New Post' || 
+       get_admin_page_title() == 'Add New Post' ||
        get_admin_page_title() == 'Edit Reusable Block'){
     //if(get_admin_page_title() != 'Media Library' && get_admin_page_title() != 'Manage Themes'){;
       wp_enqueue_style( 'theme-bootstrap-style',get_stylesheet_directory_uri() . '/css/bootstrap.min.css' );
