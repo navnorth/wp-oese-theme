@@ -58,23 +58,32 @@ function disruptive_content_fun($attr, $content = null)
 
 /**
  * Accordion Group & Accordion
- * Shortcode Example : [oese_accordion_group][oese_accordion title="" accordion_series="one" expanded=""] your content goes here [/oese_accordion][/oese_accordion_group]
+ * Shortcode Example : [oese_accordion_group single_expand="true"][oese_accordion title="" accordion_series="one" expanded=""] your content goes here [/oese_accordion][/oese_accordion_group]
  */
 add_shortcode('oese_accordion_group', 'oese_accordion_group_func');
 function oese_accordion_group_func($atts, $content = null)
 {
 	$accordion_id = "accordion";
-
-	if (!empty($atts)) {
-		extract($atts);
+	
+	if ( is_admin() ) {
+		$_arr = getShortcodeAttr($atts);
+ 		foreach($_arr as $key => $value) $$key = $value;
 		if ($id)
 			$accordion_id = $id;
-	}
-
+ 	}else{
+		if (!empty($atts)) {
+			extract($atts);
+			if ($id)
+				$accordion_id = $id;
+		}
+ 	}
+	
+	$single_expand = (isset($single_expand) && !empty($single_expand))? strtolower($single_expand): 'false';
 	$return = '';
 	$return .= '<div class="panel-group accordion" id="'.$accordion_id.'" role="tablist" aria-multiselectable="true">';
 			$content = str_replace( "<p>","", $content );
 			$content = str_replace( "</p>","", $content );
+			$content = str_replace("[oese_accordion","[oese_accordion single_expand='".$single_expand."'",$content);
 			$return .= do_shortcode($content);
 	$return .= '</div>';
 	return $return;
@@ -103,7 +112,7 @@ $group_id = "accordion";
 			  if(isset($expanded) && !empty($expanded) && strtolower($expanded) == "true")
 			  {
 				  $class = "";
-				  $uptcls = "in";
+				  $uptcls = "show";
 			  }
 			  else
 			  {
@@ -117,7 +126,8 @@ $group_id = "accordion";
 		 $return .= ' </h5>';
 		$return .= '</div>';
 
-		$return .= '<div id="collapse'. $group_id. $accordion_series .'" class="panel-collapse collapse '.$uptcls.'" role="tabpanel" aria-labelledby="heading'. $accordion_series .'">';
+		$_single_expand = ($single_expand=='true')? 'data-parent="#'.$group_id.'"' : '';	
+		$return .= '<div id="collapse'. $group_id. $accordion_series .'" '.$_single_expand.' class="panel-collapse collapse '.$uptcls.'" role="tabpanel" aria-labelledby="heading'. $accordion_series .'">';
 		  $return .= '<div class="panel-body">';
 			//$content = apply_filters('the_content', $content);
 			$return .= $content;
@@ -146,30 +156,29 @@ function pull_quotethemefn($atts, $content = null)
 	}
 
 	$return = '';
-	$return .= '<div class="col-md-1 col-sm-1 col-xs-1">';
-		$return .= '<img src="'. get_stylesheet_directory_uri() .'/images/dbl_cod_img.png" alt="Quote"/>';
-	$return .= '</div>';
+	$return .= '<div class="oese_blockquote_wrapper">';
+		$return .= '<div class="col-md-1 col-sm-1 col-xs-1 oese-blockquote">';
+			//$return .= '<img src="'. get_stylesheet_directory_uri() .'/images/dbl_cod_img.png" alt="Quote"/>';
+			$return .= '<i class="fa fa-quote-left"></i>';
+		$return .= '</div>';
 
-	$return .= '<div class="col-md-11 col-sm-11 col-xs-11">';
-	if(isset($content) && !empty($content))
-	{
-		$return .= '<blockquote class="blog_mtr"><span></span>';
-			//$content = apply_filters('the_content', $content);
-			$return .= $content;
-		$return .= '</blockquote>';
-	}
-	if(isset($speaker) && !empty($speaker))
-	{
-		$return .= '<blockquote class="blog_athr">';
-			$return .= $speaker;
-		$return .= '</blockquote>';
-	}
-	if(isset($additional_info) && !empty($additional_info))
-	{
-		$return .= ' <p class="blog_date">';
-			$return .= $additional_info;
-		$return .= '</p>';
-	}
+		$return .= '<div class="col-md-12 col-sm-12 col-xs-12">';
+		if(isset($content) && !empty($content))
+		{
+			$return .= '<blockquote class="blog_mtr"><span></span>';
+				//$content = apply_filters('the_content', $content);
+				$return .= $content;
+			$return .= '</blockquote>';
+		}
+		if(isset($speaker) && !empty($speaker))
+		{
+			$return .= '<blockquote class="blog_athr">'.$speaker.'</blockquote>';
+		}
+		if(isset($additional_info) && !empty($additional_info))
+		{
+			$return .= ' <p class="blog_date">'.$additional_info.'</p>';
+		}
+		$return .= '</div>';
 	$return .= '</div>';
 	return $return;
 }
@@ -188,7 +197,7 @@ function featured_item_func($attr, $content = null)
 		 		extract($attr);
 		 	}
 	$return = '';
-	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 rght_sid_mtr">';
+	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 rght_sid_mtr oese_featured_item">';
 	if(isset($heading) && !empty($heading))
 	{
     	$return .= '<h4>'. $heading .'</h4>';
@@ -246,6 +255,80 @@ function featured_item_func($attr, $content = null)
     $return .= '</div>';
 
 	return $return;
+}
+
+/**
+ * OESE Featured Video
+ * Shortcode Example : [oese_featured_video heading='title' videoid='GBT4f146h9U' description='description' height='300']
+ * https://www.youtube.com/watch?v=vVjdhXAdKE0
+ */
+add_shortcode("oese_featured_video","oese_feature_video_func");
+function oese_feature_video_func($attr, $content = null){
+ static $count = 0;
+ $count++; $return = '';
+
+ if ($count==1)
+	 //$return .= '<script>var ytplayerapiurl = "'.get_stylesheet_directory_uri(). '/js/ytplayerapi.js"</script>';
+ 
+ if ( is_admin() ) {
+	 $_arr = getShortcodeAttr($attr);
+	 foreach($_arr as $key => $value) $$key = $value;
+ }else{
+	 extract($attr);
+ }
+ 
+ if(empty($height)){$height = 405;}
+ $apiurl = get_stylesheet_directory_uri()."/js/ytplayerapi.js";
+ $origin = get_site_url();
+ $id = "ytvideo".$count;
+ $iframe_title = '';
+ $return .= '<div class="col-md-12 col-sm-12 col-xs-12 rght_sid_mtr lft_sid_mtr">';
+	 if(isset($heading) && !empty($heading)){
+		 $iframe_title .= ": ".$heading;
+		 $return .= '<h4>'. $heading .'</h4>';
+	 }
+	 $return .= '<div class="col-md-12 col-sm-12 col-xs-12 vdo_bg">';	
+		 $return .= oese_generate_modal_video($videoid, $id, $iframe_title, $origin, $count, $height, $apiurl);
+		 if(isset($description) && !empty($description)){
+			 $return .= '<div class="oese-featured-video-description">'. $description .'</div>';
+		 }
+	 $return .= '</div>';
+ $return .= '</div>';
+ 
+ return $return;
+}
+
+function oese_generate_modal_video($vidid, $Id, $iframe_title, $origin, $count, $height, $apiurl){
+    $ret = ''; $imagesrc = '';
+    $imagesrc = 'https://img.youtube.com/vi/'.$vidid.'/mqdefault.jpg';  
+  
+    $ret .= '<a href="#" class="oese-video-link" data-toggle="modal" data-tgt="#oese-featured-video-shrtcd-overlay-'.$count.'" cnt="'.$count.'">';
+			$ret .= '<img src="'.$imagesrc.'" alt="Featured Video"/>';
+			$ret .= '<div class="oese-video-avatar-wrapper">';
+				$ret .= '<div class="oese-video-avatar-table">';
+		    	$ret .= '<div class="oese-video-avatar-cell">';
+						$ret .= '<span class="oese-youtube-play"></span>';
+		    	$ret .= '</div>';
+				$ret .= '</div>';
+			$ret .= '</div>';
+    $ret .= '</a>';
+  
+    $ret .= '<div class="modal fade oese-featured-video-shrtcd-overlay" id="oese-featured-video-shrtcd-overlay-'.$count.'" apiurl="'.$apiurl.'" cnt="'.$count.'" role="dialog" tabindex="-1">';
+			$ret .= '<div class="oese-video-modal modal-dialog modal-lg">';
+	    	$ret .= '<div class="oese-video-table">';
+					$ret .= '<div class="oese-video-cell">';
+		    		$ret .= '<div class="oese-video-content">';
+		    		$ret .= '<div class="oese-video-container">';
+							$ret .= '<div class="oese-featured-video-shrtcd-ytvideo" id="'.$Id.'" cnt="'.$count.'" frametitle="'.$iframe_title.'" vidid="'.$vidid.'" hght="'.$height.'" orgn="'.$origin.'"></div>';						
+					$ret .= '</div>';
+		    		$ret .= '</div>';
+					$ret .= '</div>';
+	      $ret .= '</div>';
+		  $ret .= '</div>';
+			$ret .= '<a href="#" class="oese-video-close" hst="1"><span class="dashicons dashicons-no-alt"></span></a>';
+    $ret .= '</div>';
+    
+    return $ret;
 }
 
 /**
@@ -658,9 +741,10 @@ function recommended_resources_func($attr, $content = null)
 			$return .= '<span class="socl_icns fa-stack"><i class="fa fa-star "></i></span>';
 		}
 
-		$return .= '</div>';
-            $return .= '<P class="rght_sid_wdgt_hedng">'. $title .'</P>';
-            $return .= '<div class="cntnbx_cntnr" style="text-align:'. $align.'">'.$content.'</div>';
+				$return .= '</div>';
+					$return .= '<div class="cntnbx_cntnr" style="text-align:'. $align.'">';
+						$return .= '<p class="rght_sid_wdgt_hedng">'. $title .'</p>'.$content;
+					$return .= '</div>';
         $return .= '</div>';
 		$return .= '</div>';
 
@@ -688,7 +772,7 @@ function recommended_resources_func($attr, $content = null)
 	if (isset($button_color) && !empty($button_color)) {
 		if (strpos($button_color,"#")===false)
 			$button_color = "#".$button_color;
-		$btnStyle .= "background-color:".$button_color.";";
+		$btnStyle .= "background-color:".$button_color." !important;";
 	}
 
 	//Button Text color
@@ -948,12 +1032,11 @@ function parse_data_attributes( $data ) {
  		}
   }
 
-	$return = '<div class="intro">
-			<div class="intro-goal">
-				<div class="title">'.$title.'</div>
-				'.$content.'
-		        </div>
-		</div>';
+	$return = '<div class="intro">';
+			$return .= '<div class="intro-goal">';
+				$return .= '<div class="title">'.$title.'</div>';
+				$return .= $content.'</div>';
+		$return .= '</div>';
 
 	return $return;
  }
@@ -975,7 +1058,7 @@ function audience_link_func($attribute, $content = null) {
  			extract($attribute);;
  		}
   }
-
+	$return = '';
 	$return = '<a class="audience-link" href="'.$url.'" alt="'.$content.'">'.$content.'</a>';
 
 	return $return;
@@ -1084,18 +1167,39 @@ function oet_featured_card_func($attribute, $content = null){
  $_cont_sm = (strlen($content)>110)? substr($content,0,110).' ...': $content;
  $_cont_xs = (strlen($content)>50)? substr($content,0,50).' ...': $content;
  $_button_link = (!empty($button_link))? $button_link: '#';
- $return = '<div class="adminoverridewidth col-xs-12 col-md-6 col-lg-4">
- 							<div class="oet-featured-card" style="background-image: linear-gradient(rgba(44, 67, 116, 0.85), rgba(44, 67, 116, 0.85)), url('.$bg.');">
-	 							<div class="oet-featured-card-content-wrapper">
-			 						<h3 class="oet-featured-card-title">'.$title.'</h3>
-									<div class="oet-featured-card-desc">'.$content.'</div>
-				 					<a href="'.$_button_link.'" class="oet-featured-card-btn">'.$button_text.'&nbsp;→</a>
-								</div>
-		 					</div>
-						</div>';
+ $return = '<div class="adminoverridewidth col-xs-12 col-md-6 col-lg-4">';
+ 		$return .= '<div class="oet-featured-card" style="background-image: linear-gradient(rgba(44, 67, 116, 0.85), rgba(44, 67, 116, 0.85)), url('.$bg.');">';
+	 	$return .= '<div class="oet-featured-card-content-wrapper">';
+			$return .= '<h3 class="oet-featured-card-title">'.$title.'</h3>';
+			$return .= '<div class="oet-featured-card-desc">'.$content.'</div>';
+			$return .= '<a href="'.$_button_link.'" class="oet-featured-card-btn">'.$button_text.'&nbsp;→</a>';
+		$return .= '</div>';
+	$return .= '</div>';
+ $return .= '</div>';
 		
 
  return $return;
+}
+
+/**
+ * Disclaimer
+ * Shortcode Example : [oese_disclaimer title="WOW:"]Disclaimer Text Here[/oese_disclaimer]
+ */
+add_shortcode("oese_disclaimer", "oese_disclaimer_func");
+function oese_disclaimer_func($attr, $content = null) {
+
+		if (is_array($attr)){
+	 		if ( is_admin() ) {
+	 			$_arr = getShortcodeAttr($attr);
+	 			foreach($_arr as $key => $value) $$key = $value;
+	 		}else{
+	 			extract($attr);;
+	 		}
+	  }
+		$def_txt = 'Content provides insights on education practices from the perspective of schools, parents, students, grantees, community members and other education stakeholders to promote the continuing discussion of educational innovation. Content and articles are not intended to reflect their importance, nor is it intended to be an endorsement by the Department or the Federal government of any views expressed, products or services offered, curriculum or pedagogy.';
+		$_title = (! empty(trim($title," ")))? $title: 'Disclaimer:';
+		$html = '<div class="panel-disclaimer"><p><strong>'.$_title.' </strong>'.$content.'</p></div>';
+    return $html;
 }
 
 function getShortcodeAttr($atts){

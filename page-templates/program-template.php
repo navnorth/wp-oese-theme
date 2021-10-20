@@ -13,7 +13,7 @@ $head_class = "";
 $extra_class = "";
 $is_archived = false;
 $archived_date = null;
-$leftCol = "col-md-8 col-sm-12";
+$leftCol = "col-md-8";
 $rightCol = "col-md-4";
 
 if (get_field('archive_date'))
@@ -146,6 +146,22 @@ if ($detect->isMobile())
                     </div>
                 </div>
                 <?php
+                }else{
+                  ?>
+                  <div class="<?php echo $rightCol; ?> program-sidebar">
+                      <?php echo contactInformationBlock() ?>
+
+                      <div class="spacer" style="height:20px;"></div>
+
+                      <?php get_template_part( 'content', 'resources' ); ?>
+
+                      <?php
+                      if (have_rows('sidebar_links'))
+                          getSidebarLinks();
+                      ?>
+                      
+                  </div>
+                  <?php
                 }
             } else {
             ?>

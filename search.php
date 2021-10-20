@@ -68,7 +68,7 @@ if (is_solr_installed()){
         border-color: #555555 transparent transparent transparent;
     }
 </style>
-<div id="content" class="row site-content">
+<div id="content" class="site-content oese-search-content-wrapper">
 	<div class="col-md-12">
 		<header class="page-header">
 			<h1 class="page-title h1-bottom-space"><?php printf( __( 'Search Results', 'twentytwelve' ) ); ?></h1>
@@ -81,7 +81,7 @@ if (is_solr_installed()){
 $results = array();
 ?>
 
-	<div id="content" class="row site-content">
+	<div id="content" class="site-content oese-search-content-wrapper">
 		<div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12 lft_sid_cntnr">
 		<?php if ( have_posts() ) : ?>
 

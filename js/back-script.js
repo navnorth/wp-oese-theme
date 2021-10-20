@@ -1,3 +1,11 @@
+/*
+var edit_post_layout_metaboxes_timer = setInterval(function(){
+  if ( jQuery('.edit-post-layout__metaboxes').length > 0 ){
+    jQuery('.edit-post-layout__metaboxes').hide();
+    clearInterval(edit_post_layout_metaboxes_timer);
+  }
+}, 100);
+*/
 jQuery( document ).ready(function() {
     jQuery('#page_template').on('change', function() {
 	  //alert(this.value);
@@ -28,6 +36,26 @@ jQuery( document ).ready(function() {
         }
     });
     jQuery('.oese-tabs').tabs();
+    
+    //image-edit update button fix
+    jQuery(document).ready( function($){
+      let mediaEditorUpdateButtonTimer;
+      jQuery(document).on('click','.imgedit-submit input.imgedit-submit-btn',function(e){
+        mediaEditorUpdateButtonTimer = setInterval(function(){
+          let meditelm = jQuery('.media-frame-toolbar .media-toolbar .media-toolbar-primary button.media-button');
+          let cls1 = meditelm.hasClass('button-primary');
+          let cls2 = meditelm.hasClass('media-button-select');
+          if(!cls1 && cls2){
+            meditelm.addClass('button-primary');
+            meditelm.text('Update');
+            clearInterval(mediaEditorUpdateButtonTimer);
+          }
+        }, 500);
+      }),wp.media.view.Modal.prototype.on('close', function(data) {
+          clearInterval(mediaEditorUpdateButtonTimer);
+      });
+    });   
+    
 })
 
 
@@ -148,8 +176,79 @@ jQuery( document ).ready(function() {
       jQuery('.oese-prohibitedpermalinktext.notice').remove();
     });    
   })
+
+  //Override fix for metabox expand/collapse
+  var oese_template_changed = false;
+  jQuery(document).on('change','.components-select-control__input', function() {
+      oese_template_changed = true;
+      console.log(oese_template_changed);
+  });
+  
   
 })
+
+
+
+jQuery(window).bind("load", function() {  
+  
+  oese_template_metaboxes_event_unbind_func();
+  
+  jQuery('.edit-post-layout__metaboxes').show();
+  jQuery(document).on('mouseup','button.handlediv',function(e){
+      var expand = jQuery(this).attr('aria-expanded');
+      var postbox = jQuery(this).closest('.postbox');
+      var closed = postbox.hasClass('closed');
+      // manual condition instead of toggle as the latter doesn't work on test server
+      if (expand ==='true'){
+        postbox.find('.inside').hide();
+        jQuery(this).attr('aria-expanded','false');
+        jQuery(this).closest('.postbox').addClass('closed');
+      }else{
+        postbox.find('.inside').show();
+        jQuery(this).attr('aria-expanded','true');
+        jQuery(this).closest('.postbox').removeClass('closed');
+      }
+  })
+  
+  //Reinstantiate unbind on template change
+  function oese_initiate_tempalte_switch_observer(){
+    setTimeout(function(){
+      oese_create_tempalte_switch_observer(document.querySelector(".edit-post-layout__metaboxes"));
+    }, 500);
+  }
+
+  var oese_template_change_observer_func = new MutationObserver(function(mutations) {
+    oese_template_metaboxes_event_unbind_func();
+  });
+  
+  function oese_create_tempalte_switch_observer(elementToObserve){
+    oese_template_change_observer_func.observe(elementToObserve, {childList: true, subtree: true });
+  }
+  
+  function oese_template_metaboxes_event_unbind_func(){
+    jQuery('button.handlediv').off('click');
+    jQuery('.toggle-indicator').off('click');
+    jQuery('h2.hndle.ui-sortable-handle').off('click');
+    //jQuery('.postbox').off('click');
+  }
+  
+  let TemplateSwitchIntervalCntr = 0;
+  let TemplateSwitchInterval = setInterval(function(){
+    TemplateSwitchIntervalCntr++;
+    if(jQuery('.edit-post-layout__metaboxes').length){
+      clearInterval(TemplateSwitchInterval);
+      oese_initiate_tempalte_switch_observer();
+      jQuery('.handle-order-lower').removeClass('hidden');
+      jQuery('.handle-order-higher').removeClass('hidden');
+    }else{
+      if(TemplateSwitchIntervalCntr > 1800){
+        clearInterval(TemplateSwitchInterval);
+      }
+    }
+  }, 100);
+  
+});
+
 
 var itvl;
 function interceptPublish(typ){
@@ -203,4 +302,19 @@ function ispagehome(){
   }
   return ret;
 }
-    
+
+
+// WP dataTables
+jQuery(document).ready(function(){
+  jQuery('div.wpdt-c').each(function(i, obj) {
+    wpdtAdminTimer = setTimeout(function(){
+      if(jQuery(obj).find('table.wpDataTable').length){
+        clearTimeout(wpdtAdminTimer);
+        var wpdtMainWrapper = jQuery(obj);
+        wpdtMainWrapper.find('table.wpDataTable').wrap('<div class="wdtResponsiveWrapper"></div>');
+        jQuery(obj).addClass('wpdt_main_wrapper');
+        jQuery(obj).attr('id','wpdt_main_wrapper_'+0);
+      }
+    },100);
+  });
+});

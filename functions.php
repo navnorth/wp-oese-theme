@@ -7,7 +7,7 @@
  * filter hooks in WordPress to change core functionality.
  */
 define( "WP_OESE_THEME_NAME", "WP OESE Theme" );
-define( "WP_OESE_THEME_VERSION", "1.8.1" );
+define( "WP_OESE_THEME_VERSION", "2.0.1" );
 define( "WP_OESE_THEME_SLUG", "wp_oese_theme" );
 
 // Set up the content width value based on the theme's design and stylesheet.
@@ -711,24 +711,31 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
   /**
   * Page Edit Modal Parent Attribute
   **/
- require_once( get_stylesheet_directory() . '/modules/modal-parent/modal_parent.php' );
+  require_once( get_stylesheet_directory() . '/modules/modal-parent/modal_parent.php' );
 
-
-
+ /**
+ * Shortcodes Blocks
+ **/
+ $_vsn = (int)explode('.',get_bloginfo('version'))[0];
+ if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/accordion/init.php' );
+ if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblock/shortcodesblock.php' );
  function theme_back_enqueue_script()
 {
     wp_enqueue_script( 'jquery-ui-core' );
 	wp_enqueue_script( 'jquery-ui-widgets' );
 	wp_enqueue_script( 'jquery-ui-tabs' );
-    wp_enqueue_script( 'theme-back-script', get_stylesheet_directory_uri() . '/js/back-script.js' );
+    wp_enqueue_script( 'theme-back-script', get_stylesheet_directory_uri() . '/js/back-script.js', array());
     wp_enqueue_script('csv-media-script', get_stylesheet_directory_uri() . '/js/csv-media-import-script.js' );
     wp_enqueue_style( 'theme-back-style',get_stylesheet_directory_uri() . '/css/back-style.css' );
     wp_enqueue_style( 'tinymce_button_backend',get_stylesheet_directory_uri() . '/tinymce_button/shortcode_button.css' );
     wp_localize_script( 'theme-back-script', 'oet_ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
-
-    if(get_admin_page_title() == 'Edit Page'){
+    wp_enqueue_style( 'theme-font-style',get_stylesheet_directory_uri() . '/css/fontawesome/css/all.min.css' );
+    if(get_admin_page_title() == 'Edit Page' ||
+       get_admin_page_title() == 'Edit Post' ||
+       get_admin_page_title() == 'Add New Page' ||
+       get_admin_page_title() == 'Add New Post' ||
+       get_admin_page_title() == 'Edit Reusable Block'){
     //if(get_admin_page_title() != 'Media Library' && get_admin_page_title() != 'Manage Themes'){;
-      wp_enqueue_style( 'theme-font-style',get_stylesheet_directory_uri() . '/css/fontawesome/css/all.min.css' );
       wp_enqueue_style( 'theme-bootstrap-style',get_stylesheet_directory_uri() . '/css/bootstrap.min.css' );
       wp_enqueue_script('bootstrap-script', get_stylesheet_directory_uri() . '/js/bootstrap.js' );
     }
@@ -742,19 +749,23 @@ add_action( 'admin_enqueue_scripts', 'theme_back_enqueue_script' );
 
 function theme_front_enqueue_script()
 {
-  wp_enqueue_style( 'theme-front-style',get_stylesheet_directory_uri() . '/css/front-style.css' );
+  global $post;
+  wp_enqueue_style( 'theme-front-style',get_stylesheet_directory_uri() . '/css/front-style.css');
   wp_enqueue_style( 'theme-bootstrap-style',get_stylesheet_directory_uri() . '/css/bootstrap.min.css' );
   wp_enqueue_style( 'theme-font-style',get_stylesheet_directory_uri() . '/css/fontawesome/css/all.min.css' );
 
   wp_enqueue_style( 'theme-main-style',get_stylesheet_directory_uri() . '/css/mainstyle.css' );
-
+  wp_enqueue_style( 'theme-wpdt-style',get_stylesheet_directory_uri() . '/css/wpdt.css', array());
   wp_enqueue_script('jquery');
+  if (is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'wpdatatable')){
+    wp_enqueue_script('ie-detection-script', get_stylesheet_directory_uri().'/js/ie-detect.js');
+  }
   wp_enqueue_script('popper-script', get_stylesheet_directory_uri() . '/js/popper.min.js' );
   wp_enqueue_script('bootstrap-script', get_stylesheet_directory_uri() . '/js/bootstrap.js' );
   wp_enqueue_script('theme-front-script', get_stylesheet_directory_uri() . '/js/front-script.js' );
   wp_enqueue_script('theme-back-script', get_stylesheet_directory_uri() . '/js/modernizr-custom.js' );
 }
-add_action( 'wp_enqueue_scripts', 'theme_front_enqueue_script' );
+add_action( 'wp_enqueue_scripts', 'theme_front_enqueue_script');
 
 function the_content_filter($content) {
     $block = join("|",array("home_left_column", "home_right_column"));
@@ -788,6 +799,27 @@ function federated_analytics_tracking_code(){
     echo '<script type="text/javascript" id="_fed_an_ua_tag" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=ED"></script>';
 }
 add_action('wp_head', 'federated_analytics_tracking_code');
+
+/* Frontend loaded Google fonts*/
+function load_frontend_google_fonts() {
+    ?>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&family=Raleway:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <?php
+}
+add_action( 'wp_head', 'load_frontend_google_fonts' );
+
+/* Admin loaded Google fonts*/
+function load_admin_google_fonts() {
+    ?>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&family=Raleway:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <?php
+}
+add_action( 'admin_head', 'load_admin_google_fonts' );
+
 
 /**
  * Title tag filter - to include parent titles
@@ -1129,10 +1161,14 @@ function getSidebarLinks($showHeader=true){
         // loop through the rows of data
         while ( have_rows('sidebar_links') ) : the_row();
             $resourceLabel =  get_sub_field('resource_label');
-            $resourceLink =  get_sub_field('resource_link');
+            $resourceLink =  (get_sub_field('resource_link'))? get_sub_field('resource_link'): "";
             $externaLink =  get_sub_field('external_link');
             $target = ($externaLink ? "_blank" : "_self");
-            $output.= "<li><a target='". $target."' href='".$resourceLink."'>".$resourceLabel."</a></li>";
+            if(trim($resourceLink)!==""){
+              $output.= "<li><a target='". $target."' href='".$resourceLink."'>".$resourceLabel."</a></li>";
+            }else{
+              $output.= "<li class='unlinked'><span>".$resourceLabel."</span></li>";
+            }
         endwhile;
         $output.=  "</ul>";
         $output.="</div>";
@@ -2673,7 +2709,7 @@ function oet_display_acf_home_content(){
                   if(!empty($subfieldlayout)):
                     foreach ($subfieldlayout as $subfieldkey => $subfieldvalue) {  //subfields within Subfield FC
                       if($subfieldkey !== 'acf_fc_layout'):
-                        echo $subfieldvalue.'<br>';
+                        echo $subfieldvalue;
                       endif;
                     }
                   endif;
@@ -2695,7 +2731,7 @@ function oet_display_acf_home_content(){
                       if(!empty($subfieldlayout)):
                         foreach ($subfieldlayout as $subfieldkey => $subfieldvalue) {  //subfields within Subfield FC
                           if($subfieldkey !== 'acf_fc_layout'):
-                            echo $subfieldvalue.'<br>';
+                            echo $subfieldvalue;
                           endif;
                         }
                       endif;
@@ -2709,7 +2745,7 @@ function oet_display_acf_home_content(){
                       if(!empty($subfieldlayout)):
                         foreach ($subfieldlayout as $subfieldkey => $subfieldvalue) {  //subfields within Subfield FC
                           if($subfieldkey !== 'acf_fc_layout'):
-                            echo $subfieldvalue.'<br>';
+                            echo $subfieldvalue;
                           endif;
                         }
                       endif;
@@ -2787,8 +2823,8 @@ function oet_display_acf_home_content(){
                             $_img = (isset($subfieldlayout['oet_acf_homepage_trendingnow_image']['id']))? $subfieldlayout['oet_acf_homepage_trendingnow_image']['id']: $subfieldlayout['oet_acf_homepage_trendingnow_image'];
                             $_img = wp_get_attachment_url( $_img);
                             $_img_alt = $subfieldlayout['oet_acf_homepage_trendingnow_image_alt_text'];
-                            $_ico = $subfieldlayout['oet_acf_homepage_trendingnow_titleicon'];
-                            $_title_icon = ($subfieldlayout['oet_acf_homepage_trendingnow_titleicon'] != 'none')? '<i class="fa '.$_ico.'"></i>&nbsp;': '';
+                            /*$_ico = $subfieldlayout['oet_acf_homepage_trendingnow_titleicon'];
+                            $_title_icon = ($subfieldlayout['oet_acf_homepage_trendingnow_titleicon'] != 'none')? '<i class="fa '.$_ico.'"></i>&nbsp;': ''; */
                             $_title = $subfieldlayout['oet_acf_homepage_trendingnow_title'];
                             $_tmp = $subfieldlayout['oet_acf_homepage_trendingnow_description'];
                             $_desc = (strlen($_tmp)>210)? substr($_tmp,0,180).' ...': $_tmp;
@@ -2992,7 +3028,7 @@ function oet_display_acf_home_content(){
             $_searchtitle = get_sub_field('oet_act_homepage_search_title');
 
             ?>
-            <div class="row col-sm-12 custom-common-padding">
+            <div class="col-sm-12 custom-common-padding">
               <div class="full-search-section m-auto text-center">
                    <div class="full-search-heading">
                        <h1><?php echo $_searchtitle ?></h1>
@@ -3050,35 +3086,132 @@ function oese_add_home_detector()  {
 }
 add_action( 'admin_footer', 'oese_add_home_detector' );
 
+/**
+ * Restore CSV upload functionality for WordPress 4.9.9 and up
+ */
+add_filter('wp_check_filetype_and_ext', function($values, $file, $filename, $mimes) {
+	if ( extension_loaded( 'fileinfo' ) ) {
+		// with the php-extension, a CSV file is issues type text/plain so we fix that back to
+		// text/csv by trusting the file extension.
+		$finfo     = finfo_open( FILEINFO_MIME_TYPE );
+		$real_mime = finfo_file( $finfo, $file );
+		finfo_close( $finfo );
 
+		if ( $real_mime === 'text/plain' && preg_match( '/\.(csv)$/i', $filename ) ) {
+			$values['ext']  = 'csv';
+			$values['type'] = 'text/csv';
+		}
+	} else {
+		// without the php-extension, we probably don't have the issue at all, but just to be sure...
+		if ( preg_match( '/\.(csv)$/i', $filename ) ) {
+			$values['ext']  = 'csv';
+			$values['type'] = 'text/csv';
+		}
+	}
+
+	return $values;
+}, PHP_INT_MAX, 4);
+
+/**
+ * Include Slider
+ */
+include( get_template_directory() . "/modules/oese-acf-slider/oese-acf-slider.php");
+
+/* ENABLE GUTENBERG EDITOR */
+$GLOBALS['oese_is_gutenberg_active'] = 'true';  // use "true" to activate gutenberg editor
 
 /* PREVIEW CAPABILITY */
-include( get_template_directory() . "/modules/oesepreview/oesepreview.php");
+//add_filter('use_block_editor_for_post', '__return_'.$GLOBALS['oese_is_gutenberg_active'], 10);
+if ( $GLOBALS['oese_is_gutenberg_active'] == 'true') { // Use this in Gutenberg
+    include( get_template_directory() . "/modules/oesepreview/oesepreviewguten.php");
+}else{ // Use this on classic
+    include( get_template_directory() . "/modules/oesepreview/oesepreview.php");
+}
 
 /*
-add_filter( 'posts_results', 'set_query_to_draft', null, 2 );
-function set_query_to_draft( $posts, $query ) {
-
-    $_pwd = get_post_meta($_GET['page_id'], '_post_revision_pwd', true);
-
-    if ( sizeof( $posts ) != 1 )
-        return $posts;
-
-    $post_status_obj = get_post_status_object(get_post_status( $posts[0]));
-
-    if ( !$post_status_obj->name == 'draft' )
-        return $posts;
-
-    if ( $_GET['key'] != $_pwd )
-        return $posts;
-
-    $query->_draft_post = $posts;
-
-    add_filter( 'the_posts', 'show_draft_post', null, 2 );
-}
-
-function show_draft_post( $posts, $query ) {
-    remove_filter( 'the_posts', 'show_draft_post', null, 2 );
-    return $query->_draft_post;
-}
+* Add OER Block Category
 */
+function oese_block_category( $categories ) {
+	$category_slugs = wp_list_pluck( $categories, 'slug' );
+	return in_array( 'oese-block-category', $category_slugs, true ) ? $categories : array_merge(
+        array(
+            array(
+				'slug' => 'oese-block-category',
+				'title' => __( 'OESE Blocks', 'oese-block-category' ),
+			),
+        ),
+        $categories
+    );
+}
+add_filter( 'block_categories', 'oese_block_category', 10, 2);
+
+
+/** Add Link to Media Button on Rich Text Editor Block **/
+add_action('enqueue_block_editor_assets', 'oese_block_editor_text_link_to_media');
+function oese_block_editor_text_link_to_media() {
+
+  // Load the compiled blocks into the editor.
+  wp_enqueue_script(
+    'link-to-media-button-js',
+    get_stylesheet_directory_uri().'/js/link-to-media.js',
+    array( 'wp-blocks', 'wp-element', 'wp-components', 'wp-editor' ),
+    '1.0',
+    true
+  );
+
+  // Load the compiled styles into the editor.
+  wp_enqueue_style(
+    'link-to-media-css',
+    get_stylesheet_directory_uri().'/css/link-to-media.css',
+    array( 'wp-edit-blocks' )
+  );
+}
+
+/** Update TinyMCE Advance Font Sizes Selection **/
+if ( ! function_exists( 'oese_tiny_mce_font_sizes' ) ) {
+  function oese_tiny_mce_font_sizes( $initArray ){
+    $initArray['fontsize_formats'] = "8px 9px 10px 11px 12px 14px 16px 18px 20px 24px 28px 32px 36px 48px 60px 72px";
+    return $initArray;
+  }
+}
+add_filter( 'tiny_mce_before_init', 'oese_tiny_mce_font_sizes' );
+
+/** Tile Links Block using ACF Blocks **/
+function oese_acf_init_tile_links_block(){
+  if (function_exists('acf_register_block')){
+    // register a tile link block
+    acf_register_block(array(
+      'name'            => 'tile-link',
+      'title'           => __('Tile Links'),
+      'description'     => __('A tile link block.'),
+      'render_callback' => 'oese_tile_link_block_render_callback',
+      'category'        => 'oese-block-category',
+      'icon'            => 'admin-links',
+      'keywords'        => array( 'tile link', 'link' ),
+      'enqueue_style'   => get_stylesheet_directory_uri() . '/css/block/tile-link.css',
+      'example'  => array(
+        'attributes' => array(
+            'mode' => 'preview',
+            'data' => array(
+              'tile_links' => array(
+                'tile_link_title'   => "Lorem Ipsum",
+                'tile_link_url'     => "https://example.com",
+                'external_link'     => "True",
+                'width'             => "full"
+              )
+            )
+        )
+      )
+    ));
+  }
+}
+add_action( 'acf/init', 'oese_acf_init_tile_links_block' );
+
+function oese_tile_link_block_render_callback( $block ){
+  $slug = str_replace('acf/', '', $block['name']);
+
+  // include a template part from within the "template-parts/block" folder
+  if( file_exists( get_theme_file_path("/template-parts/block/content-{$slug}.php") ) ) {
+    include( get_theme_file_path("/template-parts/block/content-{$slug}.php") );
+  }
+}

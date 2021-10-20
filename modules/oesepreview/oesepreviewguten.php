@@ -10,7 +10,7 @@ define('OESEPREVIEW_PRESERVE_DATE',true);
 define('OESEPREVIEW_PRESERVE_AUTHOR',true);
 
 add_action('init', __NAMESPACE__.'\\init');
-
+global $post;
 function init() {
   
   //Filters and actions for admins who can edit the post
@@ -41,10 +41,11 @@ function init() {
   /* add_action('admin_bar_menu', __NAMESPACE__.'\\admin_bar_item', 100); */
 }
 
-
 function wp_oese_preview_draft_enqueue(){
 	wp_enqueue_style('wp-oese-preview-draft.css', get_template_directory_uri() . '/modules/oesepreview/admin.css', array() , null, 'all');
   wp_enqueue_script('wp-oese-preview-draft.js', get_template_directory_uri() . '/modules/oesepreview/admin.js' , array('jquery') , null, true);
+  //wp_localize_script('wp-oese-preview-draft.js', 'wp_nn_preview_ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+  wp_localize_script('wp-oese-preview-draft.js', 'wp_nn_preview_ajax_object', array( 'ajaxurl' => get_template_directory_uri().'/modules/oesepreview/oesepreview_ajax.php'));
   wp_localize_script('wp-oese-preview-draft.js','wpoesePreviewGlobal', ['oeseIsGutenbergActive' => $GLOBALS['oese_is_gutenberg_active']]);
 }
 add_action('admin_enqueue_scripts', __NAMESPACE__.'\\wp_oese_preview_draft_enqueue');
@@ -115,7 +116,9 @@ function transition_post_status_handler( $new_status, $old_status, $post ) {
     }
   }
 }
-add_action( 'transition_post_status', __NAMESPACE__.'\\transition_post_status_handler', 10, 3);
+//add_action( 'transition_post_status', __NAMESPACE__.'\\transition_post_status_handler', 10, 3);
+
+
 
 function create_oesepreview($post, $is_original=false) {
   $new_id = copy_post($post, null, $post->ID);
@@ -157,15 +160,16 @@ function publish($post, $original) {
     wp_delete_post($post->ID, true);                                        // delete the variation
 
     do_action('oesepreview_after_publish', $original->ID);
-
+    
     if (!is_ajax() && !is_cron()) {
       wp_redirect(admin_url('post.php?action=edit&post=' . $original->ID));   // take us back to the live post
       exit;
     }
 
     if (is_ajax()) {
-      echo "<script type='text/javascript'>location.reload();</script>";
+      //echo "<script type='text/javascript'>location.reload();</script>";
     }
+
   }
 }
 
@@ -202,18 +206,28 @@ function copy_post($post, $to=null, $parent_id=null, $status='draft') {
       $author_id = $author->ID;
     }
   }
-
+  
+  $_ctnt = $post->post_content;
+  preg_match_all('/<!-- wp:cgb\/block-oese-shortcodes-block(.*?)-->/', $_ctnt, $blocks);  
+  foreach($blocks[1] as $shrtcd_block) {
+      $_str_original = trim($shrtcd_block," ");
+      $_a = array('\u0022','\u003c','\u003e');
+      $_b = array('\\\\u0022','\\\\u003c','\\\\u003e');
+      $_str_replacement = str_replace($_a,$_b,trim($_str_original," "));     
+      $_ctnt = str_replace($_str_original,$_str_replacement,$_ctnt);
+  }
+  
   $data = array(
     'menu_order' => $post->menu_order,
     'comment_status' => $post->comment_status,
     'ping_status' => $post->ping_status,
     'post_author' => $author_id,
-    'post_content' => $post->post_content,
+    'post_content' => $_ctnt,
     'post_excerpt' => $post->post_excerpt,
     'post_mime_type' => $post->post_mime_type,
-    //'post_parent' => !$parent_id ? $post->post_parent : $parent_id,
+    'post_parent' => !$parent_id ? $post->post_parent : $parent_id,
     'post_password' => $post->post_password,
-    'post_status' => $post_status,
+    //'post_status' => $post_status,
     'post_title' => $post->post_title,
     'post_type' => $post->post_type,
     'post_date' => $post->post_date,
@@ -369,12 +383,12 @@ function admin_actions($actions, $post) {
       $_oesepreview_id = get_post_meta($post->ID, '_post_oesepreview_id', true);
       
       if( is_null(get_post($_oesepreview_id))){
-        $lnk_txt = get_create_button_text();
+        $lnk_txt = get_create_button_text($post);
       }else{
         $lnk_txt = 'Edit Preview';
       }
     }else{
-      $lnk_txt = get_create_button_text();
+      $lnk_txt = get_create_button_text($post);
     } 
     
     $actions['create_oesepreview'] = '<a href="'.get_create_link($post).'" title="'
@@ -534,8 +548,8 @@ function get_create_link($post) {
     return $_url;
 }
 
-function get_create_button_text() {
-  global $post;
+function get_create_button_text($post) {
+  //global $post;
   $_btn='';
   if(metadata_exists('post', $post->ID, '_post_oesepreview_id')){
     $_oesepreview_id = get_post_meta($post->ID, '_post_oesepreview_id', true);
@@ -602,7 +616,8 @@ function is_wp_oesepreview_different($a, $b) {
 
 add_filter( 'posts_results', __NAMESPACE__.'\\set_query_to_draft', null, 2 );
 function set_query_to_draft( $posts, $query ) {
-    
+    $_pwd = '';
+
     if(isset($_GET['page_id'])){ //page
       $_pwd = get_post_meta($_GET['page_id'], '_post_oesepreview_pwd', true);
     }elseif(isset($_GET['p'])){
@@ -618,6 +633,8 @@ function set_query_to_draft( $posts, $query ) {
     
     if(isset($_GET['key'])){
       if ( $_GET['key'] != $_pwd )
+        return $posts;
+    }else{
         return $posts;
     }
     
@@ -642,3 +659,171 @@ function on_oesepreview_trash_post(){
   //die($_orig_post_id);
 }
 */
+
+
+
+
+add_action('rest_api_init', function () {
+  register_rest_route( 'wpnnpreview/v2', 'elementquery', 
+    array(
+    'methods' => 'GET', 
+    'callback' => __NAMESPACE__ .'\\wpnnpreview_element_query',
+    'permission_callback' => '__return_true'
+    )
+  );
+});
+
+function wpnnpreview_element_query(){
+  $post = get_post($_GET['pid']);
+  $nstt = $_GET['new'];
+  $parent = get_parent_post($post);
+  if($post->post_type == 'page'){
+    $_getparam = "page_id";
+  }elseif($post->post_type == 'post'){
+    $_getparam = "p";
+  }
+  $_isparent = (get_oesepreview_of($post))?'false':'true';
+  $_status = get_post_status($post->ID);
+  $_ret = array();
+  $_htm = '';
+  if (!$parent){ // Parent type of Post
+    if($nstt == 'publish'){
+      if($post->post_type == 'post' || $post->post_type == 'page'){
+          
+        $_htm .= '<div class="oese-preview-url-wrapper gutenberg components-button" isparent="'.$_isparent.'" >';
+          $_htm .= '<a class="button" href="'.get_create_link($post).'">'.get_create_button_text($post).'</a>';
+        $_htm .= '</div>';
+        
+      }
+    }elseif($nstt == 'draft' || $nstt == 'pending'){
+        //Set password if not yet set
+        if(!metadata_exists('post', $post->ID, '_post_oesepreview_pwd') ||
+           empty( get_post_meta( $post->ID, '_post_oesepreview_pwd', true ))){
+             update_post_meta($post->ID, '_post_oesepreview_pwd', uniqid());      // generate password
+        }
+      
+        $_htm .= '<div class="oese-preview-url-wrapper gutenberg '.$post->ID.'" isparent="'.$_isparent.'">';
+          $_htm .= '<strong><em>Preview URL:</em></strong>';
+          $_htm .= '<input id="oese-preview-url-input" type="text" value="'.get_bloginfo('url').'?'.$_getparam.'='.$post->ID.'&preview=true&key='.get_post_meta( $post->ID, '_post_oesepreview_pwd', true ).'" />';
+          $_htm .= '<div class="oese-preview-url-copy button" onclick="oesePreviewDraftCopyToClipboard()">Copy URL</div>';
+        $_htm .= '</div>';
+    
+    }
+  }else{ //Preview Type Of Post
+    
+    $_htm .= '<div class="components-panel__row oese-preview-url-wrapper gutenberg" isparent="'.$_isparent.'">';
+      $_htm .= '<strong><em>Preview URL:</em></strong>';
+      $_htm .= '<input id="oese-preview-url-input" type="text" value="'.get_bloginfo('url').'?'.$_getparam.'='.$post->ID.'&preview=true&key='.get_post_meta($post->ID, '_post_oesepreview_pwd', true).'" />';
+      $_htm .= '<div class="oese-preview-url-copy button" onclick="oesePreviewDraftCopyToClipboard()">Copy URL</div>';
+      $_htm .= '<div id="oese-preview-draft-publish-warning">';
+      $_htm .= '<em>';
+        $_htm .= '<strong style="font-size:14px;color:red;">WARNING</strong>';
+        $_htm .= ': Publishing this preview will overwrite '.get_parent_editlink($parent, "its original.").'<br>Please use "Save Draft" if you only wish to save this preview for review)';
+      $_htm .= '</em>';
+      $_htm .= '</div>';
+    $_htm .= '</div>';
+    
+  }
+  $output = ob_get_clean( );
+  
+  $_ret['themedir'] = get_template_directory_uri();
+  $_ret['isparent'] = $_isparent;
+  $_ret['status'] = $nstt;
+  $_ret['html'] = $_htm;
+  return $_ret;
+}
+
+
+
+
+
+
+
+
+
+/* GUTENBERG STARTS */
+function wpnnPostButtonGuten() {
+  $post = get_post($_POST['pid']);
+  $parent = get_parent_post($post);
+  if($post->post_type == 'page'){
+    $_getparam = "page_id";
+  }elseif($post->post_type == 'post'){
+    $_getparam = "p";
+  }
+  $_isparent = (get_oesepreview_of($post))?'false':'true';
+  $_ret = array();
+  ob_start( );
+  if (!$parent){
+    if(get_post_status($post->ID) == 'publish'){
+      if($post->post_type == 'post' || $post->post_type == 'page'){
+        ?>
+        <div class="oese-preview-url-wrapper gutenberg" isparent="<?php echo $_isparent ?>" style="text-align: right; margin-bottom: 10px;">
+          <a class="button" href="<?php echo get_create_link($post) ?>"><?php echo get_create_button_text($post); ?></a>
+        </div>
+        <?php
+      }
+    }elseif(get_post_status($post->ID) == 'draft' || get_post_status($post->ID) == 'pending'){
+      ?>
+        <div class="oese-preview-url-wrapper gutenberg" isparent="<?php echo $_isparent ?>">
+          <strong><em>Preview URL:</em></strong>
+          <input id="oese-preview-url-input" type="text" value="<?php echo get_bloginfo('url').'?'.$_getparam.'='.$post->ID.'&preview=true&key='.get_post_meta($post->ID, '_post_oesepreview_pwd', true) ?>" />
+          <div class="oese-preview-url-copy button" onclick="oesePreviewDraftCopyToClipboard()">Copy URL</div>
+        </div>
+      <?php
+    }
+  }else{ 
+    ?>
+    <div class="oese-preview-url-wrapper gutenberg" isparent="<?php echo $_isparent ?>">
+      <strong><em>Preview URL:</em></strong>
+      <input id="oese-preview-url-input" type="text" value="<?php echo get_bloginfo('url').'?'.$_getparam.'='.$post->ID.'&preview=true&key='.get_post_meta($post->ID, '_post_oesepreview_pwd', true) ?>" />
+      <div class="oese-preview-url-copy button" onclick="oesePreviewDraftCopyToClipboard()">Copy URL</div>
+    </div>
+    <div id="oese-preview-draft-publish-warning"><em><?php echo sprintf(__('<strong style="font-size:14px;color:red;">WARNING</strong>: Publishing this preview will overwrite %s.', 'oesepreview'), get_parent_editlink($parent, __('its original.', 'oesepreview')). '<br>Please use "Save Draft" if you only wish to save this preview for review')?></em></div>
+    <?php
+  }
+  $output = ob_get_clean( );
+  
+  $_ret['isparent'] = $_isparent;
+  $_ret['data'] = $output;
+  echo json_encode($_ret);
+  die();
+}
+
+add_action('wp_ajax_wpnnPostButtonGuten', 'OESE_Preview\wpnnPostButtonGuten');
+add_action('wp_ajax_nopriv_wpnnPostButtonGuten', 'OESE_Preview\wpnnPostButtonGuten');
+//$_parent_post_id = get_oesepreview_of($post);
+
+
+function wpnnTransitionHandlerGuten() {
+    $old_status = $_GET['old'];
+    $new_status = $_GET['new'];
+    $post = get_post($_GET['pid']);
+    $_parent_post_id = get_oesepreview_of($post);
+  if($old_status !== $new_status){
+    if($new_status == 'draft' || $new_status == 'pending'){
+      //regenerate password if metadata does not exist or existing but empty.
+      if(!metadata_exists('post', $post->ID, '_post_oesepreview_pwd') ||
+         empty( get_post_meta( $post->ID, '_post_oesepreview_pwd', true ))){
+           update_post_meta($post->ID, '_post_oesepreview_pwd', uniqid());      // generate password
+      }
+    }elseif($new_status == 'publish'){
+      on_publish_post($new_status, $old_status, $post);
+      //header("Location: ".get_site_url()."/wp-admin/post.php?action=edit&post=".$_parent_post_id);
+      wp_redirect(get_site_url()."/wp-admin/post.php?action=edit&post=".$_parent_post_id);
+      die();
+      //$new_id = copy_post($post, null, $post->ID);
+      //delete_post_meta($new_id, '_post_oesepreview_pwd'); 
+    }
+  }
+  
+  echo $_parent_post_id;
+  die();
+  
+}
+//add_action( 'transition_post_status', __NAMESPACE__.'\\transition_post_status_handler', 10, 3);
+add_action('wp_ajax_wpnnTransitionHandlerGuten', 'OESE_Preview\wpnnTransitionHandlerGuten',0);
+add_action('wp_ajax_nopriv_wpnnTransitionHandlerGuten', 'OESE_Preview\wpnnTransitionHandlerGuten',0);
+
+
+
+/*GUTEN ENDS*/

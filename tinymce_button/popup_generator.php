@@ -29,6 +29,7 @@ if($action == "show_popup")
 						$return .= '<li><div data="oese_publication" class="oet-shrtcdv2_tab">Publication</div></li>';
 						$return .= '<li><div data="oese_sub_pages" class="oet-shrtcdv2_tab">Subpages</div></li>';
 						$return .= '<li><div data="oet_featured_card" class="oet-shrtcdv2_tab">Featured Card</div></li>';
+						$return .= '<li><div data="oese_disclaimer" class="oet-shrtcdv2_tab">Disclaimer</div></li>';
 						
 				$return .= '</ul>';
 		$return .= '</div>';
@@ -237,7 +238,7 @@ if($action == "show_popup")
 				switch (shortcode_type)
 				{
 				   case "accordian":
-					   var shortcode = "[oese_accordion_group id=\'accordion1\'][oese_accordion title=\'Title Here\' accordion_series=\'one\' expanded=\'\' group_id=\'accordion1\'] your content goes here [/oese_accordion][oese_accordion title=\'Title Here\' accordion_series=\'two\' expanded=\'\' group_id=\'accordion1\'] your content goes here [/oese_accordion][oese_accordion title=\'Title Here\' accordion_series=\'three\' expanded=\'\' group_id=\'accordion\'] your content goes here [/oese_accordion][/oese_accordion_group]";
+					   var shortcode = "[oese_accordion_group id=\'accordion1\' single_expand=\'false\'][oese_accordion title=\'Title Here\' accordion_series=\'one\' expanded=\'\' group_id=\'accordion1\'] your content goes here [/oese_accordion][oese_accordion title=\'Title Here\' accordion_series=\'two\' expanded=\'\' group_id=\'accordion1\'] your content goes here [/oese_accordion][oese_accordion title=\'Title Here\' accordion_series=\'three\' expanded=\'\' group_id=\'accordion1\'] your content goes here [/oese_accordion][/oese_accordion_group]";
 					   break;
 				   case "banner":
 					   var shortcode = "[disruptive_content title=\'Title Here\' main_text=\'Description Here\' button_text=\'Button Text\' button_color=\'\' button_url=\'\']";
@@ -250,6 +251,7 @@ if($action == "show_popup")
 					   break;
 				   case "featured_video":
 					   var shortcode = "[featured_video heading=\'\' videoid=\'\' description=\'\' height=\'\']";
+						 shortcode = "[oese_featured_video heading=\'title\' videoid=\'GBT4f146h9U\' description=\'description\' height=\'300\']"
 					   break;
 				   case "left_column":
 					   var shortcode = "[home_left_column heading=\'yes/no\'] your content goes here [/home_left_column]";
@@ -293,6 +295,9 @@ if($action == "show_popup")
 						case "oet_featured_card":
 	 					 var shortcode = "[oet_featured_card title=\'Title Here\' button_text=\'Read More\' button_link=\'\' background_image=\'\']your content goes here[/oet_featured_card]";
 					   break;
+					  case "oese_disclaimer":
+ 	 					 var shortcode = "[oese_disclaimer title=\'Disclaimer:\']Content provides insights on education practices from the perspective of schools, parents, students, grantees, community members and other education stakeholders to promote the continuing discussion of educational innovation. Content and articles are not intended to reflect their importance, nor is it intended to be an endorsement by the Department or the Federal government of any views expressed, products or services offered, curriculum or pedagogy.[/oese_disclaimer]";
+ 					   break;
 				    default:
 				   	 var shortcode = "";
 				   	 break

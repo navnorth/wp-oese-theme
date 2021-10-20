@@ -13,10 +13,10 @@
     <meta charset="<?php bloginfo('charset'); ?>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title><?php wp_title('|', true, 'left'); ?></title>
-    <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/images/favicon.ico"
-          type="image/x-icon">
+    <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/images/favicon.ico" type="image/x-icon">
     <link rel="profile" href="http://gmpg.org/xfn/11"/>
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>"/>
+
     <?php wp_head(); ?>
     <?php echo oese_ga_script(); ?>
     <?php $site_title = get_bloginfo(); ?>
@@ -53,7 +53,7 @@
             </div>
             <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-12 offset-xl-2 offset-lg-2 offset-md-1 d-sm-inline-block d-block d-md-block d-lg-block d-xl-block">
                 <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-6 col-6 topbar-search-section">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-6 topbar-search-section">
                         <div class="form-group has-feedback gray_bg">
                             <form id="searchform" class="searchform" action="<?php echo site_url(); ?>" method="get"
                                   role="search">

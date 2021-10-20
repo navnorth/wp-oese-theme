@@ -43,7 +43,7 @@ p.comment-form-comment textarea#comment {width: 100%;border: 1px solid #b1aaaa;}
 </style>
 
 <?php 
-$mme = explode('/',get_post_mime_type())[1];
+$mme = (isset(explode('/',get_post_mime_type())[1]))? explode('/',get_post_mime_type())[1]: '';
 $ics = array(
   "msword"=>array("word-icon.png","Microsoft Word Document"),
   "vnd.openxmlformats-officedocument.wordprocessingml.document"=>array("word-icon.png","Microsoft Word Document"),

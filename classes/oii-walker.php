@@ -286,9 +286,10 @@ class oii_walker_nav_menu extends Walker_Nav_Menu {
 	public function end_el( &$output, $item, $depth = 0, $args = array() ) {
 	    
 		$output .= "</li>\n";
-		
-		if(($this->mega_index>=$this->mega_menu_item_count/2) && $this->all_items[$this->index]->parent==$this->mega_menu_id){
-		    $this->separator = true;
+		if(isset($this->all_items[$this->index])){
+			if(($this->mega_index>=$this->mega_menu_item_count/2) && $this->all_items[$this->index]->parent==$this->mega_menu_id){
+			    $this->separator = true;
+			}
 		}
 		if ($this->separator && $this->right) {
 		    if ($depth==1) {

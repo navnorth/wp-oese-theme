@@ -9,7 +9,7 @@ $page_id = get_the_ID();
 $archived_date = null;
 $leftCol = "col-md-12";
 $rightCol = "col-md-right";
-
+$is_archived = false;
 if (get_field('archive_date'))
     $archived_date = get_field('archive_date');
     

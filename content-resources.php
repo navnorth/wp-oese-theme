@@ -36,7 +36,7 @@ else{
 			<h2><?php echo $sidebarTitle; ?></h2>
 			<?php endif; ?>
 		</div>
-		<ul class="secondary-navigation-menu-list">
+		<ul class="secondary-navigation-menu-list childpages">
 				<?php
 					if ($subpages) {
 						foreach($subpages as $spage) {
