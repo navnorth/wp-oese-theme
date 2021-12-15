@@ -5,7 +5,7 @@
 	"version": "0.1.0",
 	"title": "Accordion Block",
 	"category": "oese-block-category",
-	"icon": "dashicons-block-default",
+	"icon": "block-default",
 	"description": "Add Accordion Block",
 	"supports": {
 		"html": false
