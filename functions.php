@@ -3217,13 +3217,12 @@ function oese_tile_link_block_render_callback( $block ){
   }
 }
 
-
 add_action( 'init', 'oese_featured_item_color_palette_func' );
 function oese_featured_item_color_palette_func() {	
 		$existing = get_theme_support( 'editor-color-palette' );
 		$new = array_merge( $existing[0], array(
 		    array(
-		        'name' => __( 'Orange', 'wp_oese_theme' ),
+		        'name' => __( 'Maroon', 'wp_oese_theme' ),
 		        'slug' => 'oese-color-pallete-maroon',
 		        'color' => '#981F33',
 		    ),
