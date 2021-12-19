@@ -55,28 +55,6 @@ function oese_featured_item_block_backend_script(){
 }
 add_action( 'admin_enqueue_scripts', 'oese_featured_item_block_backend_script' );
 
-add_action( 'init', 'oese_featured_item_color_palette_func' );
-function oese_featured_item_color_palette_func() {	
-		$existing = get_theme_support( 'editor-color-palette' );
-		$new = array_merge( $existing[0], array(
-		    array(
-		        'name' => __( 'Orange', 'wp_oese_theme' ),
-		        'slug' => 'oese-color-pallete-maroon',
-		        'color' => '#981F33',
-		    ),
-		    array(
-		        'name' => __( 'Green', 'wp_oese_theme' ),
-		        'slug' => 'oese-color-pallete-green',
-		        'color' => '#549944',
-		    ),
-        array(
-            'name' => __( 'Black', 'wp_oese_theme' ),
-             'slug' => 'oese-color-pallete-black',
-             'color' => '#000000',
-         ),
-		));
-		add_theme_support( 'editor-color-palette',  $new);
-}
 
 
 
