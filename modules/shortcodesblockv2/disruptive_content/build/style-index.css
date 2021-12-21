@@ -1,0 +1,147 @@
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/style.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-oese-block-oese-disruptive-content-block {
+  background-color: #21759b;
+  color: #fff;
+  padding: 2px;
+}
+
+.oese_disruptive_content_wrapper .oese_disruptive_content_background {
+  background: #294179;
+  padding: 15px 15px 15px 15px;
+}
+
+.oese_disruptive_content_wrapper .oese_disruptive_content_background .wp-block-columns.oese_disruptive_content_columns {
+  margin: 0px;
+}
+
+.oese_disruptive_content_wrapper .oese_disruptive_content_background .block-editor-inner-blocks .wp-block-columns {
+  margin: 0px;
+}
+
+.oese_disruptive_content_wrapper .oese_disruptive_content_title {
+  display: block;
+  width: 100%;
+  font-size: 24px;
+  font-family: "Merriweather", serif;
+  line-height: 26px;
+  font-weight: 500;
+  color: #fff;
+  margin: 5px 0px 15px 0px !important;
+}
+
+.oese_disruptive_content_wrapper .oese_disruptive_content_left p {
+  color: #fff;
+  margin: 10px 0px 10px 0px;
+  font-style: normal;
+}
+
+.oese_disruptive_content_wrapper .oese_disruptive_content_left_column .has-medium-font-size {
+  font-size: 24px !important;
+  font-style: italic;
+}
+
+.oese_disruptive_content_wrapper .oese_disruptive_content_left_column .oese-disruptive-content-description {
+  margin: 0px;
+  line-height: unset !important;
+}
+
+.oese_disruptive_content_wrapper .oese_disruptive_content_right_column {
+  display: table;
+}
+
+.oese_disruptive_content_wrapper .oese_disruptive_content_background.front .oese_disruptive_content_right_column .oese-disruptive-content-button {
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+@media screen and (max-width: 599px) {
+  .oese_disruptive_content_wrapper .oese_disruptive_content_background.front .oese_disruptive_content_right_column .oese-disruptive-content-button {
+    text-align: left;
+    padding-top: 20px;
+  }
+}
+.oese_disruptive_content_wrapper .oese_disruptive_content_right_column .oese-disruptive-content-button .wp-block-button__link {
+  border-radius: 3px;
+  font-size: 16px !important;
+  font-family: "Raleway", sans-serif !important;
+  font-weight: 300 !important;
+  font-style: normal !important;
+  border: 0px !important;
+  padding: 15px 10px !important;
+  text-decoration: none;
+}
+
+.oese_disruptive_content_wrapper .oese_disruptive_content_left_column .has-blue-color {
+  color: #21759b !important;
+}
+
+.oese_disruptive_content_wrapper .oese_disruptive_content_left_column .has-dark-gray-color {
+  color: #444444 !important;
+}
+
+.oese_disruptive_content_wrapper .oese_disruptive_content_left_column .has-medium-gray-color {
+  color: #9f9f9f !important;
+}
+
+.oese_disruptive_content_wrapper .oese_disruptive_content_left_column .has-light-gray-color {
+  color: #e6e6e6 !important;
+}
+
+.oese_disruptive_content_wrapper .oese_disruptive_content_left_column .has-white-color {
+  color: white !important;
+}
+
+.oese_disruptive_content_wrapper .oese_disruptive_content_left_column .has-oese-color-pallete-maroon-color {
+  color: #981f33 !important;
+}
+
+.oese_disruptive_content_wrapper .oese_disruptive_content_left_column .has-oese-color-pallete-green-color {
+  color: #549944 !important;
+}
+
+.oese_disruptive_content_wrapper .oese_disruptive_content_left_column .has-oese-color-pallete-black-color {
+  color: white !important;
+}
+
+.oese_disruptive_content_wrapper .oese-disruptive-content-button .has-blue-background-color {
+  background-color: #21759b !important;
+}
+
+.oese_disruptive_content_wrapper .oese-disruptive-content-button .has-dark-gray-background-color {
+  background-color: #444444 !important;
+}
+
+.oese_disruptive_content_wrapper .oese-disruptive-content-button .has-medium-gray-background-color {
+  background-color: #9f9f9f !important;
+}
+
+.oese_disruptive_content_wrapper .oese-disruptive-content-button .has-light-gray-background-color {
+  background-color: #e6e6e6 !important;
+}
+
+.oese_disruptive_content_wrapper .oese-disruptive-content-button .has-white-background-color {
+  background-color: white !important;
+}
+
+.oese_disruptive_content_wrapper .oese-disruptive-content-button .has-oese-color-pallete-maroon-background-color {
+  background-color: #981f33 !important;
+}
+
+.oese_disruptive_content_wrapper .oese-disruptive-content-button .has-oese-color-pallete-green-background-color {
+  background-color: #549944 !important;
+}
+
+.oese_disruptive_content_wrapper .oese-disruptive-content-button .has-oese-color-pallete-black-background-color {
+  background-color: white !important;
+}
+
+/*# sourceMappingURL=style-index.css.map*/
