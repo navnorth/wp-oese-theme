@@ -1,5 +1,3 @@
-
-
 jQuery( window ).load(function() {
   setTimeout(function(){
     if(window.oercurrBlocksJson){
@@ -7,7 +5,7 @@ jQuery( window ).load(function() {
     }else{
       oese_gutenberg_toolbar_observer_func_legacy.observe(document.querySelector(".edit-post-visual-editor .popover-slot"), {childList: true, subtree: true });
     }
-    oese_gutenberg_inspector_observer_func.observe(document.querySelector(".components-panel"), {childList: true, subtree: true });
+    //oese_gutenberg_inspector_observer_func.observe(document.querySelector(".components-panel"), {childList: true, subtree: true });
   }, 500);
   var oese_gutenberg_toolbar_observer_func_legacy = new MutationObserver(function(mutations) { oese_gutenberg_toolbar_enpoint_script_legacy();});
   function oese_gutenberg_toolbar_enpoint_script_legacy(){
@@ -52,36 +50,6 @@ jQuery( window ).load(function() {
     obj.removeClass('oese-disruptive-content-description-toolbar-hide');
     obj.removeClass('oese-disruptive-content-button-toolbar-hide');
   }
-  
-  var oese_gutenberg_inspector_observer_func = new MutationObserver(function(mutations) { oese_gutenberg_inspector_enpoint_script();});
-  function oese_gutenberg_inspector_enpoint_script(){
-    if(jQuery('.block-editor-panel-color-gradient-settings').length > 0){
-      var oese_disruptive_content_title_selected = jQuery('.oese-disruptive-content-title-ytr85g9wer').hasClass('is-selected');
-      var oese_disruptive_content_description_selected = jQuery('.oese-disruptive-content-description-ytr85g9wer').hasClass('is-selected');
-      var oese_disruptive_content_button_selected = jQuery('.oese-disruptive-content-button-ytr85g9wer').hasClass('is-selected');
-      if(oese_disruptive_content_title_selected){
-        jQuery('.block-editor-panel-color-gradient-settings').siblings('.components-panel__body').addClass('oese-block-specific-inspector-hide');
-        jQuery('.block-editor-panel-color-gradient-settings').addClass('oese-block-specific-inspector-hide');
-        jQuery('.block-editor-block-inspector__advanced').addClass('oese-block-specific-inspector-hide');
-      }else if(oese_disruptive_content_description_selected){
-        //jQuery('.block-editor-panel-color-gradient-settings').siblings('.components-panel__body').addClass('oese-block-specific-inspector-hide');
-        jQuery('.block-editor-panel-color-gradient-settings').addClass('oese-block-specific-inspector-hide');
-        jQuery('.block-editor-block-inspector__advanced').addClass('oese-block-specific-inspector-hide');
-      }else if(oese_disruptive_content_button_selected){
-        jQuery('.block-editor-panel-color-gradient-settings').siblings('.components-panel__body').addClass('oese-block-specific-inspector-hide');
-        jQuery('.block-editor-panel-color-gradient-settings').addClass('oese-block-specific-inspector-hide');
-        jQuery('.block-editor-block-inspector__advanced').addClass('oese-block-specific-inspector-hide');
-        jQuery('.block-editor-block-styles').parent('.components-panel__body').addClass('oese-block-specific-inspector-hide');
-      }else{
-        jQuery('.block-editor-panel-color-gradient-settings').siblings('.components-panel__body').removeClass('oese-block-specific-inspector-hide');
-        jQuery('.block-editor-panel-color-gradient-settings').removeClass('oese-block-specific-inspector-hide');
-        jQuery('.block-editor-block-inspector__advanced').removeClass('oese-block-specific-inspector-hide');
-        jQuery('.block-editor-block-styles').parent('.components-panel__body').removeClass('oese-block-specific-inspector-hide');
-      }
-    }
-  }
-  
-  
   
 });
 
