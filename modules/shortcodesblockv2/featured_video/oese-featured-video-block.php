@@ -23,8 +23,8 @@
 global $wp_version;
 function oese_block_oese_featured_video_block_block_init() {
 		//register_block_type( __DIR__ );
+		global $wp_version;
 		$__oese_isjson = ($wp_version < 5.8)? false: true;
-		echo $__oese_isjson;
 		$__oese_relative_path = (strpos(__DIR__, 'shortcodesblockv2') !== false)? get_stylesheet_directory_uri().'/modules/shortcodesblockv2/featured_video/':plugin_dir_url( __FILE__ );
 	  $oese_featured_video_block_json= file_get_contents($__oese_relative_path."/block.json");
 	  wp_register_script('oese_featured_video_block_js', $__oese_relative_path.'/build/index.js', array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ), null, true	);
@@ -39,11 +39,20 @@ function oese_block_oese_featured_video_block_block_init() {
 		 	 )
 	  );
 }
+
 add_action( 'init', 'oese_block_oese_featured_video_block_block_init' );
 
-function oese_featured_video_block_backend_script(){
+function oese_featured_video_block_frontend_script(){
  $__oese_relative_path = (strpos(__DIR__, 'shortcodesblockv2') !== false)? get_stylesheet_directory_uri().'/modules/shortcodesblockv2/featured_video/':plugin_dir_url( __FILE__ );
- wp_enqueue_script('oese_featured_video_block-backend-js', $__oese_relative_path.'/backend.js',array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'jquery' ), '1.0' );
+ wp_enqueue_script('oese_featured_video_block-frontend-js', $__oese_relative_path.'/frontend.js',array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'jquery' ), '1.0' );
 }
-add_action( 'wp_enqueue_scripts', 'oese_featured_video_block_backend_script' );
-//add_action( 'admin_enqueue_scripts', 'oese_featured_video_block_backend_script' );
+add_action( 'wp_enqueue_scripts', 'oese_featured_video_block_frontend_script' );
+
+function oese_featured_video_block_backend_script(){
+	$__oese_relative_path = (strpos(__DIR__, 'shortcodesblockv2') !== false)? get_stylesheet_directory_uri().'/modules/shortcodesblockv2/featured_video/':plugin_dir_url( __FILE__ );
+  wp_enqueue_script('oese_featured_video_block-backend-js', $__oese_relative_path.'/backend.js',array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'jquery' ), '1.0' );
+}
+global $pagenow;
+if (( $pagenow == 'post.php' ) || ( $pagenow == 'post-new.php' ) ) {
+	add_action( 'admin_enqueue_scripts', 'oese_featured_video_block_backend_script' );
+}
