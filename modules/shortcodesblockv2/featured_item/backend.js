@@ -1,6 +1,5 @@
 jQuery( window ).load(function() {
   setTimeout(function(){
-    console.log(window.oercurrBlocksJson);
     if(window.oercurrBlocksJson){
       oese_featured_item_toolbar_observer_func.observe(document.querySelector(".edit-post-visual-editor"), {childList: true, subtree: true });
     }else{
