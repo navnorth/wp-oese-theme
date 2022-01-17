@@ -22,7 +22,7 @@
  */
  
  global $wp_version;
- function oese_block_oese_accordion_block_block_init() {
+ function oese_blocks_oese_featured_item_block_block_init() {
  	register_block_type( __DIR__ );
  }
  
@@ -44,8 +44,10 @@
  }
 
  if($wp_version < 5.8){
+  add_action( 'admin_head' , 'oese_featured_item_loadconditional_toolbar_css_legacy' );
  	add_action( 'init', 'oese_blocks_oese_featured_item_block_block_init_legacy' );
  }else{
+  add_action( 'admin_head' , 'oese_featured_item_loadconditional_toolbar_css' );
  	add_action( 'init', 'oese_blocks_oese_featured_item_block_block_init' );
  }
 
@@ -56,7 +58,49 @@ function oese_featured_item_block_backend_script(){
 add_action( 'admin_enqueue_scripts', 'oese_featured_item_block_backend_script' );
 
 
+function oese_featured_item_loadconditional_toolbar_css_legacy(){
+	ob_start();
+	?>
+		<style>
+		/* core/heading - Disable Everythig */
+		.block-editor__container.oese-featured-item-title-toolbar-hide .edit-post-visual-editor .popover-slot {display:none !important;} 
+		/* core/paragraph - Disable switcher/reposition and options menu */
+		.block-editor__container.oese-featured-item-content-toolbar-hide .edit-post-visual-editor .block-editor-block-toolbar>div:nth-of-type(1),
+		.block-editor__container.oese-featured-item-content-toolbar-hide .edit-post-visual-editor .block-editor-block-toolbar>div:nth-of-type(4) {display:none !important;}
+		/* core/button - Disable everything except the link */
+    /*
+		.block-editor__container.oese-featured-item-button-toolbar-hide .edit-post-visual-editor .block-editor-block-toolbar>div:nth-of-type(1),
+		.block-editor__container.oese-featured-item-button-toolbar-hide .edit-post-visual-editor .block-editor-block-toolbar>div:nth-of-type(2),
+		.block-editor__container.oese-featured-item-button-toolbar-hide .edit-post-visual-editor .block-editor-block-toolbar>div:nth-of-type(3),
+		.block-editor__container.oese-featured-item-button-toolbar-hide .edit-post-visual-editor .block-editor-block-toolbar>div:nth-of-type(4) {display:none !important;}
+		*/
+    /*.block-editor__container.oese-featured-item-button-toolbar-hide .edit-post-visual-editor .popover-slot {display:none !important;}*/
+    </style>
+	<?php
+	echo ob_get_clean();
+}
 
 
-
-
+function oese_featured_item_loadconditional_toolbar_css(){
+	ob_start();
+	?>
+		<style>
+		/* core/heading - Disable Everything */
+		.block-editor__container.oese-featured-item-title-toolbar-hide .edit-post-visual-editor .components-popover__content {display:none !important;} 
+		/* core/paragraph - Disable switcher/reposition and options menu */
+		.block-editor__container.oese-featured-item-content-toolbar-hide .edit-post-visual-editor .block-editor-block-toolbar>div:nth-of-type(1),
+		.block-editor__container.oese-featured-item-content-toolbar-hide .edit-post-visual-editor .block-editor-block-toolbar>div:nth-of-type(2),
+		.block-editor__container.oese-featured-item-content-toolbar-hide .edit-post-visual-editor .block-editor-block-toolbar>div:nth-of-type(5) {display:none !important;}
+		/* core/button - Disable everything except the link */
+		/*
+    .block-editor__container.oese-featured-item-button-toolbar-hide .edit-post-visual-editor .block-editor-block-toolbar>div:nth-of-type(1),
+		.block-editor__container.oese-featured-item-button-toolbar-hide .edit-post-visual-editor .block-editor-block-toolbar>div:nth-of-type(2),
+		.block-editor__container.oese-featured-item-button-toolbar-hide .edit-post-visual-editor .block-editor-block-toolbar>div:nth-of-type(3),
+		.block-editor__container.oese-featured-item-button-toolbar-hide .edit-post-visual-editor .block-editor-block-toolbar>div:nth-of-type(4),
+		.block-editor__container.oese-featured-item-button-toolbar-hide .edit-post-visual-editor .block-editor-block-toolbar>div:nth-of-type(5) {display:none !important;}
+		*/
+    .block-editor__container.oese-featured-item-button-toolbar-hide .edit-post-visual-editor .components-popover__content {display:none !important;} 
+  </style>
+	<?php
+	echo ob_get_clean();
+}
