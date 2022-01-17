@@ -58,5 +58,3 @@ jQuery( window ).load(function() {
 function oese_gutenberg_toolbar_observer_clear_classes(tgt){
   tgt.removeClass('oese-featured-item-title-toolbar-hide oese-featured-item-button-toolbar-hide');
 }
-
-
