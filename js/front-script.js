@@ -86,7 +86,7 @@ jQuery( document ).ready(function() {
     jQuery('a').each(function() {
 	var a = new RegExp('' + window.location.host + '|mailto' , 'i');
         if(!a.test(this.href)) {
-            if(!jQuery(this).hasClass('no_target_change') && !jQuery(this).hasClass('tile-link')){
+            if(!jQuery(this).hasClass('no_target_change') && !jQuery(this).hasClass('tile-link') && !jQuery(this).hasClass('wp-block-button__link')){
               jQuery(this).attr( 'target','_blank' );
               jQuery(this).addClass( 'external_link' );
             }

@@ -227,6 +227,10 @@ a.oese-video-link {
     font-size: 1.2em !important;
 }
 
+.oese_shortcode_block .accordion .panel-default .panel-heading h5 {
+    margin-top: 0px !important;
+}
+
 .oet-featured-card-btn {
     background-color: #981F33 !important;
 }
