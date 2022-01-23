@@ -5,13 +5,13 @@
  * Simple block, renders and saves the same content without any interactivity.
  */
 //  Import CSS.
-const { __ } = wp.i18n; // Import __() from wp.i18n
+//const { __ } = wp.i18n; // Import __() from wp.i18n
 
-const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
+//const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 
-const { InspectorControls } = wp.blockEditor;
-const { BaseControl, Panel, PanelRow, PanelBody, } = wp.components;
-
+//const { InspectorControls } = wp.blockEditor;
+//const { BaseControl, Panel, PanelRow, PanelBody, } = wp.components;
+/*
 const {
   CheckboxControl,
   RadioControl,
@@ -19,9 +19,9 @@ const {
   ToggleControl,
   SelectControl
 } = wp.components;
+*/
 
-
-const { withSelect } = wp.data;
+//const { withSelect } = wp.data;
 /**
  * Register: aa Gutenberg Block.
  *

@@ -717,11 +717,7 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
  * Shortcodes Blocks
  **/
  $_vsn = (int)explode('.',get_bloginfo('version'))[0];
- if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/accordion_v2/oese-accordion-block.php' );
- if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/featured_item/oese-featured-item-block.php' );
- if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/disruptive_content/oese-disruptive-content-block.php' );
- if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/featured_video/oese-featured-video-block.php' );
- if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/pull_quote/oese-pull-quote-block.php' );
+ if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/accordion/init.php' );
  if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/recommended_resources/oese-recommended-resources-block.php' );
  if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblock/shortcodesblock.php' );
  function theme_back_enqueue_script()
@@ -3219,27 +3215,4 @@ function oese_tile_link_block_render_callback( $block ){
   if( file_exists( get_theme_file_path("/template-parts/block/content-{$slug}.php") ) ) {
     include( get_theme_file_path("/template-parts/block/content-{$slug}.php") );
   }
-}
-
-add_action( 'init', 'oese_featured_item_color_palette_func' );
-function oese_featured_item_color_palette_func() {	
-		$existing = get_theme_support( 'editor-color-palette' );
-		$new = array_merge( $existing[0], array(
-		    array(
-		        'name' => __( 'Maroon', 'wp_oese_theme' ),
-		        'slug' => 'oese-color-pallete-maroon',
-		        'color' => '#981F33',
-		    ),
-		    array(
-		        'name' => __( 'Green', 'wp_oese_theme' ),
-		        'slug' => 'oese-color-pallete-green',
-		        'color' => '#549944',
-		    ),
-        array(
-            'name' => __( 'Black', 'wp_oese_theme' ),
-             'slug' => 'oese-color-pallete-black',
-             'color' => '#000000',
-         ),
-		));
-		add_theme_support( 'editor-color-palette',  $new);
 }
