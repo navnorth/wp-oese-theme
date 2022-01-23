@@ -11,7 +11,14 @@
 		"html": false
 	},
 	"attributes":{
-    "blockid": {"type":"string"}
+    "blockid": {"type":"string"},
+		"title": {"type": "string"},
+		"titleRows":{"type":"integer","default": 1},
+		"content":{"type": "string"},
+		"contentRows":{"type":"integer","default": 1},
+		"buttonText":{"type": "string","default": "Button Text"},
+		"buttonUrl":{"type": "string"},
+		"OpenInNewTab":{"type":"boolean", "default":false}
   },
 	"textdomain": "oese-disruptive-content-block",
 	"editorScript": "file:./build/index.js",
