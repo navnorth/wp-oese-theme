@@ -12,7 +12,10 @@
 	},
 	"attributes":{
 		"blockid": {"type":"string"},
+		"blockclientid": {"type":"string"},
     "youtubeid":{"type": "string"},
+		"description":{"type": "string"},
+		"descriptionRows":{"type":"integer","default": 1},
 		"oeseblkRecommendedResourcesHeading":{"type": "string"},
 		"oeseblkRecommendedResourcesIsVideo": {"type": "boolean","default": true},
 		"oeseblkRecommendedResourcesWebsiteUrl": {"type": "string", "default": ""},

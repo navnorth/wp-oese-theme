@@ -30,7 +30,7 @@ function oese_block_oese_recommended_resources_block_block_init() {
 	  wp_register_script('oese_recommended_resources_block_js', $__oese_relative_path.'/build/index.js', array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ), null, true	);
 	  wp_register_style('oese_recommended_resources_block_editor_css', $__oese_relative_path.'/build/index.css',array( 'wp-edit-blocks' ),null);
 	  wp_register_style('oese_recommended_resources_block_front_css', $__oese_relative_path.'/build/style-index.css',array( 'wp-edit-blocks' ),null);
-	  wp_localize_script('oese_recommended_resources_block_js', 'oese_recommended_resources_isjson', $__oese_isjson);
+	  wp_localize_script('oese_recommended_resources_block_js', 'oese_recommended_resources_localized', ['isjason' => $__oese_isjson, 'pluginurl' => $__oese_relative_path]);
 	 	register_block_type(
 		 	 'oese-block/oese-recommended-resources-block', array(
 			 		 'editor_script' => 'oese_recommended_resources_block_js',
