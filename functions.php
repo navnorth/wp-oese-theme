@@ -717,7 +717,13 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
  * Shortcodes Blocks
  **/
  $_vsn = (int)explode('.',get_bloginfo('version'))[0];
- if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/accordion/init.php' );
+ if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/accordion_v2/oese-accordion-block.php' );
+ if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/featured_item/oese-featured-item-block.php' );
+ if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/disruptive_content/oese-disruptive-content-block.php' );
+ if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/featured_video/oese-featured-video-block.php' );
+ if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/pull_quote/oese-pull-quote-block.php' );
+ if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/recommended_resources/oese-recommended-resources-block.php' );
+ if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/featured_content_box/oese-featured-content-box-block.php' );
  if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblock/shortcodesblock.php' );
  function theme_back_enqueue_script()
 {
