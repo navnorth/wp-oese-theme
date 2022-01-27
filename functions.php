@@ -724,6 +724,7 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
  if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/pull_quote/oese-pull-quote-block.php' );
  if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/recommended_resources/oese-recommended-resources-block.php' );
  if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/featured_content_box/oese-featured-content-box-block.php' );
+ if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/callout_box/oese-callout-box-block.php' );
  if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblock/shortcodesblock.php' );
  function theme_back_enqueue_script()
 {
