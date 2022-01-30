@@ -1,3 +1,68 @@
+var oese_featured_video_block_player = [];
+function onYouTubeIframeAPIReady() {
+  console.log('WOW LUPET');
+  jQuery.each(jQuery('.oese-featured-video-block-wrapper'), function(i, elm) { 
+    let blkid = jQuery(elm).attr('blkid');
+    
+    oese_featured_video_block_player[blkid] = new YT.Player('oese-featured-video-block-modal-iframe-'+blkid, {
+      events: {
+        'onReady': onPlayerReady,
+        'onStateChange': onPlayerStateChange
+      }
+    });
+    
+    jQuery(document).on('click','.oese-featured-video-block-wrapper-'+blkid+' .oese-featured-video-block-embed',function(e){
+      jQuery('body').addClass('modal-open');
+      jQuery('.oese-featured-video-block-modal-'+blkid).show(500);
+      setTimeout(function(){
+        oese_featured_video_block_player[blkid].playVideo();
+      }, 1000);
+    })
+    
+    jQuery(document).on('click','.oese-featured-video-block-modal-'+blkid,function(e){
+      jQuery('body').removeClass('modal-open');
+      oese_featured_video_block_player[blkid].pauseVideo();
+      jQuery(this).closest('.oese-featured-video-block-modal-'+blkid).hide(500);
+    })
+    
+    var pauseFlag = false;
+    function onPlayerStateChange(event) {
+      let vttl = jQuery('#oese-featured-video-block-modal-'+blkid).attr('ttl');
+      let vdid = jQuery('#oese-featured-video-block-modal-'+blkid).attr('vid');
+      
+      // track when user clicks to Play
+      if (event.data == YT.PlayerState.PLAYING) {
+      	ga('send', 'event','Featured Video: '+ vttl, 'Play', vdid);
+      	pauseFlag = true;
+      }
+      
+      // track when user clicks to Pause
+      if (event.data == YT.PlayerState.PAUSED && pauseFlag) {
+      	ga('send', 'event','Featured Video: '+ vttl, 'Pause', vdid);
+      	pauseFlag = false;
+      }
+      
+      // track when video ends
+      if (event.data == YT.PlayerState.ENDED) {
+      	ga('send', 'event','Featured Video: '+ vttl, 'Finished', vdid);
+    	}
+      
+    }
+    
+    function onPlayerReady(event) {
+      //console.log('player is ready');
+    }
+    
+  });
+  
+  
+}
+
+
+
+
+
+/*
 jQuery(window).bind("load", function() {
     //YOUTUBE API
     setTimeout(function(){
@@ -88,7 +153,7 @@ function onYouTubeIframeAPIReady() {
   
   
 }
-
+*/
 
 
 
