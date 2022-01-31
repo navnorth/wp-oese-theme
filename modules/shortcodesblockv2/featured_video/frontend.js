@@ -1,9 +1,7 @@
 var oese_featured_video_block_player = [];
 function onYouTubeIframeAPIReady() {
-  console.log('WOW LUPET');
   jQuery.each(jQuery('.oese-featured-video-block-wrapper'), function(i, elm) { 
     let blkid = jQuery(elm).attr('blkid');
-    
     oese_featured_video_block_player[blkid] = new YT.Player('oese-featured-video-block-modal-iframe-'+blkid, {
       events: {
         'onReady': onPlayerReady,
@@ -14,9 +12,8 @@ function onYouTubeIframeAPIReady() {
     jQuery(document).on('click','.oese-featured-video-block-wrapper-'+blkid+' .oese-featured-video-block-embed',function(e){
       jQuery('body').addClass('modal-open');
       jQuery('.oese-featured-video-block-modal-'+blkid).show(500);
-      setTimeout(function(){
-        oese_featured_video_block_player[blkid].playVideo();
-      }, 1000);
+      oese_featured_video_block_player[blkid].playVideo();
+
     })
     
     jQuery(document).on('click','.oese-featured-video-block-modal-'+blkid,function(e){
