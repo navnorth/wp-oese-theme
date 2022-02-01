@@ -12,6 +12,7 @@
 	},
 	"attributes":{
 		"blockid": {"type":"string"},
+		"clientid": {"type":"string"},
     "youtubeid":{"type": "string"},
 		"oeseblkFeaturedVideoHeading":{"type": "string"}
 	},
