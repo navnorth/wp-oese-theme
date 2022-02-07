@@ -75,8 +75,10 @@ function oeseblk_publication_download_func(){
 		$_ret['status'] = true;
 		$_ret['filesize'] = $pub_details['filesizeHumanReadable'];
 		$_ret['title'] = $pub_details['title'];
+		$extension = pathinfo($pub_details['filename'], PATHINFO_EXTENSION);
 		$_ret['icon'] = oese_publication_download_type_from_url($_url, 'fa-3x');
-		$_ret['filetype'] = strtoupper($pub_details['subtype']);
+		//$_ret['filetype'] = strtoupper($pub_details['subtype']);
+		$_ret['filetype'] = strtoupper($extension);
 	}else{
 		$_ret['status'] = false;
 	}
@@ -106,10 +108,10 @@ function oese_publication_download_type_from_url($url) {
   } elseif(in_array($file_type, ['docx', 'doc'])) {
     $response['title'] = 'Microsoft Document';
     $response['icon'] = 'fa-file-word';
-  } elseif(in_array($file_type, ['xls', 'csv'])) {
+  } elseif(in_array($file_type, ['xlsx', 'xls', 'csv'])) {
     $response['title'] = 'Microsoft Excel';
     $response['icon'] = 'fa-file-excel';
-  } elseif(in_array($file_type, ['ppt'])) {
+  } elseif(in_array($file_type, ['pptx', 'ppt'])) {
     $response['title'] = 'Microsoft Powerpoint';
     $response['icon'] = 'fa-file-powerpoint';
   } elseif(in_array($file_type, ['wav', 'mp3'])) {
