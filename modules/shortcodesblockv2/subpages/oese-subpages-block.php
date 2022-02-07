@@ -42,11 +42,33 @@ function oese_block_oese_subpages_block_block_init() {
 		 	 'oese-block/oese-subpages-block', array(
 			 		 'editor_script' => 'oese_subpages_block_js',
 			 		 'editor_style'  => 'oese_subpages_block_editor_css',
-			 		 'style'         => 'oese_subpages_block_front_css'
+			 		 'style'         => 'oese_subpages_block_front_css',
+					 //'render_callback' => 'oese_subpages_block_render_func'
 		 	 )
 	  );
 }
 add_action( 'init', 'oese_block_oese_subpages_block_block_init' );
+
+function oese_subpages_block_render_func($attributes, $ajx=false){
+	$_oese_subpages_block_data = oeseblk_subpages_func_nonapi($attributes['id']);
+	//ob_start(); ?>
+
+		<div class="oese-subpages_container">
+			<div class="oese-subpages">
+				<h4 class="oese-subpages-title"><?php echo $_oese_subpages_block_data['title'] ?></h4>
+				<ul class="oese-subpages-list">
+					<?php foreach ($_oese_subpages_block_data as $row) { ?>
+						<li class="oese-subpages-listitem">
+							<a href="<?php echo $row['link'] ?>"><?php echo $row['title'] ?></a>
+						</li>
+					<?php } ?>
+				</ul>
+			</div>
+		</div>
+
+	<?php
+	//$output = ob_get_clean( );
+}
 
 
 add_action( 'rest_api_init', function () {
@@ -57,8 +79,16 @@ add_action( 'rest_api_init', function () {
 		) );
 });
 
-function oeseblk_subpages_func(){
+function oeseblk_subpages_func($_param=null){
 	$_parent_post_id = sanitize_text_field(trim($_GET['id'])," ");
+	return oeseblk_subpages_get_child_pages($_parent_post_id);
+}
+
+function oeseblk_subpages_func_nonapi($_param){
+	return oeseblk_subpages_get_child_pages($_param);
+}
+
+function oeseblk_subpages_get_child_pages($_parent_post_id){
 	$_ret = array();
 	if(strlen($_parent_post_id) > 0){
 		$args = array(
