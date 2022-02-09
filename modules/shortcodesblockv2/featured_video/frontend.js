@@ -12,12 +12,14 @@ jQuery(window).bind("load", function() {
 //YOUTUBE API
 var oese_featured_video_block_player = [];
 function onYouTubeIframeAPIReady() {
-  jQuery.each(jQuery('.oese-featured-video-block-wrapper'), function(i, elm) { 
+  console.log('#1111');
+  jQuery.each(jQuery('.oese-embedded-youtube-video'), function(i, elm) { 
     //let blkid = jQuery(elm).attr('blkid');
     let blkid = jQuery(elm).attr('id');
-    blkid = blkid.replace("oese-featured-video-block-wrapper-", "");
-    let ytid = jQuery(".oese-featured-video-block-wrapper-"+blkid+" .oese-featured-video-block-youtubeid").val();
-    oese_featured_video_block_player[blkid] = new YT.Player('oese-featured-video-block-modal-embed-content-'+blkid, {
+    blkid = blkid.replace("oese-embedded-youtube-video-", "");
+    let ytid = jQuery("#oese-embedded-youtube-video-"+blkid+" .oese-featured-video-block-youtubeid").val();
+    console.log(blkid+" - "+ytid);
+    oese_featured_video_block_player[blkid] = new YT.Player('oese-embedded-youtube-video-container-'+blkid, {
       height: '450',
       width: '800',
       videoId: ytid,
