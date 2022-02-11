@@ -1,3 +1,4 @@
+window.oeseblkFeatVideoOrigin = oese_featured_video_block_video_origin;
 jQuery(window).bind("load", function() {
     //YOUTUBE API
     setTimeout(function(){
@@ -12,13 +13,11 @@ jQuery(window).bind("load", function() {
 //YOUTUBE API
 var oese_featured_video_block_player = [];
 function onYouTubeIframeAPIReady() {
-  console.log('#1111');
   jQuery.each(jQuery('.oese-embedded-youtube-video'), function(i, elm) { 
     //let blkid = jQuery(elm).attr('blkid');
     let blkid = jQuery(elm).attr('id');
     blkid = blkid.replace("oese-embedded-youtube-video-", "");
     let ytid = jQuery("#oese-embedded-youtube-video-"+blkid+" .oese-featured-video-block-youtubeid").val();
-    console.log(blkid+" - "+ytid);
     oese_featured_video_block_player[blkid] = new YT.Player('oese-embedded-youtube-video-container-'+blkid, {
       height: '450',
       width: '800',
@@ -33,7 +32,8 @@ function onYouTubeIframeAPIReady() {
         cc_load_policy: 0, // Hide closed captions
         iv_load_policy: 3, // Hide the Video Annotations
         autohide: 0, // Hide video controls when playing
-        rel: 0
+        rel: 0,
+        origin: window.oeseblkFeatVideoOrigin
       },
       events: {
         'onReady': onPlayerReady,

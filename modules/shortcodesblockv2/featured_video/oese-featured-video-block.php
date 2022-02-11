@@ -45,8 +45,12 @@ add_action( 'init', 'oese_block_oese_featured_video_block_block_init' );
 function oese_featured_video_block_frontend_script(){
  $__oese_relative_path = (strpos(__DIR__, 'shortcodesblockv2') !== false)? get_stylesheet_directory_uri().'/modules/shortcodesblockv2/featured_video/':plugin_dir_url( __FILE__ );
  wp_enqueue_script('oese_featured_video_block-frontend-js', $__oese_relative_path.'frontend.js',array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'jquery' ), '1.0' );
+ wp_localize_script('oese_featured_video_block-frontend-js', 'oese_featured_video_block_video_origin', get_bloginfo('wpurl'));
 }
 add_action( 'wp_enqueue_scripts', 'oese_featured_video_block_frontend_script' );
+
+
+
 
 function oese_featured_video_block_backend_script(){
 	$__oese_relative_path = (strpos(__DIR__, 'shortcodesblockv2') !== false)? get_stylesheet_directory_uri().'/modules/shortcodesblockv2/featured_video/':plugin_dir_url( __FILE__ );
