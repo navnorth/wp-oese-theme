@@ -3,7 +3,7 @@
 	"apiVersion": 2,
 	"name": "cgb/oese-accordion-block",
 	"version": "0.1.0",
-	"title": "Accordion Block",
+	"title": "Accordion",
 	"category": "oese-block-category",
 	"icon": "block-default",
 	"description": "Add Accordion Block",
