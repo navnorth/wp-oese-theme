@@ -38,17 +38,10 @@
 .rght_sid_socl_icn { padding-left: 0 !important}
 .rght_sid_socl_icn .socl_icns { font-size: 7px;  padding: 12px;  margin: 0 5px 0 0;}
 .rght_sid_socl_icn .fa-google-plus {font-size: 13px !important; font-weight: bold;}
-.twtr_icn { background: url(../images/social_icn.png) 7px 0 no-repeat}
-.fb_icn { background: url(../images/social_icn.png) -41px 0 no-repeat}
-.youtube_icn { background: url(../images/social_icn.png) -87px 0 no-repeat}
-.gplus_icn { background: url(../images/social_icn.png) -132px 0 no-repeat}
-.mail_icn { background: url(../images/social_icn.png) -176px 0 no-repeat}
 .hdr { margin-bottom: 5px}
 .hdr .col-md-12, .hdr .col-md-3, .hdr .col-md-11 { padding-right: 0 !important}
 .hdr .col-md-7 { padding-left: 0 !important}
 #header_logo {max-width:620px; max-height:142;}
-.top_strp_img { float: left; background: url(../images/top_strap_img.png) 0 0 no-repeat}
-.top_strp { overflow: hidden; background: url(../images/top_strap_img.png) 0 0 no-repeat; height: 55px}
 .navi_bg ul { padding: 0; margin-bottom: 0}
 .navi_bg li, .ftr_lnks li { display: inline; float: left; font-family: 'Raleway', sans-serif; font-weight: 600;}
 .navi_bg li a {color: #fff; font-size: 16px; padding: 8px 18px; float: left}
