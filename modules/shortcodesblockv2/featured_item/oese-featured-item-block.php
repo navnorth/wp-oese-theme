@@ -55,8 +55,11 @@ function oese_featured_item_block_backend_script(){
  $__oese_relative_path = (strpos(__DIR__, 'shortcodesblockv2') !== false)? get_stylesheet_directory_uri().'/modules/shortcodesblockv2/featured_item/':plugin_dir_url( __FILE__ );
  wp_enqueue_script('oese_featured_item_block-backend-js', $__oese_relative_path.'/backend.js',array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'jquery' ), '1.0' );
 }
-add_action( 'admin_enqueue_scripts', 'oese_featured_item_block_backend_script' );
 
+global $pagenow;
+if (( $pagenow == 'post.php' ) || ( $pagenow == 'post-new.php' ) ) {
+  add_action( 'admin_enqueue_scripts', 'oese_featured_item_block_backend_script' );
+}
 
 function oese_featured_item_loadconditional_toolbar_css_legacy(){
 	ob_start();
