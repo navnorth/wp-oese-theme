@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       Featured Card Block
+ * Plugin Name:       Featured Card
  * Description:       Add Featured Card Block
  * Requires at least: 5.7.2
  * Requires PHP:      7.0

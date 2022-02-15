@@ -3,10 +3,10 @@
 	"apiVersion": 2,
 	"name": "oese-block/oese-callout-box-block",
 	"version": "0.1.0",
-	"title": "OESE Callout Box Block",
+	"title": "Callout Box",
 	"category": "oese-block-category",
 	"icon": "archive",
-	"description": "Add OESE Callout Box Block",
+	"description": "Add Callout Box Block",
 	"supports": {
 		"html": false
 	},

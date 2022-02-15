@@ -3,7 +3,7 @@
 	"apiVersion": 2,
 	"name": "oese-block/oese-pull-quote-block",
 	"version": "0.1.0",
-	"title": "OESE Pull Quote Block",
+	"title": "Pull Quote",
 	"category": "oese-block-category",
 	"icon": "format-quote",
 	"description": "Add Pull Quote Block",
