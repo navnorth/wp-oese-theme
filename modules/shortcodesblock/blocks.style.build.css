@@ -115,6 +115,7 @@
     max-width: 275px;
     display: block;
     text-decoration: none;
+    line-height: 1.5rem;
 }
 
 .audience-link {
