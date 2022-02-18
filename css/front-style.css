@@ -242,3 +242,16 @@ ul.program_toc, .cntnbx_cntnr ul {
     color:#ffffff;
     padding:10px 15px;
 }
+
+.wp-block-cgb-oese-accordion-block,
+.wp-block-oese-block-oese-audience-link-block,
+.oese_callout_box_block,
+.wp-block-oese-block-oese-disclaimer-block,
+.wp-block-oese-block-oese-disruptive-content-block,
+.wp-block-oese-block-oese-featured-card-block,
+.wp-block-oese-block-oese-featured-content-box-block,
+.wp-block-oese-block-oese-featured-item-block,
+.wp-block-oese-block-oese-pull-quote-block,
+.wp-block-oese-block-oese-featured-video-block,
+.wp-block-oese-block-oese-recommended-resources-block,
+.wp-block-oese-block-oese-subpages-block {clear:both;}
