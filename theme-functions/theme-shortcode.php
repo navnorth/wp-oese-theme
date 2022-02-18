@@ -1172,7 +1172,11 @@ function oet_featured_card_func($attribute, $content = null){
 	 	$return .= '<div class="oet-featured-card-content-wrapper">';
 			$return .= '<h3 class="oet-featured-card-title">'.$title.'</h3>';
 			$return .= '<div class="oet-featured-card-desc">'.$content.'</div>';
-			$return .= '<a href="'.$_button_link.'" class="oet-featured-card-btn">'.$button_text.'&nbsp;→</a>';
+			if(!empty($button_link)){
+				$return .= '<a href="'.$_button_link.'" class="oet-featured-card-btn">'.$button_text.'&nbsp;→</a>';
+			}else{
+				$return .= '<div class="oet-featured-card-btn">'.$button_text.'&nbsp;→</div>';
+			}
 		$return .= '</div>';
 	$return .= '</div>';
  $return .= '</div>';
