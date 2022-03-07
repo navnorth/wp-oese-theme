@@ -2959,7 +2959,8 @@ svg text.no-data { fill:#000000; stroke:#ffffff; stroke-width:0.1; stroke-opacit
     font-weight: 900;
 }
 
-.oese_shortcode_block .accordion .panel-heading h5.panel-title {
+.oese_shortcode_block .accordion .panel-heading h5.panel-title,
+.accordion .panel-heading h5.panel-title {
     margin-top: 0px !important;
 }
 
