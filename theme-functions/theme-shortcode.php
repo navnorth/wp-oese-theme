@@ -80,7 +80,7 @@ function oese_accordion_group_func($atts, $content = null)
 	
 	$single_expand = (isset($single_expand) && !empty($single_expand))? strtolower($single_expand): 'false';
 	$return = '';
-	$return .= '<div class="panel-group accordion" id="'.$accordion_id.'" role="tablist" aria-multiselectable="true">';
+	$return .= '<div class="panel-group oese-accordion-shortcode accordion" id="'.$accordion_id.'" role="tablist" aria-multiselectable="true">';
 			$content = str_replace( "<p>","", $content );
 			$content = str_replace( "</p>","", $content );
 			$content = str_replace("[oese_accordion","[oese_accordion single_expand='".$single_expand."'",$content);
