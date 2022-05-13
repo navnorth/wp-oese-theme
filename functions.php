@@ -3248,4 +3248,4 @@ function oese_disable_rest_api_from_public($result){
     // no effect on logged-in requests
     return $result;
 }
-//add_filter( 'rest_authentication_errors' , 'oese_disable_rest_api_from_public' );
+add_filter( 'rest_authentication_errors' , 'oese_disable_rest_api_from_public' );
