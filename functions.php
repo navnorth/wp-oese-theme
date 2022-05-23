@@ -3230,7 +3230,6 @@ function oese_tile_link_block_render_callback( $block ){
 
 // Disable access to wp-json from the outside and allow it only for logged in users(WP Admin dashboard)
 function oese_disable_rest_api_from_public($result){
-  return $_SERVER['REQUEST_URI'];
   // If a previous authentication check was applied, pass that result along without modification.
   if ( true === $result || is_wp_error( $result ) ) {
       return $result;
@@ -3240,7 +3239,7 @@ function oese_disable_rest_api_from_public($result){
   if ( ! is_user_logged_in() || false !== stripos( $_SERVER['REQUEST_URI'], 'wp-json/contact-form-7' ) ) {
       return new WP_Error(
           'rest_not_logged_in',
-          __( 'You are not currently logged in.' ),
+          __( 'You are not currently logged in.' . $_SERVER['REQUEST_URI'] ),
           array( 'status' => 401 )
       );
   }
