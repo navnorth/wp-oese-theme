@@ -3235,8 +3235,12 @@ function oese_disable_rest_api_from_public($result){
       return $result;
   }
 
+  if (false !== strpos( esc_url_raw($_SERVER['REQUEST_URI']), '/wp-json/contact-form-7' )) {
+      return $result;
+  } 
+
   // Return an error if user is not logged in or if not Contact Form 7 Rest API endpoint.
-  if ( ! is_user_logged_in() || false !== stripos( $_SERVER['REQUEST_URI'], 'wp-json/contact-form-7' ) ) {
+  if ( ! is_user_logged_in() ) {
       return new WP_Error(
           'rest_not_logged_in',
           __( 'You are not currently logged in.' ),
