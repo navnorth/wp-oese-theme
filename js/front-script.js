@@ -10,7 +10,10 @@ window.addEventListener('resize', () => {
       jQuery('.mobile-nav-bar .navi_icn').on("keypress", function(e) {
         var code = e.keyCode || e.which;
         if(code == 13 || code == 32) { 
+          if (jQuery('.mobile-nav-bar .navi_icn .fa-bars').length>0)
             jQuery('.mobile-nav-bar .navi_icn .fa-bars').trigger('click');
+          else
+            jQuery('.mobile-nav-bar .navi_icn .fa-times').trigger('click');
         }
       });
     }
@@ -172,7 +175,10 @@ jQuery( document ).ready(function() {
       jQuery('.mobile-nav-bar .navi_icn').on("keypress", function(e) {
         var code = e.keyCode || e.which;
         if(code == 13 || code == 32) { 
+          if (jQuery('.mobile-nav-bar .navi_icn .fa-bars').length>0)
             jQuery('.mobile-nav-bar .navi_icn .fa-bars').trigger('click');
+          else
+            jQuery('.mobile-nav-bar .navi_icn .fa-times').trigger('click');
         }
       });
 
