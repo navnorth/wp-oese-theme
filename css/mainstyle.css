@@ -2266,6 +2266,11 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
 	ul.wpsolr_facet_scroll li { line-height:1.25em; }
 	ul.wpsolr_facet_scroll li ul { margin-left:15px; }
 	.oese-search-result-left { display:none; }
+    .mobile-nav-bar.row { margin-right:0; margin-left:0; }
+    .responsive-menu-section { text-align:right; }
+    .mobile-nav-icons.navi_icn { width:auto; float:none; margin-right:20px; }
+    .mobile-nav-icons.navi_icn .fa-bars:hover,
+    .mobile-nav-icons.navi_icn .fa-bars:focus { width:auto; outline: 1px solid #7ab4ed; }
 }
 
 @media (max-width: 768px){
