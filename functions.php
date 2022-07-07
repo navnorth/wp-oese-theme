@@ -3042,7 +3042,7 @@ function oet_display_acf_home_content(){
             <div class="col-sm-12 custom-common-padding">
               <div class="full-search-section m-auto text-center">
                    <div class="full-search-heading">
-                       <h1><?php echo $_searchtitle ?></h1>
+                       <h2><?php echo $_searchtitle ?></h2>
                    </div>
 
                    <div class="full-search-field">

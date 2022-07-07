@@ -1393,6 +1393,13 @@ a {
 .full-search-heading h1{
     margin-bottom: 3.375rem !important;
 }
+.full-search-heading h2 {
+    margin-bottom: 3.375rem !important;
+    margin-top: 0;
+    font-size: 28px;
+    font-weight: 700;
+    color: #2D8700 !important;
+}
 /*Full Search CSS END*/
 
 
