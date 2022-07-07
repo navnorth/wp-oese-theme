@@ -2369,16 +2369,25 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
         z-index: 3;
     }
     .topbar-search-section {
-        margin-top: 35px;
-	width:1px;
-	height:1px;
-	overflow:hidden;
+        margin-top: 15px;
+    	width:auto;
+    	height:auto;
+    	overflow:hidden;
     }
     .publication-details .page_header {
         margin-top: 10px;
     }
     .mobile-search-menu { display:block !important; }
-
+    .mobile-nav-bar.row { 
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 10%;
+        flex: 0 0 10%;
+        max-width: 10%;
+        margin-bottom: 0;
+        float: right;
+        margin-top: -52px; 
+    }
+    .top-nav-spacing { margin-bottom:0; padding-bottom:0; }
 }
 @media (max-width: 750px){
     .hdr .col-xs-offset-2  {margin-left: 16.66666667% !important;}
