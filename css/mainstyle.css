@@ -108,7 +108,8 @@ a:focus {
 
 .lft_sid_mtr { padding-left: 0 !important; margin-bottom: 30px; position: relative}
 .lft_sid_mtr img, .rght_sid_mtr img { float: left; margin: 0 25px 25px 0; width:100%;}
-.lft_sid_mtr h4:first-child, .rght_sid_mtr h4:first-child { border-bottom: 1px solid #ccc; margin-bottom: 15px; padding-bottom: 5px; font-size: 15px}
+.lft_sid_mtr h4:first-child, .rght_sid_mtr h4:first-child,
+.lft_sid_mtr h3:first-child, .rght_sid_mtr h3:first-child { border-bottom: 1px solid #ccc; margin-bottom: 15px; padding-bottom: 5px; font-size: 15px}
 .lft_sid_mtr p, .rght_sid_mtr p {  margin: 0 0 10px}
 .date { font-size: 13px}
 .sprtn_brdr { position: absolute; top: 80px; bottom: 35px; width: 1px; background: #ddd; right: 0}
@@ -1395,7 +1396,7 @@ a {
 }
 .full-search-heading h2 {
     margin-bottom: 3.375rem !important;
-    margin-top: 0;
+    margin-top: 0 !important;
     font-size: 28px;
     font-weight: 700;
     color: #2D8700 !important;
