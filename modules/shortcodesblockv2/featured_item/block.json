@@ -22,6 +22,7 @@
 		"mediaID": {"type":"number","source":"attribute","attribute":"data-id","selector":"img"},
 		"mediaURL": {"type": "string","source": "attribute","attribute":"src","selector":"img"},
 		"thumbnail": {"type":"string","source":"attribute","attribute":"data-thumb","selector":"img"},
+		"altText": {"type":"string","source":"attribute","attribute":"alt","selector":"img"},
 		"thumbnailsize": {"type":"integer"},
 		"titlesize": {"type":"integer"},
 		"oeseblkFeaturedItemOpeninnewtab": {"type": "boolean","default": false}
