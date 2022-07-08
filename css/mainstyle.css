@@ -1748,7 +1748,7 @@ a.oese-logo-home {
 	    padding: 5% 0;
 	}
 	.custom-common-padding.default-template{
-			margin: 0px -15px 15px !important;
+			margin: 30px -15px 15px !important;
 	}
 }
 .trending-image-section {overflow: hidden !important;}
@@ -2276,14 +2276,14 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
 	.oese-search-result-left { display:none; }
     .mobile-nav-bar.row { margin-right:0; margin-left:0; margin-top:-48px; }
     .responsive-menu-section { text-align:right; display:inline-block !important; }
-    .mobile-nav-icons.navi_icn { width:16px; margin-right:5px; height:20px;padding-bottom:0 !important; float:right; z-index:11 }
+    .mobile-nav-icons.navi_icn { width:16px; margin-right:5px; height:20px;padding-bottom:0 !important; float:right; }
     .mobile-nav-icons.navi_icn:hover .fa-bars,
     .mobile-nav-icons.navi_icn:focus .fa-bars,
     .mobile-nav-icons.navi_icn:hover .fa-times,
     .mobile-nav-icons.navi_icn:focus .fa-times { width:auto; outline: 1px solid #7ab4ed; }
     .top-nav-spacing { margin-bottom:15px; }
     .topbar-search-section { width:auto; height:auto; margin-top:25px; }
-    .custom-common-padding.default-template { margin:0 -15px 15px !important; padding-top:0; }
+    .custom-common-padding.default-template { margin:30px -15px 15px !important; padding-top:0; }
     .top-nav-spacing .col-9 {
         -webkit-box-flex: 0;
         -ms-flex: 0 0 100%;
@@ -2295,7 +2295,6 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
         -ms-flex: 0 0 90%;
         flex: 0 0 90%;
         max-width: 90%;
-        z-index: 10;
     }
 }
 
@@ -2391,7 +2390,7 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
         margin-bottom: 0;
         margin-top: -52px; 
     }
-    .top-nav-spacing { margin-bottom:0; padding-bottom:0; position:relative; }
+    .top-nav-spacing { margin-bottom:0; padding-bottom:0; }
 }
 @media (max-width: 750px){
     .hdr .col-xs-offset-2  {margin-left: 16.66666667% !important;}
