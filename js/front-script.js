@@ -30,6 +30,7 @@ jQuery( document ).ready(function() {
 		jQuery(".responsiv-menu_ul").css("display", "block");
 		jQuery('.mobile-nav-icons i').toggleClass("fa-bars fa-times");
    		jQuery(".responsiv-menu").slideToggle("slow");
+      console.log(jQuery(this).closest('.responsive-menu-section').find('.responsiv_menu_ul li:first-child a'));
       jQuery(this).closest('.responsive-menu-section').find('.responsiv_menu_ul li:first-child a').focus();
  	});
 
