@@ -15,7 +15,6 @@ window.addEventListener('resize', () => {
           } else
             jQuery('.mobile-nav-bar .navi_icn .fa-times').trigger('click');
         }
-        jQuery(this).closest('.responsive-menu-section').find('.responsiv_menu_ul ul li:first-child a').focus();
       });
     }
   }
@@ -31,6 +30,7 @@ jQuery( document ).ready(function() {
 		jQuery(".responsiv-menu_ul").css("display", "block");
 		jQuery('.mobile-nav-icons i').toggleClass("fa-bars fa-times");
    		jQuery(".responsiv-menu").slideToggle("slow");
+      jQuery(this).closest('.responsive-menu-section').find('.responsiv_menu_ul ul li:first-child a').focus();
  	});
 
 	jQuery(".fa-print").click(function(){
