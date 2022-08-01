@@ -99,8 +99,9 @@ jQuery( document ).ready(function() {
       jQuery(this).find('a').attr('tabindex','-1');
   });
   /** Keyboard navigation on mobile menu **/
-  jQuery('#responsiv_menu_ul > .menu-item > a').on('keydown',function(e){
+  jQuery('.responsiv-menu_ul > .menu-item > a').on('keydown',function(e){
       if (e.which==40) { /* Down Arrow Key */
+        jQuery(this).parent().next().find('a').focus();
         jQuery(this).parent().next().find('a').focus();
       } else if (e.which==38) { /* Up Arrow Key */
         jQuery(this).parent().prev().find('a').focus();
