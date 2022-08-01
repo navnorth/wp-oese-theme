@@ -30,7 +30,7 @@ jQuery( document ).ready(function() {
 		jQuery(".responsiv-menu_ul").css("display", "block");
 		jQuery('.mobile-nav-icons i').toggleClass("fa-bars fa-times");
    		jQuery(".responsiv-menu").slideToggle("slow");
-      jQuery(this).closest('.responsive-menu-section').find('.responsiv_menu_ul ul li:first-child a').focus();
+      jQuery(this).closest('.responsive-menu-section').find('.responsiv_menu_ul li:first-child a').focus();
  	});
 
 	jQuery(".fa-print").click(function(){
@@ -90,7 +90,7 @@ jQuery( document ).ready(function() {
     'role' : 'menu',
     'aria-labelledby' : 'mobile_nav_icons'
   });
-  jQuery('.mobile-nav-bar .responsiv-menu .responsiv-menu_ul ul li').each(function(){
+  jQuery('.mobile-nav-bar .responsiv-menu .responsiv-menu_ul li').each(function(){
     jQuery(this).attr('role','none');
     jQuery(this).find('a').attr('role','menuitem');
     if (jQuery(this).hasClass('current_page_item'))
