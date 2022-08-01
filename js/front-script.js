@@ -86,7 +86,7 @@ jQuery( document ).ready(function() {
 	});
 	
   /** Add role to menu items on mobile **/
-  jQuery('.mobile-nav-bar .responsiv-menu .responsiv-menu_ul ul').attr({
+  jQuery('.mobile-nav-bar .responsiv-menu .responsiv-menu_ul').attr({
     'id' : 'responsiv_menu_ul',
     'role' : 'menu',
     'aria-labelledby' : 'mobile_nav_icons'
