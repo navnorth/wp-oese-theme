@@ -15,8 +15,6 @@ window.addEventListener('resize', () => {
           } else
             jQuery('.mobile-nav-bar .navi_icn .fa-times').trigger('click');
         }
-        console.log(jQuery(this).closest('.responsive-menu-section').find('.responsiv-menu_ul li:first-child a'));
-        jQuery(this).closest('.responsive-menu-section').find('.responsiv-menu_ul li:first-child a').focus();
       });
     }
   }
@@ -32,6 +30,7 @@ jQuery( document ).ready(function() {
 		jQuery(".responsiv-menu_ul").css("display", "block");
 		jQuery('.mobile-nav-icons i').toggleClass("fa-bars fa-times");
    		jQuery(".responsiv-menu").slideToggle("slow");
+      jQuery(this).closest('.responsive-menu-section').find('.responsiv-menu_ul li:first-child a').attr('tabindex','0').focus();
  	});
 
 	jQuery(".fa-print").click(function(){
@@ -206,6 +205,7 @@ jQuery( document ).ready(function() {
           else
             jQuery('.mobile-nav-bar .navi_icn .fa-times').trigger('click');
         }
+        console.log(jQuery(this).closest('.responsive-menu-section').find('.responsiv-menu_ul li:first-child a'));
       });
 
         var temp = jQuery('.wdm_results .res_info');
