@@ -12,10 +12,10 @@ window.addEventListener('resize', () => {
         if(code == 13 || code == 32) { 
           if (jQuery('.mobile-nav-bar .navi_icn .fa-bars').length>0){
             jQuery('.mobile-nav-bar .navi_icn .fa-bars').trigger('click');
-            jQuery(this).closest('.responsive-menu-section').find('#responsiv_menu_ul ul li:first-child a').focus();
           } else
             jQuery('.mobile-nav-bar .navi_icn .fa-times').trigger('click');
         }
+        jQuery(this).closest('.responsive-menu-section').find('.responsiv_menu_ul ul li:first-child a').focus();
       });
     }
   }
@@ -100,11 +100,11 @@ jQuery( document ).ready(function() {
   });
   /** Keyboard navigation on mobile menu **/
   jQuery('.responsiv-menu_ul > .menu-item > a').on('keydown',function(e){
+      jQuery('.responsiv-menu_ul .menu-item a').attr('tabindex','-1');
       if (e.which==40) { /* Down Arrow Key */
-        jQuery(this).parent().next().find('a').focus();
-        jQuery(this).parent().next().find('a').focus();
+        jQuery(this).parent().next().find('a').attr('tabindex','0').focus();
       } else if (e.which==38) { /* Up Arrow Key */
-        jQuery(this).parent().prev().find('a').focus();
+        jQuery(this).parent().prev().find('a').attr('tabindex','0').focus();
       }
   });
 
