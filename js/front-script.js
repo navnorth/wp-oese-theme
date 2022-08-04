@@ -2,6 +2,7 @@ let touchEvent = 'ontouchstart' in window ? 'touchstart': 'click';
 
 /** Detect zoom using resize event **/
 window.addEventListener('resize', () => {
+  console.log('magnified');
   const browserZoomLevel = Math.round(window.devicePixelRatio * 100);
   if (browserZoomLevel>100){
     if (jQuery(window).width() < 800) {
@@ -20,6 +21,7 @@ window.addEventListener('resize', () => {
       });
     }
   } else {
+    console.log('normal');
     if(jQuery(window).width()<800){
       // Add Keyboard navigation on hamburger menu on mobile
       jQuery('.mobile-nav-bar .navi_icn').attr('tabindex','0');
