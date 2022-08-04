@@ -132,22 +132,21 @@ jQuery( document ).ready(function() {
 
   if(jQuery(window).width()<800){
     const zoomLevel = Math.round(window.devicePixelRatio * 100);
-    console.log(zoomLevel);
-    console.log('normal');
-    // Add Keyboard navigation on hamburger menu on mobile
-    jQuery('.mobile-nav-bar .navi_icn').attr('tabindex','0');
-    jQuery('.mobile-nav-bar .navi_icn').attr('aria-label','menu');
-    jQuery('.mobile-nav-bar .navi_icn').on("keypress", function(e) {
-      var code = e.keyCode || e.which;
-      if(code == 13 || code == 32) { 
-        if (jQuery('.mobile-nav-bar .navi_icn .fa-bars').length>0)
-          jQuery('.mobile-nav-bar .navi_icn .fa-bars').trigger('click');
-        else
-          jQuery('.mobile-nav-bar .navi_icn .fa-times').trigger('click');
-      }
-      jQuery(this).closest('.responsive-menu-section').find('.responsiv-menu_ul li:first-child a').attr('tabindex','0');
-      jQuery(this).closest('.responsive-menu-section').find('.responsiv-menu_ul li:first-child a').focus();
-    });
+    if (zoomLevel<=100){
+      // Add Keyboard navigation on hamburger menu on mobile
+      jQuery('.mobile-nav-bar .navi_icn').attr('tabindex','0');
+      jQuery('.mobile-nav-bar .navi_icn').attr('aria-label','menu');
+      jQuery('.mobile-nav-bar .navi_icn').on("keypress", function(e) {
+        var code = e.keyCode || e.which;
+        if(code == 13 || code == 32) { 
+          if (jQuery('.mobile-nav-bar .navi_icn .fa-bars').length>0)
+            jQuery('.mobile-nav-bar .navi_icn .fa-bars').trigger('click');
+          else
+            jQuery('.mobile-nav-bar .navi_icn .fa-times').trigger('click');
+        }
+        jQuery(this).closest('.responsive-menu-section').find('.responsiv-menu_ul li:first-child a').attr('tabindex','0');
+        jQuery(this).closest('.responsive-menu-section').find('.responsiv-menu_ul li:first-child a').focus();
+      });
 
       var temp = jQuery('.wdm_results .res_info');
       jQuery('.cls_results').before(temp);
@@ -160,6 +159,7 @@ jQuery( document ).ready(function() {
       jQuery('.wpsolr_facet_checkbox.wpsolr_facet_categories, .wpsolr_facet_checkbox.wpsolr_facet__wp_page_template_str').collapse({
           toggle:false
       });
+    }
   }
 
     // set external links to open in new window and have distinct style
