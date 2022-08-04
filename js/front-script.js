@@ -136,8 +136,8 @@ jQuery( document ).ready(function() {
     jQuery('.mobile-nav-bar .navi_icn').attr('tabindex','0');
     jQuery('.mobile-nav-bar .navi_icn').attr('aria-label','menu');
     jQuery('.mobile-nav-bar .navi_icn').on("keydown", function(e) {
-      var code = e.keyCode || e.which;
-      console.log(code);
+      var code = e.which;
+      console.log(e.which);
       if(code == 13 || code == 32) { 
         if (jQuery('.mobile-nav-bar .navi_icn .fa-bars').length>0)
           jQuery('.mobile-nav-bar .navi_icn .fa-bars').trigger('click');
