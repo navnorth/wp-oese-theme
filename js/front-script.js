@@ -135,6 +135,10 @@ jQuery( document ).ready(function() {
     // Add Keyboard navigation on hamburger menu on mobile
     jQuery('.mobile-nav-bar .navi_icn').attr('tabindex','0');
     jQuery('.mobile-nav-bar .navi_icn').attr('aria-label','menu');
+    jQuery('.mobile-nav-bar .navi_icn').on("keypress", function(e){
+      console.log(e.which);
+      console.log(e.keyCode);
+    });
     jQuery('.mobile-nav-bar .navi_icn').on("keydown", function(e) {
       var code = e.which;
       console.log(e.which);
