@@ -2392,6 +2392,9 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
         margin-top: -52px; 
     }
     .top-nav-spacing { margin-bottom:0; padding-bottom:0; }
+    .custom-common-padding { margin:0; }
+    .custom-common-padding .oet_2column_layout { padding-left:0; padding-right:0 }
+    .custom-common-padding .oet_2column_layout .col-sm-12 { padding-left:0; padding-right:0; }
 }
 @media (max-width: 750px){
     .hdr .col-xs-offset-2  {margin-left: 16.66666667% !important;}
@@ -2746,7 +2749,7 @@ div[id*='res'] .oese-search-result .p_title a{ color:#2d8700; font-size:20px; fo
     .footer-title p{
         font-size: 18px !important;
     }
-    .navi_icn .fa-bars,.navi_icn .fa-times{font-size: 22px !important;}
+    .navi_icn .fa-bars,.navi_icn .fa-times{font-size: 20px !important;}
     .responsive-menu-section .mobile-nav-icons.navi_icn .fa-times{top: 0 !important;}
     .mobile-nav-bar{position: relative;top: -43px; margin-bottom: 10px;}
 		body.error404 .mobile-nav-bar{position: relative;top: -43px; margin-bottom: 30px !important;}
@@ -3105,6 +3108,12 @@ blockquote.wp-block-quote.is-style-large p{padding: 0 1.7em 0 2.8em !important;}
 	blockquote.wp-block-quote.is-style-large p cite{font-size: 26px !important;line-height: 34px !important;}
 	blockquote.wp-block-quote.is-style-large:before {font-size: 32px;}
 	blockquote.wp-block-quote.is-style-large p{padding: 0 1.7em 0 2.2em !important;}
+    .top-search-input { height:25px !important; }
+    .custom-search-btn { 
+        height: 30px !important;
+        padding: 0.175rem 0.5rem;
+    }
+    .mobile-nav-bar.row { height:32px; }
 }
 
 @media screen and (max-width: 599px) {
