@@ -15,6 +15,8 @@ window.addEventListener('resize', () => {
           } else
             jQuery('.mobile-nav-bar .navi_icn .fa-times').trigger('click');
         }
+        jQuery(this).closest('.responsive-menu-section').find('.responsiv-menu_ul li:first-child a').attr('tabindex','0');
+        jQuery(this).closest('.responsive-menu-section').find('.responsiv-menu_ul li:first-child a').focus();
       });
     }
   } else {
@@ -131,7 +133,10 @@ jQuery( document ).ready(function() {
       if (e.which==40) { /* Down Arrow Key */
         jQuery(this).parent().next().find('a').attr('tabindex','0').focus();
       } else if (e.which==38) { /* Up Arrow Key */
-        jQuery(this).parent().prev().find('a').attr('tabindex','0').focus();
+        if (jQuery(this).parent().prev().length>0)
+          jQuery(this).parent().prev().find('a').attr('tabindex','0').focus();
+        else
+          jQuery(this).closest('.responsive-menu-section').find('.mobile-nav-icons').focus();
       }
   });
 
