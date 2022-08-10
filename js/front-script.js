@@ -122,9 +122,9 @@ jQuery( document ).ready(function() {
         jQuery(this).closest('.mobile-nav-bar').find('.responsiv-menu .responsiv-menu_ul').css("display","none")
         jQuery(this).closest('.mobile-nav-bar .navi_icn').removeAttr('aria-expanded');
         jQuery(this).closest('.mobile-nav-bar .navi_icn').focus();
-        console.log(e.which);
-        if (jQuery(this).closest('.mobile-nav-bar .navi_icn').find('i').hasClass('fa-times'))
-            jQuery(this).closest('.mobile-nav-bar .navi_icn').find('i').addClass("fa-bars").removeClass('fa-times');
+        console.log(jQuery(this).closest('.mobile-nav-bar').find('.navi_icn i').hasClass('fa-times'));
+        if (jQuery(this).closest('.mobile-nav-bar').find('.navi_icn i').hasClass('fa-times'))
+            jQuery(this).closest('.mobile-nav-bar').find('.navi_icn i').removeClass('fa-times').addClass("fa-bars");
       }
   });
 
