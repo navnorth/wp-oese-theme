@@ -104,6 +104,8 @@ jQuery( document ).ready(function() {
       if (e.which==40) { /* Down Arrow Key */
         if (jQuery(this).parent().is(":last-child")){
           jQuery(this).closest('ul.responsiv-menu_ul').find('> li:first-child > a').attr('tabindex','0').focus();
+        } else {
+          jQuery(this).parent().next().find('a').attr('tabindex','0').focus();
         }
       } else if (e.which==38) { /* Up Arrow Key */
         if (jQuery(this).parent().is(":first-child")){
