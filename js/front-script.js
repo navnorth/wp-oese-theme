@@ -171,12 +171,15 @@ jQuery( document ).ready(function() {
             jQuery(this).closest('.mobile-nav-bar').find('.responsiv-menu_ul > li:first-child a').attr('tabindex','0');
             jQuery(this).closest('.mobile-nav-bar').find('.responsiv-menu_ul > li:first-child a').focus();
           }
-          jQuery('.mobile-nav-icons i').toggleClass("fa-bars fa-times");
+          if (jQuery('.mobile-nav-icons i').hasClass('fa-bars'))
+            jQuery('.mobile-nav-icons i').addClass("fa-times").removeClass('fa-bars');
+          jQuery(this).attr('aria-label','close menu');
       } else if (key == "Esc" || key == "Escape"){
         jQuery(this).closest('.mobile-nav-bar').find('.responsiv-menu').css("display","none");
         jQuery(this).closest('.mobile-nav-bar').find('.responsiv-menu .responsiv-menu_ul').css("display","none")
         jQuery(this).removeAttr('aria-expanded');
-        jQuery('.mobile-nav-icons i').toggleClass("fa-bars fa-times");
+        if (jQuery('.mobile-nav-icons i').hasClass('fa-times'))
+            jQuery('.mobile-nav-icons i').addClass("fa-bars").removeClass('fa-times');
         jQuery(this).focus();
       }
     });
