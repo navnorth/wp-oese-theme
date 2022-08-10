@@ -101,7 +101,6 @@ jQuery( document ).ready(function() {
   /** Keyboard navigation on mobile menu **/
   jQuery('.responsiv-menu_ul > .menu-item > a').on('keydown',function(e){
       jQuery('.responsiv-menu_ul .menu-item a').attr('tabindex','-1');
-      console.log(e.which);
       if (e.which==40) { /* Down Arrow Key */
         if (jQuery(this).parent().is(":last-child")){
           jQuery(this).closest('ul.responsiv-menu_ul').find('> li:first-child > a').attr('tabindex','0').focus();
@@ -120,11 +119,10 @@ jQuery( document ).ready(function() {
       } else if (e.which==27){
         jQuery(this).closest('.mobile-nav-bar').find('.responsiv-menu').css("display","none");
         jQuery(this).closest('.mobile-nav-bar').find('.responsiv-menu .responsiv-menu_ul').css("display","none")
-        jQuery(this).closest('.mobile-nav-bar .navi_icn').removeAttr('aria-expanded');
-        jQuery(this).closest('.mobile-nav-bar .navi_icn').focus();
-        console.log(jQuery(this).closest('.mobile-nav-bar').find('.navi_icn i').hasClass('fa-times'));
+        jQuery(this).closest('.mobile-nav-bar').find('.navi_icn').removeAttr('aria-expanded');
         if (jQuery(this).closest('.mobile-nav-bar').find('.navi_icn i').hasClass('fa-times'))
             jQuery(this).closest('.mobile-nav-bar').find('.navi_icn i').removeClass('fa-times').addClass("fa-bars");
+        jQuery(this).closest('.mobile-nav-bar').find('.navi_icn').focus();
       }
   });
 
@@ -180,7 +178,6 @@ jQuery( document ).ready(function() {
             jQuery('.mobile-nav-icons i').addClass("fa-times").removeClass('fa-bars');
           jQuery(this).attr('aria-label','close menu');
       } else if (key == "Esc" || key == "Escape"){
-        console.log(key);
         jQuery(this).closest('.mobile-nav-bar').find('.responsiv-menu').css("display","none");
         jQuery(this).closest('.mobile-nav-bar').find('.responsiv-menu .responsiv-menu_ul').css("display","none")
         jQuery(this).removeAttr('aria-expanded');
