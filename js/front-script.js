@@ -121,6 +121,7 @@ jQuery( document ).ready(function() {
         jQuery(this).closest('.mobile-nav-bar').find('.responsiv-menu .responsiv-menu_ul').css("display","none")
         jQuery(this).closest('.mobile-nav-bar .navi_icn').removeAttr('aria-expanded');
         jQuery(this).closest('.mobile-nav-bar .navi_icn').focus();
+        console.log(e.which);
         if (jQuery(this).closest('.mobile-nav-bar .navi_icn').find('i').hasClass('fa-times'))
             jQuery(this).closest('.mobile-nav-bar .navi_icn').find('i').addClass("fa-bars").removeClass('fa-times');
       }
@@ -177,6 +178,7 @@ jQuery( document ).ready(function() {
             jQuery('.mobile-nav-icons i').addClass("fa-times").removeClass('fa-bars');
           jQuery(this).attr('aria-label','close menu');
       } else if (key == "Esc" || key == "Escape"){
+        console.log(key);
         jQuery(this).closest('.mobile-nav-bar').find('.responsiv-menu').css("display","none");
         jQuery(this).closest('.mobile-nav-bar').find('.responsiv-menu .responsiv-menu_ul').css("display","none")
         jQuery(this).removeAttr('aria-expanded');
