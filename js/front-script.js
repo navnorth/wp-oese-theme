@@ -101,6 +101,7 @@ jQuery( document ).ready(function() {
   /** Keyboard navigation on mobile menu **/
   jQuery('.responsiv-menu_ul > .menu-item > a').on('keydown',function(e){
       jQuery('.responsiv-menu_ul .menu-item a').attr('tabindex','-1');
+      console.log(e.which);
       if (e.which==40) { /* Down Arrow Key */
         if (jQuery(this).parent().is(":last-child")){
           jQuery(this).closest('ul.responsiv-menu_ul').find('> li:first-child > a').attr('tabindex','0').focus();
@@ -162,6 +163,7 @@ jQuery( document ).ready(function() {
       jQuery(this).closest('.responsive-menu-section').find('.responsiv-menu_ul li:first-child a').attr('tabindex','0');
       jQuery(this).closest('.responsive-menu-section').find('.responsiv-menu_ul li:first-child a').focus();--**/
       var key = e.key;
+      console.log(key);
       if(key == "Enter" || key == " " || key == "ArrowDown" || key == "ArrowUp") { 
           //jQuery('.navi_bg .navi_icn .fa-bars').trigger('click');
           jQuery(this).closest('.mobile-nav-bar').find('.responsiv-menu').css("display","block")
