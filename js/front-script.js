@@ -122,6 +122,7 @@ jQuery( document ).ready(function() {
         jQuery(this).closest('.mobile-nav-bar').find('.navi_icn').removeAttr('aria-expanded');
         if (jQuery(this).closest('.mobile-nav-bar').find('.navi_icn i').hasClass('fa-times'))
             jQuery(this).closest('.mobile-nav-bar').find('.navi_icn i').removeClass('fa-times').addClass("fa-bars");
+        jQuery(this).closest('.mobile-nav-bar').find('.navi_icn').attr('aria-label','open menu');
         jQuery(this).closest('.mobile-nav-bar').find('.navi_icn').focus();
       }
   });
