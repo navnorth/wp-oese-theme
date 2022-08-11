@@ -184,6 +184,7 @@ jQuery( document ).ready(function() {
         if (jQuery('.mobile-nav-icons i').hasClass('fa-times'))
             jQuery('.mobile-nav-icons i').addClass("fa-bars").removeClass('fa-times');
         jQuery(this).focus();
+        jQuery(this).attr('aria-label','open menu');
       }
     });
 
