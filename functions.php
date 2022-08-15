@@ -7,7 +7,7 @@
  * filter hooks in WordPress to change core functionality.
  */
 define( "WP_OESE_THEME_NAME", "WP OESE Theme" );
-define( "WP_OESE_THEME_VERSION", "2.0.1" );
+define( "WP_OESE_THEME_VERSION", "2.1.2" );
 define( "WP_OESE_THEME_SLUG", "wp_oese_theme" );
 
 // Set up the content width value based on the theme's design and stylesheet.
@@ -717,7 +717,18 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
  * Shortcodes Blocks
  **/
  $_vsn = (int)explode('.',get_bloginfo('version'))[0];
- if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/accordion/init.php' );
+ if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/accordion_v2/oese-accordion-block.php' );
+ if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/featured_item/oese-featured-item-block.php' );
+ if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/disruptive_content/oese-disruptive-content-block.php' );
+ if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/featured_video/oese-featured-video-block.php' );
+ if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/pull_quote/oese-pull-quote-block.php' );
+ if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/recommended_resources/oese-recommended-resources-block.php' );
+ if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/featured_content_box/oese-featured-content-box-block.php' );
+ if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/callout_box/oese-callout-box-block.php' );
+ if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/audience_link/oese-audience-link-block.php' );
+ if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/subpages/oese-subpages-block.php' );
+ if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/featured_card/oese-featured-card-block.php' );
+ if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/disclaimer/oese-disclaimer-block.php' );
  if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblock/shortcodesblock.php' );
  function theme_back_enqueue_script()
 {
@@ -3031,7 +3042,7 @@ function oet_display_acf_home_content(){
             <div class="col-sm-12 custom-common-padding">
               <div class="full-search-section m-auto text-center">
                    <div class="full-search-heading">
-                       <h1><?php echo $_searchtitle ?></h1>
+                       <h2><?php echo $_searchtitle ?></h2>
                    </div>
 
                    <div class="full-search-field">
@@ -3215,3 +3226,30 @@ function oese_tile_link_block_render_callback( $block ){
     include( get_theme_file_path("/template-parts/block/content-{$slug}.php") );
   }
 }
+
+
+// Disable access to wp-json from the outside and allow it only for logged in users(WP Admin dashboard)
+function oese_disable_rest_api_from_public($result){
+  // If a previous authentication check was applied, pass that result along without modification.
+  if ( true === $result || is_wp_error( $result ) ) {
+      return $result;
+  }
+
+  if (false !== strpos( esc_url_raw($_SERVER['REQUEST_URI']), '/wp-json/contact-form-7' )) {
+      return $result;
+  }
+
+  // Return an error if user is not logged in or if not Contact Form 7 Rest API endpoint.
+  if ( ! is_user_logged_in() ) {
+      return new WP_Error(
+          'rest_not_logged_in',
+          __( 'You are not currently logged in.' ),
+          array( 'status' => 401 )
+      );
+  }
+
+
+  // no effect on logged-in requests
+  return $result;
+}
+add_filter( 'rest_authentication_errors' , 'oese_disable_rest_api_from_public' );

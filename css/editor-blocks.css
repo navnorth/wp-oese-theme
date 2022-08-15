@@ -174,8 +174,10 @@ Description: Used to style blocks in the editor.
 .block-editor-writing-flow blockquote.wp-block-quote.is-style-large:before {font-size: 36px;}
 .block-editor-writing-flow blockquote.wp-block-quote.is-style-large .block-editor-rich-text__editable p{padding: 0 1.7em 0 2.8em !important;}
 
-
-
+/*Featured Item */
+.oese_featured_item p.date {
+    font-size: 13px !important;
+}
 
 
 /*Pullquote */
