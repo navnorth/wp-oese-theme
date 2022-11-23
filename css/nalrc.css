@@ -1,0 +1,7 @@
+/** NALRC Page Styles **/
+.nalrc-template {
+	display:flex;
+	flex-basis: 100%;
+	flex-direction: column;
+}
+.nalrc-details.row { width:100%; display:block; }
