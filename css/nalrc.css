@@ -5,3 +5,4 @@
 	flex-direction: column;
 }
 .nalrc-details.row { width:100%; display:block; }
+.nalrc-wrapper { padding:30px; text-align:center; }
