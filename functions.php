@@ -1603,6 +1603,28 @@ function wp_oese_theme_settings_page() {
     )
   );
 
+  // Create NALRC Settings Section
+  add_settings_section(
+    'wp_oese_nalrc_settings',
+    __('NALRC Settings', WP_OESE_THEME_SLUG),
+    'wp_oese_theme_settings_callback',
+    $page
+  );
+
+  // Add Header Menu Settings
+  add_settings_field(
+    'wp_oese_theme_nalrc_header',
+    '',
+    'wp_oese_theme_nalrc_header_menu',
+    $page,
+    'wp_oese_nalrc_settings',
+    array(
+      'uid' => 'wp_oese_theme_nalrc_header',
+      'type' => 'selectbox',
+      'name' =>  __('NALRC Header Menu: ', WP_OESE_THEME_SLUG)
+    )
+  );
+
   register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_heading' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_content' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_enable_redirect' );
@@ -1612,6 +1634,7 @@ function wp_oese_theme_settings_page() {
   register_setting( 'theme_settings_page' , 'wp_oese_theme_crazy_egg_script_address' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_pdf_viewer' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_display_footer_address' );
+  register_setting( 'theme_settings_page' , 'wp_oese_theme_nalrc_header' );
 }
 add_action( 'admin_init' , 'wp_oese_theme_settings_page' );
 
@@ -1697,6 +1720,23 @@ function wp_oese_theme_select_contact_field($arguments){
         }
     echo '</select>
     </div></div>';
+}
+
+// Select Menu for NALRC Header
+function wp_oese_theme_nalrc_header_menu($arguments){
+  $value = get_option($arguments['uid']);
+  $menus = wp_get_nav_menus();
+  
+  if (isset($arguments['name']))
+      $title = $arguments['name'];
+      echo '<label for="'.$arguments['uid'].'"><strong>'.$title.'</strong></label>';
+      echo '<select name="'.$arguments['uid'].'" id="'.$arguments['uid'].'">';
+
+      foreach($menus as $menu){
+         echo '<option value="' . $menu->slug . '" '.selected($menu->slug,$value,true).'>'.$menu->name.'</option>';
+      }
+
+      echo '<select>';
 }
 
 function wp_oese_theme_add_modal(){
