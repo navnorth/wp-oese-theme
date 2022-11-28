@@ -7,7 +7,7 @@
 .nalrc-details.row { width:100%; display:block; }
 .nalrc-wrapper { padding:30px; text-align:center; }
 
-/** NARCL Header Styles **/
+/** NALRC Header Styles **/
 .nalrc-banner nav {
 	background-color:#981F33;
 	border-radius: 4px;
@@ -30,3 +30,9 @@
 .nalrc-banner nav li a:active {
 	color:#F2CA03;
 }
+/** NALRC Footer Styles **/
+.nalrc-footer { border-top:1px solid #dcdcde; }
+.nalrc-footer .nalrc-wrapper { padding:25px 0; }
+.nalrc-footer .nalrc-nav { padding-left:0; }
+.nalrc-footer .nalrc-menu li { display:inline-block; text-align:left; }
+.nalrc-footer .nalrc-menu > li a { font-weight:700; text-decoration:none; font-size:12px; }
