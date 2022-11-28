@@ -6,3 +6,27 @@
 }
 .nalrc-details.row { width:100%; display:block; }
 .nalrc-wrapper { padding:30px; text-align:center; }
+
+/** NARCL Header Styles **/
+.nalrc-banner nav {
+	background-color:#981F33;
+	border-radius: 4px;
+	padding:30px;
+}
+.nalrc-banner .nalrc-wrapper { padding:0; }
+.nalrc-banner nav .nalrc-menu { margin-bottom:0; }
+.nalrc-banner .nalrc-nav { padding-left:0; flex-basis:20%; max-width:20%; }
+.nalrc-banner nav li { text-align:left; margin-bottom:15px; }
+.nalrc-banner nav li:last-child { margin-bottom:0; }
+.nalrc-banner nav li a {
+	font-size:14px;
+	color:#FFF;
+	font-weight:700;
+	text-decoration: none;
+	font-family:  "-apple-system","BlinkMacSystemFont","Segoe UI","Roboto","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+.nalrc-banner nav li a:hover,
+.nalrc-banner nav li a:focus,
+.nalrc-banner nav li a:active {
+	color:#F2CA03;
+}
