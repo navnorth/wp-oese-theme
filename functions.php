@@ -1615,13 +1615,27 @@ function wp_oese_theme_settings_page() {
   add_settings_field(
     'wp_oese_theme_nalrc_header',
     '',
-    'wp_oese_theme_nalrc_header_menu',
+    'wp_oese_theme_nalrc_menu_selectbox',
     $page,
     'wp_oese_nalrc_settings',
     array(
       'uid' => 'wp_oese_theme_nalrc_header',
       'type' => 'selectbox',
       'name' =>  __('NALRC Header Menu: ', WP_OESE_THEME_SLUG)
+    )
+  );
+
+  // Add Header Menu Settings
+  add_settings_field(
+    'wp_oese_theme_nalrc_footer',
+    '',
+    'wp_oese_theme_nalrc_menu_selectbox',
+    $page,
+    'wp_oese_nalrc_settings',
+    array(
+      'uid' => 'wp_oese_theme_nalrc_footer',
+      'type' => 'selectbox',
+      'name' =>  __('NALRC Footer Menu: ', WP_OESE_THEME_SLUG)
     )
   );
 
@@ -1635,6 +1649,7 @@ function wp_oese_theme_settings_page() {
   register_setting( 'theme_settings_page' , 'wp_oese_theme_pdf_viewer' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_display_footer_address' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_nalrc_header' );
+  register_setting( 'theme_settings_page' , 'wp_oese_theme_nalrc_footer' );
 }
 add_action( 'admin_init' , 'wp_oese_theme_settings_page' );
 
@@ -1723,20 +1738,24 @@ function wp_oese_theme_select_contact_field($arguments){
 }
 
 // Select Menu for NALRC Header
-function wp_oese_theme_nalrc_header_menu($arguments){
+function wp_oese_theme_nalrc_menu_selectbox($arguments){
   $value = get_option($arguments['uid']);
   $menus = wp_get_nav_menus();
   
+  echo '<div class="form-row"><div class="form-group">';
+
   if (isset($arguments['name']))
       $title = $arguments['name'];
-      echo '<label for="'.$arguments['uid'].'"><strong>'.$title.'</strong></label>';
-      echo '<select name="'.$arguments['uid'].'" id="'.$arguments['uid'].'">';
+      
+    echo '<label for="'.$arguments['uid'].'"><strong>'.$title.'</strong></label>';
+    echo '<select name="'.$arguments['uid'].'" id="'.$arguments['uid'].'">';
 
-      foreach($menus as $menu){
-         echo '<option value="' . $menu->slug . '" '.selected($menu->slug,$value,true).'>'.$menu->name.'</option>';
-      }
+    foreach($menus as $menu){
+       echo '<option value="' . $menu->slug . '" '.selected($menu->slug,$value,true).'>'.$menu->name.'</option>';
+    }
 
-      echo '<select>';
+    echo '<select>';
+  echo '</div></div>';
 }
 
 function wp_oese_theme_add_modal(){
