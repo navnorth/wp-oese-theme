@@ -31,8 +31,10 @@
 	color:#F2CA03;
 }
 /** NALRC Footer Styles **/
-.nalrc-footer { border-top:1px solid #dcdcde; }
+.nalrc-footer { border-top:1px solid #d1d1d1; }
 .nalrc-footer .nalrc-wrapper { padding:25px 0; }
 .nalrc-footer .nalrc-nav { padding-left:0; }
 .nalrc-footer .nalrc-menu li { display:inline-block; text-align:left; }
-.nalrc-footer .nalrc-menu > li a { font-weight:700; text-decoration:none; font-size:12px; }
+.nalrc-footer .nalrc-menu > li a { font-weight:700; text-decoration:none; font-size:12px; text-transform:uppercase; }
+.nalrc-footer .nalrc-menu .nalrc-submenu { margin-top:5px; }
+.nalrc-footer .nalrc-menu .nalrc-submenu li a { font-weight:normal; text-transform:none; }
