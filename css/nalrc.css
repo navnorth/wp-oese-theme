@@ -5,6 +5,7 @@
 	flex-direction: column;
 }
 .nalrc-details.row { width:100%; display:block; }
+.nalrc-details h1 { color: #981F33 !important; }
 .nalrc-wrapper { padding:30px; text-align:center; }
 
 /** NALRC Header Styles **/
