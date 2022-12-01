@@ -36,6 +36,7 @@
 			?>
 		</div>
 		<div class="col-md-9 nalrc-slider">
+			<?php get_template_part('template-parts/nalrc/carousel'); ?>
 		</div>
 	</div>
 </div>
