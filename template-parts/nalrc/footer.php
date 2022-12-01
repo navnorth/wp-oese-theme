@@ -63,8 +63,36 @@
 				}
 			?>
 		</div>
-		<div class="col-md-3">
-
+		<div class="col-md-3 nalrc-social">
+			<nav>
+				<ul class="row nalrc-menu">
+					<li class="col-md-6 nav-item">
+						<a>Social</a>
+						<ul class="row nalrc-submenu">
+							<li class="col-md-12 nav-item">
+								<a href="<?php echo esc_url(get_option('wp_oese_theme_nalrc_facebook')); ?>" target="_blank">Facebook</a>
+							</li>
+							<li class="col-md-12 nav-item">
+								<a href="<?php echo esc_url(get_option('wp_oese_theme_nalrc_twitter')); ?>" target="_blank">Twitter</a>
+							</li>
+							<li class="col-md-12 nav-item">
+								<a href="<?php echo esc_url(get_option('wp_oese_theme_nalrc_youtube')); ?>" target="_blank">YouTube</a>
+							</li>
+							<li class="col-md-12 nav-item">
+								<a href="<?php echo esc_url(get_option('wp_oese_theme_nalrc_instagram')); ?>" target="_blank">Instagram</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a>Newsletter</a>
+						<ul class="row nalrc-submenu">
+							<li class="col-md-12 nav-item">
+								<a href="javascript:void(0)" role="button" class="button-subscribe">Subscribe</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
 		</div>
 	</div>
 </div>
