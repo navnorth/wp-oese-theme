@@ -64,5 +64,11 @@
 .nalrc-slider #oese-acf-slider .oese-acf-slider-wrapper { top:0;right:0;bottom:0;left:0; }
 .nalrc-banner .nalrc-slider { flex-basis: 80%; max-width: 80%; padding-right: 0; }
 /** NALRC Resource Styles **/
-.nalrc-main { margin:30px 0; }
+.nalrc-main { margin:30px 0; padding:0 15px; }
+.nalrc-main #sngl-resource { flex-direction:column; display:flex; }
+.nalrc-main #sngl-resource .nalrc-resource-row h1{ padding: 0; max-width: 100%; color: #981F33 !important; margin-bottom:0; }
+.nalrc-main #sngl-resource .nalrc-resource-row label { color: #981F33; font-size: 16px; font-weight: 600; margin-bottom: 0; }
+.nalrc-main #sngl-resource .nalrc-resource-row .nalrc-resource-value a { color:#1F5C99; text-decoration:underline; }
+.nalrc-main #sngl-resource .nalrc-resource-row .nalrc-resource-value a:hover,
+.nalrc-main #sngl-resource .nalrc-resource-row .nalrc-resource-value a:focus { color:#000000; }
 /** End of NALRC Resource Styles **/
