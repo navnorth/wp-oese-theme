@@ -129,3 +129,15 @@
 }
 .oer_resource_posts .resource-loader img { width:5em; }
 /** End of NALRC Resources Styles **/
+/** Responsive Styles **/
+@media only screen and (max-width:600px){
+	.nalrc-details.row { padding-left:30px; padding-right:30px; }
+}
+@media only screen and (max-width:480px){
+	.nalrc-footer .nalrc-wrapper { flex-direction:column; padding:5px 0; }
+	.nalrc-footer .nalrc-nav { display:flex; flex: 0 0 100%; padding-right:0; border-right:0; border-bottom: 1px solid #d1d1d1; }
+	.nalrc-footer .nalrc-social { display:flex; flex: 0 0 100%; padding-left:0; }
+	.nalrc-footer .nalrc-nav .nalrc-menu > li.nav-item,
+	.nalrc-footer .nalrc-social .nalrc-menu > li.nav-item { margin-top:10px; }
+}
+/** End of Responsive Styles **/
