@@ -76,6 +76,7 @@
 .nalrc-main #sngl-resource .nalrc-resource-row .nalrc-resource-value a { color:#3692BB; text-decoration:underline; font-size:16px; }
 .nalrc-main #sngl-resource .nalrc-resource-row .nalrc-resource-value a:hover,
 .nalrc-main #sngl-resource .nalrc-resource-row .nalrc-resource-value a:focus { color:#000000; }
+.nalrc-main #sngl-resource .nalrc-resource-row .nalrc-resource-value p { margin-bottom:0; }
 .nalrc-main #sngl-resource .nalrc-resource-thumbnail a { text-decoration:none; }
 .nalrc-main #sngl-resource a.oer-featureimg .dashicons { height:auto; line-height:1em; }
 .nalrc-main #sngl-resource .nalrc-view-source { text-align:center; }
@@ -93,9 +94,10 @@
 	color:#FFFFFF;
 	text-decoration: none;
 }
-.nalrc-main #sngl-resource .nalrc-resource-row:last-child { margin-bottom:25px; }
+.nalrc-main #sngl-resource .nalrc-resource-row:last-child { margin-bottom:0px; }
 .nalrc-main #sngl-resource .nalrc-resource-thumbnail { text-align:center; margin-bottom:10px; }
 .nalrc-main #sngl-resource .nalrc-resource-thumbnail .oer-featureimg img { width:175px; }
+.nalrc-featured-thumbnail { margin-top:-45px; }
 /** End of NALRC Resource Styles **/
 /** NALRC Resources Styles **/
 .site-content.nalrc-resources-content { margin-top:30px; }
@@ -157,6 +159,9 @@
 @media only screen and (max-width:768px){
 	.nalrc-wrapper { padding:15px; }
 	.nalrc-header .nalrc-wrapper img { width:auto; max-width:100%; }
+	.nalrc-main #sngl-resource .nalrc-resource-row:last-child { margin-bottom:25px; }
+	.nalrc-content-row { flex-direction:column-reverse;  }
+	.nalrc-featured-thumbnail { margin-top:-20px; margin-bottom:35px; }
 }
 @media only screen and (max-width:600px){
 	.nalrc-details.row { padding-left:30px; padding-right:30px; }
