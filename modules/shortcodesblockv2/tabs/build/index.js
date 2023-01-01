@@ -66,14 +66,17 @@ function Edit() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/style.scss");
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/edit.js");
-/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/save.js");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./src/style.scss");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit */ "./src/edit.js");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./save */ "./src/save.js");
 /**
  * Registers a new block provided a unique name and an object defining its behavior.
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
+
 
 
 /**
@@ -96,15 +99,159 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)('create-block/oese-tabs', {
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)('oese-block/oese-tabs', {
+  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Tabs', 'oese-tabs-block'),
+  description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Displays a tabbed content section on a page.', 'oese-tabs-block'),
+  category: 'oese-block-category',
+  icon: 'index-card',
+  keywords: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('OESE', 'oese-tabs-block'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Tabs', 'oese-tabs-block'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Tab', 'oese-tabs-block')],
+  attributes: {
+    tabCount: {
+      type: 'number'
+    },
+    tab1Label: {
+      type: 'string'
+    },
+    tab1Icon: {
+      type: 'string'
+    },
+    tab1BGColor: {
+      type: 'string'
+    },
+    tab1Content: {
+      type: 'string'
+    },
+    tab2Label: {
+      type: 'string'
+    },
+    tab2Icon: {
+      type: 'string'
+    },
+    tab2BGColor: {
+      type: 'string'
+    },
+    tab2Content: {
+      type: 'string'
+    },
+    tab3Label: {
+      type: 'string'
+    },
+    tab3Icon: {
+      type: 'string'
+    },
+    tab3BGColor: {
+      type: 'string'
+    },
+    tab3Content: {
+      type: 'string'
+    },
+    tab4Label: {
+      type: 'string'
+    },
+    tab4Icon: {
+      type: 'string'
+    },
+    tab4BGColor: {
+      type: 'string'
+    },
+    tab4Content: {
+      type: 'string'
+    },
+    tab5Label: {
+      type: 'string'
+    },
+    tab5Icon: {
+      type: 'string'
+    },
+    tab5BGColor: {
+      type: 'string'
+    },
+    tab5Content: {
+      type: 'string'
+    },
+    tab6Label: {
+      type: 'string'
+    },
+    tab6Icon: {
+      type: 'string'
+    },
+    tab6BGColor: {
+      type: 'string'
+    },
+    tab6Content: {
+      type: 'string'
+    },
+    tab7Label: {
+      type: 'string'
+    },
+    tab7Icon: {
+      type: 'string'
+    },
+    tab7BGColor: {
+      type: 'string'
+    },
+    tab7Content: {
+      type: 'string'
+    },
+    tab8Label: {
+      type: 'string'
+    },
+    tab8Icon: {
+      type: 'string'
+    },
+    tab8BGColor: {
+      type: 'string'
+    },
+    tab8Content: {
+      type: 'string'
+    },
+    tab9Label: {
+      type: 'string'
+    },
+    tab9Icon: {
+      type: 'string'
+    },
+    tab9BGColor: {
+      type: 'string'
+    },
+    tab9Content: {
+      type: 'string'
+    },
+    tab10Label: {
+      type: 'string'
+    },
+    tab10Icon: {
+      type: 'string'
+    },
+    tab10BGColor: {
+      type: 'string'
+    },
+    tab10Content: {
+      type: 'string'
+    },
+    tabs: {
+      type: 'array'
+    },
+    isChanged: {
+      type: 'boolean',
+      default: false
+    },
+    blockId: {
+      type: 'string'
+    },
+    firstLoad: {
+      type: 'boolean',
+      default: true
+    }
+  },
   /**
    * @see ./edit.js
    */
-  edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
+  edit: _edit__WEBPACK_IMPORTED_MODULE_3__["default"],
   /**
    * @see ./save.js
    */
-  save: _save__WEBPACK_IMPORTED_MODULE_3__["default"]
+  save: _save__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
 
 /***/ }),
