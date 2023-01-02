@@ -22,7 +22,7 @@
  */
 function oese_tabs_block_init(){
     $dir = dirname(__FILE__);
-    $dir_url = get_stylesheet_directory_uri().'/blocks/tabs/';
+    $dir_url = get_stylesheet_directory_uri().'/modules/shortcodesblockv2/tabs/';
     $version_58 = is_version58();
 
     $script_asset_path = "$dir/build/index.asset.php";
@@ -35,8 +35,8 @@ function oese_tabs_block_init(){
     $script_asset = require( $script_asset_path );
     wp_register_script(
         'oese-tabs-block-editor',
-        //$dir_url . $index_js,
-        plugins_url( $index_js, __FILE__),
+        $dir_url . $index_js,
+        //plugins_url( $index_js, __FILE__),
         $script_asset['dependencies'],
         $script_asset['version']
     );
@@ -46,8 +46,8 @@ function oese_tabs_block_init(){
     $editor_css = 'build/index.css';
     wp_register_style(
         'oese-tabs-block-editor-style',
-        plugins_url( $editor_css, __FILE__),
-        //$dir_url . $editor_css,
+        //plugins_url( $editor_css, __FILE__),
+        $dir_url . $editor_css,
         array(),
         filemtime( "$dir/$editor_css" )
     );
@@ -55,8 +55,8 @@ function oese_tabs_block_init(){
     $style_css = 'build/style-index.css';
     wp_register_style(
         'oese-tabs-block-style',
-        //$dir_url . $style_css,
-        plugins_url( $style_css, __FILE__ ),
+        $dir_url . $style_css,
+        //plugins_url( $style_css, __FILE__ ),
         array(),
         filemtime( "$dir/$style_css" )
     );
@@ -65,7 +65,7 @@ function oese_tabs_block_init(){
         'editor_script' => 'oese-tabs-block-editor',
         'editor_style'  => 'oese-tabs-block-editor-style',
         'style'         => 'oese-tabs-block-style',
-        'render_callback' => 'oese_tabs_block_display'
+        //'render_callback' => 'oese_tabs_block_display'
     ) );
 }
 

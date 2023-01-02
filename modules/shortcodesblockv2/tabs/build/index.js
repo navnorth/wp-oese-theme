@@ -426,17 +426,17 @@ function Edit(props) {
       id: 'TabContent' + attributes.blockId + '_1',
       role: "tabpanel",
       "aria-labelledby": 'Tab' + attributes.blockId + '_1'
-    }, attributes.tab1Content), attributes.tab2Checked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.RawHTML, null, attributes.tab1Content)), attributes.tab2Checked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: "tab-pane fade",
       id: 'TabContent' + attributes.blockId + '_2',
       role: "tabpanel",
       "aria-labelledby": 'Tab' + attributes.blockId + '_2'
-    }, attributes.tab2Content), attributes.tab3Checked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.RawHTML, null, attributes.tab2Content)), attributes.tab3Checked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: "tab-pane fade",
       id: 'TabContent' + attributes.blockId + '_3',
       role: "tabpanel",
       "aria-labelledby": 'Tab' + attributes.blockId + '_3'
-    }, attributes.tab3Content)));
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.RawHTML, null, attributes.tab3Content))));
   }
   let inspector = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, {
     className: "oese-tabs-inspector-control",
@@ -947,6 +947,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 
+
 /**
  * React hook that is used to mark the block wrapper element.
  * It provides all the necessary props like the class name.
@@ -1020,17 +1021,17 @@ function save(props) {
     id: 'TabContent' + attributes.blockId + '_1',
     role: "tabpanel",
     "aria-labelledby": 'Tab' + attributes.blockId + '_1'
-  }, attributes.tab1Content), attributes.tab2Checked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.RawHTML, null, attributes.tab1Content)), attributes.tab2Checked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "tab-pane fade",
     id: 'TabContent' + attributes.blockId + '_2',
     role: "tabpanel",
     "aria-labelledby": 'Tab' + attributes.blockId + '_2'
-  }, attributes.tab2Content), attributes.tab3Checked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.RawHTML, null, attributes.tab2Content)), attributes.tab3Checked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "tab-pane fade",
     id: 'TabContent' + attributes.blockId + '_3',
     role: "tabpanel",
     "aria-labelledby": 'Tab' + attributes.blockId + '_3'
-  }, attributes.tab3Content))));
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.RawHTML, null, attributes.tab3Content)))));
 }
 
 /***/ }),
