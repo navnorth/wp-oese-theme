@@ -114,22 +114,196 @@ function Edit(props) {
     });
   };
   const onChangeTabLabel = (tabLabel, index) => {
-    setAttributes({
-      tab1Label: tabLabel,
-      isChanged: true
-    });
+    switch (index) {
+      case 1:
+        setAttributes({
+          tab1Label: tabLabel,
+          isChanged: true
+        });
+        break;
+      case 2:
+        setAttributes({
+          tab2Label: tabLabel,
+          isChanged: true
+        });
+        break;
+      case 3:
+        setAttributes({
+          tab3Label: tabLabel,
+          isChanged: true
+        });
+        break;
+      case 4:
+        setAttributes({
+          tab4Label: tabLabel,
+          isChanged: true
+        });
+        break;
+      case 5:
+        setAttributes({
+          tab5Label: tabLabel,
+          isChanged: true
+        });
+        break;
+      case 6:
+        setAttributes({
+          tab6Label: tabLabel,
+          isChanged: true
+        });
+        break;
+      case 7:
+        setAttributes({
+          tab7Label: tabLabel,
+          isChanged: true
+        });
+        break;
+      case 8:
+        setAttributes({
+          tab8Label: tabLabel,
+          isChanged: true
+        });
+        break;
+      case 9:
+        setAttributes({
+          tab9Label: tabLabel,
+          isChanged: true
+        });
+        break;
+      case 10:
+        setAttributes({
+          tab10Label: tabLabel,
+          isChanged: true
+        });
+        break;
+    }
   };
-  const onChangeTabIcon = tabIcon => {
-    setAttributes({
-      tab1Icon: tabIcon,
-      isChanged: true
-    });
+  const onChangeTabIcon = (tabIcon, index) => {
+    switch (index) {
+      case 1:
+        setAttributes({
+          tab1Icon: tabIcon,
+          isChanged: true
+        });
+        break;
+      case 2:
+        setAttributes({
+          tab2Icon: tabIcon,
+          isChanged: true
+        });
+        break;
+      case 3:
+        setAttributes({
+          tab3Icon: tabIcon,
+          isChanged: true
+        });
+        break;
+      case 4:
+        setAttributes({
+          tab4Icon: tabIcon,
+          isChanged: true
+        });
+        break;
+      case 5:
+        setAttributes({
+          tab5Icon: tabIcon,
+          isChanged: true
+        });
+        break;
+      case 6:
+        setAttributes({
+          tab6Icon: tabIcon,
+          isChanged: true
+        });
+        break;
+      case 7:
+        setAttributes({
+          tab7Icon: tabIcon,
+          isChanged: true
+        });
+        break;
+      case 8:
+        setAttributes({
+          tab8Icon: tabIcon,
+          isChanged: true
+        });
+        break;
+      case 9:
+        setAttributes({
+          tab9Icon: tabIcon,
+          isChanged: true
+        });
+        break;
+      case 10:
+        setAttributes({
+          tab10Icon: tabIcon,
+          isChanged: true
+        });
+        break;
+    }
   };
-  const onChangeTabContent = tabContent => {
-    setAttributes({
-      tab1Content: tabContent,
-      isChanged: true
-    });
+  const onChangeTabContent = (tabContent, index) => {
+    switch (index) {
+      case 1:
+        setAttributes({
+          tab1Content: tabContent,
+          isChanged: true
+        });
+        break;
+      case 2:
+        setAttributes({
+          tab2Content: tabContent,
+          isChanged: true
+        });
+        break;
+      case 3:
+        setAttributes({
+          tab3Content: tabContent,
+          isChanged: true
+        });
+        break;
+      case 4:
+        setAttributes({
+          tab4Content: tabContent,
+          isChanged: true
+        });
+        break;
+      case 5:
+        setAttributes({
+          tab5Content: tabContent,
+          isChanged: true
+        });
+        break;
+      case 6:
+        setAttributes({
+          tab6Content: tabContent,
+          isChanged: true
+        });
+        break;
+      case 7:
+        setAttributes({
+          tab7Content: tabContent,
+          isChanged: true
+        });
+        break;
+      case 8:
+        setAttributes({
+          tab8Content: tabContent,
+          isChanged: true
+        });
+        break;
+      case 9:
+        setAttributes({
+          tab9Content: tabContent,
+          isChanged: true
+        });
+        break;
+      case 10:
+        setAttributes({
+          tab10Content: tabContent,
+          isChanged: true
+        });
+        break;
+    }
   };
   const onChangeTabEnabled = (tabChecked, index) => {
     switch (index) {
@@ -201,6 +375,69 @@ function Edit(props) {
     });
   };
   if (clientId !== attributes.blockId) setBlockId(clientId);
+  if (attributes.firstLoad) {
+    display = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+      className: 'oese-tabs-block'
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("ul", {
+      className: "nav nav-tabs",
+      id: "oeseTabs",
+      role: "tablist"
+    }, attributes.tab1Checked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("li", {
+      className: "nav-item"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
+      className: "nav-link active",
+      id: 'Tab' + attributes.blockId + '_1',
+      "data-toggle": "tab",
+      href: '#TabContent' + attributes.blockId + '_1',
+      role: "tab",
+      "aria-controls": "home",
+      "aria-selected": "true"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("i", {
+      className: 'fas ' + attributes.tab1Icon
+    }), " ", attributes.tab1Label)), attributes.tab2Checked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("li", {
+      className: "nav-item"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
+      className: "nav-link",
+      id: 'Tab' + attributes.blockId + '_2',
+      "data-toggle": "tab",
+      href: '#TabContent' + attributes.blockId + '_2',
+      role: "tab",
+      "aria-controls": "profile",
+      "aria-selected": "false"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("i", {
+      className: 'fas ' + attributes.tab2Icon
+    }), " ", attributes.tab2Label)), attributes.tab3Checked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("li", {
+      className: "nav-item"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
+      className: "nav-link",
+      id: 'Tab' + attributes.blockId + '_3',
+      "data-toggle": "tab",
+      href: '#TabContent' + attributes.blockId + '_3',
+      role: "tab",
+      "aria-controls": "contact",
+      "aria-selected": "false"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("i", {
+      className: 'fas ' + attributes.tab3Icon
+    }), " ", attributes.tab3Label))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+      className: "tab-content",
+      id: 'TabContent' + attributes.blockId
+    }, attributes.tab1Checked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+      className: "tab-pane fade show active",
+      id: 'TabContent' + attributes.blockId + '_1',
+      role: "tabpanel",
+      "aria-labelledby": 'Tab' + attributes.blockId + '_1'
+    }, attributes.tab1Content), attributes.tab2Checked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+      className: "tab-pane fade",
+      id: 'TabContent' + attributes.blockId + '_2',
+      role: "tabpanel",
+      "aria-labelledby": 'Tab' + attributes.blockId + '_2'
+    }, attributes.tab2Content), attributes.tab3Checked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+      className: "tab-pane fade",
+      id: 'TabContent' + attributes.blockId + '_3',
+      role: "tabpanel",
+      "aria-labelledby": 'Tab' + attributes.blockId + '_3'
+    }, attributes.tab3Content)));
+  }
   let inspector = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, {
     className: "oese-tabs-inspector-control",
     key: attributes.blockId
@@ -226,11 +463,11 @@ function Edit(props) {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Icon:', 'oese-tabs-block'),
     options: iconList,
     value: attributes.tab1Icon,
-    onChange: onChangeTabIcon
+    onChange: e => onChangeTabIcon(e, 1)
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextareaControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content:', 'oese-tabs-block'),
     value: attributes.tab1Content,
-    onChange: onChangeTabContent
+    onChange: e => onChangeTabContent(e, 1)
   }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Enable Tab 2', 'oese-tabs-block'),
     checked: attributes.tab2Checked,
@@ -250,11 +487,11 @@ function Edit(props) {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Icon:', 'oese-tabs-block'),
     options: iconList,
     value: attributes.tab2Icon,
-    onChange: onChangeTabIcon
+    onChange: e => onChangeTabIcon(e, 2)
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextareaControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content:', 'oese-tabs-block'),
     value: attributes.tab2Content,
-    onChange: onChangeTabContent
+    onChange: e => onChangeTabContent(e, 2)
   }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Enable Tab 3', 'oese-tabs-block'),
     checked: attributes.tab3Checked,
@@ -274,11 +511,11 @@ function Edit(props) {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Icon:', 'oese-tabs-block'),
     options: iconList,
     value: attributes.tab3Icon,
-    onChange: onChangeTabIcon
+    onChange: e => onChangeTabIcon(e, 3)
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextareaControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content:', 'oese-tabs-block'),
     value: attributes.tab3Content,
-    onChange: onChangeTabContent
+    onChange: e => onChangeTabContent(e, 3)
   }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Enable Tab 4', 'oese-tabs-block'),
     checked: attributes.tab4Checked,
@@ -298,11 +535,11 @@ function Edit(props) {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Icon:', 'oese-tabs-block'),
     options: iconList,
     value: attributes.tab4Icon,
-    onChange: onChangeTabIcon
+    onChange: e => onChangeTabIcon(e, 4)
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextareaControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content:', 'oese-tabs-block'),
     value: attributes.tab4Content,
-    onChange: onChangeTabContent
+    onChange: e => onChangeTabContent(e, 4)
   }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Enable Tab 5', 'oese-tabs-block'),
     checked: attributes.tab5Checked,
@@ -322,11 +559,11 @@ function Edit(props) {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Icon:', 'oese-tabs-block'),
     options: iconList,
     value: attributes.tab5Icon,
-    onChange: onChangeTabIcon
+    onChange: e => onChangeTabIcon(e, 5)
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextareaControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content:', 'oese-tabs-block'),
     value: attributes.tab5Content,
-    onChange: onChangeTabContent
+    onChange: e => onChangeTabContent(e, 5)
   }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Enable Tab 6', 'oese-tabs-block'),
     checked: attributes.tab6Checked,
@@ -346,11 +583,11 @@ function Edit(props) {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Icon:', 'oese-tabs-block'),
     options: iconList,
     value: attributes.tab6Icon,
-    onChange: onChangeTabIcon
+    onChange: e => onChangeTabIcon(e, 6)
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextareaControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content:', 'oese-tabs-block'),
     value: attributes.tab6Content,
-    onChange: onChangeTabContent
+    onChange: e => onChangeTabContent(e, 6)
   }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Enable Tab 7', 'oese-tabs-block'),
     checked: attributes.tab7Checked,
@@ -370,11 +607,11 @@ function Edit(props) {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Icon:', 'oese-tabs-block'),
     options: iconList,
     value: attributes.tab7Icon,
-    onChange: onChangeTabIcon
+    onChange: e => onChangeTabIcon(e, 7)
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextareaControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content:', 'oese-tabs-block'),
     value: attributes.tab7Content,
-    onChange: onChangeTabContent
+    onChange: e => onChangeTabContent(e, 7)
   }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Enable Tab 8', 'oese-tabs-block'),
     checked: attributes.tab8Checked,
@@ -394,11 +631,11 @@ function Edit(props) {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Icon:', 'oese-tabs-block'),
     options: iconList,
     value: attributes.tab8Icon,
-    onChange: onChangeTabIcon
+    onChange: e => onChangeTabIcon(e, 8)
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextareaControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content:', 'oese-tabs-block'),
     value: attributes.tab8Content,
-    onChange: onChangeTabContent
+    onChange: e => onChangeTabContent(e, 8)
   }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Enable Tab 9', 'oese-tabs-block'),
     checked: attributes.tab9Checked,
@@ -418,11 +655,11 @@ function Edit(props) {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Icon:', 'oese-tabs-block'),
     options: iconList,
     value: attributes.tab9Icon,
-    onChange: onChangeTabIcon
+    onChange: e => onChangeTabIcon(e, 9)
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextareaControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content:', 'oese-tabs-block'),
     value: attributes.tab9Content,
-    onChange: onChangeTabContent
+    onChange: e => onChangeTabContent(e, 9)
   }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Enable Tab 10', 'oese-tabs-block'),
     checked: attributes.tab10Checked,
@@ -442,11 +679,11 @@ function Edit(props) {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Icon:', 'oese-tabs-block'),
     options: iconList,
     value: attributes.tab10Icon,
-    onChange: onChangeTabIcon
+    onChange: e => onChangeTabIcon(e, 10)
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextareaControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content:', 'oese-tabs-block'),
     value: attributes.tab10Content,
-    onChange: onChangeTabContent
+    onChange: e => onChangeTabContent(e, 10)
   }))))))));
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     className: "oese-tabs-block"
