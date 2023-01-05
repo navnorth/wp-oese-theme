@@ -84,6 +84,7 @@
   border-bottom-color: #ffffff !important;
 }
 .wpdt-c.wdt-skin-light .wpDataTablesWrapper table.wpDataTable tr td { padding: 5px 8px; }
+.wp-block-oese-block-oese-tabs #oeseTabs li i.fas { margin-right:5px; }
 /** NALRC Carousel Styles **/
 #oese-acf-slider ul.bullet-list.nalrc-list {
 	bottom: 1.2em;
