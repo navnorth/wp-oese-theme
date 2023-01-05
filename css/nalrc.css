@@ -70,6 +70,19 @@
 .nalrc-footer .nalrc-social { padding-left:3%; }
 .button-subscribe { background-color:#fff; color:#000; padding:3px 10px; border:1px solid #a09fa0; border-radius:8px; }
 .nalrc-footer .nalrc-menu { padding-left:0; }
+.wpdt-c.wdt-skin-light .wpDataTablesWrapper table.wpDataTable thead th.sort:after {
+	border: 5px solid transparent;
+  display: inline-block;
+  font-size: 0;
+  line-height: 0;
+  content: "";
+  height: 0;
+  width: 0;
+  vertical-align: 3px;
+  margin: 0 0 0 10px;
+  opacity: .6;
+  border-bottom-color: #ffffff !important;
+}
 /** NALRC Carousel Styles **/
 #oese-acf-slider ul.bullet-list.nalrc-list {
 	bottom: 1.2em;
