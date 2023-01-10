@@ -245,9 +245,10 @@
     margin: 15px 0 15px;
 }
 .page-template-nalrc-template .usacustomHtml5MapStateInfo .modal-map-details-popup .modal-content .modal-header > p {
-	margin-top:15px !important;
+	margin-top:0 !important;
+	margin-bottom:0 !important;
 }
-.page-template-nalrc-template .usacustomHtml5MapStateInfo .modal-map-details-popup { display:flex !important; }
+.page-template-nalrc-template .usacustomHtml5MapStateInfo .modal-map-details-popup.show { display:flex !important; }
 .page-template-nalrc-template .usacustomHtml5MapStateInfo .modal-map-details-popup .modal-dialog { margin:auto; }
 .page-template-nalrc-template .usacustomHtml5MapStateInfo .modal-map-details-popup .modal-content .modal-body { 
 font-size:12px; }
