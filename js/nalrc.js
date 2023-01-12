@@ -64,4 +64,12 @@ jQuery(function($){
 			$('.usacustomHtml5MapStateInfo').find('.modal-map-details-popup').modal('show');
 		},1000);
 	});
+
+	$(document).on('keydown',function(e){
+		var code = e.keyCode || e.which;
+		if (code==27){
+			if ($('.modal-map-details-popup').is(':visible'))
+				$('.modal-map-details-popup').modal('hide');
+		}
+	});
 });
