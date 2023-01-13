@@ -38,7 +38,7 @@ class TabsAutomatic {
     }
 
     if(this.curTab)
-      this.setSelectedTab(this.curTab, false);
+      this.setSelectedTab(this.curTab);
     else
       this.setSelectedTab(this.firstTab, false);
   }
