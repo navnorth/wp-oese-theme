@@ -1520,6 +1520,20 @@ function wp_oese_theme_settings_page() {
     $page
   );
 
+  //Enable UA tracking script
+  add_settings_field(
+    'wp_oese_theme_include_UA_tracking_script',
+    '',
+    'wp_oese_theme_settings_field',
+    $page,
+    'wp_oese_ga_settings',
+    array(
+      'uid' => 'wp_oese_theme_include_UA_tracking_script',
+      'type' => 'checkbox',
+      'name' =>  __('enable UA tracking script', WP_OESE_THEME_SLUG)
+    )
+  );
+
   //Add GA Property ID Settings field
   add_settings_field(
     'wp_oese_theme_ga_propertyid',
@@ -1530,7 +1544,35 @@ function wp_oese_theme_settings_page() {
     array(
       'uid' => 'wp_oese_theme_ga_propertyid',
       'type' => 'textbox',
-      'name' =>  __('Property ID: ', WP_OESE_THEME_SLUG)
+      'name' =>  __('UA Property ID: ', WP_OESE_THEME_SLUG)
+    )
+  );
+
+  //Enable GA4 tracking script
+  add_settings_field(
+    'wp_oese_theme_include_GA4_tracking_script',
+    '',
+    'wp_oese_theme_settings_field',
+    $page,
+    'wp_oese_ga_settings',
+    array(
+      'uid' => 'wp_oese_theme_include_GA4_tracking_script',
+      'type' => 'checkbox',
+      'name' =>  __('enable GA4 tracking script', WP_OESE_THEME_SLUG)
+    )
+  );
+
+  //Add GA4 Property ID Settings field
+  add_settings_field(
+    'wp_oese_theme_ga4_propertyid',
+    '',
+    'wp_oese_theme_settings_field',
+    $page,
+    'wp_oese_ga_settings',
+    array(
+      'uid' => 'wp_oese_theme_ga4_propertyid',
+      'type' => 'textbox',
+      'name' =>  __('GA4 Property ID: ', WP_OESE_THEME_SLUG)
     )
   );
 
@@ -1722,7 +1764,10 @@ function wp_oese_theme_settings_page() {
   register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_content' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_enable_redirect' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_contact_page' );
+  register_setting( 'theme_settings_page' , 'wp_oese_theme_include_UA_tracking_script' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_ga_propertyid' );
+  register_setting( 'theme_settings_page' , 'wp_oese_theme_include_GA4_tracking_script' );
+  register_setting( 'theme_settings_page' , 'wp_oese_theme_ga4_propertyid' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_include_crazy_egg_script' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_crazy_egg_script_address' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_pdf_viewer' );
