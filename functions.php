@@ -1533,7 +1533,7 @@ function wp_oese_theme_settings_page() {
       'name' =>  __('enable UA tracking script', WP_OESE_THEME_SLUG)
     )
   );
-
+  
   //Add GA Property ID Settings field
   add_settings_field(
     'wp_oese_theme_ga_propertyid',
@@ -1544,6 +1544,7 @@ function wp_oese_theme_settings_page() {
     array(
       'uid' => 'wp_oese_theme_ga_propertyid',
       'type' => 'textbox',
+      'disabled' => (get_option('wp_oese_theme_include_UA_tracking_script')=="1"?false:true),
       'name' =>  __('UA Property ID: ', WP_OESE_THEME_SLUG)
     )
   );
@@ -1561,7 +1562,7 @@ function wp_oese_theme_settings_page() {
       'name' =>  __('enable GA4 tracking script', WP_OESE_THEME_SLUG)
     )
   );
-
+  
   //Add GA4 Property ID Settings field
   add_settings_field(
     'wp_oese_theme_ga4_propertyid',
@@ -1572,6 +1573,7 @@ function wp_oese_theme_settings_page() {
     array(
       'uid' => 'wp_oese_theme_ga4_propertyid',
       'type' => 'textbox',
+      'disabled' => (get_option('wp_oese_theme_include_GA4_tracking_script')=="1"?false:true),
       'name' =>  __('GA4 Property ID: ', WP_OESE_THEME_SLUG)
     )
   );
@@ -1600,6 +1602,7 @@ function wp_oese_theme_settings_page() {
     array(
       'uid' => 'wp_oese_theme_crazy_egg_script_address',
       'type' => 'textbox',
+      'disabled' => (get_option('wp_oese_theme_include_crazy_egg_script')=="1"?false:true),
       'name' =>  __('Crazy Egg Script Address', WP_OESE_THEME_SLUG)
     )
   );
@@ -1796,9 +1799,12 @@ function wp_oese_theme_settings_field($arguments){
   $value = get_option($arguments['uid']);
 
   if ($arguments['type']=="textbox") {
+    $disabled = false;
+    if (isset($arguments['disabled']))
+      $disabled = $arguments['disabled'];
     echo '<div class="form-row"><div class="form-group">
       <label for="'.$arguments['uid'].'"><strong>'.$arguments['name'].'</strong></label>
-      <input name="'.$arguments['uid'].'" id="'.$arguments['uid'].'" type="'.$arguments['type'].'" value="' . $value . '" />
+      <input name="'.$arguments['uid'].'" id="'.$arguments['uid'].'" type="'.$arguments['type'].'" value="' . $value . '" '.($disabled?'disabled':'').' />
     </div></div>';
   } elseif ($arguments['type']=="editor"){
     echo '<div class="form-row"><div class="form-group">
