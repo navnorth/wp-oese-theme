@@ -749,7 +749,7 @@ font-size:12px; background:#ffffff; border-bottom-left-radius: 8px; border-botto
 	}
 	.wp-block-oese-block-oese-tabs #oeseTabs { justify-content:center; }
 	.wp-block-oese-block-oese-tabs .oese-tabs-block div.tab-content .tab-pane .program-content { padding:5px 10px; }
-	.wp-block-oese-block-oese-tabs .oese-tabs-block div.tab-content .tab-pane .wpDataTablesFilter {
+	.wp-block-oese-block-oese-tabs .oese-tabs-block div.tab-content .tab-pane .wpDataTables.wpDataTablesWrapper.wpDataTablesFilter {
 		background-color: #104f6a;
 	    padding: 20px;
 	    width: 94%;
