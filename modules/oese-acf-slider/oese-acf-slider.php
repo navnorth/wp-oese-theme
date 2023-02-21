@@ -90,7 +90,7 @@ function oese_acf_slider_func($attr, $content = null){
             
             if($_slide_count > 1){
               if ($nalrc_template){
-                $_ret .= '<div id="pause-control"><button id="pauseplay-button" class="pause" role="button" aria-label="Play"></button></div>';
+                $_ret .= '<div id="pause-control"><button id="pauseplay-button" class="pause" role="button" aria-label="Pause"></button></div>';
                 $_ret .= '<ul class="bullet-list nalrc-list'.$addtl_class.'"></ul>';
               } else {
                 $_ret .= '<button class="oese-slider-sidenavs left slider-button arrow previous" role = "button" aria-label="previous slide" data-index="0">&#10094;</button>';

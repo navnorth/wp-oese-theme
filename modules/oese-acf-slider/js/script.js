@@ -265,11 +265,13 @@
         paused = true;
         button.removeClass('pause');
         button.addClass('play');
+        button.attr('aria-label', 'Play');
       } else if (button.hasClass('play')){
         gbl_pause = false;
         paused = false;
         button.removeClass('play');
         button.addClass('pause');
+        button.attr('aria-label', 'Pause');
       }
     }
 
