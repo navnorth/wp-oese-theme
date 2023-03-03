@@ -140,13 +140,7 @@ jQuery(function($){
 			} else if (code==40) {
 				$(this).closest('.bootstrap-select').find('.selectpicker').selectpicker('show');
 				$(this).closest('.bootstrap-select').find('.dropdown-menu li:first-child a').focus();
-			} else if (e.shiftKey && code==9){
-				e.preventDefault();
-				$(this).closest('.wpDataTableFilterSection').prev().find('.filter_select button.dropdown-toggle').focus();
-			} else if (code==9){
-				e.preventDefault();
-				$(this).closest('.wpDataTableFilterSection').next().find('.filter_select button.dropdown-toggle').focus();
-			}
+			} 
 		});
 
 		$(document).on('focus', '.filter_select .dropdown-menu li a', function(e){
