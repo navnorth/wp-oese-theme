@@ -150,7 +150,7 @@ jQuery(function($){
 			} else if (code==27){
 				$(this).closest('.bootstrap-select').find('.dropdown-menu').removeClass('open show');
 			} else if (code==9){
-				if (!$(this).closest('.bootstrap-select').find('.dropdown-menu.open').hasClass('show'))
+				if ($(this).closest('.bootstrap-select').find('.dropdown-menu.open').hasClass('show'))
 					$(this).closest('.bootstrap-select').find('.dropdown-menu.open').removeClass('show');
 				if (!e.shiftKey){
 					if ($(this).closest('.wpDataTableFilterSection').next().length){
