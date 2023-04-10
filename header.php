@@ -105,5 +105,9 @@
             }
             ?>
         </div>
-
-
+        <?php if ('resource'==get_post_type() && !is_search()): ?>
+            <div class="nalrc-template">
+            <?php
+                get_template_part('template-parts/nalrc/header');
+            ?>
+        <?php endif; ?>

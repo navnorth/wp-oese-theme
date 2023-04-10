@@ -7,8 +7,9 @@
  * filter hooks in WordPress to change core functionality.
  */
 define( "WP_OESE_THEME_NAME", "WP OESE Theme" );
-define( "WP_OESE_THEME_VERSION", "2.1.2" );
+define( "WP_OESE_THEME_VERSION", "2.2.0" );
 define( "WP_OESE_THEME_SLUG", "wp_oese_theme" );
+global $_nalrc;
 
 // Set up the content width value based on the theme's design and stylesheet.
 if ( ! isset( $content_width ) ) {
@@ -729,6 +730,7 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
  if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/subpages/oese-subpages-block.php' );
  if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/featured_card/oese-featured-card-block.php' );
  if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/disclaimer/oese-disclaimer-block.php' );
+ if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblockv2/tabs/oese-tabs.php' );
  if($_vsn > 4) require_once( get_stylesheet_directory() . '/modules/shortcodesblock/shortcodesblock.php' );
  function theme_back_enqueue_script()
 {
@@ -754,7 +756,10 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
     wp_enqueue_style('csv-media-styles', get_stylesheet_directory_uri() . '/css/csv-media-import-style.css' );
     wp_enqueue_style( 'shortcode-style-backend',get_stylesheet_directory_uri() . '/tinymce_button/shortcode-style.css' );
     wp_enqueue_script('shortcode_script', get_stylesheet_directory_uri() . '/tinymce_button/shortcode_script.js' );
-
+    if (is_page_template('page-templates/nalrc-template.php') || 'resource'==get_post_type()){
+      wp_enqueue_style( 'theme-bootstrap-style',get_stylesheet_directory_uri() . '/css/bootstrap.min.css' );
+      wp_enqueue_script('bootstrap-script', get_stylesheet_directory_uri() . '/js/bootstrap.js' );
+    }
 }
 add_action( 'admin_enqueue_scripts', 'theme_back_enqueue_script' );
 
@@ -775,6 +780,15 @@ function theme_front_enqueue_script()
   wp_enqueue_script('bootstrap-script', get_stylesheet_directory_uri() . '/js/bootstrap.js' );
   wp_enqueue_script('theme-front-script', get_stylesheet_directory_uri() . '/js/front-script.js' );
   wp_enqueue_script('theme-back-script', get_stylesheet_directory_uri() . '/js/modernizr-custom.js' );
+
+  // Load NALRC styles
+  if (is_page_template('page-templates/nalrc-template.php') || 'resource'==get_post_type()){
+    wp_enqueue_style( 'theme-nalrc-style',get_stylesheet_directory_uri() . '/css/nalrc.css' );
+    wp_register_script( 'theme-nalrc-script',get_stylesheet_directory_uri() . '/js/nalrc.js');
+    wp_localize_script( 'theme-nalrc-script', 'nalrc', array( 'home_url' => get_site_url()) );
+    wp_enqueue_script( 'theme-nalrc-script');
+    wp_enqueue_style('dashicons');
+  }
 }
 add_action( 'wp_enqueue_scripts', 'theme_front_enqueue_script');
 
@@ -1507,6 +1521,20 @@ function wp_oese_theme_settings_page() {
     $page
   );
 
+  //Enable UA tracking script
+  add_settings_field(
+    'wp_oese_theme_include_UA_tracking_script',
+    '',
+    'wp_oese_theme_settings_field',
+    $page,
+    'wp_oese_ga_settings',
+    array(
+      'uid' => 'wp_oese_theme_include_UA_tracking_script',
+      'type' => 'checkbox',
+      'name' =>  __('Enable UA Tracking', WP_OESE_THEME_SLUG)
+    )
+  );
+
   //Add GA Property ID Settings field
   add_settings_field(
     'wp_oese_theme_ga_propertyid',
@@ -1517,7 +1545,37 @@ function wp_oese_theme_settings_page() {
     array(
       'uid' => 'wp_oese_theme_ga_propertyid',
       'type' => 'textbox',
-      'name' =>  __('Property ID: ', WP_OESE_THEME_SLUG)
+      'disabled' => (get_option('wp_oese_theme_include_UA_tracking_script')=="1"?false:true),
+      'name' =>  __('UA Property ID: ', WP_OESE_THEME_SLUG)
+    )
+  );
+
+  //Enable GA4 tracking script
+  add_settings_field(
+    'wp_oese_theme_include_GA4_tracking_script',
+    '',
+    'wp_oese_theme_settings_field',
+    $page,
+    'wp_oese_ga_settings',
+    array(
+      'uid' => 'wp_oese_theme_include_GA4_tracking_script',
+      'type' => 'checkbox',
+      'name' =>  __('Enable GA4 Tracking', WP_OESE_THEME_SLUG)
+    )
+  );
+
+  //Add GA4 Property ID Settings field
+  add_settings_field(
+    'wp_oese_theme_ga4_propertyid',
+    '',
+    'wp_oese_theme_settings_field',
+    $page,
+    'wp_oese_ga_settings',
+    array(
+      'uid' => 'wp_oese_theme_ga4_propertyid',
+      'type' => 'textbox',
+      'disabled' => (get_option('wp_oese_theme_include_GA4_tracking_script')=="1"?false:true),
+      'name' =>  __('GA4 Measurement ID: ', WP_OESE_THEME_SLUG)
     )
   );
 
@@ -1531,7 +1589,7 @@ function wp_oese_theme_settings_page() {
     array(
       'uid' => 'wp_oese_theme_include_crazy_egg_script',
       'type' => 'checkbox',
-      'name' =>  __('enable Crazy Egg tracking script', WP_OESE_THEME_SLUG)
+      'name' =>  __('Enable Crazy Egg Tracking', WP_OESE_THEME_SLUG)
     )
   );
 
@@ -1545,7 +1603,8 @@ function wp_oese_theme_settings_page() {
     array(
       'uid' => 'wp_oese_theme_crazy_egg_script_address',
       'type' => 'textbox',
-      'name' =>  __('Crazy Egg Script Address', WP_OESE_THEME_SLUG)
+      'disabled' => (get_option('wp_oese_theme_include_crazy_egg_script')=="1"?false:true),
+      'name' =>  __('Crazy Egg Script Address:', WP_OESE_THEME_SLUG)
     )
   );
 
@@ -1598,15 +1657,132 @@ function wp_oese_theme_settings_page() {
     )
   );
 
+  // Create NALRC Settings Section
+  add_settings_section(
+    'wp_oese_nalrc_settings',
+    __('NALRC Settings', WP_OESE_THEME_SLUG),
+    'wp_oese_theme_settings_callback',
+    $page
+  );
+
+  // Add Header Menu Settings
+  add_settings_field(
+    'wp_oese_theme_nalrc_header',
+    '',
+    'wp_oese_theme_nalrc_menu_selectbox',
+    $page,
+    'wp_oese_nalrc_settings',
+    array(
+      'uid' => 'wp_oese_theme_nalrc_header',
+      'type' => 'selectbox',
+      'name' =>  __('Header Menu: ', WP_OESE_THEME_SLUG)
+    )
+  );
+
+  // Add Header Menu Settings
+  add_settings_field(
+    'wp_oese_theme_nalrc_footer',
+    '',
+    'wp_oese_theme_nalrc_menu_selectbox',
+    $page,
+    'wp_oese_nalrc_settings',
+    array(
+      'uid' => 'wp_oese_theme_nalrc_footer',
+      'type' => 'selectbox',
+      'name' =>  __('Footer Menu: ', WP_OESE_THEME_SLUG)
+    )
+  );
+
+  // Add Facebook URL Settings
+  add_settings_field(
+    'wp_oese_theme_nalrc_facebook',
+    '',
+    'wp_oese_theme_settings_field',
+    $page,
+    'wp_oese_nalrc_settings',
+    array(
+      'uid' => 'wp_oese_theme_nalrc_facebook',
+      'type' => 'textbox',
+      'name' =>  __('Facebook Url: ', WP_OESE_THEME_SLUG)
+    )
+  );
+
+  // Add Twitter URL Settings
+  add_settings_field(
+    'wp_oese_theme_nalrc_twitter',
+    '',
+    'wp_oese_theme_settings_field',
+    $page,
+    'wp_oese_nalrc_settings',
+    array(
+      'uid' => 'wp_oese_theme_nalrc_twitter',
+      'type' => 'textbox',
+      'name' =>  __('Twitter Url: ', WP_OESE_THEME_SLUG)
+    )
+  );
+
+
+  // Add Youtube URL Settings
+  add_settings_field(
+    'wp_oese_theme_nalrc_youtube',
+    '',
+    'wp_oese_theme_settings_field',
+    $page,
+    'wp_oese_nalrc_settings',
+    array(
+      'uid' => 'wp_oese_theme_nalrc_youtube',
+      'type' => 'textbox',
+      'name' =>  __('YouTube Url: ', WP_OESE_THEME_SLUG)
+    )
+  );
+
+  // Add Instagram URL Settings
+  add_settings_field(
+    'wp_oese_theme_nalrc_instagram',
+    '',
+    'wp_oese_theme_settings_field',
+    $page,
+    'wp_oese_nalrc_settings',
+    array(
+      'uid' => 'wp_oese_theme_nalrc_instagram',
+      'type' => 'textbox',
+      'name' =>  __('Instagram Url: ', WP_OESE_THEME_SLUG)
+    )
+  );
+
+  // Add Newsletter URL Settings
+  add_settings_field(
+    'wp_oese_theme_nalrc_newsletter',
+    '',
+    'wp_oese_theme_settings_field',
+    $page,
+    'wp_oese_nalrc_settings',
+    array(
+      'uid' => 'wp_oese_theme_nalrc_newsletter',
+      'type' => 'textbox',
+      'name' =>  __('Newsletter Url: ', WP_OESE_THEME_SLUG)
+    )
+  );
+
   register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_heading' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_content' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_modal_enable_redirect' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_contact_page' );
+  register_setting( 'theme_settings_page' , 'wp_oese_theme_include_UA_tracking_script' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_ga_propertyid' );
+  register_setting( 'theme_settings_page' , 'wp_oese_theme_include_GA4_tracking_script' );
+  register_setting( 'theme_settings_page' , 'wp_oese_theme_ga4_propertyid' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_include_crazy_egg_script' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_crazy_egg_script_address' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_pdf_viewer' );
   register_setting( 'theme_settings_page' , 'wp_oese_theme_display_footer_address' );
+  register_setting( 'theme_settings_page' , 'wp_oese_theme_nalrc_header' );
+  register_setting( 'theme_settings_page' , 'wp_oese_theme_nalrc_footer' );
+  register_setting( 'theme_settings_page' , 'wp_oese_theme_nalrc_facebook' );
+  register_setting( 'theme_settings_page' , 'wp_oese_theme_nalrc_twitter' );
+  register_setting( 'theme_settings_page' , 'wp_oese_theme_nalrc_youtube' );
+  register_setting( 'theme_settings_page' , 'wp_oese_theme_nalrc_instagram' );
+  register_setting( 'theme_settings_page' , 'wp_oese_theme_nalrc_newsletter' );
 }
 add_action( 'admin_init' , 'wp_oese_theme_settings_page' );
 
@@ -1624,9 +1800,12 @@ function wp_oese_theme_settings_field($arguments){
   $value = get_option($arguments['uid']);
 
   if ($arguments['type']=="textbox") {
+    $disabled = false;
+    if (isset($arguments['disabled']))
+      $disabled = $arguments['disabled'];
     echo '<div class="form-row"><div class="form-group">
       <label for="'.$arguments['uid'].'"><strong>'.$arguments['name'].'</strong></label>
-      <input name="'.$arguments['uid'].'" id="'.$arguments['uid'].'" type="'.$arguments['type'].'" value="' . $value . '" />
+      <input name="'.$arguments['uid'].'" id="'.$arguments['uid'].'" type="'.$arguments['type'].'" value="' . $value . '" '.($disabled?'readonly':'').' />
     </div></div>';
   } elseif ($arguments['type']=="editor"){
     echo '<div class="form-row"><div class="form-group">
@@ -1692,6 +1871,27 @@ function wp_oese_theme_select_contact_field($arguments){
         }
     echo '</select>
     </div></div>';
+}
+
+// Select Menu for NALRC Header
+function wp_oese_theme_nalrc_menu_selectbox($arguments){
+  $value = get_option($arguments['uid']);
+  $menus = wp_get_nav_menus();
+
+  echo '<div class="form-row"><div class="form-group">';
+
+  if (isset($arguments['name']))
+      $title = $arguments['name'];
+
+    echo '<label for="'.$arguments['uid'].'"><strong>'.$title.'</strong></label>';
+    echo '<select name="'.$arguments['uid'].'" id="'.$arguments['uid'].'">';
+
+    foreach($menus as $menu){
+       echo '<option value="' . $menu->slug . '" '.selected($menu->slug,$value,true).'>'.$menu->name.'</option>';
+    }
+
+    echo '<select>';
+  echo '</div></div>';
 }
 
 function wp_oese_theme_add_modal(){
@@ -2055,7 +2255,12 @@ function oese_ga_script() {
   $script = "";
 
   // Include GA
-  $ga_id = get_option('wp_oese_theme_ga_propertyid');
+  $ua_enabled = get_option('wp_oese_theme_include_UA_tracking_script');
+  $ua_id = get_option('wp_oese_theme_ga_propertyid');
+  $ua_enabled = ($ua_enabled=="1"?true:false);
+  $ga4_enabled = get_option('wp_oese_theme_include_GA4_tracking_script');
+  $ga4_id = get_option('wp_oese_theme_ga4_propertyid');
+  $ga4_enabled = ($ga4_enabled=="1"?true:false);
   $egg_script = get_option('wp_oese_theme_include_crazy_egg_script');
   $egg_script_address = get_option('wp_oese_theme_crazy_egg_script_address');
 
@@ -2065,16 +2270,36 @@ function oese_ga_script() {
     //$script .= "<script type='text/javascript' src='//s3.amazonaws.com/new.cetrk.com/pages/scripts/0009/9201.js'> </script>\r\n";
     $script .= "<script type='text/javascript' src='".$egg_script_address."' async='async'></script>";
   }
-  if ($ga_id){
-    $script .= "<script>
+
+  if ($ga4_enabled && $ga4_id){
+    $script .= "<script async src='https://www.googletagmanager.com/gtag/js?id=".$ga4_id."'></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', '".$ga4_id."');
+        </script>";
+  }
+
+  if ($ua_enabled && $ua_id){
+    /**--$script .= "<script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    ga('create', '".$ga_id."', 'auto');
+    ga('create', '".$ua_id."', 'auto');
     ga('send', 'pageview');
-    </script>";
+    </script>";--**/
+    $script .= "<script async src='https://www.googletagmanager.com/gtag/js?id=".$ua_id."'></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', '".$ua_id."');
+        </script>";
   }
   return $script;
 }
@@ -3046,7 +3271,7 @@ function oet_display_acf_home_content(){
                    </div>
 
                    <div class="full-search-field">
-                      <form id="searchformContent" class="searchform" action="https://oese-test.navigationnorth.com" method="get" role="search">
+                      <form id="searchformContent" class="searchform" action="<?php echo home_url(); ?>" method="get" role="search">
                           <div class="input-group to-focus">
                               <label class="search-label" for="inputSuccess2Content">Search:</label>
                               <input type="text" class="form-control full-search-input" id="inputSuccess2Content" placeholder="Search" name="s">
@@ -3253,3 +3478,55 @@ function oese_disable_rest_api_from_public($result){
   return $result;
 }
 add_filter( 'rest_authentication_errors' , 'oese_disable_rest_api_from_public' );
+
+
+/** Add NALRC ACF Slider Options Page **/
+function oese_add_nalrc_slider_settings(){
+  if (function_exists('acf_add_options_sub_page')){
+    acf_add_options_sub_page(array(
+      'page_title' => 'NALRC Slider Settings',
+      'menu_title' => 'NALRC Slider',
+      'parent_slug' => 'themes.php',
+    ));
+  }
+}
+add_action('acf/init', 'oese_add_nalrc_slider_settings');
+
+// Order metaboxes(OER, Script N' Styles, WP SEO)
+$_nalrc = true;
+if ($_nalrc){
+  add_filter( 'get_user_option_meta-box-order_resource', 'oese_reorder_metaboxes' );
+  function oese_reorder_metaboxes( $order ) {
+      return array(
+          'normal' => join(
+              ",",
+              array(
+                  'oer_metaboxid',
+                  'SnS_meta_box',
+                  'wpseo_meta'
+              )
+          ),
+      );
+  }
+}
+
+// Checks WP version
+if (!function_exists('is_version58')) {
+    function is_version58(){
+        if ( version_compare( $GLOBALS['wp_version'], '5.8-alpha-1', '<' ) ) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+}
+
+function oese_admin_body_template_class( $str_classes ) {
+    global $post;
+    $template_slug = get_page_template_slug( $post );
+    $classes   = explode(' ', $str_classes);
+    $classes[] = str_replace(".php","",str_replace("/","_",$template_slug));
+    $new_str_classes = join(' ', $classes);
+    return $new_str_classes;
+}
+add_filter( 'admin_body_class', 'oese_admin_body_template_class' );

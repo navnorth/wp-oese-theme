@@ -10,23 +10,158 @@ jQuery( document ).ready(function() {
     jQuery('#page_template').on('change', function() {
 	  //alert(this.value);
 	 });
+
+
+    function displayError(errText){
+      var errorDisplay = jQuery('#wp-oese-theme-settings').find(".settings-error");
+      errorDisplay.append(errText);
+      errorDisplay.show()
+      errorDisplay.removeClass('hidden').css("color","#ff0000");
+    }
+
     // Enable Crazy Egg Script Checkbox change handler
     jQuery('#wp_oese_theme_include_crazy_egg_script').on("change", function(){
-      jQuery('#wp-oese-theme-settings .settings-error').hide();
+      var errText = jQuery('#wp-oese-theme-settings').find(".settings-error").text();
+      var errorDisplay = jQuery('#wp-oese-theme-settings').find(".settings-error");
+      //jQuery('#wp-oese-theme-settings .settings-error').hide();
       if (this.checked){
-        jQuery('#wp_oese_theme_crazy_egg_script_address').prop("disabled", false);
+        jQuery('#wp_oese_theme_crazy_egg_script_address').removeAttr("readonly");
+        if (!jQuery('#wp_oese_theme_crazy_egg_script_address').val()){
+          if (errText.indexOf("Crazy Egg Script")==-1){
+            errText = "<div class='crazy-error'>Crazy Egg Script cannot be empty!</div>";
+            displayError(errText);
+          }
+        }
       } else {
-        jQuery('#wp_oese_theme_crazy_egg_script_address').prop("disabled", true);
+        jQuery('#wp_oese_theme_crazy_egg_script_address').attr("readonly", true);
+        jQuery('#wp_oese_theme_crazy_egg_script_address').focus();
+        errorDisplay.find('.crazy-error').remove();
       }
     });
     jQuery('#wp_oese_theme_crazy_egg_script_address').on('blur', function(e){
-      var errorDisplay = jQuery('#wp-oese-theme-settings').find(".settings-error");
+      var errText = jQuery('#wp-oese-theme-settings').find(".settings-error").text();
       if (jQuery('#wp_oese_theme_include_crazy_egg_script').is(":checked") && (!jQuery(this).val())) {
-        errorDisplay.show()
-        errorDisplay.removeClass('hidden').css("color","#ff0000");
+        jQuery(this).addClass('required');
+        
+        if (errText.indexOf("Crazy Egg Script")==-1){
+          errText = "<div class='crazy-error'>Crazy Egg Script cannot be empty!</div>";
+          displayError(errText);
+        }
+      } else {
+        jQuery(this).removeClass('required');
+      }
+    });
+
+    //Enable UA Tracking Script Change Handler
+    jQuery('#wp_oese_theme_include_UA_tracking_script').on("change", function(){
+      var errText = jQuery('#wp-oese-theme-settings').find(".settings-error").text();
+      var errorDisplay = jQuery('#wp-oese-theme-settings').find(".settings-error");
+      //jQuery('#wp-oese-theme-settings .settings-error').hide();
+      if (this.checked){
+        jQuery('#wp_oese_theme_ga_propertyid').removeAttr("readonly");
+        if (!jQuery('#wp_oese_theme_ga_propertyid').val()){
+          if (errText.indexOf("UA Property ID")==-1){
+            errText = "<div class='ua-error'>UA Property ID cannot be empty!</div>";
+            displayError(errText);
+          }
+        }
+      } else {
+        jQuery('#wp_oese_theme_ga_propertyid').attr("readonly", true);
+        jQuery('#wp_oese_theme_ga_propertyid').focus();
+        errorDisplay.find('.ua-error').remove();
+      }
+    });
+    jQuery('#wp_oese_theme_ga_propertyid').on('blur', function(e){
+      var errText = jQuery('#wp-oese-theme-settings').find(".settings-error").text();
+      if (jQuery('#wp_oese_theme_include_UA_tracking_script').is(":checked") && (!jQuery(this).val())) {
+        jQuery(this).addClass('required');
+
+        
+        if (errText.indexOf("UA Property ID")==-1){
+          errText = "<div class='ua-error'>UA Property ID cannot be empty!</div>";
+          displayError(errText);
+        }
+      } else {
+        jQuery(this).removeClass('required');
+      }
+    });
+
+    //Enable GA4 Tracking Script Change Handler
+    jQuery('#wp_oese_theme_include_GA4_tracking_script').on("change", function(){
+      var errText = jQuery('#wp-oese-theme-settings').find(".settings-error").text();
+      var errorDisplay = jQuery('#wp-oese-theme-settings').find(".settings-error");
+      if (this.checked){
+        jQuery('#wp_oese_theme_ga4_propertyid').removeAttr("readonly");
+        if (!jQuery('#wp_oese_theme_ga4_propertyid').val()){
+          if (errText.indexOf("GA4 Property ID")==-1){
+            errText = "<div class='ga4-error'>GA4 Property ID cannot be empty!</div>";
+            displayError(errText);
+          }
+        }
+      } else {
+        jQuery('#wp_oese_theme_ga4_propertyid').attr("readonly", true);
+        jQuery('#wp_oese_theme_ga4_propertyid').focus();
+        errorDisplay.find('.ga4-error').remove();
+      }
+    });
+    jQuery('#wp_oese_theme_ga4_propertyid').on('blur', function(e){
+      var errText = jQuery('#wp-oese-theme-settings').find(".settings-error").text();
+      if (jQuery('#wp_oese_theme_include_GA4_tracking_script').is(":checked") && (!jQuery(this).val())) {
+        jQuery(this).addClass('required');
+
+        
+        if (errText.indexOf("GA4 Property ID")==-1){
+          errText = "<div class='ga4-error'>GA4 Property ID cannot be empty!</div>";
+          displayError(errText);
+        }
+      } else {
+        jQuery(this).removeClass('required');
       }
 
     });
+    jQuery('#wp_oese_theme_ga4_propertyid,#wp_oese_theme_ga_propertyid,#wp_oese_theme_crazy_egg_script_address').on('change', function(e){
+      jQuery(this).removeClass('required');
+      var errorDisplay = jQuery('#wp-oese-theme-settings').find(".settings-error");
+      if(jQuery(this).val()){
+        if (e.target.id=='wp_oese_theme_ga4_propertyid'){
+          errorDisplay.find('.ga4-error').remove();
+        } else if (e.target.id=='wp_oese_theme_ga_propertyid'){
+          errorDisplay.find('.ua-error').remove();
+        } else {
+          errorDisplay.find('.crazy-error').remove();
+        }
+      }
+    });
+
+    jQuery('#wp-oese-theme-settings').on('submit', function(e){
+      var submit = true;
+      var errText = "";
+      var errorDisplay = jQuery(this).find(".settings-error");
+      errorDisplay.text(errText);
+      if (jQuery('#wp_oese_theme_include_GA4_tracking_script').is(":checked") && (!jQuery('#wp_oese_theme_ga4_propertyid').val())) {
+        errText += "<div class='ga4-error'>GA4 Property ID cannot be empty!</div>";
+        jQuery('#wp_oese_theme_ga4_propertyid').addClass('required');
+        submit = false;
+      }
+      if (jQuery('#wp_oese_theme_include_UA_tracking_script').is(":checked") && (!jQuery('#wp_oese_theme_ga_propertyid').val())) {
+        errText += "<div class='ua-error'>UA Property ID cannot be empty!</div>";
+        jQuery('#wp_oese_theme_ga_propertyid').addClass('required');
+        submit = false;
+      }
+      if (jQuery('#wp_oese_theme_include_crazy_egg_script').is(":checked") && (!jQuery('#wp_oese_theme_crazy_egg_script_address').val())) {
+        errText += "<div class='crazy-error'>Crazy Egg Script cannot be empty!</div>";
+        jQuery('#wp_oese_theme_crazy_egg_script_address').addClass('required');
+        submit = false;
+      }
+      if (!submit){
+        errorDisplay.append(errText);
+        errorDisplay.show()
+        errorDisplay.removeClass('hidden').css("color","#ff0000");
+        jQuery('#wp_oese_theme_include_UA_tracking_script').focus();
+      }
+      return submit;
+    });
+
     jQuery('.contact-edit').on("click", function(e){
         e.preventDefault();
         if (confirm('Are you sure that you want to change the global Contact page selection?')==true){
@@ -182,6 +317,19 @@ jQuery( document ).ready(function() {
   jQuery(document).on('change','.components-select-control__input', function() {
       oese_template_changed = true;
       console.log(oese_template_changed);
+      var editorContainer     = jQuery( 'body' ),
+      templateSelectClass = '.editor-page-attributes__template select';
+      let template = jQuery(this).val();
+      let pageTemplate = template
+              .substr( template.lastIndexOf( '/' ) + 1, template.length )
+              .replace( /\.php$/, '' )
+              .replace( /\./g, '-' );
+      editorContainer
+        .removeClass( function( index, className ) {
+          return ( className.match( /\bpage-template-|page-templates_[^ ]+/ ) || [] ).join( ' ' );
+        } )
+        .addClass( 'page-template-' + pageTemplate );
+
   });
   
   

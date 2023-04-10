@@ -225,7 +225,70 @@
     text-transform: unset !important;
 }
 
+#oese-acf-slider .oese-acf-slider-content-wrapper #pause-control {
+  display: inline-block;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  z-index: 9;
+  width:42px;
+  height:42px;
+  padding:0;
+}
 
+#oese-acf-slider .oese-acf-slider-content-wrapper #pause-control #pauseplay-button{
+  background-color: transparent;
+  border: none;
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+  outline:none;
+}
+
+#oese-acf-slider .oese-acf-slider-content-wrapper #pause-control #pauseplay-button.pause:before {
+  content:'\f28b';
+  font-family: 'Font Awesome 5 Free';
+  color:#ffffff;
+  border-radius: 50%;
+  background-color: #F2CA03;
+  font-size:42px;
+  position:relative;
+  top:-10px;
+  left:-5px;
+}
+
+#oese-acf-slider .oese-acf-slider-content-wrapper #pause-control #pauseplay-button.pause:focus:before,
+#oese-acf-slider .oese-acf-slider-content-wrapper #pause-control #pauseplay-button.pause:hover:before,
+#oese-acf-slider .oese-acf-slider-content-wrapper #pause-control #pauseplay-button.play:focus:before,
+#oese-acf-slider .oese-acf-slider-content-wrapper #pause-control #pauseplay-button.play:hover:before {
+  background-color:#3693bb;
+}
+
+#oese-acf-slider .oese-acf-slider-content-wrapper #pause-control #pauseplay-button.play:before {
+  content:'\f144';
+  font-family: 'Font Awesome 5 Free';
+  color:#ffffff;
+  border-radius: 50%;
+  background-color: #F2CA03;
+  font-size:42px;
+  position:relative;
+  top:-10px;
+  left:-5px;
+}
+
+.home #oese-acf-slider .oese-acf-slider-content-wrapper #pause-control #pauseplay-button.pause:before,
+.home #oese-acf-slider .oese-acf-slider-content-wrapper #pause-control #pauseplay-button.play:before {
+  color:#d1d1d1;
+  background-color:#2D8700;
+  font-size:32px;
+}
+
+.home #oese-acf-slider .oese-acf-slider-content-wrapper #pause-control #pauseplay-button.pause:focus:before,
+.home #oese-acf-slider .oese-acf-slider-content-wrapper #pause-control #pauseplay-button.pause:hover:before,
+.home #oese-acf-slider .oese-acf-slider-content-wrapper #pause-control #pauseplay-button.play:focus:before,
+.home #oese-acf-slider .oese-acf-slider-content-wrapper #pause-control #pauseplay-button.play:hover:before {
+  background-color:#0050a1;
+}
 
 /* SLIDER CSS TRANSITIONS */
 /* SLIDE */
@@ -721,6 +784,12 @@ animation-fill-mode: both;
 
 @media screen and (max-width: 767px) {
 	.oeseslider-ring {left:45% !important;}
+  #oese-acf-slider .oese-acf-slider-content-wrapper #pause-control #pauseplay-button.pause:before,
+  #oese-acf-slider .oese-acf-slider-content-wrapper #pause-control #pauseplay-button.play:before{
+    font-size:32px;
+    top:0;
+    left:0;
+  }
 }
 
 @media screen and (max-width: 550px) {
