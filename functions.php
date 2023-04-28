@@ -7,7 +7,7 @@
  * filter hooks in WordPress to change core functionality.
  */
 define( "WP_OESE_THEME_NAME", "WP OESE Theme" );
-define( "WP_OESE_THEME_VERSION", "2.2.0" );
+define( "WP_OESE_THEME_VERSION", "2.2.1" );
 define( "WP_OESE_THEME_SLUG", "wp_oese_theme" );
 global $_nalrc;
 
